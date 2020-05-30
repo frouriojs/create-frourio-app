@@ -1,1 +1,1 @@
-# TypeScript OSS template
+# Create frourio app

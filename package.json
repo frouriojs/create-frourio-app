@@ -1,12 +1,11 @@
 {
-  "name": "typescript-oss-template",
-  "version": "0.0.1",
-  "description": "TypeScript OSS template",
+  "name": "create-frourio-app",
+  "version": "0.0.0",
+  "description": "Create a frourio project in seconds",
   "author": "m-mitsuhide <m.mitsuhide@amatelus.com>",
   "license": "MIT",
   "bin": "bin/index.js",
   "scripts": {
-    "dev": "npm run build && node bin/index.js --build",
     "build": "npm run rimraf && tsc",
     "rimraf": "node -e \"require('fs').rmdirSync('dist', { recursive: true })\"",
     "release": "standard-version --skip.tag",
@@ -18,27 +17,28 @@
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
-  "homepage": "https://github.com/foo/baz#readme",
+  "homepage": "https://github.com/frouriojs/create-frourio-app#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/foo/baz.git"
+    "url": "git+https://github.com/frouriojs/create-frourio-app.git"
   },
   "bugs": {
-    "url": "https://github.com/foo/baz/issues"
+    "url": "https://github.com/frouriojs/create-frourio-app/issues"
   },
   "files": [
     "dist"
   ],
   "keywords": [
-    "typescript"
+    "typescript",
+    "frourio"
   ],
   "dependencies": {
-    "chokidar": "^3.4.0",
-    "minimist": "^1.2.5"
+    "fs-extra": "^9.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@types/fs-extra": "^9.0.1",
     "@types/jest": "^25.2.3",
     "@types/minimist": "^1.2.0",
     "@typescript-eslint/eslint-plugin": "2.34.0",
