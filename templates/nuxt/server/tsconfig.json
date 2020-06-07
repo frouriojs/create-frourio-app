@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "lib": ["dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": "../",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
+    },
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "target": "es5"
+  },
+  "include": ["../apis"]
+}
