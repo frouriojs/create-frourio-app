@@ -1,8 +1,6 @@
 {
-  "name": "frourio-app",
+  "name": "<%= name %>",
   "version": "1.0.0",
-  "description": "Nuxt.ts + frourio project",
-  "author": "m-mitsuhide",
   "private": true,
   "scripts": {
     "dev": "run-p dev:*",
