@@ -5,29 +5,25 @@
   "scripts": {
     "dev": "run-p dev:*",
     "dev:server": "webpack --watch --mode=development --config server/webpack.config.js",
-    "dev:frourio": "frourio --watch -c server/frourio.config.js",
-    "dev:client": "nuxt-ts",
-    "dev:api": "aspida --watch",
+    "dev:aspida": "aspida --watch",
+    "dev:frourio": "frourio --watch --config server/frourio.config.js",
     "start": "pm2 start server/pm2.config.json --env production",
     "stop": "pm2 stop server/pm2.config.json",
     "delete": "pm2 delete server/pm2.config.json",
     "logs": "pm2 logs",
     "monit": "pm2 monit",
-    "generate": "cross-env NODE_ENV=production run-p build:* && run-p generate:*",
-    "generate:front": "nuxt-ts generate",
-    "generate:server": "webpack --mode=production --config server/webpack.config.js",
-    "build:api": "aspida --build",
-    "build:frourio": "frourio --build -c server/frourio.config.js",
-    "lint": "npm run lint:script && npm run lint:style",
-    "lint:script": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
-    "lint:style": "stylelint \"**/*.{*(s)css,vue}\"",
-    "lint:fix": "npm run lint:script -- --fix && npm run lint:style -- --fix",
-    "typecheck": "run-p build:* && tsc --noEmit",
+    "build": "npm run build:apis && npm run build:server",
+    "build:server": "webpack --mode=production --config server/webpack.config.js",
+    "build:apis": "cross-env NODE_ENV=production run-p build:aspida build:frourio",
+    "build:aspida": "aspida --build",
+    "build:frourio": "frourio --build --config server/frourio.config.js",
+    "lint": "eslint --ext .ts,.js --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix",
+    "typecheck": "npm run build:apis && tsc --noEmit",
     "test": "jest"
   },
   "lint-staged": {
-    "*.{js,vue}": "yarn lint",
-    "*.{css,vue}": "stylelint"
+    "*.js": "npm run lint"
   },
   "husky": {
     "hooks": {
@@ -36,25 +32,16 @@
   },
   "dependencies": {
     "@aspida/axios": "^0.6.0",
-    "@nuxt/typescript-runtime": "^0.4.8",
-    "@nuxtjs/axios": "^5.3.6",
+    "axios": "^0.19.2",
     "frourio": "^0.3.0",
-    "nuxt": "2.12.2",
     "pm2": "^4.4.0"
   },
   "devDependencies": {
-    "@nuxt/components": "^0.3.3",
-    "@nuxt/typescript-build": "^0.6.0",
-    "@nuxtjs/eslint-config-typescript": "^1.0.0",
-    "@nuxtjs/eslint-module": "^1.0.0",
-    "@nuxtjs/stylelint-module": "^3.1.0",
-    "@vue/test-utils": "^1.0.0-beta.27",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "cross-env": "^7.0.2",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.0.0",
     "jest": "^24.1.0",
@@ -67,7 +54,6 @@
     "ts-loader": "^7.0.5",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.9.3",
-    "vue-jest": "^4.0.0-0",
     "webpack-cli": "^3.3.11"
   }
 }
