@@ -23,7 +23,6 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn --frozen-lockfile
       - run: yarn lint
-      - run: yarn typecheck
       - run: yarn test --coverage
       - run: npx codecov
         env:

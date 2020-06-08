@@ -4,18 +4,17 @@
   "description": "Create a frourio project in seconds",
   "author": "m-mitsuhide <m.mitsuhide@amatelus.com>",
   "license": "MIT",
-  "bin": "bin/index.js",
+  "bin": "lib/cli.js",
   "scripts": {
-    "build": "npm run rimraf && tsc",
+    "build": "npm run rimraf",
     "rimraf": "node -e \"require('fs').rmdirSync('dist', { recursive: true })\"",
     "release": "standard-version --skip.tag",
     "release:major": "npm run release -- --release-as major",
     "release:minor": "npm run release -- --release-as minor",
     "release:patch": "npm run release -- --release-as patch",
-    "lint": "eslint --ext .js,.ts .",
+    "lint": "eslint --ext .js .",
     "lint:fix": "npm run lint -- --fix",
-    "test": "jest",
-    "typecheck": "tsc --noEmit"
+    "test": "jest"
   },
   "homepage": "https://github.com/frouriojs/create-frourio-app#readme",
   "repository": {
@@ -29,20 +28,20 @@
     "dist"
   ],
   "keywords": [
-    "typescript",
     "frourio"
   ],
   "dependencies": {
-    "fs-extra": "^9.0.0"
+    "cac": "^6.5.10",
+    "chalk": "^4.0.0",
+    "cross-spawn": "^7.0.3",
+    "envinfo": "^7.5.1",
+    "lodash": "^4.17.15",
+    "sao": "^1.7.1",
+    "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "@types/fs-extra": "^9.0.1",
-    "@types/jest": "^25.2.3",
-    "@types/minimist": "^1.2.0",
-    "@typescript-eslint/eslint-plugin": "2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
@@ -56,8 +55,6 @@
     "jest": "^25.5.4",
     "lint-staged": "^10.2.6",
     "prettier": "2.0.5",
-    "standard-version": "^8.0.0",
-    "ts-jest": "^25.5.1",
-    "typescript": "^3.9.3"
+    "standard-version": "^8.0.0"
   }
 }
