@@ -23,10 +23,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn --frozen-lockfile
       - run: yarn lint
-      - run: yarn test --coverage
-      - run: npx codecov
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - run: yarn test
 
   release:
     runs-on: ubuntu-latest

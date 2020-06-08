@@ -6,7 +6,6 @@ module.exports = {
   },
   extends: [
     'standard',
-    'plugin:jest/recommended',
     'plugin:prettier/recommended',
     'prettier/standard'
   ],
@@ -14,5 +13,8 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  root: true
+  root: true,
+  rules: {
+    "no-console": "off"
+  }
 }
