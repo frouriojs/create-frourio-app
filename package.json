@@ -1,6 +1,6 @@
 {
   "name": "create-frourio-app",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Create a frourio project in seconds",
   "author": "m-mitsuhide <m.mitsuhide@amatelus.com>",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "url": "https://github.com/frouriojs/create-frourio-app/issues"
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "keywords": [
     "frourio"
