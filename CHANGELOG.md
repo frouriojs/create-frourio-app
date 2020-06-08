@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/frouriojs/create-frourio-app/compare/v0.1.1...v0.1.2) (2020-06-08)
+
+
+### Bug Fixes
+
+* templateDir of saofile ([dd09e0b](https://github.com/frouriojs/create-frourio-app/commit/dd09e0b6efc28107877f07560d8ad023b72a8803))
+
 ### [0.1.1](https://github.com/frouriojs/create-frourio-app/compare/v0.1.0...v0.1.1) (2020-06-08)
 
 
