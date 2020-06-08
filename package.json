@@ -24,7 +24,8 @@
     "url": "https://github.com/frouriojs/create-frourio-app/issues"
   },
   "files": [
-    "lib"
+    "lib",
+    "templates"
   ],
   "keywords": [
     "frourio"
