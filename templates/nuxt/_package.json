@@ -8,11 +8,7 @@
     "dev:aspida": "aspida --watch",
     "dev:frourio": "frourio --watch --config server/frourio.config.js",
     "dev:front": "nuxt-ts",
-    "start": "pm2 start server/pm2.config.json --env production",
-    "stop": "pm2 stop server/pm2.config.json",
-    "delete": "pm2 delete server/pm2.config.json",
-    "logs": "pm2 logs",
-    "monit": "pm2 monit",
+    "start": "cross-env NODE_ENV=production node server/index.js",
     "build": "npm run build:apis && run-p build:front build:server",
     "build:front": "nuxt-ts generate",
     "build:server": "webpack --mode=production --config server/webpack.config.js",
@@ -40,8 +36,7 @@
     "@nuxt/typescript-runtime": "^0.4.8",
     "@nuxtjs/axios": "^5.3.6",
     "frourio": "^0.3.0",
-    "nuxt": "2.12.2",
-    "pm2": "^4.4.0"
+    "nuxt": "2.12.2"
   },
   "devDependencies": {
     "@nuxt/components": "^0.3.3",
