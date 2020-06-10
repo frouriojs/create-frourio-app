@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/frouriojs/create-frourio-app/compare/v0.1.2...v0.2.0) (2020-06-10)
+
+
+### Features
+
+* add frameworks ([14a95b2](https://github.com/frouriojs/create-frourio-app/commit/14a95b21762f2c1c9d124b6c763ba695b66463e8))
+* add next.ts ([efdb5ec](https://github.com/frouriojs/create-frourio-app/commit/efdb5ecb26c2a1ec20747aeef3efbe65865bca06))
+
 ### [0.1.2](https://github.com/frouriojs/create-frourio-app/compare/v0.1.1...v0.1.2) (2020-06-08)
 
 
