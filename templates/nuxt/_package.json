@@ -19,7 +19,7 @@
     "lint:script": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "lint:style": "stylelint \"**/*.{*(s)css,vue}\"",
     "lint:fix": "npm run lint:script -- --fix && npm run lint:style -- --fix",
-    "typecheck": "run-p build:* && tsc --noEmit",
+    "typecheck": "npm run build:apis && tsc --noEmit",
     "test": "jest"
   },
   "lint-staged": {
