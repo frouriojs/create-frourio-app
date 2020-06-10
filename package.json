@@ -25,7 +25,6 @@
   },
   "files": [
     "lib",
-    "daemons",
     "templates"
   ],
   "keywords": [
