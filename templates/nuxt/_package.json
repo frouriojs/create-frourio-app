@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "run-p dev:*",
+    "dev:front": "nuxt-ts",
     "dev:server": "webpack --watch --mode=development --config server/webpack.config.js",
     "dev:aspida": "aspida --watch",
     "dev:frourio": "frourio --watch --config server/frourio.config.js",
-    "dev:front": "nuxt-ts",
     "start": "cross-env NODE_ENV=production node server/index.js",
     "build": "npm run build:apis && run-p build:front build:server",
     "build:front": "nuxt-ts generate",
@@ -35,7 +35,7 @@
     "@aspida/axios": "^0.6.0",
     "@nuxt/typescript-runtime": "^0.4.8",
     "@nuxtjs/axios": "^5.3.6",
-    "frourio": "^0.3.0",
+    "frourio": "^0.3.1",
     "nuxt": "2.12.2"
   },
   "devDependencies": {
@@ -62,7 +62,6 @@
     "ts-jest": "^25.0.0",
     "ts-loader": "^7.0.5",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "typescript": "^3.9.3",
     "vue-jest": "^4.0.0-0",
     "webpack-cli": "^3.3.11"
   }
