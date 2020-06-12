@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/frouriojs/create-frourio-app/compare/v0.3.1...v0.3.2) (2020-06-12)
+
+
+### Bug Fixes
+
+* **nuxt:** update typescript@3.9.5 ([082eb30](https://github.com/frouriojs/create-frourio-app/commit/082eb309ba8456ae09114ef8ad202fb87bfdd972))
+
 ### [0.3.1](https://github.com/frouriojs/create-frourio-app/compare/v0.3.0...v0.3.1) (2020-06-12)
 
 
