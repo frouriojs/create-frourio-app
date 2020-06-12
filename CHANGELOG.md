@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/frouriojs/create-frourio-app/compare/v0.2.0...v0.3.0) (2020-06-12)
+
+
+### Features
+
+* support database ([b45d879](https://github.com/frouriojs/create-frourio-app/commit/b45d879fc97f95e1fc81e5c2e4dac98460f3bb61))
+* update frourio@0.6.0 ([c22d939](https://github.com/frouriojs/create-frourio-app/commit/c22d9395db42ec61f5c23b1485276f07f0ad5612))
+
+
+### Bug Fixes
+
+* add pm2.config.js ([9c0c762](https://github.com/frouriojs/create-frourio-app/commit/9c0c76203787c2bb694855fcaedcce14df33dc39))
+* change target es5 to 6 ([08e8dbf](https://github.com/frouriojs/create-frourio-app/commit/08e8dbfb7b3f1ad6b1690671420aac6c3876df61))
+
 ## [0.2.0](https://github.com/frouriojs/create-frourio-app/compare/v0.1.2...v0.2.0) (2020-06-10)
 
 
