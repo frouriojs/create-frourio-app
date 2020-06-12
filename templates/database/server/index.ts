@@ -4,7 +4,7 @@ import { run } from './$app'
 dotenv.config()
 
 const {
-  PORT,
+  SERVER_PORT,
   BASE_PATH,
   TYPEORM_HOST,
   TYPEORM_USERNAME,
@@ -14,7 +14,7 @@ const {
 } = process.env
 
 run({
-  port: Number(PORT),
+  port: Number(SERVER_PORT),
   basePath: BASE_PATH,
   cors: true,
   typeorm: {

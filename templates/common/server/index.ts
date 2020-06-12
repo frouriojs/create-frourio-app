@@ -3,10 +3,10 @@ import { run } from './$app'
 
 dotenv.config()
 
-const { PORT, BASE_PATH } = process.env
+const { SERVER_PORT, BASE_PATH } = process.env
 
 run({
-  port: Number(PORT),
+  port: Number(SERVER_PORT),
   basePath: BASE_PATH,
   cors: true
 })

@@ -56,7 +56,7 @@ const config: Configuration = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: `http://localhost:${process.env.PORT}${process.env.BASE_PATH}`
+    baseURL: `http://localhost:${process.env.SERVER_PORT}${process.env.BASE_PATH}`
   },
   /*
    ** Build configuration
