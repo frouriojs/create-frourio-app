@@ -12,12 +12,12 @@ const {
 } = process.env
 
 const options: ConnectionOptions = {
-  type: 'mysql',
+  type: '<%= dbType %>',
   host: TYPEORM_HOST,
   username: TYPEORM_USERNAME,
   password: TYPEORM_PASSWORD,
   database: TYPEORM_DATABASE,
-  port: Number(TYPEORM_PORT ?? 3306),
+  port: Number(TYPEORM_PORT),
   synchronize: false,
   logging: false,
   entities: ['entity/**/*.ts'],

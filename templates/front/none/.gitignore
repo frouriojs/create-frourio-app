@@ -89,3 +89,4 @@ sw.*
 # server
 server/**/$*.ts
 server/index.js
+server/database.json

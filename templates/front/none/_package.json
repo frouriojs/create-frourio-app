@@ -15,10 +15,7 @@
     "lint": "eslint --ext .ts,.js,.tsx --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
     "start": "cross-env NODE_ENV=production node server/index.js",
-    "typecheck": "npm run build:apis && tsc --noEmit",
-    "migration:generate": "cd server && ts-node ../node_modules/.bin/typeorm migration:generate -n Task",
-    "migration:run": "cd server && ts-node ../node_modules/.bin/typeorm migration:run",
-    "migration:revert": "cd server && ts-node ../node_modules/.bin/typeorm migration:revert"
+    "typecheck": "npm run build:apis && tsc --noEmit"
   },
   "lint-staged": {
     "*.js": "npm run lint"
@@ -32,8 +29,7 @@
     "@aspida/axios": "^0.6.0",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
-    "frourio": "^0.6.0",
-    "mysql": "^2.18.1"
+    "frourio": "^0.6.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.2.0",

@@ -21,10 +21,7 @@
     "typecheck": "npm run build:apis && tsc --noEmit",
     "start": "run-p start:*",
     "start:front": "nuxt-ts start",
-    "start:server": "cross-env NODE_ENV=production node server/index.js",
-    "migration:generate": "cd server && ts-node ../node_modules/.bin/typeorm migration:generate -n Task",
-    "migration:run": "cd server && ts-node ../node_modules/.bin/typeorm migration:run",
-    "migration:revert": "cd server && ts-node ../node_modules/.bin/typeorm migration:revert"
+    "start:server": "cross-env NODE_ENV=production node server/index.js"
   },
   "lint-staged": {
     "*.{js,vue}": "yarn lint",
@@ -41,7 +38,6 @@
     "@nuxtjs/axios": "^5.3.6",
     "dotenv": "^8.2.0",
     "frourio": "^0.6.0",
-    "mysql": "^2.18.1",
     "nuxt": "2.12.2"
   },
   "devDependencies": {

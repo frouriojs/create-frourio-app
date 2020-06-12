@@ -19,17 +19,13 @@
     "start": "run-p start:*",
     "start:front": "next start",
     "start:server": "cross-env NODE_ENV=production node server/index.js",
-    "typecheck": "npm run build:apis && tsc --noEmit",
-    "migration:generate": "cd server && ts-node ../node_modules/.bin/typeorm migration:generate -n Task",
-    "migration:run": "cd server && ts-node ../node_modules/.bin/typeorm migration:run",
-    "migration:revert": "cd server && ts-node ../node_modules/.bin/typeorm migration:revert"
+    "typecheck": "npm run build:apis && tsc --noEmit"
   },
   "dependencies": {
     "@aspida/axios": "^0.6.0",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "frourio": "^0.6.0",
-    "mysql": "^2.18.1",
     "next": "9.4.4",
     "react": "16.13.1",
     "react-dom": "16.13.1"
