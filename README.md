@@ -24,3 +24,24 @@ Or with [yarn](https://yarnpkg.com/en/):
 ```bash
 yarn create frourio-app <my-project>
 ```
+
+## Features :tada:
+
+1. Choose frontend framework
+   - None
+   - [Nuxt.ts](https://typescript.nuxtjs.org/)
+   - [Next.ts](https://nextjs.org/learn/excel/typescript)
+1. Choose the package manager
+   - Yarn
+   - Npm
+1. Choose the daemon process manager
+   - None
+   - [PM2](https://pm2.keymetrics.io/)
+1. Choose the database type (TypeORM)
+   - None
+   - [MySQL](https://www.mysql.com/)
+   - [PostgreSQL](https://www.postgresql.org/)
+   - [MongoDB](https://www.mongodb.com/)
+   - [Sql Server](https://www.microsoft.com/en-us/sql-server)
+   - [MariaDB](https://mariadb.com/)
+   - [CockroachDB](https://www.cockroachlabs.com/)
