@@ -89,7 +89,6 @@ sw.*
 # Vim swap files
 *.swp
 
-### Misc
-$*.ts
-apis/server.ts
+# server
+server/**/$*.ts
 server/index.js

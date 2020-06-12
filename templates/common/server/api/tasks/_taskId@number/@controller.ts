@@ -1,15 +1,15 @@
 import { createController } from 'frourio'
 import { Values } from './$values'
 import { Methods } from './'
-import { taskRepository } from '~/apis/@repos/tasks'
+import { updateTask, removeTask } from '~/server/service/tasks'
 
 export default createController<Methods, Values>({
-  patch: ({ body, params }) => {
-    taskRepository.update(params.taskId, body)
+  patch: async ({ body, params }) => {
+    await updateTask(params.taskId, body)
     return { status: 204 }
   },
-  delete: ({ params }) => {
-    taskRepository.remove(params.taskId)
+  delete: async ({ params }) => {
+    await removeTask(params.taskId)
     return { status: 204 }
   }
 })

@@ -1,5 +1,7 @@
 import { Configuration } from '@nuxt/types'
-import frourioConfig from './server/frourio.config'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const config: Configuration = {
   mode: 'spa',
@@ -54,10 +56,7 @@ const config: Configuration = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL:
-      process.env.NODE_ENV === 'production'
-        ? frourioConfig.basePath
-        : `http://localhost:${frourioConfig.port}${frourioConfig.basePath}`
+    baseURL: `http://localhost:${process.env.PORT}${process.env.BASE_PATH}`
   },
   /*
    ** Build configuration

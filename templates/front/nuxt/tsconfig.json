@@ -18,5 +18,5 @@
     },
     "types": ["@types/node", "@nuxt/types", "@nuxtjs/axios"]
   },
-  "exclude": ["node_modules", ".nuxt", "dist", "server"]
+  "exclude": ["node_modules", ".nuxt", "dist", "server/ormconfig.ts"]
 }

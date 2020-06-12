@@ -1,11 +1,15 @@
 import Head from 'next/head'
-import { useCallback, useState, FormEvent, ChangeEvent, useEffect } from 'react'
+import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
 import { apiClient } from '~/utils/apiClient'
-import { Task } from '~/apis/@types'
+import { Task } from '~/server/types'
 
-const Home = () => {
+type Props = {
+  tasks: Task[]
+}
+
+const Home = (props: Props) => {
   const [label, setLabel] = useState('')
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState(props.tasks)
 
   const inputLavel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
@@ -32,10 +36,6 @@ const Home = () => {
   const removeTask = useCallback(async (task: Task) => {
     await apiClient.tasks._taskId(task.id).delete()
     setTasks(await apiClient.tasks.$get())
-  }, [])
-
-  useEffect(() => {
-    apiClient.tasks.$get().then((tasks) => setTasks(tasks))
   }, [])
 
   return (
@@ -196,5 +196,9 @@ const Home = () => {
     </div>
   )
 }
+
+Home.getInitialProps = async () => ({
+  tasks: await apiClient.tasks.$get()
+})
 
 export default Home

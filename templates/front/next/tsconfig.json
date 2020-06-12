@@ -9,6 +9,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -19,6 +20,6 @@
     "jsx": "preserve",
     "strict": false
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "server/ormconfig.ts"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

@@ -1,10 +1,7 @@
-const frourioConfig = require('./server/frourio.config')
+require('dotenv').config()
 
 module.exports = {
   env: {
-    baseURL:
-      process.env.NODE_ENV === 'production'
-        ? frourioConfig.basePath
-        : `http://localhost:${frourioConfig.port}${frourioConfig.basePath}`
+    baseURL: `http://localhost:${process.env.PORT}${process.env.BASE_PATH}`
   }
 }

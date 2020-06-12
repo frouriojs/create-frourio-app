@@ -1,4 +1,4 @@
-import { Task } from '~/apis/@types'
+import { Task } from '~/server/types'
 
 export type Methods = {
   get: {

@@ -1,5 +1,5 @@
 {
-  "name": "test-next",
+  "name": "<%= name %>",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,22 +7,29 @@
     "dev:front": "next dev",
     "dev:server": "webpack --watch --mode=development --config server/webpack.config.js",
     "dev:aspida": "aspida --watch",
-    "dev:frourio": "frourio --watch --config server/frourio.config.js",
+    "dev:frourio": "frourio --watch",
     "build": "npm run build:apis && run-p build:front build:server",
-    "build:front": "next build && next export",
+    "build:front": "next build",
     "build:server": "webpack --mode=production --config server/webpack.config.js",
     "build:apis": "cross-env NODE_ENV=production run-p build:aspida build:frourio",
     "build:aspida": "aspida --build",
-    "build:frourio": "frourio --build --config server/frourio.config.js",
+    "build:frourio": "frourio --build",
     "lint": "eslint --ext .ts,.js,.tsx --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
-    "start": "cross-env NODE_ENV=production node server/index.js",
-    "typecheck": "npm run build:apis && tsc --noEmit"
+    "start": "run-p start:*",
+    "start:front": "next start",
+    "start:server": "cross-env NODE_ENV=production node server/index.js",
+    "typecheck": "npm run build:apis && tsc --noEmit",
+    "migration:generate": "cd server && ts-node ../node_modules/.bin/typeorm migration:generate -n Task",
+    "migration:run": "cd server && ts-node ../node_modules/.bin/typeorm migration:run",
+    "migration:revert": "cd server && ts-node ../node_modules/.bin/typeorm migration:revert"
   },
   "dependencies": {
     "@aspida/axios": "^0.6.0",
     "axios": "^0.19.2",
-    "frourio": "^0.3.1",
+    "dotenv": "^8.2.0",
+    "frourio": "^0.6.0",
+    "mysql": "^2.18.1",
     "next": "9.4.4",
     "react": "16.13.1",
     "react-dom": "16.13.1"
@@ -41,6 +48,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
     "ts-loader": "^7.0.5",
+    "ts-node": "^8.10.2",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "webpack-cli": "^3.3.11",
     "webpack-node-externals": "^1.7.2"
