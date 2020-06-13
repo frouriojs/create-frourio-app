@@ -23,11 +23,6 @@ export default Vue.extend({
     }
   },
   methods: {
-    async fetchUserInfo() {
-      this.userInfo = await this.$api.user.$get({
-        headers: { token: this.token }
-      })
-    },
     async editIcon(e: { target: HTMLInputElement }) {
       if (!e.target?.files?.length) return
 
@@ -47,7 +42,9 @@ export default Vue.extend({
         return alert('Login failed')
       }
 
-      await this.fetchUserInfo()
+      this.userInfo = await this.$api.user.$get({
+        headers: { token: this.token }
+      })
       this.isLoggedIn = true
     },
     async logout() {

@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
 import { apiClient } from '~/utils/apiClient'
 import { Task } from '~/server/types'
+import UserBanner from '~/components/UserBanner'
 
 type Props = {
   tasks: Task[]
@@ -46,6 +47,8 @@ const Home = (props: Props) => {
       </Head>
 
       <main>
+        <UserBanner />
+
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>

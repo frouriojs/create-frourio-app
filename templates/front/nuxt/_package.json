@@ -37,7 +37,7 @@
     "@nuxt/typescript-runtime": "^0.4.8",
     "@nuxtjs/axios": "^5.3.6",
     "dotenv": "^8.2.0",
-    "frourio": "^0.7.0",
+    "frourio": "^0.7.1",
     "nuxt": "2.12.2",
     "passport": "^0.4.1",
     "passport-trusted-header": "^1.1.0"
