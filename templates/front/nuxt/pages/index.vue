@@ -1,10 +1,9 @@
 <template>
   <div class="container">
+    <user-banner />
     <div>
       <logo />
-      <h1 class="title">
-        frourio-todo-app
-      </h1>
+      <h1 class="title">frourio-todo-app</h1>
       <div v-if="!$fetchState.pending">
         <form @submit.prevent="createTask">
           <input v-model="newLabel" type="text" />
@@ -72,7 +71,7 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped>
 .container {
   margin: 0 auto;
   min-height: 100vh;

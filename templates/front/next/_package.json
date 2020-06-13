@@ -25,13 +25,16 @@
     "@aspida/axios": "^0.6.0",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
-    "frourio": "^0.6.1",
+    "frourio": "^0.7.0",
     "next": "9.4.4",
+    "passport": "^0.4.1",
+    "passport-trusted-header": "^1.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
   "devDependencies": {
     "@types/node": "^14.0.11",
+    "@types/passport": "^1.0.3",
     "@types/react": "^16.9.35",
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "@typescript-eslint/parser": "^3.2.0",

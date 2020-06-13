@@ -6,6 +6,9 @@ module.exports = {
   externals: [nodeExternals()],
   entry: 'server/index.ts',
   target: 'node',
+  node: {
+    __dirname: false
+  },
   output: {
     filename: 'index.js',
     path: __dirname

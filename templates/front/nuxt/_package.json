@@ -37,8 +37,10 @@
     "@nuxt/typescript-runtime": "^0.4.8",
     "@nuxtjs/axios": "^5.3.6",
     "dotenv": "^8.2.0",
-    "frourio": "^0.6.1",
-    "nuxt": "2.12.2"
+    "frourio": "^0.7.0",
+    "nuxt": "2.12.2",
+    "passport": "^0.4.1",
+    "passport-trusted-header": "^1.1.0"
   },
   "devDependencies": {
     "@nuxt/components": "^0.3.3",
@@ -46,6 +48,7 @@
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/stylelint-module": "^3.1.0",
+    "@types/passport": "^1.0.3",
     "babel-eslint": "^10.0.1",
     "cross-env": "^7.0.2",
     "eslint": "^6.1.0",

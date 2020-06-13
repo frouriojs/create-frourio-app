@@ -1,9 +1,5 @@
-import dotenv from 'dotenv'
 import { run } from './$app'
-
-dotenv.config()
-
-const {
+import {
   SERVER_PORT,
   BASE_PATH,
   TYPEORM_HOST,
@@ -11,7 +7,7 @@ const {
   TYPEORM_PASSWORD,
   TYPEORM_DATABASE,
   TYPEORM_PORT
-} = process.env
+} from './service/envValues'
 
 run({
   port: Number(SERVER_PORT),

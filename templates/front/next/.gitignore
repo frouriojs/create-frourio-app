@@ -34,3 +34,5 @@ yarn-error.log*
 server/**/$*.ts
 server/index.js
 server/database.json
+server/public/icons/*
+!server/public/icons/dammy.svg

@@ -1,9 +1,5 @@
-import dotenv from 'dotenv'
 import { run } from './$app'
-
-dotenv.config()
-
-const { SERVER_PORT, BASE_PATH } = process.env
+import { SERVER_PORT, BASE_PATH } from './service/envValues'
 
 run({
   port: Number(SERVER_PORT),
