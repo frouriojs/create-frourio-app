@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/frouriojs/create-frourio-app/compare/v0.3.2...v0.4.0) (2020-06-13)
+
+
+### Features
+
+* add login form ([10e21a0](https://github.com/frouriojs/create-frourio-app/commit/10e21a02b348e977d8746ce338c1d827090095da))
+
 ### [0.3.2](https://github.com/frouriojs/create-frourio-app/compare/v0.3.1...v0.3.2) (2020-06-12)
 
 

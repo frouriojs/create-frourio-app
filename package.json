@@ -1,6 +1,6 @@
 {
   "name": "create-frourio-app",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Create a frourio project in seconds",
   "author": "Solufa <solufa2020@gmail.com>",
   "license": "MIT",
@@ -28,7 +28,8 @@
     "templates"
   ],
   "keywords": [
-    "frourio"
+    "frourio",
+    "typescript"
   ],
   "dependencies": {
     "cac": "^6.5.10",
