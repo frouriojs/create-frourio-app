@@ -2,7 +2,7 @@
   "name": "create-frourio-app",
   "version": "0.3.2",
   "description": "Create a frourio project in seconds",
-  "author": "m-mitsuhide <m.mitsuhide@amatelus.com>",
+  "author": "Solufa <solufa2020@gmail.com>",
   "license": "MIT",
   "bin": "lib/cli.js",
   "scripts": {

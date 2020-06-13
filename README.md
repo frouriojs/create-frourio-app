@@ -37,7 +37,7 @@ yarn create frourio-app <my-project>
 1. Choose the daemon process manager
    - None
    - [PM2](https://pm2.keymetrics.io/)
-1. Choose the database type (TypeORM)
+1. Choose the database type of TypeORM
    - None
    - [MySQL](https://www.mysql.com/)
    - [PostgreSQL](https://www.postgresql.org/)
