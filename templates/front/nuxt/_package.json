@@ -33,11 +33,11 @@
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.6.0",
+    "@aspida/axios": "^0.7.0",
     "@nuxt/typescript-runtime": "^0.4.8",
     "@nuxtjs/axios": "^5.3.6",
     "dotenv": "^8.2.0",
-    "frourio": "^0.7.2",
+    "frourio": "^0.8.0",
     "nuxt": "2.12.2",
     "passport": "^0.4.1",
     "passport-trusted-header": "^1.1.0"
