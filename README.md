@@ -1,9 +1,24 @@
-# Create frourio App
-
-[![NPM version](https://img.shields.io/npm/v/create-frourio-app.svg?style=flat)](https://npmjs.com/package/create-frourio-app)
-[![GitHub Action](https://github.com/frouriojs/create-frourio-app/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/frouriojs/create-frourio-app/actions?query=branch%3Amaster++)
+# create frourio app
 
 > Create a [frourio](https://github.com/frouriojs/frourio) project in seconds
+
+## Architecture
+
+<div align="center">
+   <img src="https://frouriojs.github.io/frourio/assets/images/architecture.png" width="900" alt="Architecture of create-frourio-app" />
+</div>
+<br />
+<div align="center">
+  <a href="https://npmjs.com/package/create-frourio-app">
+    <img src="https://img.shields.io/npm/v/create-frourio-app.svg?style=flat" alt="npm version" />
+  </a>
+  <a href="https://github.com/frouriojs/create-frourio-app/actions?query=branch%3Amaster++">
+    <img src="https://github.com/frouriojs/create-frourio-app/workflows/Node.js%20CI/badge.svg?branch=master" alt="Node.js CI" />
+  </a>
+  <a href="https://github.com/frouriojs/create-frourio-app/blob/master/LICENSE">
+    <img src="https://img.shields.io/npm/l/create-frourio-app" alt="License" />
+  </a>
+</div>
 
 ## Usage
 
@@ -45,3 +60,13 @@ yarn create frourio-app <my-project>
    - [Sql Server](https://www.microsoft.com/en-us/sql-server)
    - [MariaDB](https://mariadb.com/)
    - [CockroachDB](https://www.cockroachlabs.com/)
+
+## Support
+
+<a href="https://twitter.com/solufa2020">
+  <img src="https://aspidajs.github.io/aspida/assets/images/twitter.svg" width="50" alt="Twitter" />
+</a>
+
+## License
+
+create-frourio-app is licensed under a [MIT License](https://github.com/frouriojs/create-frourio-app/blob/master/LICENSE).
