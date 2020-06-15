@@ -53,14 +53,14 @@ export default Vue.extend({
     async createTask() {
       if (!this.newLabel) return
 
-      await this.$api.tasks.post({ data: { label: this.newLabel } })
+      await this.$api.tasks.post({ body: { label: this.newLabel } })
       this.newLabel = ''
       await this.fetchTasks()
     },
     async toggleDone(task: Task) {
       await this.$api.tasks
         ._taskId(task.id)
-        .patch({ data: { done: !task.done } })
+        .patch({ body: { done: !task.done } })
       await this.fetchTasks()
     },
     async remove(task: Task) {

@@ -22,7 +22,7 @@ const Home = (props: Props) => {
       e.preventDefault()
       if (!label) return
 
-      await apiClient.tasks.post({ data: { label } })
+      await apiClient.tasks.post({ body: { label } })
       setLabel('')
       setTasks(await apiClient.tasks.$get())
     },
@@ -30,7 +30,7 @@ const Home = (props: Props) => {
   )
 
   const toggleDone = useCallback(async (task: Task) => {
-    await apiClient.tasks._taskId(task.id).patch({ data: { done: !task.done } })
+    await apiClient.tasks._taskId(task.id).patch({ body: { done: !task.done } })
     setTasks(await apiClient.tasks.$get())
   }, [])
 

@@ -14,7 +14,7 @@ const UserBanner = () => {
       setUserInfo(
         await apiClient.user.$post({
           headers: { token },
-          data: { icon: e.target.files[0] }
+          body: { icon: e.target.files[0] }
         })
       )
     },
@@ -29,7 +29,7 @@ const UserBanner = () => {
     let newToken = ''
 
     try {
-      newToken = (await apiClient.token.$post({ data: { id, pass } })).token
+      newToken = (await apiClient.token.$post({ body: { id, pass } })).token
       setToken(newToken)
     } catch (e) {
       return alert('Login failed')

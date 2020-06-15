@@ -28,7 +28,7 @@ export default Vue.extend({
 
       this.userInfo = await this.$api.user.$post({
         headers: { token: this.token },
-        data: { icon: e.target.files[0] }
+        body: { icon: e.target.files[0] }
       })
     },
     async login() {
@@ -37,7 +37,7 @@ export default Vue.extend({
       if (!id || !pass) return alert('Login failed')
 
       try {
-        this.token = (await this.$api.token.$post({ data: { id, pass } })).token
+        this.token = (await this.$api.token.$post({ body: { id, pass } })).token
       } catch (e) {
         return alert('Login failed')
       }
