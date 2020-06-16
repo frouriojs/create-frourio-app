@@ -1,9 +1,7 @@
-import { createController } from 'frourio'
-import { Values } from './$values'
-import { Methods } from './'
+import { createController } from './$relay'
 import { getUserInfoById, changeIcon } from '~/server/service/user'
 
-export default createController<Methods, Values>({
+export default createController({
   get: ({ user }) => ({ status: 200, body: getUserInfoById(user.id) }),
   post: async ({ user, body }) => ({
     status: 201,

@@ -1,9 +1,7 @@
-import { createController } from 'frourio'
-import { Values } from './$values'
-import { Methods } from './'
+import { createController } from './$relay'
 import { validateUser, createToken, deleteToken } from '~/server/service/user'
 
-export default createController<Methods, Values>({
+export default createController({
   post: ({ body }) =>
     validateUser(body.id, body.pass)
       ? { status: 201, body: { token: createToken() } }

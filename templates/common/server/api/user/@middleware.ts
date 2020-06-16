@@ -1,5 +1,5 @@
-import { createMiddleware } from 'frourio'
 import passport from 'passport'
+import { createMiddleware } from './$relay'
 import { getUserIdByToken } from '~/server/service/user'
 
 export type User = {

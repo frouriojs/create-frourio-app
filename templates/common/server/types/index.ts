@@ -1,4 +1,4 @@
-import { Validator } from 'frourio'
+import { MinLength, IsString } from 'class-validator'
 
 export type Task = {
   id: number
@@ -7,16 +7,16 @@ export type Task = {
 }
 
 export class ValidLoginBody {
-  @Validator.MinLength(2)
+  @MinLength(2)
   id: string
 
-  @Validator.MinLength(4)
+  @MinLength(4)
   pass: string
 }
 
 export class ValidTokenHeader {
-  @Validator.IsString()
-  @Validator.MinLength(10)
+  @IsString()
+  @MinLength(10)
   token: string
 }
 

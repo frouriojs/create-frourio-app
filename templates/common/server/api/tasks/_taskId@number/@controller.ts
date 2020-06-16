@@ -1,9 +1,7 @@
-import { createController } from 'frourio'
-import { Values } from './$values'
-import { Methods } from './'
+import { createController } from './$relay'
 import { updateTask, removeTask } from '~/server/service/tasks'
 
-export default createController<Methods, Values>({
+export default createController({
   patch: async ({ body, params }) => {
     await updateTask(params.taskId, body)
     return { status: 204 }
