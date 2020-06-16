@@ -43,9 +43,9 @@ yarn create frourio-app <my-project>
 ## Features :tada:
 
 1. Choose frontend framework
+   - [Next.js](https://nextjs.org/learn/excel/typescript)
+   - [Nuxt.js](https://typescript.nuxtjs.org/)
    - None
-   - [Nuxt.ts](https://typescript.nuxtjs.org/)
-   - [Next.ts](https://nextjs.org/learn/excel/typescript)
 1. Choose the package manager
    - Yarn
    - Npm
