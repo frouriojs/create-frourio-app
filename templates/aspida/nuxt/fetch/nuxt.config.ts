@@ -4,7 +4,10 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const config: Configuration = {
-  mode: 'spa',
+  mode: 'universal',
+  env: {
+    BASE_URL: `http://localhost:${process.env.SERVER_PORT}${process.env.BASE_PATH}`
+  },
   /*
    ** Headers of the page
    */
@@ -47,17 +50,7 @@ const config: Configuration = {
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
-  ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
-  axios: {
-    baseURL: `http://localhost:${process.env.SERVER_PORT}${process.env.BASE_PATH}`
-  },
+  modules: [],
   /*
    ** Build configuration
    */

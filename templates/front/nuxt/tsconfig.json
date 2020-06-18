@@ -15,8 +15,8 @@
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./*"]
-    },
-    "types": ["@types/node", "@nuxt/types", "@nuxtjs/axios"]
+    },<% var axiosType = aspida === 'axios' ? ', "@nuxtjs/axios"' : '' %>
+    "types": ["@types/node", "@nuxt/types"<%- axiosType %>]
   },
   "exclude": [
     "node_modules",

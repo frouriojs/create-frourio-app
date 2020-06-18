@@ -46,6 +46,9 @@ yarn create frourio-app <my-project>
    - [Next.js](https://nextjs.org/learn/excel/typescript)
    - [Nuxt.js](https://typescript.nuxtjs.org/)
    - None
+1. Choose HTTP client of aspida
+   - [axios](https://github.com/axios/axios)
+   - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 1. Choose the package manager
    - Yarn
    - Npm
