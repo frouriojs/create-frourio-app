@@ -1,12 +1,11 @@
 {
   "name": "create-frourio-app",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "description": "Create a frourio project in seconds",
   "author": "Solufa <solufa2020@gmail.com>",
   "license": "MIT",
   "bin": "lib/cli.js",
   "scripts": {
-    "dev": "node lib/cli.js tmp",
     "release": "standard-version --skip.tag",
     "release:major": "npm run release -- --release-as major",
     "release:minor": "npm run release -- --release-as minor",

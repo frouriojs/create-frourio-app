@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/frouriojs/create-frourio-app/compare/v0.7.2...v0.8.0) (2020-06-18)
+
+
+### Features
+
+* choose HTTP client ([4f6f73e](https://github.com/frouriojs/create-frourio-app/commit/4f6f73e3e6f1cf9adf1b47ded4acb22113b258df))
+
 ### [0.7.2](https://github.com/frouriojs/create-frourio-app/compare/v0.7.1...v0.7.2) (2020-06-16)
 
 
