@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 
-dotenv.config()
+dotenv.config({ path: 'server/.env' })
 
 const USER_ID = process.env.USER_ID ?? ''
 const USER_PASS = process.env.USER_PASS ?? ''

@@ -1,13 +1,7 @@
 import { Configuration } from '@nuxt/types'
-import dotenv from 'dotenv'
-
-dotenv.config()
 
 const config: Configuration = {
   mode: 'universal',
-  env: {
-    BASE_URL: `http://localhost:${process.env.SERVER_PORT}${process.env.BASE_PATH}`
-  },
   /*
    ** Headers of the page
    */

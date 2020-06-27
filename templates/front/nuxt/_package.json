@@ -6,13 +6,13 @@
     "dev": "run-p dev:*",
     "dev:front": "nuxt-ts",
     "dev:server": "webpack --watch --mode=development --config server/webpack.config.js",
-    "dev:aspida": "aspida --watch",
+    "dev:aspida": "aspida --watch --config server/aspida.config.js",
     "dev:frourio": "frourio --watch",
     "build": "npm run build:apis && run-p build:front build:server",
     "build:front": "nuxt-ts build",
     "build:server": "webpack --mode=production --config server/webpack.config.js",
     "build:apis": "cross-env NODE_ENV=production run-p build:aspida build:frourio",
-    "build:aspida": "aspida --build",
+    "build:aspida": "aspida --build --config server/aspida.config.js",
     "build:frourio": "frourio --build",
     "lint": "npm run lint:script && npm run lint:style",
     "lint:script": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
@@ -33,11 +33,9 @@
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.8.0",
     "@nuxt/typescript-runtime": "^0.4.8",
-    "@nuxtjs/axios": "^5.3.6",
     "dotenv": "^8.2.0",
-    "frourio": "^0.10.1",
+    "frourio": "^0.10.2",
     "nuxt": "2.12.2",
     "passport": "^0.4.1",
     "passport-trusted-header": "^1.1.0"

@@ -1,7 +1,4 @@
 import { Configuration } from '@nuxt/types'
-import dotenv from 'dotenv'
-
-dotenv.config()
 
 const config: Configuration = {
   mode: '<%= mode %>',
@@ -56,7 +53,7 @@ const config: Configuration = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: `http://localhost:${process.env.SERVER_PORT}${process.env.BASE_PATH}`
+    baseURL: require('./server/aspida.config').baseURL
   },
   /*
    ** Build configuration
