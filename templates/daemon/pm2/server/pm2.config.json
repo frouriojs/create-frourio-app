@@ -1,6 +1,6 @@
 {
   "name": "<%= name %>",
-  "script": "server/index.js",
+  "script": "index.js",
   "env_production": {
     "NODE_ENV": "production"
   }

@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 stop pm2.config.json",
+    "pm2:delete": "pm2 delete pm2.config.json",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit"
+  },
+  "dependencies": {
+    "pm2": "^4.4.0"
+  }
+}
