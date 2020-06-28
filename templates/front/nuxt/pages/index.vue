@@ -34,7 +34,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Task } from '$/types'
+import { Task } from '~/server/types'
 
 export default Vue.extend({
   async fetch() {

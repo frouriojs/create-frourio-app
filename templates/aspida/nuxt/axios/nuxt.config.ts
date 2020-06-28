@@ -53,7 +53,7 @@ const config: Configuration = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: require('./server/aspida.config').baseURL
+    baseURL: require('./aspida.config').baseURL
   },
   /*
    ** Build configuration

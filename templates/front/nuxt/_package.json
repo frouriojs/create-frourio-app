@@ -5,15 +5,16 @@
   "scripts": {
     "dev": "run-p dev:*",
     "dev:front": "nuxt-ts",
-    "dev:server": "cd server && webpack --watch --mode=development",
-    "dev:aspida": "cd server && aspida --watch",
-    "dev:frourio": "cd server && frourio --watch",
+    "dev:server": "cd server && node_modules/.bin/webpack --watch --mode=development",
+    "dev:aspida": "aspida --watch",
+    "dev:frourio": "cd server && node_modules/.bin/frourio --watch",
     "build": "npm run build:apis && run-p build:front build:server",
     "build:front": "nuxt-ts build",
-    "build:server": "cd server && webpack --mode=production",
+    "build:server": "cd server && node_modules/.bin/webpack --mode=production",
     "build:apis": "cross-env NODE_ENV=production run-p build:aspida build:frourio",
-    "build:aspida": "cd server && aspida --build",
-    "build:frourio": "cd server && frourio --build",
+    "build:aspida": "aspida --build",
+    "build:frourio": "cd server && node_modules/.bin/frourio --build",
+    "install:server": "cd server && <%= pm %> install",
     "lint": "npm run lint:script && npm run lint:style",
     "lint:script": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "lint:style": "stylelint \"**/*.{*(s)css,vue}\"",
@@ -21,10 +22,10 @@
     "typecheck": "npm run build:apis && tsc --noEmit",
     "start": "run-p start:*",
     "start:front": "nuxt-ts start",
-    "start:server": "cross-env NODE_ENV=production node server/index.js"
+    "start:server": "cd server && cross-env NODE_ENV=production node index.js"
   },
   "lint-staged": {
-    "*.{js,vue}": "yarn lint",
+    "*.{js,ts,vue}": "yarn lint",
     "*.{css,vue}": "stylelint"
   },
   "husky": {
@@ -35,10 +36,7 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.8",
     "dotenv": "^8.2.0",
-    "frourio": "^0.10.3",
-    "nuxt": "2.12.2",
-    "passport": "^0.4.1",
-    "passport-trusted-header": "^1.1.0"
+    "nuxt": "2.12.2"
   },
   "devDependencies": {
     "@nuxt/components": "^0.3.3",
@@ -46,7 +44,6 @@
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/stylelint-module": "^3.1.0",
-    "@types/passport": "^1.0.3",
     "babel-eslint": "^10.0.1",
     "cross-env": "^7.0.2",
     "eslint": "^6.1.0",
@@ -55,14 +52,10 @@
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.0.0",
     "lint-staged": "^10.0.0",
-    "nodemon-webpack-plugin": "^4.3.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
     "stylelint": "^10.1.0",
     "ts-loader": "^7.0.5",
-    "ts-node": "^8.10.2",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "typescript": "^3.9.5",
-    "webpack-cli": "^3.3.11"
+    "typescript": "^3.9.5"
   }
 }
