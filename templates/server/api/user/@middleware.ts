@@ -1,6 +1,6 @@
 import passport from 'passport'
 import { createMiddleware } from './$relay'
-import { getUserIdByToken } from '~/server/service/user'
+import { getUserIdByToken } from '$/service/user'
 
 export type User = {
   id: string

@@ -1,6 +1,6 @@
 import { useState, useCallback, ChangeEvent } from 'react'
 import { apiClient } from '~/utils/apiClient'
-import { UserInfo } from '~/server/types'
+import { UserInfo } from '$/types'
 
 const UserBanner = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)

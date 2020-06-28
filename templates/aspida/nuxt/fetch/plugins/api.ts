@@ -1,6 +1,6 @@
 import { Plugin } from '@nuxt/types'
 import aspida from '@aspida/fetch'
-import api, { ApiInstance } from '~/server/api/$api'
+import api, { ApiInstance } from '$/api/$api'
 
 declare module 'vue/types/vue' {
   interface Vue {

@@ -1,12 +1,12 @@
 import fs from 'fs'
-import { Task } from '~/server/types'
+import { Task } from '$/types'
 
 type DB = {
   nextId: number
   tasks: Task[]
 }
 
-const dbPath = 'server/database.json'
+const dbPath = 'database.json'
 
 const readDB = async (): Promise<DB> =>
   JSON.parse(await fs.promises.readFile(dbPath, 'utf8'))

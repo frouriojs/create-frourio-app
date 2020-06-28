@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
 import { apiClient } from '~/utils/apiClient'
-import { Task } from '~/server/types'
+import { Task } from '$/types'
 import UserBanner from '~/components/UserBanner'
 
 type Props = {
