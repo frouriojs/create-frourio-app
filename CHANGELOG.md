@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/frouriojs/create-frourio-app/compare/v0.8.0...v0.9.0) (2020-06-29)
+
+
+### Features
+
+* **next:** separate package.json ([26466d1](https://github.com/frouriojs/create-frourio-app/commit/26466d1c377fb9d76cba8ccbd25c2b10a50ff991))
+* **none:** separete package.json ([2e688e2](https://github.com/frouriojs/create-frourio-app/commit/2e688e27299e26877874f6a9f4b95199e31caefa))
+* **nuxt:** separate package.json ([99863fb](https://github.com/frouriojs/create-frourio-app/commit/99863fb9d647e1d35c9019e8ebad7f572dbf043d))
+* **nuxt:** update 2.13.0 ([834e3c4](https://github.com/frouriojs/create-frourio-app/commit/834e3c4b3abac44db13a22b1fa5e3b22906649b6))
+* update frourio@0.10.2 ([cbb049a](https://github.com/frouriojs/create-frourio-app/commit/cbb049af4b061dc6431e1236c102032ccb2a38be))
+
+
+### Bug Fixes
+
+* pm2 package.json ([eaaf9f2](https://github.com/frouriojs/create-frourio-app/commit/eaaf9f2c0e4eb7108e03d1d14e08a51e186052f2))
+* pm2.config.json ([b0b204a](https://github.com/frouriojs/create-frourio-app/commit/b0b204aae2ac7e8875704d96af0dc4d81486d455))
+
 ## [0.8.0](https://github.com/frouriojs/create-frourio-app/compare/v0.7.2...v0.8.0) (2020-06-18)
 
 

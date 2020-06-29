@@ -42,20 +42,26 @@ yarn create frourio-app <my-project>
 
 ## Features :tada:
 
-1. Choose frontend framework
+1. Frontend framework:
    - [Next.js](https://nextjs.org/learn/excel/typescript)
    - [Nuxt.js](https://typescript.nuxtjs.org/)
    - None
-1. Choose HTTP client of aspida
+1. Nuxt.js rendering mode:
+   - [Universal (SSR / Static)](https://nuxtjs.org/guide/#server-rendered-universal-ssr-)
+   - [SPA](https://nuxtjs.org/guide/#single-page-applications-spa-)
+1. Nuxt.js deployment target:
+   - [Server (Node.js hosting)](https://nuxtjs.org/api/configuration-target)
+   - [Static (Static/JAMStack hosting)](https://nuxtjs.org/api/configuration-target)
+1. HTTP client of aspida:
    - [axios](https://github.com/axios/axios)
    - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-1. Choose the package manager
+1. Package manager:
    - Yarn
    - Npm
-1. Choose the daemon process manager
+1. Daemon process manager:
    - None
    - [PM2](https://pm2.keymetrics.io/)
-1. Choose the database type of TypeORM
+1. Database type of TypeORM:
    - None
    - [MySQL](https://www.mysql.com/)
    - [PostgreSQL](https://www.postgresql.org/)
