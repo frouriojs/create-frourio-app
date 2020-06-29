@@ -20,7 +20,6 @@ declare module 'vuex/types/index' {
   }
 }
 
-const plugin: Plugin = (_, inject) =>
-  inject('api', api(aspida(fetch, { baseURL: process.env.BASE_URL })))
+const plugin: Plugin = (_, inject) => inject('api', api(aspida(fetch)))
 
 export default plugin

@@ -1,4 +1,4 @@
-import { ValidTokenHeader, UserInfo } from '~/server/types'
+import { ValidTokenHeader, UserInfo } from '$/types'
 
 export type Methods = {
   get: {

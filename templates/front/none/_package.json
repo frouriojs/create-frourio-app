@@ -4,53 +4,36 @@
   "private": true,
   "scripts": {
     "dev": "run-p dev:*",
-    "dev:server": "webpack --watch --mode=development --config server/webpack.config.js",
-    "dev:aspida": "aspida --watch",
-    "dev:frourio": "frourio --watch",
-    "build": "npm run build:apis && npm run build:server",
-    "build:server": "webpack --mode=production --config server/webpack.config.js",
-    "build:apis": "cross-env NODE_ENV=production run-p build:aspida build:frourio",
-    "build:aspida": "aspida --build",
-    "build:frourio": "frourio --build",
-    "lint": "eslint --ext .ts,.js,.tsx --ignore-path .gitignore .",
+    "dev:server": "cd server && node_modules/.bin/webpack --watch --mode=development",
+    "dev:frourio": "cd server && node_modules/.bin/frourio --watch",
+    "build": "npm run build:frourio && npm run build:server",
+    "build:server": "cd server && node_modules/.bin/webpack --mode=production",
+    "build:frourio": "cd server && node_modules/.bin/frourio --build",
+    "install:server": "cd server && <%= pm %> install",
+    "lint": "eslint --ext .ts,.js --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
-    "start": "cross-env NODE_ENV=production node server/index.js",
-    "typecheck": "npm run build:apis && tsc --noEmit"
+    "start": "cd server && cross-env NODE_ENV=production node index.js",
+    "typecheck": "npm run build:frourio && tsc --noEmit"
   },
   "lint-staged": {
-    "*.js": "npm run lint"
+    "*.{js,ts}": "npm run lint"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
-  "dependencies": {
-    "@aspida/axios": "^0.8.0",
-    "axios": "^0.19.2",
-    "dotenv": "^8.2.0",
-    "frourio": "^0.10.1",
-    "passport": "^0.4.1",
-    "passport-trusted-header": "^1.1.0"
-  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "@typescript-eslint/parser": "^3.2.0",
-    "@types/passport": "^1.0.3",
     "cross-env": "^7.0.2",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.0.0",
     "lint-staged": "^10.0.0",
-    "nodemon-webpack-plugin": "^4.3.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
-    "ts-loader": "^7.0.5",
-    "ts-node": "^8.10.2",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-node-externals": "^1.7.2"
+    "typescript": "^3.9.5"
   }
 }

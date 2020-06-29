@@ -1,2 +1,3 @@
 CHANGELOG.md
 templates/front/*/tsconfig.json
+templates/server/package.json

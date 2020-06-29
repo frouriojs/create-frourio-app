@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm'
-import { Task } from '~/server/entity/Task'
+import { Task } from '$/entity/Task'
 
 const taskRepository = () => getRepository(Task)
 

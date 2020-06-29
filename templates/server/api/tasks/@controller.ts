@@ -1,5 +1,5 @@
 import { createController } from './$relay'
-import { findAllTask, createTask } from '~/server/service/tasks'
+import { findAllTask, createTask } from '$/service/tasks'
 
 export default createController({
   get: async () => ({ status: 200, body: await findAllTask() }),

@@ -1,5 +1,5 @@
 import { createController } from './$relay'
-import { updateTask, removeTask } from '~/server/service/tasks'
+import { updateTask, removeTask } from '$/service/tasks'
 
 export default createController({
   patch: async ({ body, params }) => {

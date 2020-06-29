@@ -3,7 +3,7 @@ import path from 'path'
 import { File } from 'frourio'
 import { SERVER_PORT, USER_ID, USER_PASS } from './envValues'
 
-const iconsDir = 'server/public/icons'
+const iconsDir = 'public/icons'
 const createIconURL = (name: string) =>
   `http://localhost:${SERVER_PORT}/icons/${name}`
 const userInfo = {

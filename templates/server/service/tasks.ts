@@ -1,16 +1,16 @@
 import fs from 'fs'
-import { Task } from '~/server/types'
+import { Task } from '$/types'
 
 type DB = {
   nextId: number
   tasks: Task[]
 }
 
-const dbPath = 'server/database.json'
+const dbPath = 'database.json'
 
 const readDB = async (): Promise<DB> =>
   JSON.parse(await fs.promises.readFile(dbPath, 'utf8'))
-const writeDB = async (db: DB) =>
+const writeDB = (db: DB) =>
   fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 
 if (!fs.existsSync(dbPath)) {

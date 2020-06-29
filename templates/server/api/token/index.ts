@@ -1,4 +1,4 @@
-import { ValidLoginBody, ValidTokenHeader } from '~/server/types'
+import { ValidLoginBody, ValidTokenHeader } from '$/types'
 
 export type Methods = {
   post: {

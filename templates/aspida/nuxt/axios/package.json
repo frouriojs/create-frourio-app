@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@aspida/axios": "^0.8.0",
-    "axios": "^0.19.2"
+    "@aspida/axios": "^0.9.4",
+    "@nuxtjs/axios": "^5.11.0"
   }
 }
