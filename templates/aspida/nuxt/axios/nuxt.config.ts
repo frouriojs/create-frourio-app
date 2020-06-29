@@ -1,9 +1,19 @@
 import { Configuration } from '@nuxt/types'
 
 const config: Configuration = {
+  /*
+   ** Nuxt rendering mode
+   ** See https://nuxtjs.org/api/configuration-mode
+   */
   mode: '<%= mode %>',
   /*
+   ** Nuxt target
+   ** See https://nuxtjs.org/api/configuration-target
+   */
+  target: '<%= target %>',
+  /*
    ** Headers of the page
+   ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
     title: process.env.npm_package_name || '',
@@ -28,15 +38,18 @@ const config: Configuration = {
   css: [],
   /*
    ** Plugins to load before mounting the App
+   ** https://nuxtjs.org/guide/plugins
    */
   plugins: ['~/plugins/api'],
   /*
-   ** Nuxt.js dev-modules
+   ** Auto import components
+   ** See https://nuxtjs.org/api/configuration-components
    */
   components: true,
+  /*
+   ** Nuxt.js dev-modules
+   */
   buildModules: [
-    // TODO: Remove when upgrading to nuxt 2.13+
-    '@nuxt/components',
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module'
@@ -57,6 +70,7 @@ const config: Configuration = {
   },
   /*
    ** Build configuration
+   ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {
     /*

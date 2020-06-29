@@ -9,23 +9,23 @@
     "dev:aspida": "aspida --watch",
     "dev:frourio": "cd server && node_modules/.bin/frourio --watch",
     "build": "npm run build:apis && run-p build:front build:server",
-    "build:front": "nuxt-ts build",
+    "build:front": "nuxt-ts build<% var exportFront = target === 'static' ? ' && nuxt-ts export' : '' %><%- exportFront %>",
     "build:server": "cd server && node_modules/.bin/webpack --mode=production",
     "build:apis": "cross-env NODE_ENV=production run-p build:aspida build:frourio",
     "build:aspida": "aspida --build",
     "build:frourio": "cd server && node_modules/.bin/frourio --build",
     "install:server": "cd server && <%= pm %> install",
-    "lint": "npm run lint:script && npm run lint:style",
-    "lint:script": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
-    "lint:style": "stylelint \"**/*.{*(s)css,vue}\"",
-    "lint:fix": "npm run lint:script -- --fix && npm run lint:style -- --fix",
+    "lint": "npm run lint:js && npm run lint:style",
+    "lint:js": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
+    "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
+    "lint:fix": "npm run lint:js -- --fix && npm run lint:style -- --fix",
     "typecheck": "npm run build:apis && tsc --noEmit",
     "start": "run-p start:*",
-    "start:front": "nuxt-ts start",
+    "start:front": "nuxt-ts <% var startFront = target === 'static' ? 'serve' : 'start' %><%= startFront %>",
     "start:server": "cd server && cross-env NODE_ENV=production node index.js"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": "yarn lint",
+    "*.{js,ts,vue}": "eslint",
     "*.{css,vue}": "stylelint"
   },
   "husky": {
@@ -34,16 +34,16 @@
     }
   },
   "dependencies": {
-    "@nuxt/typescript-runtime": "^0.4.8",
+    "@nuxt/typescript-runtime": "^0.4.10",
     "dotenv": "^8.2.0",
-    "nuxt": "2.12.2"
+    "nuxt": "2.13.0"
   },
   "devDependencies": {
-    "@nuxt/components": "^0.3.3",
     "@nuxt/typescript-build": "^1.0.3",
-    "@nuxtjs/eslint-config-typescript": "^1.0.0",
-    "@nuxtjs/eslint-module": "^1.0.0",
-    "@nuxtjs/stylelint-module": "^3.1.0",
+    "@nuxtjs/eslint-config": "^3.0.0",
+    "@nuxtjs/eslint-config-typescript": "^2.0.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "cross-env": "^7.0.2",
     "eslint": "^6.1.0",
