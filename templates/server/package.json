@@ -8,14 +8,20 @@
     "dev:frourio": "frourio --watch",
     "build": "npm run build:frourio && npm run build:server",
     "build:server": "webpack --mode=production",
-    "build:frourio": "frourio --build",
+    "build:frourio": "frourio --build",<% if (daemon === 'pm2') { %>
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 stop pm2.config.json",
+    "pm2:delete": "pm2 delete pm2.config.json",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit",<% } %>
     "start": "cross-env NODE_ENV=production node index.js"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "frourio": "^0.10.2",
     "passport": "^0.4.1",
-    "passport-trusted-header": "^1.1.0"
+    "passport-trusted-header": "^1.1.0"<% if (daemon === 'pm2') { %>,
+    "pm2": "^4.4.0"<% } %>
   },
   "devDependencies": {
     "@types/passport": "^1.0.3",
