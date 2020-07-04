@@ -12,6 +12,16 @@ const config: Configuration = {
    */
   target: '<%= target %>',
   /*
+   ** Nuxt telemetry
+   ** See https://nuxtjs.org/api/configuration-telemetry
+   */
+  telemetry: false,
+  /*
+   ** Auto import components
+   ** See https://nuxtjs.org/api/configuration-components
+   */
+  components: true,
+  /*
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
    */
@@ -41,11 +51,6 @@ const config: Configuration = {
    ** https://nuxtjs.org/guide/plugins
    */
   plugins: ['~/plugins/api'],
-  /*
-   ** Auto import components
-   ** See https://nuxtjs.org/api/configuration-components
-   */
-  components: true,
   /*
    ** Nuxt.js dev-modules
    */
