@@ -22,8 +22,8 @@ const UserBanner = () => {
   )
 
   const login = useCallback(async () => {
-    const id = prompt('Enter the user id (See .env)')
-    const pass = prompt('Enter the user pass (See .env)')
+    const id = prompt('Enter the user id (See server/.env)')
+    const pass = prompt('Enter the user pass (See server/.env)')
     if (!id || !pass) return alert('Login failed')
 
     let newToken = ''

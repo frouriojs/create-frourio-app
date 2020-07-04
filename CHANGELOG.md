@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.1](https://github.com/frouriojs/create-frourio-app/compare/v0.9.0...v0.9.1) (2020-07-04)
+
+
+### Features
+
+* disable Nuxt telemetry ([923a6c5](https://github.com/frouriojs/create-frourio-app/commit/923a6c51e8f37e56153e375a3f0a1bc9b411670e))
+
+
+### Bug Fixes
+
+* bump chalk from 4.0.0 to 4.1.0 ([93e6e2a](https://github.com/frouriojs/create-frourio-app/commit/93e6e2a039f059c8d6ebb6ce84836b68674f907b))
+
 ## [0.9.0](https://github.com/frouriojs/create-frourio-app/compare/v0.8.0...v0.9.0) (2020-06-29)
 
 
