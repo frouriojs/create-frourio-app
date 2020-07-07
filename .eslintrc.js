@@ -4,17 +4,13 @@ module.exports = {
     node: true,
     browser: true
   },
-  extends: [
-    'standard',
-    'plugin:prettier/recommended',
-    'prettier/standard'
-  ],
+  extends: ['standard', 'plugin:prettier/recommended', 'prettier/standard'],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
   root: true,
   rules: {
-    "no-console": "off"
+    'no-console': 'off'
   }
 }
