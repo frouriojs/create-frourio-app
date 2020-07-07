@@ -11,7 +11,7 @@
     "build": "npm run build:apis && run-p build:front build:server",
     "build:front": "nuxt-ts build<% var exportFront = target === 'static' ? ' && nuxt-ts export' : '' %><%- exportFront %>",
     "build:server": "cd server && node_modules/.bin/webpack --mode=production",
-    "build:apis": "cross-env NODE_ENV=production run-p build:aspida build:frourio",
+    "build:apis": "run-p build:aspida build:frourio",
     "build:aspida": "aspida --build",
     "build:frourio": "cd server && node_modules/.bin/frourio --build",
     "install:server": "cd server && <%= pm %> install",

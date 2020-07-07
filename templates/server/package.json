@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "frourio": "^0.10.2",
+    "frourio": "^0.10.2",<%- dbModule %>
     "passport": "^0.4.1",
     "passport-trusted-header": "^1.1.0"<% if (daemon === 'pm2') { %>,
     "pm2": "^4.4.0"<% } %>

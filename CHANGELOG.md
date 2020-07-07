@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.2](https://github.com/frouriojs/create-frourio-app/compare/v0.9.1...v0.9.2) (2020-07-07)
+
+
+### Bug Fixes
+
+* for deploying on docker ([b28fd2c](https://github.com/frouriojs/create-frourio-app/commit/b28fd2c2c54c85cbec6573f4e1adf723a6dfdf2c))
+
 ### [0.9.1](https://github.com/frouriojs/create-frourio-app/compare/v0.9.0...v0.9.1) (2020-07-04)
 
 
