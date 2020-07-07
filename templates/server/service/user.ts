@@ -1,11 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 import { File } from 'frourio'
-import { SERVER_PORT, USER_ID, USER_PASS } from './envValues'
+import { API_ORIGIN, BASE_PATH, USER_ID, USER_PASS } from './envValues'
 
 const iconsDir = 'public/icons'
 const createIconURL = (name: string) =>
-  `http://localhost:${SERVER_PORT}/icons/${name}`
+  `${API_ORIGIN}${BASE_PATH}/icons/${name}`
 const userInfo = {
   name: 'sample user',
   icon: createIconURL(
