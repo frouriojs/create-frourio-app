@@ -19,11 +19,5 @@
     },<% var axiosType = aspida === 'axios' ? ', "@nuxtjs/axios"' : '' %>
     "types": ["@types/node", "@nuxt/types"<%- axiosType %>]
   },
-  "exclude": [
-    "node_modules",
-    ".nuxt",
-    "dist",
-    "server/ormconfig.ts",
-    "server/*.js"
-  ]
+  "exclude": ["node_modules", "server"]
 }

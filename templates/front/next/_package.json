@@ -8,10 +8,9 @@
     "dev:server": "cd server && node_modules/.bin/webpack --watch --mode=development",
     "dev:aspida": "aspida --watch",
     "dev:frourio": "cd server && node_modules/.bin/frourio --watch",
-    "build": "npm run build:apis && run-p build:front build:server",
-    "build:front": "next build",
-    "build:server": "cd server && node_modules/.bin/webpack --mode=production",
-    "build:apis": "run-p build:aspida build:frourio",
+    "build": "run-p build:front build:server",
+    "build:front": "npm run build:aspida && next build",
+    "build:server": "npm run build:frourio && cd server && node_modules/.bin/webpack --mode=production",
     "build:aspida": "aspida --build",
     "build:frourio": "cd server && node_modules/.bin/frourio --build",
     "install:server": "cd server && <%= pm %> install",
@@ -20,9 +19,10 @@
     "start": "run-p start:*",
     "start:front": "next start",
     "start:server": "cd server && cross-env NODE_ENV=production node index.js",
-    "typecheck": "npm run build:apis && tsc --noEmit"
+    "typecheck": "npm run build:aspida && npm run build:frourio && tsc --noEmit"
   },
   "dependencies": {
+    "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
     "next": "9.4.4",
     "react": "16.13.1",

@@ -8,10 +8,9 @@
     "dev:server": "cd server && node_modules/.bin/webpack --watch --mode=development",
     "dev:aspida": "aspida --watch",
     "dev:frourio": "cd server && node_modules/.bin/frourio --watch",
-    "build": "npm run build:apis && run-p build:front build:server",
-    "build:front": "nuxt-ts build<% var exportFront = target === 'static' ? ' && nuxt-ts export' : '' %><%- exportFront %>",
-    "build:server": "cd server && node_modules/.bin/webpack --mode=production",
-    "build:apis": "run-p build:aspida build:frourio",
+    "build": "run-p build:front build:server",
+    "build:front": "npm run build:aspida && nuxt-ts build && nuxt-ts export",
+    "build:server": "npm run build:frourio && cd server && node_modules/.bin/webpack --mode=production",
     "build:aspida": "aspida --build",
     "build:frourio": "cd server && node_modules/.bin/frourio --build",
     "install:server": "cd server && <%= pm %> install",
@@ -19,7 +18,7 @@
     "lint:js": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
     "lint:fix": "npm run lint:js -- --fix && npm run lint:style -- --fix",
-    "typecheck": "npm run build:apis && tsc --noEmit",
+    "typecheck": "npm run build:aspida && npm run build:frourio && tsc --noEmit",
     "start": "run-p start:*",
     "start:front": "nuxt-ts <% var startFront = target === 'static' ? 'serve' : 'start' %><%= startFront %>",
     "start:server": "cd server && cross-env NODE_ENV=production node index.js"
@@ -35,6 +34,7 @@
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.10",
+    "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
     "nuxt": "2.13.3"
   },
