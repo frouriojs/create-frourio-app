@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.4](https://github.com/frouriojs/create-frourio-app/compare/v0.9.3...v0.9.4) (2020-07-08)
+
+
+### Bug Fixes
+
+* add @types/node to next.js ([c95d62f](https://github.com/frouriojs/create-frourio-app/commit/c95d62fff1e2252f05013e7b61bf50613655b21e))
+
 ### [0.9.3](https://github.com/frouriojs/create-frourio-app/compare/v0.9.2...v0.9.3) (2020-07-08)
 
 
