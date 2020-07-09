@@ -1,7 +1,7 @@
 import { ConnectionOptions } from 'typeorm'
 import dotenv from 'dotenv'
 
-dotenv.config({ path: '../.env' })
+dotenv.config()
 
 const {
   TYPEORM_HOST,
