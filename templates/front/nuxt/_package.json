@@ -15,7 +15,7 @@
     "build:frourio": "cd server && node_modules/.bin/frourio --build",
     "install:server": "cd server && <%= pm %> install",
     "lint": "npm run lint:js && npm run lint:style",
-    "lint:js": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
+    "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
     "lint:fix": "npm run lint:js -- --fix && npm run lint:style -- --fix",
     "typecheck": "npm run build:aspida && npm run build:frourio && tsc --noEmit",

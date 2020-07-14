@@ -1,6 +1,6 @@
 {
   "name": "create-frourio-app",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "Create a frourio project in seconds",
   "author": "Solufa <solufa2020@gmail.com>",
   "license": "MIT",
@@ -53,6 +53,6 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "2.0.5",
-    "standard-version": "^8.0.0"
+    "standard-version": "^8.0.2"
   }
 }
