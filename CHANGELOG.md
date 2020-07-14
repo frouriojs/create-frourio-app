@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.6](https://github.com/frouriojs/create-frourio-app/compare/v0.9.5...v0.9.6) (2020-07-14)
+
+
+### Bug Fixes
+
+* add .eslintignore ([a68ea3a](https://github.com/frouriojs/create-frourio-app/commit/a68ea3a6f3bd2c8dadc7d7cd3adec1b743977c24))
+
 ### [0.9.5](https://github.com/frouriojs/create-frourio-app/compare/v0.9.4...v0.9.5) (2020-07-09)
 
 
