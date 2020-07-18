@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.8](https://github.com/frouriojs/create-frourio-app/compare/v0.9.7...v0.9.8) (2020-07-18)
+
+
+### Bug Fixes
+
+* prettier config ([f5276af](https://github.com/frouriojs/create-frourio-app/commit/f5276af6b731ad50cc95c320de541bb212dc4421))
+
 ### [0.9.7](https://github.com/frouriojs/create-frourio-app/compare/v0.9.6...v0.9.7) (2020-07-17)
 
 
