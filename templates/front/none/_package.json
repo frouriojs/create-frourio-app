@@ -13,7 +13,7 @@
     "lint": "eslint --ext .ts,.js .",
     "lint:fix": "npm run lint -- --fix",
     "start": "cd server && cross-env NODE_ENV=production node index.js",
-    "typecheck": "npm run build:frourio && tsc --noEmit"
+    "typecheck": "npm run build:frourio && tsc --noEmit -p server"
   },
   "lint-staged": {
     "*.{js,ts}": "npm run lint"
@@ -34,6 +34,6 @@
     "lint-staged": "^10.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.7"
   }
 }

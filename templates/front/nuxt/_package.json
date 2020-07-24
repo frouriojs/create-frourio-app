@@ -18,7 +18,7 @@
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
     "lint:fix": "npm run lint:js -- --fix && npm run lint:style -- --fix",
-    "typecheck": "npm run build:aspida && npm run build:frourio && tsc --noEmit",
+    "typecheck": "npm run build:aspida && npm run build:frourio && tsc --noEmit && tsc --noEmit -p server",
     "start": "run-p start:*",
     "start:front": "nuxt-ts <% var startFront = target === 'static' ? 'serve' : 'start' %><%= startFront %>",
     "start:server": "cd server && cross-env NODE_ENV=production node index.js"
@@ -56,6 +56,6 @@
     "prettier": "^2.0.5",
     "stylelint": "^13.6.1",
     "ts-loader": "^7.0.5",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.7"
   }
 }
