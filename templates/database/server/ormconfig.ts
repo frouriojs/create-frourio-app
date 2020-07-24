@@ -27,4 +27,5 @@ const options: ConnectionOptions = {
   }
 }
 
+// @ts-ignore
 export = options
