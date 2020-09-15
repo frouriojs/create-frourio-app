@@ -1,7 +1,7 @@
-import { createController } from './$relay'
+import { defineController } from './$relay'
 import { validateUser, createToken, deleteToken } from '$/service/user'
 
-export default createController({
+export default defineController(() => ({
   post: ({ body }) =>
     validateUser(body.id, body.pass)
       ? { status: 201, body: { token: createToken() } }
@@ -11,4 +11,4 @@ export default createController({
     deleteToken(headers.token)
     return { status: 204 }
   }
-})
+}))

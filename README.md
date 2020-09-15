@@ -1,16 +1,12 @@
 # create frourio app
 
-> Create a [frourio](https://github.com/frouriojs/frourio) project in seconds
-
-## Architecture
-
 <div align="center">
-   <img src="https://frouriojs.github.io/frourio/assets/images/architecture.png" width="900" alt="Architecture of create-frourio-app" />
+  <img src="https://frouriojs.github.io/frourio/assets/images/ogp.png" width="1280" alt="frourio" />
 </div>
-<br />
+
 <div align="center">
-  <a href="https://npmjs.com/package/create-frourio-app">
-    <img src="https://img.shields.io/npm/v/create-frourio-app.svg?style=flat" alt="npm version" />
+  <a href="https://www.npmjs.com/package/create-frourio-app">
+    <img src="https://img.shields.io/npm/v/create-frourio-app" alt="npm version" />
   </a>
   <a href="https://github.com/frouriojs/create-frourio-app/actions?query=branch%3Amaster++">
     <img src="https://github.com/frouriojs/create-frourio-app/workflows/Node.js%20CI/badge.svg?branch=master" alt="Node.js CI" />
@@ -18,6 +14,16 @@
   <a href="https://github.com/frouriojs/create-frourio-app/blob/master/LICENSE">
     <img src="https://img.shields.io/npm/l/create-frourio-app" alt="License" />
   </a>
+</div>
+
+<p align="center">Create a <a href="https://github.com/frouriojs/frourio">frourio</a> project in seconds</p>
+<br />
+<br />
+
+## Architecture
+
+<div align="center">
+   <img src="https://frouriojs.github.io/frourio/assets/images/architecture.png" width="900" alt="Architecture of create-frourio-app" />
 </div>
 
 ## Usage
@@ -73,7 +79,7 @@ yarn create frourio-app <my-project>
 ## Support
 
 <a href="https://twitter.com/solufa2020">
-  <img src="https://aspidajs.github.io/aspida/assets/images/twitter.svg" width="50" alt="Twitter" />
+  <img src="https://aspida.github.io/aspida/assets/images/twitter.svg" width="50" alt="Twitter" />
 </a>
 
 ## License

@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "@aspida/fetch": "^0.7.3"
+    "@aspida/fetch": "^0.9.4"
   }
 }

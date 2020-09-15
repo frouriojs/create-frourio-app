@@ -5,10 +5,9 @@
   "scripts": {
     "dev": "run-p dev:*",
     "dev:server": "webpack --watch --mode=development",
-    "dev:frourio": "frourio --watch",
-    "build": "npm run build:frourio && npm run build:server",
-    "build:server": "webpack --mode=production",
-    "build:frourio": "frourio --build",<% if (daemon === 'pm2') { %>
+    "dev:frourio": "frourio --watch",<% if (dbModule) { %>
+    "dev:typeormer": "typeormer --watch",<% } %>
+    "build": "<% if (dbModule) { %>typeormer && <% } %>frourio && webpack --mode=production",<% if (daemon === 'pm2') { %>
     "pm2:start": "pm2 start pm2.config.json --env production",
     "pm2:stop": "pm2 stop pm2.config.json",
     "pm2:delete": "pm2 delete pm2.config.json",
@@ -17,22 +16,32 @@
     "start": "cross-env NODE_ENV=production node index.js"
   },
   "dependencies": {
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "frourio": "^0.11.0",<%- dbModule %>
+    "express": "^4.17.1",
+    "helmet": "^4.1.1",
+    "multer": "^1.4.2",<%- dbModule %>
     "passport": "^0.4.1",
     "passport-trusted-header": "^1.1.0"<% if (daemon === 'pm2') { %>,
-    "pm2": "^4.4.0"<% } %>
+    "pm2": "^4.4.1"<% } %><% if (dbModule) { %>,
+    "typeorm": "^0.2.26",
+    "typeormer": "^0.1.0"<% } %>
   },
   "devDependencies": {
+    "@types/cors": "^2.8.7",
+    "@types/multer": "^1.4.4",
     "@types/passport": "^1.0.4",
     "cross-env": "^7.0.2",
-    "nodemon-webpack-plugin": "^4.3.1",
+    "frourio": "^0.13.0",
+    "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.1",
-    "ts-node": "^8.10.2",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-node-externals": "^2.5.0"
+    "ts-loader": "^8.0.3",
+    "ts-node": "^9.0.0",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.2"
   }
 }

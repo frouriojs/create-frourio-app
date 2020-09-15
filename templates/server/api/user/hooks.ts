@@ -1,5 +1,5 @@
 import passport from 'passport'
-import { createMiddleware } from './$relay'
+import { defineHooks } from './$relay'
 import { getUserIdByToken } from '$/service/user'
 
 export type User = {
@@ -17,7 +17,9 @@ passport.use(
   )
 )
 
-export default createMiddleware([
-  passport.initialize(),
-  passport.authenticate('trusted-header', { session: false })
-])
+export default defineHooks(() => ({
+  onRequest: [
+    passport.initialize(),
+    passport.authenticate('trusted-header', { session: false })
+  ]
+}))

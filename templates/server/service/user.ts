@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { File } from 'frourio'
 import { API_ORIGIN, BASE_PATH, USER_ID, USER_PASS } from './envValues'
+import { MulterFile } from '$/$server'
 
 const iconsDir = 'public/icons'
 const createIconURL = (name: string) =>
@@ -38,7 +38,7 @@ export const deleteToken = (token: string) => {
   if (validateToken(token)) userToken = null
 }
 
-export const changeIcon = async (id: string, iconFile: File) => {
+export const changeIcon = async (id: string, iconFile: MulterFile) => {
   const iconName = `${Date.now()}${path.extname(iconFile.originalname)}`
 
   await fs.promises.copyFile(iconFile.path, path.resolve(iconsDir, iconName))

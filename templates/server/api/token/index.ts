@@ -1,14 +1,14 @@
-import { ValidLoginBody, ValidTokenHeader } from '$/types'
+import { LoginBody, TokenHeader } from '$/validators'
 
 export type Methods = {
   post: {
-    reqBody: ValidLoginBody
+    reqBody: LoginBody
     resBody: {
       token: string
     }
   }
 
   delete: {
-    reqHeaders: ValidTokenHeader
+    reqHeaders: TokenHeader
   }
 }
