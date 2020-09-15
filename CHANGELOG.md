@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.1](https://github.com/frouriojs/create-frourio-app/compare/v0.10.0...v0.10.1) (2020-09-15)
+
+
+### Bug Fixes
+
+* nuxt-fetch plugin ([f63aa28](https://github.com/frouriojs/create-frourio-app/commit/f63aa28b06e1188fa07db2b97ec379df67cf9f62))
+
 ## [0.10.0](https://github.com/frouriojs/create-frourio-app/compare/v0.9.10...v0.10.0) (2020-09-15)
 
 
