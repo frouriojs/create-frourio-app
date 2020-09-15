@@ -1,9 +1,8 @@
-import axios from 'axios'
 import { Plugin } from '@nuxt/types'
 import aspida from '@aspida/fetch'
 import api from '~/server/api/$api'
 
-const tmp = api(aspida(axios))
+const tmp = api(aspida(fetch))
 
 type ApiInstance = typeof tmp
 
@@ -25,6 +24,6 @@ declare module 'vuex/types/index' {
   }
 }
 
-const plugin: Plugin = (_, inject) => inject('api', api(aspida(fetch)))
+const plugin: Plugin = (_, inject) => inject('api', api(aspida()))
 
 export default plugin
