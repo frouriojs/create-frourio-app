@@ -11,6 +11,7 @@
     "dev:typeormer": "cd server && node_modules/.bin/typeormer --watch<% } %>",
     "build": "run-p build:front build:server",
     "build:front": "aspida && next build",
+    "build:server": "<% if (dbModule) { %>npm run build:typeormer && <% } %>npm run build:frourio && cd server && node_modules/.bin/webpack --mode=production",
     "build:frourio": "cd server && node_modules/.bin/frourio<% if (dbModule) { %>",
     "build:typeormer": "cd server && node_modules/.bin/typeormer<% } %>",
     "build:types": "aspida && <% if (dbModule) { %>npm run build:typeormer && <% } %>npm run build:frourio",

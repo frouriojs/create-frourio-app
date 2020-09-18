@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.2](https://github.com/frouriojs/create-frourio-app/compare/v0.10.1...v0.10.2) (2020-09-18)
+
+
+### Bug Fixes
+
+* add build:server command ([ceb2c65](https://github.com/frouriojs/create-frourio-app/commit/ceb2c654ee6ada5cd4de22cffb3be060a4058fb4))
+
 ### [0.10.1](https://github.com/frouriojs/create-frourio-app/compare/v0.10.0...v0.10.1) (2020-09-15)
 
 
