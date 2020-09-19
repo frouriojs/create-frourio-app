@@ -52,6 +52,9 @@ yarn create frourio-app <my-project>
    - [Next.js](https://nextjs.org/learn/excel/typescript)
    - [Nuxt.js](https://typescript.nuxtjs.org/)
    - None
+1. Next.js building mode:
+   - Basic (next build)
+   - [Static (next build && next export)](https://nextjs.org/docs/advanced-features/static-html-export)
 1. Nuxt.js rendering mode:
    - [Universal (SSR / Static)](https://nuxtjs.org/guide/#server-rendered-universal-ssr-)
    - [SPA](https://nuxtjs.org/guide/#single-page-applications-spa-)

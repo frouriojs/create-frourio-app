@@ -10,7 +10,7 @@
     "dev:frourio": "cd server && node_modules/.bin/frourio --watch<% if (dbModule) { %>",
     "dev:typeormer": "cd server && node_modules/.bin/typeormer --watch<% } %>",
     "build": "run-p build:front build:server",
-    "build:front": "aspida && next build",
+    "build:front": "aspida && next build<% if (building === 'static') { %> && next export<% } %>",
     "build:server": "<% if (dbModule) { %>npm run build:typeormer && <% } %>npm run build:frourio && cd server && node_modules/.bin/webpack --mode=production",
     "build:frourio": "cd server && node_modules/.bin/frourio<% if (dbModule) { %>",
     "build:typeormer": "cd server && node_modules/.bin/typeormer<% } %>",
@@ -24,25 +24,27 @@
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
+    "@aspida/swr": "^0.1.3",
     "class-validator": "^0.12.2",
-    "next": "9.4.4",
+    "next": "9.5.3",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "swr": "^0.3.2"
   },
   "devDependencies": {
-    "@types/node": "^14.0.20",
-    "@types/react": "^16.9.35",
-    "@typescript-eslint/eslint-plugin": "^3.2.0",
-    "@typescript-eslint/parser": "^3.2.0",
+    "@types/node": "^14.11.1",
+    "@types/react": "^16.9.49",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.2.0",
+    "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.1",
+    "prettier": "^2.1.2",
     "ts-loader": "^8.0.3",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.3"
   }
 }

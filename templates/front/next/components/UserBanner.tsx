@@ -1,4 +1,5 @@
 import { useState, useCallback, ChangeEvent } from 'react'
+import styles from '~/styles/UserBanner.module.css'
 import { apiClient } from '~/utils/apiClient'
 import { UserInfo } from '$/types'
 
@@ -46,10 +47,10 @@ const UserBanner = () => {
   }, [token])
 
   return (
-    <div className="user-banner">
+    <div className={styles.userBanner}>
       {isLoggedIn ? (
         <div>
-          <img src={userInfo.icon} className="user-icon" />
+          <img src={userInfo.icon} className={styles.userIcon} />
           <span>{userInfo.name}</span>
           <input type="file" accept="image/*" onChange={editIcon} />
           <button onClick={logout}>LOGOUT</button>
@@ -57,22 +58,6 @@ const UserBanner = () => {
       ) : (
         <button onClick={login}>LOGIN</button>
       )}
-
-      <style jsx>{`
-        .user-banner {
-          position: fixed;
-          top: 0;
-          right: 0;
-          padding: 20px;
-        }
-
-        .user-icon {
-          width: 32px;
-          height: 32px;
-          background: #ddd;
-          vertical-align: bottom;
-        }
-      `}</style>
     </div>
   )
 }
