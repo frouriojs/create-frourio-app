@@ -1,15 +1,14 @@
 import Head from 'next/head'
 import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
-import useAspidaSWR from "@aspida/swr"
+import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
 import { Task } from '$/types'
 import UserBanner from '~/components/UserBanner'
 
 const Home = () => {
-  const { data, error } = useAspidaSWR(apiClient.tasks)
+  const { data: tasks, error, mutate: setTasks } = useAspidaSWR(apiClient.tasks)
   const [label, setLabel] = useState('')
-  const [tasks, setTasks] = useState(data)
   const inputLavel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
     []
@@ -38,11 +37,7 @@ const Home = () => {
   }, [])
 
   if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
-  if (!tasks) {
-    setTasks(data)
-    return <div>loading...</div>
-  }
+  if (!tasks) return <div>loading...</div>
 
   return (
     <div className={styles.container}>

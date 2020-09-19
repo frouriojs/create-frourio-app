@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.2](https://github.com/frouriojs/create-frourio-app/compare/v0.11.1...v0.11.2) (2020-09-19)
+
+
+### Bug Fixes
+
+* use mutate instead of useState ([26dd992](https://github.com/frouriojs/create-frourio-app/commit/26dd9925d96b60eaf3f21b5c043834d1b395c3a3))
+
 ### [0.11.1](https://github.com/frouriojs/create-frourio-app/compare/v0.11.0...v0.11.1) (2020-09-19)
 
 
