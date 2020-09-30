@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.4](https://github.com/frouriojs/create-frourio-app/compare/v0.11.3...v0.11.4) (2020-09-30)
+
+
+### Bug Fixes
+
+* fill db type ([6ba7cd2](https://github.com/frouriojs/create-frourio-app/commit/6ba7cd225ced47213f79a4865743a5ba2e1e78ae))
+
 ### [0.11.3](https://github.com/frouriojs/create-frourio-app/compare/v0.11.2...v0.11.3) (2020-09-21)
 
 
