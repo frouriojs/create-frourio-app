@@ -23,7 +23,7 @@ server(app, { basePath: BASE_PATH })
 app.use(BASE_PATH, express.static('public'))
 
 createConnection({
-  type: 'mysql',
+  type: '<%= dbType %>',
   host: TYPEORM_HOST,
   username: TYPEORM_USERNAME,
   password: TYPEORM_PASSWORD,
