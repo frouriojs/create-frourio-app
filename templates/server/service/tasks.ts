@@ -42,7 +42,7 @@ export const updateTask = async (
   })
 }
 
-export const removeTask = async (id: Task['id']) => {
+export const deleteTask = async (id: Task['id']) => {
   const db = await readDB()
   await writeDB({
     nextId: db.nextId,
