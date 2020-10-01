@@ -10,4 +10,9 @@ app.use(cors())
 
 server(app, { basePath: BASE_PATH })
 app.use(BASE_PATH, express.static('public'))
+// @ts-expect-error
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('500 Internal Server Error')
+})
 app.listen(SERVER_PORT)
