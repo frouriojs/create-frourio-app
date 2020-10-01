@@ -33,8 +33,4 @@ createConnection({
   synchronize: false,
   logging: false,
   ...ormOptions
-}).then(async (connection) => {
-  await connection.query('CREATE DATABASE IF NOT EXISTS "<%= dbName %>"')
-
-  app.listen(SERVER_PORT)
-})
+}).then(() => app.listen(SERVER_PORT))
