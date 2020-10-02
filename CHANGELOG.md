@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.12.1](https://github.com/frouriojs/create-frourio-app/compare/v0.12.0...v0.12.1) (2020-10-02)
+
+
+### Bug Fixes
+
+* sqlite config ([ea3ff79](https://github.com/frouriojs/create-frourio-app/commit/ea3ff79d6bf6345f93d27b266dee55fa1050f85f))
+
 ## [0.12.0](https://github.com/frouriojs/create-frourio-app/compare/v0.11.5...v0.12.0) (2020-10-02)
 
 
