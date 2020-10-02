@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "run-p dev:*",
+    "dev": "<% if (orm === 'prisma') { %>npm run migrate:up && <% } %>run-p dev:*",
     "dev:server": "webpack --watch --mode=development",
-    "dev:frourio": "frourio --watch",<% if (orm === 'typeorm') { %>
+    "dev:frourio": "frourio --watch",<% if (orm === 'prisma') { %>
+    "dev:prisma": "prisma generate --watch",<% } else if (orm === 'typeorm') { %>
     "dev:typeormer": "typeormer --watch",<% } %>
-    "build": "<% if (orm === 'typeorm') { %>typeormer && <% } %>frourio && webpack --mode=production",<% if (daemon === 'pm2') { %>
+    "build": "<% if (orm === 'prisma') { %>npm run migrate:up && prisma generate && <% } else if (orm === 'typeorm') { %>typeormer && <% } %>frourio && webpack --mode=production",<% if (daemon === 'pm2') { %>
     "pm2:start": "pm2 start pm2.config.json --env production",
     "pm2:stop": "pm2 stop pm2.config.json",
     "pm2:delete": "pm2 delete pm2.config.json",
@@ -15,7 +16,8 @@
     "pm2:monit": "pm2 monit",<% } %>
     "start": "cross-env NODE_ENV=production node index.js"
   },
-  "dependencies": {
+  "dependencies": {<% if (orm === 'prisma') { %>
+    "@prisma/client": "^2.8.0",<% } %>
     "class-validator": "^0.12.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -28,7 +30,8 @@
     "typeorm": "^0.2.27",
     "typeormer": "^0.1.0"<% } %>
   },
-  "devDependencies": {
+  "devDependencies": {<% if (orm === 'prisma') { %>
+    "@prisma/cli": "^2.8.0",<% } %>
     "@types/cors": "^2.8.7",
     "@types/multer": "^1.4.4",
     "@types/passport": "^1.0.4",

@@ -1,9 +1,6 @@
 {
   "eslint.run": "onSave",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
-  },
-  "vetur.experimental.templateInterpolationService": true,
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
+  "editor.formatOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib"
 }
