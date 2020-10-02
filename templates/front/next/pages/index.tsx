@@ -31,7 +31,7 @@ const Home = () => {
     setTasks(await apiClient.tasks.$get())
   }, [])
 
-  const removeTask = useCallback(async (task: Task) => {
+  const deleteTask = useCallback(async (task: Task) => {
     await apiClient.tasks._taskId(task.id).delete()
     setTasks(await apiClient.tasks.$get())
   }, [])
@@ -75,7 +75,7 @@ const Home = () => {
                   type="button"
                   value="DELETE"
                   style={{ float: 'right' }}
-                  onClick={() => removeTask(task)}
+                  onClick={() => deleteTask(task)}
                 />
               </li>
             ))}

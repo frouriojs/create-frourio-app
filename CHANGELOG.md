@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.12.0](https://github.com/frouriojs/create-frourio-app/compare/v0.11.5...v0.12.0) (2020-10-02)
+
+
+### Features
+
+* add choices of orm ([74a5d8f](https://github.com/frouriojs/create-frourio-app/commit/74a5d8f1333dbb3a4fdc4e340fa29309b5771616))
+* add dbHost ([d9bb2c8](https://github.com/frouriojs/create-frourio-app/commit/d9bb2c8cf65f97abcd03a34d026a2241e4ca795d))
+* add prisma files ([e77722b](https://github.com/frouriojs/create-frourio-app/commit/e77722b8d2cbde2d89905c10e1d7162dbfd59df0))
+* improve ts and webpack config ([bafb7e0](https://github.com/frouriojs/create-frourio-app/commit/bafb7e0e519d6e2239e27df0f90a5bdcdcec9a8f))
+
 ### [0.11.5](https://github.com/frouriojs/create-frourio-app/compare/v0.11.4...v0.11.5) (2020-10-01)
 
 

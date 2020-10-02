@@ -23,7 +23,4 @@ export const updateTask = async (
   await taskRepository().save(task)
 }
 
-export const removeTask = async (id: Task['id']) => {
-  const task = await taskRepository().findOne({ id })
-  if (task) await taskRepository().remove(task)
-}
+export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })

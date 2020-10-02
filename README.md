@@ -70,8 +70,15 @@ yarn create frourio-app <my-project>
 1. Daemon process manager:
    - None
    - [PM2](https://pm2.keymetrics.io/)
-1. Database type of TypeORM:
+1. O/R mapping tool:
    - None
+   - [Prisma (recommended)](https://www.prisma.io/)
+   - [TypeORM](https://typeorm.io/)
+1. Database type of Prisma:
+   - [MySQL](https://www.mysql.com/)
+   - [PostgreSQL](https://www.postgresql.org/)
+   - [SQLite](https://www.sqlite.org/)
+1. Database type of TypeORM:
    - [MySQL](https://www.mysql.com/)
    - [PostgreSQL](https://www.postgresql.org/)
    - [MongoDB](https://www.mongodb.com/)

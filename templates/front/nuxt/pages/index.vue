@@ -23,7 +23,7 @@
               type="button"
               value="DELETE"
               style="float: right"
-              @click="remove(task)"
+              @click="deleteTask(task)"
             />
           </li>
         </ul>
@@ -63,7 +63,7 @@ export default Vue.extend({
         .patch({ body: { done: !task.done } })
       await this.fetchTasks()
     },
-    async remove(task: Task) {
+    async deleteTask(task: Task) {
       await this.$api.tasks._taskId(task.id).delete()
       await this.fetchTasks()
     }

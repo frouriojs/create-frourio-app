@@ -3,7 +3,6 @@ const nodeExternals = require('webpack-node-externals')
 const NodemonPlugin = require('nodemon-webpack-plugin')
 
 module.exports = {
-  externals: [nodeExternals()],
   entry: './index.ts',
   target: 'node',
   node: {
@@ -16,12 +15,10 @@ module.exports = {
   module: {
     rules: [{ test: /\.ts$/, loader: 'ts-loader' }]
   },
-  optimization: {
-    minimize: false
-  },
   plugins: [new NodemonPlugin()],
   resolve: {
-    extensions: ['.ts'],
+    extensions: ['.ts', '.js'],
     plugins: [new TsconfigPathsPlugin()]
-  }
+  },
+  externals: [nodeExternals()]
 }
