@@ -12,7 +12,7 @@
         "source": "db"
       },
       "argument": "provider",
-      "value": "\"mysql\""
+      "value": "\"<%= dbType %>\""
     },
     {
       "tag": "CreateArgument",
