@@ -91,6 +91,7 @@ sw.*
 
 # server
 server/**/$*.ts
+server/**/*.db
 server/index.js
 server/database.json
 server/.upload
