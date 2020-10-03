@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.12.2](https://github.com/frouriojs/create-frourio-app/compare/v0.12.1...v0.12.2) (2020-10-03)
+
+
+### Bug Fixes
+
+* update frourio@0.14.3 ([a4c8218](https://github.com/frouriojs/create-frourio-app/commit/a4c821886aec0142b9982e396ef98d5d933a97c6))
+
 ### [0.12.1](https://github.com/frouriojs/create-frourio-app/compare/v0.12.0...v0.12.1) (2020-10-02)
 
 

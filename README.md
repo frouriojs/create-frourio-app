@@ -20,12 +20,6 @@
 <br />
 <br />
 
-## Architecture
-
-<div align="center">
-   <img src="https://frouriojs.github.io/frourio/assets/images/architecture.png" width="900" alt="Architecture of create-frourio-app" />
-</div>
-
 ## Usage
 
 Make sure you have [npx](https://www.npmjs.com/package/npx) installed (`npx` is shipped by default since [npm](https://www.npmjs.com/get-npm) `5.2.0`)
