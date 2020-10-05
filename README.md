@@ -42,6 +42,9 @@ yarn create frourio-app <my-project>
 
 ## Features :tada:
 
+1. Core framework of frourio:
+   - [Express](https://expressjs.com/)
+   - [Fastify (5x faster than Express)](https://www.fastify.io/)
 1. Frontend framework:
    - [Next.js](https://nextjs.org/learn/excel/typescript)
    - [Nuxt.js](https://typescript.nuxtjs.org/)
