@@ -8,6 +8,9 @@
   <a href="https://www.npmjs.com/package/create-frourio-app">
     <img src="https://img.shields.io/npm/v/create-frourio-app" alt="npm version" />
   </a>
+  <a href="https://www.npmjs.com/package/create-frourio-app">
+    <img src="https://img.shields.io/npm/dm/create-frourio-app" alt="npm download" />
+  </a>
   <a href="https://github.com/frouriojs/create-frourio-app/actions?query=branch%3Amaster++">
     <img src="https://github.com/frouriojs/create-frourio-app/workflows/Node.js%20CI/badge.svg?branch=master" alt="Node.js CI" />
   </a>
@@ -43,8 +46,8 @@ yarn create frourio-app <my-project>
 ## Features :tada:
 
 1. Core framework of frourio:
-   - [Express](https://expressjs.com/)
    - [Fastify (5x faster than Express)](https://www.fastify.io/)
+   - [Express](https://expressjs.com/)
 1. Frontend framework:
    - [Next.js](https://nextjs.org/learn/excel/typescript)
    - [Nuxt.js](https://typescript.nuxtjs.org/)
@@ -68,9 +71,9 @@ yarn create frourio-app <my-project>
    - None
    - [PM2](https://pm2.keymetrics.io/)
 1. O/R mapping tool:
-   - None
    - [Prisma (recommended)](https://www.prisma.io/)
    - [TypeORM](https://typeorm.io/)
+   - None
 1. Database type of Prisma:
    - [MySQL](https://www.mysql.com/)
    - [PostgreSQL](https://www.postgresql.org/)

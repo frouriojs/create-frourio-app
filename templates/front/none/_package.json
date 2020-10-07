@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "<% if (orm === 'prisma') { %>npm run migrate:up && <% } %>run-p dev:*",
     "dev:server": "cd server && node_modules/.bin/webpack --watch --mode=development",
-    "dev:frourio": "cd server && node_modules/.bin/frourio<% if (server === 'fastify') { %>-fastify<% } %> --watch<% if (orm === 'prisma') { %>",
+    "dev:frourio": "cd server && node_modules/.bin/frourio<% if (server === 'express') { %>-express<% } %> --watch<% if (orm === 'prisma') { %>",
     "dev:prisma": "cd server && node_modules/.bin/prisma generate --watch<% } else if (orm === 'typeorm') { %>",
     "dev:typeormer": "cd server && node_modules/.bin/typeormer --watch<% } %>",
     "build": "<% if (orm === 'prisma') { %>npm run migrate:up && <% } %>npm run build:frourio && cd server && node_modules/.bin/webpack --mode=production",
-    "build:frourio": "cd server && <% if (orm === 'prisma') { %>node_modules/.bin/prisma generate && <% } else if (orm === 'typeorm') { %>node_modules/.bin/typeormer && <% } %>node_modules/.bin/frourio<% if (server === 'fastify') { %>-fastify<% } %>",
+    "build:frourio": "cd server && <% if (orm === 'prisma') { %>node_modules/.bin/prisma generate && <% } else if (orm === 'typeorm') { %>node_modules/.bin/typeormer && <% } %>node_modules/.bin/frourio<% if (server === 'express') { %>-express<% } %>",
     "build:types": "npm run build:frourio",
     "install:server": "cd server && <%= pm %> install",
     "lint": "eslint --ext .ts,.js .",
