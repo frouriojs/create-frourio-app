@@ -51,7 +51,6 @@ yarn create frourio-app <my-project>
 1. Frontend framework:
    - [Next.js](https://nextjs.org/learn/excel/typescript)
    - [Nuxt.js](https://typescript.nuxtjs.org/)
-   - None
 1. Next.js building mode:
    - Basic (next build)
    - [Static (next build && next export)](https://nextjs.org/docs/advanced-features/static-html-export)
