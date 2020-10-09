@@ -1,4 +1,5 @@
-import fs from 'fs'
+import fs from 'fs'<% if (testing !== 'none') { %>
+import { depend } from 'velona'<% } %>
 import { Task } from '$/types'
 
 type DB = {
@@ -17,7 +18,10 @@ if (!fs.existsSync(dbPath)) {
   fs.writeFileSync(dbPath, JSON.stringify({ nextId: 0, tasks: [] }), 'utf8')
 }
 
-export const findAllTask = async () => (await readDB()).tasks
+export const getTasks = <% if (testing === 'none') { %>async () => (await readDB()).tasks<% } else { %>depend(
+  { readDB },
+  async ({ readDB }, limit?: number) => (await readDB()).tasks.slice(0, limit)
+)<% } %>
 
 export const createTask = async (label: Task['label']) => {
   const db = await readDB()

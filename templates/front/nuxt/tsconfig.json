@@ -11,6 +11,7 @@
     "strictPropertyInitialization": false,
     "noEmit": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
