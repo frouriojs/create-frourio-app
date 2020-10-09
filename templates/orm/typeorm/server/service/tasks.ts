@@ -1,9 +1,14 @@
-import { getRepository } from 'typeorm'
+import { getRepository } from 'typeorm'<% if (testing !== 'none') { %>
+import { depend } from 'velona'<% } %>
 import { Task } from '$/entity/Task'
 
 const taskRepository = () => getRepository(Task)
 
-export const findAllTask = () => taskRepository().find()
+export const getTasks = <% if (testing === 'none') { %>async (limit?: number) => (await taskRepository().find()).slice(0, limit)<% } else { %>depend(
+  { taskRepository: taskRepository as () => { find(): Promise<Task[]> } },
+  async ({ taskRepository }, limit?: number) =>
+    (await taskRepository().find()).slice(0, limit)
+)<% } %>
 
 export const createTask = (label: Task['label']) => {
   const task = new Task()

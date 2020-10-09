@@ -1,9 +1,14 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'<% if (testing !== 'none') { %>
+import { depend } from 'velona'<% } %>
 import { Task } from '$/types'
 
 const prisma = new PrismaClient()
 
-export const findAllTask = () => prisma.task.findMany()
+export const getTasks = <% if (testing === 'none') { %>async (limit?: number) => (await prisma.task.findMany()).slice(0, limit)<% } else { %>depend(
+  { prisma: prisma as { task: { findMany(): Promise<Task[]> } } },
+  async ({ prisma }, limit?: number) =>
+    (await prisma.task.findMany()).slice(0, limit)
+)<% } %>
 
 export const createTask = (label: Task['label']) =>
   prisma.task.create({ data: { label } })
