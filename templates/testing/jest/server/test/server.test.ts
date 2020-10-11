@@ -45,9 +45,7 @@ test('dependency injection into controller', async () => {
   const limit = 3
   const message = 'test message'
   const res = await injectedController.get({
-    query: { limit, message },
-    body: undefined,
-    headers: undefined
+    query: { limit, message }
   })
 
   expect(res.body).toHaveLength(limit)
