@@ -3,9 +3,3 @@ export type Task = {
   label: string
   done: boolean
 }
-
-export type UserInfo = {
-  id: string
-  name: string
-  icon: string
-}
