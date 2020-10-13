@@ -1,3 +1,7 @@
+.frourio {
+  width: 200px;
+}
+
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -64,17 +68,4 @@
 
 .logo {
   height: 1em;
-}
-
-.tasks {
-  width: 300px;
-  padding: 0;
-  margin: 20px auto 0;
-  list-style-type: none;
-  text-align: left;
-}
-
-.tasks > li {
-  margin-top: 10px;
-  border-bottom: 1px solid #eee;
 }
