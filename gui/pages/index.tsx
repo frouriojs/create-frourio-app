@@ -3,7 +3,6 @@ import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
 import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
-import UserBanner from '~/components/UserBanner'
 import { prompts } from '$/common/prompts'
 
 const Home = () => {
@@ -24,8 +23,6 @@ const Home = () => {
       <img src="/images/logo.svg" alt="Frourio Logo" className={styles.frourio} />
 
       <main className={styles.main}>
-        <UserBanner />
-
         <h1 className={styles.title}>
           Welcome to <a href="https://github.com/frouriojs/frourio">frourio!</a>
         </h1>
