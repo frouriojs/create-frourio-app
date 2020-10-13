@@ -3,38 +3,13 @@ import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
 import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
-import { Task } from '$/types'
 import UserBanner from '~/components/UserBanner'
+import { prompts } from '$/common/prompts'
 
 const Home = () => {
   const { data: tasks, error, mutate: setTasks } = useAspidaSWR(apiClient.tasks)
-  const [label, setLabel] = useState('')
-  const inputLavel = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
-    []
-  )
-
-  const createTask = useCallback(
-    async (e: FormEvent) => {
-      e.preventDefault()
-      if (!label) return
-
-      await apiClient.tasks.post({ body: { label } })
-      setLabel('')
-      setTasks(await apiClient.tasks.$get())
-    },
-    [label]
-  )
-
-  const toggleDone = useCallback(async (task: Task) => {
-    await apiClient.tasks._taskId(task.id).patch({ body: { done: !task.done } })
-    setTasks(await apiClient.tasks.$get())
-  }, [])
-
-  const deleteTask = useCallback(async (task: Task) => {
-    await apiClient.tasks._taskId(task.id).delete()
-    setTasks(await apiClient.tasks.$get())
-  }, [])
+  const [answers] = useState<Record<string, string>>({})
+  const questions = prompts('test-next', answers)
 
   if (error) return <div>failed to load</div>
   if (!tasks) return <div>loading...</div>
@@ -46,41 +21,25 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <img src="/images/logo.svg" alt="Frourio Logo" className={styles.frourio} />
+
       <main className={styles.main}>
         <UserBanner />
 
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://github.com/frouriojs/frourio">frourio!</a>
         </h1>
 
-        <p className={styles.description}>frourio-todo-app</p>
+        <p className={styles.description}>create-frourio-app</p>
 
-        <div>
-          <form style={{ textAlign: 'center' }} onSubmit={createTask}>
-            <input value={label} type="text" onChange={inputLavel} />
-            <input type="submit" value="ADD" />
-          </form>
-          <ul className={styles.tasks}>
-            {tasks.map((task) => (
-              <li key={task.id}>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={task.done}
-                    onChange={() => toggleDone(task)}
-                  />
-                  <span>{task.label}</span>
-                </label>
-                <input
-                  type="button"
-                  value="DELETE"
-                  style={{ float: 'right' }}
-                  onClick={() => deleteTask(task)}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+        {
+          questions.map(question => (
+            <div key={question.name}>
+              <div>{question.message}</div>
+              {question.type === 'input' ? <input type="text" /> : question.choices.map(c => <div>{c.label}</div>)}
+            </div>
+          ))
+        }
       </main>
 
       <footer className={styles.footer}>
