@@ -1,23 +1,40 @@
 .frourio {
   width: 200px;
+  margin: 8px;
 }
 
-.container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
+.card {
+  margin-top: 16px;
+  background: #ebfff5;
+  border-radius: 8px;
+}
+
+.message {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.btn > .radioIcon {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #333;
+  border-radius: 50%;
+}
+
+.btn.active > .radioIcon {
+  background: #0edbda;
 }
 
 .main {
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 800px;
+  margin: 0 auto;
+  padding: 24px 0;
 }
 
 .footer {
@@ -40,7 +57,7 @@
 }
 
 .title a {
-  color: #0070f3;
+  color: #0edbda;
   text-decoration: none;
 }
 
@@ -54,6 +71,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  color: #0d0e59;
 }
 
 .title,
