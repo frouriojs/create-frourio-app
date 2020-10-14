@@ -1,20 +1,25 @@
 import Head from 'next/head'
-import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
+import { useCallback, useState, useMemo } from 'react'
 import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
-import { prompts } from '$/common/prompts'
+import { Answers, initPrompts } from '$/common/prompts'
 
 const Home = () => {
-  const { data: tasks, error, mutate: setTasks } = useAspidaSWR(apiClient.tasks)
-  const [answers] = useState<Record<string, string>>({})
-  const questions = prompts('test-next', answers)
+  const { data: info, error } = useAspidaSWR(apiClient.info)
+  const [answers, setAnswers] = useState<Answers | undefined>()
+  const prompts = useMemo(() => info ? initPrompts(info.editors) : null, [info])
+  const questions = useMemo(() => answers && prompts?.(answers), [prompts, answers])
+  const canCreate = useMemo(() => questions?.every(q => q.type !== 'input' || (answers?.[q.name] ?? q.default)), [questions, answers])
+  const choice = useCallback((name: keyof Answers, val: string) => setAnswers({ ...answers, [name]: val }), [answers])
+  const create = useCallback(() => answers && apiClient.info.$patch({ body: { answers }}), [answers])
 
   if (error) return <div>failed to load</div>
-  if (!tasks) return <div>loading...</div>
+  if (info && !answers) setAnswers(info.answers)
+  if (!answers || !questions) return <div>loading...</div>
 
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>frourio-todo-app</title>
         <link rel="icon" href="/favicon.ico" />
@@ -24,32 +29,33 @@ const Home = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://github.com/frouriojs/frourio">frourio!</a>
+          Welcome to <a href="https://github.com/frouriojs/frourio" target="_brank">frourio!</a>
         </h1>
 
         <p className={styles.description}>create-frourio-app</p>
 
         {
           questions.map(question => (
-            <div key={question.name}>
-              <div>{question.message}</div>
-              {question.type === 'input' ? <input type="text" /> : question.choices.map(c => <div>{c.label}</div>)}
+            <div key={question.name} className={styles.card}>
+              <div className={styles.message}>{question.message}</div>
+              {question.type === 'input' ? <input type="text" value={answers[question.name] ?? question.default ?? ''}
+                onChange={(e) => choice(question.name, e.target.value)}
+              /> : question.choices.map((c, i) =>
+                <div key={i} className={`${styles.btn}${(answers[question.name] ?? question.default) === c.value ? ` ${styles.active}` : ''}`}
+                  onClick={() => choice(question.name, c.value)}
+                >
+                  <div className={styles.radioIcon} /><div>{c.label}</div>
+                </div>
+              )}
             </div>
           ))
         }
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
+        <button disabled={!canCreate} onClick={create}>Create</button>
       </footer>
-    </div>
+    </>
   )
 }
 
