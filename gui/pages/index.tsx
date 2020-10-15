@@ -44,7 +44,7 @@ const Home = () => {
                 <div key={i} className={`${styles.btn}${(answers[question.name] ?? question.default) === c.value ? ` ${styles.active}` : ''}`}
                   onClick={() => choice(question.name, c.value)}
                 >
-                  <div className={styles.radioIcon} /><div>{c.label}</div>
+                  <div className={styles.radioIcon} /><div>{c.name}</div>
                 </div>
               )}
             </div>
