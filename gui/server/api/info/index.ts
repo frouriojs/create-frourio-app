@@ -4,7 +4,7 @@ export type Methods = {
   get: {
     resBody: {
       answers: Answers
-      editors: { label: string; value: string }[]
+      editors: { name: string; value: string }[]
     }
   }
 

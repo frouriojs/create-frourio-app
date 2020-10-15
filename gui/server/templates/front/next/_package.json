@@ -1,0 +1,50 @@
+{
+  "name": "<%= name %>",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "<% if (orm === 'prisma') { %>npm run migrate:up && <% } %>run-p dev:*",
+    "dev:front": "next dev",
+    "dev:server": "cd server && node_modules/.bin/webpack --watch --mode=development",
+    "dev:aspida": "aspida --watch",
+    "dev:frourio": "cd server && node_modules/.bin/frourio<% if (server === 'express') { %>-express<% } %> --watch<% if (orm === 'prisma') { %>",
+    "dev:prisma": "cd server && node_modules/.bin/prisma generate --watch<% } else if (orm === 'typeorm') { %>",
+    "dev:typeormer": "cd server && node_modules/.bin/typeormer --watch<% } %>",
+    "build": "run-p build:front build:server",
+    "build:front": "aspida && next build<% if (building === 'static') { %> && next export<% } %>",
+    "build:server": "<% if (orm === 'prisma') { %>npm run migrate:up && <% } %>npm run build:frourio && cd server && node_modules/.bin/webpack --mode=production",
+    "build:frourio": "cd server && <% if (orm === 'prisma') { %>node_modules/.bin/prisma generate && <% } else if (orm === 'typeorm') { %>node_modules/.bin/typeormer && <% } %>node_modules/.bin/frourio<% if (server === 'express') { %>-express<% } %>",
+    "build:types": "aspida && npm run build:frourio",
+    "install:server": "cd server && <%= pm %> install",
+    "lint": "eslint --ext .ts,.js,.tsx .",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "run-p start:*",
+    "start:front": "next start",
+    "start:server": "cd server && cross-env NODE_ENV=production node index.js",
+    "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
+  },
+  "dependencies": {
+    "@aspida/swr": "^0.2.0",
+    "class-validator": "^0.12.2",
+    "next": "9.5.3",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "swr": "^0.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^14.11.2",
+    "@types/react": "^16.9.49",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.2",
+    "ts-loader": "^8.0.4",
+    "typescript": "^4.0.3"
+  }
+}

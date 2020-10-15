@@ -3,19 +3,24 @@ const nodeExternals = require('webpack-node-externals')
 const NodemonPlugin = require('nodemon-webpack-plugin')
 
 module.exports = {
-  entry: './index.ts',
+  entry: {
+    index: './index.ts',
+    'generator/saofile': './generator/index.ts'
+  },
   target: 'node',
   node: {
     __dirname: false
   },
   output: {
-    filename: 'index.js',
-    path: __dirname
+    filename: '[name].js',
+    path: __dirname,
+    libraryExport: 'default',
+    libraryTarget: 'commonjs2'
   },
   module: {
     rules: [{ test: /\.ts$/, loader: 'ts-loader' }]
   },
-  plugins: [new NodemonPlugin()],
+  plugins: [new NodemonPlugin({ script: './index.js', watch: './index.js' })],
   resolve: {
     extensions: ['.ts', '.js'],
     plugins: [new TsconfigPathsPlugin()]

@@ -2,6 +2,7 @@ import fs from 'fs'
 import { join } from 'path'
 import { homedir } from 'os'
 import { Answers } from '$/common/prompts'
+import { install } from '$/service/install'
 
 const dirPath = join(homedir(), '.frourio')
 const dbPath = join(dirPath, 'create-frourio-app.json')
@@ -21,4 +22,5 @@ export const updateAnswers = async (answers: Answers) => {
   if (!fs.existsSync(dirPath)) await fs.promises.mkdir(dirPath)
 
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
+  install(answers)
 }

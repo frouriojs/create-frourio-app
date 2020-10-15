@@ -1,0 +1,7 @@
+{
+  "name": "<%= name %>",
+  "script": "index.js",
+  "env_production": {
+    "NODE_ENV": "production"
+  }
+}
