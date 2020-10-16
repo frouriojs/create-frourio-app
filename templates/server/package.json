@@ -45,7 +45,8 @@
   },
   "devDependencies": {
     "<% if (orm === 'prisma') { %>@prisma/cli": "^2.8.0",
-    "<% } %><% if (server === 'express') { %>@types/cors": "^2.8.7",
+    "<% } %><% if (server === 'fastify') { %>@types/busboy": "^0.2.3",
+    "<% } else { %>@types/cors": "^2.8.7",
     "@types/multer": "^1.4.4",
     "@types/passport": "^1.0.4",
     "<% } %>cross-env": "^7.0.2",
