@@ -1,6 +1,6 @@
 import fs from 'fs'<% if (testing !== 'none') { %>
 import { depend } from 'velona'<% } %>
-import { Task } from '$/types'
+import { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 
 type DB = {
   nextId: number
