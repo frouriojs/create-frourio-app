@@ -4,6 +4,9 @@ import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
 import { Answers, initPrompts } from '$/common/prompts'
+import { STATUS } from '$/common/types'
+
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 const Home = () => {
   const { data: info, error } = useAspidaSWR(apiClient.info)
@@ -12,7 +15,19 @@ const Home = () => {
   const questions = useMemo(() => answers && prompts?.(answers), [prompts, answers])
   const canCreate = useMemo(() => questions?.every(q => q.type !== 'input' || (answers?.[q.name] ?? q.default)), [questions, answers])
   const choice = useCallback((name: keyof Answers, val: string) => setAnswers({ ...answers, [name]: val }), [answers])
-  const create = useCallback(() => answers && apiClient.info.$patch({ body: { answers }}), [answers])
+  const create = useCallback(async () => {
+    answers && await apiClient.info.$patch({ body: { answers } })
+
+    let status: STATUS = 'waiting'
+
+    while (status !== 'completed') {
+      await sleep(1000)
+      status = await apiClient.status.$get()
+    }
+
+    await sleep(5000)
+    location.reload()
+  }, [answers])
 
   if (error) return <div>failed to load</div>
   if (info && !answers) setAnswers(info.answers)

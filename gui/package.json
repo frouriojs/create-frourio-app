@@ -16,9 +16,6 @@
     "install:server": "cd server && yarn install",
     "lint": "eslint --ext .ts,.js,.tsx .",
     "lint:fix": "npm run lint -- --fix",
-    "start": "run-p start:*",
-    "start:front": "next start",
-    "start:server": "cd server && cross-env NODE_ENV=production node index.js",
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server",
     "test": "npm run build:types && jest"
   },
@@ -38,8 +35,6 @@
     "@types/react": "^16.9.49",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
-    "cross-env": "^7.0.2",
-    "dotenv": "^8.2.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
