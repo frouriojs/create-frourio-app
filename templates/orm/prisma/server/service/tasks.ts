@@ -1,6 +1,5 @@
-import { PrismaClient } from '@prisma/client'<% if (testing !== 'none') { %>
+import { PrismaClient, Task, TaskUpdateInput } from '$prisma/client'<% if (testing !== 'none') { %>
 import { depend } from 'velona'<% } %>
-import { Task } from '$/types'
 
 const prisma = new PrismaClient()
 
@@ -15,7 +14,7 @@ export const createTask = (label: Task['label']) =>
 
 export const updateTask = (
   id: Task['id'],
-  partialTask: Partial<Pick<Task, 'label' | 'done'>>
+  partialTask: TaskUpdateInput
 ) => prisma.task.update({ where: { id }, data: partialTask })
 
 export const deleteTask = (id: Task['id']) =>
