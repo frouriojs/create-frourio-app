@@ -3,7 +3,7 @@ import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
 import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
-import { Task } from '$/types'
+import { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 import UserBanner from '~/components/UserBanner'
 
 const Home = () => {

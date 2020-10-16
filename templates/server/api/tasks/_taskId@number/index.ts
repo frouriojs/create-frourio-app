@@ -1,4 +1,4 @@
-import { Task } from '$/types'
+import { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 
 export type Methods = {
   patch: {
