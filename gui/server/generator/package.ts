@@ -45,19 +45,19 @@ export const load = (answers: Answers) => {
       scripts: {
         migrate: 'npm run migrate:save && npm run migrate:up',
         'migrate:save':
-          'cd server && node_modules/.bin/prisma migrate save --create-db --experimental',
+          'cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/prisma migrate save --create-db --experimental',
         'migrate:up':
-          'cd server && node_modules/.bin/prisma migrate up --create-db --experimental',
-        'migrate:down': 'cd server && node_modules/.bin/prisma migrate down --experimental'
+          'cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/prisma migrate up --create-db --experimental',
+        'migrate:down': 'cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/prisma migrate down --experimental'
       }
     })
   } else if (answers.orm === 'typeorm') {
     pkgs.push({
       scripts: {
         'migration:generate':
-          'cd server && ts-node node_modules/.bin/typeorm migration:generate -n Task',
-        'migration:run': 'cd server && ts-node node_modules/.bin/typeorm migration:run',
-        'migration:revert': 'cd server && ts-node node_modules/.bin/typeorm migration:revert'
+          'cd server && ts-node cross-env DUMMY_ENV=forWin node_modules/.bin/typeorm migration:generate -n Task',
+        'migration:run': 'cd server && ts-node cross-env DUMMY_ENV=forWin node_modules/.bin/typeorm migration:run',
+        'migration:revert': 'cd server && ts-node cross-env DUMMY_ENV=forWin node_modules/.bin/typeorm migration:revert'
       }
     })
   }

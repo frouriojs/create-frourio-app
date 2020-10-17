@@ -4,7 +4,8 @@ import { Task } from '$/entity/Task'
 
 const taskRepository = () => getRepository(Task)
 
-export const getTasks = <% if (testing === 'none') { %>async (limit?: number) => (await taskRepository().find()).slice(0, limit)<% } else { %>depend(
+export const getTasks = <% if (testing === 'none') { %>async (limit?: number) =>
+  (await taskRepository().find()).slice(0, limit)<% } else { %>depend(
   { taskRepository: taskRepository as () => { find(): Promise<Task[]> } },
   async ({ taskRepository }, limit?: number) =>
     (await taskRepository().find()).slice(0, limit)
