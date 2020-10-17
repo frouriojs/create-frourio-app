@@ -1,11 +1,11 @@
 import { relative, resolve } from 'path'
 import validate from 'validate-npm-package-name'
 import spawn from 'cross-spawn'
-import {dbInfo} from '../common/dbInfo'
+import { dbInfo } from '../common/dbInfo'
 import { load } from './package'
 
 export default {
-  actions(this: { answers: Record<string, any>, outDir: string }) {
+  actions(this: { answers: Record<string, any>; outDir: string }) {
     const validation = validate(this.answers.name)
     validation.warnings &&
       validation.warnings.forEach((warn: string) => {
@@ -21,7 +21,10 @@ export default {
       {
         type: 'add',
         files: '**',
-        templateDir: resolve(__dirname, `../templates/core/${this.answers.server}`)
+        templateDir: resolve(
+          __dirname,
+          `../templates/core/${this.answers.server}`
+        )
       }
     ]
 
@@ -29,7 +32,10 @@ export default {
       addedList.push({
         type: 'add',
         files: '**',
-        templateDir: resolve(__dirname, `../templates/core/${this.answers.server}-typeorm`)
+        templateDir: resolve(
+          __dirname,
+          `../templates/core/${this.answers.server}-typeorm`
+        )
       })
     }
 
@@ -37,7 +43,10 @@ export default {
       addedList.push({
         type: 'add',
         files: '**',
-        templateDir: resolve(__dirname, `../templates/daemon/${this.answers.daemon}`)
+        templateDir: resolve(
+          __dirname,
+          `../templates/daemon/${this.answers.daemon}`
+        )
       })
     }
 
@@ -55,9 +64,9 @@ export default {
         templateDir: resolve(__dirname, '../templates/orm/prisma')
       })
     } else if (this.answers.orm === 'typeorm') {
-      this.answers.dbModule = `",\n    "${dbInfo[this.answers.dbType as keyof typeof dbInfo].name}": "${
-        dbInfo[this.answers.dbType as keyof typeof dbInfo].ver
-      }`
+      this.answers.dbModule = `",\n    "${
+        dbInfo[this.answers.dbType as keyof typeof dbInfo].name
+      }": "${dbInfo[this.answers.dbType as keyof typeof dbInfo].ver}`
 
       addedList.push({
         type: 'add',
@@ -70,7 +79,10 @@ export default {
       addedList.push({
         type: 'add',
         files: '**',
-        templateDir: resolve(__dirname, `../templates/testing/${this.answers.testing}`)
+        templateDir: resolve(
+          __dirname,
+          `../templates/testing/${this.answers.testing}`
+        )
       })
     }
 
@@ -78,7 +90,10 @@ export default {
       {
         type: 'add',
         files: '**',
-        templateDir: resolve(__dirname, `../templates/front/${this.answers.front}`)
+        templateDir: resolve(
+          __dirname,
+          `../templates/front/${this.answers.front}`
+        )
       },
       {
         type: 'add',
@@ -117,7 +132,10 @@ export default {
     this.gitInit()
 
     await this.npmInstall({ npmClient: this.answers.pm })
-    await this.npmInstall({ npmClient: this.answers.pm, cwd: `${this.outDir}/server` })
+    await this.npmInstall({
+      npmClient: this.answers.pm,
+      cwd: `${this.outDir}/server`
+    })
 
     spawn.sync(this.answers.pm, ['run', 'build:types'], {
       cwd: this.outDir,
@@ -130,17 +148,23 @@ export default {
     const cdMsg = isNewFolder ? chalk`\n\t{cyan cd ${relativeOutFolder}}\n` : ''
     const pmRun = this.answers.pm === 'yarn' ? 'yarn' : 'npm run'
 
-    console.log(chalk`\n🎉  {bold Successfully created project} {cyan ${this.answers.name}}\n`)
+    console.log(
+      chalk`\n🎉  {bold Successfully created project} {cyan ${this.answers.name}}\n`
+    )
 
     console.log(chalk`  {bold To get started:}`)
     if (this.answers.orm !== 'none' && this.answers.dbType !== 'sqlite') {
-      console.log(chalk`\t{cyan (start ${this.answers.dbType} server yourself)}`)
+      console.log(
+        chalk`\t{cyan (start ${this.answers.dbType} server yourself)}`
+      )
     }
     console.log(chalk`${cdMsg}\t{cyan ${pmRun} dev}\n`)
 
     console.log(chalk`  {bold To build & start for production:}`)
     if (this.answers.orm !== 'none' && this.answers.dbType !== 'sqlite') {
-      console.log(chalk`\t{cyan (start ${this.answers.dbType} server yourself)}`)
+      console.log(
+        chalk`\t{cyan (start ${this.answers.dbType} server yourself)}`
+      )
     }
     console.log(chalk`${cdMsg}\t{cyan ${pmRun} build}`)
     console.log(chalk`\t{cyan ${pmRun} start}\n`)

@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
     root: path.join(__dirname, '../out')
   })
 
-  getPortPromise({ port: ports.server }).then(async port => {
+  getPortPromise({ port: ports.server }).then(async (port) => {
     ports.server = port
     await server(fastify, { basePath }).listen(port)
     await open(`http://localhost:${port}`)

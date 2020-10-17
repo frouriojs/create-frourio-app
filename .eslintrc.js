@@ -27,12 +27,15 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off'
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/ban-types': 'off'
   },
   overrides: [
     {
       files: ['*.js'],
-      rules: { '@typescript-eslint/no-var-requires': ['off'] }
+      rules: {
+        '@typescript-eslint/no-var-requires': ['off']
+      }
     }
   ]
 }

@@ -18,12 +18,23 @@ module.exports = {
     libraryTarget: 'commonjs2'
   },
   module: {
-    rules: [{ test: /\.ts$/, loader: 'ts-loader', options: { configFile: 'server/tsconfig.json' } }]
+    rules: [
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: { configFile: 'server/tsconfig.json' }
+      }
+    ]
   },
-  plugins: [new NodemonPlugin({ script: './server/index.js', watch: './server/index.js' })],
+  plugins: [
+    new NodemonPlugin({
+      script: './server/index.js',
+      watch: './server/index.js'
+    })
+  ],
   resolve: {
     extensions: ['.ts', '.js'],
-    plugins: [new TsconfigPathsPlugin({ configFile: "server/tsconfig.json" })]
+    plugins: [new TsconfigPathsPlugin({ configFile: 'server/tsconfig.json' })]
   },
   externals: [nodeExternals()]
 }

@@ -1,5 +1,5 @@
 node_modules
 .next
 out
-server/index.js
+server/**/*.js
 server/templates

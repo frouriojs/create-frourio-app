@@ -4,4 +4,6 @@ let status: STATUS = 'waiting'
 
 export const getStatus = () => status
 
-export const setStatus = (val: STATUS) => { status = val }
+export const setStatus = (val: STATUS) => {
+  status = val
+}

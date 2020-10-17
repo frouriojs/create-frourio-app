@@ -37,6 +37,7 @@
     "bin",
     "out",
     "server/index.js",
+    "server/generator/saofile.js",
     "server/templates"
   ],
   "keywords": [
