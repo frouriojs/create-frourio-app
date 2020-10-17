@@ -1,3 +1,5 @@
 node_modules
-templates
-gui
+.next
+out
+server/index.js
+server/templates
