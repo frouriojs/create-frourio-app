@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.14.3](https://github.com/frouriojs/create-frourio-app/compare/v0.14.2...v0.14.3) (2020-10-17)
+
+
+### Features
+
+* **gui:** add bin/index.js ([93976c3](https://github.com/frouriojs/create-frourio-app/commit/93976c35bcaa6c1883082257fde159edfb0810c9))
+* add saofiles ([32fe9ca](https://github.com/frouriojs/create-frourio-app/commit/32fe9ca5a5e9969fa415d591a94a02b9d55be7f5))
+* **gui:** add api ([907b1e0](https://github.com/frouriojs/create-frourio-app/commit/907b1e0b4a5ca28724506c54b8aeb8419a66c6e6))
+* **gui:** add prompts ([ac684e7](https://github.com/frouriojs/create-frourio-app/commit/ac684e7f000d4a1ffbebd088b40121a22c8fa0a0))
+* add gui directory ([3824bad](https://github.com/frouriojs/create-frourio-app/commit/3824bad0747888f6a824b441435031f610f728ee))
+* update frourio@0.17.2 ([569d3cd](https://github.com/frouriojs/create-frourio-app/commit/569d3cd7f3e85031c92de6a77bf1c1b18d630887))
+
+
+### Bug Fixes
+
+* add dummy env to npm command for windows ([4cbf1de](https://github.com/frouriojs/create-frourio-app/commit/4cbf1deefd6dc8a86f8e2e05696b93fc13d59624))
+
 ### [0.14.2](https://github.com/frouriojs/create-frourio-app/compare/v0.14.1...v0.14.2) (2020-10-16)
 
 

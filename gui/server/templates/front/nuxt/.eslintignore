@@ -1,0 +1,5 @@
+node_modules
+.nuxt
+dist
+server/migration
+server/index.js

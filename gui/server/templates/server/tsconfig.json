@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "lib": ["dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "$/*": ["./*"]<% if (orm === 'prisma') { %>,
+      "$prisma/*": ["./node_modules/.prisma/*"]<% } %>
+    },
+    "rootDir": ".",
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "target": "es6"
+  }<% if (orm === 'typeorm') { %>,
+  "exclude": ["node_modules", "ormconfig.ts"]<% } %>
+}
