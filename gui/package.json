@@ -27,7 +27,7 @@
     "fastify-cors": "^4.1.0",
     "fastify-static": "^3.2.1",
     "frourio": "^0.17.2",
-    "next": "9.5.3",
+    "next": "9.5.4",
     "open-editor": "^2.0.1",
     "portfinder": "^1.0.28",
     "react": "16.13.1",
