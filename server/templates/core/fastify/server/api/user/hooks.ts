@@ -1,8 +1,10 @@
 import { defineHooks } from './$relay'
 import { getUserIdByToken } from '$/service/user'
 
-export type User = {
-  id: string
+export type AdditionalRequest = {
+  user: {
+    id: string
+  }
 }
 
 export default defineHooks((fastify) => ({
