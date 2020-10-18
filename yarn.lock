@@ -4655,7 +4655,7 @@ git-clone@^0.1.0:
   resolved "https://registry.yarnpkg.com/git-clone/-/git-clone-0.1.0.tgz#0d76163778093aef7f1c30238f2a9ef3f07a2eb9"
   integrity sha1-DXYWN3gJOu9/HDAjjyqe8/B6Lrk=
 
-github-buttons@^2.8.0:
+github-buttons@^2.14.0:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/github-buttons/-/github-buttons-2.14.0.tgz#32ce381651091accda09217cd7a6e4c77f91e222"
   integrity sha512-rAwKwFOiWoyhb3g5ZyXjI3XXprAa36jCd0tm467aEUYtiDZkqEXkepuzNg9LryLbnuLRQmcifIPTxLUBnuYpXQ==
@@ -7792,13 +7792,6 @@ react-dom@16.13.1:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.19.1"
-
-react-github-btn@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-github-btn/-/react-github-btn-1.2.0.tgz#464066f999a77c0eed27980260601b51cbe15614"
-  integrity sha512-/b2TGTeek5Ky+KtuP5BxOaXgb1FGhbwgZNI6rkwkGk7+xtCtsNMkdchOcCnC3qU1JGTWPKzYZWpPBIouVhXAoQ==
-  dependencies:
-    github-buttons "^2.8.0"
 
 react-is@16.13.1, react-is@^16.12.0, react-is@^16.8.1:
   version "16.13.1"

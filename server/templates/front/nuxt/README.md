@@ -7,7 +7,7 @@
 $ yarn install
 $ yarn install:server
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at localhost:<%= frontPort %>
 $ yarn dev
 
 # build for production and launch server

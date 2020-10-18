@@ -23,7 +23,8 @@
     "release:minor": "npm run release -- --release-as minor",
     "release:patch": "npm run release -- --release-as patch",
     "typecheck": "tsc --noEmit && tsc --noEmit -p server",
-    "test": "jest"
+    "test": "jest --passWithNoTests",
+    "test:update": "cross-env TEST_MODE=update webpack --mode=production && ts-node server/tests/update.ts"
   },
   "homepage": "https://github.com/frouriojs/create-frourio-app#readme",
   "repository": {
@@ -53,12 +54,12 @@
     "fastify-cors": "^4.1.0",
     "fastify-static": "^3.2.1",
     "frourio": "^0.17.2",
+    "github-buttons": "^2.14.0",
     "next": "9.5.3",
     "open-editor": "^2.0.1",
     "portfinder": "^1.0.28",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-github-btn": "^1.2.0",
     "sao": "^1.7.1",
     "swr": "^0.3.5",
     "validate-npm-package-name": "^3.0.0"

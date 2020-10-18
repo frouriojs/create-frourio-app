@@ -2,13 +2,12 @@ import fs from 'fs'
 import { join, resolve } from 'path'
 import { homedir } from 'os'
 import { spawn } from 'child_process'
-import open from 'open'
 import { getPortPromise } from 'portfinder'
 import { make, Options } from 'open-editor'
 import { Answers, initPrompts } from '$/common/prompts'
 import { fastify, ports } from '../'
 import { editors } from './editors'
-import { setStatus } from './status'
+import { getStatus, setStatus } from './status'
 
 // eslint-disable-next-line
 const sao = require('sao')
@@ -17,7 +16,7 @@ const dbPath = join(dirPath, 'create-frourio-app.json')
 
 let db: {
   ver: number
-  answers: Omit<Answers, 'dir'>
+  answers: Answers
 } = fs.existsSync(dbPath)
   ? JSON.parse(fs.readFileSync(dbPath, 'utf8'))
   : { ver: 1, answers: {} }
@@ -45,7 +44,7 @@ const openEditor = (cwd: string, options: Options) => {
   }
 }
 
-const install = async (answers: Answers, frontPort: number) => {
+export const install = async (answers: Answers, frontPort: number) => {
   setStatus('installing')
   const allAnswers = initPrompts(editors)(answers).reduce(
     (prev, current) => ({
@@ -72,32 +71,33 @@ const install = async (answers: Answers, frontPort: number) => {
   await fastify.close()
   const cwd = resolve(answers.dir ?? '')
 
+  delete db.answers.dir
+  await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
+
   if (allAnswers.editor !== 'none') {
     openEditor(cwd, { editor: allAnswers.editor })
   }
 
   spawn(answers.pm ?? 'npm', ['run', 'dev'], { cwd, stdio: 'inherit' })
-
-  setStatus('completed')
 }
 
-export const getAnswers = () => ({ ...db.answers, dir: process.argv[2] })
+export const getAnswers = () => ({ dir: process.argv[2], ...db.answers })
 
 export const updateAnswers = async (answers: Answers) => {
-  const ans = { ...answers }
-  delete ans.dir
-  db = { ...db, answers: ans }
-
-  if (!fs.existsSync(dirPath)) await fs.promises.mkdir(dirPath)
-
-  await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
-
   const frontPort =
-    process.env.NODE_ENV === 'production'
-      ? await getPortPromise({ port: 3000 })
-      : 3001
+    process.env.NODE_ENV === 'development'
+      ? 3001
+      : await getPortPromise({ port: 3000 })
 
-  install(answers, frontPort)
+  if (getStatus() === 'waiting') {
+    db = { ...db, answers }
+
+    if (!fs.existsSync(dirPath)) await fs.promises.mkdir(dirPath)
+
+    await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
+
+    install(answers, frontPort)
+  }
 
   return { frontPort }
 }

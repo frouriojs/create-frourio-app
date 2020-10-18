@@ -2,18 +2,22 @@ import Head from 'next/head'
 import { useCallback, useState, useMemo } from 'react'
 import useAspidaSWR from '@aspida/swr'
 import axios from 'axios'
-import GitHubButton from 'react-github-btn'
+import GitHubButton from '~/components/react-github-btn'
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
 import { Answers, initPrompts } from '$/common/prompts'
-import { STATUS } from '$/common/types'
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const Home = () => {
   const { data: info, error } = useAspidaSWR(apiClient.info)
+  const {
+    data: serverStatus,
+    error: statusError,
+    mutate: setServerStatus
+  } = useAspidaSWR(apiClient.status)
   const [answers, setAnswers] = useState<Answers | undefined>()
-  const [serverStatus, setServerStatus] = useState<STATUS>('waiting')
+  const [created, setCreated] = useState(false)
   const prompts = useMemo(() => (info ? initPrompts(info.editors) : null), [
     info
   ])
@@ -36,10 +40,11 @@ const Home = () => {
   const create = useCallback(async () => {
     if (!canCreate || !answers) return
 
-    setServerStatus('installing')
-
     const { frontPort } = await apiClient.info.$patch({ body: { answers } })
     const href = `http://${location.hostname}:${frontPort}`
+
+    setCreated(true)
+    setServerStatus()
 
     try {
       // eslint-disable-next-line
@@ -60,9 +65,10 @@ const Home = () => {
     }
   }, [answers, canCreate])
 
-  if (error) return <div>failed to load</div>
+  if (error || statusError) return <div>failed to load</div>
   if (info && !answers) setAnswers(info.answers)
-  if (!answers || !questions) return <div>loading...</div>
+  if (!answers || !serverStatus || !questions) return <div>loading...</div>
+  if (serverStatus.status === 'installing' && !created) create()
 
   return (
     <>
@@ -140,7 +146,7 @@ const Home = () => {
         </div>
       </div>
 
-      {serverStatus !== 'waiting' && (
+      {serverStatus.status !== 'waiting' && (
         <div className={styles.installing}>
           <div>
             <div className={styles.installingTitle}>

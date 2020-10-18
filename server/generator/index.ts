@@ -128,59 +128,63 @@ export default {
       }
     ]
   },
-  async completed(this: Record<string, any>) {
-    this.gitInit()
+  completed:
+    process.env.TEST_MODE !== 'update' &&
+    async function (this: Record<string, any>) {
+      this.gitInit()
 
-    await this.npmInstall({ npmClient: this.answers.pm })
-    await this.npmInstall({
-      npmClient: this.answers.pm,
-      cwd: `${this.outDir}/server`
-    })
+      await this.npmInstall({ npmClient: this.answers.pm })
+      await this.npmInstall({
+        npmClient: this.answers.pm,
+        cwd: `${this.outDir}/server`
+      })
 
-    spawn.sync(this.answers.pm, ['run', 'build:types'], {
-      cwd: this.outDir,
-      stdio: 'inherit'
-    })
+      spawn.sync(this.answers.pm, ['run', 'build:types'], {
+        cwd: this.outDir,
+        stdio: 'inherit'
+      })
 
-    const chalk = this.chalk
-    const isNewFolder = this.outDir !== process.cwd()
-    const relativeOutFolder = relative(process.cwd(), this.outDir)
-    const cdMsg = isNewFolder ? chalk`\n\t{cyan cd ${relativeOutFolder}}\n` : ''
-    const pmRun = this.answers.pm === 'yarn' ? 'yarn' : 'npm run'
+      const chalk = this.chalk
+      const isNewFolder = this.outDir !== process.cwd()
+      const relativeOutFolder = relative(process.cwd(), this.outDir)
+      const cdMsg = isNewFolder
+        ? chalk`\n\t{cyan cd ${relativeOutFolder}}\n`
+        : ''
+      const pmRun = this.answers.pm === 'yarn' ? 'yarn' : 'npm run'
 
-    console.log(
-      chalk`\n🎉  {bold Successfully created project} {cyan ${this.answers.name}}\n`
-    )
-
-    console.log(chalk`  {bold To get started:}`)
-    if (
-      this.answers.orm !== 'none' &&
-      (this.answers.orm === 'typeorm' || this.answers.prismaDB !== 'sqlite')
-    ) {
       console.log(
-        chalk`\t{cyan (start ${
-          this.answers.orm === 'prisma'
-            ? this.answers.prismaDB
-            : this.answers.typeormDB
-        } server yourself)}`
+        chalk`\n🎉  {bold Successfully created project} {cyan ${this.answers.name}}\n`
       )
-    }
-    console.log(chalk`${cdMsg}\t{cyan ${pmRun} dev}\n`)
 
-    console.log(chalk`  {bold To build & start for production:}`)
-    if (
-      this.answers.orm !== 'none' &&
-      (this.answers.orm === 'typeorm' || this.answers.prismaDB !== 'sqlite')
-    ) {
-      console.log(
-        chalk`\t{cyan (start ${
-          this.answers.orm === 'prisma'
-            ? this.answers.prismaDB
-            : this.answers.typeormDB
-        } server yourself)}`
-      )
+      console.log(chalk`  {bold To get started:}`)
+      if (
+        this.answers.orm !== 'none' &&
+        (this.answers.orm === 'typeorm' || this.answers.prismaDB !== 'sqlite')
+      ) {
+        console.log(
+          chalk`\t{cyan (start ${
+            this.answers.orm === 'prisma'
+              ? this.answers.prismaDB
+              : this.answers.typeormDB
+          } server yourself)}`
+        )
+      }
+      console.log(chalk`${cdMsg}\t{cyan ${pmRun} dev}\n`)
+
+      console.log(chalk`  {bold To build & start for production:}`)
+      if (
+        this.answers.orm !== 'none' &&
+        (this.answers.orm === 'typeorm' || this.answers.prismaDB !== 'sqlite')
+      ) {
+        console.log(
+          chalk`\t{cyan (start ${
+            this.answers.orm === 'prisma'
+              ? this.answers.prismaDB
+              : this.answers.typeormDB
+          } server yourself)}`
+        )
+      }
+      console.log(chalk`${cdMsg}\t{cyan ${pmRun} build}`)
+      console.log(chalk`\t{cyan ${pmRun} start}\n`)
     }
-    console.log(chalk`${cdMsg}\t{cyan ${pmRun} build}`)
-    console.log(chalk`\t{cyan ${pmRun} start}\n`)
-  }
 }
