@@ -31,7 +31,7 @@ fastify.register(fastifyAuth).after(() => {
 })
 
 createConnection({
-  type: '<%= dbType %>',
+  type: '<%= typeormDB %>',
   host: TYPEORM_HOST,
   username: TYPEORM_USERNAME,
   password: TYPEORM_PASSWORD,

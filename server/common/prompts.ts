@@ -1,4 +1,4 @@
-import { dbInfo } from './dbInfo'
+import { prismaDBs, typeormDBs } from './dbInfo'
 
 type PromptName =
   | 'dir'
@@ -12,7 +12,8 @@ type PromptName =
   | 'daemon'
   | 'testing'
   | 'orm'
-  | 'dbType'
+  | 'prismaDB'
+  | 'typeormDB'
   | 'dbHost'
   | 'dbPort'
   | 'dbUser'
@@ -65,7 +66,7 @@ const saoPrompts = (
     message: 'Core framework of frourio',
     type: 'list',
     choices: [
-      { name: 'Fastify (5x faster than Express)', value: 'fastify' },
+      { name: 'Fastify (5x faster)', value: 'fastify' },
       { name: 'Express', value: 'express' }
     ],
     default: 'fastify'
@@ -86,7 +87,7 @@ const saoPrompts = (
     type: 'list',
     choices: [
       { name: 'Basic (next build)', value: 'basic' },
-      { name: 'Static (next build && next export)', value: 'static' }
+      { name: 'Static (next export)', value: 'static' }
     ],
     default: 'basic',
     when: (ans) => ans.front === 'next'
@@ -108,7 +109,7 @@ const saoPrompts = (
     type: 'list',
     choices: [
       { name: 'Server (Node.js hosting)', value: 'server' },
-      { name: 'Static (Static/JAMStack hosting)', value: 'static' }
+      { name: 'Static (JAMStack hosting)', value: 'static' }
     ],
     default: 'server',
     when: (ans) => ans.front === 'nuxt'
@@ -165,7 +166,7 @@ const saoPrompts = (
     default: 'prisma'
   },
   {
-    name: 'dbType',
+    name: 'prismaDB',
     message: 'Database type of Prisma',
     choices: [
       { name: 'MySQL', value: 'mysql' },
@@ -177,7 +178,7 @@ const saoPrompts = (
     when: (ans) => ans.orm === 'prisma'
   },
   {
-    name: 'dbType',
+    name: 'typeormDB',
     message: 'Database type of TypeORM',
     choices: [
       { name: 'MySQL', value: 'mysql' },
@@ -196,7 +197,7 @@ const saoPrompts = (
     message: 'server/prisma/.env HOST=',
     default: 'localhost',
     type: 'input',
-    when: (ans) => ans.orm === 'prisma' && ans.dbType !== 'sqlite'
+    when: (ans) => ans.orm === 'prisma' && ans.prismaDB !== 'sqlite'
   },
   {
     name: 'dbHost',
@@ -209,21 +210,23 @@ const saoPrompts = (
     name: 'dbPort',
     message: 'server/prisma/.env PORT=',
     type: 'input',
-    default: (ans) => `${dbInfo[ans.dbType as keyof typeof dbInfo].port}`,
-    when: (ans) => ans.orm === 'prisma' && ans.dbType !== 'sqlite'
+    default: (ans) =>
+      `${prismaDBs[ans.prismaDB as keyof typeof prismaDBs]?.port ?? ''}`,
+    when: (ans) => ans.orm === 'prisma' && ans.prismaDB !== 'sqlite'
   },
   {
     name: 'dbPort',
     message: 'server/.env TYPEORM_PORT=',
     type: 'input',
-    default: (ans) => `${dbInfo[ans.dbType as keyof typeof dbInfo].port}`,
+    default: (ans) =>
+      `${typeormDBs[ans.typeormDB as keyof typeof typeormDBs]?.port ?? ''}`,
     when: (ans) => ans.orm === 'typeorm'
   },
   {
     name: 'dbUser',
     message: 'server/prisma/.env USER=',
     type: 'input',
-    when: (ans) => ans.orm === 'prisma' && ans.dbType !== 'sqlite'
+    when: (ans) => ans.orm === 'prisma' && ans.prismaDB !== 'sqlite'
   },
   {
     name: 'dbUser',
@@ -235,7 +238,7 @@ const saoPrompts = (
     name: 'dbPass',
     message: 'server/prisma/.env PASSWORD=',
     type: 'input',
-    when: (ans) => ans.orm === 'prisma' && ans.dbType !== 'sqlite'
+    when: (ans) => ans.orm === 'prisma' && ans.prismaDB !== 'sqlite'
   },
   {
     name: 'dbPass',
@@ -247,7 +250,7 @@ const saoPrompts = (
     name: 'dbName',
     message: 'server/prisma/.env DATABASE=',
     type: 'input',
-    when: (ans) => ans.orm === 'prisma' && ans.dbType !== 'sqlite'
+    when: (ans) => ans.orm === 'prisma' && ans.prismaDB !== 'sqlite'
   },
   {
     name: 'dbName',
@@ -260,11 +263,11 @@ const saoPrompts = (
     message: 'server/prisma/.env DATABASE_FILE=',
     type: 'input',
     default: './dev.db',
-    when: (ans) => ans.orm === 'prisma' && ans.dbType === 'sqlite'
+    when: (ans) => ans.orm === 'prisma' && ans.prismaDB === 'sqlite'
   },
   {
     name: 'editor',
-    message: 'Editor for development',
+    message: 'Editor (automatically open this project)',
     type: 'list',
     choices: [...editors, { name: 'None', value: 'none' }],
     default: 'vscode'

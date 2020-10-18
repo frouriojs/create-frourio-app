@@ -1,7 +1,7 @@
 import { relative, resolve } from 'path'
 import validate from 'validate-npm-package-name'
 import spawn from 'cross-spawn'
-import { dbInfo } from '../common/dbInfo'
+import { typeormDBs } from '../common/dbInfo'
 import { load } from './package'
 
 export default {
@@ -54,9 +54,9 @@ export default {
 
     if (this.answers.orm === 'prisma') {
       this.answers.dbUrl =
-        this.answers.dbType === 'sqlite'
+        this.answers.prismaDB === 'sqlite'
           ? `file:${this.answers.dbFile}`
-          : `${this.answers.dbType}://${this.answers.dbUser}:${this.answers.dbPass}@${this.answers.dbHost}:${this.answers.dbPort}/${this.answers.dbName}`
+          : `${this.answers.prismaDB}://${this.answers.dbUser}:${this.answers.dbPass}@${this.answers.dbHost}:${this.answers.dbPort}/${this.answers.dbName}`
 
       addedList.push({
         type: 'add',
@@ -65,8 +65,8 @@ export default {
       })
     } else if (this.answers.orm === 'typeorm') {
       this.answers.dbModule = `",\n    "${
-        dbInfo[this.answers.dbType as keyof typeof dbInfo].name
-      }": "${dbInfo[this.answers.dbType as keyof typeof dbInfo].ver}`
+        typeormDBs[this.answers.typeormDB as keyof typeof typeormDBs].name
+      }": "${typeormDBs[this.answers.typeormDB as keyof typeof typeormDBs].ver}`
 
       addedList.push({
         type: 'add',
@@ -153,17 +153,31 @@ export default {
     )
 
     console.log(chalk`  {bold To get started:}`)
-    if (this.answers.orm !== 'none' && this.answers.dbType !== 'sqlite') {
+    if (
+      this.answers.orm !== 'none' &&
+      (this.answers.orm === 'typeorm' || this.answers.prismaDB !== 'sqlite')
+    ) {
       console.log(
-        chalk`\t{cyan (start ${this.answers.dbType} server yourself)}`
+        chalk`\t{cyan (start ${
+          this.answers.orm === 'prisma'
+            ? this.answers.prismaDB
+            : this.answers.typeormDB
+        } server yourself)}`
       )
     }
     console.log(chalk`${cdMsg}\t{cyan ${pmRun} dev}\n`)
 
     console.log(chalk`  {bold To build & start for production:}`)
-    if (this.answers.orm !== 'none' && this.answers.dbType !== 'sqlite') {
+    if (
+      this.answers.orm !== 'none' &&
+      (this.answers.orm === 'typeorm' || this.answers.prismaDB !== 'sqlite')
+    ) {
       console.log(
-        chalk`\t{cyan (start ${this.answers.dbType} server yourself)}`
+        chalk`\t{cyan (start ${
+          this.answers.orm === 'prisma'
+            ? this.answers.prismaDB
+            : this.answers.typeormDB
+        } server yourself)}`
       )
     }
     console.log(chalk`${cdMsg}\t{cyan ${pmRun} build}`)

@@ -12,7 +12,7 @@
         "source": "db"
       },
       "argument": "provider",
-      "value": "\"<%= dbType %>\""
+      "value": "\"<%= prismaDB %>\""
     },
     {
       "tag": "CreateArgument",

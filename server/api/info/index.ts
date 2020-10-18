@@ -13,6 +13,8 @@ export type Methods = {
       answers: Answers
     }
 
-    status: 204
+    resBody: {
+      frontPort: number
+    }
   }
 }

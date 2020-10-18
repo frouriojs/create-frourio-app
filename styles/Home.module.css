@@ -1,59 +1,96 @@
-.frourio {
-  width: 200px;
+.logo {
+  width: 160px;
   margin: 8px;
 }
 
 .card {
-  margin-top: 16px;
-  background: #ebfff5;
-  border-radius: 8px;
+  margin-top: 48px;
 }
 
 .message {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
+  color: #555;
+}
+
+.ctrls {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .btn {
+  width: 280px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 18px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-right: 16px;
+  margin-top: 16px;
+}
+
+.btn:hover {
+  background: #f8f8f8;
 }
 
 .btn > .radioIcon {
-  width: 12px;
-  height: 12px;
-  border: 2px solid #333;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #0edbda;
   border-radius: 50%;
+  margin-right: 8px;
 }
 
 .btn.active > .radioIcon {
   background: #0edbda;
 }
 
+.ctrls > input {
+  width: 280px;
+  border: none;
+  border-bottom: 2px solid #bbb;
+  background: #f8f8f8;
+  font-size: 16px;
+  padding: 8px;
+  margin-top: 16px;
+}
+
+.ctrls > input:focus {
+  outline: none;
+}
+
+.createBtn {
+  width: 160px;
+  background: #0d0e59;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px 0 6px;
+  border-radius: 4px;
+  font-size: 20px;
+  margin: 48px auto 0;
+  transform: translateX(-12px);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.createBtn:hover {
+  opacity: 0.8;
+}
+
+.createBtn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .main {
-  width: 800px;
+  width: 900px;
   margin: 0 auto;
-  padding: 24px 0;
-}
-
-.footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer img {
-  margin-left: 0.5rem;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-top: 48px;
 }
 
 .title a {
@@ -61,9 +98,7 @@
   text-decoration: none;
 }
 
-.title a:hover,
-.title a:focus,
-.title a:active {
+.title a:hover {
   text-decoration: underline;
 }
 
@@ -72,18 +107,85 @@
   line-height: 1.15;
   font-size: 4rem;
   color: #0d0e59;
-}
-
-.title,
-.description {
   text-align: center;
 }
 
 .description {
   line-height: 1.5;
   font-size: 1.5rem;
+  padding: 12px 0 40px;
+  margin: 0;
+  text-align: center;
 }
 
-.logo {
-  height: 1em;
+.contribution {
+  width: 320px;
+  display: flex;
+  margin: 120px auto 40px;
+}
+
+.contribution > img {
+  width: 48px;
+  margin-bottom: -4px;
+}
+
+.contribution > div {
+  margin-left: 16px;
+}
+
+.contribution a {
+  font-weight: bold;
+  color: #0edbda;
+}
+
+.contribution a:hover {
+  text-decoration: underline;
+}
+
+.installing {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #1113;
+}
+
+.installing > div {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  margin: 80px auto;
+  width: 640px;
+  padding: 40px 0;
+}
+
+.installingTitle {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.installingDesc {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.star {
+  display: flex;
+  margin-top: 64px;
+  justify-content: center;
+}
+
+.star > img {
+  width: 120px;
+}
+
+.star > div {
+  margin-left: 24px;
+  padding-top: 4px;
+}
+
+.starDesc {
+  margin-bottom: 16px;
 }

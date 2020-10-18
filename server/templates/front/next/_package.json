@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "<% if (orm === 'prisma') { %>npm run migrate:up && <% } %>run-p dev:*",
-    "dev:front": "next dev",
+    "dev:front": "next dev -p <%= frontPort %>",
     "dev:server": "cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/webpack --watch --mode=development",
     "dev:aspida": "aspida --watch",
     "dev:frourio": "cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/frourio<% if (server === 'express') { %>-express<% } %> --watch<% if (orm === 'prisma') { %>",

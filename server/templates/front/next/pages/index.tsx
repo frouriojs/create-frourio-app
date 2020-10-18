@@ -43,7 +43,7 @@ const Home = () => {
     <div className={styles.container}>
       <Head>
         <title>frourio-todo-app</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>

@@ -34,16 +34,8 @@ const openEditor = (cwd: string, options: Options) => {
     cwd
   })
 
-  // Fallback
   subProcess.on('error', () => {
-    const result = make(files, {
-      ...options,
-      editor: ''
-    })
-
-    for (const file of result.arguments) {
-      open(file)
-    }
+    console.log(`Editor "${options.editor}" could not find.`)
   })
 
   if (result.isTerminalEditor) {
@@ -53,7 +45,7 @@ const openEditor = (cwd: string, options: Options) => {
   }
 }
 
-const install = async (answers: Answers) => {
+const install = async (answers: Answers, frontPort: number) => {
   setStatus('installing')
   const allAnswers = initPrompts(editors)(answers).reduce(
     (prev, current) => ({
@@ -62,10 +54,7 @@ const install = async (answers: Answers) => {
     }),
     {} as Answers
   )
-  const frontPort =
-    process.env.NODE_ENV === 'production'
-      ? await getPortPromise({ port: 3000 })
-      : 3000
+
   await sao({
     generator: resolve(__dirname, './generator'),
     logLevel: 2,
@@ -87,7 +76,7 @@ const install = async (answers: Answers) => {
     openEditor(cwd, { editor: allAnswers.editor })
   }
 
-  spawn(answers.pm ?? 'npm', ['run', 'dev'], { cwd })
+  spawn(answers.pm ?? 'npm', ['run', 'dev'], { cwd, stdio: 'inherit' })
 
   setStatus('completed')
 }
@@ -102,5 +91,13 @@ export const updateAnswers = async (answers: Answers) => {
   if (!fs.existsSync(dirPath)) await fs.promises.mkdir(dirPath)
 
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
-  install(answers)
+
+  const frontPort =
+    process.env.NODE_ENV === 'production'
+      ? await getPortPromise({ port: 3000 })
+      : 3001
+
+  install(answers, frontPort)
+
+  return { frontPort }
 }

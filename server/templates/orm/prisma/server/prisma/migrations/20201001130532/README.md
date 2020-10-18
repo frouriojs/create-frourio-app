@@ -23,7 +23,7 @@ migration ..20201001130532
 +++ datamodel.dml
 @@ -1,0 +1,14 @@
 +datasource db {
-+  provider = "<%= dbType %>"
++  provider = "<%= prismaDB %>"
 +  url = "***"
 +}
 +

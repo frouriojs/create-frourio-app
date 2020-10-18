@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { resolve } from 'path'
 import { Answers } from '$/common/prompts'
 
 const isObject = (value: any) =>
@@ -35,7 +36,9 @@ const sortByKey = (unsortedObject: Record<string, string>) => {
 }
 
 const loadPackage = (name: string) =>
-  JSON.parse(fs.readFileSync(`./templates/${name}`, 'utf8'))
+  JSON.parse(
+    fs.readFileSync(resolve(__dirname, `../templates/${name}`), 'utf8')
+  )
 
 export const load = (answers: Answers) => {
   const pkgs = [
