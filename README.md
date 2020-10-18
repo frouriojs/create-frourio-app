@@ -1,7 +1,7 @@
 # create frourio app
 
 <div align="center">
-  <img src="https://frouriojs.github.io/frourio/assets/images/ogp.png" width="1280" alt="frourio" />
+  <img src="https://frouriojs.github.io/create-frourio-app/assets/images/desktop.png" alt="frourio" />
 </div>
 
 <div align="center">
@@ -28,38 +28,40 @@
 Make sure you have [npx](https://www.npmjs.com/package/npx) installed (`npx` is shipped by default since [npm](https://www.npmjs.com/get-npm) `5.2.0`)
 
 ```bash
-npx create-frourio-app <my-project>
+npx create-frourio-app
 ```
 
 Or starting with npm v6.1 you can do:
 
 ```bash
-npm init frourio-app <my-project>
+npm init frourio-app
 ```
 
 Or with [yarn](https://yarnpkg.com/en/):
 
 ```bash
-yarn create frourio-app <my-project>
+yarn create frourio-app
 ```
+
+Open `http://localhost:3000`
 
 ## Features :tada:
 
 1. Core framework of frourio:
-   - [Fastify (5x faster than Express)](https://www.fastify.io/)
+   - [Fastify (5x faster)](https://www.fastify.io/)
    - [Express](https://expressjs.com/)
 1. Frontend framework:
    - [Next.js](https://nextjs.org/learn/excel/typescript)
    - [Nuxt.js](https://typescript.nuxtjs.org/)
 1. Next.js building mode:
    - Basic (next build)
-   - [Static (next build && next export)](https://nextjs.org/docs/advanced-features/static-html-export)
+   - [Static (next export)](https://nextjs.org/docs/advanced-features/static-html-export)
 1. Nuxt.js rendering mode:
    - [Universal (SSR / Static)](https://nuxtjs.org/guide/#server-rendered-universal-ssr-)
    - [SPA](https://nuxtjs.org/guide/#single-page-applications-spa-)
 1. Nuxt.js deployment target:
    - [Server (Node.js hosting)](https://nuxtjs.org/api/configuration-target)
-   - [Static (Static/JAMStack hosting)](https://nuxtjs.org/api/configuration-target)
+   - [Static (JAMStack hosting)](https://nuxtjs.org/api/configuration-target)
 1. HTTP client of aspida:
    - [axios](https://github.com/axios/axios)
    - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
