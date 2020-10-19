@@ -18,7 +18,6 @@
     "build:types": "aspida && npm run build:frourio",
     "lint": "eslint --ext .ts,.js,.tsx .",
     "lint:fix": "npm run lint -- --fix",
-    "postinstall": "npm run build:types",
     "release": "standard-version --skip.tag",
     "release:major": "npm run release -- --release-as major",
     "release:minor": "npm run release -- --release-as minor",
