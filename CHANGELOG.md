@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.15.0](https://github.com/frouriojs/create-frourio-app/compare/v0.14.3...v0.15.0) (2020-10-19)
+
+
+### Features
+
+* stable design ([55cea74](https://github.com/frouriojs/create-frourio-app/commit/55cea749f5c56114ed9e4f52884995b3444b8cd0))
+* update frourio@0.18.0 ([6a98b3f](https://github.com/frouriojs/create-frourio-app/commit/6a98b3f54ed54a8bb42a8939e4f1180cb1d2c00e))
+
+
+### Bug Fixes
+
+* delete open-editor ([ba91bd1](https://github.com/frouriojs/create-frourio-app/commit/ba91bd127bedda50ac3371bdf046b2dae6cae332))
+* lint error ([41c10f3](https://github.com/frouriojs/create-frourio-app/commit/41c10f37c46e932dbe79154cb30432a638748c04))
+* restore state when reloading page ([48376a6](https://github.com/frouriojs/create-frourio-app/commit/48376a679b1246b057d9e3f72e0c7f5dd5447e96))
+
+
+### Documentation
+
+* add desktop image ([409cf9c](https://github.com/frouriojs/create-frourio-app/commit/409cf9c9fbef6cc126e91d276a2440f2bb3e39d6))
+
 ### [0.14.3](https://github.com/frouriojs/create-frourio-app/compare/v0.14.2...v0.14.3) (2020-10-17)
 
 
