@@ -56,7 +56,7 @@
     "frourio": "^0.18.0",
     "github-buttons": "^2.14.0",
     "next": "^9.5.5",
-    "open-editor": "^2.0.1",
+    "open": "^7.3.0",
     "portfinder": "^1.0.28",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

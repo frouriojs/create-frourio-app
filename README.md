@@ -71,9 +71,6 @@ Open `http://localhost:3000`
 1. Daemon process manager:
    - None
    - [PM2](https://pm2.keymetrics.io/)
-1. Testing framework:
-   - None
-   - [Jest](https://jestjs.io/)
 1. O/R mapping tool:
    - [Prisma (recommended)](https://www.prisma.io/)
    - [TypeORM](https://typeorm.io/)
@@ -89,6 +86,9 @@ Open `http://localhost:3000`
    - [Sql Server](https://www.microsoft.com/en-us/sql-server)
    - [MariaDB](https://mariadb.com/)
    - [CockroachDB](https://www.cockroachlabs.com/)
+1. Testing framework:
+   - None
+   - [Jest](https://jestjs.io/)
 
 ## Support
 

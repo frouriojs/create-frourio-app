@@ -8,23 +8,39 @@ import { apiClient } from '~/utils/apiClient'
 import { Answers, initPrompts } from '$/common/prompts'
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+const waitInstalling = async () => {
+  const href =
+    process.env.ENV === 'production'
+      ? location.origin
+      : `http://${location.hostname}:3001`
+
+  try {
+    // eslint-disable-next-line
+    while (true) {
+      await sleep(1000)
+      await apiClient.status.$get({ config: { timeout: 3000 } })
+    }
+  } catch (e) {
+    // eslint-disable-next-line
+    while (true) {
+      await sleep(1000)
+      try {
+        await axios.get(href, { timeout: 3000 })
+        location.href = href
+        // eslint-disable-next-line
+      } catch (e) {}
+    }
+  }
+}
 
 const Home = () => {
-  const { data: info, error } = useAspidaSWR(apiClient.info)
-  const {
-    data: serverStatus,
-    error: statusError,
-    mutate: setServerStatus
-  } = useAspidaSWR(apiClient.status)
+  const { data, error } = useAspidaSWR(apiClient.answers)
+  const { data: serverStatus, mutate: setServerStatus } = useAspidaSWR(
+    apiClient.status
+  )
   const [answers, setAnswers] = useState<Answers | undefined>()
   const [created, setCreated] = useState(false)
-  const prompts = useMemo(() => (info ? initPrompts(info.editors) : null), [
-    info
-  ])
-  const questions = useMemo(() => answers && prompts?.(answers), [
-    prompts,
-    answers
-  ])
+  const questions = useMemo(() => answers && initPrompts(answers), [answers])
   const canCreate = useMemo(
     () =>
       questions?.every(
@@ -40,35 +56,20 @@ const Home = () => {
   const create = useCallback(async () => {
     if (!canCreate || !answers) return
 
-    const { frontPort } = await apiClient.info.$patch({ body: { answers } })
-    const href = `http://${location.hostname}:${frontPort}`
+    await apiClient.answers.$patch({ body: answers })
 
-    setCreated(true)
     setServerStatus()
-
-    try {
-      // eslint-disable-next-line
-      while (true) {
-        await sleep(1000)
-        await apiClient.status.$get()
-      }
-    } catch (e) {
-      // eslint-disable-next-line
-      while (true) {
-        await sleep(1000)
-        try {
-          await axios.get(href)
-          location.href = href
-          // eslint-disable-next-line
-        } catch (e) {}
-      }
-    }
+    setCreated(true)
+    waitInstalling()
   }, [answers, canCreate])
 
-  if (error || statusError) return <div>failed to load</div>
-  if (info && !answers) setAnswers(info.answers)
+  if (error) return <div>failed to load</div>
+  if (data && !answers) setAnswers(data)
   if (!answers || !serverStatus || !questions) return <div>loading...</div>
-  if (serverStatus.status === 'installing' && !created) create()
+  if (serverStatus.status === 'installing' && !created) {
+    setCreated(true)
+    waitInstalling()
+  }
 
   return (
     <>

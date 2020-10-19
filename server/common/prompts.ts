@@ -20,7 +20,6 @@ type PromptName =
   | 'dbPass'
   | 'dbName'
   | 'dbFile'
-  | 'editor'
 export type Answers = Partial<Record<PromptName, string>>
 
 export type Prompt = {
@@ -39,9 +38,7 @@ export type Prompt = {
   | { type: 'input' }
 )
 
-const saoPrompts = (
-  editors: { name: string; value: string }[]
-): ({
+const saoPrompts: ({
   name: PromptName
   message: string
   default?: ((answers: Answers) => string) | string
@@ -55,7 +52,7 @@ const saoPrompts = (
       }[]
     }
   | { type: 'input' }
-))[] => [
+))[] = [
   {
     name: 'dir',
     message: 'Directory name (create new)',
@@ -140,16 +137,6 @@ const saoPrompts = (
     choices: [
       { name: 'None', value: 'none' },
       { name: 'PM2', value: 'pm2' }
-    ],
-    type: 'list',
-    default: 'none'
-  },
-  {
-    name: 'testing',
-    message: 'Testing framework',
-    choices: [
-      { name: 'None', value: 'none' },
-      { name: 'Jest', value: 'jest' }
     ],
     type: 'list',
     default: 'none'
@@ -266,22 +253,21 @@ const saoPrompts = (
     when: (ans) => ans.orm === 'prisma' && ans.prismaDB === 'sqlite'
   },
   {
-    name: 'editor',
-    message: 'Editor (automatically open this project)',
+    name: 'testing',
+    message: 'Testing framework',
+    choices: [
+      { name: 'None', value: 'none' },
+      { name: 'Jest', value: 'jest' }
+    ],
     type: 'list',
-    choices: [...editors, { name: 'None', value: 'none' }],
-    default: 'vscode'
+    default: 'none'
   }
 ]
 
-export const initPrompts = (editors: { name: string; value: string }[]) => (
-  answers: Answers
-): Prompt[] => {
-  const p = saoPrompts(editors)
-
+export const initPrompts = (answers: Answers): Prompt[] => {
   const copiedAnswers = { ...answers }
 
-  p.forEach((prompt) => {
+  saoPrompts.forEach((prompt) => {
     if (prompt.when?.(copiedAnswers) === false) return
     copiedAnswers[prompt.name] =
       answers[prompt.name] ??
@@ -290,7 +276,7 @@ export const initPrompts = (editors: { name: string; value: string }[]) => (
         : prompt.default)
   })
 
-  return p
+  return saoPrompts
     .filter((prompt) => prompt.when?.(copiedAnswers) !== false)
     .map((prompt) =>
       Object.entries(prompt).reduce(

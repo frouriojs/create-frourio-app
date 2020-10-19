@@ -9,7 +9,7 @@ import server from './$server'
 const basePath = '/api'
 export const fastify = Fastify()
 export const ports = {
-  server: 8080
+  front: process.env.NODE_ENV === 'production' ? 3000 : 3001
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -17,12 +17,12 @@ if (process.env.NODE_ENV === 'production') {
     root: path.join(__dirname, '../out')
   })
 
-  getPortPromise({ port: ports.server }).then(async (port) => {
-    ports.server = port
+  getPortPromise({ port: ports.front }).then(async (port) => {
+    ports.front = port
     await server(fastify, { basePath }).listen(port)
     await open(`http://localhost:${port}`)
     console.log(`open http://localhost:${port}`)
   })
 } else {
-  server(fastify.register(cors), { basePath }).listen(ports.server)
+  server(fastify.register(cors), { basePath }).listen(ports.front)
 }
