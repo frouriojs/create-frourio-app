@@ -38,3 +38,4 @@ server/generator/saofile.js
 server/.upload
 server/public/icons/*
 !server/public/icons/dammy.svg
+!server/**/.env
