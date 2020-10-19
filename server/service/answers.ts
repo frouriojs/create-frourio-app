@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { join, resolve } from 'path'
 import { homedir } from 'os'
-import { spawn } from 'child_process'
+import spawn from 'cross-spawn'
 import { getPortPromise } from 'portfinder'
 import { Answers, initPrompts } from '$/common/prompts'
 import { fastify, ports } from '../'
