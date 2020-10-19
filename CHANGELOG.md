@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.15.2](https://github.com/frouriojs/create-frourio-app/compare/v0.15.1...v0.15.2) (2020-10-19)
+
+
+### Bug Fixes
+
+* change to cross-spawn for windows ([18dba74](https://github.com/frouriojs/create-frourio-app/commit/18dba74e6d6e194e0a97cda5464e8e0eefad3a51))
+
 ### [0.15.1](https://github.com/frouriojs/create-frourio-app/compare/v0.15.0...v0.15.1) (2020-10-19)
 
 
