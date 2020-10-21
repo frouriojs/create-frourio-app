@@ -20,7 +20,8 @@ if (process.env.NODE_ENV === 'production') {
   getPortPromise({ port: ports.front }).then(async (port) => {
     ports.front = port
     await server(fastify, { basePath }).listen(port)
-    await open(`http://localhost:${port}`)
+    const subprocess = await open(`http://localhost:${port}`)
+    subprocess.on('error', (e) => console.log(e))
     console.log(`open http://localhost:${port}`)
   })
 } else {
