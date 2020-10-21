@@ -21,8 +21,12 @@ if (process.env.NODE_ENV === 'production') {
     ports.front = port
     await server(fastify, { basePath }).listen(port)
     const subprocess = await open(`http://localhost:${port}`)
-    subprocess.on('error', (e) => console.log(e))
-    console.log(`open http://localhost:${port}`)
+    subprocess.on('error', () => {
+      console.log(`open http://localhost:${port} in the browser`)
+    })
+    subprocess.on('close', () => {
+      console.log(`open http://localhost:${port} in the browser`)
+    })
   })
 } else {
   server(fastify.register(cors), { basePath }).listen(ports.front)
