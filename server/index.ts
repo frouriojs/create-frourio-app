@@ -5,6 +5,7 @@ import fastifyStatic from 'fastify-static'
 import open from 'open'
 import { getPortPromise } from 'portfinder'
 import server from './$server'
+import { updateAnswers } from '$/service/answers'
 
 const basePath = '/api'
 export const fastify = Fastify()
@@ -13,13 +14,19 @@ export const ports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  fastify.register(fastifyStatic, {
-    root: path.join(__dirname, '../out')
-  })
-
   getPortPromise({ port: ports.front }).then(async (port) => {
     ports.front = port
-    await server(fastify, { basePath }).listen(port)
+
+    const argIndex = process.argv.indexOf('--answers')
+    if (argIndex !== -1) {
+      await updateAnswers(JSON.parse(process.argv[argIndex + 1]))
+    } else {
+      fastify.register(fastifyStatic, {
+        root: path.join(__dirname, '../out')
+      })
+      await server(fastify, { basePath }).listen(port)
+    }
+
     const subprocess = await open(`http://localhost:${port}`)
     subprocess.on('error', () => {
       console.log(`open http://localhost:${port} in the browser`)

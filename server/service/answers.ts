@@ -28,14 +28,15 @@ export const install = async (answers: Answers) => {
     }),
     {} as Answers
   )
+  const dir = allAnswers.dir ?? ''
 
   await sao({
     generator: resolve(__dirname, './generator'),
     logLevel: 2,
-    outDir: allAnswers.dir,
+    outDir: dir,
     answers: {
       ...allAnswers,
-      name: allAnswers.dir,
+      name: dir,
       frontPort: ports.front,
       serverPort: await getPortPromise({ port: 8080 })
     }
@@ -46,7 +47,7 @@ export const install = async (answers: Answers) => {
   await fastify.close()
 
   spawn(answers.pm ?? 'npm', ['run', 'dev'], {
-    cwd: resolve(answers.dir ?? ''),
+    cwd: resolve(dir),
     stdio: 'inherit'
   })
 
@@ -65,5 +66,5 @@ export const updateAnswers = async (answers: Answers) => {
 
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 
-  install(answers)
+  await install(answers)
 }
