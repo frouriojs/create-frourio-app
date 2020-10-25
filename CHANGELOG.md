@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.16.0](https://github.com/frouriojs/create-frourio-app/compare/v0.15.6...v0.16.0) (2020-10-25)
+
+
+### Features
+
+* add cli only mode ([17c14ce](https://github.com/frouriojs/create-frourio-app/commit/17c14cebcbdeec86c9f9fd82fb122c8435863d7f))
+
 ### [0.15.6](https://github.com/frouriojs/create-frourio-app/compare/v0.15.5...v0.15.6) (2020-10-24)
 
 

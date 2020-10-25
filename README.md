@@ -45,6 +45,14 @@ yarn create frourio-app
 
 Open `http://localhost:3000`
 
+### CLI only installation
+
+```bash
+npx create-frourio-app --answers '{"dir":"my-project"}'
+```
+
+Other properties: https://github.com/frouriojs/create-frourio-app/blob/master/server/common/prompts.ts#L3
+
 ## Features :tada:
 
 1. Core framework of frourio:
