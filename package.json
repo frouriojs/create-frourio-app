@@ -53,7 +53,7 @@
     "fastify": "^3.7.0",
     "fastify-cors": "^4.1.0",
     "fastify-static": "^3.3.0",
-    "frourio": "^0.18.1",
+    "frourio": "^0.18.2",
     "github-buttons": "^2.14.0",
     "next": "^9.5.5",
     "open": "^7.3.0",
