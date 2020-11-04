@@ -1,6 +1,6 @@
 import fs from 'fs'<% if (testing !== 'none') { %>
 import { depend } from 'velona'<% } %>
-import { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
+import { Task } from '$/types'
 
 type DB = {
   nextId: number
@@ -18,7 +18,7 @@ if (!fs.existsSync(dbPath)) {
   fs.writeFileSync(dbPath, JSON.stringify({ nextId: 0, tasks: [] }), 'utf8')
 }
 
-export const getTasks = <% if (testing === 'none') { %>async () => (await readDB()).tasks<% } else { %>depend(
+export const getTasks = <% if (testing === 'none') { %>async (limit?: number) => (await readDB()).tasks.slice(0, limit)<% } else { %>depend(
   { readDB },
   async ({ readDB }, limit?: number) => (await readDB()).tasks.slice(0, limit)
 )<% } %>
