@@ -1,10 +1,6 @@
 # create frourio app
 
 <div align="center">
-  <img src="https://frouriojs.github.io/create-frourio-app/assets/images/desktop.png" alt="frourio" />
-</div>
-
-<div align="center">
   <a href="https://www.npmjs.com/package/create-frourio-app">
     <img src="https://img.shields.io/npm/v/create-frourio-app" alt="npm version" />
   </a>
@@ -19,7 +15,13 @@
   </a>
 </div>
 
-<p align="center">Create a <a href="https://github.com/frouriojs/frourio">frourio</a> project in seconds</p>
+<p align="center">Create a <a href="https://frourio.io">frourio</a> project in seconds</p>
+<br />
+<br />
+
+<div align="center">
+  <img src="https://frouriojs.github.io/create-frourio-app/assets/images/desktop.png" alt="frourio" />
+</div>
 <br />
 <br />
 
@@ -45,13 +47,9 @@ yarn create frourio-app
 
 Open `http://localhost:3000`
 
-### CLI only installation
+## Documentation
 
-```bash
-npx create-frourio-app --answers '{"dir":"my-project"}'
-```
-
-Other properties: https://github.com/frouriojs/create-frourio-app/blob/master/server/common/prompts.ts#L3
+https://frourio.io/docs
 
 ## Features :tada:
 
