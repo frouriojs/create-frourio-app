@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.16.2](https://github.com/frouriojs/create-frourio-app/compare/v0.16.1...v0.16.2) (2020-11-04)
+
+
+### Bug Fixes
+
+* add args to getTasks ([98356a7](https://github.com/frouriojs/create-frourio-app/commit/98356a710af13eddaa92f2a1811b14038b61ed30))
+
 ### [0.16.1](https://github.com/frouriojs/create-frourio-app/compare/v0.16.0...v0.16.1) (2020-10-28)
 
 
