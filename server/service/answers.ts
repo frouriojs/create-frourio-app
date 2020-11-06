@@ -15,11 +15,15 @@ const dbPath = join(dirPath, 'create-frourio-app.json')
 let db: {
   ver: number
   answers: Answers
-} = fs.existsSync(dbPath)
-  ? JSON.parse(fs.readFileSync(dbPath, 'utf8'))
-  : { ver: 1, answers: {} }
+}
 
-export const install = async (answers: Answers) => {
+try {
+  db = JSON.parse(fs.readFileSync(dbPath, 'utf8'))
+} catch (e) {
+  db = { ver: 1, answers: {} }
+}
+
+export const installApp = async (answers: Answers) => {
   setStatus('installing')
   const allAnswers = initPrompts(answers).reduce(
     (prev, current) => ({
@@ -66,5 +70,5 @@ export const updateAnswers = async (answers: Answers) => {
 
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 
-  await install(answers)
+  await installApp(answers)
 }
