@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.16.3](https://github.com/frouriojs/create-frourio-app/compare/v0.16.2...v0.16.3) (2020-11-06)
+
+
+### Bug Fixes
+
+* handle error when json is empty ([dfe396d](https://github.com/frouriojs/create-frourio-app/commit/dfe396de40b1393df8b0837556d0ff87ce860fc8))
+
 ### [0.16.2](https://github.com/frouriojs/create-frourio-app/compare/v0.16.1...v0.16.2) (2020-11-04)
 
 
