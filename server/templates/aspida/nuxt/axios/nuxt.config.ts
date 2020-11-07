@@ -1,6 +1,6 @@
-import { Configuration } from '@nuxt/types'
+import { NuxtConfig } from '@nuxt/types'
 
-const config: Configuration = {
+const config: NuxtConfig = {
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
@@ -36,7 +36,7 @@ const config: Configuration = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: "image/png", href: '/favicon.png' }]
+    link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }]
   },
   /*
    ** Customize the progress-bar color
