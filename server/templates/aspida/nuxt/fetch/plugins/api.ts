@@ -1,8 +1,12 @@
 import { Plugin } from '@nuxt/types'
-import aspida from '@aspida/fetch'
+import nodeFetch from 'node-fetch'
+import aspidaFetch from '@aspida/fetch'
+import aspidaNodeFetch from '@aspida/node-fetch'
 import api from '~/server/api/$api'
 
-const tmp = api(aspida(fetch))
+const tmp = process.client
+  ? api(aspidaFetch(fetch))
+  : api(aspidaNodeFetch(nodeFetch))
 
 type ApiInstance = typeof tmp
 
@@ -24,6 +28,10 @@ declare module 'vuex/types/index' {
   }
 }
 
-const plugin: Plugin = (_, inject) => inject('api', api(aspida()))
+const plugin: Plugin = (_, inject) =>
+  inject(
+    'api',
+    process.client ? api(aspidaFetch(fetch)) : api(aspidaNodeFetch(nodeFetch))
+  )
 
 export default plugin
