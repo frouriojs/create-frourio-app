@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.16.4](https://github.com/frouriojs/create-frourio-app/compare/v0.16.3...v0.16.4) (2020-11-07)
+
+
+### Features
+
+* update frourio for node v10 ([8127c5f](https://github.com/frouriojs/create-frourio-app/commit/8127c5f1102ac11dc7440abf10182aae6a5a3e91))
+
 ### [0.16.3](https://github.com/frouriojs/create-frourio-app/compare/v0.16.2...v0.16.3) (2020-11-06)
 
 
