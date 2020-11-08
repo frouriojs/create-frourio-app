@@ -70,11 +70,14 @@ export const installApp = depend(
     )
     const dir = allAnswers.dir ?? ''
 
-    await generate({
-      ...allAnswers,
-      clientPort: ports.client,
-      serverPort: await getPortPromise({ port: 8080 })
-    })
+    await generate(
+      {
+        ...allAnswers,
+        clientPort: ports.client,
+        serverPort: await getPortPromise({ port: 8080 })
+      },
+      __dirname
+    )
 
     await completed(allAnswers)
     await fastify.close()

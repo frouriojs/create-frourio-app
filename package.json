@@ -24,7 +24,7 @@
     "release:patch": "npm run release -- --release-as patch",
     "snapshot": "npm run build:server && node server/snapshot.js",
     "typecheck": "tsc --noEmit && tsc --noEmit -p server",
-    "test": "jest --passWithNoTests"
+    "test": "jest"
   },
   "homepage": "https://github.com/frouriojs/create-frourio-app#readme",
   "repository": {
@@ -55,6 +55,7 @@
     "fastify-static": "^3.3.0",
     "frourio": "^0.19.1",
     "github-buttons": "^2.14.0",
+    "is-binary-path": "^2.1.0",
     "log-update": "^4.0.0",
     "majo": "^0.10.1",
     "next": "^10.0.1",

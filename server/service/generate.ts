@@ -8,6 +8,7 @@ import { Answers } from '$/common/prompts'
 
 export const generate = async (
   answers: Answers & { clientPort: number; serverPort: number },
+  rootDir: string,
   outDir?: string
 ) => {
   const config = createActions(answers)
@@ -17,7 +18,7 @@ export const generate = async (
     if (action.type === 'add') {
       await majo()
         .source([action.files], {
-          baseDir: path.resolve(__dirname, 'templates', action.templateDir)
+          baseDir: path.resolve(rootDir, 'templates', action.templateDir)
         })
         .use((stream) => {
           Object.keys(stream.files)
