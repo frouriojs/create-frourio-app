@@ -93,7 +93,7 @@ const listFiles = (targetDir: string): string[] =>
 ${allFiles[i].endsWith('png') ? 'binary' : fs.readFileSync(allFiles[i], 'utf8')}
 `
   }
-  fs.writeFileSync(path.join(__dirname, 'snapshot/output.txt'), text, 'utf8')
+  fs.writeFileSync(path.join(__dirname, '__test__/snapshot.txt'), text, 'utf8')
 
   rimraf.sync(outputDir)
 })()
