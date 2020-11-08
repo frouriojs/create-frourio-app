@@ -82,10 +82,14 @@ export const installApp = depend(
     await completed(allAnswers)
     await fastify.close()
 
-    spawn(answers.pm ?? 'npm', ['run', 'dev'], {
-      cwd: resolve(dir),
-      stdio: 'inherit'
-    })
+    spawn(
+      answers.pm ?? 'npm',
+      ['run', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],
+      {
+        cwd: resolve(dir),
+        stdio: 'inherit'
+      }
+    )
 
     delete db.answers.dir
     await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')

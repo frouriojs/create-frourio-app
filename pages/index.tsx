@@ -10,9 +10,9 @@ import { Answers, initPrompts } from '$/common/prompts'
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 const waitInstalling = async () => {
   const href =
-    process.env.ENV === 'production'
-      ? location.origin
-      : `http://${location.hostname}:3001`
+    process.env.ENV === 'development'
+      ? `http://${location.hostname}:3001`
+      : location.origin
 
   try {
     // eslint-disable-next-line

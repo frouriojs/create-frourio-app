@@ -10,10 +10,12 @@ import { updateAnswers, cliMigration } from '$/service/answers'
 const basePath = '/api'
 export const fastify = Fastify()
 export const ports = {
-  client: process.env.NODE_ENV === 'production' ? 3000 : 3001
+  client: process.env.NODE_ENV === 'development' ? 3001 : 3000
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
+  server(fastify.register(cors), { basePath }).listen(ports.client)
+} else {
   getPortPromise({ port: ports.client }).then(async (port) => {
     ports.client = port
 
@@ -33,6 +35,8 @@ if (process.env.NODE_ENV === 'production') {
       await server(fastify, { basePath }).listen(port)
     }
 
+    if (process.env.NODE_ENV === 'test') return
+
     const subprocess = await open(`http://localhost:${port}`)
     subprocess.on('error', () => {
       console.log(`open http://localhost:${port} in the browser`)
@@ -41,6 +45,4 @@ if (process.env.NODE_ENV === 'production') {
       console.log(`open http://localhost:${port} in the browser`)
     })
   })
-} else {
-  server(fastify.register(cors), { basePath }).listen(ports.client)
 }

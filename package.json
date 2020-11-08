@@ -15,7 +15,6 @@
     "build:client": "aspida && next build && next export",
     "build:server": "npm run build:frourio && webpack --mode=production",
     "build:frourio": "cd server && frourio",
-    "build:types": "aspida && npm run build:frourio",
     "lint": "eslint --ext .ts,.js,.tsx .",
     "release": "standard-version --skip.tag",
     "release:major": "npm run release -- --release-as major",
