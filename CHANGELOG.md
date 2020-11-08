@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.17.0](https://github.com/frouriojs/create-frourio-app/compare/v0.16.5...v0.17.0) (2020-11-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename front to client
+
+### Features
+
+* add cli test ([c7b8568](https://github.com/frouriojs/create-frourio-app/commit/c7b85684f32bfb9f381ff101502c6511d0f7b2a8))
+* add snapshot ([7891bd9](https://github.com/frouriojs/create-frourio-app/commit/7891bd9995b58f562f0ae0d2c503c7274aff180f))
+* add snapshot test ([8e6f4dd](https://github.com/frouriojs/create-frourio-app/commit/8e6f4dd2a3d5539a60aaf144eb429df8b9e6f613))
+
+
+### Bug Fixes
+
+* rename front to client ([5ae117f](https://github.com/frouriojs/create-frourio-app/commit/5ae117f06e0fcce54a4fbb9704f34bec9f2eb812))
+
 ### [0.16.5](https://github.com/frouriojs/create-frourio-app/compare/v0.16.4...v0.16.5) (2020-11-07)
 
 

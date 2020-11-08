@@ -1,6 +1,6 @@
 {
   "name": "create-frourio-app",
-  "version": "0.16.5",
+  "version": "0.17.0",
   "description": "Create a frourio project in seconds",
   "author": "Solufa <solufa2020@gmail.com>",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p server",
     "test": "jest"
   },
-  "homepage": "https://github.com/frouriojs/create-frourio-app#readme",
+  "homepage": "https://frourio.io",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/frouriojs/create-frourio-app.git"
