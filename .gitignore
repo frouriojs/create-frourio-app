@@ -35,6 +35,7 @@ server/**/$*.ts
 server/**/*.db
 server/index.js
 server/generator/saofile.js
+server/snapshot/*.js
 server/.upload
 server/public/icons/*
 !server/public/icons/dammy.svg

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from 'fs'
 import { resolve } from 'path'
 import { Answers } from '$/common/prompts'

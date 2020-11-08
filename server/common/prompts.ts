@@ -38,7 +38,7 @@ export type Prompt = {
   | { type: 'input' }
 )
 
-const saoPrompts: ({
+export const saoPrompts: ({
   name: PromptName
   message: string
   default?: ((answers: Answers) => string) | string

@@ -5,7 +5,9 @@
 ```bash
 # install dependencies
 $ yarn install
-$ yarn install:server
+$ cd server
+$ yarn install
+$ cd ..
 
 # serve with hot reload at localhost:<%= frontPort %>
 $ yarn dev

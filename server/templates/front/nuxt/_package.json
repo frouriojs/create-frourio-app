@@ -15,7 +15,6 @@
     "build:server": "<% if (orm === 'prisma') { %>npm run migrate:up && <% } %>npm run build:frourio && cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/webpack --mode=production",
     "build:frourio": "cd server && <% if (orm === 'prisma') { %>cross-env DUMMY_ENV=forWin node_modules/.bin/prisma generate && <% } else if (orm === 'typeorm') { %>cross-env DUMMY_ENV=forWin node_modules/.bin/typeormer && <% } %>cross-env DUMMY_ENV=forWin node_modules/.bin/frourio<% if (server === 'express') { %>-express<% } %>",
     "build:types": "aspida && npm run build:frourio",
-    "install:server": "cd server && <%= pm %> install",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
