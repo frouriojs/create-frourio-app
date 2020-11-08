@@ -44,6 +44,7 @@ jobs:
           name: snapshot
           path: ./server/__test__/forArtifact.txt
       - run: node -e "require('fs').unlinkSync('.eslintrc.js')"
+
       - run: node bin/index.js --answers '{"dir":"nextjs","prismaDB":"sqlite","testing":"jest"}'
         if: matrix.os == 'ubuntu-latest'
       - run: node bin/index.js --answers '{\"dir\":\"nextjs\",\"prismaDB\":\"sqlite\",\"testing\":\"jest\"}'
@@ -51,13 +52,24 @@ jobs:
       - run: npm run lint --prefix nextjs
       - run: npm run typecheck --prefix nextjs
       - run: npm run test --prefix nextjs
+
+      - run: node bin/index.js --answers '{"dir":"nextjs-typeorm","orm":"typeorm","testing":"jest"}'
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run lint --prefix nextjs-typeorm
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run typecheck --prefix nextjs-typeorm
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run test --prefix nextjs-typeorm
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+
       - run: node bin/index.js --answers '{"dir":"nuxtjs","prismaDB":"sqlite","testing":"jest"}'
-        if: matrix.os == 'ubuntu-latest'
-      - run: node bin/index.js --answers '{\"dir\":\"nuxtjs\",\"prismaDB\":\"sqlite\",\"testing\":\"jest\"}'
-        if: matrix.os == 'windows-latest'
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
       - run: npm run lint --prefix nuxtjs
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
       - run: npm run typecheck --prefix nuxtjs
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
       - run: npm run test --prefix nuxtjs
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
 
   release:
     runs-on: ubuntu-latest
