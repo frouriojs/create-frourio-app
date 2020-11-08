@@ -3,15 +3,12 @@ import { relative, resolve } from 'path'
 import validate from 'validate-npm-package-name'
 import spawn from 'cross-spawn'
 import { typeormDBs } from '../common/dbInfo'
-import { load } from './package'
 
 export const actions = (
-  answers: Record<string, any>,
-  outDir: string
+  answers: Record<string, any>
 ): (
   | { type: 'add'; files: string; templateDir: string }
   | { type: 'move'; patterns: Record<string, string> }
-  | { type: 'modify'; files: string; handler: () => Record<string, any> }
 )[] => {
   const validation = validate(answers.name)
   validation.warnings &&
@@ -106,27 +103,14 @@ export const actions = (
     ...addedList,
     {
       type: 'move',
-      patterns: {
-        gitignore: '.gitignore',
-        '_package.json': 'package.json'
-      }
-    },
-    {
-      type: 'modify',
-      files: 'package.json',
-      handler: () => load(answers)
-    },
-    {
-      type: 'add',
-      files: 'package.json',
-      templateDir: outDir
+      patterns: { gitignore: '.gitignore' }
     }
   ]
 }
 
 export default {
-  actions(this: { answers: Record<string, any>; outDir: string }) {
-    return actions(this.answers, this.outDir)
+  actions(this: { answers: Record<string, any> }) {
+    return actions(this.answers)
   },
   async completed(this: Record<string, any>) {
     this.gitInit()

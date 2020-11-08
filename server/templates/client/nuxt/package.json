@@ -18,11 +18,19 @@
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
-    "lint:fix": "npm run lint:js -- --fix && npm run lint:style -- --fix",
-    "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server",
+    "lint:fix": "npm run lint:js -- --fix && npm run lint:style -- --fix<% if (orm === 'prisma') { %>",
+    "migrate": "npm run migrate:save && npm run migrate:up",
+    "migrate:save": "cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/prisma migrate save --create-db --experimental",
+    "migrate:up": "cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/prisma migrate up --create-db --experimental",
+    "migrate:down": "cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/prisma migrate down --experimental<% } else if (orm === 'typeorm') { %>",
+    "migration:generate": "cd server && ts-node cross-env DUMMY_ENV=forWin node_modules/.bin/typeorm migration:generate -n Task",
+    "migration:run": "cd server && ts-node cross-env DUMMY_ENV=forWin node_modules/.bin/typeorm migration:run",
+    "migration:revert": "cd server && ts-node cross-env DUMMY_ENV=forWin node_modules/.bin/typeorm migration:revert<% } %>",
     "start": "run-p start:*",
     "start:client": "nuxt-ts <%= target === 'static' ? 'serve' : 'start' %>",
-    "start:server": "cd server && cross-env NODE_ENV=production node index.js"
+    "start:server": "cd server && cross-env NODE_ENV=production node index.js<% if (testing === 'jest') { %>",
+    "test": "npm run build:types && jest<% } %>",
+    "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint",
@@ -34,8 +42,12 @@
     }
   },
   "dependencies": {
-    "@nuxt/typescript-runtime": "^2.0.0",
-    "class-validator": "^0.12.2",
+    "<% if (aspida === 'axios') { %>@aspida/axios": "^0.12.2",
+    "<% } else { %>@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
+    "<% } %>@nuxt/typescript-runtime": "^2.0.0",
+    "<% if (aspida === 'axios') { %>@nuxtjs/axios": "^5.12.2",
+    "<% } %>class-validator": "^0.12.2",
     "nuxt": "2.14.7"
   },
   "devDependencies": {
@@ -44,7 +56,9 @@
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-config-typescript": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
-    "@nuxtjs/stylelint-module": "^4.0.0",
+    "@nuxtjs/stylelint-module": "^4.0.0<% if (testing === 'jest') { %>",
+    "@types/jest": "^26.0.14<% } %><% if (aspida === 'fetch') { %>",
+    "@types/node-fetch": "^2.5.7<% } %>",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
@@ -53,11 +67,13 @@
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.4.0",
+    "<% if (testing === 'jest') { %>jest": "^26.4.2",
+    "<% } %>lint-staged": "^10.4.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2",
     "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.9",
+    "<% if (testing === 'jest') { %>ts-jest": "^26.4.1",
+    "<% } %>ts-loader": "^8.0.9",
     "typescript": "^4.0.5"
   }
 }

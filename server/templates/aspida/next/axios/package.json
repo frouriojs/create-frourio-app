@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "axios": "^0.21.0"
-  }
-}

@@ -62,7 +62,17 @@ const config: NuxtConfig = {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: <% if (aspida === 'axios') { %>[
+    // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/axios'
+  ],
+  /*
+   ** Axios module configuration
+   ** See https://axios.nuxtjs.org/options
+   */
+  axios: {
+    baseURL: require('./aspida.config').baseURL
+  }<% } else { %>[]<% } %>,
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
