@@ -32,7 +32,10 @@ jobs:
       - run: yarn --frozen-lockfile
       - run: yarn lint
         if: matrix.os != 'windows-latest'
-      - run: yarn build
+      - run: NODE_ENV=test yarn build
+        if: matrix.os == 'ubuntu-latest'
+      - run: $env:NODE_ENV="test"; yarn build
+        if: matrix.os == 'windows-latest'
       - run: yarn typecheck
       - run: yarn test
       - uses: actions/upload-artifact@v2
@@ -41,15 +44,17 @@ jobs:
           name: snapshot
           path: ./server/__test__/forArtifact.txt
       - run: node -e "require('fs').unlinkSync('.eslintrc.js')"
-      - run: NODE_PATH=test
+      - run: node bin/index.js --answers '{"dir":"nextjs","prismaDB":"sqlite","testing":"jest"}'
         if: matrix.os == 'ubuntu-latest'
-      - run: set NODE_PATH=test
+      - run: node bin/index.js --answers '{\"dir\":\"nextjs\",\"prismaDB\":\"sqlite\",\"testing\":\"jest\"}'
         if: matrix.os == 'windows-latest'
-      - run: node bin/index.js --answers "{\"dir\":\"nextjs\",\"prismaDB\":\"sqlite\",\"testing\":\"jest\"}"
       - run: npm run lint --prefix nextjs
       - run: npm run typecheck --prefix nextjs
       - run: npm run test --prefix nextjs
-      - run: node bin/index.js --answers "{\"dir\":\"nuxtjs\",\"prismaDB\":\"sqlite\",\"testing\":\"jest\"}"
+      - run: node bin/index.js --answers '{"dir":"nuxtjs","prismaDB":"sqlite","testing":"jest"}'
+        if: matrix.os == 'ubuntu-latest'
+      - run: node bin/index.js --answers '{\"dir\":\"nuxtjs\",\"prismaDB\":\"sqlite\",\"testing\":\"jest\"}'
+        if: matrix.os == 'windows-latest'
       - run: npm run lint --prefix nuxtjs
       - run: npm run typecheck --prefix nuxtjs
       - run: npm run test --prefix nuxtjs

@@ -31,6 +31,7 @@ module.exports = {
       watch: './server/index.js'
     })
   ],
+  optimization: process.env.NODE_ENV === 'test' ? { nodeEnv: 'test' } : {},
   resolve: {
     extensions: ['.ts', '.js'],
     plugins: [new TsconfigPathsPlugin({ configFile: 'server/tsconfig.json' })]
