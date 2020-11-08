@@ -1,4 +1,4 @@
-# <%= name %>
+# <%= dir %>
 
 ## Build Setup
 

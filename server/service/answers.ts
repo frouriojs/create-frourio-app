@@ -5,11 +5,11 @@ import { depend } from 'velona'
 import spawn from 'cross-spawn'
 import { getPortPromise } from 'portfinder'
 import { Answers, initPrompts } from '$/common/prompts'
+import { generate } from './generate'
 import { fastify, ports } from '../'
 import { getStatus, setStatus } from './status'
+import { completed } from './completed'
 
-// eslint-disable-next-line
-const sao = require('sao')
 const dirPath = join(homedir(), '.frourio')
 const dbPath = join(dirPath, 'create-frourio-app.json')
 
@@ -46,18 +46,20 @@ export const cliMigration = [
 
 try {
   const tmp = JSON.parse(fs.readFileSync(dbPath, 'utf8'))
-  if (tmp.ver <= migration.length) {
-    db = migration
-      .slice(migration.findIndex((m) => m.ver === tmp.ver + 1))
-      .reduce((prev, current) => current.handler(prev), tmp)
-  }
+
+  db =
+    tmp.ver > migration.length
+      ? tmp
+      : migration
+          .slice(migration.findIndex((m) => m.ver === tmp.ver + 1))
+          .reduce((prev, current) => current.handler(prev), tmp)
 } catch (e) {
   db = { ver: 2, answers: {} }
 }
 
 export const installApp = depend(
-  { sao, spawn, fs },
-  async ({ sao, spawn, fs }, answers: Answers) => {
+  { spawn, fs },
+  async ({ spawn, fs }, answers: Answers) => {
     setStatus('installing')
     const allAnswers = initPrompts(answers).reduce(
       (prev, current) => ({
@@ -68,20 +70,13 @@ export const installApp = depend(
     )
     const dir = allAnswers.dir ?? ''
 
-    await sao({
-      generator: resolve(__dirname, './generator'),
-      logLevel: 2,
-      outDir: dir,
-      answers: {
-        ...allAnswers,
-        name: dir,
-        clientPort: ports.client,
-        serverPort: await getPortPromise({ port: 8080 })
-      }
+    await generate({
+      ...allAnswers,
+      clientPort: ports.client,
+      serverPort: await getPortPromise({ port: 8080 })
     })
-      .run()
-      .catch((e: Error) => console.trace(e))
 
+    await completed(allAnswers)
     await fastify.close()
 
     spawn(answers.pm ?? 'npm', ['run', 'dev'], {
