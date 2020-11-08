@@ -32,10 +32,5 @@ yarn-error.log*
 
 # server
 server/**/$*.ts
-server/**/*.db
 server/index.js
-server/generator/saofile.js
-server/.upload
-server/public/icons/*
-!server/public/icons/dammy.svg
-!server/**/.env
+server/__test__/forArtifact.txt

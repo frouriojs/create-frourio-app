@@ -1,5 +1,5 @@
 {
-  "name": "<%= name %>",
+  "name": "<%= dir %>",
   "script": "index.js",
   "env_production": {
     "NODE_ENV": "production"

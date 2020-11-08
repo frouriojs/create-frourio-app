@@ -4,8 +4,7 @@ const NodemonPlugin = require('nodemon-webpack-plugin')
 
 module.exports = {
   entry: {
-    'server/index': './server/index.ts',
-    'server/generator/saofile': './server/generator/index.ts'
+    'server/index': './server/index.ts'
   },
   target: 'node',
   node: {
@@ -32,6 +31,7 @@ module.exports = {
       watch: './server/index.js'
     })
   ],
+  optimization: process.env.NODE_ENV === 'test' ? { nodeEnv: 'test' } : {},
   resolve: {
     extensions: ['.ts', '.js'],
     plugins: [new TsconfigPathsPlugin({ configFile: 'server/tsconfig.json' })]

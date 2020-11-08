@@ -4,13 +4,21 @@ on: push
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    name: "Test on Node:${{ matrix.node-version }} OS:${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node-version: [10, 12, 14]
+        os: [ubuntu-latest]
+        include:
+          - os: windows-latest
+            node-version: 14
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
+      - name: setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: ${{ matrix.node-version }}
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -23,9 +31,45 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn --frozen-lockfile
       - run: yarn lint
-      - run: yarn build:types
+        if: matrix.os != 'windows-latest'
+      - run: NODE_ENV=test yarn build
+        if: matrix.os == 'ubuntu-latest'
+      - run: $env:NODE_ENV="test"; yarn build
+        if: matrix.os == 'windows-latest'
       - run: yarn typecheck
       - run: yarn test
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: snapshot
+          path: ./server/__test__/forArtifact.txt
+      - run: node -e "require('fs').unlinkSync('.eslintrc.js')"
+
+      - run: node bin/index.js --answers '{"dir":"nextjs","prismaDB":"sqlite","testing":"jest"}'
+        if: matrix.os == 'ubuntu-latest'
+      - run: node bin/index.js --answers '{\"dir\":\"nextjs\",\"prismaDB\":\"sqlite\",\"testing\":\"jest\"}'
+        if: matrix.os == 'windows-latest'
+      - run: npm run lint --prefix nextjs
+      - run: npm run typecheck --prefix nextjs
+      - run: npm run test --prefix nextjs
+
+      - run: node bin/index.js --answers '{"dir":"nextjs-typeorm","orm":"typeorm","testing":"jest"}'
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run lint --prefix nextjs-typeorm
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run typecheck --prefix nextjs-typeorm
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run test --prefix nextjs-typeorm
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+
+      - run: node bin/index.js --answers '{"dir":"nuxtjs","prismaDB":"sqlite","testing":"jest"}'
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run lint --prefix nuxtjs
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run typecheck --prefix nuxtjs
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run test --prefix nuxtjs
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
 
   release:
     runs-on: ubuntu-latest
