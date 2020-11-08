@@ -15,10 +15,10 @@ jobs:
             node-version: 14
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
+      - name: setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: ${{ matrix.node-version }}
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -31,9 +31,15 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn --frozen-lockfile
       - run: yarn lint
+        if: matrix.os != 'windows-latest'
       - run: yarn build:types
       - run: yarn typecheck
       - run: yarn test
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: snapshot
+          path: ./server/__test__/forArtifact.txt
 
   release:
     runs-on: ubuntu-latest

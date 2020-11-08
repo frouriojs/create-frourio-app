@@ -33,3 +33,4 @@ yarn-error.log*
 # server
 server/**/$*.ts
 server/index.js
+server/__test__/forArtifact.txt

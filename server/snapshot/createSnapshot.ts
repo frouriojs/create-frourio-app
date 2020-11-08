@@ -87,7 +87,7 @@ export const createSnapshot = async (rootDir: string) => {
     )
   }
 
-  const allFiles = listFiles(outputDir)
+  const allFiles = listFiles(outputDir).sort()
   console.log(allFiles.length)
   let text = ''
   for (let i = 0; i < allFiles.length; i += 1) {

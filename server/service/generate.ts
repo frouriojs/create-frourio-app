@@ -27,7 +27,9 @@ export const generate = async (
               stream.writeContents(
                 relativePath,
                 ejs.render(
-                  stream.files[relativePath].contents.toString(),
+                  stream.files[relativePath].contents
+                    .toString()
+                    .replace(/\r/g, ''),
                   config.answers
                 )
               )
