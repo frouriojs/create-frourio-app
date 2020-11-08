@@ -17,12 +17,11 @@
     "build:frourio": "cd server && frourio",
     "build:types": "aspida && npm run build:frourio",
     "lint": "eslint --ext .ts,.js,.tsx .",
-    "lint:fix": "npm run lint -- --fix",
     "release": "standard-version --skip.tag",
     "release:major": "npm run release -- --release-as major",
     "release:minor": "npm run release -- --release-as minor",
     "release:patch": "npm run release -- --release-as patch",
-    "snapshot": "npm run build:server && node server/snapshot.js",
+    "snapshot": "ts-node server/snapshot/index.ts",
     "typecheck": "tsc --noEmit && tsc --noEmit -p server",
     "test": "jest"
   },

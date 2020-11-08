@@ -4,8 +4,7 @@ const NodemonPlugin = require('nodemon-webpack-plugin')
 
 module.exports = {
   entry: {
-    'server/index': './server/index.ts',
-    'server/snapshot': './server/snapshot.ts'
+    'server/index': './server/index.ts'
   },
   target: 'node',
   node: {
