@@ -88,14 +88,14 @@ export const actions = (
     {
       type: 'add',
       files: '**',
-      templateDir: resolve(__dirname, `../templates/front/${answers.front}`)
+      templateDir: resolve(__dirname, `../templates/client/${answers.client}`)
     },
     {
       type: 'add',
       files: '**',
       templateDir: resolve(
         __dirname,
-        `../templates/aspida/${answers.front}/${answers.aspida}`
+        `../templates/aspida/${answers.client}/${answers.aspida}`
       )
     },
     {

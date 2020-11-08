@@ -43,8 +43,8 @@ const loadPackage = (name: string) =>
 
 export const load = (answers: Answers) => {
   const pkgs = [
-    loadPackage(`front/${answers.front}/_package.json`),
-    loadPackage(`aspida/${answers.front}/${answers.aspida}/package.json`)
+    loadPackage(`client/${answers.client}/_package.json`),
+    loadPackage(`aspida/${answers.client}/${answers.aspida}/package.json`)
   ]
 
   if (answers.orm === 'prisma') {

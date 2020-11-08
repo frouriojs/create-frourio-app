@@ -3,7 +3,7 @@ import { prismaDBs, typeormDBs } from './dbInfo'
 type PromptName =
   | 'dir'
   | 'server'
-  | 'front'
+  | 'client'
   | 'building'
   | 'mode'
   | 'target'
@@ -60,7 +60,7 @@ export const saoPrompts: ({
   },
   {
     name: 'server',
-    message: 'Core framework of frourio',
+    message: 'Server engine',
     type: 'list',
     choices: [
       { name: 'Fastify (5x faster)', value: 'fastify' },
@@ -69,8 +69,8 @@ export const saoPrompts: ({
     default: 'fastify'
   },
   {
-    name: 'front',
-    message: 'Frontend framework',
+    name: 'client',
+    message: 'Client framework',
     choices: [
       { name: 'Next.js', value: 'next' },
       { name: 'Nuxt.js', value: 'nuxt' }
@@ -87,7 +87,7 @@ export const saoPrompts: ({
       { name: 'Static (next export)', value: 'static' }
     ],
     default: 'basic',
-    when: (ans) => ans.front === 'next'
+    when: (ans) => ans.client === 'next'
   },
   {
     name: 'mode',
@@ -98,7 +98,7 @@ export const saoPrompts: ({
       { name: 'Single Page App', value: 'spa' }
     ],
     default: 'universal',
-    when: (ans) => ans.front === 'nuxt'
+    when: (ans) => ans.client === 'nuxt'
   },
   {
     name: 'target',
@@ -109,7 +109,7 @@ export const saoPrompts: ({
       { name: 'Static (JAMStack hosting)', value: 'static' }
     ],
     default: 'server',
-    when: (ans) => ans.front === 'nuxt'
+    when: (ans) => ans.client === 'nuxt'
   },
   {
     name: 'aspida',

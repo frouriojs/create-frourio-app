@@ -13,15 +13,46 @@ const sao = require('sao')
 const dirPath = join(homedir(), '.frourio')
 const dbPath = join(dirPath, 'create-frourio-app.json')
 
-let db: {
-  ver: number
-  answers: Answers
-}
+type Schemas = [
+  { ver: 1; answers: Omit<Answers, 'client'> & { front?: string } },
+  { ver: 2; answers: Answers }
+]
+
+let db: Schemas[1]
+
+const migration = [
+  {
+    ver: 2,
+    handler: ({ answers: { front, ...others } }: Schemas[0]): Schemas[1] => ({
+      ver: 2,
+      answers: { ...others, client: front }
+    })
+  }
+]
+
+export const cliMigration = [
+  {
+    when: (answers: Schemas[number]['answers']) => 'front' in answers,
+    warn: 'Use "client" instead of "front".',
+    handler: ({
+      front,
+      ...others
+    }: Schemas[0]['answers']): Schemas[1]['answers'] => ({
+      ...others,
+      client: front
+    })
+  }
+]
 
 try {
-  db = JSON.parse(fs.readFileSync(dbPath, 'utf8'))
+  const tmp = JSON.parse(fs.readFileSync(dbPath, 'utf8'))
+  if (tmp.ver <= migration.length) {
+    db = migration
+      .slice(migration.findIndex((m) => m.ver === tmp.ver + 1))
+      .reduce((prev, current) => current.handler(prev), tmp)
+  }
 } catch (e) {
-  db = { ver: 1, answers: {} }
+  db = { ver: 2, answers: {} }
 }
 
 export const installApp = depend(
@@ -44,7 +75,7 @@ export const installApp = depend(
       answers: {
         ...allAnswers,
         name: dir,
-        frontPort: ports.front,
+        clientPort: ports.client,
         serverPort: await getPortPromise({ port: 8080 })
       }
     })

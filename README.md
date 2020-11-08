@@ -53,10 +53,10 @@ https://frourio.io/docs
 
 ## Features :tada:
 
-1. Core framework of frourio:
+1. Server engine:
    - [Fastify (5x faster)](https://www.fastify.io/)
    - [Express](https://expressjs.com/)
-1. Frontend framework:
+1. Client framework:
    - [Next.js](https://nextjs.org/learn/excel/typescript)
    - [Nuxt.js](https://typescript.nuxtjs.org/)
 1. Next.js building mode:

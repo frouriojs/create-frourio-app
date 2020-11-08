@@ -83,7 +83,7 @@ const listFiles = (targetDir: string): string[] =>
       answers: {
         ...promptsList[i],
         name: promptsList[i].dir,
-        frontPort: 3000,
+        clientPort: 3000,
         serverPort: 8080
       }
     }).run()

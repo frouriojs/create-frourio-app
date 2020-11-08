@@ -4,46 +4,60 @@
   "private": true,
   "scripts": {
     "dev": "<% if (orm === 'prisma') { %>npm run migrate:up && <% } %>run-p dev:*",
-    "dev:front": "next dev -p <%= frontPort %>",
+    "dev:client": "cross-env NUXT_PORT=<%= clientPort %> nuxt-ts",
     "dev:server": "cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/webpack --watch --mode=development",
     "dev:aspida": "aspida --watch",
     "dev:frourio": "cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/frourio<% if (server === 'express') { %>-express<% } %> --watch<% if (orm === 'prisma') { %>",
     "dev:prisma": "cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/prisma generate --watch<% } else if (orm === 'typeorm') { %>",
     "dev:typeormer": "cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/typeormer --watch<% } %>",
-    "build": "run-p build:front build:server",
-    "build:front": "aspida && next build<% if (building === 'static') { %> && next export<% } %>",
+    "build": "run-p build:client build:server",
+    "build:client": "aspida && nuxt-ts generate",
     "build:server": "<% if (orm === 'prisma') { %>npm run migrate:up && <% } %>npm run build:frourio && cd server && cross-env DUMMY_ENV=forWin node_modules/.bin/webpack --mode=production",
     "build:frourio": "cd server && <% if (orm === 'prisma') { %>cross-env DUMMY_ENV=forWin node_modules/.bin/prisma generate && <% } else if (orm === 'typeorm') { %>cross-env DUMMY_ENV=forWin node_modules/.bin/typeormer && <% } %>cross-env DUMMY_ENV=forWin node_modules/.bin/frourio<% if (server === 'express') { %>-express<% } %>",
     "build:types": "aspida && npm run build:frourio",
-    "lint": "eslint --ext .ts,.js,.tsx .",
-    "lint:fix": "npm run lint -- --fix",
+    "lint": "npm run lint:js && npm run lint:style",
+    "lint:js": "eslint --ext .ts,.js,.vue .",
+    "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
+    "lint:fix": "npm run lint:js -- --fix && npm run lint:style -- --fix",
+    "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server",
     "start": "run-p start:*",
-    "start:front": "next start",
-    "start:server": "cd server && cross-env NODE_ENV=production node index.js",
-    "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
+    "start:client": "nuxt-ts <%= target === 'static' ? 'serve' : 'start' %>",
+    "start:server": "cd server && cross-env NODE_ENV=production node index.js"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": "eslint",
+    "*.{css,vue}": "stylelint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
-    "@aspida/swr": "^0.2.2",
+    "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "nuxt": "2.14.7"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.49",
-    "@typescript-eslint/eslint-plugin": "^4.4.1",
-    "@typescript-eslint/parser": "^4.4.1",
+    "@nuxt/types": "^2.14.6",
+    "@nuxt/typescript-build": "^2.0.3",
+    "@nuxtjs/eslint-config": "^3.1.0",
+    "@nuxtjs/eslint-config-typescript": "^3.0.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/stylelint-module": "^4.0.0",
+    "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.11.0",
-    "eslint-config-prettier": "^6.13.0",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.21.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2",
-    "ts-loader": "^8.0.5",
+    "stylelint": "^13.7.2",
+    "ts-loader": "^8.0.9",
     "typescript": "^4.0.5"
   }
 }

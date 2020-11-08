@@ -9,7 +9,7 @@ $ cd server
 $ yarn install
 $ cd ..
 
-# serve with hot reload at localhost:<%= frontPort %>
+# serve with hot reload at localhost:<%= clientPort %>
 $ yarn dev
 
 # build for production and launch server
