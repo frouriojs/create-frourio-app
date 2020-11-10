@@ -42,7 +42,7 @@ jobs:
         if: failure()
         with:
           name: snapshot
-          path: ./server/__test__/forArtifact.txt
+          path: ./server/__test__/forArtifact.md
       - run: node -e "require('fs').unlinkSync('.eslintrc.js')"
 
       - run: node bin/index.js --answers '{"dir":"nextjs","prismaDB":"sqlite","testing":"jest"}'

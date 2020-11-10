@@ -7,7 +7,6 @@ import { Answers, saoPrompts } from '../common/prompts'
 import { generate } from '../service/generate'
 
 const excludedList = {
-  prismaDB: ['postgresql'],
   typeormDB: ['postgres', 'mongodb', 'mssql', 'mariadb', 'cockroachdb']
 }
 
@@ -87,14 +86,38 @@ export const createSnapshot = async (rootDir: string) => {
     )
   }
 
-  const allFiles = listFiles(outputDir).sort()
-  console.log(allFiles.length)
-  let text = ''
-  for (let i = 0; i < allFiles.length; i += 1) {
-    text += `=== ${allFiles[i].replace(`${outputDir}/`, '')} ===
-${isBinaryPath(allFiles[i]) ? 'binary' : fs.readFileSync(allFiles[i], 'utf8')}
-`
-  }
+  const hasDataList: { name: string; data: string }[] = []
+  const fileData = listFiles(outputDir)
+    .sort()
+    .map((file) => {
+      const data = isBinaryPath(file)
+        ? '\nbinary\n'
+        : `\n\n\`\`\`\n${fs
+            .readFileSync(file, 'utf8')
+            .replace(
+              /```/g,
+              path.extname(file) === '.md' ? '\\```' : '```'
+            )}\n\`\`\`\n`
+      const name = file.replace(`${outputDir}/`, '')
+      const duplicated = hasDataList.find(
+        (d) =>
+          d.name.split('/').pop() === file.split('/').pop() && d.data === data
+      )
+
+      if (duplicated) {
+        return {
+          name: `[${name}](#${duplicated.name})`,
+          data: ''
+        }
+      } else {
+        const d = { name, data }
+        hasDataList.push(d)
+        return d
+      }
+    })
+
   rimraf.sync(outputDir)
-  return text
+
+  console.log(hasDataList.length, fileData.length)
+  return fileData.reduce((prev, d) => `${prev}### ${d.name}${d.data}\n`, '')
 }
