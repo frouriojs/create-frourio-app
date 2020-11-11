@@ -80,6 +80,14 @@ export const createActions = (
     })
   }
 
+  if (answers.ci !== 'none') {
+    addedList.push({
+      type: 'add',
+      files: '**',
+      templateDir: `ci/${answers.ci}`
+    })
+  }
+
   return {
     answers: newAnswers,
     actions: [

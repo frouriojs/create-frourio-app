@@ -14,7 +14,7 @@ const createAnswersList = (
   answers: Answers,
   [nextQuestion, ...leftQuestions]: typeof saoPrompts
 ): Answers[] => {
-  if (nextQuestion.name === 'pm' || nextQuestion.when?.(answers) === false) {
+  if (nextQuestion.when?.(answers) === false) {
     return leftQuestions.length
       ? createAnswersList(answers, leftQuestions)
       : [answers]
@@ -66,8 +66,16 @@ const listFiles = (targetDir: string): string[] =>
     }, [])
 
 export const createSnapshot = async (rootDir: string) => {
-  const promptsList = createAnswersList({ dir: '' }, saoPrompts.slice(1))
   const outputDir = path.join(os.tmpdir(), `${Date.now()}`)
+  const appPromptsList = createAnswersList({ dir: '' }, saoPrompts.slice(1, -4))
+  const promptsList = [
+    ...appPromptsList,
+    ...createAnswersList(appPromptsList[0], saoPrompts.slice(-4)),
+    ...createAnswersList(
+      appPromptsList[appPromptsList.length - 1],
+      saoPrompts.slice(-4)
+    )
+  ]
 
   console.log(promptsList.length)
   fs.mkdirSync(outputDir)

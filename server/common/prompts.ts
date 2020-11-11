@@ -20,6 +20,9 @@ type PromptName =
   | 'dbPass'
   | 'dbName'
   | 'dbFile'
+  | 'ci'
+  | 'hosting'
+  | 'serverless'
 export type Answers = Partial<Record<PromptName, string>>
 
 export type Prompt = {
@@ -120,16 +123,6 @@ export const saoPrompts: ({
     ],
     type: 'list',
     default: 'axios'
-  },
-  {
-    name: 'pm',
-    message: 'Package manager',
-    choices: [
-      { name: 'Yarn', value: 'yarn' },
-      { name: 'Npm', value: 'npm' }
-    ],
-    type: 'list',
-    default: 'yarn'
   },
   {
     name: 'daemon',
@@ -261,6 +254,51 @@ export const saoPrompts: ({
     ],
     type: 'list',
     default: 'none'
+  },
+  {
+    name: 'pm',
+    message: 'Package manager',
+    choices: [
+      { name: 'Yarn', value: 'yarn' },
+      { name: 'Npm', value: 'npm' }
+    ],
+    type: 'list',
+    default: 'yarn'
+  },
+  {
+    name: 'ci',
+    message: 'CI/CD service',
+    choices: [
+      { name: 'GitHub Actions', value: 'actions' },
+      { name: 'CircleCI', value: 'circleci' },
+      { name: 'None', value: 'none' }
+    ],
+    type: 'list',
+    default: 'actions'
+  },
+  {
+    name: 'hosting',
+    message: 'Client hosting service',
+    choices: [
+      { name: 'Vercel', value: 'vercel' },
+      { name: 'Netlify', value: 'netlify' },
+      { name: 'GitHub Pages', value: 'github' },
+      { name: 'None', value: 'none' }
+    ],
+    type: 'list',
+    default: 'vercel'
+  },
+  {
+    name: 'serverless',
+    message: 'Serverless service',
+    choices: [
+      { name: 'Vercel', value: 'vercel' },
+      { name: 'Netlify', value: 'netlify' },
+      { name: 'AWS Lambda', value: 'lambda' },
+      { name: 'None', value: 'none' }
+    ],
+    type: 'list',
+    default: 'vercel'
   }
 ]
 
