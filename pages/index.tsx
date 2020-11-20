@@ -151,7 +151,7 @@ const Home = () => {
         <div className={styles.installing}>
           <div>
             <div className={styles.installingTitle}>
-              Installing and start project on tarminal...
+              Installing and start project on terminal...
             </div>
             <div className={styles.installingDesc}>
               Please do not close the browser until it automatically changes to
