@@ -20,13 +20,15 @@ commands:
     steps:
       - restore_cache:
           name: Restore dependencies
-          key: dependencies-<< parameters.cache_version >>-{{ checksum "<< parameters.cache_key >>" }}
+          key: dependencies-{{ checksum "<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>" }}-{{ checksum "server/<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>" }}
       - run: <%= pm %> install
+      - run: <%= pm === 'npm' ? 'npm install --prefix server' : 'yarn install --cwd server' %>
       - save_cache:
           name: Cache dependencies
-          key: dependencies-<< parameters.cache_version >>-{{ checksum "<< parameters.cache_key >>" }}
+          key: dependencies-{{ checksum "<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>" }}-{{ checksum "server/<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>" }}
           paths:
             - node_modules
+            - server/node_modules
 
 jobs:
   test:
