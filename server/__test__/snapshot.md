@@ -916,6 +916,7 @@ export const changeIcon = async (id: string, iconFile: MulterFile) => {
 ### express-next-basic-axios-none-none-jest/server/test/server.test.ts
 
 ```
+import express from 'express'
 import controller from '$/api/tasks/controller'
 import { getTasks } from '$/service/tasks'
 
@@ -938,7 +939,7 @@ test('dependency injection into controller', async () => {
     print: (text: string) => {
       printedMessage = text
     }
-  })()
+  })(express())
 
   const limit = 3
   const message = 'test message'
@@ -1952,6 +1953,7 @@ export const deleteTask = (id: Task['id']) =>
 ### express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts
 
 ```
+import express from 'express'
 import controller from '$/api/tasks/controller'
 import { getTasks } from '$/service/tasks'
 
@@ -1976,7 +1978,7 @@ test('dependency injection into controller', async () => {
     print: (text: string) => {
       printedMessage = text
     }
-  })()
+  })(express())
 
   const limit = 3
   const message = 'test message'
@@ -3230,6 +3232,7 @@ export class TaskSubscriber implements EntitySubscriberInterface<Task> {
 ### express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts
 
 ```
+import express from 'express'
 import controller from '$/api/tasks/controller'
 import { getTasks } from '$/service/tasks'
 
@@ -3252,7 +3255,7 @@ test('dependency injection into controller', async () => {
     print: (text: string) => {
       printedMessage = text
     }
-  })()
+  })(express())
 
   const limit = 3
   const message = 'test message'
@@ -20229,7 +20232,46 @@ export const changeIcon = async (id: string, iconFile: Multipart) => {
 
 ```
 
-### [fastify-next-basic-axios-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### fastify-next-basic-axios-none-none-jest/server/test/server.test.ts
+
+```
+import fastify from 'fastify'
+import controller from '$/api/tasks/controller'
+import { getTasks } from '$/service/tasks'
+
+test('dependency injection into controller', async () => {
+  let printedMessage = ''
+
+  const injectedController = controller.inject({
+    getTasks: getTasks.inject({
+      readDB: () => Promise.resolve({
+        nextId: 5,
+        tasks: [
+          { id: 0, label: 'task1', done: false },
+          { id: 1, label: 'task2', done: false },
+          { id: 2, label: 'task3', done: true },
+          { id: 3, label: 'task4', done: true },
+          { id: 4, label: 'task5', done: false }
+        ]
+      })
+    }),
+    print: (text: string) => {
+      printedMessage = text
+    }
+  })(fastify())
+
+  const limit = 3
+  const message = 'test message'
+  const res = await injectedController.get({
+    query: { limit, message }
+  })
+
+  expect(res.body).toHaveLength(limit)
+  expect(printedMessage).toBe(message)
+})
+
+```
+
 ### [fastify-next-basic-axios-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-next-basic-axios-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-basic-axios-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -20373,7 +20415,48 @@ export const changeIcon = async (id: string, iconFile: Multipart) => {
 ### [fastify-next-basic-axios-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-axios-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts
+
+```
+import fastify from 'fastify'
+import controller from '$/api/tasks/controller'
+import { getTasks } from '$/service/tasks'
+
+test('dependency injection into controller', async () => {
+  let printedMessage = ''
+
+  const injectedController = controller.inject({
+    getTasks: getTasks.inject({
+      prisma: {
+        task: {
+          findMany: () =>
+            Promise.resolve([
+              { id: 0, label: 'task1', done: false },
+              { id: 1, label: 'task2', done: false },
+              { id: 2, label: 'task3', done: true },
+              { id: 3, label: 'task4', done: true },
+              { id: 4, label: 'task5', done: false }
+            ])
+        }
+      }
+    }),
+    print: (text: string) => {
+      printedMessage = text
+    }
+  })(fastify())
+
+  const limit = 3
+  const message = 'test message'
+  const res = await injectedController.get({
+    query: { limit, message }
+  })
+
+  expect(res.body).toHaveLength(limit)
+  expect(printedMessage).toBe(message)
+})
+
+```
+
 ### [fastify-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-axios-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -20941,7 +21024,7 @@ workflows:
 ### [fastify-next-basic-axios-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-axios-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-axios-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-axios-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-axios-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-axios-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -21043,7 +21126,7 @@ workflows:
 ### [fastify-next-basic-axios-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-axios-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-axios-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-axios-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-axios-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-axios-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -21240,7 +21323,46 @@ createConnection({
 ### [fastify-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-axios-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts
+
+```
+import fastify from 'fastify'
+import controller from '$/api/tasks/controller'
+import { getTasks } from '$/service/tasks'
+
+test('dependency injection into controller', async () => {
+  let printedMessage = ''
+
+  const injectedController = controller.inject({
+    getTasks: getTasks.inject({
+      taskRepository: () => ({
+        find: () =>
+          Promise.resolve([
+            { id: 0, label: 'task1', done: false },
+            { id: 1, label: 'task2', done: false },
+            { id: 2, label: 'task3', done: true },
+            { id: 3, label: 'task4', done: true },
+            { id: 4, label: 'task5', done: false }
+          ])
+      })
+    }),
+    print: (text: string) => {
+      printedMessage = text
+    }
+  })(fastify())
+
+  const limit = 3
+  const message = 'test message'
+  const res = await injectedController.get({
+    query: { limit, message }
+  })
+
+  expect(res.body).toHaveLength(limit)
+  expect(printedMessage).toBe(message)
+})
+
+```
+
 ### [fastify-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-axios-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-basic-axios-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -21381,7 +21503,7 @@ createConnection({
 ### [fastify-next-basic-axios-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-axios-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-next-basic-axios-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-axios-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-next-basic-axios-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-next-basic-axios-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-next-basic-axios-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-basic-axios-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -21533,7 +21655,7 @@ createConnection({
 ### [fastify-next-basic-axios-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-axios-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-axios-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-axios-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-axios-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-axios-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -21637,7 +21759,7 @@ createConnection({
 ### [fastify-next-basic-axios-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-axios-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-axios-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-axios-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-axios-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-axios-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -21741,7 +21863,7 @@ createConnection({
 ### [fastify-next-basic-axios-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-axios-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-axios-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-axios-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-axios-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-axios-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -21897,7 +22019,7 @@ createConnection({
 ### [fastify-next-basic-axios-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-axios-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-next-basic-axios-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-next-basic-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-axios-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-axios-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-basic-axios-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -21990,7 +22112,7 @@ createConnection({
 ### [fastify-next-basic-fetch-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-fetch-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-next-basic-fetch-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-fetch-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-next-basic-fetch-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-next-basic-fetch-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-next-basic-fetch-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-basic-fetch-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -22085,7 +22207,7 @@ createConnection({
 ### [fastify-next-basic-fetch-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-fetch-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-fetch-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-fetch-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-fetch-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-fetch-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -22187,7 +22309,7 @@ createConnection({
 ### [fastify-next-basic-fetch-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-fetch-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-fetch-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-fetch-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-fetch-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-fetch-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -22289,7 +22411,7 @@ createConnection({
 ### [fastify-next-basic-fetch-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-fetch-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-fetch-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-fetch-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-fetch-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-fetch-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -22388,7 +22510,7 @@ createConnection({
 ### [fastify-next-basic-fetch-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-fetch-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-next-basic-fetch-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-next-basic-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-fetch-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-fetch-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-basic-fetch-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -22481,7 +22603,7 @@ createConnection({
 ### [fastify-next-basic-fetch-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-fetch-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-next-basic-fetch-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-fetch-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-next-basic-fetch-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-next-basic-fetch-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-next-basic-fetch-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-basic-fetch-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -22578,7 +22700,7 @@ createConnection({
 ### [fastify-next-basic-fetch-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-fetch-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -22682,7 +22804,7 @@ createConnection({
 ### [fastify-next-basic-fetch-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-fetch-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -22786,7 +22908,7 @@ createConnection({
 ### [fastify-next-basic-fetch-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-basic-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-fetch-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-basic-fetch-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -22887,7 +23009,7 @@ createConnection({
 ### [fastify-next-basic-fetch-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-basic-fetch-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-next-basic-fetch-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-next-basic-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-next-basic-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-basic-fetch-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-next-basic-fetch-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-basic-fetch-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -22980,7 +23102,7 @@ createConnection({
 ### [fastify-next-static-axios-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-axios-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-next-static-axios-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-axios-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-next-static-axios-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-next-static-axios-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-next-static-axios-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-static-axios-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -23075,7 +23197,7 @@ createConnection({
 ### [fastify-next-static-axios-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-axios-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-axios-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-axios-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-axios-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-axios-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-axios-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-axios-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -23177,7 +23299,7 @@ createConnection({
 ### [fastify-next-static-axios-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-axios-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-axios-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-axios-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-axios-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-axios-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -23279,7 +23401,7 @@ createConnection({
 ### [fastify-next-static-axios-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-axios-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-axios-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-axios-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-axios-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-axios-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -23378,7 +23500,7 @@ createConnection({
 ### [fastify-next-static-axios-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-axios-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-next-static-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-next-static-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-axios-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-axios-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-static-axios-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -23471,7 +23593,7 @@ createConnection({
 ### [fastify-next-static-axios-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-axios-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-next-static-axios-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-axios-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-next-static-axios-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-next-static-axios-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-next-static-axios-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-static-axios-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -23568,7 +23690,7 @@ createConnection({
 ### [fastify-next-static-axios-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-axios-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-axios-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-axios-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-axios-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-axios-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -23672,7 +23794,7 @@ createConnection({
 ### [fastify-next-static-axios-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-axios-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-axios-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-axios-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-axios-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-axios-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -23776,7 +23898,7 @@ createConnection({
 ### [fastify-next-static-axios-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-axios-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-axios-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-axios-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-axios-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-axios-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -23877,7 +23999,7 @@ createConnection({
 ### [fastify-next-static-axios-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-axios-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-next-static-axios-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-next-static-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-axios-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-axios-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-static-axios-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -23970,7 +24092,7 @@ createConnection({
 ### [fastify-next-static-fetch-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-fetch-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-next-static-fetch-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-fetch-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-next-static-fetch-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-next-static-fetch-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-next-static-fetch-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-static-fetch-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -24065,7 +24187,7 @@ createConnection({
 ### [fastify-next-static-fetch-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-fetch-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-fetch-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-fetch-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-fetch-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-fetch-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -24167,7 +24289,7 @@ createConnection({
 ### [fastify-next-static-fetch-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-fetch-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-fetch-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-fetch-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-fetch-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-fetch-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -24269,7 +24391,7 @@ createConnection({
 ### [fastify-next-static-fetch-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-fetch-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-fetch-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-fetch-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-fetch-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-fetch-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -24368,7 +24490,7 @@ createConnection({
 ### [fastify-next-static-fetch-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-fetch-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-next-static-fetch-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-next-static-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-fetch-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-fetch-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-static-fetch-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -24461,7 +24583,7 @@ createConnection({
 ### [fastify-next-static-fetch-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-fetch-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-next-static-fetch-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-fetch-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-next-static-fetch-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-next-static-fetch-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-next-static-fetch-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-static-fetch-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -24558,7 +24680,7 @@ createConnection({
 ### [fastify-next-static-fetch-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-fetch-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-fetch-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-fetch-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-fetch-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-fetch-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -24662,7 +24784,7 @@ createConnection({
 ### [fastify-next-static-fetch-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-fetch-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-fetch-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-fetch-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-fetch-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-fetch-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -24766,7 +24888,7 @@ createConnection({
 ### [fastify-next-static-fetch-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-next-static-fetch-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-fetch-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-next-static-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-fetch-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-fetch-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-next-static-fetch-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -24867,7 +24989,7 @@ createConnection({
 ### [fastify-next-static-fetch-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-next-static-fetch-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-next-static-fetch-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-next-static-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-next-static-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-next-static-fetch-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-next-static-fetch-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-next-static-fetch-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -24963,7 +25085,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-axios-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-axios-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-axios-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-axios-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-axios-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-axios-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-axios-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-axios-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -25062,7 +25184,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-axios-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-axios-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-axios-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-axios-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -25168,7 +25290,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-axios-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-axios-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -25274,7 +25396,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-axios-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-axios-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-axios-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -25377,7 +25499,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-axios-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-axios-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-spa-server-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-spa-server-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-axios-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-axios-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-axios-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -25474,7 +25596,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-axios-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-axios-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-axios-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-axios-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -25575,7 +25697,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -25683,7 +25805,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -25791,7 +25913,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -25896,7 +26018,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-axios-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-spa-server-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-axios-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-axios-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -25993,7 +26115,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-fetch-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-fetch-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-fetch-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-fetch-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-fetch-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-fetch-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-fetch-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-fetch-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -26092,7 +26214,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-fetch-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -26198,7 +26320,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-fetch-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -26304,7 +26426,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-fetch-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-fetch-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -26407,7 +26529,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-fetch-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-fetch-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-spa-server-fetch-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-spa-server-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-fetch-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-fetch-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-fetch-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -26504,7 +26626,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-fetch-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-fetch-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-fetch-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-fetch-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -26605,7 +26727,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -26713,7 +26835,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -26821,7 +26943,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-server-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -26926,7 +27048,7 @@ createConnection({
 ### [fastify-nuxt-spa-server-fetch-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-spa-server-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-server-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-server-fetch-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-server-fetch-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -27023,7 +27145,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-axios-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-axios-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-axios-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-axios-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-axios-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-axios-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-axios-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-axios-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -27122,7 +27244,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-axios-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-axios-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-axios-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-axios-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -27228,7 +27350,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-axios-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-axios-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -27334,7 +27456,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-axios-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-axios-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-axios-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -27437,7 +27559,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-axios-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-axios-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-spa-static-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-spa-static-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-axios-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-axios-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-axios-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -27534,7 +27656,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-axios-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-axios-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-axios-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-axios-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -27635,7 +27757,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -27743,7 +27865,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -27851,7 +27973,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -27956,7 +28078,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-axios-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-spa-static-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-axios-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-axios-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -28053,7 +28175,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-fetch-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-fetch-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-fetch-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-fetch-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-fetch-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-fetch-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-fetch-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-fetch-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -28152,7 +28274,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-fetch-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -28258,7 +28380,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-fetch-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -28364,7 +28486,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-fetch-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-fetch-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -28467,7 +28589,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-fetch-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-fetch-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-spa-static-fetch-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-spa-static-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-fetch-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-fetch-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-fetch-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -28564,7 +28686,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-fetch-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-fetch-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-fetch-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-fetch-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -28665,7 +28787,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -28773,7 +28895,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -28881,7 +29003,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-spa-static-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -28986,7 +29108,7 @@ createConnection({
 ### [fastify-nuxt-spa-static-fetch-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-spa-static-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-spa-static-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-spa-static-fetch-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-spa-static-fetch-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -29083,7 +29205,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-axios-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-axios-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-axios-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-axios-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-axios-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-axios-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-axios-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-axios-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -29182,7 +29304,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-axios-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-axios-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-axios-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-axios-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -29288,7 +29410,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-axios-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-axios-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -29394,7 +29516,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-axios-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-axios-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-axios-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -29497,7 +29619,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-axios-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-axios-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-universal-server-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-universal-server-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-axios-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-axios-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-axios-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -29594,7 +29716,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-axios-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-axios-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-axios-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-axios-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -29695,7 +29817,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -29803,7 +29925,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -29911,7 +30033,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -30016,7 +30138,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-axios-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-universal-server-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-axios-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-axios-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -30113,7 +30235,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-fetch-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-fetch-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-fetch-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-fetch-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-fetch-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-fetch-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-fetch-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-fetch-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -30212,7 +30334,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-fetch-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -30318,7 +30440,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-fetch-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -30424,7 +30546,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-fetch-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-fetch-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -30527,7 +30649,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-fetch-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-fetch-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-universal-server-fetch-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-universal-server-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-fetch-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-fetch-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-fetch-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -30624,7 +30746,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-fetch-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-fetch-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-fetch-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-fetch-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -30725,7 +30847,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -30833,7 +30955,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -30941,7 +31063,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-server-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -31046,7 +31168,7 @@ createConnection({
 ### [fastify-nuxt-universal-server-fetch-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-universal-server-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-server-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-server-fetch-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-server-fetch-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -31143,7 +31265,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-axios-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-axios-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-axios-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-axios-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-axios-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-axios-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-axios-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-axios-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -31242,7 +31364,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-axios-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-axios-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-axios-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-axios-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -31348,7 +31470,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-axios-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-axios-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-axios-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -31454,7 +31576,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-axios-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-axios-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-axios-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-axios-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -31557,7 +31679,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-axios-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-axios-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-universal-static-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-universal-static-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-axios-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-axios-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-axios-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-axios-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -31654,7 +31776,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-axios-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-axios-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-axios-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-axios-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -31755,7 +31877,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-axios-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -31863,7 +31985,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-axios-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -31971,7 +32093,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-axios-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -32076,7 +32198,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-axios-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-universal-static-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-axios-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-axios-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-axios-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -32173,7 +32295,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-fetch-none-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-fetch-none-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-fetch-none-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-fetch-none-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-fetch-none-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-fetch-none-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-fetch-none-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-fetch-none-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -32272,7 +32394,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-fetch-none-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-fetch-none-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -32378,7 +32500,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-fetch-none-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-fetch-none-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -32484,7 +32606,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-fetch-none-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-fetch-none-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-fetch-none-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -32587,7 +32709,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-fetch-none-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-fetch-none-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-universal-static-fetch-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-universal-static-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-fetch-none-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-fetch-none-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-fetch-none-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-fetch-none-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -32684,7 +32806,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-fetch-pm2-none-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-none-jest/server/service/tasks.ts](#express-next-basic-axios-none-none-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-none-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-fetch-pm2-none-jest/server/test/server.test.ts](#express-next-basic-axios-none-none-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-fetch-pm2-none-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-none-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-none-jest/server/tsconfig.json](#express-next-basic-axios-none-none-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-fetch-pm2-none-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-none-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -32785,7 +32907,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-mysql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-fetch-pm2-prisma-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -32893,7 +33015,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-postgresql-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-postgresql-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-postgresql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-fetch-pm2-prisma-postgresql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-postgresql-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-postgresql-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-postgresql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -33001,7 +33123,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-sqlite-jest/server/service/envValues.ts](#express-next-basic-axios-none-none-jest/server/service/envValues.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-sqlite-jest/server/service/tasks.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-sqlite-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
-### [fastify-nuxt-universal-static-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-fetch-pm2-prisma-sqlite-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-prisma-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-sqlite-jest/server/tsconfig.json](#express-next-basic-axios-none-prisma-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-sqlite-jest/server/types/index.ts](#express-next-basic-axios-none-prisma-mysql-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-prisma-sqlite-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
@@ -33106,7 +33228,7 @@ createConnection({
 ### [fastify-nuxt-universal-static-fetch-pm2-typeorm-mysql-jest/server/service/tasks.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/service/tasks.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-typeorm-mysql-jest/server/service/user.ts](#fastify-next-basic-axios-none-none-jest/server/service/user.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/subscriber/TaskSubscriber.ts)
-### [fastify-nuxt-universal-static-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#express-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
+### [fastify-nuxt-universal-static-fetch-pm2-typeorm-mysql-jest/server/test/server.test.ts](#fastify-next-basic-axios-none-typeorm-mysql-jest/server/test/server.test.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-typeorm-mysql-jest/server/tsconfig.json](#express-next-basic-axios-none-typeorm-mysql-jest/server/tsconfig.json)
 ### [fastify-nuxt-universal-static-fetch-pm2-typeorm-mysql-jest/server/types/index.ts](#express-next-basic-axios-none-none-jest/server/types/index.ts)
 ### [fastify-nuxt-universal-static-fetch-pm2-typeorm-mysql-jest/server/validators/index.ts](#express-next-basic-axios-none-none-jest/server/validators/index.ts)
