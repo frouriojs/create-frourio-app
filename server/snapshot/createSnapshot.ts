@@ -6,10 +6,6 @@ import isBinaryPath from 'is-binary-path'
 import { Answers, saoPrompts } from '../common/prompts'
 import { generate } from '../service/generate'
 
-const excludedList = {
-  typeormDB: ['postgres', 'mongodb', 'mssql', 'mariadb', 'cockroachdb']
-}
-
 const createAnswersList = (
   answers: Answers,
   [nextQuestion, ...leftQuestions]: typeof saoPrompts
@@ -35,26 +31,17 @@ const createAnswersList = (
     return leftQuestions.length ? createAnswersList(ans, leftQuestions) : [ans]
   }
 
-  return nextQuestion.choices
-    .filter(
-      (choice) =>
-        !excludedList[nextQuestion.name as keyof typeof excludedList]?.includes(
-          choice.value
-        )
-    )
-    .reduce<Answers[]>((prev, choice) => {
-      const ans = {
-        ...answers,
-        dir: `${answers.dir}${answers.dir ? '-' : ''}${choice.value}`,
-        [nextQuestion.name]: choice.value
-      }
-      return [
-        ...prev,
-        ...(leftQuestions.length
-          ? createAnswersList(ans, leftQuestions)
-          : [ans])
-      ]
-    }, [])
+  return nextQuestion.choices.reduce<Answers[]>((prev, choice) => {
+    const ans = {
+      ...answers,
+      dir: `${answers.dir}${answers.dir ? '-' : ''}${choice.value}`,
+      [nextQuestion.name]: choice.value
+    }
+    return [
+      ...prev,
+      ...(leftQuestions.length ? createAnswersList(ans, leftQuestions) : [ans])
+    ]
+  }, [])
 }
 
 const listFiles = (targetDir: string): string[] =>

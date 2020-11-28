@@ -164,11 +164,7 @@ export const saoPrompts: ({
     message: 'Database type of TypeORM',
     choices: [
       { name: 'MySQL', value: 'mysql' },
-      { name: 'PostgreSQL', value: 'postgres' },
-      { name: 'MongoDB', value: 'mongodb' },
-      { name: 'Sql Server', value: 'mssql' },
-      { name: 'MariaDB', value: 'mariadb' },
-      { name: 'CockroachDB', value: 'cockroachdb' }
+      { name: 'PostgreSQL', value: 'postgres' }
     ],
     type: 'list',
     default: 'mysql',
@@ -272,7 +268,7 @@ export const saoPrompts: ({
     message: 'CI/CD service',
     choices: [
       { name: 'GitHub Actions', value: 'actions' },
-      { name: 'CircleCI', value: 'circleci' },
+      // { name: 'CircleCI', value: 'circleci' },
       { name: 'None', value: 'none' }
     ],
     type: 'list',

@@ -10,7 +10,7 @@ export const createActions = (
     | { type: 'move'; patterns: Record<string, string> }
   )[]
 } => {
-  const newAnswers = { ...answers, dbModule: '', dbUrl: '' }
+  const newAnswers = { prismaDB: 'none', ...answers, dbModule: '', dbUrl: '' }
   const addedList: { type: 'add'; files: string; templateDir: string }[] = [
     {
       type: 'add',
