@@ -67,13 +67,13 @@ const listFiles = (targetDir: string): string[] =>
 
 export const createSnapshot = async (rootDir: string) => {
   const outputDir = path.join(os.tmpdir(), `${Date.now()}`)
-  const appPromptsList = createAnswersList({ dir: '' }, saoPrompts.slice(1, -4))
+  const appPromptsList = createAnswersList({ dir: '' }, saoPrompts.slice(1, -2))
   const promptsList = [
     ...appPromptsList,
-    ...createAnswersList(appPromptsList[0], saoPrompts.slice(-4)),
+    ...createAnswersList(appPromptsList[0], saoPrompts.slice(-2)),
     ...createAnswersList(
       appPromptsList[appPromptsList.length - 1],
-      saoPrompts.slice(-4)
+      saoPrompts.slice(-2)
     )
   ]
 

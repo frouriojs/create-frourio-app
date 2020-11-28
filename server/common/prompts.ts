@@ -21,8 +21,10 @@ type PromptName =
   | 'dbName'
   | 'dbFile'
   | 'ci'
-  | 'hosting'
-  | 'serverless'
+// | 'deployBranch'
+// | 'developBranch'
+// | 'hosting'
+// | 'serverless'
 export type Answers = Partial<Record<PromptName, string>>
 
 export type Prompt = {
@@ -275,31 +277,45 @@ export const saoPrompts: ({
     ],
     type: 'list',
     default: 'actions'
-  },
-  {
-    name: 'hosting',
-    message: 'Client hosting service',
-    choices: [
-      { name: 'Vercel', value: 'vercel' },
-      { name: 'Netlify', value: 'netlify' },
-      { name: 'GitHub Pages', value: 'github' },
-      { name: 'None', value: 'none' }
-    ],
-    type: 'list',
-    default: 'vercel'
-  },
-  {
-    name: 'serverless',
-    message: 'Serverless service',
-    choices: [
-      { name: 'Vercel', value: 'vercel' },
-      { name: 'Netlify', value: 'netlify' },
-      { name: 'AWS Lambda', value: 'lambda' },
-      { name: 'None', value: 'none' }
-    ],
-    type: 'list',
-    default: 'vercel'
   }
+  // {
+  //   name: 'deployBranch',
+  //   message: 'Deploy branch name',
+  //   type: 'input',
+  //   default: 'main',
+  //   when: (ans) => ans.ci !== 'none'
+  // },
+  // {
+  //   name: 'developBranch',
+  //   message: 'Develop branch name',
+  //   type: 'input',
+  //   default: 'develop',
+  //   when: (ans) => ans.ci !== 'none'
+  // },
+  // {
+  //   name: 'hosting',
+  //   message: 'Client hosting service',
+  //   choices: [
+  //     { name: 'Vercel', value: 'vercel' },
+  //     { name: 'Netlify', value: 'netlify' },
+  //     { name: 'GitHub Pages', value: 'github' },
+  //     { name: 'None', value: 'none' }
+  //   ],
+  //   type: 'list',
+  //   default: 'vercel'
+  // },
+  // {
+  //   name: 'serverless',
+  //   message: 'Serverless service',
+  //   choices: [
+  //     { name: 'Vercel', value: 'vercel' },
+  //     { name: 'Netlify', value: 'netlify' },
+  //     { name: 'AWS Lambda', value: 'lambda' },
+  //     { name: 'None', value: 'none' }
+  //   ],
+  //   type: 'list',
+  //   default: 'vercel'
+  // }
 ]
 
 export const initPrompts = (answers: Answers): Prompt[] => {
