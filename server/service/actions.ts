@@ -1,4 +1,3 @@
-import validate from 'validate-npm-package-name'
 import { typeormDBs } from '../common/dbInfo'
 import { Answers } from '../common/prompts'
 
@@ -12,17 +11,6 @@ export const createActions = (
   )[]
 } => {
   const newAnswers = { ...answers, dbModule: '', dbUrl: '' }
-  const validation = validate(answers.dir ?? '')
-  validation.warnings &&
-    validation.warnings.forEach((warn: string) => {
-      console.warn('Warning:', warn)
-    })
-  validation.errors &&
-    validation.errors.forEach((err: string) => {
-      console.error('Error:', err)
-    })
-  validation.errors && validation.errors.length && process.exit(1)
-
   const addedList: { type: 'add'; files: string; templateDir: string }[] = [
     {
       type: 'add',

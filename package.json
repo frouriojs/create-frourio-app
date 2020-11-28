@@ -62,8 +62,7 @@
     "portfinder": "^1.0.28",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8",
-    "validate-npm-package-name": "^3.0.0"
+    "swr": "^0.3.8"
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.2",
@@ -74,7 +73,6 @@
     "@types/ora": "^3.2.0",
     "@types/react": "^16.9.56",
     "@types/rimraf": "^3.0.0",
-    "@types/validate-npm-package-name": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
     "eslint": "^7.13.0",
