@@ -1,3 +1,4 @@
+import <%= server %> from '<%= server %>'
 import controller from '$/api/tasks/controller'
 import { getTasks } from '$/service/tasks'
 
@@ -40,7 +41,7 @@ test('dependency injection into controller', async () => {
     print: (text: string) => {
       printedMessage = text
     }
-  })()
+  })(<%= server %>())
 
   const limit = 3
   const message = 'test message'
