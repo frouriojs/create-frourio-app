@@ -1,4 +1,4 @@
-# <%= dir %>
+# Nuxt.js project
 
 ## Build Setup
 
