@@ -303,29 +303,29 @@ module.exports = {
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -747,13 +747,13 @@ app.listen(SERVER_PORT)
     "@types/multer": "^1.4.4",
     "@types/passport": "^1.0.4",
     "cross-env": "^7.0.2",
-    "frourio-express": "^0.19.1",
+    "frourio-express": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -1253,26 +1253,26 @@ export const apiClient = api(aspida())
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -1453,29 +1453,29 @@ export const deleteTask = async (id: Task['id']) => {
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -1678,13 +1678,13 @@ export type Methods = {
     "@types/multer": "^1.4.4",
     "@types/passport": "^1.0.4",
     "cross-env": "^7.0.2",
-    "frourio-express": "^0.19.1",
+    "frourio-express": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -2109,26 +2109,26 @@ export type UserInfo = {
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -2887,29 +2887,29 @@ model Task {
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -3117,13 +3117,13 @@ export = options
     "@types/multer": "^1.4.4",
     "@types/passport": "^1.0.4",
     "cross-env": "^7.0.2",
-    "frourio-express": "^0.19.1",
+    "frourio-express": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -3341,26 +3341,26 @@ test('dependency injection into controller', async () => {
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -3493,20 +3493,20 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
     "multer": "^1.4.2",
     "passport": "^0.4.1",
     "passport-trusted-header": "^1.1.0",
-    "pm2": "^4.4.1"
+    "pm2": "^4.5.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.7",
     "@types/multer": "^1.4.4",
     "@types/passport": "^1.0.4",
     "cross-env": "^7.0.2",
-    "frourio-express": "^0.19.1",
+    "frourio-express": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -3651,7 +3651,7 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
     "multer": "^1.4.2",
     "passport": "^0.4.1",
     "passport-trusted-header": "^1.1.0",
-    "pm2": "^4.4.1"
+    "pm2": "^4.5.0"
   },
   "devDependencies": {
     "@prisma/cli": "^2.8.0",
@@ -3659,13 +3659,13 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
     "@types/multer": "^1.4.4",
     "@types/passport": "^1.0.4",
     "cross-env": "^7.0.2",
-    "frourio-express": "^0.19.1",
+    "frourio-express": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -4022,7 +4022,7 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
     "mysql": "^2.18.1",
     "passport": "^0.4.1",
     "passport-trusted-header": "^1.1.0",
-    "pm2": "^4.4.1",
+    "pm2": "^4.5.0",
     "typeorm": "^0.2.29",
     "typeormer": "^0.1.1"
   },
@@ -4031,13 +4031,13 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
     "@types/multer": "^1.4.4",
     "@types/passport": "^1.0.4",
     "cross-env": "^7.0.2",
-    "frourio-express": "^0.19.1",
+    "frourio-express": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -4149,29 +4149,29 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -4256,26 +4256,26 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -4356,29 +4356,29 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -4465,26 +4465,26 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -4775,29 +4775,29 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -4880,26 +4880,26 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -5481,29 +5481,29 @@ export const apiClient = api(aspida())
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -5580,26 +5580,26 @@ export const apiClient = api(aspida())
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -5681,29 +5681,29 @@ export const apiClient = api(aspida())
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -5791,26 +5791,26 @@ export const apiClient = api(aspida())
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -6102,29 +6102,29 @@ export const apiClient = api(aspida())
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -6208,26 +6208,26 @@ export const apiClient = api(aspida())
     "@aspida/swr": "^0.2.2",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -6808,29 +6808,29 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -6906,26 +6906,26 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -7006,29 +7006,29 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -7115,26 +7115,26 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -7425,29 +7425,29 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -7530,26 +7530,26 @@ export const apiClient = api(aspida())
     "@aspida/fetch": "^0.10.2",
     "@aspida/swr": "^0.2.2",
     "class-validator": "^0.12.2",
-    "next": "^10.0.1",
+    "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.8"
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.56",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -8647,27 +8647,27 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -8963,24 +8963,24 @@ module.exports = {
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -9080,27 +9080,27 @@ module.exports = {
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -9347,24 +9347,24 @@ export default Vue.extend({
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -9682,27 +9682,27 @@ export default Vue.extend({
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -9804,24 +9804,24 @@ export default Vue.extend({
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -10524,28 +10524,28 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -10711,25 +10711,25 @@ export default plugin
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -10829,28 +10829,28 @@ export default plugin
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -10986,25 +10986,25 @@ export default plugin
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -11322,28 +11322,28 @@ export default plugin
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -11445,25 +11445,25 @@ export default plugin
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -12176,27 +12176,27 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -12291,24 +12291,24 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -12408,27 +12408,27 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -12534,24 +12534,24 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -12869,27 +12869,27 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -12991,24 +12991,24 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -13711,28 +13711,28 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -13827,25 +13827,25 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -13945,28 +13945,28 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -14072,25 +14072,25 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -14408,28 +14408,28 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/jest": "^26.0.15",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-jest": "^26.4.3",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -14531,25 +14531,25 @@ export default config
   "devDependencies": {
     "@nuxt/types": "^2.14.7",
     "@nuxt/typescript-build": "^2.0.3",
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-config-typescript": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "ts-loader": "^8.0.10",
-    "typescript": "^4.0.5"
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2"
   }
 }
 
@@ -20144,23 +20144,23 @@ fastify.listen(SERVER_PORT)
   "dependencies": {
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
-    "fastify": "^3.7.0",
+    "fastify": "^3.8.0",
     "fastify-auth": "^1.0.1",
-    "fastify-cors": "^4.1.0",
+    "fastify-cors": "^5.0.0",
     "fastify-helmet": "^5.0.3",
-    "fastify-multipart": "^3.3.0",
+    "fastify-multipart": "^3.3.1",
     "fastify-static": "^3.3.0"
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
     "cross-env": "^7.0.2",
-    "frourio": "^0.19.1",
+    "frourio": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -20336,24 +20336,24 @@ export const changeIcon = async (id: string, iconFile: Multipart) => {
     "@prisma/client": "^2.8.0",
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
-    "fastify": "^3.7.0",
+    "fastify": "^3.8.0",
     "fastify-auth": "^1.0.1",
-    "fastify-cors": "^4.1.0",
+    "fastify-cors": "^5.0.0",
     "fastify-helmet": "^5.0.3",
-    "fastify-multipart": "^3.3.0",
+    "fastify-multipart": "^3.3.1",
     "fastify-static": "^3.3.0"
   },
   "devDependencies": {
     "@prisma/cli": "^2.8.0",
     "@types/busboy": "^0.2.3",
     "cross-env": "^7.0.2",
-    "frourio": "^0.19.1",
+    "frourio": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -21207,11 +21207,11 @@ createConnection({
   "dependencies": {
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
-    "fastify": "^3.7.0",
+    "fastify": "^3.8.0",
     "fastify-auth": "^1.0.1",
-    "fastify-cors": "^4.1.0",
+    "fastify-cors": "^5.0.0",
     "fastify-helmet": "^5.0.3",
-    "fastify-multipart": "^3.3.0",
+    "fastify-multipart": "^3.3.1",
     "mysql": "^2.18.1",
     "fastify-static": "^3.3.0",
     "typeorm": "^0.2.29",
@@ -21220,13 +21220,13 @@ createConnection({
   "devDependencies": {
     "@types/busboy": "^0.2.3",
     "cross-env": "^7.0.2",
-    "frourio": "^0.19.1",
+    "frourio": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -21350,24 +21350,24 @@ createConnection({
   "dependencies": {
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
-    "fastify": "^3.7.0",
+    "fastify": "^3.8.0",
     "fastify-auth": "^1.0.1",
-    "fastify-cors": "^4.1.0",
+    "fastify-cors": "^5.0.0",
     "fastify-helmet": "^5.0.3",
-    "fastify-multipart": "^3.3.0",
+    "fastify-multipart": "^3.3.1",
     "fastify-static": "^3.3.0",
-    "pm2": "^4.4.1"
+    "pm2": "^4.5.0"
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
     "cross-env": "^7.0.2",
-    "frourio": "^0.19.1",
+    "frourio": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -21494,25 +21494,25 @@ createConnection({
     "@prisma/client": "^2.8.0",
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
-    "fastify": "^3.7.0",
+    "fastify": "^3.8.0",
     "fastify-auth": "^1.0.1",
-    "fastify-cors": "^4.1.0",
+    "fastify-cors": "^5.0.0",
     "fastify-helmet": "^5.0.3",
-    "fastify-multipart": "^3.3.0",
+    "fastify-multipart": "^3.3.1",
     "fastify-static": "^3.3.0",
-    "pm2": "^4.4.1"
+    "pm2": "^4.5.0"
   },
   "devDependencies": {
     "@prisma/cli": "^2.8.0",
     "@types/busboy": "^0.2.3",
     "cross-env": "^7.0.2",
-    "frourio": "^0.19.1",
+    "frourio": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
@@ -21862,27 +21862,27 @@ createConnection({
   "dependencies": {
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
-    "fastify": "^3.7.0",
+    "fastify": "^3.8.0",
     "fastify-auth": "^1.0.1",
-    "fastify-cors": "^4.1.0",
+    "fastify-cors": "^5.0.0",
     "fastify-helmet": "^5.0.3",
-    "fastify-multipart": "^3.3.0",
+    "fastify-multipart": "^3.3.1",
     "mysql": "^2.18.1",
     "fastify-static": "^3.3.0",
-    "pm2": "^4.4.1",
+    "pm2": "^4.5.0",
     "typeorm": "^0.2.29",
     "typeormer": "^0.1.1"
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
     "cross-env": "^7.0.2",
-    "frourio": "^0.19.1",
+    "frourio": "^0.21.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.10",
+    "ts-loader": "^8.0.11",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
