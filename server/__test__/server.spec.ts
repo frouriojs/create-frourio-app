@@ -13,7 +13,7 @@ test('server', async () => {
   expect(res2.data[0].label).toEqual('test')
 
   await expect(
-    client.get('user', { headers: { token: 'token' } })
+    client.get('user', { headers: { authorization: 'token' } })
   ).rejects.toHaveProperty('response.status', 400)
   await expect(
     client.post('token', { id: 'hoge', pass: 'huga' })
@@ -21,6 +21,8 @@ test('server', async () => {
 
   const res3 = await client.post('token', { id: 'id', pass: 'pass' })
   await expect(
-    client.get('user', { headers: { token: res3.data.token } })
+    client.get('user', {
+      headers: { authorization: `Bearer ${res3.data.token}` }
+    })
   ).resolves.toHaveProperty('data.name', 'sample user')
 })
