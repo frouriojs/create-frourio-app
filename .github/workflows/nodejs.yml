@@ -22,8 +22,8 @@ jobs:
       - uses: actions/cache@v2
         id: yarn-cache
         with:
-          path:  "**/node_modules"
-          key: ${{ runner.os }}-node-v${{ matrix.node-version }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: "node_modules"
+          key: ${{ runner.os }}-node-v${{ matrix.node-version }}-yarn-${{ hashFiles('yarn.lock') }}
       - run: yarn --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - run: yarn lint
@@ -33,38 +33,42 @@ jobs:
       - run: $env:NODE_ENV="test"; yarn build
         if: matrix.os == 'windows-latest'
       - run: yarn typecheck
+
+      - run: |
+          sudo systemctl start mysql.service
+          node bin/index.js --answers '{"dir":"../nextjs","daemon":"pm2","dbUser":"root","dbPass":"root","dbName":"test","testing":"jest"}'
+        if: matrix.os == 'ubuntu-latest'
+      - run: node bin/index.js --answers '{\"dir\":\"../nextjs\",\"daemon\":\"pm2\",\"prismaDB\":\"sqlite\",\"dbUser\":\"root\",\"dbPass\":\"root\",\"dbName\":\"test\",\"testing\":\"jest\"}'
+        if: matrix.os == 'windows-latest'
+      - run: npm run lint --prefix ../nextjs
+      - run: npm run typecheck --prefix ../nextjs
+      - run: npm run test --prefix ../nextjs
+      - run: npm run build --prefix ../nextjs/server
+      - run: npm run pm2:start --prefix ../nextjs/server
+
       - run: yarn test
       - uses: actions/upload-artifact@v2
         if: failure()
         with:
           name: snapshot
           path: ./server/__test__/forArtifact.md
-      - run: node -e "require('fs').unlinkSync('.eslintrc.js')"
 
-      - run: node bin/index.js --answers '{"dir":"nextjs","prismaDB":"sqlite","testing":"jest"}'
-        if: matrix.os == 'ubuntu-latest'
-      - run: node bin/index.js --answers '{\"dir\":\"nextjs\",\"prismaDB\":\"sqlite\",\"testing\":\"jest\"}'
-        if: matrix.os == 'windows-latest'
-      - run: npm run lint --prefix nextjs
-      - run: npm run typecheck --prefix nextjs
-      - run: npm run test --prefix nextjs
-
-      - run: node bin/index.js --answers '{"dir":"nextjs-typeorm","orm":"typeorm","testing":"jest"}'
+      - run: node bin/index.js --answers '{"dir":"../nextjs-typeorm","orm":"typeorm","testing":"jest"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
-      - run: npm run lint --prefix nextjs-typeorm
+      - run: npm run lint --prefix ../nextjs-typeorm
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
-      - run: npm run typecheck --prefix nextjs-typeorm
+      - run: npm run typecheck --prefix ../nextjs-typeorm
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
-      - run: npm run test --prefix nextjs-typeorm
+      - run: npm run test --prefix ../nextjs-typeorm
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
 
-      - run: node bin/index.js --answers '{"dir":"nuxtjs","prismaDB":"sqlite","testing":"jest"}'
+      - run: node bin/index.js --answers '{"dir":"../nuxtjs","prismaDB":"sqlite","testing":"jest"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
-      - run: npm run lint --prefix nuxtjs
+      - run: npm run lint --prefix ../nuxtjs
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
-      - run: npm run typecheck --prefix nuxtjs
+      - run: npm run typecheck --prefix ../nuxtjs
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
-      - run: npm run test --prefix nuxtjs
+      - run: npm run test --prefix ../nuxtjs
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
 
   release:
@@ -81,8 +85,8 @@ jobs:
       - uses: actions/cache@v2
         id: yarn-cache
         with:
-          path:  "**/node_modules"
-          key: ${{ runner.os }}-node-v12-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: "node_modules"
+          key: ${{ runner.os }}-node-v12-yarn-${{ hashFiles('yarn.lock') }}
       - run: yarn --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - run: yarn build
