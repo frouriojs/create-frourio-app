@@ -71,9 +71,6 @@ https://frourio.io/docs
 1. HTTP client of aspida:
    - [axios](https://github.com/axios/axios)
    - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-1. Package manager:
-   - Yarn
-   - Npm
 1. Daemon process manager:
    - None
    - [PM2](https://pm2.keymetrics.io/)
@@ -88,19 +85,15 @@ https://frourio.io/docs
 1. Database type of TypeORM:
    - [MySQL](https://www.mysql.com/)
    - [PostgreSQL](https://www.postgresql.org/)
-   - [MongoDB](https://www.mongodb.com/)
-   - [Sql Server](https://www.microsoft.com/en-us/sql-server)
-   - [MariaDB](https://mariadb.com/)
-   - [CockroachDB](https://www.cockroachlabs.com/)
 1. Testing framework:
    - None
    - [Jest](https://jestjs.io/)
-
-## Support
-
-<a href="https://twitter.com/solufa2020">
-  <img src="https://aspida.github.io/aspida/assets/images/twitter.svg" width="50" alt="Twitter" />
-</a>
+1. Package manager:
+   - Yarn
+   - Npm
+1. CI/CD service:
+   - [GitHub Actions](https://github.co.jp/features/actions)
+   - None
 
 ## License
 

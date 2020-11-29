@@ -16,27 +16,10 @@ const userInfo = {
   )
 }
 
-let userToken: string | null = null
-
 export const validateUser = (id: string, pass: string) =>
   id === USER_ID && pass === USER_PASS
 
-export const validateToken = (token: string) =>
-  userToken !== null && token === userToken
-
-export const getUserIdByToken = (token: string) =>
-  validateToken(token) && { id: USER_ID }
-
 export const getUserInfoById = (id: string) => ({ id, ...userInfo })
-
-export const createToken = () => {
-  userToken = `token:${Date.now()}`
-  return userToken
-}
-
-export const deleteToken = (token: string) => {
-  if (validateToken(token)) userToken = null
-}
 
 export const changeIcon = async (id: string, iconFile: MulterFile) => {
   const iconName = `${Date.now()}${path.extname(iconFile.originalname)}`

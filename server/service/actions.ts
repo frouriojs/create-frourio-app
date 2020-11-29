@@ -1,4 +1,3 @@
-import validate from 'validate-npm-package-name'
 import { typeormDBs } from '../common/dbInfo'
 import { Answers } from '../common/prompts'
 
@@ -11,18 +10,7 @@ export const createActions = (
     | { type: 'move'; patterns: Record<string, string> }
   )[]
 } => {
-  const newAnswers = { ...answers, dbModule: '', dbUrl: '' }
-  const validation = validate(answers.dir ?? '')
-  validation.warnings &&
-    validation.warnings.forEach((warn: string) => {
-      console.warn('Warning:', warn)
-    })
-  validation.errors &&
-    validation.errors.forEach((err: string) => {
-      console.error('Error:', err)
-    })
-  validation.errors && validation.errors.length && process.exit(1)
-
+  const newAnswers = { prismaDB: 'none', ...answers, dbModule: '', dbUrl: '' }
   const addedList: { type: 'add'; files: string; templateDir: string }[] = [
     {
       type: 'add',
@@ -77,6 +65,14 @@ export const createActions = (
       type: 'add',
       files: '**',
       templateDir: `testing/${answers.testing}`
+    })
+  }
+
+  if (answers.ci !== 'none') {
+    addedList.push({
+      type: 'add',
+      files: '**',
+      templateDir: `ci/${answers.ci}`
     })
   }
 

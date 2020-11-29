@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
+const JWT_SECRET = process.env.JWT_SECRET ?? ''
 const USER_ID = process.env.USER_ID ?? ''
 const USER_PASS = process.env.USER_PASS ?? ''
 const SERVER_PORT = +(process.env.SERVER_PORT ?? '8080')
@@ -14,6 +15,7 @@ const TYPEORM_DATABASE = process.env.TYPEORM_DATABASE ?? ''
 const TYPEORM_PORT = process.env.TYPEORM_PORT ?? ''
 
 export {
+  JWT_SECRET,
   USER_ID,
   USER_PASS,
   SERVER_PORT,

@@ -1,0 +1,44 @@
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest<% if (prismaDB === 'postgresql') { %>
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5<% } %>
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-<%= pm %>-cache
+        with:
+          path: "node_modules"
+          key: client-<%= pm %>-${{ hashFiles('<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>') }}
+      - uses: actions/cache@v2
+        id: server-<%= pm %>-cache
+        with:
+          path: "server/node_modules"
+          key: server-<%= pm %>-${{ hashFiles('server/<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>') }}
+      - run: <%= pm %> install
+        if: steps.client-<%= pm %>-cache.outputs.cache-hit != 'true'
+      - run: <%= pm === 'npm' ? 'npm install --prefix server' : 'yarn install --cwd server' %>
+        if: steps.server-<%= pm %>-cache.outputs.cache-hit != 'true'
+      - run: <%= pm %><%= pm === 'npm' ? ' run' : '' %> lint<% if (prismaDB === 'sqlite') { %>
+      - run: echo "DATABASE_URL=file:./dev.db" > server/prisma/.env<% } else if (prismaDB === 'mysql') { %>
+      - run: |
+          sudo systemctl start mysql.service
+          echo "DATABASE_URL=mysql://root:root@localhost:3306/test" > server/prisma/.env<% } else if (prismaDB === 'postgresql') { %>
+      - run: echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test" > server/prisma/.env<% } %>
+      - run: <%= pm %><%= pm === 'npm' ? ' run' : '' %> typecheck<% if (testing !== 'none') { %>
+      - run: <%= pm %> test<% } %>

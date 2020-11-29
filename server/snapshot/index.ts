@@ -4,7 +4,7 @@ import { createSnapshot } from './createSnapshot'
 
 createSnapshot(path.join(__dirname, '../')).then((text) =>
   fs.writeFileSync(
-    path.join(__dirname, '../__test__/snapshot.txt'),
+    path.join(__dirname, '../__test__/snapshot.md'),
     text,
     'utf8'
   )

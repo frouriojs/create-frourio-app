@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.18.0](https://github.com/frouriojs/create-frourio-app/compare/v0.17.0...v0.18.0) (2020-11-29)
+
+
+### Features
+
+* add ci configs ([ddaf221](https://github.com/frouriojs/create-frourio-app/commit/ddaf221340c92a45362f55aafc0ee9f74a38f4a7))
+* change fastify-auth to fastify-jwt ([4499502](https://github.com/frouriojs/create-frourio-app/commit/449950215b5bb17974724ef1d099eb2bb1b9bae9))
+* change passport to express-jwt ([e5055ee](https://github.com/frouriojs/create-frourio-app/commit/e5055eecbf5257bf808e6749f1863de82ecec8ea))
+* optimize snapshot ([db72a41](https://github.com/frouriojs/create-frourio-app/commit/db72a4167b6a0d6e8a0aca4df3713fd7c6cd7718))
+* update frourio@0.21.0 ([e2249eb](https://github.com/frouriojs/create-frourio-app/commit/e2249eb0f7e08580561b6de47254141c6eba0e33))
+
+
+### Bug Fixes
+
+* add database to services ([88e09c3](https://github.com/frouriojs/create-frourio-app/commit/88e09c3f0f34c099627db86817534542ab780844))
+* ci configs ([3abd460](https://github.com/frouriojs/create-frourio-app/commit/3abd4607a9e671b7565bb5cea2feb677841bfcdd))
+
 ## [0.17.0](https://github.com/frouriojs/create-frourio-app/compare/v0.16.5...v0.17.0) (2020-11-08)
 
 

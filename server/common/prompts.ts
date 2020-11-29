@@ -20,6 +20,11 @@ type PromptName =
   | 'dbPass'
   | 'dbName'
   | 'dbFile'
+  | 'ci'
+// | 'deployBranch'
+// | 'developBranch'
+// | 'hosting'
+// | 'serverless'
 export type Answers = Partial<Record<PromptName, string>>
 
 export type Prompt = {
@@ -122,16 +127,6 @@ export const saoPrompts: ({
     default: 'axios'
   },
   {
-    name: 'pm',
-    message: 'Package manager',
-    choices: [
-      { name: 'Yarn', value: 'yarn' },
-      { name: 'Npm', value: 'npm' }
-    ],
-    type: 'list',
-    default: 'yarn'
-  },
-  {
     name: 'daemon',
     message: 'Daemon process manager',
     choices: [
@@ -169,11 +164,7 @@ export const saoPrompts: ({
     message: 'Database type of TypeORM',
     choices: [
       { name: 'MySQL', value: 'mysql' },
-      { name: 'PostgreSQL', value: 'postgres' },
-      { name: 'MongoDB', value: 'mongodb' },
-      { name: 'Sql Server', value: 'mssql' },
-      { name: 'MariaDB', value: 'mariadb' },
-      { name: 'CockroachDB', value: 'cockroachdb' }
+      { name: 'PostgreSQL', value: 'postgres' }
     ],
     type: 'list',
     default: 'mysql',
@@ -261,7 +252,66 @@ export const saoPrompts: ({
     ],
     type: 'list',
     default: 'none'
+  },
+  {
+    name: 'pm',
+    message: 'Package manager',
+    choices: [
+      { name: 'Yarn', value: 'yarn' },
+      { name: 'Npm', value: 'npm' }
+    ],
+    type: 'list',
+    default: 'yarn'
+  },
+  {
+    name: 'ci',
+    message: 'CI/CD service',
+    choices: [
+      { name: 'GitHub Actions', value: 'actions' },
+      // { name: 'CircleCI', value: 'circleci' },
+      { name: 'None', value: 'none' }
+    ],
+    type: 'list',
+    default: 'actions'
   }
+  // {
+  //   name: 'deployBranch',
+  //   message: 'Deploy branch name',
+  //   type: 'input',
+  //   default: 'main',
+  //   when: (ans) => ans.ci !== 'none'
+  // },
+  // {
+  //   name: 'developBranch',
+  //   message: 'Develop branch name',
+  //   type: 'input',
+  //   default: 'develop',
+  //   when: (ans) => ans.ci !== 'none'
+  // },
+  // {
+  //   name: 'hosting',
+  //   message: 'Client hosting service',
+  //   choices: [
+  //     { name: 'Vercel', value: 'vercel' },
+  //     { name: 'Netlify', value: 'netlify' },
+  //     { name: 'GitHub Pages', value: 'github' },
+  //     { name: 'None', value: 'none' }
+  //   ],
+  //   type: 'list',
+  //   default: 'vercel'
+  // },
+  // {
+  //   name: 'serverless',
+  //   message: 'Serverless service',
+  //   choices: [
+  //     { name: 'Vercel', value: 'vercel' },
+  //     { name: 'Netlify', value: 'netlify' },
+  //     { name: 'AWS Lambda', value: 'lambda' },
+  //     { name: 'None', value: 'none' }
+  //   ],
+  //   type: 'list',
+  //   default: 'vercel'
+  // }
 ]
 
 export const initPrompts = (answers: Answers): Prompt[] => {

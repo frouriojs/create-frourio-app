@@ -1,14 +1,13 @@
-import { TokenHeader } from '$/validators'
-import { UserInfo } from '$/types'
+import { AuthHeader, UserInfo } from '$/types'
 
 export type Methods = {
   get: {
-    reqHeaders: TokenHeader
+    reqHeaders: AuthHeader
     resBody: UserInfo
   }
 
   post: {
-    reqHeaders: TokenHeader
+    reqHeaders: AuthHeader
     reqFormat: FormData
     reqBody: { icon: Blob }
     resBody: UserInfo

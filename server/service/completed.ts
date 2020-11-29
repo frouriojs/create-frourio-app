@@ -6,7 +6,7 @@ import logUpdate from 'log-update'
 import { Answers } from '$/common/prompts'
 
 const npmInstall = (outDir: string, npmClient: string) =>
-  new Promise((resolve, reject) => {
+  new Promise<void>((resolve, reject) => {
     const spinner = ora()
     spinner.start(`Installing packages with ${npmClient}`)
     const ps = spawn(npmClient, ['install'], {

@@ -1,0 +1,47 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: ~/project
+    docker:
+      - image: circleci/node
+
+commands:
+  install_packages:
+    parameters:
+      cache_key:
+        default: <%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>
+        description: File to use as a Node cache checksum
+        type: string
+      cache_version:
+        default: v1
+        description: Cache version; increment this for a fresh cache
+        type: string
+    steps:
+      - restore_cache:
+          name: Restore dependencies
+          key: dependencies-{{ checksum "<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>" }}-{{ checksum "server/<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>" }}
+      - run: <%= pm %> install
+      - run: <%= pm === 'npm' ? 'npm install --prefix server' : 'yarn install --cwd server' %>
+      - save_cache:
+          name: Cache dependencies
+          key: dependencies-{{ checksum "<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>" }}-{{ checksum "server/<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>" }}
+          paths:
+            - node_modules
+            - server/node_modules
+
+jobs:
+  test:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - install_packages
+      - run: <%= pm %><%= pm === 'npm' ? ' run' : '' %> lint
+      - run: <%= pm %><%= pm === 'npm' ? ' run' : '' %> typecheck<% if (testing !== 'none') { %>
+      - run: <%= pm %> test<% } %>
+
+workflows:
+  commit:
+    jobs:
+      - test

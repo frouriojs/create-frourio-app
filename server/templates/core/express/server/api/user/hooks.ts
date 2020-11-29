@@ -1,6 +1,6 @@
-import passport from 'passport'
+import jwt from 'express-jwt'
 import { defineHooks } from './$relay'
-import { getUserIdByToken } from '$/service/user'
+import { JWT_SECRET } from '$/service/envValues'
 
 export type AdditionalRequest = {
   user: {
@@ -8,20 +8,6 @@ export type AdditionalRequest = {
   }
 }
 
-passport.use(
-  // eslint-disable-next-line
-  new (require('passport-trusted-header').Strategy)(
-    { headers: ['token'] },
-    // eslint-disable-next-line
-    (headers: { token: string }, done: Function) => {
-      done(null, getUserIdByToken(headers.token))
-    }
-  )
-)
-
 export default defineHooks(() => ({
-  onRequest: [
-    passport.initialize(),
-    passport.authenticate('trusted-header', { session: false })
-  ]
+  onRequest: jwt({ secret: JWT_SECRET, algorithms: ['HS256'] })
 }))
