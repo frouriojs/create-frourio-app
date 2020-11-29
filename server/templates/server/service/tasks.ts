@@ -18,9 +18,8 @@ if (!fs.existsSync(dbPath)) {
   fs.writeFileSync(dbPath, JSON.stringify({ nextId: 0, tasks: [] }), 'utf8')
 }
 
-export const getTasks = <% if (testing === 'none') { %>async (limit?: number) => (await readDB()).tasks.slice(0, limit)<% } else { %>depend(
-  { readDB },
-  async ({ readDB }, limit?: number) => (await readDB()).tasks.slice(0, limit)
+export const getTasks = <% if (testing === 'none') { %>async (limit?: number) => (await readDB()).tasks.slice(0, limit)<% } else { %>depend({ readDB }, async ({ readDB }, limit?: number) =>
+  (await readDB()).tasks.slice(0, limit)
 )<% } %>
 
 export const createTask = async (label: Task['label']) => {

@@ -14,7 +14,7 @@ const UserBanner = () => {
 
       setUserInfo(
         await apiClient.user.$post({
-          headers: { token },
+          headers: { authorization: token },
           body: { icon: e.target.files[0] }
         })
       )
@@ -30,21 +30,24 @@ const UserBanner = () => {
     let newToken = ''
 
     try {
-      newToken = (await apiClient.token.$post({ body: { id, pass } })).token
+      newToken = `Bearer ${
+        (await apiClient.token.$post({ body: { id, pass } })).token
+      }`
       setToken(newToken)
     } catch (e) {
       return alert('Login failed')
     }
 
-    setUserInfo(await apiClient.user.$get({ headers: { token: newToken } }))
+    setUserInfo(
+      await apiClient.user.$get({ headers: { authorization: newToken } })
+    )
     setIsLoggedIn(true)
   }, [])
 
-  const logout = useCallback(async () => {
-    await apiClient.token.delete({ headers: { token } })
+  const logout = useCallback(() => {
     setToken('')
     setIsLoggedIn(false)
-  }, [token])
+  }, [])
 
   return (
     <div className={styles.userBanner}>

@@ -37,14 +37,14 @@ import Vue from 'vue'
 import { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 
 export default Vue.extend({
-  async fetch() {
-    await this.fetchTasks()
-  },
   data() {
     return {
       tasks: [] as Task[],
       newLabel: ''
     }
+  },
+  async fetch() {
+    await this.fetchTasks()
   },
   methods: {
     async fetchTasks() {

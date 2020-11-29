@@ -27,7 +27,7 @@ export default Vue.extend({
       if (!e.target?.files?.length) return
 
       this.userInfo = await this.$api.user.$post({
-        headers: { token: this.token },
+        headers: { authorization: this.token },
         body: { icon: e.target.files[0] }
       })
     },
@@ -37,20 +37,19 @@ export default Vue.extend({
       if (!id || !pass) return alert('Login failed')
 
       try {
-        this.token = (await this.$api.token.$post({ body: { id, pass } })).token
+        this.token = `Bearer ${
+          (await this.$api.token.$post({ body: { id, pass } })).token
+        }`
       } catch (e) {
         return alert('Login failed')
       }
 
       this.userInfo = await this.$api.user.$get({
-        headers: { token: this.token }
+        headers: { authorization: this.token }
       })
       this.isLoggedIn = true
     },
-    async logout() {
-      await this.$api.token.delete({
-        headers: { token: this.token }
-      })
+    logout() {
       this.token = ''
       this.isLoggedIn = false
     }

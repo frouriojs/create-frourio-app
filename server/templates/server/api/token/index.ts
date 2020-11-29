@@ -1,4 +1,4 @@
-import { LoginBody, TokenHeader } from '$/validators'
+import { LoginBody } from '$/validators'
 
 export type Methods = {
   post: {
@@ -6,9 +6,5 @@ export type Methods = {
     resBody: {
       token: string
     }
-  }
-
-  delete: {
-    reqHeaders: TokenHeader
   }
 }

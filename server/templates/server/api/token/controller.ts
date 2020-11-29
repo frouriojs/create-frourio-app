@@ -1,14 +1,9 @@
 import { defineController } from './$relay'
-import { validateUser, createToken, deleteToken } from '$/service/user'
+import { validateUser } from '$/service/user'
 
-export default defineController(() => ({
+export default defineController((fastify) => ({
   post: ({ body }) =>
     validateUser(body.id, body.pass)
-      ? { status: 201, body: { token: createToken() } }
-      : { status: 401 },
-
-  delete: ({ headers }) => {
-    deleteToken(headers.token)
-    return { status: 204 }
-  }
+      ? { status: 201, body: { token: fastify.jwt.sign({ id: body.id }) } }
+      : { status: 401 }
 }))
