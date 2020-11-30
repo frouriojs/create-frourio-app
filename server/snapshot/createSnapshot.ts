@@ -1,6 +1,7 @@
 import os from 'os'
 import fs from 'fs'
 import path from 'path'
+import crypto from 'crypto'
 import rimraf from 'rimraf'
 import isBinaryPath from 'is-binary-path'
 import { Answers, saoPrompts } from '../common/prompts'
@@ -81,7 +82,12 @@ export const createSnapshot = async (rootDir: string) => {
     )
   }
 
-  const hasDataList: { name: string; data: string }[] = []
+  const hasDataList: {
+    header: string
+    name: string
+    data: string
+    hash: string
+  }[] = []
   const fileData = listFiles(outputDir)
     .sort()
     .map((file) => {
@@ -93,19 +99,25 @@ export const createSnapshot = async (rootDir: string) => {
               /```/g,
               path.extname(file) === '.md' ? '\\```' : '```'
             )}\n\`\`\`\n`
+      const hash = crypto.createHash('md5').update(data).digest('hex')
       const name = file.replace(`${outputDir}/`, '')
       const duplicated = hasDataList.find(
         (d) =>
-          d.name.split('/').pop() === file.split('/').pop() && d.data === data
+          d.name.split('/').pop() === file.split('/').pop() && d.hash === hash
       )
 
       if (duplicated) {
         return {
-          name: `[${name}](#${duplicated.name})`,
-          data: ''
+          header: name.split('/')[0],
+          name: `[${name.split('/').slice(1).join('/')}](#${duplicated.hash})`
         }
       } else {
-        const d = { name, data }
+        const d = {
+          header: name.split('/')[0],
+          name: name.split('/').slice(1).join('/'),
+          data,
+          hash
+        }
         hasDataList.push(d)
         return d
       }
@@ -114,5 +126,14 @@ export const createSnapshot = async (rootDir: string) => {
   rimraf.sync(outputDir)
 
   console.log(hasDataList.length, fileData.length)
-  return fileData.reduce((prev, d) => `${prev}### ${d.name}${d.data}\n`, '')
+
+  return fileData.reduce(
+    (prev, d) => ({
+      header: d.header,
+      text: `${prev.text}${'hash' in d ? `<a id="${d.hash}"></a>\n` : ''}${
+        prev.header === d.header ? '' : `\n## ${d.header}\n`
+      }${d.name}${'data' in d ? d.data : '  '}\n`
+    }),
+    { header: '', text: '' }
+  ).text
 }
