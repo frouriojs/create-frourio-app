@@ -3901,10 +3901,10 @@ from2@^2.1.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
-frourio@^0.21.0:
-  version "0.21.0"
-  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.21.0.tgz#94bec4baaee679ea97a9a5f60bd27bf8b7f748ae"
-  integrity sha512-R5SfP3HYEy0Ip0OQaL+TnQEbqhA+PPhnlO7GAQ70Iw9WtuHWaT/0eOz/0AtLjJIglE8L5TEN0FFkJ5IIfIcyeg==
+frourio@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.21.1.tgz#d52233845fe0face37f85f1689ebd591546b7271"
+  integrity sha512-e53175NSv1rOAIVmpcdPvHOeLiu+cFS3J0288yfihDVfVznra/BL5BrcAOYCyhp9gs0fgDv4vOBbK7EEmbR8KQ==
   dependencies:
     aspida "^0.22.2"
     velona "^0.5.1"
