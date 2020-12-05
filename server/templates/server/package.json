@@ -25,7 +25,7 @@
     "start": "cross-env NODE_ENV=production node index.js"
   },
   "dependencies": {
-    "<% if (orm === 'prisma') { %>@prisma/client": "^2.8.0",
+    "<% if (orm === 'prisma') { %>@prisma/client": "^2.12.1",
     "<% } %>class-validator": "^0.12.2",
     "dotenv": "^8.2.0<% if (server === 'express') { %>",
     "cors": "^2.8.5",
@@ -33,7 +33,7 @@
     "express-jwt": "^6.0.0",
     "helmet": "^4.1.1",
     "multer": "^1.4.2<%- dbModule %><% } else { %>",
-    "fastify": "^3.8.0",
+    "fastify": "^3.9.1",
     "fastify-cors": "^5.0.0",
     "fastify-helmet": "^5.0.3",
     "fastify-jwt": "^2.1.3",
@@ -44,7 +44,7 @@
     "typeormer": "^0.1.1<% } %>"
   },
   "devDependencies": {
-    "<% if (orm === 'prisma') { %>@prisma/cli": "^2.8.0",
+    "<% if (orm === 'prisma') { %>@prisma/cli": "^2.12.1",
     "<% } %><% if (server === 'fastify') { %>@types/busboy": "^0.2.3",
     "<% } else { %>@types/cors": "^2.8.7",
     "@types/express-jwt": "0.0.42",
@@ -55,7 +55,7 @@
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
     "ts-loader": "^8.0.11",
-    "ts-node": "^9.0.0",
+    "ts-node": "^9.1.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
     "typescript": "^4.1.2",
     "webpack": "^4.44.2",

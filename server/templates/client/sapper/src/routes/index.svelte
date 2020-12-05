@@ -8,32 +8,32 @@
 	let newLabel = ''
 
 	const fetchTasks = async () => {
-      tasks = await apiClient.tasks.$get()
-		}
-		
-		const onInput = (e: Event) => {
-			newLabel= (e.currentTarget as HTMLInputElement).value
-		}
+		tasks = await apiClient.tasks.$get()
+	}
+
+	const onInput = (e: Event) => {
+		newLabel= (e.currentTarget as HTMLInputElement).value
+	}
 
   const createTask = async () => {
-      if (!newLabel) return
+		if (!newLabel) return
 
-      await apiClient.tasks.post({ body: { label: newLabel } })
-      newLabel = ''
-      await fetchTasks()
-		}
-		
+		await apiClient.tasks.post({ body: { label: newLabel } })
+		newLabel = ''
+		await fetchTasks()
+	}
+	
   const toggleDone = async (task: Task) => {
-      await apiClient.tasks
-        ._taskId(task.id)
-        .patch({ body: { done: !task.done } })
-      await fetchTasks()
-		}
-		
+		await apiClient.tasks
+			._taskId(task.id)
+			.patch({ body: { done: !task.done } })
+		await fetchTasks()
+	}
+	
   const deleteTask = async (task: Task) => {
-      await apiClient.tasks._taskId(task.id).delete()
-      await fetchTasks()
-    }
+		await apiClient.tasks._taskId(task.id).delete()
+		await fetchTasks()
+	}
 </script>
 
 <style>
@@ -67,6 +67,10 @@
 		h1 {
 			font-size: 4em;
 		}
+	}
+
+	form {
+		text-align: center;
 	}
 
 	.tasks {

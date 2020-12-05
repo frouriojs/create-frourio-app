@@ -9,37 +9,37 @@
 	const editIcon = async (e: Event) => {
 		const { files } = e.currentTarget as HTMLInputElement
 
-      if (!files?.length) return
+		if (!files?.length) return
 
-      userInfo = await apiClient.user.$post({
-        headers: { authorization: token },
-        body: { icon: files[0] }
-      })
+		userInfo = await apiClient.user.$post({
+			headers: { authorization: token },
+			body: { icon: files[0] }
+		})
+	}
+
+	const login = async () => {
+		const id = prompt('Enter the user id (See server/.env)')
+		const pass = prompt('Enter the user pass (See server/.env)')
+		if (!id || !pass) return alert('Login failed')
+
+		try {
+			token = `Bearer ${
+				(await apiClient.token.$post({ body: { id, pass } })).token
+			}`
+		} catch (e) {
+			return alert('Login failed')
 		}
-		
-		const login = async () => {
-      const id = prompt('Enter the user id (See server/.env)')
-      const pass = prompt('Enter the user pass (See server/.env)')
-      if (!id || !pass) return alert('Login failed')
 
-      try {
-        token = `Bearer ${
-          (await apiClient.token.$post({ body: { id, pass } })).token
-        }`
-      } catch (e) {
-        return alert('Login failed')
-      }
+		userInfo = await apiClient.user.$get({
+			headers: { authorization: token }
+		})
+		isLoggedIn = true
+	}
 
-      userInfo = await apiClient.user.$get({
-        headers: { authorization: token }
-      })
-      isLoggedIn = true
-		}
-		
-		const logout = () => {
-      token = ''
-      isLoggedIn = false
-    }
+	const logout = () => {
+		token = ''
+		isLoggedIn = false
+	}
 </script>
 
 <style>

@@ -7,7 +7,6 @@ type PromptName =
   | 'building'
   | 'mode'
   | 'target'
-  | 'bundler'
   | 'aspida'
   | 'pm'
   | 'daemon'
@@ -84,17 +83,6 @@ export const saoPrompts: ({
     ],
     type: 'list',
     default: 'next'
-  },
-  {
-    name: 'bundler',
-    message: 'Bundler',
-    type: 'list',
-    choices: [
-      { name: 'Webpack', value: 'webpack' },
-      { name: 'Rollup', value: 'rollup' }
-    ],
-    default: 'webpack',
-    when: (ans) => ans.client === 'sapper'
   },
   {
     name: 'building',
