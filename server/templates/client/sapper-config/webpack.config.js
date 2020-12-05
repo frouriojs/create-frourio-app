@@ -3,6 +3,7 @@ const WebpackModules = require('webpack-modules');
 const sveltePreprocess = require('svelte-preprocess');
 const path = require('path');
 const config = require('sapper/config/webpack.js');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const pkg = require('./package.json');
 
 const mode = process.env.NODE_ENV;
@@ -11,6 +12,7 @@ const dev = mode === 'development';
 const alias = { svelte: path.resolve('node_modules', 'svelte') };
 const extensions = ['.mjs', '.js', '.ts', '.json', '.svelte', '.html'];
 const mainFields = ['svelte', 'module', 'browser', 'main'];
+const plugins = [new TsconfigPathsPlugin()]
 const fileLoaderRule = {
 	test: /\.(png|jpe?g|gif)$/i,
 	use: [
@@ -22,7 +24,7 @@ module.exports = {
 	client: {
 		entry: { main: config.client.entry().main.replace(/\.js$/, '.ts') },
 		output: config.client.output(),
-		resolve: { alias, extensions, mainFields },
+		resolve: { alias, extensions, mainFields, plugins },
 		module: {
 			rules: [
 				{
@@ -60,7 +62,7 @@ module.exports = {
 		entry: { server: config.server.entry().server.replace(/\.js$/, '.ts') },
 		output: config.server.output(),
 		target: 'node',
-		resolve: { alias, extensions, mainFields },
+		resolve: { alias, extensions, mainFields, plugins },
 		externals: Object.keys(pkg.dependencies).concat('encoding'),
 		module: {
 			rules: [
@@ -96,7 +98,7 @@ module.exports = {
 	serviceworker: {
 		entry: { 'service-worker': config.serviceworker.entry()['service-worker'].replace(/\.js$/, '.ts') },
 		output: config.serviceworker.output(),
-		resolve: { extensions: ['.mjs', '.js', '.ts', '.json'] },
+		resolve: { extensions: ['.mjs', '.js', '.ts', '.json'], plugins },
 		module: {
 			rules: [
 				{
