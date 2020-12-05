@@ -1,11 +1,11 @@
 <template>
   <div class="user-banner">
-    <div v-if="isLoggedIn">
+    <template v-if="isLoggedIn">
       <img :src="userInfo.icon" class="user-icon" />
       <span>{{ userInfo.name }}</span>
       <input type="file" accept="image/*" @change="editIcon" />
       <button @click="logout">LOGOUT</button>
-    </div>
+    </template>
     <button v-else @click="login">LOGIN</button>
   </div>
 </template>

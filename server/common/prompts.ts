@@ -80,7 +80,7 @@ export const saoPrompts: ({
     choices: [
       { name: 'Next.js (React)', value: 'next' },
       { name: 'Nuxt.js (Vue)', value: 'nuxt' },
-      { name: 'Sapper (Svelte)', value: 'sapper' }
+      { name: 'Sapper β (Svelte)', value: 'sapper' }
     ],
     type: 'list',
     default: 'next'
@@ -278,7 +278,7 @@ export const saoPrompts: ({
   },
   {
     name: 'ci',
-    message: 'CI/CD service',
+    message: 'CI config',
     choices: [
       { name: 'GitHub Actions', value: 'actions' },
       // { name: 'CircleCI', value: 'circleci' },

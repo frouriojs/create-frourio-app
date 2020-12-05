@@ -9,6 +9,7 @@ import { Answers, initPrompts } from '$/common/prompts'
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 const waitInstalling = async () => {
+  let serverPort = 0
   const href =
     process.env.ENV === 'development'
       ? `http://${location.hostname}:3001`
@@ -18,14 +19,20 @@ const waitInstalling = async () => {
     // eslint-disable-next-line
     while (true) {
       await sleep(1000)
-      await apiClient.status.$get({ config: { timeout: 3000 } })
+      const res = await apiClient.status.$get({ config: { timeout: 3000 } })
+      serverPort = res.serverPort
     }
   } catch (e) {
     // eslint-disable-next-line
     while (true) {
       await sleep(1000)
       try {
-        await axios.get(href, { timeout: 3000 })
+        await Promise.all([
+          axios.get(href, { timeout: 3000 }),
+          axios.get(`http://${location.hostname}:${serverPort}/api/tasks`, {
+            timeout: 3000
+          })
+        ])
         location.href = href
         // eslint-disable-next-line
       } catch (e) {}

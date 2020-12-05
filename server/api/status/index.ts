@@ -2,6 +2,9 @@ import { STATUS } from '$/common/types'
 
 export type Methods = {
   get: {
-    resBody: { status: STATUS }
+    resBody: {
+      status: STATUS
+      serverPort: number
+    }
   }
 }
