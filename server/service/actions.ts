@@ -19,6 +19,14 @@ export const createActions = (
     }
   ]
 
+  if (answers.client === 'sapper') {
+    addedList.push({
+      type: 'add',
+      files: `${answers.bundler}.config.js`,
+      templateDir: 'client/sapper-config'
+    })
+  }
+
   if (answers.orm === 'typeorm') {
     addedList.push({
       type: 'add',

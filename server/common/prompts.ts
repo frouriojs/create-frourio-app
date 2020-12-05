@@ -7,6 +7,7 @@ type PromptName =
   | 'building'
   | 'mode'
   | 'target'
+  | 'bundler'
   | 'aspida'
   | 'pm'
   | 'daemon'
@@ -77,22 +78,34 @@ export const saoPrompts: ({
     name: 'client',
     message: 'Client framework',
     choices: [
-      { name: 'Next.js', value: 'next' },
-      { name: 'Nuxt.js', value: 'nuxt' }
+      { name: 'Next.js (React)', value: 'next' },
+      { name: 'Nuxt.js (Vue)', value: 'nuxt' },
+      { name: 'Sapper (Svelte)', value: 'sapper' }
     ],
     type: 'list',
     default: 'next'
+  },
+  {
+    name: 'bundler',
+    message: 'Bundler',
+    type: 'list',
+    choices: [
+      { name: 'Webpack', value: 'webpack' },
+      { name: 'Rollup', value: 'rollup' }
+    ],
+    default: 'webpack',
+    when: (ans) => ans.client === 'sapper'
   },
   {
     name: 'building',
     message: 'Building mode',
     type: 'list',
     choices: [
-      { name: 'Basic (next build)', value: 'basic' },
-      { name: 'Static (next export)', value: 'static' }
+      { name: 'Basic (build)', value: 'basic' },
+      { name: 'Static (export)', value: 'static' }
     ],
     default: 'basic',
-    when: (ans) => ans.client === 'next'
+    when: (ans) => ans.client === 'next' || ans.client === 'sapper'
   },
   {
     name: 'mode',

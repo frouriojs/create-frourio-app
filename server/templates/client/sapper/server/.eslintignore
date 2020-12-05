@@ -1,0 +1,4 @@
+node_modules
+dist
+migration
+index.js
