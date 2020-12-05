@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.19.1](https://github.com/frouriojs/create-frourio-app/compare/v0.19.0...v0.19.1) (2020-12-05)
+
+
+### Bug Fixes
+
+* remove jest type ([ebde448](https://github.com/frouriojs/create-frourio-app/commit/ebde448932ebd0e7b0c08cf65620a770cfee3449))
+
 ## [0.19.0](https://github.com/frouriojs/create-frourio-app/compare/v0.18.0...v0.19.0) (2020-12-05)
 
 
