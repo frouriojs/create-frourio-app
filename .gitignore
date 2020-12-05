@@ -34,3 +34,4 @@ yarn-error.log*
 server/**/$*.ts
 server/index.js
 server/__test__/forArtifact.md
+!server/templates/client/sapper/**/node_modules
