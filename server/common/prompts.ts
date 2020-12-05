@@ -77,8 +77,9 @@ export const saoPrompts: ({
     name: 'client',
     message: 'Client framework',
     choices: [
-      { name: 'Next.js', value: 'next' },
-      { name: 'Nuxt.js', value: 'nuxt' }
+      { name: 'Next.js (React)', value: 'next' },
+      { name: 'Nuxt.js (Vue)', value: 'nuxt' },
+      { name: 'Sapper β (Svelte)', value: 'sapper' }
     ],
     type: 'list',
     default: 'next'
@@ -88,11 +89,11 @@ export const saoPrompts: ({
     message: 'Building mode',
     type: 'list',
     choices: [
-      { name: 'Basic (next build)', value: 'basic' },
-      { name: 'Static (next export)', value: 'static' }
+      { name: 'Basic (build)', value: 'basic' },
+      { name: 'Static (export)', value: 'static' }
     ],
     default: 'basic',
-    when: (ans) => ans.client === 'next'
+    when: (ans) => ans.client === 'next' || ans.client === 'sapper'
   },
   {
     name: 'mode',
@@ -265,7 +266,7 @@ export const saoPrompts: ({
   },
   {
     name: 'ci',
-    message: 'CI/CD service',
+    message: 'CI config',
     choices: [
       { name: 'GitHub Actions', value: 'actions' },
       // { name: 'CircleCI', value: 'circleci' },

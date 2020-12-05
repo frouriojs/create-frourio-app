@@ -57,8 +57,9 @@ https://frourio.io/docs
    - [Fastify (5x faster)](https://www.fastify.io/)
    - [Express](https://expressjs.com/)
 1. Client framework:
-   - [Next.js](https://nextjs.org/learn/excel/typescript)
-   - [Nuxt.js](https://typescript.nuxtjs.org/)
+   - [Next.js (React)](https://nextjs.org/learn/excel/typescript)
+   - [Nuxt.js (Vue)](https://typescript.nuxtjs.org/)
+   - [Sapper β (Svelte)](https://sapper.svelte.dev/)
 1. Next.js building mode:
    - Basic (next build)
    - [Static (next export)](https://nextjs.org/docs/advanced-features/static-html-export)
@@ -91,7 +92,7 @@ https://frourio.io/docs
 1. Package manager:
    - Yarn
    - Npm
-1. CI/CD service:
+1. CI config:
    - [GitHub Actions](https://github.co.jp/features/actions)
    - None
 

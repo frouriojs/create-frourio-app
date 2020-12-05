@@ -3,12 +3,12 @@ import { join, resolve } from 'path'
 import { homedir } from 'os'
 import { depend } from 'velona'
 import spawn from 'cross-spawn'
-import { getPortPromise } from 'portfinder'
 import { Answers, initPrompts } from '$/common/prompts'
 import { generate } from './generate'
 import { fastify, ports } from '../'
 import { getStatus, setStatus } from './status'
 import { completed } from './completed'
+import { getServerPort } from './getServerPort'
 
 const dirPath = join(homedir(), '.frourio')
 const dbPath = join(dirPath, 'create-frourio-app.json')
@@ -74,7 +74,7 @@ export const installApp = depend(
       {
         ...allAnswers,
         clientPort: ports.client,
-        serverPort: await getPortPromise({ port: 8080 })
+        serverPort: await getServerPort()
       },
       __dirname
     )

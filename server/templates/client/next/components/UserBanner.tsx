@@ -52,12 +52,12 @@ const UserBanner = () => {
   return (
     <div className={styles.userBanner}>
       {isLoggedIn ? (
-        <div>
+        <>
           <img src={userInfo.icon} className={styles.userIcon} />
           <span>{userInfo.name}</span>
           <input type="file" accept="image/*" onChange={editIcon} />
           <button onClick={logout}>LOGOUT</button>
-        </div>
+        </>
       ) : (
         <button onClick={login}>LOGIN</button>
       )}
