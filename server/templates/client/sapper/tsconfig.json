@@ -5,8 +5,8 @@
 			"experimentalDecorators": true,
 			"emitDecoratorMetadata": true,
 			"importsNotUsedAsValues": "remove",
-			"strictNullChecks": true,
-			"types": ["jest"],
+			"strictNullChecks": true<% if (testing === 'jest') { %>,
+			"types": ["jest"]<% } %>,
 			"baseUrl": ".",
 			"paths": {
 				"~/*": ["./*"],

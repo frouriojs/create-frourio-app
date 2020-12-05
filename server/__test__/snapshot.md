@@ -24529,7 +24529,29 @@ module.exports = {
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+<a id="7694db93e4b084b9b3f85a5b67347f97"></a>
+tsconfig.json
+
+```
+{
+		"extends": "@tsconfig/svelte/tsconfig.json",
+		"compilerOptions": {
+			"lib": ["DOM", "ES2017", "WebWorker"],
+			"experimentalDecorators": true,
+			"emitDecoratorMetadata": true,
+			"importsNotUsedAsValues": "remove",
+			"strictNullChecks": true,
+			"baseUrl": ".",
+			"paths": {
+				"~/*": ["./*"],
+				"$/*": ["./server/*"]
+			}
+		},
+		"include": ["src/**/*", "src/node_modules/**/*"],
+		"exclude": ["node_modules/*", "__sapper__/*", "static/*", "server/*"]
+	}
+```
+
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-none-prisma-mysql-jest
@@ -24968,7 +24990,30 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+<a id="cebcecee4b5c708d771717cb56703377"></a>
+tsconfig.json
+
+```
+{
+		"extends": "@tsconfig/svelte/tsconfig.json",
+		"compilerOptions": {
+			"lib": ["DOM", "ES2017", "WebWorker"],
+			"experimentalDecorators": true,
+			"emitDecoratorMetadata": true,
+			"importsNotUsedAsValues": "remove",
+			"strictNullChecks": true,
+			"baseUrl": ".",
+			"paths": {
+				"~/*": ["./*"],
+				"$/*": ["./server/*"],
+				"$prisma/*": ["./server/node_modules/.prisma/*"]
+			}
+		},
+		"include": ["src/**/*", "src/node_modules/**/*"],
+		"exclude": ["node_modules/*", "__sapper__/*", "static/*", "server/*"]
+	}
+```
+
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-none-prisma-postgresql-jest
@@ -25102,7 +25147,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-none-prisma-sqlite-jest
@@ -25236,7 +25281,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-none-typeorm-mysql-jest
@@ -25503,7 +25548,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-none-typeorm-postgres-jest
@@ -25631,7 +25676,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-pm2-none-jest
@@ -25753,7 +25798,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-pm2-prisma-mysql-jest
@@ -25889,7 +25934,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-pm2-prisma-postgresql-jest
@@ -26025,7 +26070,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-pm2-prisma-sqlite-jest
@@ -26161,7 +26206,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-pm2-typeorm-mysql-jest
@@ -26291,7 +26336,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-pm2-typeorm-postgres-jest
@@ -26421,7 +26466,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-none-none-jest
@@ -26672,7 +26717,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-none-prisma-mysql-jest
@@ -26945,7 +26990,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-none-prisma-postgresql-jest
@@ -27079,7 +27124,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-none-prisma-sqlite-jest
@@ -27213,7 +27258,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-none-typeorm-mysql-jest
@@ -27478,7 +27523,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-none-typeorm-postgres-jest
@@ -27606,7 +27651,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-pm2-none-jest
@@ -27728,7 +27773,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-pm2-prisma-mysql-jest
@@ -27864,7 +27909,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-pm2-prisma-postgresql-jest
@@ -28000,7 +28045,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-pm2-prisma-sqlite-jest
@@ -28136,7 +28181,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-mysql-jest
@@ -28266,7 +28311,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-postgres-jest
@@ -28396,7 +28441,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-none-none-jest
@@ -28651,7 +28696,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-none-prisma-mysql-jest
@@ -28928,7 +28973,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-none-prisma-postgresql-jest
@@ -29062,7 +29107,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-none-prisma-sqlite-jest
@@ -29196,7 +29241,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-none-typeorm-mysql-jest
@@ -29465,7 +29510,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-none-typeorm-postgres-jest
@@ -29593,7 +29638,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-pm2-none-jest
@@ -29715,7 +29760,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-pm2-prisma-mysql-jest
@@ -29851,7 +29896,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-pm2-prisma-postgresql-jest
@@ -29987,7 +30032,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-pm2-prisma-sqlite-jest
@@ -30123,7 +30168,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-pm2-typeorm-mysql-jest
@@ -30253,7 +30298,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-axios-pm2-typeorm-postgres-jest
@@ -30383,7 +30428,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-none-none-jest
@@ -30636,7 +30681,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-none-prisma-mysql-jest
@@ -30911,7 +30956,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-none-prisma-postgresql-jest
@@ -31045,7 +31090,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-none-prisma-sqlite-jest
@@ -31179,7 +31224,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-none-typeorm-mysql-jest
@@ -31446,7 +31491,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-none-typeorm-postgres-jest
@@ -31574,7 +31619,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 <a id="aaa28ca6a2ee4c72595cc6f4b2794549"></a>
 
@@ -32020,7 +32065,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-pm2-prisma-mysql-jest
@@ -32156,7 +32201,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-pm2-prisma-postgresql-jest
@@ -32292,7 +32337,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-pm2-prisma-sqlite-jest
@@ -32428,7 +32473,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-pm2-typeorm-mysql-jest
@@ -32558,7 +32603,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-static-fetch-pm2-typeorm-postgres-jest
@@ -32688,7 +32733,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-next-basic-axios-none-none-jest
@@ -49000,7 +49045,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-none-prisma-mysql-jest
@@ -49134,7 +49179,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-none-prisma-postgresql-jest
@@ -49268,7 +49313,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-none-prisma-sqlite-jest
@@ -49402,7 +49447,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-none-typeorm-mysql-jest
@@ -49530,7 +49575,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-none-typeorm-postgres-jest
@@ -49658,7 +49703,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-pm2-none-jest
@@ -49780,7 +49825,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-mysql-jest
@@ -49916,7 +49961,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-postgresql-jest
@@ -50052,7 +50097,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-sqlite-jest
@@ -50188,7 +50233,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-mysql-jest
@@ -50318,7 +50363,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-postgres-jest
@@ -50448,7 +50493,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-none-none-jest
@@ -50568,7 +50613,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-none-prisma-mysql-jest
@@ -50702,7 +50747,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-none-prisma-postgresql-jest
@@ -50836,7 +50881,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-none-prisma-sqlite-jest
@@ -50970,7 +51015,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-mysql-jest
@@ -51098,7 +51143,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-postgres-jest
@@ -51226,7 +51271,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-pm2-none-jest
@@ -51348,7 +51393,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-mysql-jest
@@ -51484,7 +51529,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-postgresql-jest
@@ -51620,7 +51665,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-sqlite-jest
@@ -51756,7 +51801,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-mysql-jest
@@ -51886,7 +51931,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-postgres-jest
@@ -52016,7 +52061,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-none-none-jest
@@ -52136,7 +52181,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-none-prisma-mysql-jest
@@ -52270,7 +52315,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-none-prisma-postgresql-jest
@@ -52404,7 +52449,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-none-prisma-sqlite-jest
@@ -52538,7 +52583,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-none-typeorm-mysql-jest
@@ -52666,7 +52711,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-none-typeorm-postgres-jest
@@ -52794,7 +52839,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-pm2-none-jest
@@ -52916,7 +52961,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-pm2-prisma-mysql-jest
@@ -53052,7 +53097,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-pm2-prisma-postgresql-jest
@@ -53188,7 +53233,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-pm2-prisma-sqlite-jest
@@ -53324,7 +53369,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-mysql-jest
@@ -53454,7 +53499,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-postgres-jest
@@ -53584,7 +53629,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-none-none-jest
@@ -53704,7 +53749,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-none-prisma-mysql-jest
@@ -53838,7 +53883,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-none-prisma-postgresql-jest
@@ -53972,7 +54017,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-none-prisma-sqlite-jest
@@ -54106,7 +54151,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-none-typeorm-mysql-jest
@@ -54234,7 +54279,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-none-typeorm-postgres-jest
@@ -54362,7 +54407,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-pm2-none-jest
@@ -54484,7 +54529,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-mysql-jest
@@ -54620,7 +54665,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-postgresql-jest
@@ -54756,7 +54801,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-sqlite-jest
@@ -54892,7 +54937,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
+[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-mysql-jest
@@ -55022,7 +55067,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-postgres-jest
@@ -55152,5 +55197,5 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
+[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
 [webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
