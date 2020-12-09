@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.20.0](https://github.com/frouriojs/create-frourio-app/compare/v0.19.1...v0.20.0) (2020-12-09)
+
+
+### Features
+
+* update prisma@2.13.0 ([a16f810](https://github.com/frouriojs/create-frourio-app/commit/a16f810d916affeb856423081efb671b10dff056))
+
 ### [0.19.1](https://github.com/frouriojs/create-frourio-app/compare/v0.19.0...v0.19.1) (2020-12-05)
 
 
