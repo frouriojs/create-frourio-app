@@ -3,17 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "<% if (orm === 'prisma') { %>npm run migrate:up && <% } %>run-p dev:*",
+    "dev": "<% if (orm === 'prisma') { %>npm run migrate:dev && <% } %>run-p dev:*",
     "dev:server": "webpack --watch --mode=development",
     "dev:frourio": "frourio<% if (server === 'express') { %>-express<% } %> --watch<% if (orm === 'prisma') { %>",
     "dev:prisma": "prisma generate --watch<% } else if (orm === 'typeorm') { %>",
     "dev:typeormer": "typeormer --watch<% } %>",
     "build": "npm run build:frourio && webpack --mode=production",
-    "build:frourio": "<% if (orm === 'prisma') { %>npm run migrate:up && prisma generate && <% } else if (orm === 'typeorm') { %>typeormer && <% } %>frourio<% if (server === 'express') { %>-express<% } %><% if (orm === 'prisma') { %>",
-    "migrate": "npm run migrate:save && npm run migrate:up",
-    "migrate:save": "prisma migrate save --create-db --experimental",
-    "migrate:up": "prisma migrate up --create-db --experimental",
-    "migrate:down": "prisma migrate down --experimental<% } else if (orm === 'typeorm') { %>",
+    "build:frourio": "<% if (orm === 'prisma') { %>npm run migrate:dev && prisma generate && <% } else if (orm === 'typeorm') { %>typeormer && <% } %>frourio<% if (server === 'express') { %>-express<% } %><% if (orm === 'prisma') { %>",
+    "migrate:dev": "prisma migrate dev --preview-feature",
+    "migrate:reset": "prisma migrate reset --preview-feature<% } else if (orm === 'typeorm') { %>",
     "migration:generate": "typeorm migration:generate -n Task",
     "migration:run": "typeorm migration:run",
     "migration:revert": "typeorm migration:revert<% } %><% if (daemon === 'pm2') { %>",
@@ -25,7 +23,7 @@
     "start": "cross-env NODE_ENV=production node index.js"
   },
   "dependencies": {
-    "<% if (orm === 'prisma') { %>@prisma/client": "^2.12.1",
+    "<% if (orm === 'prisma') { %>@prisma/client": "^2.13.0",
     "<% } %>class-validator": "^0.12.2",
     "dotenv": "^8.2.0<% if (server === 'express') { %>",
     "cors": "^2.8.5",
@@ -44,7 +42,7 @@
     "typeormer": "^0.1.1<% } %>"
   },
   "devDependencies": {
-    "<% if (orm === 'prisma') { %>@prisma/cli": "^2.12.1",
+    "<% if (orm === 'prisma') { %>@prisma/cli": "^2.13.0",
     "<% } %><% if (server === 'fastify') { %>@types/busboy": "^0.2.3",
     "<% } else { %>@types/cors": "^2.8.7",
     "@types/express-jwt": "0.0.42",
