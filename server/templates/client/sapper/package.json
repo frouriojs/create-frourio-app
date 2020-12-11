@@ -1,7 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "<% if (orm === 'prisma') { %>npm run migrate:dev && <% } %>run-p dev:*",
     "dev:client": "sapper dev -p <%= clientPort %>",
@@ -29,8 +28,10 @@
     "<% if (aspida === 'axios') { %>@aspida/axios": "^0.12.2",
     "axios": "^0.21.0",
     "<% } else { %>@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "<% } %>class-validator": "^0.12.2",
-    "compression": "^1.7.1",
+    "compression": "^1.7.1<% if (aspida === 'fetch') { %>",
+    "node-fetch": "^2.6.1<% } %>",
     "polka": "next",
     "sirv": "^1.0.9"
   },
