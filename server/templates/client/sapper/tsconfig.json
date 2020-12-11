@@ -14,6 +14,6 @@
 				"$prisma/*": ["./server/node_modules/.prisma/*"]<% } %>
 			}
 		},
-		"include": ["src/**/*", "src/node_modules/**/*"],
-		"exclude": ["node_modules/*", "__sapper__/*", "static/*", "server/*"]
+		"include": ["src/**/*", "src/node_modules/**/*", "server/api/$api.ts"],
+		"exclude": ["node_modules/*", "__sapper__/*", "static/*"]
 	}

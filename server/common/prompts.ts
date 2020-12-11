@@ -79,7 +79,7 @@ export const saoPrompts: ({
     choices: [
       { name: 'Next.js (React)', value: 'next' },
       { name: 'Nuxt.js (Vue)', value: 'nuxt' },
-      { name: 'Sapper β (Svelte)', value: 'sapper' }
+      { name: 'Sapper (Svelte)', value: 'sapper' }
     ],
     type: 'list',
     default: 'next'
