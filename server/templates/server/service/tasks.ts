@@ -7,14 +7,18 @@ type DB = {
   tasks: Task[]
 }
 
-const dbPath = 'database.json'
+let dbPath = ''
 
 const readDB = async (): Promise<DB> =>
   JSON.parse(await fs.promises.readFile(dbPath, 'utf8'))
 const writeDB = (db: DB) =>
   fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 
-if (!fs.existsSync(dbPath)) {
+export const createDBFileIfNotExists = (dbFilePath: string) => {
+  dbPath = dbFilePath
+
+  if (fs.existsSync(dbPath)) return
+
   fs.writeFileSync(dbPath, JSON.stringify({ nextId: 0, tasks: [] }), 'utf8')
 }
 

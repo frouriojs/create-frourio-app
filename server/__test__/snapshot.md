@@ -713,7 +713,7 @@ export type Methods = {
 
 ```
 
-<a id="9b20e810a0a7c8fcbde4c3ca423048dc"></a>
+<a id="ba51acad5172d834352eac7967124aa7"></a>
 server/index.ts
 
 ```
@@ -721,12 +721,14 @@ import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import server from './$server'
+import { createDBFileIfNotExists } from './service/tasks'
 import { SERVER_PORT, BASE_PATH } from './service/envValues'
 
 const app = express()
 app.use(helmet())
 app.use(cors())
 
+createDBFileIfNotExists(path.join(__dirname, 'database.json'))
 server(app, { basePath: BASE_PATH })
 app.use(BASE_PATH, express.static('public'))
 app.listen(SERVER_PORT)
@@ -817,7 +819,7 @@ export { JWT_SECRET, USER_ID, USER_PASS, SERVER_PORT, BASE_PATH, API_ORIGIN }
 
 ```
 
-<a id="94ff66a3503dbe7658f947298c572dd2"></a>
+<a id="d1ed4103556c2ebeae3512bb525248a0"></a>
 server/service/tasks.ts
 
 ```
@@ -830,14 +832,18 @@ type DB = {
   tasks: Task[]
 }
 
-const dbPath = 'database.json'
+let dbPath = ''
 
 const readDB = async (): Promise<DB> =>
   JSON.parse(await fs.promises.readFile(dbPath, 'utf8'))
 const writeDB = (db: DB) =>
   fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 
-if (!fs.existsSync(dbPath)) {
+export const createDBFileIfNotExists = (dbFilePath: string) => {
+  dbPath = dbFilePath
+
+  if (fs.existsSync(dbPath)) return
+
   fs.writeFileSync(dbPath, JSON.stringify({ nextId: 0, tasks: [] }), 'utf8')
 }
 
@@ -1349,11 +1355,11 @@ export type Methods = {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-<a id="5c354c2531bb511ff0be014388c6d702"></a>
+<a id="fc6565768a40f2cfcb23b63aea4edc73"></a>
 server/service/tasks.ts
 
 ```
@@ -1365,14 +1371,18 @@ type DB = {
   tasks: Task[]
 }
 
-const dbPath = 'database.json'
+let dbPath = ''
 
 const readDB = async (): Promise<DB> =>
   JSON.parse(await fs.promises.readFile(dbPath, 'utf8'))
 const writeDB = (db: DB) =>
   fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 
-if (!fs.existsSync(dbPath)) {
+export const createDBFileIfNotExists = (dbFilePath: string) => {
+  dbPath = dbFilePath
+
+  if (fs.existsSync(dbPath)) return
+
   fs.writeFileSync(dbPath, JSON.stringify({ nextId: 0, tasks: [] }), 'utf8')
 }
 
@@ -1665,7 +1675,26 @@ export type Methods = {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+<a id="9b20e810a0a7c8fcbde4c3ca423048dc"></a>
+server/index.ts
+
+```
+import express from 'express'
+import helmet from 'helmet'
+import cors from 'cors'
+import server from './$server'
+import { SERVER_PORT, BASE_PATH } from './service/envValues'
+
+const app = express()
+app.use(helmet())
+app.use(cors())
+
+server(app, { basePath: BASE_PATH })
+app.use(BASE_PATH, express.static('public'))
+app.listen(SERVER_PORT)
+
+```
+
 <a id="80dc7e73daecc4e3ff4cecc14738bc3b"></a>
 server/package.json
 
@@ -3280,7 +3309,7 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 <a id="ba24fef5a2373526fb6452b49f744856"></a>
 server/package.json
 
@@ -3349,7 +3378,7 @@ server/pm2.config.json
 
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -3391,12 +3420,12 @@ server/pm2.config.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -4176,11 +4205,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -4284,11 +4313,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -5056,12 +5085,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -5103,12 +5132,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -5717,11 +5746,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -5816,11 +5845,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -6592,12 +6621,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -6639,12 +6668,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -7252,11 +7281,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -7350,11 +7379,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -8122,12 +8151,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -8169,12 +8198,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -9455,11 +9484,11 @@ export default plugin
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -9627,11 +9656,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -10624,12 +10653,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -10673,12 +10702,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -11452,11 +11481,11 @@ export default plugin
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -11598,11 +11627,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -12487,12 +12516,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -12536,12 +12565,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -13280,11 +13309,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -13395,11 +13424,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -14249,12 +14278,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -14298,12 +14327,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -15033,11 +15062,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -15149,11 +15178,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -16007,12 +16036,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -16056,12 +16085,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -16729,11 +16758,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -16777,11 +16806,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -17345,12 +17374,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -17394,12 +17423,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -18057,11 +18086,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -18105,11 +18134,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -18673,12 +18702,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -18722,12 +18751,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -19395,11 +19424,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -19443,11 +19472,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -20011,12 +20040,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -20060,12 +20089,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -20723,11 +20752,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -20771,11 +20800,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -21339,12 +21368,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -21388,12 +21417,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -22124,21 +22153,20 @@ Sapper is in early development, and may have the odd rough edge here and there. 
 
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="0151b66ced3ae5df6c17bebaf00fdb0e"></a>
+<a id="e68f05d99446995d45a0bd178f2b0340"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -22159,6 +22187,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -22174,24 +22213,153 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
+```
+
+<a id="80501041bbd6125475af7e725bb854a0"></a>
+rollup.config.js
+
+```
+import path from 'path';
+import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import commonjs from '@rollup/plugin-commonjs';
+import url from '@rollup/plugin-url';
+import svelte from 'rollup-plugin-svelte';
+import babel from '@rollup/plugin-babel';
+import { terser } from 'rollup-plugin-terser';
+import sveltePreprocess from 'svelte-preprocess';
+import typescript from '@rollup/plugin-typescript';
+import config from 'sapper/config/rollup.js';
+import pkg from './package.json';
+
+const mode = process.env.NODE_ENV;
+const dev = mode === 'development';
+const legacy = !!process.env.SAPPER_LEGACY_BUILD;
+
+const onwarn = (warning, onwarn) =>
+	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
+	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	(warning.code === 'THIS_IS_UNDEFINED') ||
+	onwarn(warning);
+
+export default {
+	client: {
+		input: config.client.input().replace(/\.js$/, '.ts'),
+		output: config.client.output(),
+		plugins: [
+			replace({
+				'process.browser': true,
+				'process.env.NODE_ENV': JSON.stringify(mode)
+			}),
+			svelte({
+				dev,
+				hydratable: true,
+				preprocess: sveltePreprocess(),
+				emitCss: true
+			}),
+			url({
+				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
+				publicPath: '/client/'
+			}),
+			resolve({
+				browser: true,
+				dedupe: ['svelte']
+			}),
+			commonjs(),
+			typescript({ sourceMap: dev }),
+
+			legacy && babel({
+				extensions: ['.js', '.mjs', '.html', '.svelte'],
+				babelHelpers: 'runtime',
+				exclude: ['node_modules/@babel/**'],
+				presets: [
+					['@babel/preset-env', {
+						targets: '> 0.25%, not dead'
+					}]
+				],
+				plugins: [
+					'@babel/plugin-syntax-dynamic-import',
+					['@babel/plugin-transform-runtime', {
+						useESModules: true
+					}]
+				]
+			}),
+
+			!dev && terser({
+				module: true
+			})
+		],
+
+		preserveEntrySignatures: false,
+		onwarn,
+	},
+
+	server: {
+		input: { server: config.server.input().server.replace(/\.js$/, ".ts") },
+		output: config.server.output(),
+		plugins: [
+			replace({
+				'process.browser': false,
+				'process.env.NODE_ENV': JSON.stringify(mode)
+			}),
+			svelte({
+				generate: 'ssr',
+				hydratable: true,
+				preprocess: sveltePreprocess(),
+				dev
+			}),
+			url({
+				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
+				publicPath: '/client/',
+				emitFiles: false // already emitted by client build
+			}),
+			resolve({
+				dedupe: ['svelte']
+			}),
+			commonjs(),
+			typescript({ sourceMap: dev })
+		],
+		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
+
+		preserveEntrySignatures: 'strict',
+		onwarn,
+	},
+
+	serviceworker: {
+		input: config.serviceworker.input().replace(/\.js$/, '.ts'),
+		output: config.serviceworker.output(),
+		plugins: [
+			resolve(),
+			replace({
+				'process.browser': true,
+				'process.env.NODE_ENV': JSON.stringify(mode)
+			}),
+			commonjs(),
+			typescript({ sourceMap: dev }),
+			!dev && terser()
+		],
+
+		preserveEntrySignatures: false,
+		onwarn,
+	}
+};
+
 ```
 
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -22250,11 +22418,11 @@ module.exports = {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -23245,7 +23413,7 @@ static/manifest.json
 
 ```
 
-<a id="8d10876b9ae11f35a6bca3f463b75c2d"></a>
+<a id="8389807240c92093ac8db61193a51f3a"></a>
 tsconfig.json
 
 ```
@@ -23264,128 +23432,9 @@ tsconfig.json
 				"$/*": ["./server/*"]
 			}
 		},
-		"include": ["src/**/*", "src/node_modules/**/*"],
-		"exclude": ["node_modules/*", "__sapper__/*", "static/*", "server/*"]
+		"include": ["src/**/*", "src/node_modules/**/*", "server/api/$api.ts"],
+		"exclude": ["node_modules/*", "__sapper__/*", "static/*"]
 	}
-```
-
-<a id="0cbb1b5dda19e40e75fe1633be635fa5"></a>
-webpack.config.js
-
-```
-const webpack = require('webpack');
-const WebpackModules = require('webpack-modules');
-const sveltePreprocess = require('svelte-preprocess');
-const path = require('path');
-const config = require('sapper/config/webpack.js');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const pkg = require('./package.json');
-
-const mode = process.env.NODE_ENV;
-const dev = mode === 'development';
-
-const alias = { svelte: path.resolve('node_modules', 'svelte') };
-const extensions = ['.mjs', '.js', '.ts', '.json', '.svelte', '.html'];
-const mainFields = ['svelte', 'module', 'browser', 'main'];
-const plugins = [new TsconfigPathsPlugin()]
-const fileLoaderRule = {
-	test: /\.(png|jpe?g|gif)$/i,
-	use: [
-		'file-loader',
-	]
-};
-
-module.exports = {
-	client: {
-		entry: { main: config.client.entry().main.replace(/\.js$/, '.ts') },
-		output: config.client.output(),
-		resolve: { alias, extensions, mainFields, plugins },
-		module: {
-			rules: [
-				{
-					test: /\.ts$/,
-					loader: 'ts-loader'
-				},
-				{
-					test: /\.(svelte|html)$/,
-					use: {
-						loader: 'svelte-loader',
-						options: {
-							dev,
-							hydratable: true,
-							preprocess: sveltePreprocess(),
-							hotReload: false // pending https://github.com/sveltejs/svelte/issues/2377
-						}
-					}
-				},
-				fileLoaderRule
-			]
-		},
-		mode,
-		plugins: [
-			// pending https://github.com/sveltejs/svelte/issues/2377
-			// dev && new webpack.HotModuleReplacementPlugin(),
-			new webpack.DefinePlugin({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
-			}),
-		].filter(Boolean),
-		devtool: dev && 'inline-source-map'
-	},
-
-	server: {
-		entry: { server: config.server.entry().server.replace(/\.js$/, '.ts') },
-		output: config.server.output(),
-		target: 'node',
-		resolve: { alias, extensions, mainFields, plugins },
-		externals: Object.keys(pkg.dependencies).concat('encoding'),
-		module: {
-			rules: [
-				{
-					test: /\.ts$/,
-					loader: 'ts-loader'
-				},
-				{
-					test: /\.(svelte|html)$/,
-					use: {
-						loader: 'svelte-loader',
-						options: {
-							css: false,
-							generate: 'ssr',
-							hydratable: true,
-							preprocess: sveltePreprocess(),
-							dev
-						}
-					}
-				},
-				fileLoaderRule
-			]
-		},
-		mode,
-		plugins: [
-			new WebpackModules()
-		],
-		performance: {
-			hints: false // it doesn't matter if server.js is large
-		}
-	},
-
-	serviceworker: {
-		entry: { 'service-worker': config.serviceworker.entry()['service-worker'].replace(/\.js$/, '.ts') },
-		output: config.serviceworker.output(),
-		resolve: { extensions: ['.mjs', '.js', '.ts', '.json'] },
-		module: {
-			rules: [
-				{
-					test: /\.ts$/,
-					loader: 'ts-loader'
-				}
-			]
-		},
-		mode
-	}
-};
-
 ```
 
 
@@ -23394,21 +23443,20 @@ module.exports = {
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="6dc328a5ba220e32edb9f153e4f5aaad"></a>
+<a id="050e84530e45a20cef9b6e2ca76ccca4"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -23428,6 +23476,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -23441,24 +23500,23 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -23504,11 +23562,11 @@ module.exports = {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -23538,7 +23596,7 @@ module.exports = {
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-<a id="7694db93e4b084b9b3f85a5b67347f97"></a>
+<a id="e429aec04384eb6aeb91f8d26ac87d98"></a>
 tsconfig.json
 
 ```
@@ -23556,12 +23614,11 @@ tsconfig.json
 				"$/*": ["./server/*"]
 			}
 		},
-		"include": ["src/**/*", "src/node_modules/**/*"],
-		"exclude": ["node_modules/*", "__sapper__/*", "static/*", "server/*"]
+		"include": ["src/**/*", "src/node_modules/**/*", "server/api/$api.ts"],
+		"exclude": ["node_modules/*", "__sapper__/*", "static/*"]
 	}
 ```
 
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-none-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -23569,21 +23626,20 @@ tsconfig.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="35984a381fe42787c38e04dc8f57bf00"></a>
+<a id="ea15cdb59633176440d39b295711d9f3"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "npm run migrate:dev && run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -23606,6 +23662,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -23621,26 +23688,25 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -23836,7 +23902,7 @@ src/routes/index.svelte
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-<a id="c53114e792d22d934a6dbc321f99ee6e"></a>
+<a id="e995839a1c17eff7c35897c6b313630d"></a>
 tsconfig.json
 
 ```
@@ -23856,33 +23922,31 @@ tsconfig.json
 				"$prisma/*": ["./server/node_modules/.prisma/*"]
 			}
 		},
-		"include": ["src/**/*", "src/node_modules/**/*"],
-		"exclude": ["node_modules/*", "__sapper__/*", "static/*", "server/*"]
+		"include": ["src/**/*", "src/node_modules/**/*", "server/api/$api.ts"],
+		"exclude": ["node_modules/*", "__sapper__/*", "static/*"]
 	}
 ```
 
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="d004958bb8dfef15c72ca6467ff7af47"></a>
+<a id="bcdfeb15a091e03fb5e2ab92fd2f69d6"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "npm run migrate:dev && run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -23904,6 +23968,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -23917,24 +23992,23 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -23989,7 +24063,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-<a id="cebcecee4b5c708d771717cb56703377"></a>
+<a id="4e646a7c1e85e2f7073b7cb035fd732f"></a>
 tsconfig.json
 
 ```
@@ -24008,12 +24082,11 @@ tsconfig.json
 				"$prisma/*": ["./server/node_modules/.prisma/*"]
 			}
 		},
-		"include": ["src/**/*", "src/node_modules/**/*"],
-		"exclude": ["node_modules/*", "__sapper__/*", "static/*", "server/*"]
+		"include": ["src/**/*", "src/node_modules/**/*", "server/api/$api.ts"],
+		"exclude": ["node_modules/*", "__sapper__/*", "static/*"]
 	}
 ```
 
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
 
 ## express-sapper-basic-axios-none-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24021,7 +24094,8 @@ tsconfig.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24077,15 +24151,15 @@ tsconfig.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-axios-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24140,8 +24214,7 @@ tsconfig.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-axios-none-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24149,7 +24222,8 @@ tsconfig.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24205,15 +24279,15 @@ tsconfig.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-axios-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24268,8 +24342,7 @@ tsconfig.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-axios-none-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24277,21 +24350,20 @@ tsconfig.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="62c2cbe4230b094d15f381755ada549d"></a>
+<a id="7eab91f04e808198b55509723d831841"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -24315,6 +24387,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -24330,26 +24413,25 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24405,29 +24487,27 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-axios-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="cb8132daa85c8c09f5603925c6dd96fc"></a>
+<a id="0c981fa6e90e05e0dae2326c81d2869f"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -24450,6 +24530,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -24463,24 +24554,23 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24535,8 +24625,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-axios-none-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24544,7 +24633,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#62c2cbe4230b094d15f381755ada549d)  
+[package.json](#7eab91f04e808198b55509723d831841)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24600,15 +24690,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-axios-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#cb8132daa85c8c09f5603925c6dd96fc)  
+[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24663,8 +24753,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-axios-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24672,7 +24761,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0151b66ced3ae5df6c17bebaf00fdb0e)  
+[package.json](#e68f05d99446995d45a0bd178f2b0340)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24689,12 +24779,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -24725,15 +24815,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-axios-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#6dc328a5ba220e32edb9f153e4f5aaad)  
+[package.json](#050e84530e45a20cef9b6e2ca76ccca4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24750,12 +24840,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -24785,8 +24875,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-axios-pm2-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24794,7 +24883,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24851,15 +24941,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-axios-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24915,8 +25005,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-axios-pm2-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24924,7 +25013,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -24981,15 +25071,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-axios-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25045,8 +25135,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-axios-pm2-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25054,7 +25143,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25111,15 +25201,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-axios-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25175,8 +25265,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-axios-pm2-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25184,7 +25273,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#62c2cbe4230b094d15f381755ada549d)  
+[package.json](#7eab91f04e808198b55509723d831841)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25241,15 +25331,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-axios-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#cb8132daa85c8c09f5603925c6dd96fc)  
+[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25305,8 +25395,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-axios-pm2-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25314,7 +25403,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#62c2cbe4230b094d15f381755ada549d)  
+[package.json](#7eab91f04e808198b55509723d831841)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25371,15 +25461,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-axios-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#cb8132daa85c8c09f5603925c6dd96fc)  
+[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25435,8 +25525,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-none-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25444,21 +25533,20 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="f346816471dbb3761f3eae931d1387e7"></a>
+<a id="261fdd99e3f0b859be81945fb1cd749c"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -25472,12 +25560,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -25493,26 +25594,25 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25529,11 +25629,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -25558,35 +25658,45 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+<a id="a1c1a7d072f291174e913663921c7fec"></a>
+src/utils/apiClient.ts
+
+```
+import aspida from '@aspida/fetch'
+import api from '~/server/api/$api'
+
+export const apiClient = (process as { browser?: boolean }).browser
+  ? api((aspida as any).default(fetch))
+  : api(require('@aspida/node-fetch').default(require('node-fetch')))
+
+```
+
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-fetch-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="25143a61adecd5ad48bae2ccd4e9f5e0"></a>
+<a id="32080c4712ef51129cd96103b9853bd6"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -25599,12 +25709,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -25618,24 +25741,23 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25652,11 +25774,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -25680,14 +25802,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-none-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25695,21 +25816,20 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="a550d1afe4da884c2d4eb567fb2a4adc"></a>
+<a id="861ab6cb18f4ac8f2fb553d654e5783f"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "npm run migrate:dev && run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -25725,12 +25845,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -25746,26 +25879,25 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25815,35 +25947,33 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-fetch-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="1362db9cddbd2860f309da80ecc3afa8"></a>
+<a id="d976553634cebbe0484646f72004b81e"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "npm run migrate:dev && run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -25858,12 +25988,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -25877,24 +26020,23 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -25943,14 +26085,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-none-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25958,7 +26099,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26008,21 +26150,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-fetch-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26071,14 +26213,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-none-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26086,7 +26227,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26136,21 +26278,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-fetch-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26199,14 +26341,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-none-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26214,21 +26355,20 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="b9f9449d18037f389d8df4d2bf31ab6a"></a>
+<a id="6f7dc0351f380a1b4c84608a08eb909e"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -26245,12 +26385,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -26266,26 +26419,25 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26335,35 +26487,33 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-fetch-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="5adc3a055b6cfdacae17d8d0b7dd009e"></a>
+<a id="4cfb7a0ee2facd209c969539f9e4ad9c"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper build",
+    "build:client": "aspida && sapper build --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -26379,12 +26529,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -26398,24 +26561,23 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26464,14 +26626,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-none-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26479,7 +26640,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#b9f9449d18037f389d8df4d2bf31ab6a)  
+[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26529,21 +26691,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-fetch-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5adc3a055b6cfdacae17d8d0b7dd009e)  
+[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26592,14 +26754,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26607,7 +26768,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#f346816471dbb3761f3eae931d1387e7)  
+[package.json](#261fdd99e3f0b859be81945fb1cd749c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26624,12 +26786,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -26654,21 +26816,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-fetch-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#25143a61adecd5ad48bae2ccd4e9f5e0)  
+[package.json](#32080c4712ef51129cd96103b9853bd6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26685,12 +26847,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -26714,14 +26876,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-pm2-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26729,7 +26890,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26780,21 +26942,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-fetch-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26844,14 +27006,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-pm2-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26859,7 +27020,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26910,21 +27072,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-fetch-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -26974,14 +27136,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-pm2-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26989,7 +27150,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27040,21 +27202,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-basic-fetch-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27104,14 +27266,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27119,7 +27280,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#b9f9449d18037f389d8df4d2bf31ab6a)  
+[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27170,21 +27332,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5adc3a055b6cfdacae17d8d0b7dd009e)  
+[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27234,14 +27396,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27249,7 +27410,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#b9f9449d18037f389d8df4d2bf31ab6a)  
+[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27300,21 +27462,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5adc3a055b6cfdacae17d8d0b7dd009e)  
+[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27364,14 +27526,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-none-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27379,21 +27540,20 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="cdceb86efd1265ba878da5ff5a911e3a"></a>
+<a id="cd2dbe140e2ae79e1e1ad2268959bebb"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -27414,6 +27574,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -27429,10 +27600,12 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
@@ -27440,16 +27613,13 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27466,11 +27636,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -27501,29 +27671,27 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-axios-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="255f746f9d2a1dbe7387c5507e7152b4"></a>
+<a id="8e94f8a605b99d887833acbebcb36e96"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -27543,6 +27711,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -27556,25 +27735,24 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27591,11 +27769,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -27625,8 +27803,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-none-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27634,21 +27811,20 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="0e1b5848a03342cb164f22aeeb4dc53c"></a>
+<a id="9ff89004be68d09a0093b44fea280fc3"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "npm run migrate:dev && run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -27671,6 +27847,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -27686,10 +27873,12 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
@@ -27697,16 +27886,13 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27762,29 +27948,27 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-axios-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="07a80027043df59a0ed9ee8af509c74d"></a>
+<a id="0f78ec433cd857626862df92e36f40c0"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "npm run migrate:dev && run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -27806,6 +27990,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -27819,25 +28014,24 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27892,8 +28086,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-none-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27901,7 +28094,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -27957,15 +28151,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-axios-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28020,8 +28214,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-none-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28029,7 +28222,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28085,15 +28279,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-axios-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28148,8 +28342,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-none-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28157,21 +28350,20 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="3d3ae48c4b0dc179959aafcddd0bfa25"></a>
+<a id="ac90a757a0fd1d9803f692fc6bfecbf4"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -28195,6 +28387,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -28210,10 +28413,12 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
@@ -28221,16 +28426,13 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28286,29 +28488,27 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-axios-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="653f8c79770a83462ff7195f4f1ca7fb"></a>
+<a id="e4be072a15e859638713c74a6f1ab7c5"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -28331,6 +28531,17 @@ package.json
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -28344,25 +28555,24 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28417,8 +28627,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-none-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28426,7 +28635,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3d3ae48c4b0dc179959aafcddd0bfa25)  
+[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28482,15 +28692,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-axios-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#653f8c79770a83462ff7195f4f1ca7fb)  
+[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28545,8 +28755,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28554,7 +28763,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#cdceb86efd1265ba878da5ff5a911e3a)  
+[package.json](#cd2dbe140e2ae79e1e1ad2268959bebb)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28571,12 +28781,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -28607,15 +28817,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-axios-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#255f746f9d2a1dbe7387c5507e7152b4)  
+[package.json](#8e94f8a605b99d887833acbebcb36e96)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28632,12 +28842,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -28667,8 +28877,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-pm2-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28676,7 +28885,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28733,15 +28943,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-axios-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28797,8 +29007,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-pm2-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28806,7 +29015,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28863,15 +29073,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-axios-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28927,8 +29137,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-pm2-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28936,7 +29145,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -28993,15 +29203,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-axios-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29057,8 +29267,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-pm2-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29066,7 +29275,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3d3ae48c4b0dc179959aafcddd0bfa25)  
+[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29123,15 +29333,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-axios-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#653f8c79770a83462ff7195f4f1ca7fb)  
+[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29187,8 +29397,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-pm2-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29196,7 +29405,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3d3ae48c4b0dc179959aafcddd0bfa25)  
+[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29253,15 +29463,15 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-axios-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#653f8c79770a83462ff7195f4f1ca7fb)  
+[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29317,8 +29527,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-none-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29326,21 +29535,20 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="200c86af0acceb4efe8a00777f5c5460"></a>
+<a id="1810755a4a2e2c4787595f363bf18752"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -29354,12 +29562,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -29375,10 +29596,12 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
@@ -29386,16 +29609,13 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29412,11 +29632,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -29441,35 +29661,33 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-fetch-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="779f347db05d0ec32dc15ba6c2d3049e"></a>
+<a id="4293f965c53214335ae7e8d3b9c904e9"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -29482,12 +29700,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -29501,25 +29732,24 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29536,11 +29766,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#089c6899448a8213b369748f40c69e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -29564,14 +29794,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-none-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29579,21 +29808,20 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="2dc8ac58fb7c7b7057b9ce483435069f"></a>
+<a id="8b52b58406510724da3959b26f07f3c4"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "npm run migrate:dev && run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -29609,12 +29837,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -29630,10 +29871,12 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
@@ -29641,16 +29884,13 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29700,35 +29940,33 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-fetch-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="b1a3a0ed83d74417304dbae3ad45e83e"></a>
+<a id="427b31b8d3e4fe2dd12ec12074004392"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "npm run migrate:dev && run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -29743,12 +29981,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -29762,25 +30013,24 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29829,14 +30079,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-none-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29844,7 +30093,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29894,21 +30144,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-fetch-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -29957,14 +30207,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-none-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29972,7 +30221,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30022,21 +30272,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-fetch-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30085,14 +30335,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-none-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30100,21 +30349,20 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="6ad9ec6aba738378742d65a45517c1d9"></a>
+<a id="368eaefa50d0c1c2977309e28d1aa539"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -30131,12 +30379,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/jest": "^26.0.16",
@@ -30152,10 +30413,12 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
@@ -30163,16 +30426,13 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30222,35 +30482,33 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-fetch-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="c506296fc1c350d537e288471f2726fb"></a>
+<a id="4bee79625194cea6b79771c650334925"></a>
 package.json
 
 ```
 {
-  "name": "TODO",
-  "description": "TODO",
-  "version": "0.0.1",
+  "name": "frourio-app",
+  "version": "0.1.0",
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "sapper dev -p 3000",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && sapper export",
+    "build:client": "aspida && sapper export --legacy",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
@@ -30266,12 +30524,25 @@ package.json
   },
   "dependencies": {
     "@aspida/fetch": "^0.10.2",
+    "@aspida/node-fetch": "^0.9.2",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
+    "node-fetch": "^2.6.1",
     "polka": "next",
     "sirv": "^1.0.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-typescript": "^6.0.0",
+    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
     "@types/node": "^14.14.10",
@@ -30285,25 +30556,24 @@ package.json
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "file-loader": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.28.10",
     "serve": "^11.3.2",
     "svelte": "^3.31.0",
     "svelte-check": "^1.1.19",
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
-    "ts-loader": "^8.0.11",
-    "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2",
-    "webpack": "^4.7.0",
-    "webpack-modules": "^1.0.0"
+    "typescript": "^4.1.2"
   }
 }
 ```
 
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30352,14 +30622,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-none-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30367,7 +30636,8 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6ad9ec6aba738378742d65a45517c1d9)  
+[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30417,21 +30687,21 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-fetch-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#c506296fc1c350d537e288471f2726fb)  
+[package.json](#4bee79625194cea6b79771c650334925)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30480,14 +30750,13 @@ package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 <a id="aaa28ca6a2ee4c72595cc6f4b2794549"></a>
 
 ## express-sapper-static-fetch-pm2-none-jest-npm-actions
@@ -30533,7 +30802,8 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#200c86af0acceb4efe8a00777f5c5460)  
+[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30550,12 +30820,12 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -30580,14 +30850,13 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-fetch-pm2-none-jest-npm-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30595,7 +30864,8 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#200c86af0acceb4efe8a00777f5c5460)  
+[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30612,12 +30882,12 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -30642,14 +30912,13 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 <a id="f064fe7b91be87abfb3ea5d631065566"></a>
 
 ## express-sapper-static-fetch-pm2-none-jest-yarn-actions
@@ -30695,7 +30964,8 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#200c86af0acceb4efe8a00777f5c5460)  
+[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30712,12 +30982,12 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -30742,14 +31012,13 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-fetch-pm2-none-jest-yarn-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30757,7 +31026,8 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#200c86af0acceb4efe8a00777f5c5460)  
+[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30774,12 +31044,12 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -30804,14 +31074,13 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-fetch-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30819,7 +31088,8 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#200c86af0acceb4efe8a00777f5c5460)  
+[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30836,12 +31106,12 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -30866,21 +31136,21 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-fetch-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#779f347db05d0ec32dc15ba6c2d3049e)  
+[package.json](#4293f965c53214335ae7e8d3b9c904e9)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30897,12 +31167,12 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
 [server/package.json](#ba24fef5a2373526fb6452b49f744856)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -30926,14 +31196,13 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-pm2-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30941,7 +31210,8 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -30992,21 +31262,21 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-fetch-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -31056,14 +31326,13 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-pm2-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31071,7 +31340,8 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -31122,21 +31392,21 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-fetch-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -31186,14 +31456,13 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-pm2-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31201,7 +31470,8 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -31252,21 +31522,21 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## express-sapper-static-fetch-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -31316,14 +31586,13 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-pm2-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31331,7 +31600,8 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6ad9ec6aba738378742d65a45517c1d9)  
+[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -31382,21 +31652,21 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-fetch-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#c506296fc1c350d537e288471f2726fb)  
+[package.json](#4bee79625194cea6b79771c650334925)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -31446,14 +31716,13 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-pm2-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31461,7 +31730,8 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6ad9ec6aba738378742d65a45517c1d9)  
+[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -31512,21 +31782,21 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## express-sapper-static-fetch-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#c506296fc1c350d537e288471f2726fb)  
+[package.json](#4bee79625194cea6b79771c650334925)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -31576,14 +31846,13 @@ jobs:
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-next-basic-axios-none-none-jest
 [.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
@@ -31648,7 +31917,7 @@ export default defineHooks(() => ({
 ```
 
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-<a id="ff4993e07c07a937bfe143594a69937c"></a>
+<a id="841b57e12b81db56854045c513172c42"></a>
 server/index.ts
 
 ```
@@ -31658,6 +31927,7 @@ import helmet from 'fastify-helmet'
 import cors from 'fastify-cors'
 import fastifyStatic from 'fastify-static'
 import fastifyJwt from 'fastify-jwt'
+import { createDBFileIfNotExists } from './service/tasks'
 import { JWT_SECRET, SERVER_PORT, BASE_PATH } from './service/envValues'
 import server from './$server'
 
@@ -31671,6 +31941,7 @@ fastify.register(fastifyStatic, {
 })
 fastify.register(fastifyJwt, { secret: JWT_SECRET })
 
+createDBFileIfNotExists(path.join(__dirname, 'database.json'))
 server(fastify, { basePath: BASE_PATH })
 
 fastify.listen(SERVER_PORT)
@@ -31723,7 +31994,7 @@ server/package.json
 
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 <a id="f7b1fad7be352daa5a5a680988f9a856"></a>
 server/service/user.ts
 
@@ -31846,11 +32117,11 @@ test('dependency injection into controller', async () => {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -31892,7 +32163,35 @@ test('dependency injection into controller', async () => {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+<a id="ff4993e07c07a937bfe143594a69937c"></a>
+server/index.ts
+
+```
+import path from 'path'
+import Fastify from 'fastify'
+import helmet from 'fastify-helmet'
+import cors from 'fastify-cors'
+import fastifyStatic from 'fastify-static'
+import fastifyJwt from 'fastify-jwt'
+import { JWT_SECRET, SERVER_PORT, BASE_PATH } from './service/envValues'
+import server from './$server'
+
+const fastify = Fastify()
+
+fastify.register(helmet)
+fastify.register(cors)
+fastify.register(fastifyStatic, {
+  root: path.join(__dirname, 'public'),
+  prefix: BASE_PATH
+})
+fastify.register(fastifyJwt, { secret: JWT_SECRET })
+
+server(fastify, { basePath: BASE_PATH })
+
+fastify.listen(SERVER_PORT)
+
+```
+
 <a id="053e6a76eec6979a39a26638d70796b9"></a>
 server/package.json
 
@@ -33000,7 +33299,7 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 <a id="62edd4d3c543ad5593d90a6ecd6d53d8"></a>
 server/package.json
 
@@ -33054,7 +33353,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -33096,12 +33395,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -33819,11 +34118,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -33865,11 +34164,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -34411,12 +34710,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -34458,12 +34757,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -35015,11 +35314,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -35061,11 +35360,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -35607,12 +35906,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -35654,12 +35953,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -36211,11 +36510,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -36257,11 +36556,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -36803,12 +37102,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -36850,12 +37149,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -37410,11 +37709,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -37458,11 +37757,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -38026,12 +38325,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -38075,12 +38374,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -38654,11 +38953,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -38702,11 +39001,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -39270,12 +39569,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -39319,12 +39618,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -39898,11 +40197,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -39946,11 +40245,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -40514,12 +40813,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -40563,12 +40862,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -41142,11 +41441,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -41190,11 +41489,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -41758,12 +42057,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -41807,12 +42106,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -42386,11 +42685,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -42434,11 +42733,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -43002,12 +43301,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -43051,12 +43350,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -43630,11 +43929,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -43678,11 +43977,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -44246,12 +44545,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -44295,12 +44594,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -44874,11 +45173,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -44922,11 +45221,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -45490,12 +45789,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -45539,12 +45838,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -46118,11 +46417,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -46166,11 +46465,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -46734,12 +47033,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -46783,12 +47082,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -47335,7 +47634,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0151b66ced3ae5df6c17bebaf00fdb0e)  
+[package.json](#e68f05d99446995d45a0bd178f2b0340)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -47352,11 +47652,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -47387,15 +47687,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-axios-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#6dc328a5ba220e32edb9f153e4f5aaad)  
+[package.json](#050e84530e45a20cef9b6e2ca76ccca4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -47412,11 +47712,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -47446,8 +47746,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-axios-none-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -47455,7 +47754,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -47511,15 +47811,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-axios-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -47574,8 +47874,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-none-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -47583,7 +47882,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -47639,15 +47939,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-axios-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -47702,8 +48002,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-none-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -47711,7 +48010,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -47767,15 +48067,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-axios-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -47830,8 +48130,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-none-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -47839,7 +48138,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#62c2cbe4230b094d15f381755ada549d)  
+[package.json](#7eab91f04e808198b55509723d831841)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -47895,15 +48195,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-axios-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#cb8132daa85c8c09f5603925c6dd96fc)  
+[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -47958,8 +48258,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-axios-none-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -47967,7 +48266,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#62c2cbe4230b094d15f381755ada549d)  
+[package.json](#7eab91f04e808198b55509723d831841)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48023,15 +48323,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-axios-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#cb8132daa85c8c09f5603925c6dd96fc)  
+[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48086,8 +48386,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-axios-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48095,7 +48394,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0151b66ced3ae5df6c17bebaf00fdb0e)  
+[package.json](#e68f05d99446995d45a0bd178f2b0340)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48112,12 +48412,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -48148,15 +48448,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-axios-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#6dc328a5ba220e32edb9f153e4f5aaad)  
+[package.json](#050e84530e45a20cef9b6e2ca76ccca4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48173,12 +48473,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -48208,8 +48508,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48217,7 +48516,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48274,15 +48574,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48338,8 +48638,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48347,7 +48646,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48404,15 +48704,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48468,8 +48768,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48477,7 +48776,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35984a381fe42787c38e04dc8f57bf00)  
+[package.json](#ea15cdb59633176440d39b295711d9f3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48534,15 +48834,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#d004958bb8dfef15c72ca6467ff7af47)  
+[package.json](#bcdfeb15a091e03fb5e2ab92fd2f69d6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48598,8 +48898,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48607,7 +48906,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#62c2cbe4230b094d15f381755ada549d)  
+[package.json](#7eab91f04e808198b55509723d831841)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48664,15 +48964,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#cb8132daa85c8c09f5603925c6dd96fc)  
+[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48728,8 +49028,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48737,7 +49036,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#62c2cbe4230b094d15f381755ada549d)  
+[package.json](#7eab91f04e808198b55509723d831841)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48794,15 +49094,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#cb8132daa85c8c09f5603925c6dd96fc)  
+[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48858,8 +49158,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-none-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48867,7 +49166,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#f346816471dbb3761f3eae931d1387e7)  
+[package.json](#261fdd99e3f0b859be81945fb1cd749c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48884,11 +49184,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -48913,21 +49213,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-fetch-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#25143a61adecd5ad48bae2ccd4e9f5e0)  
+[package.json](#32080c4712ef51129cd96103b9853bd6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -48944,11 +49244,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -48972,14 +49272,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-none-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48987,7 +49286,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49037,21 +49337,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-fetch-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49100,14 +49400,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-none-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49115,7 +49414,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49165,21 +49465,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-fetch-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49228,14 +49528,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-none-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49243,7 +49542,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49293,21 +49593,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-fetch-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49356,14 +49656,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49371,7 +49670,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#b9f9449d18037f389d8df4d2bf31ab6a)  
+[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49421,21 +49721,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5adc3a055b6cfdacae17d8d0b7dd009e)  
+[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49484,14 +49784,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49499,7 +49798,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#b9f9449d18037f389d8df4d2bf31ab6a)  
+[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49549,21 +49849,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5adc3a055b6cfdacae17d8d0b7dd009e)  
+[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49612,14 +49912,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49627,7 +49926,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#f346816471dbb3761f3eae931d1387e7)  
+[package.json](#261fdd99e3f0b859be81945fb1cd749c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49644,12 +49944,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -49674,21 +49974,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-fetch-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#25143a61adecd5ad48bae2ccd4e9f5e0)  
+[package.json](#32080c4712ef51129cd96103b9853bd6)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49705,12 +50005,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -49734,14 +50034,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49749,7 +50048,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49800,21 +50100,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49864,14 +50164,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49879,7 +50178,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49930,21 +50230,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -49994,14 +50294,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50009,7 +50308,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#a550d1afe4da884c2d4eb567fb2a4adc)  
+[package.json](#861ab6cb18f4ac8f2fb553d654e5783f)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50060,21 +50360,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#1362db9cddbd2860f309da80ecc3afa8)  
+[package.json](#d976553634cebbe0484646f72004b81e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50124,14 +50424,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50139,7 +50438,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#b9f9449d18037f389d8df4d2bf31ab6a)  
+[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50190,21 +50490,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5adc3a055b6cfdacae17d8d0b7dd009e)  
+[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50254,14 +50554,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50269,7 +50568,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#b9f9449d18037f389d8df4d2bf31ab6a)  
+[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50320,21 +50620,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5adc3a055b6cfdacae17d8d0b7dd009e)  
+[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50384,14 +50684,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-none-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50399,7 +50698,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#cdceb86efd1265ba878da5ff5a911e3a)  
+[package.json](#cd2dbe140e2ae79e1e1ad2268959bebb)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50416,11 +50716,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -50451,15 +50751,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-axios-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#255f746f9d2a1dbe7387c5507e7152b4)  
+[package.json](#8e94f8a605b99d887833acbebcb36e96)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50476,11 +50776,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -50510,8 +50810,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-none-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50519,7 +50818,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50575,15 +50875,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-axios-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50638,8 +50938,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-none-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50647,7 +50946,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50703,15 +51003,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-axios-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50766,8 +51066,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-none-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50775,7 +51074,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50831,15 +51131,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-axios-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50894,8 +51194,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-none-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50903,7 +51202,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3d3ae48c4b0dc179959aafcddd0bfa25)  
+[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -50959,15 +51259,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-axios-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#653f8c79770a83462ff7195f4f1ca7fb)  
+[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51022,8 +51322,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-none-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51031,7 +51330,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3d3ae48c4b0dc179959aafcddd0bfa25)  
+[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51087,15 +51387,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-axios-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#653f8c79770a83462ff7195f4f1ca7fb)  
+[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51150,8 +51450,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51159,7 +51458,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#cdceb86efd1265ba878da5ff5a911e3a)  
+[package.json](#cd2dbe140e2ae79e1e1ad2268959bebb)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51176,12 +51476,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -51212,15 +51512,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-axios-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#255f746f9d2a1dbe7387c5507e7152b4)  
+[package.json](#8e94f8a605b99d887833acbebcb36e96)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51237,12 +51537,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -51272,8 +51572,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-pm2-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51281,7 +51580,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51338,15 +51638,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-axios-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51402,8 +51702,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-pm2-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51411,7 +51710,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51468,15 +51768,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-axios-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51532,8 +51832,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-pm2-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51541,7 +51840,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#0e1b5848a03342cb164f22aeeb4dc53c)  
+[package.json](#9ff89004be68d09a0093b44fea280fc3)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51598,15 +51898,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-axios-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#07a80027043df59a0ed9ee8af509c74d)  
+[package.json](#0f78ec433cd857626862df92e36f40c0)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51662,8 +51962,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51671,7 +51970,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3d3ae48c4b0dc179959aafcddd0bfa25)  
+[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51728,15 +52028,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#653f8c79770a83462ff7195f4f1ca7fb)  
+[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51792,8 +52092,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51801,7 +52100,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3d3ae48c4b0dc179959aafcddd0bfa25)  
+[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51858,15 +52158,15 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#653f8c79770a83462ff7195f4f1ca7fb)  
+[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51922,8 +52222,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-none-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51931,7 +52230,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#200c86af0acceb4efe8a00777f5c5460)  
+[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -51948,11 +52248,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -51977,21 +52277,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-fetch-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#779f347db05d0ec32dc15ba6c2d3049e)  
+[package.json](#4293f965c53214335ae7e8d3b9c904e9)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52008,11 +52308,11 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -52036,14 +52336,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-none-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52051,7 +52350,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52101,21 +52401,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-fetch-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52164,14 +52464,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-none-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52179,7 +52478,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52229,21 +52529,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-fetch-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52292,14 +52592,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-none-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52307,7 +52606,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52357,21 +52657,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-fetch-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52420,14 +52720,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-none-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52435,7 +52734,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6ad9ec6aba738378742d65a45517c1d9)  
+[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52485,21 +52785,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-fetch-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#c506296fc1c350d537e288471f2726fb)  
+[package.json](#4bee79625194cea6b79771c650334925)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52548,14 +52848,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-none-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52563,7 +52862,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6ad9ec6aba738378742d65a45517c1d9)  
+[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52613,21 +52913,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-fetch-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#c506296fc1c350d537e288471f2726fb)  
+[package.json](#4bee79625194cea6b79771c650334925)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52676,14 +52976,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52691,7 +52990,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#200c86af0acceb4efe8a00777f5c5460)  
+[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52708,12 +53008,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#94ff66a3503dbe7658f947298c572dd2)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
@@ -52738,21 +53038,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-fetch-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#779f347db05d0ec32dc15ba6c2d3049e)  
+[package.json](#4293f965c53214335ae7e8d3b9c904e9)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52769,12 +53069,12 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
 [server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#5c354c2531bb511ff0be014388c6d702)  
+[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -52798,14 +53098,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52813,7 +53112,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52864,21 +53164,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52928,14 +53228,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-postgresql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52943,7 +53242,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -52994,21 +53294,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -53058,14 +53358,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-sqlite-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -53073,7 +53372,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2dc8ac58fb7c7b7057b9ce483435069f)  
+[package.json](#8b52b58406510724da3959b26f07f3c4)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -53124,21 +53424,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#c53114e792d22d934a6dbc321f99ee6e)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#b1a3a0ed83d74417304dbae3ad45e83e)  
+[package.json](#427b31b8d3e4fe2dd12ec12074004392)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -53188,14 +53488,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#cebcecee4b5c708d771717cb56703377)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-mysql-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -53203,7 +53502,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6ad9ec6aba738378742d65a45517c1d9)  
+[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -53254,21 +53554,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#c506296fc1c350d537e288471f2726fb)  
+[package.json](#4bee79625194cea6b79771c650334925)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -53318,14 +53618,13 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-postgres-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -53333,7 +53632,8 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6ad9ec6aba738378742d65a45517c1d9)  
+[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -53384,21 +53684,21 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8d10876b9ae11f35a6bca3f463b75c2d)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#c506296fc1c350d537e288471f2726fb)  
+[package.json](#4bee79625194cea6b79771c650334925)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
 [server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
@@ -53448,11 +53748,10 @@ server/package.json
 [src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
 [src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
 [src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#7694db93e4b084b9b3f85a5b67347f97)  
-[webpack.config.js](#0cbb1b5dda19e40e75fe1633be635fa5)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  

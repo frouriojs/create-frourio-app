@@ -7,7 +7,8 @@ import fastifyStatic from 'fastify-static'
 import fastifyJwt from 'fastify-jwt'
 import { createConnection } from 'typeorm'
 import server from './$server'
-import ormOptions from './$orm'
+import ormOptions from './$orm'<% if (orm === 'none') { %>
+import { createDBFileIfNotExists } from './service/tasks'<% } %>
 import {
   JWT_SECRET,
   SERVER_PORT,
@@ -28,7 +29,8 @@ fastify.register(fastifyStatic, {
   prefix: BASE_PATH
 })
 fastify.register(fastifyJwt, { secret: JWT_SECRET })
-
+<% if (orm === 'none') { %>
+createDBFileIfNotExists(path.join(__dirname, 'database.json'))<% } %>
 server(fastify, { basePath: BASE_PATH })
 
 createConnection({
