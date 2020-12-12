@@ -47,6 +47,12 @@ jobs:
       - run: npm run lint --prefix ../nextjs
       - run: npm run typecheck --prefix ../nextjs
       - run: npm run test --prefix ../nextjs
+      - run: rm -rf ../nextjs/server/node_modules
+        if: matrix.os == 'ubuntu-latest'
+      - run: Remove-Item ../nextjs/server/node_modules -Recurse -Force
+        if: matrix.os == 'windows-latest'
+      - run: npm run build:client --prefix ../nextjs
+      - run: yarn --cwd ../nextjs/server
       - run: npm run build --prefix ../nextjs/server
       - run: npm run pm2:start --prefix ../nextjs/server
 
@@ -65,6 +71,14 @@ jobs:
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
       - run: npm run test --prefix ../nextjs-typeorm
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: rm -rf ../nextjs-typeorm/server/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: npm run build:client --prefix ../nextjs-typeorm
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: yarn --cwd ../nextjs-typeorm/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: npm run build --prefix ../nextjs-typeorm/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
 
       - run: node bin/index.js --answers '{"dir":"../nuxtjs","prismaDB":"sqlite","testing":"jest"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
@@ -74,6 +88,14 @@ jobs:
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
       - run: npm run test --prefix ../nuxtjs
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: rm -rf ../nuxtjs/server/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: npm run build:client --prefix ../nuxtjs
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: yarn --cwd ../nuxtjs/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: npm run build --prefix ../nuxtjs/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
 
       - run: node bin/index.js --answers '{"dir":"../sapper","prismaDB":"sqlite","testing":"jest"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
@@ -82,6 +104,14 @@ jobs:
       - run: npm run typecheck --prefix ../sapper
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
       - run: npm run test --prefix ../sapper
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: rm -rf ../sapper/server/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run build:client --prefix ../sapper
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: yarn --cwd ../sapper/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run build --prefix ../sapper/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
 
   release:

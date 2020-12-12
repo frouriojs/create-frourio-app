@@ -8,7 +8,7 @@
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && next build<% if (building === 'static') { %> && next export<% } %>",
+    "build:client": "aspida<% if (orm === 'prisma') { %> && prisma generate --schema server/prisma/schema.prisma<% } %> && next build<% if (building === 'static') { %> && next export<% } %>",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "eslint --ext .ts,.js,.tsx .",
@@ -36,7 +36,8 @@
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "<% if (testing === 'jest') { %>@types/jest": "^26.0.15",
+    "<% if (orm === 'prisma') { %>@prisma/cli": "^2.13.0",
+    "<% } %><% if (testing === 'jest') { %>@types/jest": "^26.0.15",
     "<% } %>@types/node": "^14.14.10",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
