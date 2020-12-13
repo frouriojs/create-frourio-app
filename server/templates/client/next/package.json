@@ -25,9 +25,9 @@
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "<% if (aspida === 'axios') { %>@aspida/axios": "^0.12.2",
-    "<% } else { %>@aspida/fetch": "^0.10.2",
-    "<% } %>@aspida/swr": "^0.2.2<% if (aspida === 'axios') { %>",
+    "<% if (aspida === 'axios') { %>@aspida/axios": "^1.1.0",
+    "<% } else { %>@aspida/fetch": "^1.1.0",
+    "<% } %>@aspida/swr": "^1.1.0<% if (aspida === 'axios') { %>",
     "axios": "^0.21.0<% } %>",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -37,22 +37,22 @@
   },
   "devDependencies": {
     "<% if (orm === 'prisma') { %>@prisma/cli": "^2.13.0",
-    "<% } %><% if (testing === 'jest') { %>@types/jest": "^26.0.15",
-    "<% } %>@types/node": "^14.14.10",
+    "<% } %><% if (testing === 'jest') { %>@types/jest": "^26.0.19",
+    "<% } %>@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5<% if (testing === 'jest') { %>",
     "jest": "^26.6.3<% } %>",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1<% if (testing === 'jest') { %>",
     "ts-jest": "^26.4.4<% } %>",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }

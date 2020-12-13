@@ -291,7 +291,7 @@ next-env.d.ts
 
 ```
 
-<a id="0d6f9b92b122096d31e186b158873eba"></a>
+<a id="1280de908b5628e1c51bc84a44a5aac8"></a>
 package.json
 
 ```
@@ -317,8 +317,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -327,23 +327,23 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -735,7 +735,7 @@ app.listen(SERVER_PORT)
 
 ```
 
-<a id="089c6899448a8213b369748f40c69e12"></a>
+<a id="e1ed2e08206db5e3dd48901828564c60"></a>
 server/package.json
 
 ```
@@ -764,17 +764,17 @@ server/package.json
     "@types/cors": "^2.8.7",
     "@types/express-jwt": "0.0.42",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/multer": "^1.4.4",
-    "cross-env": "^7.0.2",
-    "frourio-express": "^0.21.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -1247,7 +1247,7 @@ export const apiClient = api(aspida())
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="0bb4a579110ce0a00d5936cc70caaece"></a>
+<a id="9245ed8759b9462ba5d2869aa52094c7"></a>
 package.json
 
 ```
@@ -1272,8 +1272,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -1282,20 +1282,20 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -1356,7 +1356,7 @@ export type Methods = {
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 <a id="fc6565768a40f2cfcb23b63aea4edc73"></a>
@@ -1453,7 +1453,7 @@ export const deleteTask = async (id: Task['id']) => {
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="c3b6afab454699c95d12813ef71dfeb9"></a>
+<a id="c32a740a1e06d9cc715aec591da067c5"></a>
 package.json
 
 ```
@@ -1481,8 +1481,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -1492,23 +1492,23 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -1696,7 +1696,7 @@ app.listen(SERVER_PORT)
 
 ```
 
-<a id="80dc7e73daecc4e3ff4cecc14738bc3b"></a>
+<a id="a87e4cb101b38a4b9d5311ab07095967"></a>
 server/package.json
 
 ```
@@ -1730,17 +1730,17 @@ server/package.json
     "@types/cors": "^2.8.7",
     "@types/express-jwt": "0.0.42",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/multer": "^1.4.4",
-    "cross-env": "^7.0.2",
-    "frourio-express": "^0.21.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -1970,7 +1970,7 @@ tsconfig.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="09c33c20c0fbb9a45e32d0e73577d808"></a>
+<a id="d14685fce23088d58590f72242c5d8c4"></a>
 package.json
 
 ```
@@ -1997,8 +1997,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -2008,20 +2008,20 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -2066,7 +2066,7 @@ export type Methods = {
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -2121,7 +2121,7 @@ export const deleteTask = (id: Task['id']) =>
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2140,7 +2140,7 @@ export const deleteTask = (id: Task['id']) =>
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 <a id="721a23573ae87c3862febbcb07afeab0"></a>
 server/prisma/.env
 
@@ -2219,7 +2219,7 @@ model Task {
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2238,7 +2238,7 @@ model Task {
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -2269,7 +2269,7 @@ model Task {
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2288,7 +2288,7 @@ model Task {
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 <a id="429401736c76b800fe494a6854b1ecf9"></a>
 server/prisma/.env
 
@@ -2365,7 +2365,7 @@ model Task {
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2384,7 +2384,7 @@ model Task {
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -2415,7 +2415,7 @@ model Task {
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="502a15c77301f590310fd50f270395ac"></a>
+<a id="d6691b631d095518547a74d1a1232e31"></a>
 package.json
 
 ```
@@ -2444,8 +2444,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -2454,23 +2454,23 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -2649,7 +2649,7 @@ export = options
 
 ```
 
-<a id="1a8ae36c2b0ef6cb735b927644f7c760"></a>
+<a id="0fd0ef058af06df103201b5f08707021"></a>
 server/package.json
 
 ```
@@ -2685,17 +2685,17 @@ server/package.json
     "@types/cors": "^2.8.7",
     "@types/express-jwt": "0.0.42",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/multer": "^1.4.4",
-    "cross-env": "^7.0.2",
-    "frourio-express": "^0.21.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -2890,7 +2890,7 @@ server/tsconfig.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="07f48866e0e3cbf4186aa0b43955e292"></a>
+<a id="9b8950aae4c00b0ca965145399bcb8ec"></a>
 package.json
 
 ```
@@ -2918,8 +2918,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -2928,20 +2928,20 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -2968,7 +2968,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 <a id="38829c478595c7e745282ff60e7dc7b1"></a>
@@ -3029,7 +3029,7 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#502a15c77301f590310fd50f270395ac)  
+[package.json](#d6691b631d095518547a74d1a1232e31)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3163,7 +3163,7 @@ export = options
 
 ```
 
-<a id="a31beb8d4db1eb01a204f42b3a69b132"></a>
+<a id="247d2433d857f2d175b246402ebe3a48"></a>
 server/package.json
 
 ```
@@ -3199,17 +3199,17 @@ server/package.json
     "@types/cors": "^2.8.7",
     "@types/express-jwt": "0.0.42",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/multer": "^1.4.4",
-    "cross-env": "^7.0.2",
-    "frourio-express": "^0.21.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -3243,7 +3243,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#07f48866e0e3cbf4186aa0b43955e292)  
+[package.json](#9b8950aae4c00b0ca965145399bcb8ec)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3265,7 +3265,7 @@ server/package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -3293,7 +3293,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0d6f9b92b122096d31e186b158873eba)  
+[package.json](#1280de908b5628e1c51bc84a44a5aac8)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3312,7 +3312,7 @@ server/package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-<a id="ba24fef5a2373526fb6452b49f744856"></a>
+<a id="900a053b577239b37ce6164eb08353e0"></a>
 server/package.json
 
 ```
@@ -3347,17 +3347,17 @@ server/package.json
     "@types/cors": "^2.8.7",
     "@types/express-jwt": "0.0.42",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/multer": "^1.4.4",
-    "cross-env": "^7.0.2",
-    "frourio-express": "^0.21.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -3404,7 +3404,7 @@ server/pm2.config.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0bb4a579110ce0a00d5936cc70caaece)  
+[package.json](#9245ed8759b9462ba5d2869aa52094c7)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3423,7 +3423,7 @@ server/pm2.config.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -3451,7 +3451,7 @@ server/pm2.config.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3470,7 +3470,7 @@ server/pm2.config.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-<a id="8c56fadd6d843c7eeae3da0c6a83be47"></a>
+<a id="942402a6f5466f80cb2ebca739bff43e"></a>
 server/package.json
 
 ```
@@ -3510,17 +3510,17 @@ server/package.json
     "@types/cors": "^2.8.7",
     "@types/express-jwt": "0.0.42",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/multer": "^1.4.4",
-    "cross-env": "^7.0.2",
-    "frourio-express": "^0.21.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -3558,7 +3558,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3577,7 +3577,7 @@ server/package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -3609,7 +3609,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3628,7 +3628,7 @@ server/package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -3660,7 +3660,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3679,7 +3679,7 @@ server/package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -3711,7 +3711,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3730,7 +3730,7 @@ server/package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -3762,7 +3762,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3781,7 +3781,7 @@ server/package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -3813,7 +3813,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#502a15c77301f590310fd50f270395ac)  
+[package.json](#d6691b631d095518547a74d1a1232e31)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3835,7 +3835,7 @@ server/package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-<a id="e3584bdbc782c0ed5deef2948a6b14d1"></a>
+<a id="3882bb4cab0ad7beabc5e34baacfef68"></a>
 server/package.json
 
 ```
@@ -3877,17 +3877,17 @@ server/package.json
     "@types/cors": "^2.8.7",
     "@types/express-jwt": "0.0.42",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/multer": "^1.4.4",
-    "cross-env": "^7.0.2",
-    "frourio-express": "^0.21.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -3922,7 +3922,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#07f48866e0e3cbf4186aa0b43955e292)  
+[package.json](#9b8950aae4c00b0ca965145399bcb8ec)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3944,7 +3944,7 @@ server/package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -3973,7 +3973,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#502a15c77301f590310fd50f270395ac)  
+[package.json](#d6691b631d095518547a74d1a1232e31)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3995,7 +3995,7 @@ server/package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-<a id="829a2f47d4a9004710efd0311d3886f2"></a>
+<a id="f1b5f01ea64421987a3119864dad50ff"></a>
 server/package.json
 
 ```
@@ -4037,17 +4037,17 @@ server/package.json
     "@types/cors": "^2.8.7",
     "@types/express-jwt": "0.0.42",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/multer": "^1.4.4",
-    "cross-env": "^7.0.2",
-    "frourio-express": "^0.21.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -4082,7 +4082,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#07f48866e0e3cbf4186aa0b43955e292)  
+[package.json](#9b8950aae4c00b0ca965145399bcb8ec)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4104,7 +4104,7 @@ server/package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -4133,7 +4133,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="631706ab81fc8cf42869a9d3cfcd1646"></a>
+<a id="fd4c48d5dee50a0ccb921e4a27b58d04"></a>
 package.json
 
 ```
@@ -4159,8 +4159,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -4168,23 +4168,23 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -4208,7 +4208,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -4245,7 +4245,7 @@ export const apiClient = api(aspida())
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="9a9aafb117c23f73ce8bde22e8827e3e"></a>
+<a id="598ffea2618df80e6104643f08e76adb"></a>
 package.json
 
 ```
@@ -4270,8 +4270,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -4279,20 +4279,20 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -4316,7 +4316,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -4343,7 +4343,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="d35c09e6e719f8fea9918092639ab39c"></a>
+<a id="7d2cce4cc195e0a65455ab7e9edee3d2"></a>
 package.json
 
 ```
@@ -4371,8 +4371,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -4381,23 +4381,23 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -4421,7 +4421,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -4452,7 +4452,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="d54678b3ae789eb58186bdbbd39e872e"></a>
+<a id="304244db44d6cfdfcf06bc9ac452b2d9"></a>
 package.json
 
 ```
@@ -4479,8 +4479,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -4489,20 +4489,20 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -4526,7 +4526,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -4557,7 +4557,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4576,7 +4576,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -4607,7 +4607,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4626,7 +4626,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -4657,7 +4657,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4676,7 +4676,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -4707,7 +4707,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4726,7 +4726,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -4757,7 +4757,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="bdecc00c6e683c68ec9f1fd5bf193871"></a>
+<a id="a3391385de1901ff42d2fc53836f8904"></a>
 package.json
 
 ```
@@ -4786,8 +4786,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -4795,23 +4795,23 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -4838,7 +4838,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -4866,7 +4866,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="85264e32083554e57522002b4e018489"></a>
+<a id="4f5845e66d6bfa520cf451c7e03556e6"></a>
 package.json
 
 ```
@@ -4894,8 +4894,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -4903,20 +4903,20 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -4943,7 +4943,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -4971,7 +4971,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#bdecc00c6e683c68ec9f1fd5bf193871)  
+[package.json](#a3391385de1901ff42d2fc53836f8904)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4993,7 +4993,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -5021,7 +5021,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#85264e32083554e57522002b4e018489)  
+[package.json](#4f5845e66d6bfa520cf451c7e03556e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5043,7 +5043,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -5071,7 +5071,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#631706ab81fc8cf42869a9d3cfcd1646)  
+[package.json](#fd4c48d5dee50a0ccb921e4a27b58d04)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5090,7 +5090,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -5118,7 +5118,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#9a9aafb117c23f73ce8bde22e8827e3e)  
+[package.json](#598ffea2618df80e6104643f08e76adb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5137,7 +5137,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -5165,7 +5165,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5184,7 +5184,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -5216,7 +5216,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5235,7 +5235,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -5267,7 +5267,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5286,7 +5286,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -5318,7 +5318,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5337,7 +5337,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -5369,7 +5369,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5388,7 +5388,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -5420,7 +5420,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5439,7 +5439,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -5471,7 +5471,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#bdecc00c6e683c68ec9f1fd5bf193871)  
+[package.json](#a3391385de1901ff42d2fc53836f8904)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5493,7 +5493,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -5522,7 +5522,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#85264e32083554e57522002b4e018489)  
+[package.json](#4f5845e66d6bfa520cf451c7e03556e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5544,7 +5544,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -5573,7 +5573,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#bdecc00c6e683c68ec9f1fd5bf193871)  
+[package.json](#a3391385de1901ff42d2fc53836f8904)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5595,7 +5595,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -5624,7 +5624,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#85264e32083554e57522002b4e018489)  
+[package.json](#4f5845e66d6bfa520cf451c7e03556e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5646,7 +5646,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -5675,7 +5675,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="3c00fb8e61497cb428e0de03f7c9eeba"></a>
+<a id="f89e940e02b85afdd52aa53c12b88edf"></a>
 package.json
 
 ```
@@ -5701,8 +5701,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -5711,23 +5711,23 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -5751,7 +5751,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -5778,7 +5778,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="9ef75e92dc201be446d696a30c271cd0"></a>
+<a id="ae4bf7dde44200c0f7baa39947101bf4"></a>
 package.json
 
 ```
@@ -5803,8 +5803,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -5813,20 +5813,20 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -5850,7 +5850,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -5877,7 +5877,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="049a29817308aeedfb82e0bae5052918"></a>
+<a id="8d1bcba760b3b6d1a0ab16ea8058fb38"></a>
 package.json
 
 ```
@@ -5905,8 +5905,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -5916,23 +5916,23 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -5956,7 +5956,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -5987,7 +5987,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="5efc68d54aa039cf345e7bb569ebe910"></a>
+<a id="2726fec404cab57e7bef2748150e194e"></a>
 package.json
 
 ```
@@ -6014,8 +6014,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -6025,20 +6025,20 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -6062,7 +6062,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -6093,7 +6093,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6112,7 +6112,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -6143,7 +6143,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6162,7 +6162,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -6193,7 +6193,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6212,7 +6212,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -6243,7 +6243,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6262,7 +6262,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -6293,7 +6293,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="81cd6ad68d57f52b8d47341de73eff11"></a>
+<a id="d0020108bd3404c5d15cc5e0b91ccc35"></a>
 package.json
 
 ```
@@ -6322,8 +6322,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -6332,23 +6332,23 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -6375,7 +6375,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -6403,7 +6403,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="adf8a615786f6e0a52d4e0b905c4a343"></a>
+<a id="0b93657fbd3b97dd2d791bcffa2de059"></a>
 package.json
 
 ```
@@ -6431,8 +6431,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -6441,20 +6441,20 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -6481,7 +6481,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -6509,7 +6509,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#81cd6ad68d57f52b8d47341de73eff11)  
+[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6531,7 +6531,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -6559,7 +6559,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#adf8a615786f6e0a52d4e0b905c4a343)  
+[package.json](#0b93657fbd3b97dd2d791bcffa2de059)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6581,7 +6581,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -6609,7 +6609,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#3c00fb8e61497cb428e0de03f7c9eeba)  
+[package.json](#f89e940e02b85afdd52aa53c12b88edf)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6628,7 +6628,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -6656,7 +6656,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#9ef75e92dc201be446d696a30c271cd0)  
+[package.json](#ae4bf7dde44200c0f7baa39947101bf4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6675,7 +6675,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -6703,7 +6703,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6722,7 +6722,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -6754,7 +6754,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6773,7 +6773,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -6805,7 +6805,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6824,7 +6824,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -6856,7 +6856,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6875,7 +6875,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -6907,7 +6907,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6926,7 +6926,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -6958,7 +6958,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6977,7 +6977,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -7009,7 +7009,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#81cd6ad68d57f52b8d47341de73eff11)  
+[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7031,7 +7031,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -7060,7 +7060,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#adf8a615786f6e0a52d4e0b905c4a343)  
+[package.json](#0b93657fbd3b97dd2d791bcffa2de059)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7082,7 +7082,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -7111,7 +7111,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#81cd6ad68d57f52b8d47341de73eff11)  
+[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7133,7 +7133,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -7162,7 +7162,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#adf8a615786f6e0a52d4e0b905c4a343)  
+[package.json](#0b93657fbd3b97dd2d791bcffa2de059)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7184,7 +7184,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -7213,7 +7213,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="8c28621e001a05e57f8124433c352ad5"></a>
+<a id="29f5b60381d773445ae040a56930abae"></a>
 package.json
 
 ```
@@ -7239,8 +7239,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -7248,23 +7248,23 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -7288,7 +7288,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -7315,7 +7315,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="b0b61a530b869808016e5b38bfcd3ce2"></a>
+<a id="fe93f7c7edcbbb8ae17e594dc9dcb2d4"></a>
 package.json
 
 ```
@@ -7340,8 +7340,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -7349,20 +7349,20 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -7386,7 +7386,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -7413,7 +7413,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="b69af42cc4064db034fb5795e08e3de7"></a>
+<a id="b636ba8d2fcc6353f03a0407915ea890"></a>
 package.json
 
 ```
@@ -7441,8 +7441,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -7451,23 +7451,23 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -7491,7 +7491,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -7522,7 +7522,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="0e656d8cc4fb9272891c67f03944c72e"></a>
+<a id="0d3cbc1537a3493ecd17d4146e858c66"></a>
 package.json
 
 ```
@@ -7549,8 +7549,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -7559,20 +7559,20 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -7596,7 +7596,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -7627,7 +7627,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7646,7 +7646,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -7677,7 +7677,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7696,7 +7696,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -7727,7 +7727,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7746,7 +7746,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -7777,7 +7777,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7796,7 +7796,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -7827,7 +7827,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="b2975fbc341c793f51f0ba7216a33c9b"></a>
+<a id="e24946ab21abc4fd878b3a57a691c916"></a>
 package.json
 
 ```
@@ -7856,8 +7856,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -7865,23 +7865,23 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -7908,7 +7908,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -7936,7 +7936,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="80eb92600e8857f1e7c4089f4cc538e3"></a>
+<a id="d6a58dcf5dcb9f51f669471706fc8b70"></a>
 package.json
 
 ```
@@ -7964,8 +7964,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
@@ -7973,20 +7973,20 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.8.2",
-    "@typescript-eslint/parser": "^4.8.2",
-    "cross-env": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -8013,7 +8013,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -8041,7 +8041,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b2975fbc341c793f51f0ba7216a33c9b)  
+[package.json](#e24946ab21abc4fd878b3a57a691c916)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8063,7 +8063,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -8091,7 +8091,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#80eb92600e8857f1e7c4089f4cc538e3)  
+[package.json](#d6a58dcf5dcb9f51f669471706fc8b70)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8113,7 +8113,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -8141,7 +8141,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8c28621e001a05e57f8124433c352ad5)  
+[package.json](#29f5b60381d773445ae040a56930abae)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8160,7 +8160,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -8188,7 +8188,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b0b61a530b869808016e5b38bfcd3ce2)  
+[package.json](#fe93f7c7edcbbb8ae17e594dc9dcb2d4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8207,7 +8207,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -8235,7 +8235,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8254,7 +8254,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -8286,7 +8286,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8305,7 +8305,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -8337,7 +8337,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8356,7 +8356,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -8388,7 +8388,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8407,7 +8407,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -8439,7 +8439,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8458,7 +8458,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -8490,7 +8490,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8509,7 +8509,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -8541,7 +8541,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b2975fbc341c793f51f0ba7216a33c9b)  
+[package.json](#e24946ab21abc4fd878b3a57a691c916)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8563,7 +8563,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -8592,7 +8592,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#80eb92600e8857f1e7c4089f4cc538e3)  
+[package.json](#d6a58dcf5dcb9f51f669471706fc8b70)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8614,7 +8614,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -8643,7 +8643,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b2975fbc341c793f51f0ba7216a33c9b)  
+[package.json](#e24946ab21abc4fd878b3a57a691c916)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8665,7 +8665,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -8694,7 +8694,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#80eb92600e8857f1e7c4089f4cc538e3)  
+[package.json](#d6a58dcf5dcb9f51f669471706fc8b70)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8716,7 +8716,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -9255,7 +9255,7 @@ export default config
 
 ```
 
-<a id="36e21ac940cb1d0dfa3d99c2c9068d29"></a>
+<a id="a9edcab5ae36a94d9fbb408ba32dd649"></a>
 package.json
 
 ```
@@ -9292,36 +9292,36 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -9493,7 +9493,7 @@ export default plugin
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -9581,7 +9581,7 @@ tsconfig.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-<a id="e725297ff4d211c7955860bb79c4aa4c"></a>
+<a id="abf0c9431ad17a8d4f96c6ed6232306f"></a>
 package.json
 
 ```
@@ -9617,33 +9617,33 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -9665,7 +9665,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -9696,7 +9696,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-<a id="54b9557d43cdc9226acaa065a1df27b5"></a>
+<a id="3ea603e62924efdc1867085d6fcf7a46"></a>
 package.json
 
 ```
@@ -9735,37 +9735,37 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@prisma/cli": "^2.13.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -9899,7 +9899,7 @@ export default Vue.extend({
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -9965,7 +9965,7 @@ tsconfig.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-<a id="b5fc3e26d1be9a31807e52dad90ea8c1"></a>
+<a id="df22bcac526dc3a6db306867632bd831"></a>
 package.json
 
 ```
@@ -10003,14 +10003,14 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
@@ -10018,19 +10018,19 @@ package.json
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@prisma/cli": "^2.13.0",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -10052,7 +10052,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -10087,7 +10087,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10104,7 +10104,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -10139,7 +10139,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10156,7 +10156,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -10191,7 +10191,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10208,7 +10208,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -10243,7 +10243,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10260,7 +10260,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -10295,7 +10295,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-<a id="ba3b731738b8ffc079ae567428b7bf9d"></a>
+<a id="91ef7fdc59f3c348f1a63c687400bd08"></a>
 package.json
 
 ```
@@ -10335,36 +10335,36 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -10389,7 +10389,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -10421,7 +10421,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-<a id="9c0e937bedcf3bfc30f82bcbf3d0814e"></a>
+<a id="8d3916bdd24f6ac2400ec623f51e57d9"></a>
 package.json
 
 ```
@@ -10460,33 +10460,33 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -10511,7 +10511,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -10543,7 +10543,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -10563,7 +10563,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -10595,7 +10595,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -10615,7 +10615,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -10647,7 +10647,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#36e21ac940cb1d0dfa3d99c2c9068d29)  
+[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10664,7 +10664,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -10696,7 +10696,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#e725297ff4d211c7955860bb79c4aa4c)  
+[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10713,7 +10713,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -10745,7 +10745,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10762,7 +10762,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -10798,7 +10798,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10815,7 +10815,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -10851,7 +10851,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10868,7 +10868,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -10904,7 +10904,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10921,7 +10921,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -10957,7 +10957,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10974,7 +10974,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -11010,7 +11010,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -11027,7 +11027,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -11063,7 +11063,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -11083,7 +11083,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -11116,7 +11116,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -11136,7 +11136,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -11169,7 +11169,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -11189,7 +11189,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -11222,7 +11222,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -11242,7 +11242,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -11359,7 +11359,7 @@ export default config
 
 ```
 
-<a id="aba0b0aa9494b9db2a15a5c642a7501a"></a>
+<a id="dab2d3a8a39277e4bd42bfbec296f4a5"></a>
 package.json
 
 ```
@@ -11396,37 +11396,37 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -11492,7 +11492,7 @@ export default plugin
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -11553,7 +11553,7 @@ tsconfig.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-<a id="0b9dc0d5f448b0ec6e0d95486801fc53"></a>
+<a id="4f8f1ae039daeb3f260111271b4585e3"></a>
 package.json
 
 ```
@@ -11589,14 +11589,14 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
@@ -11604,19 +11604,19 @@ package.json
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -11638,7 +11638,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -11669,7 +11669,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-<a id="28982e73eb6bf63b63ef04fc2a5210e3"></a>
+<a id="9d4fcb435acd161c330e7bcf7a29af81"></a>
 package.json
 
 ```
@@ -11708,38 +11708,38 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@prisma/cli": "^2.13.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -11761,7 +11761,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -11827,7 +11827,7 @@ tsconfig.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-<a id="5eeab06b51394ed24405f677cdeaf6db"></a>
+<a id="13b807b8b49d9dc9edbfb07abc53f4dd"></a>
 package.json
 
 ```
@@ -11865,14 +11865,14 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
@@ -11881,19 +11881,19 @@ package.json
     "@prisma/cli": "^2.13.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -11915,7 +11915,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -11950,7 +11950,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -11967,7 +11967,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -12002,7 +12002,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12019,7 +12019,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -12054,7 +12054,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12071,7 +12071,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -12106,7 +12106,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12123,7 +12123,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -12158,7 +12158,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-<a id="05151eadd41a53652a13577c390e10de"></a>
+<a id="4b32ca8fb9dc07ad91aeff69bef69770"></a>
 package.json
 
 ```
@@ -12198,37 +12198,37 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -12253,7 +12253,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -12285,7 +12285,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-<a id="4318c4358f9c30e1bcf2fc481466590a"></a>
+<a id="537cbe0c4d2734369bf27bad9bb85776"></a>
 package.json
 
 ```
@@ -12324,14 +12324,14 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
@@ -12339,19 +12339,19 @@ package.json
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -12376,7 +12376,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -12408,7 +12408,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -12428,7 +12428,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -12460,7 +12460,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -12480,7 +12480,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -12512,7 +12512,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#aba0b0aa9494b9db2a15a5c642a7501a)  
+[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12529,7 +12529,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -12561,7 +12561,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#0b9dc0d5f448b0ec6e0d95486801fc53)  
+[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12578,7 +12578,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -12610,7 +12610,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12627,7 +12627,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -12663,7 +12663,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12680,7 +12680,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -12716,7 +12716,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12733,7 +12733,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -12769,7 +12769,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12786,7 +12786,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -12822,7 +12822,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12839,7 +12839,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -12875,7 +12875,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12892,7 +12892,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -12928,7 +12928,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -12948,7 +12948,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -12981,7 +12981,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -13001,7 +13001,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -13034,7 +13034,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -13054,7 +13054,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -13087,7 +13087,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -13107,7 +13107,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -13234,7 +13234,7 @@ export default config
 
 ```
 
-<a id="123e6cd9540bbdd47e382a056db858fc"></a>
+<a id="85f7ce3325956ba8e042d36111cfd0df"></a>
 package.json
 
 ```
@@ -13271,36 +13271,36 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -13322,7 +13322,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -13353,7 +13353,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-<a id="f1223112c5b49b3dbed0da16de69af4a"></a>
+<a id="81fad4fc41bb1bce956ff0ffeed395dc"></a>
 package.json
 
 ```
@@ -13389,33 +13389,33 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -13437,7 +13437,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -13468,7 +13468,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-<a id="8160e921e82abdb22303044d9fe466ec"></a>
+<a id="78aae05778510b5af67ac47b53417adb"></a>
 package.json
 
 ```
@@ -13507,37 +13507,37 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@prisma/cli": "^2.13.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -13559,7 +13559,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -13594,7 +13594,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-<a id="c853b7aff20d601fd68beba59d44d379"></a>
+<a id="7a30e8933a56d287bf613d94a90d7f61"></a>
 package.json
 
 ```
@@ -13632,14 +13632,14 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
@@ -13647,19 +13647,19 @@ package.json
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@prisma/cli": "^2.13.0",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -13681,7 +13681,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -13716,7 +13716,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -13733,7 +13733,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -13768,7 +13768,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -13785,7 +13785,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -13820,7 +13820,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -13837,7 +13837,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -13872,7 +13872,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -13889,7 +13889,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -13924,7 +13924,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-<a id="8e23a84005544e3ebb5fc68830729e66"></a>
+<a id="7baf15d54a4f3f06d9513cdc56e523e3"></a>
 package.json
 
 ```
@@ -13964,36 +13964,36 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -14018,7 +14018,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -14050,7 +14050,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-<a id="b17f7187b4c0d8ab072a6455f86e13aa"></a>
+<a id="9c22e94f982bc921080aaad089f9cb4b"></a>
 package.json
 
 ```
@@ -14089,33 +14089,33 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -14140,7 +14140,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -14172,7 +14172,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -14192,7 +14192,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -14224,7 +14224,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -14244,7 +14244,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -14276,7 +14276,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#123e6cd9540bbdd47e382a056db858fc)  
+[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14293,7 +14293,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -14325,7 +14325,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#f1223112c5b49b3dbed0da16de69af4a)  
+[package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14342,7 +14342,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -14374,7 +14374,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14391,7 +14391,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -14427,7 +14427,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14444,7 +14444,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -14480,7 +14480,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14497,7 +14497,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -14533,7 +14533,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14550,7 +14550,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -14586,7 +14586,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14603,7 +14603,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -14639,7 +14639,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14656,7 +14656,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -14692,7 +14692,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -14712,7 +14712,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -14745,7 +14745,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -14765,7 +14765,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -14798,7 +14798,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -14818,7 +14818,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -14851,7 +14851,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -14871,7 +14871,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -14988,7 +14988,7 @@ export default config
 
 ```
 
-<a id="fcf9ef1681fde8bc80d2122c87ad7525"></a>
+<a id="5da0048e8adc9605cc0dbb21257409e6"></a>
 package.json
 
 ```
@@ -15025,37 +15025,37 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -15077,7 +15077,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -15108,7 +15108,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-<a id="ec58b9ab937e34be594be78b69b5422a"></a>
+<a id="b694ff22ecbfe50ed08c546450fc4416"></a>
 package.json
 
 ```
@@ -15144,14 +15144,14 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
@@ -15159,19 +15159,19 @@ package.json
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -15193,7 +15193,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -15224,7 +15224,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-<a id="6cda9a91aaab94ab038e3c244608bd32"></a>
+<a id="4ce8f3bf0872ff96b5d99aee691db5a4"></a>
 package.json
 
 ```
@@ -15263,38 +15263,38 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@prisma/cli": "^2.13.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -15316,7 +15316,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -15351,7 +15351,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-<a id="a0c79ecc8b62c147392352c9b217deaf"></a>
+<a id="ad31dec2396b06bcfba111182893d8a3"></a>
 package.json
 
 ```
@@ -15389,14 +15389,14 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
@@ -15405,19 +15405,19 @@ package.json
     "@prisma/cli": "^2.13.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -15439,7 +15439,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -15474,7 +15474,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -15491,7 +15491,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -15526,7 +15526,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -15543,7 +15543,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -15578,7 +15578,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -15595,7 +15595,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -15630,7 +15630,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -15647,7 +15647,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -15682,7 +15682,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-<a id="f2b6de2256ee28ebfb56e4cbac3d42f6"></a>
+<a id="aaddc1c76dd061a18fa0ecdddbe6c525"></a>
 package.json
 
 ```
@@ -15722,37 +15722,37 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/stylelint-module": "^4.0.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -15777,7 +15777,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -15809,7 +15809,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-<a id="5f8e28985021ba0af10bac7ac4272fa9"></a>
+<a id="1a5fda516c27f68758251d139a19df61"></a>
 package.json
 
 ```
@@ -15848,14 +15848,14 @@ package.json
     }
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "class-validator": "^0.12.2",
-    "nuxt": "2.14.7"
+    "nuxt": "2.14.11"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.7",
+    "@nuxt/types": "^2.14.11",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
@@ -15863,19 +15863,19 @@ package.json
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/node-fetch": "^2.5.7",
     "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3"
   }
 }
 
@@ -15900,7 +15900,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -15932,7 +15932,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -15952,7 +15952,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -15984,7 +15984,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -16004,7 +16004,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -16036,7 +16036,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#fcf9ef1681fde8bc80d2122c87ad7525)  
+[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16053,7 +16053,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -16085,7 +16085,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ec58b9ab937e34be594be78b69b5422a)  
+[package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16102,7 +16102,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -16134,7 +16134,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16151,7 +16151,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -16187,7 +16187,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16204,7 +16204,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -16240,7 +16240,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16257,7 +16257,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -16293,7 +16293,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16310,7 +16310,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -16346,7 +16346,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16363,7 +16363,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -16399,7 +16399,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16416,7 +16416,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -16452,7 +16452,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -16472,7 +16472,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -16505,7 +16505,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -16525,7 +16525,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -16558,7 +16558,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -16578,7 +16578,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -16611,7 +16611,7 @@ package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -16631,7 +16631,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -16758,7 +16758,7 @@ export default config
 
 ```
 
-[package.json](#36e21ac940cb1d0dfa3d99c2c9068d29)  
+[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16775,7 +16775,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -16806,7 +16806,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#e725297ff4d211c7955860bb79c4aa4c)  
+[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16823,7 +16823,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -16854,7 +16854,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16871,7 +16871,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -16906,7 +16906,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16923,7 +16923,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -16958,7 +16958,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16975,7 +16975,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -17010,7 +17010,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17027,7 +17027,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -17062,7 +17062,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17079,7 +17079,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -17114,7 +17114,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17131,7 +17131,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -17166,7 +17166,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -17186,7 +17186,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -17218,7 +17218,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -17238,7 +17238,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -17270,7 +17270,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -17290,7 +17290,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -17322,7 +17322,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -17342,7 +17342,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -17374,7 +17374,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#36e21ac940cb1d0dfa3d99c2c9068d29)  
+[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17391,7 +17391,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -17423,7 +17423,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#e725297ff4d211c7955860bb79c4aa4c)  
+[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17440,7 +17440,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -17472,7 +17472,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17489,7 +17489,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -17525,7 +17525,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17542,7 +17542,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -17578,7 +17578,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17595,7 +17595,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -17631,7 +17631,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17648,7 +17648,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -17684,7 +17684,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17701,7 +17701,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -17737,7 +17737,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17754,7 +17754,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -17790,7 +17790,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -17810,7 +17810,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -17843,7 +17843,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -17863,7 +17863,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -17896,7 +17896,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -17916,7 +17916,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -17949,7 +17949,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -17969,7 +17969,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -18086,7 +18086,7 @@ export default config
 
 ```
 
-[package.json](#aba0b0aa9494b9db2a15a5c642a7501a)  
+[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18103,7 +18103,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -18134,7 +18134,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#0b9dc0d5f448b0ec6e0d95486801fc53)  
+[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18151,7 +18151,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -18182,7 +18182,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18199,7 +18199,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -18234,7 +18234,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18251,7 +18251,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -18286,7 +18286,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18303,7 +18303,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -18338,7 +18338,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18355,7 +18355,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -18390,7 +18390,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18407,7 +18407,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -18442,7 +18442,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18459,7 +18459,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -18494,7 +18494,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -18514,7 +18514,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -18546,7 +18546,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -18566,7 +18566,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -18598,7 +18598,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -18618,7 +18618,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -18650,7 +18650,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -18670,7 +18670,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -18702,7 +18702,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#aba0b0aa9494b9db2a15a5c642a7501a)  
+[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18719,7 +18719,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -18751,7 +18751,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#0b9dc0d5f448b0ec6e0d95486801fc53)  
+[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18768,7 +18768,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -18800,7 +18800,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18817,7 +18817,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -18853,7 +18853,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18870,7 +18870,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -18906,7 +18906,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18923,7 +18923,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -18959,7 +18959,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18976,7 +18976,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -19012,7 +19012,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19029,7 +19029,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -19065,7 +19065,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19082,7 +19082,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -19118,7 +19118,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -19138,7 +19138,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -19171,7 +19171,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -19191,7 +19191,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -19224,7 +19224,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -19244,7 +19244,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -19277,7 +19277,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -19297,7 +19297,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -19424,7 +19424,7 @@ export default config
 
 ```
 
-[package.json](#123e6cd9540bbdd47e382a056db858fc)  
+[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19441,7 +19441,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -19472,7 +19472,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#f1223112c5b49b3dbed0da16de69af4a)  
+[package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19489,7 +19489,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -19520,7 +19520,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19537,7 +19537,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -19572,7 +19572,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19589,7 +19589,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -19624,7 +19624,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19641,7 +19641,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -19676,7 +19676,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19693,7 +19693,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -19728,7 +19728,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19745,7 +19745,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -19780,7 +19780,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19797,7 +19797,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -19832,7 +19832,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -19852,7 +19852,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -19884,7 +19884,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -19904,7 +19904,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -19936,7 +19936,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -19956,7 +19956,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -19988,7 +19988,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -20008,7 +20008,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -20040,7 +20040,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#123e6cd9540bbdd47e382a056db858fc)  
+[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20057,7 +20057,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -20089,7 +20089,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#f1223112c5b49b3dbed0da16de69af4a)  
+[package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20106,7 +20106,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -20138,7 +20138,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20155,7 +20155,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -20191,7 +20191,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20208,7 +20208,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -20244,7 +20244,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20261,7 +20261,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -20297,7 +20297,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20314,7 +20314,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -20350,7 +20350,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20367,7 +20367,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -20403,7 +20403,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20420,7 +20420,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -20456,7 +20456,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -20476,7 +20476,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -20509,7 +20509,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -20529,7 +20529,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -20562,7 +20562,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -20582,7 +20582,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -20615,7 +20615,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -20635,7 +20635,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -20752,7 +20752,7 @@ export default config
 
 ```
 
-[package.json](#fcf9ef1681fde8bc80d2122c87ad7525)  
+[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20769,7 +20769,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -20800,7 +20800,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ec58b9ab937e34be594be78b69b5422a)  
+[package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20817,7 +20817,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -20848,7 +20848,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20865,7 +20865,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -20900,7 +20900,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20917,7 +20917,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -20952,7 +20952,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20969,7 +20969,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -21004,7 +21004,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21021,7 +21021,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -21056,7 +21056,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21073,7 +21073,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -21108,7 +21108,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21125,7 +21125,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -21160,7 +21160,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -21180,7 +21180,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -21212,7 +21212,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -21232,7 +21232,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -21264,7 +21264,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -21284,7 +21284,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -21316,7 +21316,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -21336,7 +21336,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -21368,7 +21368,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#fcf9ef1681fde8bc80d2122c87ad7525)  
+[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21385,7 +21385,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -21417,7 +21417,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ec58b9ab937e34be594be78b69b5422a)  
+[package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21434,7 +21434,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -21466,7 +21466,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21483,7 +21483,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -21519,7 +21519,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21536,7 +21536,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -21572,7 +21572,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21589,7 +21589,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -21625,7 +21625,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21642,7 +21642,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -21678,7 +21678,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21695,7 +21695,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -21731,7 +21731,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21748,7 +21748,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -21784,7 +21784,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -21804,7 +21804,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -21837,7 +21837,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -21857,7 +21857,7 @@ export default config
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -21890,7 +21890,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -21910,7 +21910,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -21943,7 +21943,7 @@ export default config
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -21963,7 +21963,7 @@ export default config
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -22169,7 +22169,7 @@ Sapper is in early development, and may have the odd rough edge here and there. 
 
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="e68f05d99446995d45a0bd178f2b0340"></a>
+<a id="563ac613cc3e59bcdf94ed0fa11b96b5"></a>
 package.json
 
 ```
@@ -22195,7 +22195,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -22242,7 +22242,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -22435,7 +22435,7 @@ module.exports = {
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -23459,7 +23459,7 @@ tsconfig.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="050e84530e45a20cef9b6e2ca76ccca4"></a>
+<a id="8e0200a3a3084d08b91df1caa2f8d322"></a>
 package.json
 
 ```
@@ -23484,7 +23484,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -23527,7 +23527,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -23579,7 +23579,7 @@ module.exports = {
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -23642,7 +23642,7 @@ tsconfig.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="3abb8524cd756a515c52dd28968d3b61"></a>
+<a id="9ed03446f5a01ebfdc47a81828255ace"></a>
 package.json
 
 ```
@@ -23670,7 +23670,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -23718,7 +23718,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -23741,7 +23741,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -23950,7 +23950,7 @@ tsconfig.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="41fab38b5e75aa29fff55d218ba8f21c"></a>
+<a id="7d055d1372b92b6261d3911c712f2b0b"></a>
 package.json
 
 ```
@@ -23977,7 +23977,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -24021,7 +24021,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -24044,7 +24044,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -24112,7 +24112,7 @@ tsconfig.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24131,7 +24131,7 @@ tsconfig.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -24176,7 +24176,7 @@ tsconfig.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24195,7 +24195,7 @@ tsconfig.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -24240,7 +24240,7 @@ tsconfig.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24259,7 +24259,7 @@ tsconfig.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -24304,7 +24304,7 @@ tsconfig.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24323,7 +24323,7 @@ tsconfig.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -24368,7 +24368,7 @@ tsconfig.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="7eab91f04e808198b55509723d831841"></a>
+<a id="bb73a378464fe0b31ae71b229fc346c4"></a>
 package.json
 
 ```
@@ -24397,7 +24397,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -24444,7 +24444,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -24470,7 +24470,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -24512,7 +24512,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="0c981fa6e90e05e0dae2326c81d2869f"></a>
+<a id="8212bf09d51004dcde7648198e1c64c8"></a>
 package.json
 
 ```
@@ -24540,7 +24540,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -24583,7 +24583,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -24609,7 +24609,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -24651,7 +24651,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7eab91f04e808198b55509723d831841)  
+[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -24673,7 +24673,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -24715,7 +24715,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[package.json](#8212bf09d51004dcde7648198e1c64c8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -24737,7 +24737,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -24779,7 +24779,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#e68f05d99446995d45a0bd178f2b0340)  
+[package.json](#563ac613cc3e59bcdf94ed0fa11b96b5)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24798,7 +24798,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -24840,7 +24840,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#050e84530e45a20cef9b6e2ca76ccca4)  
+[package.json](#8e0200a3a3084d08b91df1caa2f8d322)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24859,7 +24859,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -24901,7 +24901,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24920,7 +24920,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -24966,7 +24966,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24985,7 +24985,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -25031,7 +25031,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -25050,7 +25050,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -25096,7 +25096,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -25115,7 +25115,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -25161,7 +25161,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -25180,7 +25180,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -25226,7 +25226,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -25245,7 +25245,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -25291,7 +25291,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7eab91f04e808198b55509723d831841)  
+[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -25313,7 +25313,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -25356,7 +25356,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[package.json](#8212bf09d51004dcde7648198e1c64c8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -25378,7 +25378,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -25421,7 +25421,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7eab91f04e808198b55509723d831841)  
+[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -25443,7 +25443,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -25486,7 +25486,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[package.json](#8212bf09d51004dcde7648198e1c64c8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -25508,7 +25508,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -25551,7 +25551,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="261fdd99e3f0b859be81945fb1cd749c"></a>
+<a id="35d332cd666978c3b1e97a68ada3df8e"></a>
 package.json
 
 ```
@@ -25577,8 +25577,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -25625,7 +25625,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -25648,7 +25648,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -25701,7 +25701,7 @@ export const apiClient = (process as { browser?: boolean }).browser
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="32080c4712ef51129cd96103b9853bd6"></a>
+<a id="4fc4f50d5f371ae0f9652a1c22967fb6"></a>
 package.json
 
 ```
@@ -25726,8 +25726,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -25770,7 +25770,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -25793,7 +25793,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -25834,7 +25834,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="ff01b141db61c5bda7a3bad9c8322872"></a>
+<a id="04f6a6efefcb3da0924da7e73aae1de2"></a>
 package.json
 
 ```
@@ -25862,8 +25862,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -25911,7 +25911,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -25934,7 +25934,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -25979,7 +25979,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="5653d428bd56e80abae7da6ae3233cbb"></a>
+<a id="205301a1d552c24dbfd92564577d9989"></a>
 package.json
 
 ```
@@ -26006,8 +26006,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -26051,7 +26051,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -26074,7 +26074,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -26119,7 +26119,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26138,7 +26138,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -26183,7 +26183,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26202,7 +26202,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -26247,7 +26247,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26266,7 +26266,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -26311,7 +26311,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26330,7 +26330,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -26375,7 +26375,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="6f7dc0351f380a1b4c84608a08eb909e"></a>
+<a id="c7785650ddc54901337bcfc584779282"></a>
 package.json
 
 ```
@@ -26404,8 +26404,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -26452,7 +26452,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -26478,7 +26478,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -26520,7 +26520,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="4cfb7a0ee2facd209c969539f9e4ad9c"></a>
+<a id="6f6eb5c6f06c0d367ab4e8b5191f04db"></a>
 package.json
 
 ```
@@ -26548,8 +26548,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -26592,7 +26592,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -26618,7 +26618,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -26660,7 +26660,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[package.json](#c7785650ddc54901337bcfc584779282)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -26682,7 +26682,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -26724,7 +26724,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[package.json](#6f6eb5c6f06c0d367ab4e8b5191f04db)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -26746,7 +26746,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -26788,7 +26788,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#261fdd99e3f0b859be81945fb1cd749c)  
+[package.json](#35d332cd666978c3b1e97a68ada3df8e)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26807,7 +26807,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -26849,7 +26849,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#32080c4712ef51129cd96103b9853bd6)  
+[package.json](#4fc4f50d5f371ae0f9652a1c22967fb6)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26868,7 +26868,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -26910,7 +26910,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26929,7 +26929,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -26975,7 +26975,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26994,7 +26994,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -27040,7 +27040,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -27059,7 +27059,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -27105,7 +27105,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -27124,7 +27124,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -27170,7 +27170,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -27189,7 +27189,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -27235,7 +27235,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -27254,7 +27254,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -27300,7 +27300,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[package.json](#c7785650ddc54901337bcfc584779282)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -27322,7 +27322,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -27365,7 +27365,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[package.json](#6f6eb5c6f06c0d367ab4e8b5191f04db)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -27387,7 +27387,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -27430,7 +27430,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[package.json](#c7785650ddc54901337bcfc584779282)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -27452,7 +27452,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -27495,7 +27495,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[package.json](#6f6eb5c6f06c0d367ab4e8b5191f04db)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -27517,7 +27517,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -27560,7 +27560,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="cd2dbe140e2ae79e1e1ad2268959bebb"></a>
+<a id="26575edc7cca2fc7b22da7fd0ef8ae66"></a>
 package.json
 
 ```
@@ -27586,7 +27586,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -27634,7 +27634,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -27657,7 +27657,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -27698,7 +27698,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="8e94f8a605b99d887833acbebcb36e96"></a>
+<a id="6e12b86c0f46bc9c21910597d88852a8"></a>
 package.json
 
 ```
@@ -27723,7 +27723,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -27767,7 +27767,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -27790,7 +27790,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -27831,7 +27831,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="ed00d0079d091af1f6e494519f52d898"></a>
+<a id="11bfb56aa12094babef997be5ab05f70"></a>
 package.json
 
 ```
@@ -27859,7 +27859,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -27908,7 +27908,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -27931,7 +27931,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -27976,7 +27976,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="e740a32b46f77b44e96902512eb6df0a"></a>
+<a id="1c4d82d072b2e5968e3b15c625bc34d9"></a>
 package.json
 
 ```
@@ -28003,7 +28003,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -28048,7 +28048,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -28071,7 +28071,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -28116,7 +28116,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28135,7 +28135,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -28180,7 +28180,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28199,7 +28199,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -28244,7 +28244,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28263,7 +28263,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -28308,7 +28308,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28327,7 +28327,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -28372,7 +28372,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="ac90a757a0fd1d9803f692fc6bfecbf4"></a>
+<a id="8bffe388a5d3f96f15022c09de561b89"></a>
 package.json
 
 ```
@@ -28401,7 +28401,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -28449,7 +28449,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -28475,7 +28475,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -28517,7 +28517,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="e4be072a15e859638713c74a6f1ab7c5"></a>
+<a id="dc9638296d166b3e74d190d5a05de3af"></a>
 package.json
 
 ```
@@ -28545,7 +28545,7 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
+    "@aspida/axios": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
@@ -28589,7 +28589,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -28615,7 +28615,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -28657,7 +28657,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[package.json](#8bffe388a5d3f96f15022c09de561b89)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -28679,7 +28679,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -28721,7 +28721,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[package.json](#dc9638296d166b3e74d190d5a05de3af)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -28743,7 +28743,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -28785,7 +28785,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#cd2dbe140e2ae79e1e1ad2268959bebb)  
+[package.json](#26575edc7cca2fc7b22da7fd0ef8ae66)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28804,7 +28804,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -28846,7 +28846,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#8e94f8a605b99d887833acbebcb36e96)  
+[package.json](#6e12b86c0f46bc9c21910597d88852a8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28865,7 +28865,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -28907,7 +28907,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28926,7 +28926,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -28972,7 +28972,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28991,7 +28991,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -29037,7 +29037,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -29056,7 +29056,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -29102,7 +29102,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -29121,7 +29121,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -29167,7 +29167,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -29186,7 +29186,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -29232,7 +29232,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -29251,7 +29251,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -29297,7 +29297,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[package.json](#8bffe388a5d3f96f15022c09de561b89)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -29319,7 +29319,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -29362,7 +29362,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[package.json](#dc9638296d166b3e74d190d5a05de3af)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -29384,7 +29384,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -29427,7 +29427,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[package.json](#8bffe388a5d3f96f15022c09de561b89)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -29449,7 +29449,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -29492,7 +29492,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[package.json](#dc9638296d166b3e74d190d5a05de3af)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -29514,7 +29514,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -29557,7 +29557,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="1810755a4a2e2c4787595f363bf18752"></a>
+<a id="7116365844ef2eb33b6f25572e3bdfc2"></a>
 package.json
 
 ```
@@ -29583,8 +29583,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -29632,7 +29632,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -29655,7 +29655,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -29696,7 +29696,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="4293f965c53214335ae7e8d3b9c904e9"></a>
+<a id="730a9fd75c69cdd31dc7f98a9f34f837"></a>
 package.json
 
 ```
@@ -29721,8 +29721,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -29766,7 +29766,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -29789,7 +29789,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#089c6899448a8213b369748f40c69e12)  
+[server/package.json](#e1ed2e08206db5e3dd48901828564c60)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -29830,7 +29830,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="c75b0a51e9fc641b2fab7f46d9c38be2"></a>
+<a id="54eb89588286609b2428deb92d3fda90"></a>
 package.json
 
 ```
@@ -29858,8 +29858,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -29908,7 +29908,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -29931,7 +29931,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -29976,7 +29976,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="03435b634bb560d6bf7fea3148ff8f43"></a>
+<a id="d964a4a94da50aafbcc7c3d4b75566ed"></a>
 package.json
 
 ```
@@ -30003,8 +30003,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -30049,7 +30049,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -30072,7 +30072,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -30117,7 +30117,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -30136,7 +30136,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -30181,7 +30181,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -30200,7 +30200,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -30245,7 +30245,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -30264,7 +30264,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -30309,7 +30309,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -30328,7 +30328,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#80dc7e73daecc4e3ff4cecc14738bc3b)  
+[server/package.json](#a87e4cb101b38a4b9d5311ab07095967)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -30373,7 +30373,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="368eaefa50d0c1c2977309e28d1aa539"></a>
+<a id="2b0aa0adaa2d3b28c65d1d8588780a78"></a>
 package.json
 
 ```
@@ -30402,8 +30402,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -30451,7 +30451,7 @@ package.json
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -30477,7 +30477,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -30519,7 +30519,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-<a id="4bee79625194cea6b79771c650334925"></a>
+<a id="6b8068e04a496073f0b5fb3ea3d4af42"></a>
 package.json
 
 ```
@@ -30547,8 +30547,8 @@ package.json
     "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^0.10.2",
-    "@aspida/node-fetch": "^0.9.2",
+    "@aspida/fetch": "^1.1.0",
+    "@aspida/node-fetch": "^1.1.0",
     "class-validator": "^0.12.2",
     "compression": "^1.7.1",
     "node-fetch": "^2.6.1",
@@ -30592,7 +30592,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
 ```
@@ -30618,7 +30618,7 @@ package.json
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1a8ae36c2b0ef6cb735b927644f7c760)  
+[server/package.json](#0fd0ef058af06df103201b5f08707021)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -30660,7 +30660,7 @@ package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -30682,7 +30682,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -30724,7 +30724,7 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4bee79625194cea6b79771c650334925)  
+[package.json](#6b8068e04a496073f0b5fb3ea3d4af42)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -30746,7 +30746,7 @@ package.json
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#a31beb8d4db1eb01a204f42b3a69b132)  
+[server/package.json](#247d2433d857f2d175b246402ebe3a48)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -30826,7 +30826,7 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -30845,7 +30845,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -30888,7 +30888,7 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -30907,7 +30907,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -30988,7 +30988,7 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31007,7 +31007,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -31050,7 +31050,7 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31069,7 +31069,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -31112,7 +31112,7 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31131,7 +31131,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -31173,7 +31173,7 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4293f965c53214335ae7e8d3b9c904e9)  
+[package.json](#730a9fd75c69cdd31dc7f98a9f34f837)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31192,7 +31192,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#ba24fef5a2373526fb6452b49f744856)  
+[server/package.json](#900a053b577239b37ce6164eb08353e0)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -31234,7 +31234,7 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31253,7 +31253,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -31299,7 +31299,7 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31318,7 +31318,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -31364,7 +31364,7 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31383,7 +31383,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -31429,7 +31429,7 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31448,7 +31448,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -31494,7 +31494,7 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31513,7 +31513,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -31559,7 +31559,7 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31578,7 +31578,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#8c56fadd6d843c7eeae3da0c6a83be47)  
+[server/package.json](#942402a6f5466f80cb2ebca739bff43e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -31624,7 +31624,7 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -31646,7 +31646,7 @@ jobs:
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -31689,7 +31689,7 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4bee79625194cea6b79771c650334925)  
+[package.json](#6b8068e04a496073f0b5fb3ea3d4af42)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -31711,7 +31711,7 @@ jobs:
 [server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#e3584bdbc782c0ed5deef2948a6b14d1)  
+[server/package.json](#3882bb4cab0ad7beabc5e34baacfef68)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -31754,7 +31754,7 @@ jobs:
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -31776,7 +31776,7 @@ jobs:
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -31819,7 +31819,7 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4bee79625194cea6b79771c650334925)  
+[package.json](#6b8068e04a496073f0b5fb3ea3d4af42)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -31841,7 +31841,7 @@ jobs:
 [server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#829a2f47d4a9004710efd0311d3886f2)  
+[server/package.json](#f1b5f01ea64421987a3119864dad50ff)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -31890,7 +31890,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0d6f9b92b122096d31e186b158873eba)  
+[package.json](#1280de908b5628e1c51bc84a44a5aac8)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -31972,7 +31972,7 @@ fastify.listen(SERVER_PORT)
 
 ```
 
-<a id="7124bcec5f747f1d169c643c7444d4ab"></a>
+<a id="ac470edf2f6655e88375d0a9cd3d0bcb"></a>
 server/package.json
 
 ```
@@ -32000,16 +32000,16 @@ server/package.json
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
-    "cross-env": "^7.0.2",
-    "frourio": "^0.21.1",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -32123,7 +32123,7 @@ test('dependency injection into controller', async () => {
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0bb4a579110ce0a00d5936cc70caaece)  
+[package.json](#9245ed8759b9462ba5d2869aa52094c7)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32142,7 +32142,7 @@ test('dependency injection into controller', async () => {
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -32169,7 +32169,7 @@ test('dependency injection into controller', async () => {
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32216,7 +32216,7 @@ fastify.listen(SERVER_PORT)
 
 ```
 
-<a id="053e6a76eec6979a39a26638d70796b9"></a>
+<a id="6fa5b21a9925114d7d673588fd0e239d"></a>
 server/package.json
 
 ```
@@ -32249,16 +32249,16 @@ server/package.json
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
     "@types/busboy": "^0.2.3",
-    "cross-env": "^7.0.2",
-    "frourio": "^0.21.1",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -32377,7 +32377,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32396,7 +32396,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -32426,7 +32426,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32445,7 +32445,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -32515,7 +32515,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32534,7 +32534,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -32564,7 +32564,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32583,7 +32583,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -32613,7 +32613,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32632,7 +32632,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -32663,7 +32663,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32682,7 +32682,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -32713,7 +32713,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32732,7 +32732,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -32763,7 +32763,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32782,7 +32782,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -32813,7 +32813,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32832,7 +32832,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -32863,7 +32863,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#502a15c77301f590310fd50f270395ac)  
+[package.json](#d6691b631d095518547a74d1a1232e31)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32936,7 +32936,7 @@ createConnection({
 
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-<a id="aabc54a53cdfeded8e49d8fbd563a0c5"></a>
+<a id="119a348dde457eb43f11c91e7a4eea4d"></a>
 server/package.json
 
 ```
@@ -32971,16 +32971,16 @@ server/package.json
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
-    "cross-env": "^7.0.2",
-    "frourio": "^0.21.1",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -33054,7 +33054,7 @@ test('dependency injection into controller', async () => {
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#07f48866e0e3cbf4186aa0b43955e292)  
+[package.json](#9b8950aae4c00b0ca965145399bcb8ec)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33076,7 +33076,7 @@ test('dependency injection into controller', async () => {
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -33104,7 +33104,7 @@ test('dependency injection into controller', async () => {
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#502a15c77301f590310fd50f270395ac)  
+[package.json](#d6691b631d095518547a74d1a1232e31)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33177,7 +33177,7 @@ createConnection({
 
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-<a id="3981943e703154fa3a78954e7c44a14c"></a>
+<a id="86f46d3dc8fd57fffbb6c3aefbaf8e12"></a>
 server/package.json
 
 ```
@@ -33212,16 +33212,16 @@ server/package.json
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
-    "cross-env": "^7.0.2",
-    "frourio": "^0.21.1",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -33255,7 +33255,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#07f48866e0e3cbf4186aa0b43955e292)  
+[package.json](#9b8950aae4c00b0ca965145399bcb8ec)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33277,7 +33277,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -33305,7 +33305,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0d6f9b92b122096d31e186b158873eba)  
+[package.json](#1280de908b5628e1c51bc84a44a5aac8)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33324,7 +33324,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-<a id="62edd4d3c543ad5593d90a6ecd6d53d8"></a>
+<a id="22bf158624418834179c921a27f58853"></a>
 server/package.json
 
 ```
@@ -33358,16 +33358,16 @@ server/package.json
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
-    "cross-env": "^7.0.2",
-    "frourio": "^0.21.1",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -33401,7 +33401,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0bb4a579110ce0a00d5936cc70caaece)  
+[package.json](#9245ed8759b9462ba5d2869aa52094c7)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33420,7 +33420,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -33448,7 +33448,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33467,7 +33467,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-<a id="93903d9b208479b99db8b7216ceff115"></a>
+<a id="127242a72466b3e3666eba19aee43e9b"></a>
 server/package.json
 
 ```
@@ -33506,16 +33506,16 @@ server/package.json
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
     "@types/busboy": "^0.2.3",
-    "cross-env": "^7.0.2",
-    "frourio": "^0.21.1",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -33553,7 +33553,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33572,7 +33572,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -33604,7 +33604,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33623,7 +33623,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -33655,7 +33655,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33674,7 +33674,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -33706,7 +33706,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c3b6afab454699c95d12813ef71dfeb9)  
+[package.json](#c32a740a1e06d9cc715aec591da067c5)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33725,7 +33725,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -33757,7 +33757,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#09c33c20c0fbb9a45e32d0e73577d808)  
+[package.json](#d14685fce23088d58590f72242c5d8c4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33776,7 +33776,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -33808,7 +33808,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#502a15c77301f590310fd50f270395ac)  
+[package.json](#d6691b631d095518547a74d1a1232e31)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33830,7 +33830,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-<a id="d217922d660b9497c566f1aa86c20fba"></a>
+<a id="ee4facbd71c54c901ee7dc0428004623"></a>
 server/package.json
 
 ```
@@ -33871,16 +33871,16 @@ server/package.json
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
-    "cross-env": "^7.0.2",
-    "frourio": "^0.21.1",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -33915,7 +33915,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#07f48866e0e3cbf4186aa0b43955e292)  
+[package.json](#9b8950aae4c00b0ca965145399bcb8ec)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33937,7 +33937,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -33966,7 +33966,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#502a15c77301f590310fd50f270395ac)  
+[package.json](#d6691b631d095518547a74d1a1232e31)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33988,7 +33988,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-<a id="9d137211ce4241317432203d9fa9f7e4"></a>
+<a id="956d14d3c1be9c01dec7d92bfb0bf0fb"></a>
 server/package.json
 
 ```
@@ -34029,16 +34029,16 @@ server/package.json
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
-    "cross-env": "^7.0.2",
-    "frourio": "^0.21.1",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.11",
-    "ts-node": "^9.1.0",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
@@ -34073,7 +34073,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#07f48866e0e3cbf4186aa0b43955e292)  
+[package.json](#9b8950aae4c00b0ca965145399bcb8ec)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34095,7 +34095,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -34124,7 +34124,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#631706ab81fc8cf42869a9d3cfcd1646)  
+[package.json](#fd4c48d5dee50a0ccb921e4a27b58d04)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34143,7 +34143,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -34170,7 +34170,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#9a9aafb117c23f73ce8bde22e8827e3e)  
+[package.json](#598ffea2618df80e6104643f08e76adb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34189,7 +34189,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -34216,7 +34216,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34235,7 +34235,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -34266,7 +34266,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34285,7 +34285,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -34316,7 +34316,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34335,7 +34335,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -34366,7 +34366,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34385,7 +34385,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -34416,7 +34416,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34435,7 +34435,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -34466,7 +34466,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34485,7 +34485,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -34516,7 +34516,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#bdecc00c6e683c68ec9f1fd5bf193871)  
+[package.json](#a3391385de1901ff42d2fc53836f8904)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34538,7 +34538,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -34566,7 +34566,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#85264e32083554e57522002b4e018489)  
+[package.json](#4f5845e66d6bfa520cf451c7e03556e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34588,7 +34588,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -34616,7 +34616,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#bdecc00c6e683c68ec9f1fd5bf193871)  
+[package.json](#a3391385de1901ff42d2fc53836f8904)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34638,7 +34638,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -34666,7 +34666,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#85264e32083554e57522002b4e018489)  
+[package.json](#4f5845e66d6bfa520cf451c7e03556e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34688,7 +34688,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -34716,7 +34716,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#631706ab81fc8cf42869a9d3cfcd1646)  
+[package.json](#fd4c48d5dee50a0ccb921e4a27b58d04)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34735,7 +34735,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -34763,7 +34763,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#9a9aafb117c23f73ce8bde22e8827e3e)  
+[package.json](#598ffea2618df80e6104643f08e76adb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34782,7 +34782,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -34810,7 +34810,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34829,7 +34829,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -34861,7 +34861,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34880,7 +34880,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -34912,7 +34912,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34931,7 +34931,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -34963,7 +34963,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34982,7 +34982,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -35014,7 +35014,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d35c09e6e719f8fea9918092639ab39c)  
+[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35033,7 +35033,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -35065,7 +35065,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d54678b3ae789eb58186bdbbd39e872e)  
+[package.json](#304244db44d6cfdfcf06bc9ac452b2d9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35084,7 +35084,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -35116,7 +35116,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#bdecc00c6e683c68ec9f1fd5bf193871)  
+[package.json](#a3391385de1901ff42d2fc53836f8904)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35138,7 +35138,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -35167,7 +35167,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#85264e32083554e57522002b4e018489)  
+[package.json](#4f5845e66d6bfa520cf451c7e03556e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35189,7 +35189,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -35218,7 +35218,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#bdecc00c6e683c68ec9f1fd5bf193871)  
+[package.json](#a3391385de1901ff42d2fc53836f8904)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35240,7 +35240,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -35269,7 +35269,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#85264e32083554e57522002b4e018489)  
+[package.json](#4f5845e66d6bfa520cf451c7e03556e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35291,7 +35291,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -35320,7 +35320,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#3c00fb8e61497cb428e0de03f7c9eeba)  
+[package.json](#f89e940e02b85afdd52aa53c12b88edf)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35339,7 +35339,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -35366,7 +35366,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#9ef75e92dc201be446d696a30c271cd0)  
+[package.json](#ae4bf7dde44200c0f7baa39947101bf4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35385,7 +35385,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -35412,7 +35412,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35431,7 +35431,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -35462,7 +35462,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35481,7 +35481,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -35512,7 +35512,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35531,7 +35531,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -35562,7 +35562,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35581,7 +35581,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -35612,7 +35612,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35631,7 +35631,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -35662,7 +35662,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35681,7 +35681,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -35712,7 +35712,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#81cd6ad68d57f52b8d47341de73eff11)  
+[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35734,7 +35734,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -35762,7 +35762,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#adf8a615786f6e0a52d4e0b905c4a343)  
+[package.json](#0b93657fbd3b97dd2d791bcffa2de059)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35784,7 +35784,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -35812,7 +35812,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#81cd6ad68d57f52b8d47341de73eff11)  
+[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35834,7 +35834,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -35862,7 +35862,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#adf8a615786f6e0a52d4e0b905c4a343)  
+[package.json](#0b93657fbd3b97dd2d791bcffa2de059)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35884,7 +35884,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -35912,7 +35912,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#3c00fb8e61497cb428e0de03f7c9eeba)  
+[package.json](#f89e940e02b85afdd52aa53c12b88edf)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35931,7 +35931,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -35959,7 +35959,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#9ef75e92dc201be446d696a30c271cd0)  
+[package.json](#ae4bf7dde44200c0f7baa39947101bf4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35978,7 +35978,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -36006,7 +36006,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36025,7 +36025,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -36057,7 +36057,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36076,7 +36076,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -36108,7 +36108,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36127,7 +36127,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -36159,7 +36159,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36178,7 +36178,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -36210,7 +36210,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#049a29817308aeedfb82e0bae5052918)  
+[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36229,7 +36229,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -36261,7 +36261,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5efc68d54aa039cf345e7bb569ebe910)  
+[package.json](#2726fec404cab57e7bef2748150e194e)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36280,7 +36280,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -36312,7 +36312,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#81cd6ad68d57f52b8d47341de73eff11)  
+[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36334,7 +36334,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -36363,7 +36363,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#adf8a615786f6e0a52d4e0b905c4a343)  
+[package.json](#0b93657fbd3b97dd2d791bcffa2de059)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36385,7 +36385,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -36414,7 +36414,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#81cd6ad68d57f52b8d47341de73eff11)  
+[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36436,7 +36436,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -36465,7 +36465,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#adf8a615786f6e0a52d4e0b905c4a343)  
+[package.json](#0b93657fbd3b97dd2d791bcffa2de059)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36487,7 +36487,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -36516,7 +36516,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8c28621e001a05e57f8124433c352ad5)  
+[package.json](#29f5b60381d773445ae040a56930abae)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36535,7 +36535,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -36562,7 +36562,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b0b61a530b869808016e5b38bfcd3ce2)  
+[package.json](#fe93f7c7edcbbb8ae17e594dc9dcb2d4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36581,7 +36581,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -36608,7 +36608,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36627,7 +36627,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -36658,7 +36658,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36677,7 +36677,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -36708,7 +36708,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36727,7 +36727,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -36758,7 +36758,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36777,7 +36777,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -36808,7 +36808,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36827,7 +36827,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -36858,7 +36858,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36877,7 +36877,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -36908,7 +36908,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b2975fbc341c793f51f0ba7216a33c9b)  
+[package.json](#e24946ab21abc4fd878b3a57a691c916)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36930,7 +36930,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -36958,7 +36958,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#80eb92600e8857f1e7c4089f4cc538e3)  
+[package.json](#d6a58dcf5dcb9f51f669471706fc8b70)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36980,7 +36980,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -37008,7 +37008,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b2975fbc341c793f51f0ba7216a33c9b)  
+[package.json](#e24946ab21abc4fd878b3a57a691c916)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37030,7 +37030,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -37058,7 +37058,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#80eb92600e8857f1e7c4089f4cc538e3)  
+[package.json](#d6a58dcf5dcb9f51f669471706fc8b70)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37080,7 +37080,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -37108,7 +37108,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8c28621e001a05e57f8124433c352ad5)  
+[package.json](#29f5b60381d773445ae040a56930abae)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37127,7 +37127,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -37155,7 +37155,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b0b61a530b869808016e5b38bfcd3ce2)  
+[package.json](#fe93f7c7edcbbb8ae17e594dc9dcb2d4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37174,7 +37174,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -37202,7 +37202,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37221,7 +37221,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -37253,7 +37253,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37272,7 +37272,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -37304,7 +37304,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37323,7 +37323,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -37355,7 +37355,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37374,7 +37374,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -37406,7 +37406,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b69af42cc4064db034fb5795e08e3de7)  
+[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37425,7 +37425,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -37457,7 +37457,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0e656d8cc4fb9272891c67f03944c72e)  
+[package.json](#0d3cbc1537a3493ecd17d4146e858c66)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37476,7 +37476,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -37508,7 +37508,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b2975fbc341c793f51f0ba7216a33c9b)  
+[package.json](#e24946ab21abc4fd878b3a57a691c916)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37530,7 +37530,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -37559,7 +37559,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#80eb92600e8857f1e7c4089f4cc538e3)  
+[package.json](#d6a58dcf5dcb9f51f669471706fc8b70)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37581,7 +37581,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -37610,7 +37610,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b2975fbc341c793f51f0ba7216a33c9b)  
+[package.json](#e24946ab21abc4fd878b3a57a691c916)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37632,7 +37632,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -37661,7 +37661,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#80eb92600e8857f1e7c4089f4cc538e3)  
+[package.json](#d6a58dcf5dcb9f51f669471706fc8b70)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37683,7 +37683,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -37717,7 +37717,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#36e21ac940cb1d0dfa3d99c2c9068d29)  
+[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37734,7 +37734,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -37765,7 +37765,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#e725297ff4d211c7955860bb79c4aa4c)  
+[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37782,7 +37782,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -37813,7 +37813,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37830,7 +37830,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -37865,7 +37865,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37882,7 +37882,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -37917,7 +37917,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37934,7 +37934,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -37969,7 +37969,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37986,7 +37986,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -38021,7 +38021,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38038,7 +38038,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -38073,7 +38073,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38090,7 +38090,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -38125,7 +38125,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -38145,7 +38145,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -38177,7 +38177,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -38197,7 +38197,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -38229,7 +38229,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -38249,7 +38249,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -38281,7 +38281,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -38301,7 +38301,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -38333,7 +38333,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#36e21ac940cb1d0dfa3d99c2c9068d29)  
+[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38350,7 +38350,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -38382,7 +38382,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#e725297ff4d211c7955860bb79c4aa4c)  
+[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38399,7 +38399,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -38431,7 +38431,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38448,7 +38448,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -38484,7 +38484,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38501,7 +38501,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -38537,7 +38537,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38554,7 +38554,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -38590,7 +38590,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38607,7 +38607,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -38643,7 +38643,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38660,7 +38660,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -38696,7 +38696,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38713,7 +38713,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -38749,7 +38749,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -38769,7 +38769,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -38802,7 +38802,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -38822,7 +38822,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -38855,7 +38855,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -38875,7 +38875,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -38908,7 +38908,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -38928,7 +38928,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -38961,7 +38961,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#aba0b0aa9494b9db2a15a5c642a7501a)  
+[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38978,7 +38978,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -39009,7 +39009,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#0b9dc0d5f448b0ec6e0d95486801fc53)  
+[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39026,7 +39026,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -39057,7 +39057,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39074,7 +39074,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -39109,7 +39109,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39126,7 +39126,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -39161,7 +39161,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39178,7 +39178,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -39213,7 +39213,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39230,7 +39230,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -39265,7 +39265,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39282,7 +39282,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -39317,7 +39317,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39334,7 +39334,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -39369,7 +39369,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -39389,7 +39389,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -39421,7 +39421,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -39441,7 +39441,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -39473,7 +39473,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -39493,7 +39493,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -39525,7 +39525,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -39545,7 +39545,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -39577,7 +39577,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#aba0b0aa9494b9db2a15a5c642a7501a)  
+[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39594,7 +39594,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -39626,7 +39626,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#0b9dc0d5f448b0ec6e0d95486801fc53)  
+[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39643,7 +39643,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -39675,7 +39675,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39692,7 +39692,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -39728,7 +39728,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39745,7 +39745,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -39781,7 +39781,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39798,7 +39798,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -39834,7 +39834,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39851,7 +39851,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -39887,7 +39887,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39904,7 +39904,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -39940,7 +39940,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39957,7 +39957,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -39993,7 +39993,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -40013,7 +40013,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -40046,7 +40046,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -40066,7 +40066,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -40099,7 +40099,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -40119,7 +40119,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -40152,7 +40152,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -40172,7 +40172,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -40205,7 +40205,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#123e6cd9540bbdd47e382a056db858fc)  
+[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40222,7 +40222,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -40253,7 +40253,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#f1223112c5b49b3dbed0da16de69af4a)  
+[package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40270,7 +40270,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -40301,7 +40301,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40318,7 +40318,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -40353,7 +40353,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40370,7 +40370,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -40405,7 +40405,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40422,7 +40422,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -40457,7 +40457,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40474,7 +40474,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -40509,7 +40509,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40526,7 +40526,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -40561,7 +40561,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40578,7 +40578,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -40613,7 +40613,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -40633,7 +40633,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -40665,7 +40665,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -40685,7 +40685,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -40717,7 +40717,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -40737,7 +40737,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -40769,7 +40769,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -40789,7 +40789,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -40821,7 +40821,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#123e6cd9540bbdd47e382a056db858fc)  
+[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40838,7 +40838,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -40870,7 +40870,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#f1223112c5b49b3dbed0da16de69af4a)  
+[package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40887,7 +40887,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -40919,7 +40919,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40936,7 +40936,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -40972,7 +40972,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40989,7 +40989,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -41025,7 +41025,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41042,7 +41042,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -41078,7 +41078,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41095,7 +41095,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -41131,7 +41131,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41148,7 +41148,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -41184,7 +41184,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41201,7 +41201,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -41237,7 +41237,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -41257,7 +41257,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -41290,7 +41290,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -41310,7 +41310,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -41343,7 +41343,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -41363,7 +41363,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -41396,7 +41396,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -41416,7 +41416,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -41449,7 +41449,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#fcf9ef1681fde8bc80d2122c87ad7525)  
+[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41466,7 +41466,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -41497,7 +41497,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ec58b9ab937e34be594be78b69b5422a)  
+[package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41514,7 +41514,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -41545,7 +41545,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41562,7 +41562,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -41597,7 +41597,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41614,7 +41614,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -41649,7 +41649,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41666,7 +41666,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -41701,7 +41701,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41718,7 +41718,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -41753,7 +41753,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41770,7 +41770,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -41805,7 +41805,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41822,7 +41822,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -41857,7 +41857,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -41877,7 +41877,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -41909,7 +41909,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -41929,7 +41929,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -41961,7 +41961,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -41981,7 +41981,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -42013,7 +42013,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -42033,7 +42033,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -42065,7 +42065,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#fcf9ef1681fde8bc80d2122c87ad7525)  
+[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42082,7 +42082,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -42114,7 +42114,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ec58b9ab937e34be594be78b69b5422a)  
+[package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42131,7 +42131,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -42163,7 +42163,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42180,7 +42180,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -42216,7 +42216,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42233,7 +42233,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -42269,7 +42269,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42286,7 +42286,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -42322,7 +42322,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42339,7 +42339,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -42375,7 +42375,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42392,7 +42392,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -42428,7 +42428,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42445,7 +42445,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -42481,7 +42481,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -42501,7 +42501,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -42534,7 +42534,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -42554,7 +42554,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -42587,7 +42587,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -42607,7 +42607,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -42640,7 +42640,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -42660,7 +42660,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -42693,7 +42693,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#36e21ac940cb1d0dfa3d99c2c9068d29)  
+[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42710,7 +42710,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -42741,7 +42741,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#e725297ff4d211c7955860bb79c4aa4c)  
+[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42758,7 +42758,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -42789,7 +42789,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42806,7 +42806,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -42841,7 +42841,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42858,7 +42858,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -42893,7 +42893,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42910,7 +42910,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -42945,7 +42945,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42962,7 +42962,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -42997,7 +42997,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43014,7 +43014,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -43049,7 +43049,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43066,7 +43066,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -43101,7 +43101,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -43121,7 +43121,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -43153,7 +43153,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -43173,7 +43173,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -43205,7 +43205,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -43225,7 +43225,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -43257,7 +43257,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -43277,7 +43277,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -43309,7 +43309,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#36e21ac940cb1d0dfa3d99c2c9068d29)  
+[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43326,7 +43326,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -43358,7 +43358,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#e725297ff4d211c7955860bb79c4aa4c)  
+[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43375,7 +43375,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -43407,7 +43407,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43424,7 +43424,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -43460,7 +43460,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43477,7 +43477,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -43513,7 +43513,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43530,7 +43530,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -43566,7 +43566,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43583,7 +43583,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -43619,7 +43619,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#54b9557d43cdc9226acaa065a1df27b5)  
+[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43636,7 +43636,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -43672,7 +43672,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#b5fc3e26d1be9a31807e52dad90ea8c1)  
+[package.json](#df22bcac526dc3a6db306867632bd831)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43689,7 +43689,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -43725,7 +43725,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -43745,7 +43745,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -43778,7 +43778,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -43798,7 +43798,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -43831,7 +43831,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#ba3b731738b8ffc079ae567428b7bf9d)  
+[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -43851,7 +43851,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -43884,7 +43884,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#9c0e937bedcf3bfc30f82bcbf3d0814e)  
+[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -43904,7 +43904,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -43937,7 +43937,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#aba0b0aa9494b9db2a15a5c642a7501a)  
+[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43954,7 +43954,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -43985,7 +43985,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#0b9dc0d5f448b0ec6e0d95486801fc53)  
+[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44002,7 +44002,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -44033,7 +44033,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44050,7 +44050,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -44085,7 +44085,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44102,7 +44102,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -44137,7 +44137,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44154,7 +44154,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -44189,7 +44189,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44206,7 +44206,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -44241,7 +44241,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44258,7 +44258,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -44293,7 +44293,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44310,7 +44310,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -44345,7 +44345,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -44365,7 +44365,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -44397,7 +44397,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -44417,7 +44417,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -44449,7 +44449,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -44469,7 +44469,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -44501,7 +44501,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -44521,7 +44521,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -44553,7 +44553,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#aba0b0aa9494b9db2a15a5c642a7501a)  
+[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44570,7 +44570,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -44602,7 +44602,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#0b9dc0d5f448b0ec6e0d95486801fc53)  
+[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44619,7 +44619,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -44651,7 +44651,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44668,7 +44668,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -44704,7 +44704,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44721,7 +44721,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -44757,7 +44757,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44774,7 +44774,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -44810,7 +44810,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44827,7 +44827,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -44863,7 +44863,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#28982e73eb6bf63b63ef04fc2a5210e3)  
+[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44880,7 +44880,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -44916,7 +44916,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#5eeab06b51394ed24405f677cdeaf6db)  
+[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44933,7 +44933,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -44969,7 +44969,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -44989,7 +44989,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -45022,7 +45022,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -45042,7 +45042,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -45075,7 +45075,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#05151eadd41a53652a13577c390e10de)  
+[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -45095,7 +45095,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -45128,7 +45128,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4318c4358f9c30e1bcf2fc481466590a)  
+[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -45148,7 +45148,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -45181,7 +45181,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#123e6cd9540bbdd47e382a056db858fc)  
+[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45198,7 +45198,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -45229,7 +45229,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#f1223112c5b49b3dbed0da16de69af4a)  
+[package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45246,7 +45246,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -45277,7 +45277,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45294,7 +45294,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -45329,7 +45329,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45346,7 +45346,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -45381,7 +45381,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45398,7 +45398,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -45433,7 +45433,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45450,7 +45450,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -45485,7 +45485,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45502,7 +45502,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -45537,7 +45537,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45554,7 +45554,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -45589,7 +45589,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -45609,7 +45609,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -45641,7 +45641,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -45661,7 +45661,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -45693,7 +45693,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -45713,7 +45713,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -45745,7 +45745,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -45765,7 +45765,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -45797,7 +45797,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#123e6cd9540bbdd47e382a056db858fc)  
+[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45814,7 +45814,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -45846,7 +45846,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#f1223112c5b49b3dbed0da16de69af4a)  
+[package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45863,7 +45863,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -45895,7 +45895,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45912,7 +45912,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -45948,7 +45948,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45965,7 +45965,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -46001,7 +46001,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46018,7 +46018,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -46054,7 +46054,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46071,7 +46071,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -46107,7 +46107,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8160e921e82abdb22303044d9fe466ec)  
+[package.json](#78aae05778510b5af67ac47b53417adb)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46124,7 +46124,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -46160,7 +46160,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#c853b7aff20d601fd68beba59d44d379)  
+[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46177,7 +46177,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -46213,7 +46213,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -46233,7 +46233,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -46266,7 +46266,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -46286,7 +46286,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -46319,7 +46319,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#8e23a84005544e3ebb5fc68830729e66)  
+[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -46339,7 +46339,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -46372,7 +46372,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#b17f7187b4c0d8ab072a6455f86e13aa)  
+[package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -46392,7 +46392,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -46425,7 +46425,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#fcf9ef1681fde8bc80d2122c87ad7525)  
+[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46442,7 +46442,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -46473,7 +46473,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ec58b9ab937e34be594be78b69b5422a)  
+[package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46490,7 +46490,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -46521,7 +46521,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46538,7 +46538,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -46573,7 +46573,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46590,7 +46590,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -46625,7 +46625,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46642,7 +46642,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -46677,7 +46677,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46694,7 +46694,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -46729,7 +46729,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46746,7 +46746,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -46781,7 +46781,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46798,7 +46798,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -46833,7 +46833,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -46853,7 +46853,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -46885,7 +46885,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -46905,7 +46905,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -46937,7 +46937,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -46957,7 +46957,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -46989,7 +46989,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -47009,7 +47009,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -47041,7 +47041,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#fcf9ef1681fde8bc80d2122c87ad7525)  
+[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47058,7 +47058,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -47090,7 +47090,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ec58b9ab937e34be594be78b69b5422a)  
+[package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47107,7 +47107,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -47139,7 +47139,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47156,7 +47156,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -47192,7 +47192,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47209,7 +47209,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -47245,7 +47245,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47262,7 +47262,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -47298,7 +47298,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47315,7 +47315,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -47351,7 +47351,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#6cda9a91aaab94ab038e3c244608bd32)  
+[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47368,7 +47368,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -47404,7 +47404,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#a0c79ecc8b62c147392352c9b217deaf)  
+[package.json](#ad31dec2396b06bcfba111182893d8a3)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47421,7 +47421,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -47457,7 +47457,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -47477,7 +47477,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -47510,7 +47510,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -47530,7 +47530,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -47563,7 +47563,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#f2b6de2256ee28ebfb56e4cbac3d42f6)  
+[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -47583,7 +47583,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -47616,7 +47616,7 @@ server/package.json
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
 [nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5f8e28985021ba0af10bac7ac4272fa9)  
+[package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -47636,7 +47636,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -47658,7 +47658,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#e68f05d99446995d45a0bd178f2b0340)  
+[package.json](#563ac613cc3e59bcdf94ed0fa11b96b5)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47677,7 +47677,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -47718,7 +47718,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#050e84530e45a20cef9b6e2ca76ccca4)  
+[package.json](#8e0200a3a3084d08b91df1caa2f8d322)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47737,7 +47737,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -47778,7 +47778,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47797,7 +47797,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -47842,7 +47842,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47861,7 +47861,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -47906,7 +47906,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47925,7 +47925,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -47970,7 +47970,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47989,7 +47989,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -48034,7 +48034,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48053,7 +48053,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -48098,7 +48098,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48117,7 +48117,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -48162,7 +48162,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7eab91f04e808198b55509723d831841)  
+[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -48184,7 +48184,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -48226,7 +48226,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[package.json](#8212bf09d51004dcde7648198e1c64c8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -48248,7 +48248,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -48290,7 +48290,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7eab91f04e808198b55509723d831841)  
+[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -48312,7 +48312,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -48354,7 +48354,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[package.json](#8212bf09d51004dcde7648198e1c64c8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -48376,7 +48376,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -48418,7 +48418,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#e68f05d99446995d45a0bd178f2b0340)  
+[package.json](#563ac613cc3e59bcdf94ed0fa11b96b5)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48437,7 +48437,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -48479,7 +48479,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#050e84530e45a20cef9b6e2ca76ccca4)  
+[package.json](#8e0200a3a3084d08b91df1caa2f8d322)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48498,7 +48498,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -48540,7 +48540,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48559,7 +48559,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -48605,7 +48605,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48624,7 +48624,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -48670,7 +48670,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48689,7 +48689,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -48735,7 +48735,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48754,7 +48754,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -48800,7 +48800,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#3abb8524cd756a515c52dd28968d3b61)  
+[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48819,7 +48819,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -48865,7 +48865,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#41fab38b5e75aa29fff55d218ba8f21c)  
+[package.json](#7d055d1372b92b6261d3911c712f2b0b)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48884,7 +48884,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -48930,7 +48930,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7eab91f04e808198b55509723d831841)  
+[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -48952,7 +48952,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -48995,7 +48995,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[package.json](#8212bf09d51004dcde7648198e1c64c8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -49017,7 +49017,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -49060,7 +49060,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7eab91f04e808198b55509723d831841)  
+[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -49082,7 +49082,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -49125,7 +49125,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#0c981fa6e90e05e0dae2326c81d2869f)  
+[package.json](#8212bf09d51004dcde7648198e1c64c8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -49147,7 +49147,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -49190,7 +49190,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#261fdd99e3f0b859be81945fb1cd749c)  
+[package.json](#35d332cd666978c3b1e97a68ada3df8e)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49209,7 +49209,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -49250,7 +49250,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#32080c4712ef51129cd96103b9853bd6)  
+[package.json](#4fc4f50d5f371ae0f9652a1c22967fb6)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49269,7 +49269,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -49310,7 +49310,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49329,7 +49329,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -49374,7 +49374,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49393,7 +49393,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -49438,7 +49438,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49457,7 +49457,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -49502,7 +49502,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49521,7 +49521,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -49566,7 +49566,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49585,7 +49585,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -49630,7 +49630,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49649,7 +49649,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -49694,7 +49694,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[package.json](#c7785650ddc54901337bcfc584779282)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -49716,7 +49716,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -49758,7 +49758,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[package.json](#6f6eb5c6f06c0d367ab4e8b5191f04db)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -49780,7 +49780,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -49822,7 +49822,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[package.json](#c7785650ddc54901337bcfc584779282)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -49844,7 +49844,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -49886,7 +49886,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[package.json](#6f6eb5c6f06c0d367ab4e8b5191f04db)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -49908,7 +49908,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -49950,7 +49950,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#261fdd99e3f0b859be81945fb1cd749c)  
+[package.json](#35d332cd666978c3b1e97a68ada3df8e)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49969,7 +49969,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -50011,7 +50011,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#32080c4712ef51129cd96103b9853bd6)  
+[package.json](#4fc4f50d5f371ae0f9652a1c22967fb6)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50030,7 +50030,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -50072,7 +50072,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50091,7 +50091,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -50137,7 +50137,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50156,7 +50156,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -50202,7 +50202,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50221,7 +50221,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -50267,7 +50267,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50286,7 +50286,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -50332,7 +50332,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ff01b141db61c5bda7a3bad9c8322872)  
+[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50351,7 +50351,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -50397,7 +50397,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#5653d428bd56e80abae7da6ae3233cbb)  
+[package.json](#205301a1d552c24dbfd92564577d9989)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50416,7 +50416,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -50462,7 +50462,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[package.json](#c7785650ddc54901337bcfc584779282)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -50484,7 +50484,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -50527,7 +50527,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[package.json](#6f6eb5c6f06c0d367ab4e8b5191f04db)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -50549,7 +50549,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -50592,7 +50592,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#6f7dc0351f380a1b4c84608a08eb909e)  
+[package.json](#c7785650ddc54901337bcfc584779282)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -50614,7 +50614,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -50657,7 +50657,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4cfb7a0ee2facd209c969539f9e4ad9c)  
+[package.json](#6f6eb5c6f06c0d367ab4e8b5191f04db)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -50679,7 +50679,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -50722,7 +50722,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#cd2dbe140e2ae79e1e1ad2268959bebb)  
+[package.json](#26575edc7cca2fc7b22da7fd0ef8ae66)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50741,7 +50741,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -50782,7 +50782,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#8e94f8a605b99d887833acbebcb36e96)  
+[package.json](#6e12b86c0f46bc9c21910597d88852a8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50801,7 +50801,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -50842,7 +50842,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50861,7 +50861,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -50906,7 +50906,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50925,7 +50925,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -50970,7 +50970,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50989,7 +50989,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -51034,7 +51034,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51053,7 +51053,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -51098,7 +51098,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51117,7 +51117,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -51162,7 +51162,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51181,7 +51181,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -51226,7 +51226,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[package.json](#8bffe388a5d3f96f15022c09de561b89)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -51248,7 +51248,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -51290,7 +51290,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[package.json](#dc9638296d166b3e74d190d5a05de3af)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -51312,7 +51312,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -51354,7 +51354,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[package.json](#8bffe388a5d3f96f15022c09de561b89)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -51376,7 +51376,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -51418,7 +51418,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[package.json](#dc9638296d166b3e74d190d5a05de3af)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -51440,7 +51440,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -51482,7 +51482,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#cd2dbe140e2ae79e1e1ad2268959bebb)  
+[package.json](#26575edc7cca2fc7b22da7fd0ef8ae66)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51501,7 +51501,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -51543,7 +51543,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#8e94f8a605b99d887833acbebcb36e96)  
+[package.json](#6e12b86c0f46bc9c21910597d88852a8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51562,7 +51562,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -51604,7 +51604,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51623,7 +51623,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -51669,7 +51669,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51688,7 +51688,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -51734,7 +51734,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51753,7 +51753,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -51799,7 +51799,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51818,7 +51818,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -51864,7 +51864,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ed00d0079d091af1f6e494519f52d898)  
+[package.json](#11bfb56aa12094babef997be5ab05f70)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51883,7 +51883,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -51929,7 +51929,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e740a32b46f77b44e96902512eb6df0a)  
+[package.json](#1c4d82d072b2e5968e3b15c625bc34d9)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51948,7 +51948,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -51994,7 +51994,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[package.json](#8bffe388a5d3f96f15022c09de561b89)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -52016,7 +52016,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -52059,7 +52059,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[package.json](#dc9638296d166b3e74d190d5a05de3af)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -52081,7 +52081,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -52124,7 +52124,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#ac90a757a0fd1d9803f692fc6bfecbf4)  
+[package.json](#8bffe388a5d3f96f15022c09de561b89)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -52146,7 +52146,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -52189,7 +52189,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#e4be072a15e859638713c74a6f1ab7c5)  
+[package.json](#dc9638296d166b3e74d190d5a05de3af)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -52211,7 +52211,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -52254,7 +52254,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52273,7 +52273,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -52314,7 +52314,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4293f965c53214335ae7e8d3b9c904e9)  
+[package.json](#730a9fd75c69cdd31dc7f98a9f34f837)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52333,7 +52333,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#7124bcec5f747f1d169c643c7444d4ab)  
+[server/package.json](#ac470edf2f6655e88375d0a9cd3d0bcb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
@@ -52374,7 +52374,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52393,7 +52393,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -52438,7 +52438,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52457,7 +52457,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -52502,7 +52502,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52521,7 +52521,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -52566,7 +52566,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52585,7 +52585,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -52630,7 +52630,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52649,7 +52649,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -52694,7 +52694,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52713,7 +52713,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#053e6a76eec6979a39a26638d70796b9)  
+[server/package.json](#6fa5b21a9925114d7d673588fd0e239d)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -52758,7 +52758,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -52780,7 +52780,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -52822,7 +52822,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4bee79625194cea6b79771c650334925)  
+[package.json](#6b8068e04a496073f0b5fb3ea3d4af42)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -52844,7 +52844,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#aabc54a53cdfeded8e49d8fbd563a0c5)  
+[server/package.json](#119a348dde457eb43f11c91e7a4eea4d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -52886,7 +52886,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -52908,7 +52908,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -52950,7 +52950,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4bee79625194cea6b79771c650334925)  
+[package.json](#6b8068e04a496073f0b5fb3ea3d4af42)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -52972,7 +52972,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#3981943e703154fa3a78954e7c44a14c)  
+[server/package.json](#86f46d3dc8fd57fffbb6c3aefbaf8e12)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -53014,7 +53014,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#1810755a4a2e2c4787595f363bf18752)  
+[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53033,7 +53033,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -53075,7 +53075,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4293f965c53214335ae7e8d3b9c904e9)  
+[package.json](#730a9fd75c69cdd31dc7f98a9f34f837)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53094,7 +53094,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#62edd4d3c543ad5593d90a6ecd6d53d8)  
+[server/package.json](#22bf158624418834179c921a27f58853)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -53136,7 +53136,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53155,7 +53155,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -53201,7 +53201,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53220,7 +53220,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -53266,7 +53266,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53285,7 +53285,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -53331,7 +53331,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53350,7 +53350,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -53396,7 +53396,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c75b0a51e9fc641b2fab7f46d9c38be2)  
+[package.json](#54eb89588286609b2428deb92d3fda90)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53415,7 +53415,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -53461,7 +53461,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#03435b634bb560d6bf7fea3148ff8f43)  
+[package.json](#d964a4a94da50aafbcc7c3d4b75566ed)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53480,7 +53480,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#93903d9b208479b99db8b7216ceff115)  
+[server/package.json](#127242a72466b3e3666eba19aee43e9b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -53526,7 +53526,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -53548,7 +53548,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -53591,7 +53591,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4bee79625194cea6b79771c650334925)  
+[package.json](#6b8068e04a496073f0b5fb3ea3d4af42)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -53613,7 +53613,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#d217922d660b9497c566f1aa86c20fba)  
+[server/package.json](#ee4facbd71c54c901ee7dc0428004623)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -53656,7 +53656,7 @@ server/package.json
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#368eaefa50d0c1c2977309e28d1aa539)  
+[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -53678,7 +53678,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -53721,7 +53721,7 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[package.json](#4bee79625194cea6b79771c650334925)  
+[package.json](#6b8068e04a496073f0b5fb3ea3d4af42)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -53743,7 +53743,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#9d137211ce4241317432203d9fa9f7e4)  
+[server/package.json](#956d14d3c1be9c01dec7d92bfb0bf0fb)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  

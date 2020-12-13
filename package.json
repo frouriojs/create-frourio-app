@@ -43,15 +43,15 @@
     "typescript"
   ],
   "dependencies": {
-    "@aspida/axios": "^0.12.2",
-    "@aspida/swr": "^0.2.2",
+    "@aspida/axios": "^1.1.0",
+    "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "cross-spawn": "^7.0.3",
     "ejs": "^3.1.5",
     "fastify": "^3.9.1",
     "fastify-cors": "^5.1.0",
     "fastify-static": "^3.3.0",
-    "frourio": "^0.21.1",
+    "frourio": "^0.21.3",
     "github-buttons": "^2.14.1",
     "is-binary-path": "^2.1.0",
     "log-update": "^4.0.0",
@@ -69,9 +69,9 @@
   "devDependencies": {
     "@types/cross-spawn": "^6.0.2",
     "@types/ejs": "^3.0.5",
-    "@types/jest": "^26.0.18",
+    "@types/jest": "^26.0.19",
     "@types/mkdirp": "^1.0.1",
-    "@types/node": "^14.14.11",
+    "@types/node": "^14.14.13",
     "@types/ora": "^3.2.0",
     "@types/pg": "^7.14.7",
     "@types/react": "^17.0.0",
@@ -89,12 +89,12 @@
     "rimraf": "^3.0.2",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.4.4",
-    "ts-loader": "^8.0.11",
+    "ts-loader": "^8.0.12",
     "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
-    "typescript": "^4.1.2",
+    "typescript": "^4.1.3",
     "webpack": "4.44.2",
-    "webpack-cli": "3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.2"
   }
 }
