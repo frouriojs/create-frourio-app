@@ -89,10 +89,10 @@ export const saoPrompts: ({
     message: 'Building mode',
     type: 'list',
     choices: [
-      { name: 'Basic (build)', value: 'basic' },
-      { name: 'Static (export)', value: 'static' }
+      { name: 'Static (export)', value: 'static' },
+      { name: 'Basic (build)', value: 'basic' }
     ],
-    default: 'basic',
+    default: 'static',
     when: (ans) => ans.client === 'next' || ans.client === 'sapper'
   },
   {
@@ -100,10 +100,10 @@ export const saoPrompts: ({
     message: 'Rendering mode',
     type: 'list',
     choices: [
-      { name: 'Universal (SSR / SSG)', value: 'universal' },
-      { name: 'Single Page App', value: 'spa' }
+      { name: 'Single Page App', value: 'spa' },
+      { name: 'Universal (SSR / SSG)', value: 'universal' }
     ],
-    default: 'universal',
+    default: 'spa',
     when: (ans) => ans.client === 'nuxt'
   },
   {
@@ -111,10 +111,10 @@ export const saoPrompts: ({
     message: 'Deployment target',
     type: 'list',
     choices: [
-      { name: 'Server (Node.js hosting)', value: 'server' },
-      { name: 'Static (JAMStack hosting)', value: 'static' }
+      { name: 'Static (JAMStack hosting)', value: 'static' },
+      { name: 'Server (Node.js hosting)', value: 'server' }
     ],
-    default: 'server',
+    default: 'static',
     when: (ans) => ans.client === 'nuxt'
   },
   {

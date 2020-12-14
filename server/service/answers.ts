@@ -89,6 +89,7 @@ const installApp = async (answers: Answers) => {
   )
 
   delete db.answers.dir
+  delete db.answers.dbName
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 }
 

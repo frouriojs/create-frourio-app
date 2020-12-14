@@ -1,4 +1,4 @@
-<a id="a0f969878e5b7c3cfddd4764f83f6487"></a>
+<a id="f31ef2c4d8f51997b9e250e1ae4488a6"></a>
 
 ## express-next-basic-axios-none-none-jest
 .eslintignore
@@ -7,6 +7,7 @@
 node_modules
 .next
 dist
+out
 server/migration
 server/index.js
 
@@ -717,10 +718,11 @@ export type Methods = {
 
 ```
 
-<a id="ba51acad5172d834352eac7967124aa7"></a>
+<a id="aaeb6704807f45871775708031b7cd98"></a>
 server/index.ts
 
 ```
+import path from 'path'
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
@@ -739,7 +741,7 @@ app.listen(SERVER_PORT)
 
 ```
 
-<a id="144b553c60b830a3e01268bea0969d5d"></a>
+<a id="3b19911b87225d70f7271c1fc75b64a4"></a>
 server/package.json
 
 ```
@@ -767,6 +769,7 @@ server/package.json
   "devDependencies": {
     "@types/cors": "2.8.8",
     "@types/express-jwt": "0.0.42",
+    "@types/jest": "^26.0.19",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/multer": "^1.4.5",
     "cross-env": "^7.0.3",
@@ -1241,7 +1244,7 @@ export const apiClient = api(aspida())
 
 
 ## express-next-basic-axios-none-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -1359,11 +1362,56 @@ export type Methods = {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+<a id="144b553c60b830a3e01268bea0969d5d"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio-express --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "frourio-express",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.1.1",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.8",
+    "@types/express-jwt": "0.0.42",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-<a id="fc6565768a40f2cfcb23b63aea4edc73"></a>
+<a id="3cf6c1d47d8dbaec713f3c8a6e6ab1e6"></a>
 server/service/tasks.ts
 
 ```
@@ -1390,7 +1438,8 @@ export const createDBFileIfNotExists = (dbFilePath: string) => {
   fs.writeFileSync(dbPath, JSON.stringify({ nextId: 0, tasks: [] }), 'utf8')
 }
 
-export const getTasks = async (limit?: number) => (await readDB()).tasks.slice(0, limit)
+export const getTasks = async (limit?: number) =>
+  (await readDB()).tasks.slice(0, limit)
 
 export const createTask = async (label: Task['label']) => {
   const db = await readDB()
@@ -1437,7 +1486,7 @@ export const deleteTask = async (id: Task['id']) => {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -1681,10 +1730,11 @@ export type Methods = {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-<a id="9b20e810a0a7c8fcbde4c3ca423048dc"></a>
+<a id="3ed25c85cea5aa09f5b671eba3862f62"></a>
 server/index.ts
 
 ```
+import path from 'path'
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
@@ -1701,7 +1751,7 @@ app.listen(SERVER_PORT)
 
 ```
 
-<a id="f09001a2e9d3f49943151a604a3a405b"></a>
+<a id="0e48b7ed164a8792db06b68ce7589ca6"></a>
 server/package.json
 
 ```
@@ -1734,6 +1784,7 @@ server/package.json
     "@prisma/cli": "^2.13.0",
     "@types/cors": "2.8.8",
     "@types/express-jwt": "0.0.42",
+    "@types/jest": "^26.0.19",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/multer": "^1.4.5",
     "cross-env": "^7.0.3",
@@ -1965,7 +2016,7 @@ tsconfig.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -2070,8 +2121,58 @@ export type Methods = {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+<a id="f09001a2e9d3f49943151a604a3a405b"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run migrate:dev && run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio-express --watch",
+    "dev:prisma": "prisma generate --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "npm run migrate:dev && prisma generate && frourio-express",
+    "migrate:dev": "prisma migrate dev --preview-feature",
+    "migrate:reset": "prisma migrate reset --preview-feature",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.13.0",
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.1.1",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.13.0",
+    "@types/cors": "2.8.8",
+    "@types/express-jwt": "0.0.42",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -2115,7 +2216,7 @@ export const deleteTask = (id: Task['id']) =>
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -2144,8 +2245,8 @@ export const deleteTask = (id: Task['id']) =>
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 <a id="721a23573ae87c3862febbcb07afeab0"></a>
 server/prisma/.env
 
@@ -2214,7 +2315,7 @@ model Task {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -2242,7 +2343,7 @@ model Task {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -2263,7 +2364,7 @@ model Task {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -2292,8 +2393,8 @@ model Task {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 <a id="429401736c76b800fe494a6854b1ecf9"></a>
 server/prisma/.env
 
@@ -2360,7 +2461,7 @@ model Task {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -2388,7 +2489,7 @@ model Task {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -2409,7 +2510,7 @@ model Task {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -2553,11 +2654,12 @@ export class Task {
 
 ```
 
-<a id="6852c249dfc4ae76c54f2cf594a0cf49"></a>
+<a id="6f8621ba191e2d24acc7afa010f8237b"></a>
 server/index.ts
 
 ```
 import 'reflect-metadata'
+import path from 'path'
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
@@ -2655,7 +2757,7 @@ export = options
 
 ```
 
-<a id="1aa1959b2f93bb67dc68704433801cc1"></a>
+<a id="169b90c64ee6355f52eb00945107f6c7"></a>
 server/package.json
 
 ```
@@ -2690,6 +2792,7 @@ server/package.json
   "devDependencies": {
     "@types/cors": "2.8.8",
     "@types/express-jwt": "0.0.42",
+    "@types/jest": "^26.0.19",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/multer": "^1.4.5",
     "cross-env": "^7.0.3",
@@ -2886,7 +2989,7 @@ server/tsconfig.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -2971,10 +3074,62 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+<a id="1aa1959b2f93bb67dc68704433801cc1"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio-express --watch",
+    "dev:typeormer": "typeormer --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "typeormer && frourio-express",
+    "migration:generate": "typeorm migration:generate -n Task",
+    "migration:run": "typeorm migration:run",
+    "migration:revert": "typeorm migration:revert",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.1.1",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "typeorm": "^0.2.29",
+    "typeormer": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.8",
+    "@types/express-jwt": "0.0.42",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 <a id="38829c478595c7e745282ff60e7dc7b1"></a>
@@ -3024,7 +3179,7 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -3088,11 +3243,12 @@ TYPEORM_PORT=5432
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-<a id="8e08ad26dd55cff6574af8262a1315c3"></a>
+<a id="fc8555eb652c690521447aa6dc8bd03e"></a>
 server/index.ts
 
 ```
 import 'reflect-metadata'
+import path from 'path'
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
@@ -3169,6 +3325,109 @@ export = options
 
 ```
 
+<a id="16c8b1e0ab0edc0c9f2c77498e35c0ab"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio-express --watch",
+    "dev:typeormer": "typeormer --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "typeormer && frourio-express",
+    "migration:generate": "typeorm migration:generate -n Task",
+    "migration:run": "typeorm migration:run",
+    "migration:revert": "typeorm migration:revert",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.1.1",
+    "multer": "^1.4.2",
+    "pg": "^8.5.1",
+    "typeorm": "^0.2.29",
+    "typeormer": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.8",
+    "@types/express-jwt": "0.0.42",
+    "@types/jest": "^26.0.19",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
+[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
+[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
+[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
+[server/test/server.test.ts](#faaa7918688190a2dfbcd76fdd8d5d92)  
+[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## express-next-basic-axios-none-typeorm-postgres-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#4a3929ce884db04afd32360015b20e8b)  
+[server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
+[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
+[server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 <a id="be090a1b7a8327ff07015bf95c8cc1d3"></a>
 server/package.json
 
@@ -3224,56 +3483,6 @@ server/package.json
 
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
-[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
-[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
-[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
-[server/test/server.test.ts](#faaa7918688190a2dfbcd76fdd8d5d92)  
-[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## express-next-basic-axios-none-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#4a3929ce884db04afd32360015b20e8b)  
-[server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
-[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
-[server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
@@ -3288,7 +3497,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -3317,7 +3526,119 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+<a id="0b3a2daf674bc0995193d6a93cc0498b"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio-express --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "frourio-express",
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 stop pm2.config.json",
+    "pm2:delete": "pm2 delete pm2.config.json",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.1.1",
+    "multer": "^1.4.2",
+    "pm2": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.8",
+    "@types/express-jwt": "0.0.42",
+    "@types/jest": "^26.0.19",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
+<a id="3bc42a3e22644d7b60f1119288700c29"></a>
+server/pm2.config.json
+
+```
+{
+  "name": "frourio-app",
+  "script": "index.js",
+  "env_production": {
+    "NODE_ENV": "production"
+  }
+}
+
+```
+
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
+[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
+[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
+[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## express-next-basic-axios-pm2-none-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#2639d7ba9f91c9453dd8e14fa108da4d)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 <a id="564303946b121218ac96096fe55e00cf"></a>
 server/package.json
 
@@ -3370,70 +3691,10 @@ server/package.json
 
 ```
 
-<a id="3bc42a3e22644d7b60f1119288700c29"></a>
-server/pm2.config.json
-
-```
-{
-  "name": "frourio-app",
-  "script": "index.js",
-  "env_production": {
-    "NODE_ENV": "production"
-  }
-}
-
-```
-
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
-[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
-[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
-[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## express-next-basic-axios-pm2-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#2639d7ba9f91c9453dd8e14fa108da4d)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -3446,7 +3707,7 @@ server/pm2.config.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -3475,7 +3736,115 @@ server/pm2.config.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+<a id="e8b342530b7180ce4771440e0ebb792d"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run migrate:dev && run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio-express --watch",
+    "dev:prisma": "prisma generate --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "npm run migrate:dev && prisma generate && frourio-express",
+    "migrate:dev": "prisma migrate dev --preview-feature",
+    "migrate:reset": "prisma migrate reset --preview-feature",
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 stop pm2.config.json",
+    "pm2:delete": "pm2 delete pm2.config.json",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.13.0",
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.1.1",
+    "multer": "^1.4.2",
+    "pm2": "^4.5.0"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.13.0",
+    "@types/cors": "2.8.8",
+    "@types/express-jwt": "0.0.42",
+    "@types/jest": "^26.0.19",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
+[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
+[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
+[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
+[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
+[server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## express-next-basic-axios-pm2-prisma-mysql-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 <a id="a603233d81c6a1a3a29f4b3e50ea5b24"></a>
 server/package.json
 
@@ -3540,57 +3909,6 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
-[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
-[server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## express-next-basic-axios-pm2-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
-[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
-[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
-[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -3604,7 +3922,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -3633,8 +3951,8 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -3656,7 +3974,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -3684,7 +4002,7 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -3706,7 +4024,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -3735,8 +4053,8 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -3758,7 +4076,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -3786,7 +4104,7 @@ server/package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -3808,7 +4126,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -3838,7 +4156,117 @@ server/package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
+[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
+[server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
+<a id="5febfa086fd3a83f234711c487e726c5"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio-express --watch",
+    "dev:typeormer": "typeormer --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "typeormer && frourio-express",
+    "migration:generate": "typeorm migration:generate -n Task",
+    "migration:run": "typeorm migration:run",
+    "migration:revert": "typeorm migration:revert",
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 stop pm2.config.json",
+    "pm2:delete": "pm2 delete pm2.config.json",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.1.1",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "pm2": "^4.5.0",
+    "typeorm": "^0.2.29",
+    "typeormer": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.8",
+    "@types/express-jwt": "0.0.42",
+    "@types/jest": "^26.0.19",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
+[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
+[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
+[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
+[server/test/server.test.ts](#faaa7918688190a2dfbcd76fdd8d5d92)  
+[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## express-next-basic-axios-pm2-typeorm-mysql-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#fd12b4389675273e4a1b646e0c55330c)  
+[server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 <a id="84d5061024be49a44b2515ab74c51c26"></a>
@@ -3903,57 +4331,6 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
-[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
-[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
-[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
-[server/test/server.test.ts](#faaa7918688190a2dfbcd76fdd8d5d92)  
-[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## express-next-basic-axios-pm2-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#fd12b4389675273e4a1b646e0c55330c)  
-[server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
-[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
-[server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
@@ -3968,7 +4345,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -3998,7 +4375,117 @@ server/package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
+[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
+[server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
+<a id="dcd68d1fb8fecf0351998606b9385f86"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio-express --watch",
+    "dev:typeormer": "typeormer --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "typeormer && frourio-express",
+    "migration:generate": "typeorm migration:generate -n Task",
+    "migration:run": "typeorm migration:run",
+    "migration:revert": "typeorm migration:revert",
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 stop pm2.config.json",
+    "pm2:delete": "pm2 delete pm2.config.json",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.1.1",
+    "multer": "^1.4.2",
+    "pg": "^8.5.1",
+    "pm2": "^4.5.0",
+    "typeorm": "^0.2.29",
+    "typeormer": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.8",
+    "@types/express-jwt": "0.0.42",
+    "@types/jest": "^26.0.19",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/multer": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "frourio-express": "^0.21.2",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
+[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
+[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
+[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
+[server/test/server.test.ts](#faaa7918688190a2dfbcd76fdd8d5d92)  
+[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## express-next-basic-axios-pm2-typeorm-postgres-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#4a3929ce884db04afd32360015b20e8b)  
+[server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 <a id="8f43815b2da8e90a5a68abfcf1127320"></a>
@@ -4063,57 +4550,6 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
-[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
-[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
-[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
-[server/test/server.test.ts](#faaa7918688190a2dfbcd76fdd8d5d92)  
-[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## express-next-basic-axios-pm2-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#4a3929ce884db04afd32360015b20e8b)  
-[server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
-[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
-[server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
@@ -4128,7 +4564,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-fetch-none-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4214,8 +4650,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -4242,7 +4678,7 @@ export const apiClient = api(aspida())
 
 
 ## express-next-basic-fetch-none-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4322,11 +4758,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -4339,7 +4775,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4428,8 +4864,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -4450,7 +4886,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4533,7 +4969,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -4554,7 +4990,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4583,8 +5019,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -4605,7 +5041,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4633,7 +5069,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -4654,7 +5090,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4683,8 +5119,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -4705,7 +5141,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4733,7 +5169,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -4754,7 +5190,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4844,10 +5280,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -4865,7 +5301,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4949,7 +5385,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -4969,7 +5405,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -4999,10 +5435,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -5020,7 +5456,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5049,7 +5485,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -5069,7 +5505,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5098,8 +5534,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -5117,7 +5553,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5145,12 +5581,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -5163,7 +5599,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5192,8 +5628,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -5215,7 +5651,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5243,7 +5679,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -5265,7 +5701,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5294,8 +5730,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -5317,7 +5753,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5345,7 +5781,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -5367,7 +5803,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5396,8 +5832,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -5419,7 +5855,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5447,7 +5883,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -5469,7 +5905,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5499,10 +5935,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -5521,7 +5957,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5550,7 +5986,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -5571,7 +6007,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5601,10 +6037,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -5623,7 +6059,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5652,7 +6088,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -5673,7 +6109,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-axios-none-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5760,8 +6196,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -5778,7 +6214,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5859,11 +6295,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -5876,7 +6312,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -5966,8 +6402,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -5988,7 +6424,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6072,7 +6508,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -6093,7 +6529,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6122,8 +6558,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -6144,7 +6580,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6172,7 +6608,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -6193,7 +6629,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6222,8 +6658,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -6244,7 +6680,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6272,7 +6708,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -6293,7 +6729,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6384,10 +6820,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -6405,7 +6841,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6490,7 +6926,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -6510,7 +6946,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6540,10 +6976,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -6561,7 +6997,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6590,7 +7026,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -6610,7 +7046,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6639,8 +7075,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -6658,7 +7094,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6686,12 +7122,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -6704,7 +7140,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6733,8 +7169,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -6756,7 +7192,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6784,7 +7220,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -6806,7 +7242,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6835,8 +7271,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -6858,7 +7294,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6886,7 +7322,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -6908,7 +7344,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6937,8 +7373,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -6960,7 +7396,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -6988,7 +7424,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -7010,7 +7446,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7040,10 +7476,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -7062,7 +7498,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7091,7 +7527,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -7112,7 +7548,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7142,10 +7578,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -7164,7 +7600,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7193,7 +7629,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -7214,7 +7650,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-fetch-none-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7300,8 +7736,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -7318,7 +7754,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7398,11 +7834,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -7415,7 +7851,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7504,8 +7940,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -7526,7 +7962,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7609,7 +8045,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -7630,7 +8066,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7659,8 +8095,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -7681,7 +8117,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7709,7 +8145,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -7730,7 +8166,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7759,8 +8195,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -7781,7 +8217,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7809,7 +8245,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -7830,7 +8266,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -7920,10 +8356,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -7941,7 +8377,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8025,7 +8461,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -8045,7 +8481,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8075,10 +8511,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -8096,7 +8532,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8125,7 +8561,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -8145,7 +8581,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8174,8 +8610,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -8193,7 +8629,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8221,12 +8657,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -8239,7 +8675,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8268,8 +8704,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -8291,7 +8727,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8319,7 +8755,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -8341,7 +8777,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8370,8 +8806,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -8393,7 +8829,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8421,7 +8857,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -8443,7 +8879,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8472,8 +8908,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -8495,7 +8931,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8523,7 +8959,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -8545,7 +8981,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8575,10 +9011,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -8597,7 +9033,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8626,7 +9062,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -8647,7 +9083,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8677,10 +9113,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -8699,7 +9135,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -8728,7 +9164,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -9561,8 +9997,8 @@ export default plugin
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -9767,11 +10203,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -10042,8 +10478,8 @@ export default Vue.extend({
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -10203,7 +10639,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -10288,8 +10724,8 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -10343,7 +10779,7 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -10397,8 +10833,8 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -10452,7 +10888,7 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -10590,10 +11026,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -10719,7 +11155,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -10773,10 +11209,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -10828,7 +11264,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -10881,8 +11317,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -10933,12 +11369,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -10984,8 +11420,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -11040,7 +11476,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -11095,8 +11531,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -11151,7 +11587,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -11206,8 +11642,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -11262,7 +11698,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -11318,10 +11754,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -11374,7 +11810,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -11429,10 +11865,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -11485,7 +11921,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -11719,8 +12155,8 @@ export default plugin
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -11873,11 +12309,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -12037,8 +12473,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -12199,7 +12635,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -12284,8 +12720,8 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -12339,7 +12775,7 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -12393,8 +12829,8 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -12448,7 +12884,7 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -12587,10 +13023,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -12717,7 +13153,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -12771,10 +13207,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -12826,7 +13262,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -12879,8 +13315,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -12931,12 +13367,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -12982,8 +13418,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -13038,7 +13474,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -13093,8 +13529,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -13149,7 +13585,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -13204,8 +13640,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -13260,7 +13696,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -13316,10 +13752,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -13372,7 +13808,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -13427,10 +13863,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -13483,7 +13919,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -13683,8 +14119,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -13805,11 +14241,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -13938,8 +14374,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -14067,7 +14503,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -14121,8 +14557,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -14176,7 +14612,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -14230,8 +14666,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -14285,7 +14721,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -14423,10 +14859,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -14552,7 +14988,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -14606,10 +15042,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -14661,7 +15097,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -14714,8 +15150,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -14766,12 +15202,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -14817,8 +15253,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -14873,7 +15309,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -14928,8 +15364,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -14984,7 +15420,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -15039,8 +15475,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -15095,7 +15531,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -15151,10 +15587,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -15207,7 +15643,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -15262,10 +15698,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -15318,7 +15754,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -15511,8 +15947,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -15634,11 +16070,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -15768,8 +16204,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -15898,7 +16334,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -15952,8 +16388,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -16007,7 +16443,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -16061,8 +16497,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -16116,7 +16552,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -16255,10 +16691,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -16385,7 +16821,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -16439,10 +16875,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -16494,7 +16930,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -16547,8 +16983,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -16599,12 +17035,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -16650,8 +17086,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -16706,7 +17142,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -16761,8 +17197,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -16817,7 +17253,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -16872,8 +17308,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -16928,7 +17364,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -16984,10 +17420,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -17040,7 +17476,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -17095,10 +17531,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -17151,7 +17587,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -17265,8 +17701,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -17316,11 +17752,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -17366,8 +17802,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -17421,7 +17857,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -17475,8 +17911,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -17530,7 +17966,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -17584,8 +18020,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -17639,7 +18075,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -17694,10 +18130,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -17749,7 +18185,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -17803,10 +18239,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -17858,7 +18294,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -17911,8 +18347,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -17963,12 +18399,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -18014,8 +18450,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -18070,7 +18506,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -18125,8 +18561,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -18181,7 +18617,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -18236,8 +18672,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -18292,7 +18728,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -18348,10 +18784,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -18404,7 +18840,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -18459,10 +18895,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -18515,7 +18951,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -18621,8 +19057,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -18672,11 +19108,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -18722,8 +19158,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -18777,7 +19213,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -18831,8 +19267,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -18886,7 +19322,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -18940,8 +19376,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -18995,7 +19431,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -19050,10 +19486,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -19105,7 +19541,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -19159,10 +19595,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -19214,7 +19650,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -19267,8 +19703,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -19319,12 +19755,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -19370,8 +19806,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -19426,7 +19862,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -19481,8 +19917,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -19537,7 +19973,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -19592,8 +20028,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -19648,7 +20084,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -19704,10 +20140,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -19760,7 +20196,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -19815,10 +20251,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -19871,7 +20307,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -19988,8 +20424,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -20039,11 +20475,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -20089,8 +20525,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -20144,7 +20580,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -20198,8 +20634,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -20253,7 +20689,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -20307,8 +20743,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -20362,7 +20798,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -20417,10 +20853,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -20472,7 +20908,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -20526,10 +20962,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -20581,7 +21017,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -20634,8 +21070,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -20686,12 +21122,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -20737,8 +21173,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -20793,7 +21229,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -20848,8 +21284,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -20904,7 +21340,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -20959,8 +21395,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -21015,7 +21451,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -21071,10 +21507,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -21127,7 +21563,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -21182,10 +21618,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -21238,7 +21674,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -21347,8 +21783,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -21398,11 +21834,11 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -21448,8 +21884,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -21503,7 +21939,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -21557,8 +21993,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -21612,7 +22048,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -21666,8 +22102,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -21721,7 +22157,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -21776,10 +22212,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -21831,7 +22267,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -21885,10 +22321,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -21940,7 +22376,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -21993,8 +22429,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -22045,12 +22481,12 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -22096,8 +22532,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -22152,7 +22588,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -22207,8 +22643,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -22263,7 +22699,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -22318,8 +22754,8 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -22374,7 +22810,7 @@ export default config
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -22430,10 +22866,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -22486,7 +22922,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -22541,10 +22977,10 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -22597,7 +23033,7 @@ export default config
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -23072,8 +23508,8 @@ module.exports = {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -24217,11 +24653,11 @@ module.exports = {
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -24380,8 +24816,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -24684,7 +25120,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -24771,8 +25207,8 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -24835,7 +25271,7 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -24899,8 +25335,8 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -24963,7 +25399,7 @@ tsconfig.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -25109,10 +25545,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -25248,7 +25684,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -25312,10 +25748,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -25376,7 +25812,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -25439,8 +25875,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -25500,12 +25936,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -25561,8 +25997,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -25626,7 +26062,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -25691,8 +26127,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -25756,7 +26192,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -25821,8 +26257,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -25886,7 +26322,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -25952,10 +26388,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -26017,7 +26453,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -26082,10 +26518,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -26147,7 +26583,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -26290,8 +26726,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -26435,11 +26871,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -26577,8 +27013,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -26717,7 +27153,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -26781,8 +27217,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -26845,7 +27281,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -26909,8 +27345,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -26973,7 +27409,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -27120,10 +27556,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -27260,7 +27696,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -27324,10 +27760,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -27388,7 +27824,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -27426,6 +27862,330 @@ package.json
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
 [tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
+<a id="aaa28ca6a2ee4c72595cc6f4b2794549"></a>
+
+## express-sapper-basic-fetch-pm2-none-jest-npm-actions
+.github/workflows/nodejs.yml
+
+```
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-npm-cache
+        with:
+          path: "node_modules"
+          key: client-npm-${{ hashFiles('package-lock.json') }}
+      - uses: actions/cache@v2
+        id: server-npm-cache
+        with:
+          path: "server/node_modules"
+          key: server-npm-${{ hashFiles('server/package-lock.json') }}
+      - run: npm install
+        if: steps.client-npm-cache.outputs.cache-hit != 'true'
+      - run: npm install --prefix server
+        if: steps.server-npm-cache.outputs.cache-hit != 'true'
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+
+```
+
+[.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
+[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
+[README.md](#00ceeb161689080ab561029bf74dec99)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#0d900a7a13a82e099830f4bcb6508027)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
+[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
+[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
+[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
+[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
+[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
+[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
+[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
+[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
+[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
+[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
+[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
+[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
+[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
+[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
+[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
+[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
+[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
+[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
+[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
+[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
+[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
+[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
+[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
+[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
+
+## express-sapper-basic-fetch-pm2-none-jest-npm-none
+[.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
+[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
+[README.md](#00ceeb161689080ab561029bf74dec99)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#0d900a7a13a82e099830f4bcb6508027)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
+[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
+[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
+[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
+[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
+[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
+[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
+[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
+[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
+[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
+[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
+[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
+[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
+[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
+[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
+[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
+[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
+[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
+[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
+[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
+[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
+[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
+[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
+[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
+[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
+<a id="f064fe7b91be87abfb3ea5d631065566"></a>
+
+## express-sapper-basic-fetch-pm2-none-jest-yarn-actions
+.github/workflows/nodejs.yml
+
+```
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-yarn-cache
+        with:
+          path: "node_modules"
+          key: client-yarn-${{ hashFiles('yarn.lock') }}
+      - uses: actions/cache@v2
+        id: server-yarn-cache
+        with:
+          path: "server/node_modules"
+          key: server-yarn-${{ hashFiles('server/yarn.lock') }}
+      - run: yarn install
+        if: steps.client-yarn-cache.outputs.cache-hit != 'true'
+      - run: yarn install --cwd server
+        if: steps.server-yarn-cache.outputs.cache-hit != 'true'
+      - run: yarn lint
+      - run: yarn typecheck
+      - run: yarn test
+
+```
+
+[.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
+[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
+[README.md](#00ceeb161689080ab561029bf74dec99)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#0d900a7a13a82e099830f4bcb6508027)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
+[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
+[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
+[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
+[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
+[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
+[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
+[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
+[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
+[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
+[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
+[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
+[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
+[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
+[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
+[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
+[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
+[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
+[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
+[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
+[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
+[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
+[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
+[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
+[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
+
+## express-sapper-basic-fetch-pm2-none-jest-yarn-none
+[.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
+[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
+[README.md](#00ceeb161689080ab561029bf74dec99)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#0d900a7a13a82e099830f4bcb6508027)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
+[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
+[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
+[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
+[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
+[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
+[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
+[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
+[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
+[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
+[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
+[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
+[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
+[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
+[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
+[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
+[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
+[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
+[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
+[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
+[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
+[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
+[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
+[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
+[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
+[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27451,8 +28211,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -27512,12 +28272,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -27573,8 +28333,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -27638,7 +28398,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -27703,8 +28463,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -27768,7 +28528,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -27833,8 +28593,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -27898,7 +28658,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -27964,10 +28724,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -28029,7 +28789,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -28094,10 +28854,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -28159,7 +28919,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -28302,8 +29062,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -28435,11 +29195,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -28577,8 +29337,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -28717,7 +29477,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -28781,8 +29541,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -28845,7 +29605,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -28909,8 +29669,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -28973,7 +29733,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -29120,10 +29880,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -29260,7 +30020,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -29324,10 +30084,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -29388,7 +30148,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -29451,8 +30211,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -29512,12 +30272,12 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -29573,8 +30333,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -29638,7 +30398,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -29703,8 +30463,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -29768,7 +30528,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -29833,8 +30593,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -29898,7 +30658,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -29964,10 +30724,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -30029,7 +30789,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -30094,10 +30854,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -30159,7 +30919,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -30303,8 +31063,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#144b553c60b830a3e01268bea0969d5d)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#3b19911b87225d70f7271c1fc75b64a4)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -30437,11 +31197,11 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#144b553c60b830a3e01268bea0969d5d)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -30580,8 +31340,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -30721,7 +31481,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -30785,8 +31545,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -30849,7 +31609,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -30913,8 +31673,8 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#0e48b7ed164a8792db06b68ce7589ca6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -30977,7 +31737,7 @@ package.json
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#f09001a2e9d3f49943151a604a3a405b)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -31125,10 +31885,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
+[server/package.json](#169b90c64ee6355f52eb00945107f6c7)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -31266,7 +32026,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#1aa1959b2f93bb67dc68704433801cc1)  
@@ -31330,10 +32090,10 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
+[server/package.json](#16c8b1e0ab0edc0c9f2c77498e35c0ab)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -31394,7 +32154,7 @@ package.json
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#be090a1b7a8327ff07015bf95c8cc1d3)  
@@ -31432,330 +32192,6 @@ package.json
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
 [tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
-<a id="aaa28ca6a2ee4c72595cc6f4b2794549"></a>
-
-## express-sapper-static-fetch-pm2-none-jest-npm-actions
-.github/workflows/nodejs.yml
-
-```
-name: Node.js CI
-
-on: push
-
-jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - uses: actions/cache@v2
-        id: client-npm-cache
-        with:
-          path: "node_modules"
-          key: client-npm-${{ hashFiles('package-lock.json') }}
-      - uses: actions/cache@v2
-        id: server-npm-cache
-        with:
-          path: "server/node_modules"
-          key: server-npm-${{ hashFiles('server/package-lock.json') }}
-      - run: npm install
-        if: steps.client-npm-cache.outputs.cache-hit != 'true'
-      - run: npm install --prefix server
-        if: steps.server-npm-cache.outputs.cache-hit != 'true'
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm test
-
-```
-
-[.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
-[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
-[README.md](#00ceeb161689080ab561029bf74dec99)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
-[package.json](#a9df171605433638d8022311e45a3475)  
-[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
-[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
-[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
-[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
-[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
-[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
-[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
-[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
-[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
-[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
-[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
-[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
-[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
-[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
-[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
-[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
-[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
-[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
-[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
-[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
-[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
-[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
-[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
-[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
-[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
-
-## express-sapper-static-fetch-pm2-none-jest-npm-none
-[.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
-[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
-[README.md](#00ceeb161689080ab561029bf74dec99)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
-[package.json](#a9df171605433638d8022311e45a3475)  
-[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
-[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
-[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
-[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
-[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
-[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
-[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
-[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
-[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
-[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
-[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
-[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
-[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
-[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
-[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
-[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
-[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
-[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
-[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
-[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
-[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
-[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
-[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
-[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
-[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
-<a id="f064fe7b91be87abfb3ea5d631065566"></a>
-
-## express-sapper-static-fetch-pm2-none-jest-yarn-actions
-.github/workflows/nodejs.yml
-
-```
-name: Node.js CI
-
-on: push
-
-jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - uses: actions/cache@v2
-        id: client-yarn-cache
-        with:
-          path: "node_modules"
-          key: client-yarn-${{ hashFiles('yarn.lock') }}
-      - uses: actions/cache@v2
-        id: server-yarn-cache
-        with:
-          path: "server/node_modules"
-          key: server-yarn-${{ hashFiles('server/yarn.lock') }}
-      - run: yarn install
-        if: steps.client-yarn-cache.outputs.cache-hit != 'true'
-      - run: yarn install --cwd server
-        if: steps.server-yarn-cache.outputs.cache-hit != 'true'
-      - run: yarn lint
-      - run: yarn typecheck
-      - run: yarn test
-
-```
-
-[.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
-[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
-[README.md](#00ceeb161689080ab561029bf74dec99)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
-[package.json](#a9df171605433638d8022311e45a3475)  
-[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
-[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
-[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
-[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
-[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
-[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
-[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
-[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
-[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
-[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
-[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
-[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
-[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
-[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
-[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
-[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
-[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
-[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
-[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
-[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
-[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
-[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
-[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
-[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
-[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
-
-## express-sapper-static-fetch-pm2-none-jest-yarn-none
-[.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
-[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
-[README.md](#00ceeb161689080ab561029bf74dec99)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
-[package.json](#a9df171605433638d8022311e45a3475)  
-[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
-[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
-[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
-[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
-[server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
-[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
-[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
-[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
-[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
-[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
-[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
-[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
-[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
-[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
-[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
-[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
-[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
-[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
-[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
-[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
-[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
-[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
-[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#a1c1a7d072f291174e913663921c7fec)  
-[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
-[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31781,8 +32217,8 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
-[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -31842,12 +32278,12 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ba51acad5172d834352eac7967124aa7)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
 [server/package.json](#564303946b121218ac96096fe55e00cf)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -31903,8 +32339,8 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -31968,7 +32404,7 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
@@ -32033,8 +32469,8 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -32098,7 +32534,7 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
@@ -32163,8 +32599,8 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
-[server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
+[server/package.json](#e8b342530b7180ce4771440e0ebb792d)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -32228,7 +32664,7 @@ jobs:
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#9b20e810a0a7c8fcbde4c3ca423048dc)  
+[server/index.ts](#3ed25c85cea5aa09f5b671eba3862f62)  
 [server/package.json](#a603233d81c6a1a3a29f4b3e50ea5b24)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
@@ -32294,10 +32730,10 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#84d5061024be49a44b2515ab74c51c26)  
+[server/package.json](#5febfa086fd3a83f234711c487e726c5)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -32359,7 +32795,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#6852c249dfc4ae76c54f2cf594a0cf49)  
+[server/index.ts](#6f8621ba191e2d24acc7afa010f8237b)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
 [server/package.json](#84d5061024be49a44b2515ab74c51c26)  
@@ -32424,10 +32860,10 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
+[server/package.json](#dcd68d1fb8fecf0351998606b9385f86)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -32489,7 +32925,7 @@ jobs:
 [server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#8e08ad26dd55cff6574af8262a1315c3)  
+[server/index.ts](#fc8555eb652c690521447aa6dc8bd03e)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 [server/package.json](#8f43815b2da8e90a5a68abfcf1127320)  
@@ -32530,7 +32966,7 @@ jobs:
 [tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-next-basic-axios-none-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -32623,7 +33059,7 @@ fastify.listen(SERVER_PORT)
 
 ```
 
-<a id="eecc661976ab3fb6e4f4e72427134ea0"></a>
+<a id="93c5772977bb0af61d3b1ff31ae4ed92"></a>
 server/package.json
 
 ```
@@ -32651,6 +33087,7 @@ server/package.json
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
+    "@types/jest": "^26.0.19",
     "cross-env": "^7.0.3",
     "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
@@ -32764,7 +33201,7 @@ test('dependency injection into controller', async () => {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -32793,10 +33230,53 @@ test('dependency injection into controller', async () => {
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+<a id="eecc661976ab3fb6e4f4e72427134ea0"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "frourio",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-cors": "^5.1.0",
+    "fastify-helmet": "^5.0.3",
+    "fastify-jwt": "^2.1.3",
+    "fastify-multipart": "^3.3.1",
+    "fastify-static": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/busboy": "^0.2.3",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -32809,7 +33289,7 @@ test('dependency injection into controller', async () => {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -32867,7 +33347,7 @@ fastify.listen(SERVER_PORT)
 
 ```
 
-<a id="2b38e3bc42f81a83c1a37b230d096e8d"></a>
+<a id="fce482be599f3dead76d96a9dd323fc6"></a>
 server/package.json
 
 ```
@@ -32900,6 +33380,7 @@ server/package.json
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
     "@types/busboy": "^0.2.3",
+    "@types/jest": "^26.0.19",
     "cross-env": "^7.0.3",
     "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
@@ -32977,284 +33458,8 @@ test('dependency injection into controller', async () => {
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
-## fastify-next-basic-axios-none-prisma-mysql-none-npm-actions
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-<a id="9ad58a456f2a597c7272db7c42728b59"></a>
-.github/workflows/nodejs.yml
-
-```
-name: Node.js CI
-
-on: push
-
-jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - uses: actions/cache@v2
-        id: client-npm-cache
-        with:
-          path: "node_modules"
-          key: client-npm-${{ hashFiles('package-lock.json') }}
-      - uses: actions/cache@v2
-        id: server-npm-cache
-        with:
-          path: "server/node_modules"
-          key: server-npm-${{ hashFiles('server/package-lock.json') }}
-      - run: npm install
-        if: steps.client-npm-cache.outputs.cache-hit != 'true'
-      - run: npm install --prefix server
-        if: steps.server-npm-cache.outputs.cache-hit != 'true'
-      - run: npm run lint
-      - run: |
-          sudo systemctl start mysql.service
-          echo "DATABASE_URL=mysql://root:root@localhost:3306/test" > server/prisma/.env
-      - run: npm run typecheck
-
-```
-
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
-[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
-[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
-[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
-[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
-[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-basic-axios-none-prisma-mysql-none-npm-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
-[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
-[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
-[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
-[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
-[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-basic-axios-none-prisma-mysql-none-yarn-actions
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-<a id="25966b72a2ea18cd5d23d5717ad216fe"></a>
-.github/workflows/nodejs.yml
-
-```
-name: Node.js CI
-
-on: push
-
-jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - uses: actions/cache@v2
-        id: client-yarn-cache
-        with:
-          path: "node_modules"
-          key: client-yarn-${{ hashFiles('yarn.lock') }}
-      - uses: actions/cache@v2
-        id: server-yarn-cache
-        with:
-          path: "server/node_modules"
-          key: server-yarn-${{ hashFiles('server/yarn.lock') }}
-      - run: yarn install
-        if: steps.client-yarn-cache.outputs.cache-hit != 'true'
-      - run: yarn install --cwd server
-        if: steps.server-yarn-cache.outputs.cache-hit != 'true'
-      - run: yarn lint
-      - run: |
-          sudo systemctl start mysql.service
-          echo "DATABASE_URL=mysql://root:root@localhost:3306/test" > server/prisma/.env
-      - run: yarn typecheck
-
-```
-
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
-[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
-[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
-[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
-[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
-[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-basic-axios-none-prisma-mysql-none-yarn-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
-[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
-[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
-[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
-[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
-[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
 ## fastify-next-basic-axios-none-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -33283,7 +33488,55 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+<a id="2b38e3bc42f81a83c1a37b230d096e8d"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run migrate:dev && run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio --watch",
+    "dev:prisma": "prisma generate --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "npm run migrate:dev && prisma generate && frourio",
+    "migrate:dev": "prisma migrate dev --preview-feature",
+    "migrate:reset": "prisma migrate reset --preview-feature",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.13.0",
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-cors": "^5.1.0",
+    "fastify-helmet": "^5.0.3",
+    "fastify-jwt": "^2.1.3",
+    "fastify-multipart": "^3.3.1",
+    "fastify-static": "^3.3.0"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.13.0",
+    "@types/busboy": "^0.2.3",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -33303,7 +33556,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -33333,7 +33586,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -33354,7 +33607,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -33403,7 +33656,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -33433,7 +33686,7 @@ jobs:
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -33454,7 +33707,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -33503,7 +33756,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -33587,7 +33840,7 @@ createConnection({
 
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-<a id="ba7521ba685e1508510a3fc6b5e24700"></a>
+<a id="d8e259912948de2d68ab34e82630fcf2"></a>
 server/package.json
 
 ```
@@ -33622,6 +33875,7 @@ server/package.json
   },
   "devDependencies": {
     "@types/busboy": "^0.2.3",
+    "@types/jest": "^26.0.19",
     "cross-env": "^7.0.3",
     "frourio": "^0.21.3",
     "nodemon-webpack-plugin": "^4.3.2",
@@ -33695,7 +33949,7 @@ test('dependency injection into controller', async () => {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -33727,7 +33981,57 @@ test('dependency injection into controller', async () => {
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+<a id="ba7521ba685e1508510a3fc6b5e24700"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio --watch",
+    "dev:typeormer": "typeormer --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "typeormer && frourio",
+    "migration:generate": "typeorm migration:generate -n Task",
+    "migration:run": "typeorm migration:run",
+    "migration:revert": "typeorm migration:revert",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-cors": "^5.1.0",
+    "fastify-helmet": "^5.0.3",
+    "fastify-jwt": "^2.1.3",
+    "fastify-multipart": "^3.3.1",
+    "mysql": "^2.18.1",
+    "fastify-static": "^3.3.0",
+    "typeorm": "^0.2.29",
+    "typeormer": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/busboy": "^0.2.3",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
@@ -33744,7 +34048,7 @@ test('dependency injection into controller', async () => {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -33828,6 +34132,107 @@ createConnection({
 
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
+<a id="7f1c7c41301ba6751254110b9d09c9cb"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio --watch",
+    "dev:typeormer": "typeormer --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "typeormer && frourio",
+    "migration:generate": "typeorm migration:generate -n Task",
+    "migration:run": "typeorm migration:run",
+    "migration:revert": "typeorm migration:revert",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-cors": "^5.1.0",
+    "fastify-helmet": "^5.0.3",
+    "fastify-jwt": "^2.1.3",
+    "fastify-multipart": "^3.3.1",
+    "pg": "^8.5.1",
+    "fastify-static": "^3.3.0",
+    "typeorm": "^0.2.29",
+    "typeormer": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/busboy": "^0.2.3",
+    "@types/jest": "^26.0.19",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
+[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
+[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
+[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
+[server/test/server.test.ts](#da028071c28e82ed4d40d75e449129ad)  
+[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-basic-axios-none-typeorm-postgres-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#4a3929ce884db04afd32360015b20e8b)  
+[server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
+[server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
+[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
+[server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
 <a id="c1eb216e23c4d605d4b71a42daf9a989"></a>
 server/package.json
 
@@ -33881,56 +34286,6 @@ server/package.json
 
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
-[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
-[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
-[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
-[server/test/server.test.ts](#da028071c28e82ed4d40d75e449129ad)  
-[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-basic-axios-none-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#4a3929ce884db04afd32360015b20e8b)  
-[server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
-[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
-[server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
@@ -33945,7 +34300,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -33969,6 +34324,103 @@ server/package.json
 [server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
 [server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
 [server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#841b57e12b81db56854045c513172c42)  
+<a id="43a7c5d9ea6ab2dccc7edb5af46ad993"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "frourio",
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 stop pm2.config.json",
+    "pm2:delete": "pm2 delete pm2.config.json",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-cors": "^5.1.0",
+    "fastify-helmet": "^5.0.3",
+    "fastify-jwt": "^2.1.3",
+    "fastify-multipart": "^3.3.1",
+    "fastify-static": "^3.3.0",
+    "pm2": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/busboy": "^0.2.3",
+    "@types/jest": "^26.0.19",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
+[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
+[server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
+[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-basic-axios-pm2-none-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#2639d7ba9f91c9453dd8e14fa108da4d)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
 [server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
 [server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
@@ -34028,54 +34480,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
-[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
-[server/test/server.test.ts](#659803b1869677b59a8ae7be4b8fa6fa)  
-[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-basic-axios-pm2-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#2639d7ba9f91c9453dd8e14fa108da4d)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -34088,7 +34493,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34112,6 +34517,112 @@ server/package.json
 [server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
 [server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
 [server/api/tasks/index.ts](#8eb5459270593d9a3afdd17aec312f62)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+<a id="638c223f34c7a44c078319c8354e3f3e"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run migrate:dev && run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio --watch",
+    "dev:prisma": "prisma generate --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "npm run migrate:dev && prisma generate && frourio",
+    "migrate:dev": "prisma migrate dev --preview-feature",
+    "migrate:reset": "prisma migrate reset --preview-feature",
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 stop pm2.config.json",
+    "pm2:delete": "pm2 delete pm2.config.json",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.13.0",
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-cors": "^5.1.0",
+    "fastify-helmet": "^5.0.3",
+    "fastify-jwt": "^2.1.3",
+    "fastify-multipart": "^3.3.1",
+    "fastify-static": "^3.3.0",
+    "pm2": "^4.5.0"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.13.0",
+    "@types/busboy": "^0.2.3",
+    "@types/jest": "^26.0.19",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
+[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
+[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
+[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
+[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
+[server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-basic-axios-pm2-prisma-mysql-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
 [server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
 [server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
@@ -34180,57 +34691,6 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
-[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
-[server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-basic-axios-pm2-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
-[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
-[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
-[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -34244,7 +34704,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34274,7 +34734,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -34296,7 +34756,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34346,7 +34806,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34376,7 +34836,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -34398,7 +34858,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34448,7 +34908,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34472,6 +34932,114 @@ server/package.json
 [server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
 [server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
 [server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
+[server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
+[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
+[server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
+<a id="ab4268c704c63f72c352b25c0cfbc95a"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio --watch",
+    "dev:typeormer": "typeormer --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "typeormer && frourio",
+    "migration:generate": "typeorm migration:generate -n Task",
+    "migration:run": "typeorm migration:run",
+    "migration:revert": "typeorm migration:revert",
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 stop pm2.config.json",
+    "pm2:delete": "pm2 delete pm2.config.json",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-cors": "^5.1.0",
+    "fastify-helmet": "^5.0.3",
+    "fastify-jwt": "^2.1.3",
+    "fastify-multipart": "^3.3.1",
+    "mysql": "^2.18.1",
+    "fastify-static": "^3.3.0",
+    "pm2": "^4.5.0",
+    "typeorm": "^0.2.29",
+    "typeormer": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/busboy": "^0.2.3",
+    "@types/jest": "^26.0.19",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
+[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
+[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
+[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
+[server/test/server.test.ts](#da028071c28e82ed4d40d75e449129ad)  
+[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-basic-axios-pm2-typeorm-mysql-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#fd12b4389675273e4a1b646e0c55330c)  
+[server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
 [server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
 [server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
@@ -34541,57 +35109,6 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
-[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
-[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
-[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
-[server/test/server.test.ts](#da028071c28e82ed4d40d75e449129ad)  
-[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-basic-axios-pm2-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#fd12b4389675273e4a1b646e0c55330c)  
-[server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
-[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
-[server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
@@ -34606,7 +35123,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34630,6 +35147,114 @@ server/package.json
 [server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
 [server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
 [server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
+[server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
+[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
+[server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
+<a id="06182e69d9e00ffd2948ed20e3d2aef6"></a>
+server/package.json
+
+```
+{
+  "name": "frourio-app-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:server": "webpack --watch --mode=development",
+    "dev:frourio": "frourio --watch",
+    "dev:typeormer": "typeormer --watch",
+    "build": "npm run build:frourio && webpack --mode=production",
+    "build:frourio": "typeormer && frourio",
+    "migration:generate": "typeorm migration:generate -n Task",
+    "migration:run": "typeorm migration:run",
+    "migration:revert": "typeorm migration:revert",
+    "pm2:start": "pm2 start pm2.config.json --env production",
+    "pm2:stop": "pm2 stop pm2.config.json",
+    "pm2:delete": "pm2 delete pm2.config.json",
+    "pm2:logs": "pm2 logs",
+    "pm2:monit": "pm2 monit",
+    "start": "cross-env NODE_ENV=production node index.js"
+  },
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-cors": "^5.1.0",
+    "fastify-helmet": "^5.0.3",
+    "fastify-jwt": "^2.1.3",
+    "fastify-multipart": "^3.3.1",
+    "pg": "^8.5.1",
+    "fastify-static": "^3.3.0",
+    "pm2": "^4.5.0",
+    "typeorm": "^0.2.29",
+    "typeormer": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/busboy": "^0.2.3",
+    "@types/jest": "^26.0.19",
+    "cross-env": "^7.0.3",
+    "frourio": "^0.21.3",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+
+```
+
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
+[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
+[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
+[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
+[server/test/server.test.ts](#da028071c28e82ed4d40d75e449129ad)  
+[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-basic-axios-pm2-typeorm-postgres-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#4a3929ce884db04afd32360015b20e8b)  
+[server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
 [server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
 [server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
@@ -34699,57 +35324,6 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
-[server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
-[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
-[server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
-[server/test/server.test.ts](#da028071c28e82ed4d40d75e449129ad)  
-[server/tsconfig.json](#7fc19af9c0a734d5efb50bba32ab7dbe)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-basic-axios-pm2-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#c03066cb244bea5b12b70c08bfe45d8b)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#4a3929ce884db04afd32360015b20e8b)  
-[server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/entity/Task.ts](#dfde8f7379b3cd797193a13269717ed2)  
-[server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
-[server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
-[server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#38829c478595c7e745282ff60e7dc7b1)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/subscriber/TaskSubscriber.ts](#49e78bb6337e3b97204dd7266da6ecf6)  
@@ -34764,7 +35338,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-fetch-none-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34794,7 +35368,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -34811,7 +35385,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34843,7 +35417,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -34856,7 +35430,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34886,7 +35460,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -34907,7 +35481,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34956,7 +35530,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -34986,7 +35560,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -35007,7 +35581,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35056,7 +35630,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35086,7 +35660,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -35107,7 +35681,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35156,7 +35730,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35189,7 +35763,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -35207,7 +35781,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35256,7 +35830,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35289,7 +35863,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -35307,7 +35881,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35356,7 +35930,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35386,7 +35960,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -35404,7 +35978,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35437,7 +36011,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -35450,7 +36024,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35480,7 +36054,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -35502,7 +36076,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35552,7 +36126,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35582,7 +36156,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -35604,7 +36178,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35654,7 +36228,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35684,7 +36258,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -35706,7 +36280,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35756,7 +36330,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35789,7 +36363,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -35808,7 +36382,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35858,7 +36432,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35891,7 +36465,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -35910,7 +36484,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35960,7 +36534,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-axios-none-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -35990,7 +36564,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -36007,7 +36581,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36039,7 +36613,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -36052,7 +36626,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36082,7 +36656,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -36102,8 +36676,284 @@ server/package.json
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
+## fastify-next-static-axios-none-prisma-mysql-none-npm-actions
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+<a id="9ad58a456f2a597c7272db7c42728b59"></a>
+.github/workflows/nodejs.yml
+
+```
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-npm-cache
+        with:
+          path: "node_modules"
+          key: client-npm-${{ hashFiles('package-lock.json') }}
+      - uses: actions/cache@v2
+        id: server-npm-cache
+        with:
+          path: "server/node_modules"
+          key: server-npm-${{ hashFiles('server/package-lock.json') }}
+      - run: npm install
+        if: steps.client-npm-cache.outputs.cache-hit != 'true'
+      - run: npm install --prefix server
+        if: steps.server-npm-cache.outputs.cache-hit != 'true'
+      - run: npm run lint
+      - run: |
+          sudo systemctl start mysql.service
+          echo "DATABASE_URL=mysql://root:root@localhost:3306/test" > server/prisma/.env
+      - run: npm run typecheck
+
+```
+
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
+[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
+[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
+[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-static-axios-none-prisma-mysql-none-npm-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
+[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
+[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
+[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-static-axios-none-prisma-mysql-none-yarn-actions
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+<a id="25966b72a2ea18cd5d23d5717ad216fe"></a>
+.github/workflows/nodejs.yml
+
+```
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-yarn-cache
+        with:
+          path: "node_modules"
+          key: client-yarn-${{ hashFiles('yarn.lock') }}
+      - uses: actions/cache@v2
+        id: server-yarn-cache
+        with:
+          path: "server/node_modules"
+          key: server-yarn-${{ hashFiles('server/yarn.lock') }}
+      - run: yarn install
+        if: steps.client-yarn-cache.outputs.cache-hit != 'true'
+      - run: yarn install --cwd server
+        if: steps.server-yarn-cache.outputs.cache-hit != 'true'
+      - run: yarn lint
+      - run: |
+          sudo systemctl start mysql.service
+          echo "DATABASE_URL=mysql://root:root@localhost:3306/test" > server/prisma/.env
+      - run: yarn typecheck
+
+```
+
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
+[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
+[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
+[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-static-axios-none-prisma-mysql-none-yarn-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
+[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
+[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
+[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
+[server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
 ## fastify-next-static-axios-none-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36152,7 +37002,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36182,7 +37032,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -36203,7 +37053,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36252,7 +37102,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36282,7 +37132,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -36303,7 +37153,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36352,7 +37202,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36385,7 +37235,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -36403,7 +37253,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36452,7 +37302,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36485,7 +37335,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -36503,7 +37353,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36552,7 +37402,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36582,7 +37432,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -36600,7 +37450,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36633,7 +37483,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -36646,7 +37496,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36676,7 +37526,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -36698,7 +37548,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36748,7 +37598,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36778,7 +37628,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -36800,7 +37650,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36850,7 +37700,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36880,7 +37730,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -36902,7 +37752,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36952,7 +37802,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -36985,7 +37835,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -37004,7 +37854,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37054,7 +37904,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37087,7 +37937,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -37106,7 +37956,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37156,7 +38006,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-fetch-none-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37186,7 +38036,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -37203,7 +38053,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37235,7 +38085,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -37248,7 +38098,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37278,7 +38128,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -37299,7 +38149,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37348,7 +38198,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37378,7 +38228,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -37399,7 +38249,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37448,7 +38298,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37478,7 +38328,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -37499,7 +38349,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37548,7 +38398,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37581,7 +38431,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -37599,7 +38449,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37648,7 +38498,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37681,7 +38531,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -37699,7 +38549,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37748,7 +38598,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-none-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37778,7 +38628,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -37796,7 +38646,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-none-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37829,7 +38679,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -37842,7 +38692,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-prisma-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37872,7 +38722,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -37894,7 +38744,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-prisma-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37944,7 +38794,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-prisma-postgresql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -37974,7 +38824,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -37996,7 +38846,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-prisma-postgresql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -38046,7 +38896,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-prisma-sqlite-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -38076,7 +38926,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -38098,7 +38948,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-prisma-sqlite-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -38148,7 +38998,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-typeorm-mysql-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -38181,7 +39031,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -38200,7 +39050,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-typeorm-mysql-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -38250,7 +39100,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-typeorm-postgres-jest
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -38283,7 +39133,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -38302,7 +39152,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-typeorm-postgres-none
-[.eslintignore](#a0f969878e5b7c3cfddd4764f83f6487)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#8a9c5317ce1b16262fba09bc9e698aeb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
@@ -38387,7 +39237,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -38441,7 +39291,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -38488,7 +39338,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -38597,7 +39447,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -38706,7 +39556,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -38818,7 +39668,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -38927,7 +39777,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -39033,7 +39883,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -39089,7 +39939,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -39136,7 +39986,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -39247,7 +40097,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -39358,7 +40208,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -39472,7 +40322,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -39583,7 +40433,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -39691,7 +40541,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -39745,7 +40595,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -39792,7 +40642,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -39901,7 +40751,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -40010,7 +40860,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -40122,7 +40972,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -40231,7 +41081,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -40337,7 +41187,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -40393,7 +41243,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -40440,7 +41290,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -40551,7 +41401,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -40662,7 +41512,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -40776,7 +41626,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -40887,7 +41737,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -40995,7 +41845,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -41049,7 +41899,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -41096,7 +41946,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -41205,7 +42055,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -41314,7 +42164,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -41426,7 +42276,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -41535,7 +42385,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -41641,7 +42491,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -41697,7 +42547,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -41744,7 +42594,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -41855,7 +42705,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -41966,7 +42816,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -42080,7 +42930,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -42191,7 +43041,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -42299,7 +43149,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -42353,7 +43203,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -42400,7 +43250,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -42509,7 +43359,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -42618,7 +43468,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -42730,7 +43580,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -42839,7 +43689,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -42945,7 +43795,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -43001,7 +43851,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -43048,7 +43898,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -43159,7 +44009,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -43270,7 +44120,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -43384,7 +44234,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -43495,7 +44345,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -43603,7 +44453,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -43657,7 +44507,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -43704,7 +44554,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -43813,7 +44663,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -43922,7 +44772,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -44034,7 +44884,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -44143,7 +44993,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -44249,7 +45099,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -44305,7 +45155,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -44352,7 +45202,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -44463,7 +45313,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -44574,7 +45424,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -44688,7 +45538,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -44799,7 +45649,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -44907,7 +45757,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -44961,7 +45811,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -45008,7 +45858,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -45117,7 +45967,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -45226,7 +46076,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -45338,7 +46188,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -45447,7 +46297,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -45553,7 +46403,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -45609,7 +46459,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -45656,7 +46506,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -45767,7 +46617,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -45878,7 +46728,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -45992,7 +46842,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -46103,7 +46953,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -46211,7 +47061,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -46265,7 +47115,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -46312,7 +47162,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -46421,7 +47271,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -46530,7 +47380,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -46642,7 +47492,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -46751,7 +47601,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -46857,7 +47707,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -46913,7 +47763,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -46960,7 +47810,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -47071,7 +47921,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -47182,7 +48032,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -47296,7 +48146,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -47407,7 +48257,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -47515,7 +48365,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -47569,7 +48419,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -47616,7 +48466,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -47725,7 +48575,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -47834,7 +48684,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -47946,7 +48796,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -48055,7 +48905,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -48161,7 +49011,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -48217,7 +49067,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -48264,7 +49114,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -48375,7 +49225,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -48486,7 +49336,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -48600,7 +49450,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -48711,7 +49561,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -48808,7 +49658,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -48871,7 +49721,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -48928,7 +49778,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -49056,7 +49906,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -49184,7 +50034,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -49315,7 +50165,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -49443,7 +50293,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -49568,7 +50418,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -49633,7 +50483,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -49690,7 +50540,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -49820,7 +50670,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -49950,7 +50800,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -50083,7 +50933,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -50213,7 +51063,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -50340,7 +51190,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -50403,7 +51253,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -50460,7 +51310,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -50588,7 +51438,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -50716,7 +51566,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -50847,7 +51697,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -50975,7 +51825,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -51100,7 +51950,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -51165,7 +52015,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -51222,7 +52072,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -51352,7 +52202,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -51482,7 +52332,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -51615,7 +52465,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -51745,7 +52595,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -51872,7 +52722,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -51935,7 +52785,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -51992,7 +52842,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -52120,7 +52970,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -52248,7 +53098,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -52379,7 +53229,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -52507,7 +53357,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -52632,7 +53482,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -52697,7 +53547,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -52754,7 +53604,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -52884,7 +53734,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -53014,7 +53864,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -53147,7 +53997,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -53277,7 +54127,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -53404,7 +54254,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
+[server/package.json](#93c5772977bb0af61d3b1ff31ae4ed92)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
 [server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
@@ -53467,7 +54317,7 @@ server/package.json
 [server/package.json](#eecc661976ab3fb6e4f4e72427134ea0)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -53524,7 +54374,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
 [server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
@@ -53652,7 +54502,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
 [server/prisma/migrations/20201209205045_/migration.sql](#c65da7a7b0a737f884a6303eff2d1f7c)  
@@ -53780,7 +54630,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
@@ -53911,7 +54761,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#ba7521ba685e1508510a3fc6b5e24700)  
+[server/package.json](#d8e259912948de2d68ab34e82630fcf2)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -54039,7 +54889,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#c1eb216e23c4d605d4b71a42daf9a989)  
+[server/package.json](#7f1c7c41301ba6751254110b9d09c9cb)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
 [server/service/tasks.ts](#a7b3733ce9d973f69c3b6c3111ac950c)  
@@ -54164,7 +55014,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#841b57e12b81db56854045c513172c42)  
-[server/package.json](#32187024a32a57c9be70c69415866672)  
+[server/package.json](#43a7c5d9ea6ab2dccc7edb5af46ad993)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
@@ -54229,7 +55079,7 @@ server/package.json
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#fc6565768a40f2cfcb23b63aea4edc73)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
 [server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
@@ -54286,7 +55136,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
 [server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
@@ -54416,7 +55266,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#721a23573ae87c3862febbcb07afeab0)  
 [server/prisma/.env.example](#d724b31b6ffd16275792753821e484ed)  
@@ -54546,7 +55396,7 @@ server/package.json
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#e71db3e2fb4a5930bb21df81158d7d86)  
+[server/package.json](#638c223f34c7a44c078319c8354e3f3e)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
@@ -54679,7 +55529,7 @@ server/package.json
 [server/index.ts](#bf589341d62e36057b8cf7c6e3a62e5d)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#d75cae870eb7fef979edf506ab57a7a8)  
-[server/package.json](#c5ac76b2290577ed22c0a8377049a75e)  
+[server/package.json](#ab4268c704c63f72c352b25c0cfbc95a)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  
@@ -54809,7 +55659,7 @@ server/package.json
 [server/index.ts](#05477c24fb720cfea7fb9d21057286b3)  
 [server/migration/1591970905411-Task.ts](#538b621a2a42d0a972eb7bf3bd95ba50)  
 [server/ormconfig.ts](#6e55be9d81e16dd3416063eb7d9bc2f7)  
-[server/package.json](#427b75e1b855f116e91cb9f427458261)  
+[server/package.json](#06182e69d9e00ffd2948ed20e3d2aef6)  
 [server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#16f2163d2e8048c4d0589ea0b7696226)  

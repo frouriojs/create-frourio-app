@@ -1,4 +1,5 @@
 import 'reflect-metadata'
+import path from 'path'
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
