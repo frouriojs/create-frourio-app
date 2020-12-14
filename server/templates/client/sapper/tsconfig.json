@@ -6,6 +6,7 @@
 			"emitDecoratorMetadata": true,
 			"importsNotUsedAsValues": "remove",
 			"strictNullChecks": true<% if (testing === 'jest') { %>,
+			"resolveJsonModule": true,
 			"types": ["jest"]<% } %>,
 			"baseUrl": ".",
 			"paths": {

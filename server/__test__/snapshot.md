@@ -265,20 +265,23 @@ export default UserBanner
 
 ```
 
-<a id="115609a3d35fc16e8cdd4bbb9819e8e8"></a>
-jest.config.js
+<a id="1cc5d567ed84c2951e10b48b7524229f"></a>
+jest.config.ts
 
 ```
-const { pathsToModuleNameMapper } = require('ts-jest/utils')
-const { compilerOptions } = require('./tsconfig')
+import type { Config } from '@jest/types'
+import { pathsToModuleNameMapper } from 'ts-jest/utils'
+import { compilerOptions } from './tsconfig.json'
 
-module.exports = {
+const config: Config.InitialOptions = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/'
   })
 }
+
+export default config
 
 ```
 
@@ -291,7 +294,7 @@ next-env.d.ts
 
 ```
 
-<a id="1280de908b5628e1c51bc84a44a5aac8"></a>
+<a id="6e0cce81ff38c2d9d397213700e1b5d0"></a>
 package.json
 
 ```
@@ -343,6 +346,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -1451,9 +1455,9 @@ export const deleteTask = async (id: Task['id']) => {
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="c32a740a1e06d9cc715aec591da067c5"></a>
+<a id="c54a6c39fc9cbd63eddc3b5bda15fc1c"></a>
 package.json
 
 ```
@@ -1508,6 +1512,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -1801,13 +1806,13 @@ model Task {
 
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-<a id="69e6d60d10c534b0f27eb479f891fb98"></a>
+<a id="6d911205eb1c2a06a2a59737398e51bd"></a>
 server/service/tasks.ts
 
 ```
+import { depend } from 'velona'
 import { PrismaClient } from '@prisma/client'
 import { Task, Prisma } from '$prisma/client'
-import { depend } from 'velona'
 
 const prisma = new PrismaClient()
 
@@ -2119,9 +2124,9 @@ export const deleteTask = (id: Task['id']) =>
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2195,7 +2200,7 @@ model Task {
 
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -2267,9 +2272,9 @@ model Task {
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2341,7 +2346,7 @@ model Task {
 
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -2413,9 +2418,9 @@ model Task {
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="d6691b631d095518547a74d1a1232e31"></a>
+<a id="4985c1a6d21d47ed806a1c7ff84a7477"></a>
 package.json
 
 ```
@@ -2470,6 +2475,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -3027,9 +3033,9 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d6691b631d095518547a74d1a1232e31)  
+[package.json](#4985c1a6d21d47ed806a1c7ff84a7477)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3291,9 +3297,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#1280de908b5628e1c51bc84a44a5aac8)  
+[package.json](#6e0cce81ff38c2d9d397213700e1b5d0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3449,9 +3455,9 @@ server/pm2.config.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3534,7 +3540,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -3607,9 +3613,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3636,7 +3642,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -3709,9 +3715,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3738,7 +3744,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -3811,9 +3817,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d6691b631d095518547a74d1a1232e31)  
+[package.json](#4985c1a6d21d47ed806a1c7ff84a7477)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3971,9 +3977,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d6691b631d095518547a74d1a1232e31)  
+[package.json](#4985c1a6d21d47ed806a1c7ff84a7477)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4131,9 +4137,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="fd4c48d5dee50a0ccb921e4a27b58d04"></a>
+<a id="7b5791fbe9f7d3147e0c20adbb42f509"></a>
 package.json
 
 ```
@@ -4184,6 +4190,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -4341,9 +4348,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="7d2cce4cc195e0a65455ab7e9edee3d2"></a>
+<a id="ec7481aa2df11ff9606d3c6ec1e6ea89"></a>
 package.json
 
 ```
@@ -4397,6 +4404,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -4428,7 +4436,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -4555,9 +4563,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4583,7 +4591,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -4655,9 +4663,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4683,7 +4691,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -4755,9 +4763,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="a3391385de1901ff42d2fc53836f8904"></a>
+<a id="c90217c61b37063a0aebb9366247664c"></a>
 package.json
 
 ```
@@ -4811,6 +4819,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -4969,9 +4978,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#a3391385de1901ff42d2fc53836f8904)  
+[package.json](#c90217c61b37063a0aebb9366247664c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5069,9 +5078,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#fd4c48d5dee50a0ccb921e4a27b58d04)  
+[package.json](#7b5791fbe9f7d3147e0c20adbb42f509)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5163,9 +5172,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5192,7 +5201,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -5265,9 +5274,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5294,7 +5303,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -5367,9 +5376,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5396,7 +5405,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -5469,9 +5478,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#a3391385de1901ff42d2fc53836f8904)  
+[package.json](#c90217c61b37063a0aebb9366247664c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5571,9 +5580,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#a3391385de1901ff42d2fc53836f8904)  
+[package.json](#c90217c61b37063a0aebb9366247664c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5673,9 +5682,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="f89e940e02b85afdd52aa53c12b88edf"></a>
+<a id="041149e854529a0f1b379bf698b33f86"></a>
 package.json
 
 ```
@@ -5727,6 +5736,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -5875,9 +5885,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="8d1bcba760b3b6d1a0ab16ea8058fb38"></a>
+<a id="d27565e120678827141308887891c08f"></a>
 package.json
 
 ```
@@ -5932,6 +5942,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -5963,7 +5974,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -6091,9 +6102,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6119,7 +6130,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -6191,9 +6202,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6219,7 +6230,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -6291,9 +6302,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="d0020108bd3404c5d15cc5e0b91ccc35"></a>
+<a id="6d11e62c65fa701de296ef05e73342bb"></a>
 package.json
 
 ```
@@ -6348,6 +6359,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -6507,9 +6519,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
+[package.json](#6d11e62c65fa701de296ef05e73342bb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6607,9 +6619,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#f89e940e02b85afdd52aa53c12b88edf)  
+[package.json](#041149e854529a0f1b379bf698b33f86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6701,9 +6713,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6730,7 +6742,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -6803,9 +6815,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6832,7 +6844,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -6905,9 +6917,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6934,7 +6946,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -7007,9 +7019,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
+[package.json](#6d11e62c65fa701de296ef05e73342bb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7109,9 +7121,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
+[package.json](#6d11e62c65fa701de296ef05e73342bb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7211,9 +7223,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="29f5b60381d773445ae040a56930abae"></a>
+<a id="3d692d6176f780940f801422bf3d3944"></a>
 package.json
 
 ```
@@ -7264,6 +7276,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -7411,9 +7424,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="b636ba8d2fcc6353f03a0407915ea890"></a>
+<a id="897959fc88371c43c133cf3db790c8e6"></a>
 package.json
 
 ```
@@ -7467,6 +7480,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -7498,7 +7512,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -7625,9 +7639,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7653,7 +7667,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -7725,9 +7739,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7753,7 +7767,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -7825,9 +7839,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="e24946ab21abc4fd878b3a57a691c916"></a>
+<a id="8bd514871af775e79c2bd987522b22cb"></a>
 package.json
 
 ```
@@ -7881,6 +7895,7 @@ package.json
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -8039,9 +8054,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e24946ab21abc4fd878b3a57a691c916)  
+[package.json](#8bd514871af775e79c2bd987522b22cb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8139,9 +8154,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#29f5b60381d773445ae040a56930abae)  
+[package.json](#3d692d6176f780940f801422bf3d3944)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8233,9 +8248,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8262,7 +8277,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -8335,9 +8350,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8364,7 +8379,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -8437,9 +8452,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8466,7 +8481,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -8539,9 +8554,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e24946ab21abc4fd878b3a57a691c916)  
+[package.json](#8bd514871af775e79c2bd987522b22cb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8641,9 +8656,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e24946ab21abc4fd878b3a57a691c916)  
+[package.json](#8bd514871af775e79c2bd987522b22cb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9076,7 +9091,7 @@ export default Vue.extend({
 
 ```
 
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 <a id="8d732ee92163eccca703801c304eb29c"></a>
 layouts/default.vue
 
@@ -9160,23 +9175,16 @@ More information about the usage of this directory in [the documentation](https:
 
 ```
 
-<a id="8310e0daf87628c79fd60f857497521b"></a>
+<a id="4f7145e6f9d1ea320c25a9062aef05fa"></a>
 nuxt.config.ts
 
 ```
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'spa',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
-  target: 'server',
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
   /*
    ** Nuxt telemetry
    ** See https://nuxtjs.org/api/configuration-telemetry
@@ -9255,7 +9263,7 @@ export default config
 
 ```
 
-<a id="a9edcab5ae36a94d9fbb408ba32dd649"></a>
+<a id="5ff251f5fd3989df74e6828240922a08"></a>
 package.json
 
 ```
@@ -9269,7 +9277,7 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && nuxt-ts build",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
@@ -9321,6 +9329,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -9533,7 +9542,7 @@ module.exports = {
 
 ```
 
-<a id="f1b394beb718db0650a1a1637b663457"></a>
+<a id="beeb426be1b96f73fceafd3202e66c99"></a>
 tsconfig.json
 
 ```
@@ -9551,6 +9560,7 @@ tsconfig.json
     "noEmit": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
@@ -9580,8 +9590,8 @@ tsconfig.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-<a id="abf0c9431ad17a8d4f96c6ed6232306f"></a>
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+<a id="31669e50434fddec167e367a88174728"></a>
 package.json
 
 ```
@@ -9595,7 +9605,7 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && nuxt-ts build",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
@@ -9677,7 +9687,37 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+<a id="f1b394beb718db0650a1a1637b663457"></a>
+tsconfig.json
+
+```
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "$/*": ["./server/*"]
+    },
+    "types": ["@types/node", "@nuxt/types", "@nuxtjs/axios"]
+  },
+  "exclude": ["node_modules", "server"]
+}
+
+```
+
 
 ## express-nuxt-spa-server-axios-none-prisma-mysql-jest
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -9692,11 +9732,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-<a id="3ea603e62924efdc1867085d6fcf7a46"></a>
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+<a id="cfb4ab8e5cc50e18b554dfbc916de14d"></a>
 package.json
 
 ```
@@ -9710,9 +9750,9 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && prisma generate --schema server/prisma/schema.prisma && nuxt-ts build",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida && prisma generate --schema server/prisma/schema.prisma && npm run build:frourio --prefix server",
+    "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
@@ -9765,6 +9805,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -9906,7 +9947,7 @@ export default Vue.extend({
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -9916,7 +9957,7 @@ export default Vue.extend({
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-<a id="498a5ae4c1b6ea94086878a66c4442fe"></a>
+<a id="86960f4d04de120d72640fb0181b63e2"></a>
 tsconfig.json
 
 ```
@@ -9934,6 +9975,7 @@ tsconfig.json
     "noEmit": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
@@ -9964,8 +10006,8 @@ tsconfig.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-<a id="df22bcac526dc3a6db306867632bd831"></a>
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+<a id="ab3886bc76d0317e78d0cfa21b69cbf0"></a>
 package.json
 
 ```
@@ -9979,9 +10021,9 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && prisma generate --schema server/prisma/schema.prisma && nuxt-ts build",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida && prisma generate --schema server/prisma/schema.prisma && npm run build:frourio --prefix server",
+    "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
@@ -10068,7 +10110,38 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+<a id="498a5ae4c1b6ea94086878a66c4442fe"></a>
+tsconfig.json
+
+```
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "$/*": ["./server/*"],
+      "$prisma/*": ["./server/node_modules/.prisma/*"]
+    },
+    "types": ["@types/node", "@nuxt/types", "@nuxtjs/axios"]
+  },
+  "exclude": ["node_modules", "server"]
+}
+
+```
+
 
 ## express-nuxt-spa-server-axios-none-prisma-postgresql-jest
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -10083,11 +10156,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10111,7 +10184,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -10121,7 +10194,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-server-axios-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -10138,8 +10211,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10187,11 +10260,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10215,7 +10288,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -10225,7 +10298,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-server-axios-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -10242,8 +10315,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10291,11 +10364,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-<a id="91ef7fdc59f3c348f1a63c687400bd08"></a>
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+<a id="f17daf936c2efec5c6200519f97a8ce5"></a>
 package.json
 
 ```
@@ -10309,7 +10382,7 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && nuxt-ts build",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
@@ -10364,6 +10437,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -10403,7 +10477,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-server-axios-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -10420,8 +10494,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-<a id="8d3916bdd24f6ac2400ec623f51e57d9"></a>
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+<a id="06178d4be0d06fd30b76bac79e2541de"></a>
 package.json
 
 ```
@@ -10435,7 +10509,7 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && nuxt-ts build",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
@@ -10539,11 +10613,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -10577,7 +10651,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-server-axios-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -10594,8 +10668,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -10643,11 +10717,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#5ff251f5fd3989df74e6828240922a08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10678,7 +10752,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-server-axios-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -10695,8 +10769,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#31669e50434fddec167e367a88174728)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10741,11 +10815,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10770,7 +10844,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -10780,7 +10854,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-server-axios-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -10797,8 +10871,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10847,11 +10921,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10876,7 +10950,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -10886,7 +10960,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-server-axios-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -10903,8 +10977,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10953,11 +11027,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -10982,7 +11056,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -10992,7 +11066,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-server-axios-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -11009,8 +11083,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -11059,11 +11133,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -11098,7 +11172,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-server-axios-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -11115,8 +11189,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -11165,11 +11239,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -11204,7 +11278,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-server-axios-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -11221,8 +11295,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -11271,26 +11345,19 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-<a id="6f23d1f86fb4059dccfe701d2d832ca1"></a>
+<a id="0cea09137530a619a69a5ab55b3a9da4"></a>
 nuxt.config.ts
 
 ```
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'spa',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
-  target: 'server',
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
   /*
    ** Nuxt telemetry
    ** See https://nuxtjs.org/api/configuration-telemetry
@@ -11359,7 +11426,7 @@ export default config
 
 ```
 
-<a id="dab2d3a8a39277e4bd42bfbec296f4a5"></a>
+<a id="78f0a741cb1a541b793d421e4ec42da2"></a>
 package.json
 
 ```
@@ -11373,7 +11440,7 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && nuxt-ts build",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
@@ -11426,6 +11493,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -11505,7 +11573,7 @@ export default plugin
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-<a id="046561fe1f5260a7b870482da916f1d9"></a>
+<a id="3d8b5c8df591573c763c7ad551b3fd11"></a>
 tsconfig.json
 
 ```
@@ -11523,6 +11591,7 @@ tsconfig.json
     "noEmit": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
@@ -11552,8 +11621,8 @@ tsconfig.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-<a id="4f8f1ae039daeb3f260111271b4585e3"></a>
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+<a id="ed5e6f861eddfa7b5e30234da3850a96"></a>
 package.json
 
 ```
@@ -11567,7 +11636,7 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && nuxt-ts build",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
@@ -11650,7 +11719,37 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+<a id="046561fe1f5260a7b870482da916f1d9"></a>
+tsconfig.json
+
+```
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "$/*": ["./server/*"]
+    },
+    "types": ["@types/node", "@nuxt/types"]
+  },
+  "exclude": ["node_modules", "server"]
+}
+
+```
+
 
 ## express-nuxt-spa-server-fetch-none-prisma-mysql-jest
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -11665,11 +11764,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-<a id="9d4fcb435acd161c330e7bcf7a29af81"></a>
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+<a id="e40a03cfc2dd92f3306240c17f4ae53d"></a>
 package.json
 
 ```
@@ -11683,9 +11782,9 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && prisma generate --schema server/prisma/schema.prisma && nuxt-ts build",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida && prisma generate --schema server/prisma/schema.prisma && npm run build:frourio --prefix server",
+    "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
@@ -11739,6 +11838,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -11768,7 +11868,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -11778,7 +11878,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-<a id="03020452cfefd6b88feb9688f7859d33"></a>
+<a id="cc0d1bc71b5405a3a39c21c9dd925531"></a>
 tsconfig.json
 
 ```
@@ -11796,6 +11896,7 @@ tsconfig.json
     "noEmit": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
@@ -11826,8 +11927,8 @@ tsconfig.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-<a id="13b807b8b49d9dc9edbfb07abc53f4dd"></a>
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+<a id="ba0ef8d35026108c0894b4ba4e685b0a"></a>
 package.json
 
 ```
@@ -11841,9 +11942,9 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && prisma generate --schema server/prisma/schema.prisma && nuxt-ts build",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida && prisma generate --schema server/prisma/schema.prisma && npm run build:frourio --prefix server",
+    "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
@@ -11931,7 +12032,38 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+<a id="03020452cfefd6b88feb9688f7859d33"></a>
+tsconfig.json
+
+```
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "$/*": ["./server/*"],
+      "$prisma/*": ["./server/node_modules/.prisma/*"]
+    },
+    "types": ["@types/node", "@nuxt/types"]
+  },
+  "exclude": ["node_modules", "server"]
+}
+
+```
+
 
 ## express-nuxt-spa-server-fetch-none-prisma-postgresql-jest
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -11946,11 +12078,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -11974,7 +12106,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -11984,7 +12116,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-server-fetch-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -12001,8 +12133,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12050,11 +12182,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12078,7 +12210,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -12088,7 +12220,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-server-fetch-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -12105,8 +12237,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12154,11 +12286,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-<a id="4b32ca8fb9dc07ad91aeff69bef69770"></a>
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+<a id="d3a3e49cc5d433761dd3f6dd97d4104e"></a>
 package.json
 
 ```
@@ -12172,7 +12304,7 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && nuxt-ts build",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
@@ -12228,6 +12360,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -12267,7 +12400,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-server-fetch-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -12284,8 +12417,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-<a id="537cbe0c4d2734369bf27bad9bb85776"></a>
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+<a id="52591c8829c631b70bfba8d705a50a0c"></a>
 package.json
 
 ```
@@ -12299,7 +12432,7 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && nuxt-ts build",
     "build:server": "npm run build --prefix server",
     "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
@@ -12404,11 +12537,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -12442,7 +12575,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-server-fetch-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -12459,8 +12592,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -12508,11 +12641,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#78f0a741cb1a541b793d421e4ec42da2)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12543,7 +12676,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-server-fetch-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -12560,8 +12693,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ed5e6f861eddfa7b5e30234da3850a96)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12606,11 +12739,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12635,7 +12768,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -12645,7 +12778,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-server-fetch-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -12662,8 +12795,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12712,11 +12845,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12741,7 +12874,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -12751,7 +12884,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-server-fetch-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -12768,8 +12901,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12818,11 +12951,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12847,7 +12980,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -12857,7 +12990,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-server-fetch-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -12874,8 +13007,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -12924,11 +13057,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -12963,7 +13096,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-server-fetch-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -12980,8 +13113,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -13030,11 +13163,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -13069,7 +13202,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-server-fetch-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -13086,8 +13219,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -13136,26 +13269,22 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-<a id="632e6150c605dff590fb445809c27248"></a>
+<a id="e0b6818f492846c1b30ddb02fb6b0f3d"></a>
 nuxt.config.ts
 
 ```
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'spa',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
+  // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
   /*
    ** Nuxt telemetry
    ** See https://nuxtjs.org/api/configuration-telemetry
@@ -13234,7 +13363,7 @@ export default config
 
 ```
 
-<a id="85f7ce3325956ba8e042d36111cfd0df"></a>
+<a id="11d1d002127fa24a4b3db67875ce7350"></a>
 package.json
 
 ```
@@ -13300,6 +13429,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -13335,7 +13465,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-static-axios-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -13352,7 +13482,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 <a id="81fad4fc41bb1bce956ff0ffeed395dc"></a>
 package.json
 
@@ -13464,11 +13594,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-<a id="78aae05778510b5af67ac47b53417adb"></a>
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+<a id="378f589813433cdf7dcd69379032a089"></a>
 package.json
 
 ```
@@ -13482,9 +13612,9 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && prisma generate --schema server/prisma/schema.prisma && nuxt-ts generate",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida && prisma generate --schema server/prisma/schema.prisma && npm run build:frourio --prefix server",
+    "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
@@ -13537,6 +13667,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -13566,7 +13697,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -13576,7 +13707,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-static-axios-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -13593,8 +13724,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-<a id="7a30e8933a56d287bf613d94a90d7f61"></a>
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+<a id="9bcde73f83d538f8b2fc8c0b8036b941"></a>
 package.json
 
 ```
@@ -13608,9 +13739,9 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && prisma generate --schema server/prisma/schema.prisma && nuxt-ts generate",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida && prisma generate --schema server/prisma/schema.prisma && npm run build:frourio --prefix server",
+    "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
@@ -13712,11 +13843,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -13740,7 +13871,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -13750,7 +13881,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-static-axios-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -13767,8 +13898,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -13816,11 +13947,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -13844,7 +13975,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -13854,7 +13985,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-static-axios-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -13871,8 +14002,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -13920,11 +14051,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-<a id="7baf15d54a4f3f06d9513cdc56e523e3"></a>
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+<a id="c4706e6a7cc0adbf502a538f87da5b88"></a>
 package.json
 
 ```
@@ -13993,6 +14124,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -14032,7 +14164,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-static-axios-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -14049,7 +14181,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 <a id="9c22e94f982bc921080aaad089f9cb4b"></a>
 package.json
 
@@ -14168,11 +14300,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -14206,7 +14338,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-static-axios-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -14223,7 +14355,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -14272,11 +14404,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#11d1d002127fa24a4b3db67875ce7350)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14307,7 +14439,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-static-axios-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -14324,7 +14456,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 [package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -14370,11 +14502,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14399,7 +14531,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -14409,7 +14541,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-static-axios-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -14426,8 +14558,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14476,11 +14608,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14505,7 +14637,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -14515,7 +14647,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-static-axios-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -14532,8 +14664,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14582,11 +14714,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14611,7 +14743,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -14621,7 +14753,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-spa-static-axios-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -14638,8 +14770,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -14688,11 +14820,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -14727,7 +14859,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-static-axios-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -14744,7 +14876,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -14794,11 +14926,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -14833,7 +14965,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-spa-static-axios-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -14850,7 +14982,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -14900,26 +15032,22 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-<a id="a1be4f2d2b5d012b7ff3b919b970fb95"></a>
+<a id="558529e7da81016fb455425d480d8a50"></a>
 nuxt.config.ts
 
 ```
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'spa',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
+  // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
   /*
    ** Nuxt telemetry
    ** See https://nuxtjs.org/api/configuration-telemetry
@@ -14988,7 +15116,7 @@ export default config
 
 ```
 
-<a id="5da0048e8adc9605cc0dbb21257409e6"></a>
+<a id="96e56f51a9bf032a086d92139ffaf064"></a>
 package.json
 
 ```
@@ -15055,6 +15183,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -15090,7 +15219,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-static-fetch-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -15107,7 +15236,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 <a id="b694ff22ecbfe50ed08c546450fc4416"></a>
 package.json
 
@@ -15220,11 +15349,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-<a id="4ce8f3bf0872ff96b5d99aee691db5a4"></a>
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+<a id="858137a6b5972eeb9bd0446050f7283e"></a>
 package.json
 
 ```
@@ -15238,9 +15367,9 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && prisma generate --schema server/prisma/schema.prisma && nuxt-ts generate",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida && prisma generate --schema server/prisma/schema.prisma && npm run build:frourio --prefix server",
+    "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
@@ -15294,6 +15423,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -15323,7 +15453,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -15333,7 +15463,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-static-fetch-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -15350,8 +15480,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-<a id="ad31dec2396b06bcfba111182893d8a3"></a>
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+<a id="0ec666822917c8d4312b562652f2167c"></a>
 package.json
 
 ```
@@ -15365,9 +15495,9 @@ package.json
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida && prisma generate --schema server/prisma/schema.prisma && nuxt-ts generate",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida && prisma generate --schema server/prisma/schema.prisma && npm run build:frourio --prefix server",
+    "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
@@ -15470,11 +15600,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -15498,7 +15628,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -15508,7 +15638,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-static-fetch-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -15525,8 +15655,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -15574,11 +15704,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -15602,7 +15732,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -15612,7 +15742,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-static-fetch-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -15629,8 +15759,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -15678,11 +15808,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-<a id="aaddc1c76dd061a18fa0ecdddbe6c525"></a>
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+<a id="e34dd83734d40b123bbf783c7e779384"></a>
 package.json
 
 ```
@@ -15752,6 +15882,7 @@ package.json
     "stylelint": "^13.8.0",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
@@ -15791,7 +15922,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-static-fetch-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -15808,7 +15939,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 <a id="1a5fda516c27f68758251d139a19df61"></a>
 package.json
 
@@ -15928,11 +16059,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -15966,7 +16097,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-static-fetch-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -15983,7 +16114,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -16032,11 +16163,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#96e56f51a9bf032a086d92139ffaf064)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16067,7 +16198,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-static-fetch-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -16084,7 +16215,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 [package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -16130,11 +16261,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16159,7 +16290,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -16169,7 +16300,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-static-fetch-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -16186,8 +16317,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16236,11 +16367,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16265,7 +16396,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -16275,7 +16406,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-static-fetch-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -16292,8 +16423,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16342,11 +16473,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16371,7 +16502,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -16381,7 +16512,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-spa-static-fetch-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -16398,8 +16529,8 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16448,11 +16579,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -16487,7 +16618,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-static-fetch-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -16504,7 +16635,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -16554,11 +16685,11 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -16593,7 +16724,7 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-spa-static-fetch-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -16610,7 +16741,7 @@ package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -16660,26 +16791,16 @@ package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-<a id="911ccda0d9155922d92a49e2aa3f708d"></a>
+<a id="d03b67e06fec0f63e1bd4417033d0582"></a>
 nuxt.config.ts
 
 ```
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'universal',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
-  target: 'server',
   /*
    ** Nuxt telemetry
    ** See https://nuxtjs.org/api/configuration-telemetry
@@ -16758,7 +16879,7 @@ export default config
 
 ```
 
-[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
+[package.json](#5ff251f5fd3989df74e6828240922a08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16788,7 +16909,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-server-axios-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -16805,8 +16926,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#31669e50434fddec167e367a88174728)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16850,11 +16971,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16878,7 +16999,7 @@ export default config
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -16888,7 +17009,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-server-axios-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -16905,8 +17026,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16954,11 +17075,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -16982,7 +17103,7 @@ export default config
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -16992,7 +17113,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-server-axios-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -17009,8 +17130,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17058,11 +17179,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17086,7 +17207,7 @@ export default config
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -17096,7 +17217,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-server-axios-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -17113,8 +17234,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17162,11 +17283,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -17200,7 +17321,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-server-axios-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -17217,8 +17338,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -17266,11 +17387,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -17304,7 +17425,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-server-axios-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -17321,8 +17442,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -17370,11 +17491,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#5ff251f5fd3989df74e6828240922a08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17405,7 +17526,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-server-axios-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -17422,8 +17543,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#31669e50434fddec167e367a88174728)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17468,11 +17589,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17497,7 +17618,7 @@ export default config
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -17507,7 +17628,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-server-axios-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -17524,8 +17645,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17574,11 +17695,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17603,7 +17724,7 @@ export default config
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -17613,7 +17734,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-server-axios-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -17630,8 +17751,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17680,11 +17801,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17709,7 +17830,7 @@ export default config
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -17719,7 +17840,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-server-axios-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -17736,8 +17857,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -17786,11 +17907,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -17825,7 +17946,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-server-axios-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -17842,8 +17963,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -17892,11 +18013,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -17931,7 +18052,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-server-axios-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -17948,8 +18069,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -17998,26 +18119,16 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-<a id="6c51d1c64335ab5c1feca8698f3f135d"></a>
+<a id="1bc60a310b06af85fa258b3cd40c5f23"></a>
 nuxt.config.ts
 
 ```
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'universal',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
-  target: 'server',
   /*
    ** Nuxt telemetry
    ** See https://nuxtjs.org/api/configuration-telemetry
@@ -18086,7 +18197,7 @@ export default config
 
 ```
 
-[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
+[package.json](#78f0a741cb1a541b793d421e4ec42da2)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18116,7 +18227,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-server-fetch-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -18133,8 +18244,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ed5e6f861eddfa7b5e30234da3850a96)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18178,11 +18289,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18206,7 +18317,7 @@ export default config
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -18216,7 +18327,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-server-fetch-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -18233,8 +18344,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18282,11 +18393,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18310,7 +18421,7 @@ export default config
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -18320,7 +18431,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-server-fetch-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -18337,8 +18448,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18386,11 +18497,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18414,7 +18525,7 @@ export default config
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -18424,7 +18535,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-server-fetch-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -18441,8 +18552,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18490,11 +18601,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -18528,7 +18639,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-server-fetch-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -18545,8 +18656,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -18594,11 +18705,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -18632,7 +18743,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-server-fetch-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -18649,8 +18760,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -18698,11 +18809,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#78f0a741cb1a541b793d421e4ec42da2)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18733,7 +18844,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-server-fetch-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -18750,8 +18861,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ed5e6f861eddfa7b5e30234da3850a96)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18796,11 +18907,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18825,7 +18936,7 @@ export default config
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -18835,7 +18946,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-server-fetch-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -18852,8 +18963,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18902,11 +19013,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -18931,7 +19042,7 @@ export default config
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -18941,7 +19052,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-server-fetch-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -18958,8 +19069,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19008,11 +19119,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19037,7 +19148,7 @@ export default config
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -19047,7 +19158,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-server-fetch-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -19064,8 +19175,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19114,11 +19225,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -19153,7 +19264,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-server-fetch-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -19170,8 +19281,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -19220,11 +19331,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -19259,7 +19370,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-server-fetch-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -19276,8 +19387,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -19326,26 +19437,19 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-<a id="98e411a44e41b07c3a8c8af6ffe2ca36"></a>
+<a id="abcd2d74ecaa3ca046329b769ab3cf0d"></a>
 nuxt.config.ts
 
 ```
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'universal',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
+  // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
   /*
    ** Nuxt telemetry
    ** See https://nuxtjs.org/api/configuration-telemetry
@@ -19424,7 +19528,7 @@ export default config
 
 ```
 
-[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
+[package.json](#11d1d002127fa24a4b3db67875ce7350)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19454,7 +19558,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-static-axios-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -19471,7 +19575,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -19516,11 +19620,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19544,7 +19648,7 @@ export default config
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -19554,7 +19658,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-static-axios-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -19571,8 +19675,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19620,11 +19724,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19648,7 +19752,7 @@ export default config
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -19658,7 +19762,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-static-axios-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -19675,8 +19779,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19724,11 +19828,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19752,7 +19856,7 @@ export default config
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -19762,7 +19866,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-static-axios-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -19779,8 +19883,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -19828,11 +19932,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -19866,7 +19970,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-static-axios-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -19883,7 +19987,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -19932,11 +20036,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -19970,7 +20074,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-static-axios-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -19987,7 +20091,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -20036,11 +20140,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#11d1d002127fa24a4b3db67875ce7350)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20071,7 +20175,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-static-axios-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -20088,7 +20192,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -20134,11 +20238,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20163,7 +20267,7 @@ export default config
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -20173,7 +20277,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-static-axios-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -20190,8 +20294,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20240,11 +20344,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20269,7 +20373,7 @@ export default config
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -20279,7 +20383,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-static-axios-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -20296,8 +20400,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20346,11 +20450,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20375,7 +20479,7 @@ export default config
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -20385,7 +20489,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## express-nuxt-universal-static-axios-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -20402,8 +20506,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20452,11 +20556,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -20491,7 +20595,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-static-axios-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -20508,7 +20612,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -20558,11 +20662,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -20597,7 +20701,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## express-nuxt-universal-static-axios-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -20614,7 +20718,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -20664,26 +20768,19 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-<a id="704e5fe55e8cfbdeb17b3bad040f2d37"></a>
+<a id="2aefde18b4418c67c8deb58fa35dd172"></a>
 nuxt.config.ts
 
 ```
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'universal',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
+  // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
   /*
    ** Nuxt telemetry
    ** See https://nuxtjs.org/api/configuration-telemetry
@@ -20752,7 +20849,7 @@ export default config
 
 ```
 
-[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
+[package.json](#96e56f51a9bf032a086d92139ffaf064)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20782,7 +20879,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-static-fetch-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -20799,7 +20896,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -20844,11 +20941,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20872,7 +20969,7 @@ export default config
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -20882,7 +20979,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-static-fetch-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -20899,8 +20996,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20948,11 +21045,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -20976,7 +21073,7 @@ export default config
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -20986,7 +21083,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-static-fetch-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -21003,8 +21100,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21052,11 +21149,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21080,7 +21177,7 @@ export default config
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -21090,7 +21187,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-static-fetch-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -21107,8 +21204,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21156,11 +21253,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -21194,7 +21291,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-static-fetch-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -21211,7 +21308,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -21260,11 +21357,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -21298,7 +21395,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-static-fetch-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -21315,7 +21412,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -21364,11 +21461,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#96e56f51a9bf032a086d92139ffaf064)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21399,7 +21496,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-static-fetch-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -21416,7 +21513,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -21462,11 +21559,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21491,7 +21588,7 @@ export default config
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -21501,7 +21598,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-static-fetch-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -21518,8 +21615,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21568,11 +21665,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21597,7 +21694,7 @@ export default config
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -21607,7 +21704,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-static-fetch-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -21624,8 +21721,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21674,11 +21771,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21703,7 +21800,7 @@ export default config
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -21713,7 +21810,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## express-nuxt-universal-static-fetch-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -21730,8 +21827,8 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -21780,11 +21877,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -21819,7 +21916,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-static-fetch-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -21836,7 +21933,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -21886,11 +21983,11 @@ export default config
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -21925,7 +22022,7 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## express-nuxt-universal-static-fetch-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -21942,7 +22039,7 @@ export default config
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -22168,8 +22265,8 @@ Sapper is in early development, and may have the odd rough edge here and there. 
 ```
 
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="563ac613cc3e59bcdf94ed0fa11b96b5"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="e094701ba663fe13411a8be79d788532"></a>
 package.json
 
 ```
@@ -22241,6 +22338,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -23429,7 +23527,7 @@ static/manifest.json
 
 ```
 
-<a id="8389807240c92093ac8db61193a51f3a"></a>
+<a id="334571a7ea3ca5e8a5e4ccbc4217e0c4"></a>
 tsconfig.json
 
 ```
@@ -23441,6 +23539,7 @@ tsconfig.json
 			"emitDecoratorMetadata": true,
 			"importsNotUsedAsValues": "remove",
 			"strictNullChecks": true,
+			"resolveJsonModule": true,
 			"types": ["jest"],
 			"baseUrl": ".",
 			"paths": {
@@ -23641,8 +23740,8 @@ tsconfig.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="9ed03446f5a01ebfdc47a81828255ace"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="f875fc9dac5d0f60f7c66eccc25bdba8"></a>
 package.json
 
 ```
@@ -23717,6 +23816,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -23748,7 +23848,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -23919,7 +24019,7 @@ src/routes/index.svelte
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-<a id="e995839a1c17eff7c35897c6b313630d"></a>
+<a id="dac9c5c1588d43ce74cf74c71e172dbe"></a>
 tsconfig.json
 
 ```
@@ -23931,6 +24031,7 @@ tsconfig.json
 			"emitDecoratorMetadata": true,
 			"importsNotUsedAsValues": "remove",
 			"strictNullChecks": true,
+			"resolveJsonModule": true,
 			"types": ["jest"],
 			"baseUrl": ".",
 			"paths": {
@@ -24111,8 +24212,8 @@ tsconfig.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24138,7 +24239,7 @@ tsconfig.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -24169,7 +24270,7 @@ tsconfig.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-axios-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24239,8 +24340,8 @@ tsconfig.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24266,7 +24367,7 @@ tsconfig.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -24297,7 +24398,7 @@ tsconfig.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-axios-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24367,8 +24468,8 @@ tsconfig.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="bb73a378464fe0b31ae71b229fc346c4"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="436cdce2e773f2cef47da62f95c7764c"></a>
 package.json
 
 ```
@@ -24443,6 +24544,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -24505,7 +24607,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-axios-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24650,8 +24752,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#436cdce2e773f2cef47da62f95c7764c)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -24708,7 +24810,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-axios-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24778,8 +24880,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#563ac613cc3e59bcdf94ed0fa11b96b5)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#e094701ba663fe13411a8be79d788532)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24833,7 +24935,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-axios-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -24900,8 +25002,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -24928,7 +25030,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -24959,7 +25061,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-axios-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25030,8 +25132,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -25058,7 +25160,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -25089,7 +25191,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-axios-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25160,8 +25262,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -25188,7 +25290,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -25219,7 +25321,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-axios-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25290,8 +25392,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#436cdce2e773f2cef47da62f95c7764c)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -25349,7 +25451,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-axios-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25420,8 +25522,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#436cdce2e773f2cef47da62f95c7764c)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -25479,7 +25581,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-axios-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25550,8 +25652,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="35d332cd666978c3b1e97a68ada3df8e"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="b69ec9d2d29c69d063b120b2f27cf513"></a>
 package.json
 
 ```
@@ -25624,6 +25726,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -25694,7 +25797,7 @@ export const apiClient = (process as { browser?: boolean }).browser
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -25833,8 +25936,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="04f6a6efefcb3da0924da7e73aae1de2"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="10b0ad1a142d9f64d0c6139d36cbefdf"></a>
 package.json
 
 ```
@@ -25910,6 +26013,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -25941,7 +26045,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -25972,7 +26076,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26118,8 +26222,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26145,7 +26249,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -26176,7 +26280,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26246,8 +26350,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26273,7 +26377,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -26304,7 +26408,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26374,8 +26478,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="c7785650ddc54901337bcfc584779282"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="49e2611d42997e9aa3a7eb481129e94f"></a>
 package.json
 
 ```
@@ -26451,6 +26555,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -26513,7 +26618,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26659,8 +26764,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c7785650ddc54901337bcfc584779282)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#49e2611d42997e9aa3a7eb481129e94f)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -26717,7 +26822,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26787,8 +26892,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35d332cd666978c3b1e97a68ada3df8e)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#b69ec9d2d29c69d063b120b2f27cf513)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26842,7 +26947,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -26909,8 +27014,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -26937,7 +27042,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -26968,7 +27073,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27039,8 +27144,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -27067,7 +27172,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -27098,7 +27203,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27169,8 +27274,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -27197,7 +27302,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -27228,7 +27333,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27299,8 +27404,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c7785650ddc54901337bcfc584779282)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#49e2611d42997e9aa3a7eb481129e94f)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -27358,7 +27463,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27429,8 +27534,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c7785650ddc54901337bcfc584779282)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#49e2611d42997e9aa3a7eb481129e94f)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -27488,7 +27593,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27559,8 +27664,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="26575edc7cca2fc7b22da7fd0ef8ae66"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="693609de1787bf73ac9cb1d6b316c664"></a>
 package.json
 
 ```
@@ -27633,6 +27738,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -27691,7 +27797,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -27830,8 +27936,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="11bfb56aa12094babef997be5ab05f70"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="d02c2b9d4b52e8dac0102df645549b24"></a>
 package.json
 
 ```
@@ -27907,6 +28013,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -27938,7 +28045,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -27969,7 +28076,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28115,8 +28222,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28142,7 +28249,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -28173,7 +28280,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28243,8 +28350,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28270,7 +28377,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -28301,7 +28408,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28371,8 +28478,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="8bffe388a5d3f96f15022c09de561b89"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="c12dcdaf77cb9a9b6a82a844f8810a9e"></a>
 package.json
 
 ```
@@ -28448,6 +28555,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -28510,7 +28618,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28656,8 +28764,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#8bffe388a5d3f96f15022c09de561b89)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#c12dcdaf77cb9a9b6a82a844f8810a9e)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -28714,7 +28822,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28784,8 +28892,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#26575edc7cca2fc7b22da7fd0ef8ae66)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#693609de1787bf73ac9cb1d6b316c664)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28839,7 +28947,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -28906,8 +29014,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -28934,7 +29042,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -28965,7 +29073,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29036,8 +29144,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -29064,7 +29172,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -29095,7 +29203,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29166,8 +29274,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -29194,7 +29302,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -29225,7 +29333,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29296,8 +29404,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#8bffe388a5d3f96f15022c09de561b89)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#c12dcdaf77cb9a9b6a82a844f8810a9e)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -29355,7 +29463,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29426,8 +29534,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#8bffe388a5d3f96f15022c09de561b89)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#c12dcdaf77cb9a9b6a82a844f8810a9e)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -29485,7 +29593,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29556,8 +29664,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="7116365844ef2eb33b6f25572e3bdfc2"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="7652f190e4f922d03155a32ac7b278c4"></a>
 package.json
 
 ```
@@ -29631,6 +29739,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -29689,7 +29798,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -29829,8 +29938,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="54eb89588286609b2428deb92d3fda90"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="6344afb1485bb5dcf341f33170a6edc4"></a>
 package.json
 
 ```
@@ -29907,6 +30016,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -29938,7 +30048,7 @@ package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -29969,7 +30079,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30116,8 +30226,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -30143,7 +30253,7 @@ package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -30174,7 +30284,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30244,8 +30354,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -30271,7 +30381,7 @@ package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -30302,7 +30412,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30372,8 +30482,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-<a id="2b0aa0adaa2d3b28c65d1d8588780a78"></a>
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="a20f5df633316ed3ff8d0adb108f1e66"></a>
 package.json
 
 ```
@@ -30450,6 +30560,7 @@ package.json
     "svelte-loader": "^2.13.6",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "typescript": "^4.1.3"
   }
@@ -30512,7 +30623,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30659,8 +30770,8 @@ package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#a20f5df633316ed3ff8d0adb108f1e66)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -30717,7 +30828,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -30825,8 +30936,8 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#7652f190e4f922d03155a32ac7b278c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -30880,15 +30991,15 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-pm2-none-jest-npm-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#7652f190e4f922d03155a32ac7b278c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -30942,7 +31053,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 <a id="f064fe7b91be87abfb3ea5d631065566"></a>
 
 ## express-sapper-static-fetch-pm2-none-jest-yarn-actions
@@ -30987,8 +31098,8 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#7652f190e4f922d03155a32ac7b278c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31042,15 +31153,15 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-pm2-none-jest-yarn-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#7652f190e4f922d03155a32ac7b278c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31104,15 +31215,15 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-pm2-none-jest
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#7652f190e4f922d03155a32ac7b278c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31166,7 +31277,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31233,8 +31344,8 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31261,7 +31372,7 @@ jobs:
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -31292,7 +31403,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31363,8 +31474,8 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31391,7 +31502,7 @@ jobs:
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -31422,7 +31533,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31493,8 +31604,8 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -31521,7 +31632,7 @@ jobs:
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#50251f0837bb2331aa539610b525646a)  
 [server/test/server.test.ts](#1f2c2adf8df9323eb9ec38540768557c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -31552,7 +31663,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31623,8 +31734,8 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#a20f5df633316ed3ff8d0adb108f1e66)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -31682,7 +31793,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31753,8 +31864,8 @@ jobs:
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#a20f5df633316ed3ff8d0adb108f1e66)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -31812,7 +31923,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -31888,9 +31999,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#1280de908b5628e1c51bc84a44a5aac8)  
+[package.json](#6e0cce81ff38c2d9d397213700e1b5d0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32167,9 +32278,9 @@ test('dependency injection into controller', async () => {
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32271,7 +32382,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 <a id="886e2de47d84d5c662221ef1f42465fb"></a>
 server/test/server.test.ts
@@ -32661,9 +32772,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32689,7 +32800,7 @@ jobs:
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -32761,9 +32872,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -32789,7 +32900,7 @@ jobs:
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -32861,9 +32972,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d6691b631d095518547a74d1a1232e31)  
+[package.json](#4985c1a6d21d47ed806a1c7ff84a7477)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33102,9 +33213,9 @@ test('dependency injection into controller', async () => {
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d6691b631d095518547a74d1a1232e31)  
+[package.json](#4985c1a6d21d47ed806a1c7ff84a7477)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33303,9 +33414,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#1280de908b5628e1c51bc84a44a5aac8)  
+[package.json](#6e0cce81ff38c2d9d397213700e1b5d0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33446,9 +33557,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33529,7 +33640,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -33602,9 +33713,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33631,7 +33742,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -33704,9 +33815,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#c32a740a1e06d9cc715aec591da067c5)  
+[package.json](#c54a6c39fc9cbd63eddc3b5bda15fc1c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33733,7 +33844,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -33806,9 +33917,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d6691b631d095518547a74d1a1232e31)  
+[package.json](#4985c1a6d21d47ed806a1c7ff84a7477)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33964,9 +34075,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d6691b631d095518547a74d1a1232e31)  
+[package.json](#4985c1a6d21d47ed806a1c7ff84a7477)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34122,9 +34233,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#fd4c48d5dee50a0ccb921e4a27b58d04)  
+[package.json](#7b5791fbe9f7d3147e0c20adbb42f509)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34214,9 +34325,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34242,7 +34353,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -34314,9 +34425,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34342,7 +34453,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -34414,9 +34525,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34442,7 +34553,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -34514,9 +34625,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#a3391385de1901ff42d2fc53836f8904)  
+[package.json](#c90217c61b37063a0aebb9366247664c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34614,9 +34725,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#a3391385de1901ff42d2fc53836f8904)  
+[package.json](#c90217c61b37063a0aebb9366247664c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34714,9 +34825,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#fd4c48d5dee50a0ccb921e4a27b58d04)  
+[package.json](#7b5791fbe9f7d3147e0c20adbb42f509)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34808,9 +34919,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34837,7 +34948,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -34910,9 +35021,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34939,7 +35050,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -35012,9 +35123,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#7d2cce4cc195e0a65455ab7e9edee3d2)  
+[package.json](#ec7481aa2df11ff9606d3c6ec1e6ea89)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35041,7 +35152,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -35114,9 +35225,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#a3391385de1901ff42d2fc53836f8904)  
+[package.json](#c90217c61b37063a0aebb9366247664c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35216,9 +35327,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#a3391385de1901ff42d2fc53836f8904)  
+[package.json](#c90217c61b37063a0aebb9366247664c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35318,9 +35429,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#f89e940e02b85afdd52aa53c12b88edf)  
+[package.json](#041149e854529a0f1b379bf698b33f86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35410,9 +35521,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35438,7 +35549,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -35510,9 +35621,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35538,7 +35649,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -35610,9 +35721,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35638,7 +35749,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -35710,9 +35821,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
+[package.json](#6d11e62c65fa701de296ef05e73342bb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35810,9 +35921,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
+[package.json](#6d11e62c65fa701de296ef05e73342bb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35910,9 +36021,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#f89e940e02b85afdd52aa53c12b88edf)  
+[package.json](#041149e854529a0f1b379bf698b33f86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36004,9 +36115,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36033,7 +36144,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -36106,9 +36217,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36135,7 +36246,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -36208,9 +36319,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8d1bcba760b3b6d1a0ab16ea8058fb38)  
+[package.json](#d27565e120678827141308887891c08f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36237,7 +36348,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -36310,9 +36421,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
+[package.json](#6d11e62c65fa701de296ef05e73342bb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36412,9 +36523,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d0020108bd3404c5d15cc5e0b91ccc35)  
+[package.json](#6d11e62c65fa701de296ef05e73342bb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36514,9 +36625,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#29f5b60381d773445ae040a56930abae)  
+[package.json](#3d692d6176f780940f801422bf3d3944)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36606,9 +36717,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36634,7 +36745,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -36706,9 +36817,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36734,7 +36845,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -36806,9 +36917,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36834,7 +36945,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -36906,9 +37017,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e24946ab21abc4fd878b3a57a691c916)  
+[package.json](#8bd514871af775e79c2bd987522b22cb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37006,9 +37117,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e24946ab21abc4fd878b3a57a691c916)  
+[package.json](#8bd514871af775e79c2bd987522b22cb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37106,9 +37217,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#29f5b60381d773445ae040a56930abae)  
+[package.json](#3d692d6176f780940f801422bf3d3944)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37200,9 +37311,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37229,7 +37340,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -37302,9 +37413,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37331,7 +37442,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -37404,9 +37515,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b636ba8d2fcc6353f03a0407915ea890)  
+[package.json](#897959fc88371c43c133cf3db790c8e6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#4604fe6c86b1efb07fdb4946f1484fe2)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37433,7 +37544,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -37506,9 +37617,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e24946ab21abc4fd878b3a57a691c916)  
+[package.json](#8bd514871af775e79c2bd987522b22cb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37608,9 +37719,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e24946ab21abc4fd878b3a57a691c916)  
+[package.json](#8bd514871af775e79c2bd987522b22cb)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#2df907a2a013c923307b047246359e8f)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37713,11 +37824,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#5ff251f5fd3989df74e6828240922a08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37747,7 +37858,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-server-axios-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -37764,8 +37875,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#31669e50434fddec167e367a88174728)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37809,11 +37920,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37837,7 +37948,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -37847,7 +37958,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-server-axios-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -37864,8 +37975,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37913,11 +38024,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -37941,7 +38052,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -37951,7 +38062,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-server-axios-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -37968,8 +38079,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38017,11 +38128,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38045,7 +38156,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -38055,7 +38166,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-server-axios-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -38072,8 +38183,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38121,11 +38232,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -38159,7 +38270,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-server-axios-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -38176,8 +38287,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -38225,11 +38336,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -38263,7 +38374,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-server-axios-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -38280,8 +38391,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -38329,11 +38440,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#5ff251f5fd3989df74e6828240922a08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38364,7 +38475,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-server-axios-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -38381,8 +38492,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#31669e50434fddec167e367a88174728)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38427,11 +38538,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38456,7 +38567,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -38466,7 +38577,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-server-axios-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -38483,8 +38594,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38533,11 +38644,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38562,7 +38673,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -38572,7 +38683,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-server-axios-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -38589,8 +38700,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38639,11 +38750,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38668,7 +38779,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -38678,7 +38789,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-server-axios-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -38695,8 +38806,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38745,11 +38856,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -38784,7 +38895,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-server-axios-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -38801,8 +38912,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -38851,11 +38962,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -38890,7 +39001,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-server-axios-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -38907,8 +39018,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#8310e0daf87628c79fd60f857497521b)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#4f7145e6f9d1ea320c25a9062aef05fa)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -38957,11 +39068,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#78f0a741cb1a541b793d421e4ec42da2)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -38991,7 +39102,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-server-fetch-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -39008,8 +39119,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ed5e6f861eddfa7b5e30234da3850a96)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39053,11 +39164,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39081,7 +39192,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -39091,7 +39202,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-server-fetch-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -39108,8 +39219,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39157,11 +39268,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39185,7 +39296,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -39195,7 +39306,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-server-fetch-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -39212,8 +39323,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39261,11 +39372,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39289,7 +39400,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -39299,7 +39410,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-server-fetch-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -39316,8 +39427,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39365,11 +39476,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -39403,7 +39514,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-server-fetch-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -39420,8 +39531,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -39469,11 +39580,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -39507,7 +39618,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-server-fetch-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -39524,8 +39635,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -39573,11 +39684,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#78f0a741cb1a541b793d421e4ec42da2)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39608,7 +39719,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-server-fetch-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -39625,8 +39736,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ed5e6f861eddfa7b5e30234da3850a96)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39671,11 +39782,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39700,7 +39811,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -39710,7 +39821,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-server-fetch-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -39727,8 +39838,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39777,11 +39888,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39806,7 +39917,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -39816,7 +39927,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-server-fetch-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -39833,8 +39944,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39883,11 +39994,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39912,7 +40023,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -39922,7 +40033,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-server-fetch-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -39939,8 +40050,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -39989,11 +40100,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -40028,7 +40139,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-server-fetch-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -40045,8 +40156,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -40095,11 +40206,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -40134,7 +40245,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-server-fetch-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -40151,8 +40262,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6f23d1f86fb4059dccfe701d2d832ca1)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#0cea09137530a619a69a5ab55b3a9da4)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -40201,11 +40312,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#11d1d002127fa24a4b3db67875ce7350)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40235,7 +40346,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-static-axios-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -40252,7 +40363,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 [package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -40297,11 +40408,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40325,7 +40436,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -40335,7 +40446,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-static-axios-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -40352,8 +40463,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40401,11 +40512,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40429,7 +40540,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -40439,7 +40550,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-static-axios-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -40456,8 +40567,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40505,11 +40616,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40533,7 +40644,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -40543,7 +40654,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-static-axios-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -40560,8 +40671,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40609,11 +40720,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -40647,7 +40758,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-static-axios-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -40664,7 +40775,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -40713,11 +40824,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -40751,7 +40862,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-static-axios-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -40768,7 +40879,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -40817,11 +40928,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#11d1d002127fa24a4b3db67875ce7350)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40852,7 +40963,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-static-axios-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -40869,7 +40980,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 [package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -40915,11 +41026,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -40944,7 +41055,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -40954,7 +41065,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-static-axios-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -40971,8 +41082,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41021,11 +41132,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41050,7 +41161,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -41060,7 +41171,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-static-axios-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -41077,8 +41188,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41127,11 +41238,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41156,7 +41267,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -41166,7 +41277,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-spa-static-axios-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -41183,8 +41294,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41233,11 +41344,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -41272,7 +41383,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-static-axios-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -41289,7 +41400,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -41339,11 +41450,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -41378,7 +41489,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-spa-static-axios-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -41395,7 +41506,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#632e6150c605dff590fb445809c27248)  
+[nuxt.config.ts](#e0b6818f492846c1b30ddb02fb6b0f3d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -41445,11 +41556,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#96e56f51a9bf032a086d92139ffaf064)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41479,7 +41590,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-static-fetch-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -41496,7 +41607,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 [package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -41541,11 +41652,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41569,7 +41680,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -41579,7 +41690,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-static-fetch-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -41596,8 +41707,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41645,11 +41756,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41673,7 +41784,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -41683,7 +41794,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-static-fetch-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -41700,8 +41811,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41749,11 +41860,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41777,7 +41888,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -41787,7 +41898,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-static-fetch-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -41804,8 +41915,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -41853,11 +41964,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -41891,7 +42002,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-static-fetch-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -41908,7 +42019,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -41957,11 +42068,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -41995,7 +42106,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-static-fetch-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -42012,7 +42123,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -42061,11 +42172,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#96e56f51a9bf032a086d92139ffaf064)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42096,7 +42207,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-static-fetch-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -42113,7 +42224,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 [package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -42159,11 +42270,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42188,7 +42299,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -42198,7 +42309,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-static-fetch-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -42215,8 +42326,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42265,11 +42376,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42294,7 +42405,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -42304,7 +42415,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-static-fetch-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -42321,8 +42432,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42371,11 +42482,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42400,7 +42511,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -42410,7 +42521,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-spa-static-fetch-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -42427,8 +42538,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42477,11 +42588,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -42516,7 +42627,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-static-fetch-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -42533,7 +42644,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -42583,11 +42694,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -42622,7 +42733,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-spa-static-fetch-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -42639,7 +42750,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#a1be4f2d2b5d012b7ff3b919b970fb95)  
+[nuxt.config.ts](#558529e7da81016fb455425d480d8a50)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -42689,11 +42800,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#5ff251f5fd3989df74e6828240922a08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42723,7 +42834,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-server-axios-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -42740,8 +42851,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#31669e50434fddec167e367a88174728)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42785,11 +42896,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42813,7 +42924,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -42823,7 +42934,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-server-axios-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -42840,8 +42951,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42889,11 +43000,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42917,7 +43028,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -42927,7 +43038,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-server-axios-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -42944,8 +43055,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -42993,11 +43104,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43021,7 +43132,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -43031,7 +43142,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-server-axios-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -43048,8 +43159,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43097,11 +43208,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -43135,7 +43246,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-server-axios-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -43152,8 +43263,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -43201,11 +43312,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -43239,7 +43350,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-server-axios-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -43256,8 +43367,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -43305,11 +43416,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#a9edcab5ae36a94d9fbb408ba32dd649)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#5ff251f5fd3989df74e6828240922a08)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43340,7 +43451,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-server-axios-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -43357,8 +43468,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#abf0c9431ad17a8d4f96c6ed6232306f)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#31669e50434fddec167e367a88174728)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43403,11 +43514,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43432,7 +43543,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -43442,7 +43553,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-server-axios-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -43459,8 +43570,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43509,11 +43620,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43538,7 +43649,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -43548,7 +43659,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-server-axios-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -43565,8 +43676,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43615,11 +43726,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#3ea603e62924efdc1867085d6fcf7a46)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#cfb4ab8e5cc50e18b554dfbc916de14d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43644,7 +43755,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -43654,7 +43765,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-server-axios-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -43671,8 +43782,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#df22bcac526dc3a6db306867632bd831)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#ab3886bc76d0317e78d0cfa21b69cbf0)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43721,11 +43832,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -43760,7 +43871,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-server-axios-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -43777,8 +43888,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -43827,11 +43938,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#91ef7fdc59f3c348f1a63c687400bd08)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#f17daf936c2efec5c6200519f97a8ce5)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -43866,7 +43977,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-server-axios-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -43883,8 +43994,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#911ccda0d9155922d92a49e2aa3f708d)  
-[package.json](#8d3916bdd24f6ac2400ec623f51e57d9)  
+[nuxt.config.ts](#d03b67e06fec0f63e1bd4417033d0582)  
+[package.json](#06178d4be0d06fd30b76bac79e2541de)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -43933,11 +44044,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#78f0a741cb1a541b793d421e4ec42da2)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -43967,7 +44078,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-server-fetch-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -43984,8 +44095,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ed5e6f861eddfa7b5e30234da3850a96)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44029,11 +44140,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44057,7 +44168,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -44067,7 +44178,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-server-fetch-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -44084,8 +44195,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44133,11 +44244,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44161,7 +44272,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -44171,7 +44282,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-server-fetch-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -44188,8 +44299,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44237,11 +44348,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44265,7 +44376,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -44275,7 +44386,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-server-fetch-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -44292,8 +44403,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44341,11 +44452,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -44379,7 +44490,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-server-fetch-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -44396,8 +44507,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -44445,11 +44556,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -44483,7 +44594,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-server-fetch-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -44500,8 +44611,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -44549,11 +44660,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#dab2d3a8a39277e4bd42bfbec296f4a5)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#78f0a741cb1a541b793d421e4ec42da2)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44584,7 +44695,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-server-fetch-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -44601,8 +44712,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4f8f1ae039daeb3f260111271b4585e3)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ed5e6f861eddfa7b5e30234da3850a96)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44647,11 +44758,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44676,7 +44787,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -44686,7 +44797,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-server-fetch-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -44703,8 +44814,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44753,11 +44864,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44782,7 +44893,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -44792,7 +44903,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-server-fetch-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -44809,8 +44920,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44859,11 +44970,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#9d4fcb435acd161c330e7bcf7a29af81)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#e40a03cfc2dd92f3306240c17f4ae53d)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44888,7 +44999,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -44898,7 +45009,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-server-fetch-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -44915,8 +45026,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#13b807b8b49d9dc9edbfb07abc53f4dd)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#ba0ef8d35026108c0894b4ba4e685b0a)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -44965,11 +45076,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -45004,7 +45115,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-server-fetch-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -45021,8 +45132,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -45071,11 +45182,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#4b32ca8fb9dc07ad91aeff69bef69770)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#d3a3e49cc5d433761dd3f6dd97d4104e)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -45110,7 +45221,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-server-fetch-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -45127,8 +45238,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#6c51d1c64335ab5c1feca8698f3f135d)  
-[package.json](#537cbe0c4d2734369bf27bad9bb85776)  
+[nuxt.config.ts](#1bc60a310b06af85fa258b3cd40c5f23)  
+[package.json](#52591c8829c631b70bfba8d705a50a0c)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -45177,11 +45288,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#11d1d002127fa24a4b3db67875ce7350)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45211,7 +45322,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-static-axios-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -45228,7 +45339,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -45273,11 +45384,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45301,7 +45412,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -45311,7 +45422,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-static-axios-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -45328,8 +45439,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45377,11 +45488,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45405,7 +45516,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -45415,7 +45526,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-static-axios-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -45432,8 +45543,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45481,11 +45592,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45509,7 +45620,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -45519,7 +45630,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-static-axios-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -45536,8 +45647,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45585,11 +45696,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -45623,7 +45734,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-static-axios-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -45640,7 +45751,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -45689,11 +45800,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -45727,7 +45838,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-static-axios-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -45744,7 +45855,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -45793,11 +45904,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#85f7ce3325956ba8e042d36111cfd0df)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#11d1d002127fa24a4b3db67875ce7350)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45828,7 +45939,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-static-axios-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -45845,7 +45956,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#81fad4fc41bb1bce956ff0ffeed395dc)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -45891,11 +46002,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45920,7 +46031,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -45930,7 +46041,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-static-axios-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -45947,8 +46058,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -45997,11 +46108,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46026,7 +46137,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -46036,7 +46147,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-static-axios-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -46053,8 +46164,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46103,11 +46214,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#78aae05778510b5af67ac47b53417adb)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#378f589813433cdf7dcd69379032a089)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46132,7 +46243,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -46142,7 +46253,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#498a5ae4c1b6ea94086878a66c4442fe)  
+[tsconfig.json](#86960f4d04de120d72640fb0181b63e2)  
 
 ## fastify-nuxt-universal-static-axios-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -46159,8 +46270,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7a30e8933a56d287bf613d94a90d7f61)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#9bcde73f83d538f8b2fc8c0b8036b941)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46209,11 +46320,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -46248,7 +46359,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-static-axios-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -46265,7 +46376,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -46315,11 +46426,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
-[package.json](#7baf15d54a4f3f06d9513cdc56e523e3)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
+[package.json](#c4706e6a7cc0adbf502a538f87da5b88)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -46354,7 +46465,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#f1b394beb718db0650a1a1637b663457)  
+[tsconfig.json](#beeb426be1b96f73fceafd3202e66c99)  
 
 ## fastify-nuxt-universal-static-axios-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -46371,7 +46482,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#98e411a44e41b07c3a8c8af6ffe2ca36)  
+[nuxt.config.ts](#abcd2d74ecaa3ca046329b769ab3cf0d)  
 [package.json](#9c22e94f982bc921080aaad089f9cb4b)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#7c6f341ffe9a0670664119829d404863)  
@@ -46421,11 +46532,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#96e56f51a9bf032a086d92139ffaf064)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46455,7 +46566,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-static-fetch-none-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -46472,7 +46583,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -46517,11 +46628,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46545,7 +46656,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -46555,7 +46666,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-static-fetch-none-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -46572,8 +46683,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46621,11 +46732,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46649,7 +46760,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -46659,7 +46770,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-static-fetch-none-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -46676,8 +46787,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46725,11 +46836,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46753,7 +46864,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -46763,7 +46874,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-static-fetch-none-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -46780,8 +46891,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -46829,11 +46940,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -46867,7 +46978,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-static-fetch-none-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -46884,7 +46995,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -46933,11 +47044,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -46971,7 +47082,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-static-fetch-none-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -46988,7 +47099,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -47037,11 +47148,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#5da0048e8adc9605cc0dbb21257409e6)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#96e56f51a9bf032a086d92139ffaf064)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47072,7 +47183,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-static-fetch-pm2-none-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -47089,7 +47200,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#b694ff22ecbfe50ed08c546450fc4416)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -47135,11 +47246,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47164,7 +47275,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -47174,7 +47285,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-static-fetch-pm2-prisma-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -47191,8 +47302,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47241,11 +47352,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47270,7 +47381,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -47280,7 +47391,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-static-fetch-pm2-prisma-postgresql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -47297,8 +47408,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47347,11 +47458,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#4ce8f3bf0872ff96b5d99aee691db5a4)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#858137a6b5972eeb9bd0446050f7283e)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47376,7 +47487,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -47386,7 +47497,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#03020452cfefd6b88feb9688f7859d33)  
+[tsconfig.json](#cc0d1bc71b5405a3a39c21c9dd925531)  
 
 ## fastify-nuxt-universal-static-fetch-pm2-prisma-sqlite-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -47403,8 +47514,8 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#ad31dec2396b06bcfba111182893d8a3)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#0ec666822917c8d4312b562652f2167c)  
 [pages/index.vue](#ef578273b8841c9585d2f1e3491892b1)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47453,11 +47564,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
@@ -47492,7 +47603,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-static-fetch-pm2-typeorm-mysql-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -47509,7 +47620,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -47559,11 +47670,11 @@ server/package.json
 [assets/README.md](#4bf2f00dde9970792cfad1f5367da6fe)  
 [components/Logo.vue](#28cda0994a027506e3f70ae7f4c35445)  
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
-[package.json](#aaddc1c76dd061a18fa0ecdddbe6c525)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
+[package.json](#e34dd83734d40b123bbf783c7e779384)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
@@ -47598,7 +47709,7 @@ server/package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#189ab2c5ca4f5c7bed4d3cb01be53c1f)  
-[tsconfig.json](#046561fe1f5260a7b870482da916f1d9)  
+[tsconfig.json](#3d8b5c8df591573c763c7ad551b3fd11)  
 
 ## fastify-nuxt-universal-static-fetch-pm2-typeorm-postgres-none
 [.editorconfig](#9781a05b349aa673a24f5da320fcc909)  
@@ -47615,7 +47726,7 @@ server/package.json
 [components/UserBanner.vue](#055c6aeca133f26662eacf15a492d328)  
 [layouts/default.vue](#8d732ee92163eccca703801c304eb29c)  
 [middleware/README.md](#5c17647ee238b7fac0b73e066c9bef27)  
-[nuxt.config.ts](#704e5fe55e8cfbdeb17b3bad040f2d37)  
+[nuxt.config.ts](#2aefde18b4418c67c8deb58fa35dd172)  
 [package.json](#1a5fda516c27f68758251d139a19df61)  
 [pages/index.vue](#f9d6c641875860e12645addd8fb109d4)  
 [plugins/api.ts](#6fb0c5ae7840a7bfbc53b9cf922684a8)  
@@ -47657,8 +47768,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#563ac613cc3e59bcdf94ed0fa11b96b5)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#e094701ba663fe13411a8be79d788532)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47711,7 +47822,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -47777,8 +47888,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47804,7 +47915,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -47835,7 +47946,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -47905,8 +48016,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -47932,7 +48043,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -47963,7 +48074,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48033,8 +48144,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48060,7 +48171,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -48091,7 +48202,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48161,8 +48272,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#436cdce2e773f2cef47da62f95c7764c)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -48219,7 +48330,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48289,8 +48400,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#436cdce2e773f2cef47da62f95c7764c)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -48347,7 +48458,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48417,8 +48528,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#563ac613cc3e59bcdf94ed0fa11b96b5)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#e094701ba663fe13411a8be79d788532)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48472,7 +48583,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48539,8 +48650,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48567,7 +48678,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -48598,7 +48709,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48669,8 +48780,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48697,7 +48808,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -48728,7 +48839,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48799,8 +48910,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#9ed03446f5a01ebfdc47a81828255ace)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#f875fc9dac5d0f60f7c66eccc25bdba8)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -48827,7 +48938,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -48858,7 +48969,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -48929,8 +49040,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#436cdce2e773f2cef47da62f95c7764c)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -48988,7 +49099,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49059,8 +49170,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#bb73a378464fe0b31ae71b229fc346c4)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#436cdce2e773f2cef47da62f95c7764c)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -49118,7 +49229,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49189,8 +49300,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35d332cd666978c3b1e97a68ada3df8e)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#b69ec9d2d29c69d063b120b2f27cf513)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49243,7 +49354,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49309,8 +49420,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49336,7 +49447,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -49367,7 +49478,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49437,8 +49548,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49464,7 +49575,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -49495,7 +49606,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49565,8 +49676,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -49592,7 +49703,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -49623,7 +49734,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49693,8 +49804,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c7785650ddc54901337bcfc584779282)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#49e2611d42997e9aa3a7eb481129e94f)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -49751,7 +49862,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49821,8 +49932,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c7785650ddc54901337bcfc584779282)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#49e2611d42997e9aa3a7eb481129e94f)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -49879,7 +49990,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -49949,8 +50060,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#35d332cd666978c3b1e97a68ada3df8e)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#b69ec9d2d29c69d063b120b2f27cf513)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50004,7 +50115,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50071,8 +50182,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50099,7 +50210,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -50130,7 +50241,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50201,8 +50312,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50229,7 +50340,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -50260,7 +50371,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50331,8 +50442,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#04f6a6efefcb3da0924da7e73aae1de2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#10b0ad1a142d9f64d0c6139d36cbefdf)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50359,7 +50470,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -50390,7 +50501,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50461,8 +50572,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c7785650ddc54901337bcfc584779282)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#49e2611d42997e9aa3a7eb481129e94f)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -50520,7 +50631,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50591,8 +50702,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#c7785650ddc54901337bcfc584779282)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#49e2611d42997e9aa3a7eb481129e94f)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -50650,7 +50761,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50721,8 +50832,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#26575edc7cca2fc7b22da7fd0ef8ae66)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#693609de1787bf73ac9cb1d6b316c664)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50775,7 +50886,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50841,8 +50952,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50868,7 +50979,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -50899,7 +51010,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -50969,8 +51080,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -50996,7 +51107,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -51027,7 +51138,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51097,8 +51208,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51124,7 +51235,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -51155,7 +51266,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51225,8 +51336,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#8bffe388a5d3f96f15022c09de561b89)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#c12dcdaf77cb9a9b6a82a844f8810a9e)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -51283,7 +51394,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51353,8 +51464,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#8bffe388a5d3f96f15022c09de561b89)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#c12dcdaf77cb9a9b6a82a844f8810a9e)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -51411,7 +51522,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51481,8 +51592,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#26575edc7cca2fc7b22da7fd0ef8ae66)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#693609de1787bf73ac9cb1d6b316c664)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51536,7 +51647,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51603,8 +51714,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51631,7 +51742,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -51662,7 +51773,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51733,8 +51844,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51761,7 +51872,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -51792,7 +51903,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51863,8 +51974,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#11bfb56aa12094babef997be5ab05f70)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#d02c2b9d4b52e8dac0102df645549b24)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -51891,7 +52002,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -51922,7 +52033,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -51993,8 +52104,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#8bffe388a5d3f96f15022c09de561b89)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#c12dcdaf77cb9a9b6a82a844f8810a9e)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -52052,7 +52163,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52123,8 +52234,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#8bffe388a5d3f96f15022c09de561b89)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#c12dcdaf77cb9a9b6a82a844f8810a9e)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -52182,7 +52293,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52253,8 +52364,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#7652f190e4f922d03155a32ac7b278c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52307,7 +52418,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-none-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52373,8 +52484,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52400,7 +52511,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -52431,7 +52542,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-none-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52501,8 +52612,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52528,7 +52639,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -52559,7 +52670,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-none-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52629,8 +52740,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -52656,7 +52767,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -52687,7 +52798,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-none-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52757,8 +52868,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#a20f5df633316ed3ff8d0adb108f1e66)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -52815,7 +52926,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-none-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -52885,8 +52996,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#a20f5df633316ed3ff8d0adb108f1e66)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -52943,7 +53054,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-none-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -53013,8 +53124,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#7116365844ef2eb33b6f25572e3bdfc2)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#7652f190e4f922d03155a32ac7b278c4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53068,7 +53179,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-pm2-none-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -53135,8 +53246,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53163,7 +53274,7 @@ server/package.json
 [server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -53194,7 +53305,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -53265,8 +53376,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53293,7 +53404,7 @@ server/package.json
 [server/prisma/schema.prisma](#4301ac5e56082dd441f446a9ce0568d9)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -53324,7 +53435,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-postgresql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -53395,8 +53506,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#54eb89588286609b2428deb92d3fda90)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#6344afb1485bb5dcf341f33170a6edc4)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
 [server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
@@ -53423,7 +53534,7 @@ server/package.json
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dammy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#69e6d60d10c534b0f27eb479f891fb98)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#f7b1fad7be352daa5a5a680988f9a856)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
@@ -53454,7 +53565,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#e995839a1c17eff7c35897c6b313630d)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-sqlite-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -53525,8 +53636,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#a20f5df633316ed3ff8d0adb108f1e66)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#fd12b4389675273e4a1b646e0c55330c)  
 [server/.env.example](#1f45aafbc0f9c4526b119979fd45fee0)  
@@ -53584,7 +53695,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-mysql-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  
@@ -53655,8 +53766,8 @@ server/package.json
 [.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
 [README.md](#00ceeb161689080ab561029bf74dec99)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.js](#115609a3d35fc16e8cdd4bbb9819e8e8)  
-[package.json](#2b0aa0adaa2d3b28c65d1d8588780a78)  
+[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[package.json](#a20f5df633316ed3ff8d0adb108f1e66)  
 [rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
 [server/.env](#4a3929ce884db04afd32360015b20e8b)  
 [server/.env.example](#f03af81fee7229819400a67c019bd9a2)  
@@ -53714,7 +53825,7 @@ server/package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#8389807240c92093ac8db61193a51f3a)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-postgres-none
 [.gitignore](#3ee7b79bec082a760bafc9e7522795ff)  

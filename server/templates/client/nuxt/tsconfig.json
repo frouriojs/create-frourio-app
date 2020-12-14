@@ -11,7 +11,8 @@
     "strictPropertyInitialization": false,
     "noEmit": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "emitDecoratorMetadata": true<% if (testing === 'jest') { %>,
+    "resolveJsonModule": true<% } %>,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],

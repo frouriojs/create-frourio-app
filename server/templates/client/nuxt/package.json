@@ -8,9 +8,9 @@
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida && nuxt-ts generate",
+    "build:client": "aspida<% if (orm === 'prisma') { %> && prisma generate --schema server/prisma/schema.prisma<% } %> && nuxt-ts <%= target === 'static' ? 'generate' : 'build' %>",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida<% if (orm === 'prisma') { %> && prisma generate --schema server/prisma/schema.prisma<% } %> && npm run build:frourio --prefix server",
+    "build:types": "aspida && npm run build:frourio --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
@@ -68,7 +68,8 @@
     "prettier": "^2.2.1",
     "stylelint": "^13.8.0<% if (testing === 'jest') { %>",
     "ts-jest": "^26.4.4<% } %>",
-    "ts-loader": "^8.0.12",
+    "ts-loader": "^8.0.12<% if (testing === 'jest') { %>",
+    "ts-node": "^9.1.1<% } %>",
     "typescript": "^4.1.3"
   }
 }

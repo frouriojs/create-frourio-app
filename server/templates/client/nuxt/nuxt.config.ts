@@ -1,16 +1,15 @@
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: '<%= mode %>',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
-  target: '<%= target %>',
+  <%_ if (mode === 'spa') { _%>
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
+  <%_ } _%><%_ if (target === 'static') { _%>
+  // Target: https://go.nuxtjs.dev/config-target
+  target: 'static',
+
+  <%_ } _%>
   /*
    ** Nuxt telemetry
    ** See https://nuxtjs.org/api/configuration-telemetry

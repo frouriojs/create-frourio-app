@@ -1,6 +1,6 @@
-import { PrismaClient } from '@prisma/client'
-import { Task, Prisma } from '$prisma/client'<% if (testing !== 'none') { %>
-import { depend } from 'velona'<% } %>
+<% if (testing !== 'none') { %>import { depend } from 'velona'
+<% } %>import { PrismaClient } from '@prisma/client'
+import { Task, Prisma } from '$prisma/client'
 
 const prisma = new PrismaClient()
 
