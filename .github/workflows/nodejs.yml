@@ -77,6 +77,8 @@ jobs:
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
       - run: yarn --cwd ../nextjs-typeorm/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: rm -rf ../nextjs-typeorm/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
       - run: npm run build --prefix ../nextjs-typeorm/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
 
@@ -94,6 +96,8 @@ jobs:
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
       - run: yarn --cwd ../nuxtjs/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: rm -rf ../nuxtjs/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
       - run: npm run build --prefix ../nuxtjs/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
 
@@ -110,6 +114,8 @@ jobs:
       - run: npm run build:client --prefix ../sapper
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
       - run: yarn --cwd ../sapper/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: rm -rf ../sapper/node_modules
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
       - run: npm run build --prefix ../sapper/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
