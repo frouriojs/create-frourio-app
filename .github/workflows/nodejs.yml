@@ -63,6 +63,23 @@ jobs:
           name: snapshot
           path: ./server/__test__/forArtifact.md
 
+      - run: node bin/index.js --answers '{"dir":"../nextjs-fetch","building":"basic","aspida":"fetch","orm":"none"}'
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: npm run lint --prefix ../nextjs-fetch
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: npm run typecheck --prefix ../nextjs-fetch
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: rm -rf ../nextjs-fetch/server/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: npm run build:client --prefix ../nextjs-fetch
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: yarn --cwd ../nextjs-fetch/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: rm -rf ../nextjs-fetch/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+      - run: npm run build --prefix ../nextjs-fetch/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
+
       - run: node bin/index.js --answers '{"dir":"../nextjs-typeorm","orm":"typeorm","testing":"jest"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
       - run: npm run lint --prefix ../nextjs-typeorm
@@ -82,13 +99,11 @@ jobs:
       - run: npm run build --prefix ../nextjs-typeorm/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
 
-      - run: node bin/index.js --answers '{"dir":"../nuxtjs","client":"nuxt","prismaDB":"sqlite","testing":"jest"}'
+      - run: node bin/index.js --answers '{"dir":"../nuxtjs","client":"nuxt","mode":"universal","target":"server","aspida":"fetch","prismaDB":"sqlite"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
       - run: npm run lint --prefix ../nuxtjs
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
       - run: npm run typecheck --prefix ../nuxtjs
-        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
-      - run: npm run test --prefix ../nuxtjs
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
       - run: rm -rf ../nuxtjs/server/node_modules
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
@@ -101,13 +116,30 @@ jobs:
       - run: npm run build --prefix ../nuxtjs/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
 
-      - run: node bin/index.js --answers '{"dir":"../sapper","server":"express","client":"sapper","prismaDB":"sqlite","testing":"jest"}'
+      - run: node bin/index.js --answers '{"dir":"../nuxtjs-jest","client":"nuxt","prismaDB":"sqlite","testing":"jest"}'
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: npm run lint --prefix ../nuxtjs-jest
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: npm run typecheck --prefix ../nuxtjs-jest
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: npm run test --prefix ../nuxtjs-jest
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: rm -rf ../nuxtjs-jest/server/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: npm run build:client --prefix ../nuxtjs-jest
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: yarn --cwd ../nuxtjs-jest/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: rm -rf ../nuxtjs-jest/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+      - run: npm run build --prefix ../nuxtjs-jest/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
+
+      - run: node bin/index.js --answers '{"dir":"../sapper","server":"express","client":"sapper","building":"basic","aspida":"fetch","orm":"none"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
       - run: npm run lint --prefix ../sapper
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
       - run: npm run typecheck --prefix ../sapper
-        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
-      - run: npm run test --prefix ../sapper
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
       - run: rm -rf ../sapper/server/node_modules
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
@@ -118,6 +150,25 @@ jobs:
       - run: rm -rf ../sapper/node_modules
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
       - run: npm run build --prefix ../sapper/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+
+      - run: node bin/index.js --answers '{"dir":"../sapper-jest","server":"express","client":"sapper","prismaDB":"sqlite","testing":"jest"}'
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run lint --prefix ../sapper-jest
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run typecheck --prefix ../sapper-jest
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run test --prefix ../sapper-jest
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: rm -rf ../sapper-jest/server/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run build:client --prefix ../sapper-jest
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: yarn --cwd ../sapper-jest/server
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: rm -rf ../sapper-jest/node_modules
+        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - run: npm run build --prefix ../sapper-jest/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
 
   release:

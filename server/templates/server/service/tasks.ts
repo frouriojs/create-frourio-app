@@ -22,7 +22,8 @@ export const createDBFileIfNotExists = (dbFilePath: string) => {
   fs.writeFileSync(dbPath, JSON.stringify({ nextId: 0, tasks: [] }), 'utf8')
 }
 
-export const getTasks = <% if (testing === 'none') { %>async (limit?: number) => (await readDB()).tasks.slice(0, limit)<% } else { %>depend({ readDB }, async ({ readDB }, limit?: number) =>
+export const getTasks = <% if (testing === 'none') { %>async (limit?: number) =>
+  (await readDB()).tasks.slice(0, limit)<% } else { %>depend({ readDB }, async ({ readDB }, limit?: number) =>
   (await readDB()).tasks.slice(0, limit)
 )<% } %>
 
