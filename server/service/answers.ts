@@ -1,7 +1,6 @@
 import fs from 'fs'
 import { join, resolve } from 'path'
 import { homedir } from 'os'
-import { depend } from 'velona'
 import spawn from 'cross-spawn'
 import { Answers, initPrompts } from '$/common/prompts'
 import { generate } from './generate'
@@ -57,44 +56,41 @@ try {
   db = { ver: 2, answers: {} }
 }
 
-export const installApp = depend(
-  { spawn, fs },
-  async ({ spawn, fs }, answers: Answers) => {
-    setStatus('installing')
-    const allAnswers = initPrompts(answers).reduce(
-      (prev, current) => ({
-        ...prev,
-        [current.name]: answers[current.name] ?? current.default
-      }),
-      {} as Answers
-    )
-    const dir = allAnswers.dir ?? ''
+const installApp = async (answers: Answers) => {
+  setStatus('installing')
+  const allAnswers = initPrompts(answers).reduce(
+    (prev, current) => ({
+      ...prev,
+      [current.name]: answers[current.name] ?? current.default
+    }),
+    {} as Answers
+  )
+  const dir = allAnswers.dir ?? ''
 
-    await generate(
-      {
-        ...allAnswers,
-        clientPort: ports.client,
-        serverPort: await getServerPort()
-      },
-      __dirname
-    )
+  await generate(
+    {
+      ...allAnswers,
+      clientPort: ports.client,
+      serverPort: await getServerPort()
+    },
+    __dirname
+  )
 
-    await completed(allAnswers)
-    await fastify.close()
+  await completed(allAnswers)
+  await fastify.close()
 
-    spawn(
-      answers.pm ?? 'npm',
-      ['run', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],
-      {
-        cwd: resolve(dir),
-        stdio: 'inherit'
-      }
-    )
+  spawn(
+    answers.pm ?? 'npm',
+    ['run', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],
+    {
+      cwd: resolve(dir),
+      stdio: 'inherit'
+    }
+  )
 
-    delete db.answers.dir
-    await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
-  }
-)
+  delete db.answers.dir
+  await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
+}
 
 export const getAnswers = () => ({ dir: process.argv[2], ...db.answers })
 
