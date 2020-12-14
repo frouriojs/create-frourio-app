@@ -27,12 +27,10 @@ const waitInstalling = async () => {
     while (true) {
       await sleep(1000)
       try {
-        await Promise.all([
-          axios.get(href, { timeout: 3000 }),
-          axios.get(`http://${location.hostname}:${serverPort}/api/tasks`, {
-            timeout: 3000
-          })
-        ])
+        await axios.get(`http://${location.hostname}:${serverPort}/api/tasks`, {
+          timeout: 3000
+        })
+        await axios.get(href, { timeout: 3000 })
         location.href = href
         // eslint-disable-next-line
       } catch (e) {}
@@ -62,6 +60,10 @@ const Home = () => {
   )
   const create = useCallback(async () => {
     if (!canCreate || !answers) return
+
+    const db = await apiClient.dbConnection.$post({ body: answers })
+
+    if (!db.enabled) return alert(`Failed to connect to database:\n\n${db.err}`)
 
     await apiClient.answers.$patch({ body: answers })
 

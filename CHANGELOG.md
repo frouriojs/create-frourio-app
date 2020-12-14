@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.21.0](https://github.com/frouriojs/create-frourio-app/compare/v0.20.0...v0.21.0) (2020-12-14)
+
+
+### Features
+
+* add vue components test ([f7698d2](https://github.com/frouriojs/create-frourio-app/commit/f7698d262ab07f3d3c993e7fbfb28d166a8b396b))
+* check db connection before creating ([bb1cd16](https://github.com/frouriojs/create-frourio-app/commit/bb1cd1643704ebc825a523a8b1a4597e1f2ee4f2))
+* update aspida@1.1.0 and frourio@0.21.3 ([9cd10a8](https://github.com/frouriojs/create-frourio-app/commit/9cd10a8ac0031fb4950f347810710b069318647d))
+* **sapper:** change webpack to rollup ([ac490e2](https://github.com/frouriojs/create-frourio-app/commit/ac490e24f5fcdc6ca2ec9fdc7f105503d732cff4))
+
+
+### Bug Fixes
+
+* add createDBFileIfNotExists ([1c95abb](https://github.com/frouriojs/create-frourio-app/commit/1c95abb90f6668ae04aff6c10494883d8dd7ebf6))
+* generate prisma on client ([3600bfc](https://github.com/frouriojs/create-frourio-app/commit/3600bfc36fb601896dea035bc4ef11e5ac14aaa2))
+* lint of tasks.ts ([286eff9](https://github.com/frouriojs/create-frourio-app/commit/286eff927fac82cd6f2a6f2b5da50c7ab190725b))
+* **sapper:** add node-fetch ([8be19c0](https://github.com/frouriojs/create-frourio-app/commit/8be19c0bade203c0d1551df51e7dcf894c878d3b))
+
 ## [0.20.0](https://github.com/frouriojs/create-frourio-app/compare/v0.19.1...v0.20.0) (2020-12-09)
 
 

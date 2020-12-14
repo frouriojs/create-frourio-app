@@ -1,30 +1,19 @@
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: '<%= mode %>',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
-  target: '<%= target %>',
-  /*
-   ** Nuxt telemetry
-   ** See https://nuxtjs.org/api/configuration-telemetry
-   */
+  <%_ if (mode === 'spa') { _%>
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
+
+  <%_ } _%><%_ if (target === 'static') { _%>
+  // Target: https://go.nuxtjs.dev/config-target
+  target: 'static',
+
+  <%_ } _%>
+  // Nuxt telemetry (https://nuxtjs.org/api/configuration-telemetry)
   telemetry: false,
-  /*
-   ** Auto import components
-   ** See https://nuxtjs.org/api/configuration-components
-   */
-  components: true,
-  /*
-   ** Headers of the page
-   ** See https://nuxtjs.org/api/configuration-head
-   */
+
+  // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -38,51 +27,37 @@ const config: NuxtConfig = {
     ],
     link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
-  loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
+
+  // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
-  /*
-   ** Plugins to load before mounting the App
-   ** https://nuxtjs.org/guide/plugins
-   */
+
+  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: ['~/plugins/api'],
-  /*
-   ** Nuxt.js dev-modules
-   */
+
+  // Auto import components (https://go.nuxtjs.dev/config-components)
+  components: true,
+
+  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    // Doc: https://github.com/nuxt-community/stylelint-module
+    // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module'
   ],
-  /*
-   ** Nuxt.js modules
-   */
+
+  // Modules (https://go.nuxtjs.dev/config-modules)
   modules: <% if (aspida === 'axios') { %>[
-    // Doc: https://axios.nuxtjs.org/usage
+    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios'
   ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
+
+  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     baseURL: require('./aspida.config').baseURL
   }<% } else { %>[]<% } %>,
-  /*
-   ** Build configuration
-   ** See https://nuxtjs.org/api/configuration-build/
-   */
-  build: {
-    /*
-     ** You can extend webpack config here
-    //  */
-    // extend(config, ctx) {}
-  }
+
+  // Build Configuration (https://go.nuxtjs.dev/config-build)
+  build: {}
 }
 
 export default config
