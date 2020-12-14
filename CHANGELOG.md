@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.21.1](https://github.com/frouriojs/create-frourio-app/compare/v0.21.0...v0.21.1) (2020-12-14)
+
+
+### Bug Fixes
+
+* add @types/jest to server ([f3fe713](https://github.com/frouriojs/create-frourio-app/commit/f3fe7134d29ed2fa45c2482244a81da0a6bb04e5))
+* eslintignore of nextjs ([7d2f513](https://github.com/frouriojs/create-frourio-app/commit/7d2f513b6ab512cc0972acc3ba421e0536f3f300))
+
 ## [0.21.0](https://github.com/frouriojs/create-frourio-app/compare/v0.20.0...v0.21.0) (2020-12-14)
 
 
