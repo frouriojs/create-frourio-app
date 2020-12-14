@@ -24,9 +24,9 @@
   },
   "dependencies": {
     "<% if (orm === 'prisma') { %>@prisma/client": "^2.13.0",
-    "<% } %>class-validator": "^0.12.2",
+    "<% } %>class-validator": "^0.12.2<% if (server === 'express') { %>",
+    "cors": "^2.8.5<% } %>",
     "dotenv": "^8.2.0<% if (server === 'express') { %>",
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
     "helmet": "^4.1.1",
@@ -44,7 +44,7 @@
   "devDependencies": {
     "<% if (orm === 'prisma') { %>@prisma/cli": "^2.13.0",
     "<% } %><% if (server === 'fastify') { %>@types/busboy": "^0.2.3",
-    "<% } else { %>@types/cors": "^2.8.7",
+    "<% } else { %>@types/cors": "2.8.8",
     "@types/express-jwt": "0.0.42",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/multer": "^1.4.5",
