@@ -56,15 +56,18 @@ try {
   db = { ver: 2, answers: {} }
 }
 
-const installApp = async (answers: Answers) => {
-  setStatus('installing')
-  const allAnswers = initPrompts(answers).reduce(
+export const genAllAnswers = (answers: Answers) =>
+  initPrompts(answers).reduce(
     (prev, current) => ({
       ...prev,
       [current.name]: answers[current.name] ?? current.default
     }),
     {} as Answers
   )
+
+const installApp = async (answers: Answers) => {
+  setStatus('installing')
+  const allAnswers = genAllAnswers(answers)
   const dir = allAnswers.dir ?? ''
 
   await generate(
