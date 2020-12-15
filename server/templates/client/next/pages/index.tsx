@@ -9,7 +9,7 @@ import UserBanner from '~/components/UserBanner'
 const Home = () => {
   const { data: tasks, error, mutate: setTasks } = useAspidaSWR(apiClient.tasks)
   const [label, setLabel] = useState('')
-  const inputLavel = useCallback(
+  const inputLabel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
     []
   )
@@ -57,7 +57,7 @@ const Home = () => {
 
         <div>
           <form style={{ textAlign: 'center' }} onSubmit={createTask}>
-            <input value={label} type="text" onChange={inputLavel} />
+            <input value={label} type="text" onChange={inputLabel} />
             <input type="submit" value="ADD" />
           </form>
           <ul className={styles.tasks}>
