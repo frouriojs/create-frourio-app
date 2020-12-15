@@ -11,8 +11,8 @@ const userInfo = {
   icon: createIconURL(
     fs
       .readdirSync(path.resolve(iconsDir))
-      .filter((n) => n !== 'dammy.svg')
-      .pop() ?? 'dammy.svg'
+      .filter((n) => n !== 'dummy.svg')
+      .pop() ?? 'dummy.svg'
   )
 }
 

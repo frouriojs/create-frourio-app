@@ -96,4 +96,4 @@ server/index.js
 server/database.json
 server/.upload
 server/public/icons/*
-!server/public/icons/dammy.svg
+!server/public/icons/dummy.svg
