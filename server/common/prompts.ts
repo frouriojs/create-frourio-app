@@ -152,12 +152,12 @@ export const saoPrompts: ({
     name: 'prismaDB',
     message: 'Database type of Prisma',
     choices: [
+      { name: 'SQLite', value: 'sqlite' },
       { name: 'MySQL', value: 'mysql' },
-      { name: 'PostgreSQL', value: 'postgresql' },
-      { name: 'SQLite', value: 'sqlite' }
+      { name: 'PostgreSQL', value: 'postgresql' }
     ],
     type: 'list',
-    default: 'mysql',
+    default: 'sqlite',
     when: (ans) => ans.orm === 'prisma'
   },
   {

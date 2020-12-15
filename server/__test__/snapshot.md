@@ -36684,282 +36684,6 @@ server/package.json
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
-## fastify-next-static-axios-none-prisma-mysql-none-npm-actions
-[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-<a id="9ad58a456f2a597c7272db7c42728b59"></a>
-.github/workflows/nodejs.yml
-
-```
-name: Node.js CI
-
-on: push
-
-jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - uses: actions/cache@v2
-        id: client-npm-cache
-        with:
-          path: "node_modules"
-          key: client-npm-${{ hashFiles('package-lock.json') }}
-      - uses: actions/cache@v2
-        id: server-npm-cache
-        with:
-          path: "server/node_modules"
-          key: server-npm-${{ hashFiles('server/package-lock.json') }}
-      - run: npm install
-        if: steps.client-npm-cache.outputs.cache-hit != 'true'
-      - run: npm install --prefix server
-        if: steps.server-npm-cache.outputs.cache-hit != 'true'
-      - run: npm run lint
-      - run: |
-          sudo systemctl start mysql.service
-          echo "DATABASE_URL=mysql://root:root@localhost:3306/test" > server/prisma/.env
-      - run: npm run typecheck
-
-```
-
-[.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2880327fca85bb601c2368e9f4b76e15)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
-[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
-[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
-[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
-[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
-[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
-[server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-static-axios-none-prisma-mysql-none-npm-none
-[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2880327fca85bb601c2368e9f4b76e15)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
-[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
-[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
-[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
-[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
-[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
-[server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-static-axios-none-prisma-mysql-none-yarn-actions
-[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-<a id="25966b72a2ea18cd5d23d5717ad216fe"></a>
-.github/workflows/nodejs.yml
-
-```
-name: Node.js CI
-
-on: push
-
-jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - uses: actions/cache@v2
-        id: client-yarn-cache
-        with:
-          path: "node_modules"
-          key: client-yarn-${{ hashFiles('yarn.lock') }}
-      - uses: actions/cache@v2
-        id: server-yarn-cache
-        with:
-          path: "server/node_modules"
-          key: server-yarn-${{ hashFiles('server/yarn.lock') }}
-      - run: yarn install
-        if: steps.client-yarn-cache.outputs.cache-hit != 'true'
-      - run: yarn install --cwd server
-        if: steps.server-yarn-cache.outputs.cache-hit != 'true'
-      - run: yarn lint
-      - run: |
-          sudo systemctl start mysql.service
-          echo "DATABASE_URL=mysql://root:root@localhost:3306/test" > server/prisma/.env
-      - run: yarn typecheck
-
-```
-
-[.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2880327fca85bb601c2368e9f4b76e15)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
-[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
-[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
-[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
-[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
-[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
-[server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-static-axios-none-prisma-mysql-none-yarn-none
-[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#2880327fca85bb601c2368e9f4b76e15)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
-[server/prisma/.env](#eac6d104ec6fcec93b2c5a30967ee0c4)  
-[server/prisma/.env.example](#2e75db211e6a9c6bbe7cf8fd72b54644)  
-[server/prisma/migrations/20201209205045_/migration.sql](#629ed5825b5e1a01378ccbada05cefe7)  
-[server/prisma/schema.prisma](#6783bf707a60abe26484e7b9457088be)  
-[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
-[server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
 ## fastify-next-static-axios-none-prisma-mysql-none
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
@@ -37150,6 +36874,278 @@ jobs:
 [server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
 [server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-static-axios-none-prisma-sqlite-none-npm-actions
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+<a id="0a1dffe82fa89e0df993aeb9ee3bc4d9"></a>
+.github/workflows/nodejs.yml
+
+```
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-npm-cache
+        with:
+          path: "node_modules"
+          key: client-npm-${{ hashFiles('package-lock.json') }}
+      - uses: actions/cache@v2
+        id: server-npm-cache
+        with:
+          path: "server/node_modules"
+          key: server-npm-${{ hashFiles('server/package-lock.json') }}
+      - run: npm install
+        if: steps.client-npm-cache.outputs.cache-hit != 'true'
+      - run: npm install --prefix server
+        if: steps.server-npm-cache.outputs.cache-hit != 'true'
+      - run: npm run lint
+      - run: echo "DATABASE_URL=file:./dev.db" > server/prisma/.env
+      - run: npm run typecheck
+
+```
+
+[.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2880327fca85bb601c2368e9f4b76e15)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
+[server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
+[server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
+[server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
+[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-static-axios-none-prisma-sqlite-none-npm-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2880327fca85bb601c2368e9f4b76e15)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
+[server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
+[server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
+[server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
+[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-static-axios-none-prisma-sqlite-none-yarn-actions
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+<a id="951ed7caa0c7c2df678085f656d04721"></a>
+.github/workflows/nodejs.yml
+
+```
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-yarn-cache
+        with:
+          path: "node_modules"
+          key: client-yarn-${{ hashFiles('yarn.lock') }}
+      - uses: actions/cache@v2
+        id: server-yarn-cache
+        with:
+          path: "server/node_modules"
+          key: server-yarn-${{ hashFiles('server/yarn.lock') }}
+      - run: yarn install
+        if: steps.client-yarn-cache.outputs.cache-hit != 'true'
+      - run: yarn install --cwd server
+        if: steps.server-yarn-cache.outputs.cache-hit != 'true'
+      - run: yarn lint
+      - run: echo "DATABASE_URL=file:./dev.db" > server/prisma/.env
+      - run: yarn typecheck
+
+```
+
+[.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2880327fca85bb601c2368e9f4b76e15)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
+[server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
+[server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
+[server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
+[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-static-axios-none-prisma-sqlite-none-yarn-none
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#2880327fca85bb601c2368e9f4b76e15)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
+[server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
+[server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
+[server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
+[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
 [server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
 [server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
