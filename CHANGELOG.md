@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.21.4](https://github.com/frouriojs/create-frourio-app/compare/v0.21.3...v0.21.4) (2020-12-15)
+
+
+### Features
+
+* change default db of prisma to splite ([a7ce2b2](https://github.com/frouriojs/create-frourio-app/commit/a7ce2b29decddc896d4d2523883c730de68db550))
+
+
+### Bug Fixes
+
+* typo (dammy => dummy) ([bafadcb](https://github.com/frouriojs/create-frourio-app/commit/bafadcbeea0d1bb62a30538ae07ead62a75e7e29))
+* typo (lavel => label) ([10d898d](https://github.com/frouriojs/create-frourio-app/commit/10d898da6b3e71e58ae55986023ba9c119145437))
+* typo (separete => separate) ([8f39d29](https://github.com/frouriojs/create-frourio-app/commit/8f39d29a9a8cfb72126462320e939a92e2d741c1))
+
 ### [0.21.3](https://github.com/frouriojs/create-frourio-app/compare/v0.21.2...v0.21.3) (2020-12-15)
 
 
