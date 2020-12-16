@@ -7,7 +7,7 @@ import { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 import UserBanner from '~/components/UserBanner'
 
 const Home = () => {
-  const { data: tasks, error, mutate: setTasks } = useAspidaSWR(apiClient.tasks)
+  const { data: tasks, error, revalidate } = useAspidaSWR(apiClient.tasks)
   const [label, setLabel] = useState('')
   const inputLabel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
@@ -21,19 +21,19 @@ const Home = () => {
 
       await apiClient.tasks.post({ body: { label } })
       setLabel('')
-      setTasks(await apiClient.tasks.$get())
+      revalidate()
     },
     [label]
   )
 
   const toggleDone = useCallback(async (task: Task) => {
     await apiClient.tasks._taskId(task.id).patch({ body: { done: !task.done } })
-    setTasks(await apiClient.tasks.$get())
+    revalidate()
   }, [])
 
   const deleteTask = useCallback(async (task: Task) => {
     await apiClient.tasks._taskId(task.id).delete()
-    setTasks(await apiClient.tasks.$get())
+    revalidate()
   }, [])
 
   if (error) return <div>failed to load</div>
