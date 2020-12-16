@@ -40,9 +40,7 @@ const waitInstalling = async () => {
 
 const Home = () => {
   const { data, error } = useAspidaSWR(apiClient.answers)
-  const { data: serverStatus, mutate: setServerStatus } = useAspidaSWR(
-    apiClient.status
-  )
+  const { data: serverStatus, revalidate } = useAspidaSWR(apiClient.status)
   const [answers, setAnswers] = useState<Answers | undefined>()
   const [created, setCreated] = useState(false)
   const questions = useMemo(() => answers && initPrompts(answers), [answers])
@@ -67,7 +65,7 @@ const Home = () => {
 
     await apiClient.answers.$patch({ body: answers })
 
-    setServerStatus()
+    revalidate()
     setCreated(true)
     waitInstalling()
   }, [answers, canCreate])

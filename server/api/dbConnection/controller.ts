@@ -44,7 +44,14 @@ export default defineController(() => ({
 
       return { status: 200, body: { enabled: true } }
     } catch (e) {
-      return { status: 200, body: { enabled: false, err: e.message } }
+      return {
+        status: 200,
+        body:
+          allAnswers.orm === 'prisma' &&
+          (e.message as string).includes('allowPublicKeyRetrieval')
+            ? { enabled: true }
+            : { enabled: false, err: e.message }
+      }
     }
   }
 }))

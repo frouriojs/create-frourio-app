@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.21.5](https://github.com/frouriojs/create-frourio-app/compare/v0.21.4...v0.21.5) (2020-12-16)
+
+
+### Bug Fixes
+
+* **nestjs:** change mutate to revalidate ([eb93f8e](https://github.com/frouriojs/create-frourio-app/commit/eb93f8ecdc81bbb7da92ae1c01aba53c4b983094))
+* ignore mysql8 connection err on prisma ([65f0100](https://github.com/frouriojs/create-frourio-app/commit/65f01009364bd0af052e39213cad2e4f0be60fab))
+
 ### [0.21.4](https://github.com/frouriojs/create-frourio-app/compare/v0.21.3...v0.21.4) (2020-12-15)
 
 
