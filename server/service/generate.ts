@@ -22,7 +22,7 @@ export const generate = async (
         })
         .use((stream) => {
           Object.keys(stream.files)
-            .filter((fp) => !isBinaryPath(fp))
+            .filter((fp) => !isBinaryPath(fp) || path.extname(fp) === '.snap')
             .forEach((relativePath) => {
               stream.writeContents(
                 relativePath,

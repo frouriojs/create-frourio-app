@@ -87,8 +87,8 @@ https://frourio.io/docs
    - [MySQL](https://www.mysql.com/)
    - [PostgreSQL](https://www.postgresql.org/)
 1. Testing framework:
-   - None
    - [Jest](https://jestjs.io/)
+   - None
 1. Package manager:
    - Yarn
    - Npm

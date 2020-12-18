@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <main
+      class="main"
+    >
+      <div
+        class="userBanner"
+      >
+        <button>
+          LOGIN
+        </button>
+      </div>
+      <h1
+        class="title"
+      >
+        Welcome to 
+        <a
+          href="https://nextjs.org"
+        >
+          Next.js!
+        </a>
+      </h1>
+      <p
+        class="description"
+      >
+        frourio-todo-app
+      </p>
+      <div>
+        <form
+          style="text-align: center;"
+        >
+          <input
+            type="text"
+            value=""
+          />
+          <input
+            type="submit"
+            value="ADD"
+          />
+        </form>
+        <ul
+          class="tasks"
+        >
+          <li>
+            <label>
+              <input
+                type="checkbox"
+              />
+              <span>
+                foo task
+              </span>
+            </label>
+            <input
+              style="float: right;"
+              type="button"
+              value="DELETE"
+            />
+          </li>
+          <li>
+            <label>
+              <input
+                checked=""
+                type="checkbox"
+              />
+              <span>
+                bar task
+              </span>
+            </label>
+            <input
+              style="float: right;"
+              type="button"
+              value="DELETE"
+            />
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer
+      class="footer"
+    >
+      <a
+        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Powered by 
+        <img
+          alt="Vercel Logo"
+          class="logo"
+          src="/vercel.svg"
+        />
+      </a>
+    </footer>
+  </div>
+</DocumentFragment>
+`;

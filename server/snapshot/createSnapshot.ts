@@ -91,14 +91,15 @@ export const createSnapshot = async (rootDir: string) => {
   const fileData = listFiles(outputDir)
     .sort()
     .map((file) => {
-      const data = isBinaryPath(file)
-        ? '\nbinary\n'
-        : `\n\n\`\`\`\n${fs
-            .readFileSync(file, 'utf8')
-            .replace(
-              /```/g,
-              path.extname(file) === '.md' ? '\\```' : '```'
-            )}\n\`\`\`\n`
+      const data =
+        isBinaryPath(file) && path.extname(file) !== '.snap'
+          ? '\nbinary\n'
+          : `\n\n\`\`\`\n${fs
+              .readFileSync(file, 'utf8')
+              .replace(
+                /```/g,
+                path.extname(file) === '.md' ? '\\```' : '```'
+              )}\n\`\`\`\n`
       const hash = crypto.createHash('md5').update(data).digest('hex')
       const name = file.replace(`${outputDir}/`, '')
       const duplicated = hasDataList.find(

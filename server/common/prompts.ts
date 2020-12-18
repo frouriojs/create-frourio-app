@@ -248,11 +248,11 @@ export const saoPrompts: ({
     name: 'testing',
     message: 'Testing framework',
     choices: [
-      { name: 'None', value: 'none' },
-      { name: 'Jest', value: 'jest' }
+      { name: 'Jest', value: 'jest' },
+      { name: 'None', value: 'none' }
     ],
     type: 'list',
-    default: 'none'
+    default: 'jest'
   },
   {
     name: 'pm',

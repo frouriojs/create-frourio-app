@@ -1,6 +1,16 @@
-<a id="f31ef2c4d8f51997b9e250e1ae4488a6"></a>
+<a id="41d9b5a079ab3c932912365e61ae781f"></a>
 
 ## express-next-basic-axios-none-none-jest
+.babelrc
+
+```
+{
+  "presets": ["next/babel"]
+}
+
+```
+
+<a id="f31ef2c4d8f51997b9e250e1ae4488a6"></a>
 .eslintignore
 
 ```
@@ -266,7 +276,7 @@ export default UserBanner
 
 ```
 
-<a id="1cc5d567ed84c2951e10b48b7524229f"></a>
+<a id="169e6547e2c5dfb892b80e43c5398f9a"></a>
 jest.config.ts
 
 ```
@@ -274,12 +284,31 @@ import type { Config } from '@jest/types'
 import { pathsToModuleNameMapper } from 'ts-jest/utils'
 import { compilerOptions } from './tsconfig.json'
 
-const config: Config.InitialOptions = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>/'
-  })
+const config: { projects: Config.InitialOptions[] } = {
+  projects: [
+    {
+      testPathIgnorePatterns: ['<rootDir>/server'],
+      transform: {
+        '^.+\\.tsx$': 'babel-jest',
+        '^.+\\.ts$': 'ts-jest'
+      },
+      moduleNameMapper: {
+        '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+        '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+        ...pathsToModuleNameMapper(compilerOptions.paths, {
+          prefix: '<rootDir>/'
+        })
+      }
+    },
+    {
+      preset: 'ts-jest',
+      testEnvironment: 'node',
+      testMatch: ['<rootDir>/server/test/**/*.ts'],
+      moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+        prefix: '<rootDir>/'
+      })
+    }
+  ]
 }
 
 export default config
@@ -295,7 +324,7 @@ next-env.d.ts
 
 ```
 
-<a id="98ce3bd8f202c03e23f98cf366430a9d"></a>
+<a id="51805773945a2ac8102d5483c4a5a97b"></a>
 package.json
 
 ```
@@ -331,17 +360,22 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -1197,6 +1231,213 @@ a {
 
 ```
 
+<a id="48adf3e9ec3c7479654c990b0a7434e2"></a>
+test/__mocks__/fileMock.js
+
+```
+module.exports = 'test-file-stub'
+
+```
+
+<a id="49f3cf2071cd4a6cc6c21f00e05c11e6"></a>
+test/pages/__snapshots__/index.test.tsx.snap
+
+```
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <main
+      class="main"
+    >
+      <div
+        class="userBanner"
+      >
+        <button>
+          LOGIN
+        </button>
+      </div>
+      <h1
+        class="title"
+      >
+        Welcome to 
+        <a
+          href="https://nextjs.org"
+        >
+          Next.js!
+        </a>
+      </h1>
+      <p
+        class="description"
+      >
+        frourio-todo-app
+      </p>
+      <div>
+        <form
+          style="text-align: center;"
+        >
+          <input
+            type="text"
+            value=""
+          />
+          <input
+            type="submit"
+            value="ADD"
+          />
+        </form>
+        <ul
+          class="tasks"
+        >
+          <li>
+            <label>
+              <input
+                type="checkbox"
+              />
+              <span>
+                foo task
+              </span>
+            </label>
+            <input
+              style="float: right;"
+              type="button"
+              value="DELETE"
+            />
+          </li>
+          <li>
+            <label>
+              <input
+                checked=""
+                type="checkbox"
+              />
+              <span>
+                bar task
+              </span>
+            </label>
+            <input
+              style="float: right;"
+              type="button"
+              value="DELETE"
+            />
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer
+      class="footer"
+    >
+      <a
+        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Powered by 
+        <img
+          alt="Vercel Logo"
+          class="logo"
+          src="/vercel.svg"
+        />
+      </a>
+    </footer>
+  </div>
+</DocumentFragment>
+`;
+
+```
+
+<a id="c39c444a87f0865b8ed02b2d32211ee1"></a>
+test/pages/index.test.tsx
+
+```
+import React from 'react'
+import { cache } from 'swr'
+import dotenv from 'dotenv'
+import Fastify, { FastifyInstance } from 'fastify'
+import cors from 'fastify-cors'
+import aspida from '@aspida/axios'
+import api from '~/server/api/$api'
+import Home from '~/pages/index'
+import { render, fireEvent, waitForDomChange } from '../testUtils'
+
+dotenv.config({ path: 'server/.env' })
+
+const apiClient = api(aspida(undefined, { baseURL: process.env.BASE_PATH }))
+const res = function <T extends (...args: unknown[]) => unknown>(
+  data: ReturnType<T> extends Promise<infer S> ? S : never
+) {
+  return data
+}
+
+let fastify: FastifyInstance
+
+beforeAll(() => {
+  fastify = Fastify()
+  fastify.register(cors)
+  fastify.get(apiClient.tasks.$path(), (_, reply) => {
+    reply.send(
+      res<typeof apiClient.tasks.$get>([
+        { id: 1, label: 'foo task', done: false },
+        { id: 2, label: 'bar task', done: true }
+      ])
+    )
+  })
+
+  return fastify.listen(process.env.SERVER_PORT ?? 8080)
+})
+
+afterEach(() => cache.clear())
+afterAll(() => fastify.close())
+
+describe('Home page', () => {
+  it('matches snapshot', async () => {
+    const { container, asFragment } = render(<Home />, {})
+
+    await waitForDomChange({ container: container as HTMLElement })
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('clicking button triggers prompt', async () => {
+    const { container, getByText } = render(<Home />, {})
+
+    await waitForDomChange({ container: container as HTMLElement })
+
+    window.prompt = jest.fn()
+    window.alert = jest.fn()
+    fireEvent.click(getByText('LOGIN'))
+
+    expect(window.prompt).toHaveBeenCalledWith(
+      'Enter the user id (See server/.env)'
+    )
+    expect(window.alert).toHaveBeenCalledWith('Login failed')
+  })
+})
+
+```
+
+<a id="cffba0dd73da14d4f275f87beb9120eb"></a>
+test/testUtils.tsx
+
+```
+import React, { ReactChild } from 'react'
+import { render } from '@testing-library/react'
+import { SWRConfig } from 'swr'
+
+const Providers = ({ children }: { children: ReactChild }) => (
+  <SWRConfig value={{ dedupingInterval: 0 }}>{children}</SWRConfig>
+)
+
+const customRender = (ui, options = {}) =>
+  render(ui, { wrapper: Providers, ...options })
+
+export * from '@testing-library/react'
+
+export { customRender as render }
+
+```
+
 <a id="12af9d4fafed72fdd61e47ed6dda3499"></a>
 tsconfig.json
 
@@ -1486,6 +1727,7 @@ export const deleteTask = async (id: Task['id']) => {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -1504,9 +1746,9 @@ export const deleteTask = async (id: Task['id']) => {
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="46ee6cc09424a021e0be2ac39d395458"></a>
+<a id="e89bfa6df8399ac33640aea3cb684ec4"></a>
 package.json
 
 ```
@@ -1545,17 +1787,22 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -1978,6 +2225,10 @@ export type AuthHeader = {
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 <a id="a11c339aa061935b9564d590323bd24d"></a>
 tsconfig.json
 
@@ -2216,6 +2467,7 @@ export const deleteTask = (id: Task['id']) =>
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -2225,9 +2477,9 @@ export const deleteTask = (id: Task['id']) =>
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2311,6 +2563,10 @@ model Task {
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -2364,6 +2620,7 @@ model Task {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -2373,9 +2630,9 @@ model Task {
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2457,6 +2714,10 @@ model Task {
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -2510,6 +2771,7 @@ model Task {
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -2519,9 +2781,9 @@ model Task {
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="467fa2a65201983b5c66e5ace0fd7d91"></a>
+<a id="315466020020a07e87025e039ef1a5f7"></a>
 package.json
 
 ```
@@ -2560,17 +2822,22 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -2985,6 +3252,10 @@ server/tsconfig.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -3179,6 +3450,7 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-none-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -3188,9 +3460,9 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#467fa2a65201983b5c66e5ace0fd7d91)  
+[package.json](#315466020020a07e87025e039ef1a5f7)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3392,6 +3664,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -3497,6 +3773,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -3506,9 +3783,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#98ce3bd8f202c03e23f98cf366430a9d)  
+[package.json](#51805773945a2ac8102d5483c4a5a97b)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3606,6 +3883,10 @@ server/pm2.config.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -3707,6 +3988,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -3716,9 +3998,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3812,6 +4094,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -3922,6 +4208,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -3931,9 +4218,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3970,6 +4257,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -4024,6 +4315,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -4033,9 +4325,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4072,6 +4364,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -4126,6 +4422,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -4135,9 +4432,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#467fa2a65201983b5c66e5ace0fd7d91)  
+[package.json](#315466020020a07e87025e039ef1a5f7)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4233,6 +4530,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -4345,6 +4646,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-axios-pm2-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -4354,9 +4656,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#467fa2a65201983b5c66e5ace0fd7d91)  
+[package.json](#315466020020a07e87025e039ef1a5f7)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4452,6 +4754,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -4564,6 +4870,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-basic-fetch-none-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -4573,9 +4880,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="38ac4f602501684e0bdac04db734d399"></a>
+<a id="74ee2efd901b09519e72c07faf14b388"></a>
 package.json
 
 ```
@@ -4610,17 +4917,22 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -4664,6 +4976,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 <a id="1c2481f6bd2f1cdcd17e416faa47ed7d"></a>
 utils/apiClient.ts
@@ -4775,6 +5091,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -4784,9 +5101,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="419320610c02a3f0470db28d3d891a6b"></a>
+<a id="ccefcff2d2b0fff5714d6ec047cc625f"></a>
 package.json
 
 ```
@@ -4824,17 +5141,22 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -4882,6 +5204,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -4990,6 +5316,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -4999,9 +5326,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5037,6 +5364,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5090,6 +5421,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -5099,9 +5431,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5137,6 +5469,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5190,6 +5526,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -5199,9 +5536,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="ce58a855b1d76befd09ad1e317092da6"></a>
+<a id="ceb3539f0b78609969ad9e8c5593a5c6"></a>
 package.json
 
 ```
@@ -5239,17 +5576,22 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -5297,6 +5639,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5405,6 +5751,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-none-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -5414,9 +5761,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce58a855b1d76befd09ad1e317092da6)  
+[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5452,6 +5799,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5505,6 +5856,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -5514,9 +5866,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#38ac4f602501684e0bdac04db734d399)  
+[package.json](#74ee2efd901b09519e72c07faf14b388)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5549,6 +5901,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5599,6 +5955,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -5608,9 +5965,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5647,6 +6004,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5701,6 +6062,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -5710,9 +6072,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5749,6 +6111,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5803,6 +6169,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -5812,9 +6179,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5851,6 +6218,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5905,6 +6276,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -5914,9 +6286,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce58a855b1d76befd09ad1e317092da6)  
+[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5953,6 +6325,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -6007,6 +6383,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-basic-fetch-pm2-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -6016,9 +6393,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce58a855b1d76befd09ad1e317092da6)  
+[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6055,6 +6432,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -6109,6 +6490,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-axios-none-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -6118,9 +6500,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="ad7e189f4d9a9522d4d0d67f6469abc8"></a>
+<a id="5c35b93bbcc410148d52d74e1ef4c1db"></a>
 package.json
 
 ```
@@ -6156,17 +6538,22 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -6210,6 +6597,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -6312,6 +6703,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -6321,9 +6713,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="0449f3d67cf2b74264ee716f39381f6c"></a>
+<a id="86af185ffec990d9a113ebf5867e7c7f"></a>
 package.json
 
 ```
@@ -6362,17 +6754,22 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -6420,6 +6817,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -6529,6 +6930,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -6538,9 +6940,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6576,6 +6978,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -6629,6 +7035,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -6638,9 +7045,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6676,6 +7083,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -6729,6 +7140,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -6738,9 +7150,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="f87ec79ec1f9d83da4bd01d958d121f7"></a>
+<a id="91703adfef1034e87d424d014fcd8703"></a>
 package.json
 
 ```
@@ -6779,17 +7191,22 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -6837,6 +7254,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -6946,6 +7367,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-none-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -6955,9 +7377,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#f87ec79ec1f9d83da4bd01d958d121f7)  
+[package.json](#91703adfef1034e87d424d014fcd8703)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6993,6 +7415,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7046,6 +7472,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -7055,9 +7482,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ad7e189f4d9a9522d4d0d67f6469abc8)  
+[package.json](#5c35b93bbcc410148d52d74e1ef4c1db)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7090,6 +7517,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7140,6 +7571,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -7149,9 +7581,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7188,6 +7620,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7242,6 +7678,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -7251,9 +7688,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7290,6 +7727,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7344,6 +7785,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -7353,9 +7795,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7392,6 +7834,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7446,6 +7892,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -7455,9 +7902,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#f87ec79ec1f9d83da4bd01d958d121f7)  
+[package.json](#91703adfef1034e87d424d014fcd8703)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7494,6 +7941,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7548,6 +7999,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-axios-pm2-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -7557,9 +8009,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#f87ec79ec1f9d83da4bd01d958d121f7)  
+[package.json](#91703adfef1034e87d424d014fcd8703)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7596,6 +8048,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7650,6 +8106,7 @@ package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## express-next-static-fetch-none-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -7659,9 +8116,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="8fa3b4400a4c4cdc58da6bf6c59c00a2"></a>
+<a id="6a73ee1c14cbc2d53733cca0587de19a"></a>
 package.json
 
 ```
@@ -7696,17 +8153,22 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -7750,6 +8212,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -7851,6 +8317,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -7860,9 +8327,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="26fe65b3effbdd8c06f06b2d525697e6"></a>
+<a id="dcf10531c1dced97212a8361cb62c3f0"></a>
 package.json
 
 ```
@@ -7900,17 +8367,22 @@ package.json
   },
   "devDependencies": {
     "@prisma/cli": "^2.13.0",
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -7958,6 +8430,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8066,6 +8542,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -8075,9 +8552,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8113,6 +8590,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8166,6 +8647,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -8175,9 +8657,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8213,6 +8695,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8266,6 +8752,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -8275,9 +8762,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="0278207e9059d10789526a5523dc9977"></a>
+<a id="42f0f7ca3e24cea094ae324e6fe4edb1"></a>
 package.json
 
 ```
@@ -8315,17 +8802,22 @@ package.json
     "swr": "^0.3.9"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.2",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.13",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
+    "fastify": "^3.9.2",
+    "fastify-cors": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -8373,6 +8865,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8481,6 +8977,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-none-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -8490,9 +8987,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0278207e9059d10789526a5523dc9977)  
+[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8528,6 +9025,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8581,6 +9082,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -8590,9 +9092,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8fa3b4400a4c4cdc58da6bf6c59c00a2)  
+[package.json](#6a73ee1c14cbc2d53733cca0587de19a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8625,6 +9127,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8675,6 +9181,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -8684,9 +9191,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8723,6 +9230,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8777,6 +9288,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -8786,9 +9298,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8825,6 +9337,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8879,6 +9395,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -8888,9 +9405,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8927,6 +9444,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8981,6 +9502,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -8990,9 +9512,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0278207e9059d10789526a5523dc9977)  
+[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9029,6 +9551,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -9083,6 +9609,7 @@ package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## express-next-static-fetch-pm2-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -9092,9 +9619,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0278207e9059d10789526a5523dc9977)  
+[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9131,6 +9658,10 @@ package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -23241,7 +23772,26 @@ Sapper is in early development, and may have the odd rough edge here and there. 
 ```
 
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+<a id="1cc5d567ed84c2951e10b48b7524229f"></a>
+jest.config.ts
+
+```
+import type { Config } from '@jest/types'
+import { pathsToModuleNameMapper } from 'ts-jest/utils'
+import { compilerOptions } from './tsconfig.json'
+
+const config: Config.InitialOptions = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: '<rootDir>/'
+  })
+}
+
+export default config
+
+```
+
 <a id="df05ff19c36bd598c2630e0c2ef305be"></a>
 package.json
 
@@ -27870,330 +28420,6 @@ package.json
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
 [tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
-<a id="aaa28ca6a2ee4c72595cc6f4b2794549"></a>
-
-## express-sapper-basic-fetch-pm2-none-jest-npm-actions
-.github/workflows/nodejs.yml
-
-```
-name: Node.js CI
-
-on: push
-
-jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - uses: actions/cache@v2
-        id: client-npm-cache
-        with:
-          path: "node_modules"
-          key: client-npm-${{ hashFiles('package-lock.json') }}
-      - uses: actions/cache@v2
-        id: server-npm-cache
-        with:
-          path: "server/node_modules"
-          key: server-npm-${{ hashFiles('server/package-lock.json') }}
-      - run: npm install
-        if: steps.client-npm-cache.outputs.cache-hit != 'true'
-      - run: npm install --prefix server
-        if: steps.server-npm-cache.outputs.cache-hit != 'true'
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm test
-
-```
-
-[.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
-[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
-[README.md](#00ceeb161689080ab561029bf74dec99)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
-[package.json](#0d900a7a13a82e099830f4bcb6508027)  
-[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
-[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
-[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
-[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
-[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
-[server/service/user.ts](#4aa25115e76e33f8bedfab23a21082d6)  
-[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
-[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
-[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
-[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
-[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
-[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
-[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
-[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
-[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
-[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
-[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
-[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
-[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
-[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
-[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
-[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
-[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
-[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#3f633db9d2d4f05b420bd423c1c72de0)  
-[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
-[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
-
-## express-sapper-basic-fetch-pm2-none-jest-npm-none
-[.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
-[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
-[README.md](#00ceeb161689080ab561029bf74dec99)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
-[package.json](#0d900a7a13a82e099830f4bcb6508027)  
-[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
-[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
-[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
-[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
-[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
-[server/service/user.ts](#4aa25115e76e33f8bedfab23a21082d6)  
-[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
-[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
-[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
-[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
-[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
-[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
-[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
-[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
-[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
-[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
-[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
-[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
-[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
-[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
-[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
-[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
-[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
-[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#3f633db9d2d4f05b420bd423c1c72de0)  
-[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
-[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
-<a id="f064fe7b91be87abfb3ea5d631065566"></a>
-
-## express-sapper-basic-fetch-pm2-none-jest-yarn-actions
-.github/workflows/nodejs.yml
-
-```
-name: Node.js CI
-
-on: push
-
-jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - uses: actions/cache@v2
-        id: client-yarn-cache
-        with:
-          path: "node_modules"
-          key: client-yarn-${{ hashFiles('yarn.lock') }}
-      - uses: actions/cache@v2
-        id: server-yarn-cache
-        with:
-          path: "server/node_modules"
-          key: server-yarn-${{ hashFiles('server/yarn.lock') }}
-      - run: yarn install
-        if: steps.client-yarn-cache.outputs.cache-hit != 'true'
-      - run: yarn install --cwd server
-        if: steps.server-yarn-cache.outputs.cache-hit != 'true'
-      - run: yarn lint
-      - run: yarn typecheck
-      - run: yarn test
-
-```
-
-[.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
-[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
-[README.md](#00ceeb161689080ab561029bf74dec99)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
-[package.json](#0d900a7a13a82e099830f4bcb6508027)  
-[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
-[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
-[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
-[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
-[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
-[server/service/user.ts](#4aa25115e76e33f8bedfab23a21082d6)  
-[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
-[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
-[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
-[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
-[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
-[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
-[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
-[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
-[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
-[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
-[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
-[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
-[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
-[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
-[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
-[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
-[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
-[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#3f633db9d2d4f05b420bd423c1c72de0)  
-[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
-[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
-
-## express-sapper-basic-fetch-pm2-none-jest-yarn-none
-[.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
-[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
-[README.md](#00ceeb161689080ab561029bf74dec99)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
-[package.json](#0d900a7a13a82e099830f4bcb6508027)  
-[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
-[server/.eslintrc.js](#17e3708d74df58d0eedcdcd47b178764)  
-[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
-[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
-[server/api/tasks/index.ts](#06658a2f7d558e50c666f98e2b71d4c2)  
-[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
-[server/package.json](#0b3a2daf674bc0995193d6a93cc0498b)  
-[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
-[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#d1ed4103556c2ebeae3512bb525248a0)  
-[server/service/user.ts](#4aa25115e76e33f8bedfab23a21082d6)  
-[server/test/server.test.ts](#44fd9004f5826b978dcf1814d40a9a1b)  
-[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
-[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
-[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
-[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
-[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
-[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
-[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
-[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
-[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
-[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
-[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
-[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
-[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
-[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
-[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
-[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
-[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
-[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
-[src/utils/apiClient.ts](#3f633db9d2d4f05b420bd423c1c72de0)  
-[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
-[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-pm2-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28256,6 +28482,320 @@ jobs:
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
 [tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
+<a id="8ab99aa50ae091b7c001f78560343661"></a>
+
+## express-sapper-basic-fetch-pm2-none-none-npm-actions
+.github/workflows/nodejs.yml
+
+```
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-npm-cache
+        with:
+          path: "node_modules"
+          key: client-npm-${{ hashFiles('package-lock.json') }}
+      - uses: actions/cache@v2
+        id: server-npm-cache
+        with:
+          path: "server/node_modules"
+          key: server-npm-${{ hashFiles('server/package-lock.json') }}
+      - run: npm install
+        if: steps.client-npm-cache.outputs.cache-hit != 'true'
+      - run: npm install --prefix server
+        if: steps.server-npm-cache.outputs.cache-hit != 'true'
+      - run: npm run lint
+      - run: npm run typecheck
+
+```
+
+[.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
+[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
+[README.md](#00ceeb161689080ab561029bf74dec99)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[package.json](#7c04c29043598495001308f91212f20c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
+[server/.eslintrc.js](#340c0ad2cc210cec93fe7bbfda1c8016)  
+[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
+[server/service/user.ts](#4aa25115e76e33f8bedfab23a21082d6)  
+[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
+[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
+[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
+[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
+[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
+[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
+[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
+[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
+[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
+[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
+[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
+[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
+[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
+[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
+[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
+[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
+[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
+[src/utils/apiClient.ts](#3f633db9d2d4f05b420bd423c1c72de0)  
+[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
+[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
+
+## express-sapper-basic-fetch-pm2-none-none-npm-none
+[.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
+[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
+[README.md](#00ceeb161689080ab561029bf74dec99)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[package.json](#7c04c29043598495001308f91212f20c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
+[server/.eslintrc.js](#340c0ad2cc210cec93fe7bbfda1c8016)  
+[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
+[server/service/user.ts](#4aa25115e76e33f8bedfab23a21082d6)  
+[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
+[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
+[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
+[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
+[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
+[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
+[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
+[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
+[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
+[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
+[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
+[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
+[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
+[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
+[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
+[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
+[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
+[src/utils/apiClient.ts](#3f633db9d2d4f05b420bd423c1c72de0)  
+[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
+[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
+<a id="5655a59b81eb6f89e7af3701f71975a6"></a>
+
+## express-sapper-basic-fetch-pm2-none-none-yarn-actions
+.github/workflows/nodejs.yml
+
+```
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-yarn-cache
+        with:
+          path: "node_modules"
+          key: client-yarn-${{ hashFiles('yarn.lock') }}
+      - uses: actions/cache@v2
+        id: server-yarn-cache
+        with:
+          path: "server/node_modules"
+          key: server-yarn-${{ hashFiles('server/yarn.lock') }}
+      - run: yarn install
+        if: steps.client-yarn-cache.outputs.cache-hit != 'true'
+      - run: yarn install --cwd server
+        if: steps.server-yarn-cache.outputs.cache-hit != 'true'
+      - run: yarn lint
+      - run: yarn typecheck
+
+```
+
+[.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
+[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
+[README.md](#00ceeb161689080ab561029bf74dec99)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[package.json](#7c04c29043598495001308f91212f20c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
+[server/.eslintrc.js](#340c0ad2cc210cec93fe7bbfda1c8016)  
+[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
+[server/service/user.ts](#4aa25115e76e33f8bedfab23a21082d6)  
+[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
+[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
+[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
+[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
+[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
+[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
+[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
+[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
+[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
+[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
+[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
+[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
+[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
+[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
+[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
+[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
+[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
+[src/utils/apiClient.ts](#3f633db9d2d4f05b420bd423c1c72de0)  
+[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
+[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
+
+## express-sapper-basic-fetch-pm2-none-none-yarn-none
+[.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
+[.vscode/extensions.json](#c7d64f09de20c911a53a8a2217dfa40c)  
+[README.md](#00ceeb161689080ab561029bf74dec99)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[package.json](#7c04c29043598495001308f91212f20c)  
+[rollup.config.js](#80501041bbd6125475af7e725bb854a0)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.eslintignore](#dca5e0700dac0db1c57aa4f935957317)  
+[server/.eslintrc.js](#340c0ad2cc210cec93fe7bbfda1c8016)  
+[server/.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#dbfac3a264c73b9a409c25bcd45615f7)  
+[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
+[server/api/tasks/index.ts](#f57c896374d5968155329c208e70bd79)  
+[server/api/token/controller.ts](#6cc6daae975d51b3b1e92a20a01857a6)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#6e3cb982a28369d5b7de12691d82a3f3)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#aaeb6704807f45871775708031b7cd98)  
+[server/package.json](#564303946b121218ac96096fe55e00cf)  
+[server/pm2.config.json](#3bc42a3e22644d7b60f1119288700c29)  
+[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#3cf6c1d47d8dbaec713f3c8a6e6ab1e6)  
+[server/service/user.ts](#4aa25115e76e33f8bedfab23a21082d6)  
+[server/tsconfig.json](#8ebf859af04f46d78892ccdcde82ae38)  
+[server/types/index.ts](#261d1df28d2a74a1fbc57a28294d3239)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[src/ambient.d.ts](#991ebb996a85a326b03cd8762f159dfe)  
+[src/client.ts](#5ded56613588ed717bfef4aad8f8b20e)  
+[src/components/Nav.svelte](#780342d7133bfeea53505963bedab79a)  
+[src/components/UserBanner.svelte](#8783a9255d9ae971def9f5370f740695)  
+[src/node_modules/images/successkid.jpg](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[src/polka.d.ts](#e32e9bd507a2fc3df2c3f054a95a6e1f)  
+[src/routes/_error.svelte](#d181a1a59a4ae3aa6a4ddbf9cf9da34f)  
+[src/routes/_layout.svelte](#9ffbe8481e87302afb6b634627a210ea)  
+[src/routes/about.svelte](#6277e2f545362f221a8813a79d93ea54)  
+[src/routes/blog/[slug].json.js](#f5437454543454b9ba70c07ffad5eaea)  
+[src/routes/blog/[slug].svelte](#08ee6a38724a69abd2f1fe3ca35660bc)  
+[src/routes/blog/_posts.js](#83f0d25dcf75c399fd25573383f6dbcc)  
+[src/routes/blog/index.json.js](#5fb5d037dab7cb1f0abbccb5a19e38b3)  
+[src/routes/blog/index.svelte](#51bee6922fea1801f900c633e832da75)  
+[src/routes/index.svelte](#d812426a61139ff8578b7dc1a3ba7829)  
+[src/server.ts](#806a80cf85fa0298535baef618fc1b93)  
+[src/service-worker.ts](#973f901afe570e0f5ae394da430cd7e7)  
+[src/template.html](#583cd57f1c64e00f6fb27b804252f61a)  
+[src/utils/apiClient.ts](#3f633db9d2d4f05b420bd423c1c72de0)  
+[static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/global.css](#d6f74dd490d99adcb3509424c4251e53)  
+[static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-pm2-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -32974,6 +33514,7 @@ package.json
 [tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-next-basic-axios-none-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -32983,9 +33524,9 @@ package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#98ce3bd8f202c03e23f98cf366430a9d)  
+[package.json](#51805773945a2ac8102d5483c4a5a97b)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33205,6 +33746,10 @@ test('dependency injection into controller', async () => {
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -33297,6 +33842,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -33306,9 +33852,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33463,6 +34009,10 @@ test('dependency injection into controller', async () => {
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -33564,6 +34114,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -33573,9 +34124,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33611,6 +34162,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -33664,6 +34219,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -33673,9 +34229,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33711,6 +34267,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -33764,6 +34324,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -33773,9 +34334,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#467fa2a65201983b5c66e5ace0fd7d91)  
+[package.json](#315466020020a07e87025e039ef1a5f7)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33953,6 +34514,10 @@ test('dependency injection into controller', async () => {
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -34056,6 +34621,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-none-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -34065,9 +34631,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#467fa2a65201983b5c66e5ace0fd7d91)  
+[package.json](#315466020020a07e87025e039ef1a5f7)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34205,6 +34771,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -34308,6 +34878,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -34317,9 +34888,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#98ce3bd8f202c03e23f98cf366430a9d)  
+[package.json](#51805773945a2ac8102d5483c4a5a97b)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34402,6 +34973,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -34501,6 +35076,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -34510,9 +35086,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34604,6 +35180,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -34712,6 +35292,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -34721,9 +35302,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34760,6 +35341,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -34814,6 +35399,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -34823,9 +35409,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#46ee6cc09424a021e0be2ac39d395458)  
+[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34862,6 +35448,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -34916,6 +35506,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -34925,9 +35516,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#467fa2a65201983b5c66e5ace0fd7d91)  
+[package.json](#315466020020a07e87025e039ef1a5f7)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35021,6 +35612,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -35131,6 +35726,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-axios-pm2-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -35140,9 +35736,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#467fa2a65201983b5c66e5ace0fd7d91)  
+[package.json](#315466020020a07e87025e039ef1a5f7)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35236,6 +35832,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -35346,6 +35946,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-basic-fetch-none-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -35355,9 +35956,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#38ac4f602501684e0bdac04db734d399)  
+[package.json](#74ee2efd901b09519e72c07faf14b388)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35389,6 +35990,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -35438,6 +36043,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -35447,9 +36053,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35485,6 +36091,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -35538,6 +36148,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -35547,9 +36158,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35585,6 +36196,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -35638,6 +36253,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -35647,9 +36263,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35685,6 +36301,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -35738,6 +36358,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -35747,9 +36368,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce58a855b1d76befd09ad1e317092da6)  
+[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35785,6 +36406,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -35838,6 +36463,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-none-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -35847,9 +36473,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce58a855b1d76befd09ad1e317092da6)  
+[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35885,6 +36511,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -35938,6 +36568,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -35947,9 +36578,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#38ac4f602501684e0bdac04db734d399)  
+[package.json](#74ee2efd901b09519e72c07faf14b388)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35982,6 +36613,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36032,6 +36667,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -36041,9 +36677,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36080,6 +36716,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36134,6 +36774,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -36143,9 +36784,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36182,6 +36823,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36236,6 +36881,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -36245,9 +36891,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#419320610c02a3f0470db28d3d891a6b)  
+[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36284,6 +36930,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36338,6 +36988,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -36347,9 +36998,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce58a855b1d76befd09ad1e317092da6)  
+[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36386,6 +37037,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36440,6 +37095,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-basic-fetch-pm2-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -36449,9 +37105,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce58a855b1d76befd09ad1e317092da6)  
+[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36488,6 +37144,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36542,6 +37202,7 @@ server/package.json
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-axios-none-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -36551,9 +37212,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ad7e189f4d9a9522d4d0d67f6469abc8)  
+[package.json](#5c35b93bbcc410148d52d74e1ef4c1db)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36585,6 +37246,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -36634,6 +37299,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -36643,9 +37309,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36681,6 +37347,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -36734,6 +37404,7 @@ server/package.json
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -36743,9 +37414,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36781,6 +37452,10 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -36833,9 +37508,49 @@ server/package.json
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
-## fastify-next-static-axios-none-prisma-sqlite-jest
+## fastify-next-static-axios-none-prisma-sqlite-jest-npm-actions
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+<a id="2c135d4643644699db4141a1e78f58fa"></a>
+.github/workflows/nodejs.yml
+
+```
+name: Node.js CI
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-npm-cache
+        with:
+          path: "node_modules"
+          key: client-npm-${{ hashFiles('package-lock.json') }}
+      - uses: actions/cache@v2
+        id: server-npm-cache
+        with:
+          path: "server/node_modules"
+          key: server-npm-${{ hashFiles('server/package-lock.json') }}
+      - run: npm install
+        if: steps.client-npm-cache.outputs.cache-hit != 'true'
+      - run: npm install --prefix server
+        if: steps.server-npm-cache.outputs.cache-hit != 'true'
+      - run: npm run lint
+      - run: echo "DATABASE_URL=file:./dev.db" > server/prisma/.env
+      - run: npm run typecheck
+      - run: npm test
+
+```
+
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
 [.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
@@ -36843,9 +37558,9 @@ server/package.json
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36881,50 +37596,17 @@ server/package.json
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
-## fastify-next-static-axios-none-prisma-sqlite-none-npm-actions
+## fastify-next-static-axios-none-prisma-sqlite-jest-npm-none
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-<a id="0a1dffe82fa89e0df993aeb9ee3bc4d9"></a>
-.github/workflows/nodejs.yml
-
-```
-name: Node.js CI
-
-on: push
-
-jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - uses: actions/cache@v2
-        id: client-npm-cache
-        with:
-          path: "node_modules"
-          key: client-npm-${{ hashFiles('package-lock.json') }}
-      - uses: actions/cache@v2
-        id: server-npm-cache
-        with:
-          path: "server/node_modules"
-          key: server-npm-${{ hashFiles('server/package-lock.json') }}
-      - run: npm install
-        if: steps.client-npm-cache.outputs.cache-hit != 'true'
-      - run: npm install --prefix server
-        if: steps.server-npm-cache.outputs.cache-hit != 'true'
-      - run: npm run lint
-      - run: echo "DATABASE_URL=file:./dev.db" > server/prisma/.env
-      - run: npm run typecheck
-
-```
-
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
 [.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
 [.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
@@ -36932,8 +37614,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36944,23 +37627,24 @@ jobs:
 [server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
 [server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
 [server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
+[server/api/tasks/index.ts](#8eb5459270593d9a3afdd17aec312f62)  
 [server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
 [server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
+[server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
 [server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
 [server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
@@ -36968,62 +37652,18 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
-## fastify-next-static-axios-none-prisma-sqlite-none-npm-none
+## fastify-next-static-axios-none-prisma-sqlite-jest-yarn-actions
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-[.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
-[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
-[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
-[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
-[README.md](#85f4047bb3e442389d08f35fe6502286)  
-[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
-[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
-[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
-[pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
-[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
-[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
-[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
-[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
-[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
-[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
-[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
-[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
-[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
-[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
-[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
-[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
-[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
-[server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
-[server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
-[server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
-[server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
-[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
-[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
-[server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
-[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
-[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
-[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
-[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
-[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
-[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
-[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
-[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
-[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
-
-## fastify-next-static-axios-none-prisma-sqlite-none-yarn-actions
-[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
-[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-<a id="951ed7caa0c7c2df678085f656d04721"></a>
+<a id="676caf85d85d2c06b53c8c8217fb4516"></a>
 .github/workflows/nodejs.yml
 
 ```
@@ -37058,6 +37698,7 @@ jobs:
       - run: yarn lint
       - run: echo "DATABASE_URL=file:./dev.db" > server/prisma/.env
       - run: yarn typecheck
+      - run: yarn test
 
 ```
 
@@ -37068,8 +37709,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37080,23 +37722,24 @@ jobs:
 [server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
 [server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
 [server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
+[server/api/tasks/index.ts](#8eb5459270593d9a3afdd17aec312f62)  
 [server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
 [server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
+[server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
 [server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
 [server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
@@ -37104,10 +37747,15 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
-## fastify-next-static-axios-none-prisma-sqlite-none-yarn-none
+## fastify-next-static-axios-none-prisma-sqlite-jest-yarn-none
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -37117,8 +37765,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37129,23 +37778,24 @@ jobs:
 [server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
 [server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
 [server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
-[server/api/tasks/controller.ts](#d1dd67c5ce4c55c7ce4812811608b733)  
-[server/api/tasks/index.ts](#efcad2fbc6379704cd35e67f553982ef)  
+[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
+[server/api/tasks/index.ts](#8eb5459270593d9a3afdd17aec312f62)  
 [server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
 [server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
 [server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
 [server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
 [server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
 [server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
-[server/package.json](#2b38e3bc42f81a83c1a37b230d096e8d)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
 [server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
 [server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
 [server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
 [server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
 [server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
 [server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
-[server/service/tasks.ts](#ea56aaf7b1ce312b5ce28859e9cd417e)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
 [server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
+[server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
 [server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
 [server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
 [server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
@@ -37153,6 +37803,66 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
+[utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
+
+## fastify-next-static-axios-none-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
+[.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
+[.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
+[.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
+[.prettierrc](#6906ea6d8461c6d9326016b1d22e3311)  
+[.vscode/extensions.json](#1f36d4947194e60bca395c63578c9ae3)  
+[.vscode/settings.json](#ca4e97193b2de23a2fe3001153124a8b)  
+[README.md](#85f4047bb3e442389d08f35fe6502286)  
+[aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
+[components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
+[next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
+[pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
+[public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
+[public/vercel.svg](#703f5a9c8862fd7874311171ddcfd92e)  
+[server/.env](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/.env.example](#b9cc535b64608aad34deb9c327bc0f0f)  
+[server/api/controller.ts](#15bfcce347e9ee4517567dff3d67ed97)  
+[server/api/index.ts](#f193c09b452c1e139be9f3c60791fa72)  
+[server/api/tasks/_taskId@number/controller.ts](#f9f640862659c68c82d6bcf8cdb6ad8d)  
+[server/api/tasks/_taskId@number/index.ts](#0aa56efb08bf4f5b490f72e2544e9d02)  
+[server/api/tasks/controller.ts](#92909dbfe771ff1db4cbc19ce952a613)  
+[server/api/tasks/index.ts](#8eb5459270593d9a3afdd17aec312f62)  
+[server/api/token/controller.ts](#a4ecdf0c9fe35d8815e8310e88dc1e3c)  
+[server/api/token/index.ts](#77e5e92fe1cbddbb06260f760e56aa7c)  
+[server/api/user/controller.ts](#a6699442ee997e8868950ce6c3ee5154)  
+[server/api/user/hooks.ts](#a036039a9942508ac4d8b3d37368b09b)  
+[server/api/user/index.ts](#2b4e560aa26b12cf7b1ad457627f1215)  
+[server/index.ts](#ff4993e07c07a937bfe143594a69937c)  
+[server/package.json](#fce482be599f3dead76d96a9dd323fc6)  
+[server/prisma/.env](#429401736c76b800fe494a6854b1ecf9)  
+[server/prisma/.env.example](#94ef17adf5bf34d828d3cc9c4028f2ea)  
+[server/prisma/migrations/20201209205045_/migration.sql](#be0b4dda6e9fc1df4f4d421085a6d6ba)  
+[server/prisma/schema.prisma](#a6ac956167551b7ab6847273278bc9f5)  
+[server/public/icons/dummy.svg](#7f88b90026b5fd026a18442f28585071)  
+[server/service/envValues.ts](#8567292e35d2a51ab8742f3d76f49a22)  
+[server/service/tasks.ts](#6d911205eb1c2a06a2a59737398e51bd)  
+[server/service/user.ts](#4e153340ad37cf44bf5413319e7c4a8c)  
+[server/test/server.test.ts](#886e2de47d84d5c662221ef1f42465fb)  
+[server/tsconfig.json](#48a94423f8d7b694248ba215d48a5540)  
+[server/types/index.ts](#3676a90700f3afd54a78b97b4080cfef)  
+[server/validators/index.ts](#b74a597df268804caa547528b1a949b4)  
+[server/webpack.config.js](#f690d11280796daa40ede4e5d47fb09a)  
+[styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
+[styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
+[styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -37206,6 +37916,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -37215,9 +37926,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#f87ec79ec1f9d83da4bd01d958d121f7)  
+[package.json](#91703adfef1034e87d424d014fcd8703)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37253,6 +37964,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -37306,6 +38021,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-none-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -37315,9 +38031,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#f87ec79ec1f9d83da4bd01d958d121f7)  
+[package.json](#91703adfef1034e87d424d014fcd8703)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37353,6 +38069,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -37406,6 +38126,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -37415,9 +38136,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ad7e189f4d9a9522d4d0d67f6469abc8)  
+[package.json](#5c35b93bbcc410148d52d74e1ef4c1db)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37450,6 +38171,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -37500,6 +38225,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -37509,9 +38235,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37548,6 +38274,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -37602,6 +38332,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -37611,9 +38342,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37650,6 +38381,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -37704,6 +38439,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -37713,9 +38449,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0449f3d67cf2b74264ee716f39381f6c)  
+[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37752,6 +38488,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -37806,6 +38546,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -37815,9 +38556,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#f87ec79ec1f9d83da4bd01d958d121f7)  
+[package.json](#91703adfef1034e87d424d014fcd8703)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37854,6 +38595,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -37908,6 +38653,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-axios-pm2-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -37917,9 +38663,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#f87ec79ec1f9d83da4bd01d958d121f7)  
+[package.json](#91703adfef1034e87d424d014fcd8703)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37956,6 +38702,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38010,6 +38760,7 @@ jobs:
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
 ## fastify-next-static-fetch-none-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -38019,9 +38770,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8fa3b4400a4c4cdc58da6bf6c59c00a2)  
+[package.json](#6a73ee1c14cbc2d53733cca0587de19a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38053,6 +38804,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -38102,6 +38857,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -38111,9 +38867,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38149,6 +38905,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -38202,6 +38962,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -38211,9 +38972,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38249,6 +39010,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -38302,6 +39067,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -38311,9 +39077,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38349,6 +39115,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -38402,6 +39172,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -38411,9 +39182,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0278207e9059d10789526a5523dc9977)  
+[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38449,6 +39220,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -38502,6 +39277,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-none-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -38511,9 +39287,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0278207e9059d10789526a5523dc9977)  
+[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38549,6 +39325,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -38602,6 +39382,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-none-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -38611,9 +39392,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#8fa3b4400a4c4cdc58da6bf6c59c00a2)  
+[package.json](#6a73ee1c14cbc2d53733cca0587de19a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38646,6 +39427,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -38696,6 +39481,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-prisma-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -38705,9 +39491,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38744,6 +39530,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -38798,6 +39588,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-prisma-postgresql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -38807,9 +39598,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38846,6 +39637,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -38900,6 +39695,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-prisma-sqlite-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -38909,9 +39705,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#26fe65b3effbdd8c06f06b2d525697e6)  
+[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38948,6 +39744,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -39002,6 +39802,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-typeorm-mysql-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -39011,9 +39812,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0278207e9059d10789526a5523dc9977)  
+[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39050,6 +39851,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -39104,6 +39909,7 @@ jobs:
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
 ## fastify-next-static-fetch-pm2-typeorm-postgres-jest
+[.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
 [.gitignore](#702d49621e92ab21938b8925cc2f28eb)  
@@ -39113,9 +39919,9 @@ jobs:
 [README.md](#85f4047bb3e442389d08f35fe6502286)  
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
-[jest.config.ts](#1cc5d567ed84c2951e10b48b7524229f)  
+[jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0278207e9059d10789526a5523dc9977)  
+[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39152,6 +39958,10 @@ jobs:
 [styles/Home.module.css](#4bae419957d2baf7caeaa43081431f98)  
 [styles/UserBanner.module.css](#eb8871514c60ffef85357d6ebf3b6b8c)  
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
+[test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
+[test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
+[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
