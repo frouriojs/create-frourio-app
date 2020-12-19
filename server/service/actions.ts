@@ -67,13 +67,11 @@ export const createActions = (
       templateDir: `testing/${answers.testing}`
     })
 
-    if (answers.client === 'nuxt') {
-      addedList.push({
-        type: 'add',
-        files: '**',
-        templateDir: 'testing/nuxt'
-      })
-    }
+    addedList.push({
+      type: 'add',
+      files: '**',
+      templateDir: `testing/${answers.client}`
+    })
   }
 
   if (answers.ci !== 'none') {

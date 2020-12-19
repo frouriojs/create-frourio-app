@@ -37,35 +37,35 @@
     }
   },
   "dependencies": {
-    "<% if (aspida === 'axios') { %>@aspida/axios": "^1.1.0",
-    "<% } else { %>@aspida/fetch": "^1.1.0",
-    "@aspida/node-fetch": "^1.1.0",
+    "<% if (aspida === 'axios') { %>@aspida/axios": "^1.1.1",
+    "<% } else { %>@aspida/fetch": "^1.1.1",
+    "@aspida/node-fetch": "^1.1.1",
     "<% } %>@nuxt/typescript-runtime": "^2.0.0<% if (aspida === 'axios') { %>",
-    "@nuxtjs/axios": "^5.12.3<% } %>",
+    "@nuxtjs/axios": "^5.12.4<% } %>",
     "class-validator": "^0.12.2",
     "core-js": "^3.8.1",
-    "nuxt": "2.14.11"
+    "nuxt": "2.14.12"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@nuxt/types": "^2.14.11",
+    "@nuxt/types": "^2.14.12",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
-    "@nuxtjs/eslint-module": "^3.0.1",
+    "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/stylelint-module": "^4.0.0<% if (orm === 'prisma') { %>",
-    "@prisma/cli": "^2.13.0<% } %><% if (testing === 'jest') { %>",
+    "@prisma/cli": "^2.13.1<% } %><% if (testing === 'jest') { %>",
     "@types/jest": "^26.0.19<% } %><% if (aspida === 'fetch') { %>",
     "@types/node-fetch": "^2.5.7<% } %><% if (testing === 'jest') { %>",
-    "@vue/test-utils": "^1.1.0",
+    "@vue/test-utils": "^1.1.2",
     "babel-core": "7.0.0-bridge.0<% } %>",
     "babel-eslint": "^10.1.0<% if (testing === 'jest') { %>",
-    "babel-jest": "^26.5.0<% } %>",
+    "babel-jest": "^26.6.3<% } %>",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.15.0",
-    "eslint-config-prettier": "^7.0.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "husky": "^4.3.6<% if (testing === 'jest') { %>",
@@ -78,6 +78,6 @@
     "stylelint-config-standard": "^20.0.0<% if (testing === 'jest') { %>",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
-    "vue-jest": "^3.0.4<% } %>"
+    "vue-jest": "^3.0.7<% } %>"
   }
 }
