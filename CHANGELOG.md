@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.22.0](https://github.com/frouriojs/create-frourio-app/compare/v0.21.5...v0.22.0) (2020-12-19)
+
+
+### Features
+
+* add @testing-library/react to nextjs ([d6942fd](https://github.com/frouriojs/create-frourio-app/commit/d6942fd0b65543210faaf2d049d49adc91047934))
+* update sapper modules ([c3fc541](https://github.com/frouriojs/create-frourio-app/commit/c3fc54192a56c91bb95914feb90f4e8b84078660))
+* update test of nuxtjs ([2183fbf](https://github.com/frouriojs/create-frourio-app/commit/2183fbf4a17f8f9f6186500c0ff56d01b0803caf))
+
 ### [0.21.5](https://github.com/frouriojs/create-frourio-app/compare/v0.21.4...v0.21.5) (2020-12-16)
 
 
