@@ -37789,7 +37789,7 @@ server/package.json
 [.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-<a id="2c135d4643644699db4141a1e78f58fa"></a>
+<a id="f678b314ec262f2eb851a7a02322039c"></a>
 .github/workflows/nodejs.yml
 
 ```
@@ -37801,6 +37801,10 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    env:
+      SERVER_PORT: 8080
+      API_ORIGIN: http://localhost:8080
+      BASE_PATH: /api
     steps:
       - uses: actions/checkout@v2
       - name: setup Node.js
@@ -37940,7 +37944,7 @@ jobs:
 [.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
 [.eslintignore](#f31ef2c4d8f51997b9e250e1ae4488a6)  
 [.eslintrc.js](#7c32f95e57b61822ea44932bbed39755)  
-<a id="676caf85d85d2c06b53c8c8217fb4516"></a>
+<a id="6e07b08d01da0268498867f7ace08fdb"></a>
 .github/workflows/nodejs.yml
 
 ```
@@ -37952,6 +37956,10 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    env:
+      SERVER_PORT: 8080
+      API_ORIGIN: http://localhost:8080
+      BASE_PATH: /api
     steps:
       - uses: actions/checkout@v2
       - name: setup Node.js
