@@ -13,7 +13,11 @@ jobs:
           - 5432:5432
         env:
           POSTGRES_PASSWORD: postgres
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5<% } %>
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5<% } %><% if (client === 'next') { %>
+    env:
+      SERVER_PORT: 8080
+      API_ORIGIN: http://localhost:8080
+      BASE_PATH: /api<% } %>
     steps:
       - uses: actions/checkout@v2
       - name: setup Node.js
