@@ -25,8 +25,9 @@
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "<% if (aspida === 'axios') { %>@aspida/axios": "^1.1.0",
-    "<% } else { %>@aspida/fetch": "^1.1.0",
+    "<% if (aspida === 'axios') { %>@aspida/axios": "^1.1.1",
+    "<% } else { %>@aspida/fetch": "^1.1.1<% if (testing === 'jest') { %>",
+    "@aspida/node-fetch": "^1.1.1<% } %>",
     "<% } %>@aspida/swr": "^1.1.0<% if (aspida === 'axios') { %>",
     "axios": "^0.21.0<% } %>",
     "class-validator": "^0.12.2",

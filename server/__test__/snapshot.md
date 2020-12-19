@@ -324,7 +324,7 @@ next-env.d.ts
 
 ```
 
-<a id="51805773945a2ac8102d5483c4a5a97b"></a>
+<a id="5332d499c5ef5039202348038f4b82c8"></a>
 package.json
 
 ```
@@ -350,7 +350,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -1495,7 +1495,7 @@ export const apiClient = api(aspida())
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="2639d7ba9f91c9453dd8e14fa108da4d"></a>
+<a id="ea8a1c6095b76bc457fc6bb9a72a6175"></a>
 package.json
 
 ```
@@ -1520,7 +1520,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -1748,7 +1748,7 @@ export const deleteTask = async (id: Task['id']) => {
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="e89bfa6df8399ac33640aea3cb684ec4"></a>
+<a id="8260b65e097d059df7334b997b813a2c"></a>
 package.json
 
 ```
@@ -1776,7 +1776,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -2277,7 +2277,7 @@ tsconfig.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="27f0bc2cf15c89d7b62b7b8d1e513d6b"></a>
+<a id="904f40d976b1c2d8bb309ebe42953a72"></a>
 package.json
 
 ```
@@ -2304,7 +2304,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -2479,7 +2479,7 @@ export const deleteTask = (id: Task['id']) =>
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2581,7 +2581,7 @@ model Task {
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2632,7 +2632,7 @@ model Task {
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2732,7 +2732,7 @@ model Task {
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -2783,7 +2783,7 @@ model Task {
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="315466020020a07e87025e039ef1a5f7"></a>
+<a id="6eacf6dacc54a96f3c753473a3886c51"></a>
 package.json
 
 ```
@@ -2812,7 +2812,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -3270,7 +3270,7 @@ server/tsconfig.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="ce1a6c4d1afdac0dae944599ea88376f"></a>
+<a id="b829b7d9f6b87a5655fee0f57b2f5317"></a>
 package.json
 
 ```
@@ -3298,7 +3298,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -3462,7 +3462,7 @@ export const deleteTask = (id: Task['id']) => taskRepository().delete({ id })
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#315466020020a07e87025e039ef1a5f7)  
+[package.json](#6eacf6dacc54a96f3c753473a3886c51)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3682,7 +3682,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[package.json](#b829b7d9f6b87a5655fee0f57b2f5317)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3785,7 +3785,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#51805773945a2ac8102d5483c4a5a97b)  
+[package.json](#5332d499c5ef5039202348038f4b82c8)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -3901,7 +3901,7 @@ server/pm2.config.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#2639d7ba9f91c9453dd8e14fa108da4d)  
+[package.json](#ea8a1c6095b76bc457fc6bb9a72a6175)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4000,7 +4000,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4112,7 +4112,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4220,7 +4220,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4275,7 +4275,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4327,7 +4327,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4382,7 +4382,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4434,7 +4434,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#315466020020a07e87025e039ef1a5f7)  
+[package.json](#6eacf6dacc54a96f3c753473a3886c51)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4548,7 +4548,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[package.json](#b829b7d9f6b87a5655fee0f57b2f5317)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4658,7 +4658,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#315466020020a07e87025e039ef1a5f7)  
+[package.json](#6eacf6dacc54a96f3c753473a3886c51)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4772,7 +4772,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[package.json](#b829b7d9f6b87a5655fee0f57b2f5317)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -4882,7 +4882,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="74ee2efd901b09519e72c07faf14b388"></a>
+<a id="e1867129c1e0141400ea36c8d21d9cc3"></a>
 package.json
 
 ```
@@ -4908,7 +4908,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
+    "@aspida/node-fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -4978,7 +4979,76 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+<a id="e9f38b4eab2973cc73f68a63cdf7c9de"></a>
+test/pages/index.test.tsx
+
+```
+import React from 'react'
+import { cache } from 'swr'
+import dotenv from 'dotenv'
+import Fastify, { FastifyInstance } from 'fastify'
+import cors from 'fastify-cors'
+import aspida from '@aspida/node-fetch'
+import api from '~/server/api/$api'
+import Home from '~/pages/index'
+import { render, fireEvent, waitForDomChange } from '../testUtils'
+
+dotenv.config({ path: 'server/.env' })
+
+const apiClient = api(aspida(undefined, { baseURL: process.env.BASE_PATH }))
+const res = function <T extends (...args: unknown[]) => unknown>(
+  data: ReturnType<T> extends Promise<infer S> ? S : never
+) {
+  return data
+}
+
+let fastify: FastifyInstance
+
+beforeAll(() => {
+  fastify = Fastify()
+  fastify.register(cors)
+  fastify.get(apiClient.tasks.$path(), (_, reply) => {
+    reply.send(
+      res<typeof apiClient.tasks.$get>([
+        { id: 1, label: 'foo task', done: false },
+        { id: 2, label: 'bar task', done: true }
+      ])
+    )
+  })
+
+  return fastify.listen(process.env.SERVER_PORT ?? 8080)
+})
+
+afterEach(() => cache.clear())
+afterAll(() => fastify.close())
+
+describe('Home page', () => {
+  it('matches snapshot', async () => {
+    const { container, asFragment } = render(<Home />, {})
+
+    await waitForDomChange({ container: container as HTMLElement })
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('clicking button triggers prompt', async () => {
+    const { container, getByText } = render(<Home />, {})
+
+    await waitForDomChange({ container: container as HTMLElement })
+
+    window.prompt = jest.fn()
+    window.alert = jest.fn()
+    fireEvent.click(getByText('LOGIN'))
+
+    expect(window.prompt).toHaveBeenCalledWith(
+      'Enter the user id (See server/.env)'
+    )
+    expect(window.alert).toHaveBeenCalledWith('Login failed')
+  })
+})
+
+```
+
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 <a id="1c2481f6bd2f1cdcd17e416faa47ed7d"></a>
@@ -5004,7 +5074,7 @@ export const apiClient = api(aspida())
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="0206392600d5365083a46638d825f9f1"></a>
+<a id="50663dfd662e9bcd0b66ea5a2a680944"></a>
 package.json
 
 ```
@@ -5029,7 +5099,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -5103,7 +5173,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="ccefcff2d2b0fff5714d6ec047cc625f"></a>
+<a id="8c2e12a2e530e002ea508be19ad0cb2c"></a>
 package.json
 
 ```
@@ -5131,7 +5201,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
+    "@aspida/node-fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -5206,7 +5277,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -5222,7 +5293,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="6bb0935fd9b956d407471bdf946ff662"></a>
+<a id="d0b964ef380cfbc23dec16a20eb93b5a"></a>
 package.json
 
 ```
@@ -5249,7 +5320,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -5328,7 +5399,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5366,7 +5437,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -5382,7 +5453,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5433,7 +5504,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5471,7 +5542,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -5487,7 +5558,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5538,7 +5609,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="ceb3539f0b78609969ad9e8c5593a5c6"></a>
+<a id="a6f58f3c2ad1541f1f467590da3ba6d2"></a>
 package.json
 
 ```
@@ -5567,7 +5638,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
+    "@aspida/node-fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -5641,7 +5713,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -5657,7 +5729,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="4b12f83e3d3305e4bd5107ef78e778b6"></a>
+<a id="2c03ddc5749d87f520a60371cc4303fd"></a>
 package.json
 
 ```
@@ -5685,7 +5757,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -5763,7 +5835,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
+[package.json](#a6f58f3c2ad1541f1f467590da3ba6d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5801,7 +5873,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -5817,7 +5889,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#4b12f83e3d3305e4bd5107ef78e778b6)  
+[package.json](#2c03ddc5749d87f520a60371cc4303fd)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5868,7 +5940,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#74ee2efd901b09519e72c07faf14b388)  
+[package.json](#e1867129c1e0141400ea36c8d21d9cc3)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5903,7 +5975,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -5919,7 +5991,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0206392600d5365083a46638d825f9f1)  
+[package.json](#50663dfd662e9bcd0b66ea5a2a680944)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -5967,7 +6039,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6006,7 +6078,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -6022,7 +6094,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6074,7 +6146,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6113,7 +6185,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -6129,7 +6201,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6181,7 +6253,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6220,7 +6292,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -6236,7 +6308,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6288,7 +6360,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
+[package.json](#a6f58f3c2ad1541f1f467590da3ba6d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6327,7 +6399,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -6343,7 +6415,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#4b12f83e3d3305e4bd5107ef78e778b6)  
+[package.json](#2c03ddc5749d87f520a60371cc4303fd)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6395,7 +6467,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
+[package.json](#a6f58f3c2ad1541f1f467590da3ba6d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6434,7 +6506,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -6450,7 +6522,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#4b12f83e3d3305e4bd5107ef78e778b6)  
+[package.json](#2c03ddc5749d87f520a60371cc4303fd)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6502,7 +6574,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="5c35b93bbcc410148d52d74e1ef4c1db"></a>
+<a id="30b0bb94927092c73f5a08d2c1047183"></a>
 package.json
 
 ```
@@ -6528,7 +6600,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -6615,7 +6687,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="fc8e426b78da9e00e245e5ed496a2955"></a>
+<a id="e81ae331b3f7c367a71d7dc42d1c6d97"></a>
 package.json
 
 ```
@@ -6640,7 +6712,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -6715,7 +6787,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="86af185ffec990d9a113ebf5867e7c7f"></a>
+<a id="9730d72d14d8da146216c33efafd9663"></a>
 package.json
 
 ```
@@ -6743,7 +6815,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -6835,7 +6907,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="0b5b834668eb2b4497643d1f24740581"></a>
+<a id="f196d45bc580ab7920be18c8efdc1903"></a>
 package.json
 
 ```
@@ -6862,7 +6934,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -6942,7 +7014,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -6996,7 +7068,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7047,7 +7119,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7101,7 +7173,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7152,7 +7224,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="91703adfef1034e87d424d014fcd8703"></a>
+<a id="18eef610a0398eed11d2455b7c280bc2"></a>
 package.json
 
 ```
@@ -7181,7 +7253,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -7272,7 +7344,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="afc5f8afeef16f2b9df7922d7ad119e8"></a>
+<a id="127e6bdcbb9894f1f911afd3cca9464d"></a>
 package.json
 
 ```
@@ -7300,7 +7372,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/axios": "^1.1.0",
+    "@aspida/axios": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "axios": "^0.21.0",
     "class-validator": "^0.12.2",
@@ -7379,7 +7451,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#91703adfef1034e87d424d014fcd8703)  
+[package.json](#18eef610a0398eed11d2455b7c280bc2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7433,7 +7505,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#afc5f8afeef16f2b9df7922d7ad119e8)  
+[package.json](#127e6bdcbb9894f1f911afd3cca9464d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7484,7 +7556,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5c35b93bbcc410148d52d74e1ef4c1db)  
+[package.json](#30b0bb94927092c73f5a08d2c1047183)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7535,7 +7607,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#fc8e426b78da9e00e245e5ed496a2955)  
+[package.json](#e81ae331b3f7c367a71d7dc42d1c6d97)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7583,7 +7655,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7638,7 +7710,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7690,7 +7762,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7745,7 +7817,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7797,7 +7869,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7852,7 +7924,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7904,7 +7976,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#91703adfef1034e87d424d014fcd8703)  
+[package.json](#18eef610a0398eed11d2455b7c280bc2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -7959,7 +8031,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#afc5f8afeef16f2b9df7922d7ad119e8)  
+[package.json](#127e6bdcbb9894f1f911afd3cca9464d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8011,7 +8083,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#91703adfef1034e87d424d014fcd8703)  
+[package.json](#18eef610a0398eed11d2455b7c280bc2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8066,7 +8138,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#afc5f8afeef16f2b9df7922d7ad119e8)  
+[package.json](#127e6bdcbb9894f1f911afd3cca9464d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8118,7 +8190,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="6a73ee1c14cbc2d53733cca0587de19a"></a>
+<a id="8c59437aaa575794428a7a7e95033bcd"></a>
 package.json
 
 ```
@@ -8144,7 +8216,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
+    "@aspida/node-fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -8214,7 +8287,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -8230,7 +8303,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="d82051c9e4d871596778311052135569"></a>
+<a id="ba84d66d30d61a60c5a965b9c7fd8dda"></a>
 package.json
 
 ```
@@ -8255,7 +8328,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -8329,7 +8402,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="dcf10531c1dced97212a8361cb62c3f0"></a>
+<a id="59673bbc9def0b4b06318db73c98eb86"></a>
 package.json
 
 ```
@@ -8357,7 +8430,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
+    "@aspida/node-fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -8432,7 +8506,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -8448,7 +8522,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="eb923fdf9bd447dd7472025ddcd0a72c"></a>
+<a id="2fcfeae9e3b0b2ce40fbffe0796dec9d"></a>
 package.json
 
 ```
@@ -8475,7 +8549,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -8554,7 +8628,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8592,7 +8666,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -8608,7 +8682,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8659,7 +8733,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8697,7 +8771,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -8713,7 +8787,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -8764,7 +8838,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="42f0f7ca3e24cea094ae324e6fe4edb1"></a>
+<a id="703a0a80e1a439f739d45fe6f9d0142f"></a>
 package.json
 
 ```
@@ -8793,7 +8867,8 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
+    "@aspida/node-fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -8867,7 +8942,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -8883,7 +8958,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-<a id="b9956d3a59f5ec16284e04a5429da133"></a>
+<a id="840fee23a668192a9b308b3c832822b9"></a>
 package.json
 
 ```
@@ -8911,7 +8986,7 @@ package.json
     "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
   },
   "dependencies": {
-    "@aspida/fetch": "^1.1.0",
+    "@aspida/fetch": "^1.1.1",
     "@aspida/swr": "^1.1.0",
     "class-validator": "^0.12.2",
     "next": "^10.0.3",
@@ -8989,7 +9064,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
+[package.json](#703a0a80e1a439f739d45fe6f9d0142f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9027,7 +9102,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -9043,7 +9118,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b9956d3a59f5ec16284e04a5429da133)  
+[package.json](#840fee23a668192a9b308b3c832822b9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9094,7 +9169,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6a73ee1c14cbc2d53733cca0587de19a)  
+[package.json](#8c59437aaa575794428a7a7e95033bcd)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9129,7 +9204,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -9145,7 +9220,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d82051c9e4d871596778311052135569)  
+[package.json](#ba84d66d30d61a60c5a965b9c7fd8dda)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9193,7 +9268,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9232,7 +9307,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -9248,7 +9323,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9300,7 +9375,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9339,7 +9414,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -9355,7 +9430,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9407,7 +9482,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9446,7 +9521,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -9462,7 +9537,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9514,7 +9589,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
+[package.json](#703a0a80e1a439f739d45fe6f9d0142f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9553,7 +9628,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -9569,7 +9644,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b9956d3a59f5ec16284e04a5429da133)  
+[package.json](#840fee23a668192a9b308b3c832822b9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9621,7 +9696,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
+[package.json](#703a0a80e1a439f739d45fe6f9d0142f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -9660,7 +9735,7 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -9676,7 +9751,7 @@ package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b9956d3a59f5ec16284e04a5429da133)  
+[package.json](#840fee23a668192a9b308b3c832822b9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -10570,17 +10645,82 @@ module.exports = {
 
 ```
 
-<a id="29c99f54af9b56a8555f1bee9df21c0f"></a>
-test/Logo.spec.ts
+<a id="e51ca902022b615f1bd95eeec0366a25"></a>
+test/__snapshots__/index.spec.ts.snap
+
+```
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page matches snapshot 1`] = `
+"<div class=\\"container\\">
+  <div class=\\"user-banner\\"><button>LOGIN</button></div>
+  <div><svg width=\\"245\\" height=\\"180\\" viewBox=\\"0 0 452 342\\" xmlns=\\"http://www.w3.org/2000/svg\\" class=\\"NuxtLogo\\">
+      <g fill=\\"none\\" fill-rule=\\"evenodd\\">
+        <path d=\\"M139 330l-1-2c-2-4-2-8-1-13H29L189 31l67 121 22-16-67-121c-1-2-9-14-22-14-6 0-15 2-22 15L5 303c-1 3-8 16-2 27 4 6 10 12 24 12h136c-14 0-21-6-24-12z\\" fill=\\"#00C58E\\"></path>
+        <path d=\\"M447 304L317 70c-2-2-9-15-22-15-6 0-15 3-22 15l-17 28v54l39-67 129 230h-49a23 23 0 0 1-2 14l-1 1c-6 11-21 12-23 12h76c3 0 17-1 24-12 3-5 5-14-2-26z\\" fill=\\"#108775\\"></path>
+        <path d=\\"M376 330v-1l1-2c1-4 2-8 1-12l-4-12-102-178-15-27h-1l-15 27-102 178-4 12a24 24 0 0 0 2 15c4 6 10 12 24 12h190c3 0 18-1 25-12zM256 152l93 163H163l93-163z\\" fill=\\"#2F495E\\" fill-rule=\\"nonzero\\"></path>
+      </g>
+    </svg>
+    <h1 class=\\"title\\">frourio-todo-app</h1>
+    <div>
+      <form><input type=\\"text\\"> <input type=\\"submit\\" value=\\"ADD\\"></form>
+      <ul class=\\"tasks\\">
+        <li><label><input type=\\"checkbox\\"> <span>foo task</span></label> <input type=\\"button\\" value=\\"DELETE\\" style=\\"float: right;\\"></li>
+        <li><label><input type=\\"checkbox\\"> <span>bar task</span></label> <input type=\\"button\\" value=\\"DELETE\\" style=\\"float: right;\\"></li>
+      </ul>
+    </div>
+  </div>
+</div>"
+`;
+
+```
+
+<a id="6759578e049d2d1e2d016fa69a28f56d"></a>
+test/index.spec.ts
 
 ```
 import { mount } from '@vue/test-utils'
+import aspida from '@aspida/axios'
+import Home from '@/pages/index.vue'
 import Logo from '@/components/Logo.vue'
+import UserBanner from '@/components/UserBanner.vue'
+import api from '~/server/api/$api'
 
-describe('Logo', () => {
-  test('is a Vue instance', () => {
-    const wrapper = mount(Logo)
-    expect(wrapper.vm).toBeTruthy()
+const apiClient = api(aspida())
+const options = {
+  stubs: { UserBanner, Logo },
+  mocks: { $fetchState: { pending: false } }
+}
+const res = <T extends (...args: any[]) => any>(
+  data: ReturnType<T> extends Promise<infer S> ? S : never
+) => data
+
+describe('Home page', () => {
+  it('matches snapshot', async () => {
+    const wrapper = mount(Home, options)
+
+    await wrapper.setData({
+      tasks: res<typeof apiClient.tasks.$get>([
+        { id: 1, label: 'foo task', done: false },
+        { id: 2, label: 'bar task', done: true }
+      ])
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('clicking button triggers prompt', async () => {
+    const wrapper = mount(Home, options)
+
+    window.prompt = jest.fn()
+    window.alert = jest.fn()
+
+    await wrapper.find('button').trigger('click')
+
+    expect(window.prompt).toHaveBeenCalledWith(
+      'Enter the user id (See server/.env)'
+    )
+    expect(window.alert).toHaveBeenCalledWith('Login failed')
   })
 })
 
@@ -11027,7 +11167,8 @@ export default Vue.extend({
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 <a id="d724dd591781fddd310be80b45f66e6c"></a>
 tsconfig.json
 
@@ -11273,7 +11414,8 @@ tsconfig.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -11382,7 +11524,8 @@ tsconfig.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -11574,7 +11717,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -11757,7 +11901,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -11863,7 +12008,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -11970,7 +12116,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -12081,7 +12228,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -12192,7 +12340,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -12303,7 +12452,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -12414,7 +12564,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -12700,7 +12851,58 @@ export default plugin
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+<a id="d23dee3491de4111d53ba705604bc00f"></a>
+test/index.spec.ts
+
+```
+import { mount } from '@vue/test-utils'
+import aspida from '@aspida/node-fetch'
+import Home from '@/pages/index.vue'
+import Logo from '@/components/Logo.vue'
+import UserBanner from '@/components/UserBanner.vue'
+import api from '~/server/api/$api'
+
+const apiClient = api(aspida())
+const options = {
+  stubs: { UserBanner, Logo },
+  mocks: { $fetchState: { pending: false } }
+}
+const res = <T extends (...args: any[]) => any>(
+  data: ReturnType<T> extends Promise<infer S> ? S : never
+) => data
+
+describe('Home page', () => {
+  it('matches snapshot', async () => {
+    const wrapper = mount(Home, options)
+
+    await wrapper.setData({
+      tasks: res<typeof apiClient.tasks.$get>([
+        { id: 1, label: 'foo task', done: false },
+        { id: 2, label: 'bar task', done: true }
+      ])
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('clicking button triggers prompt', async () => {
+    const wrapper = mount(Home, options)
+
+    window.prompt = jest.fn()
+    window.alert = jest.fn()
+
+    await wrapper.find('button').trigger('click')
+
+    expect(window.prompt).toHaveBeenCalledWith(
+      'Enter the user id (See server/.env)'
+    )
+    expect(window.alert).toHaveBeenCalledWith('Login failed')
+  })
+})
+
+```
+
 <a id="8cee6353c83afbcb51a838cd237550e3"></a>
 tsconfig.json
 
@@ -13022,7 +13224,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 <a id="f0a20ba5406100f62b8eff5c33400d33"></a>
 tsconfig.json
 
@@ -13269,7 +13472,8 @@ tsconfig.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -13378,7 +13582,8 @@ tsconfig.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -13571,7 +13776,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -13755,7 +13961,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -13861,7 +14068,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -13968,7 +14176,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -14079,7 +14288,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -14190,7 +14400,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -14301,7 +14512,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -14412,7 +14624,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -14664,7 +14877,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -14923,7 +15137,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -15106,7 +15321,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -15215,7 +15431,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -15407,7 +15624,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -15590,7 +15808,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -15696,7 +15915,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -15803,7 +16023,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -15914,7 +16135,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -16025,7 +16247,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -16136,7 +16359,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -16247,7 +16471,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -16492,7 +16717,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -16753,7 +16979,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -16937,7 +17164,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -17046,7 +17274,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -17239,7 +17468,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -17423,7 +17653,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -17529,7 +17760,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -17636,7 +17868,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -17747,7 +17980,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -17858,7 +18092,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -17969,7 +18204,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -18080,7 +18316,8 @@ package.json
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -18246,7 +18483,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -18351,7 +18589,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -18460,7 +18699,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -18569,7 +18809,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -18678,7 +18919,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -18787,7 +19029,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -18893,7 +19136,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -19000,7 +19244,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -19111,7 +19356,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -19222,7 +19468,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -19333,7 +19580,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -19444,7 +19692,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -19602,7 +19851,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -19707,7 +19957,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -19816,7 +20067,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -19925,7 +20177,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -20034,7 +20287,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -20143,7 +20397,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -20249,7 +20504,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -20356,7 +20612,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -20467,7 +20724,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -20578,7 +20836,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -20689,7 +20948,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -20800,7 +21060,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -20969,7 +21230,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -21074,7 +21336,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -21183,7 +21446,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -21292,7 +21556,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -21401,7 +21666,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -21510,7 +21776,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -21616,7 +21883,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -21723,7 +21991,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -21834,7 +22103,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -21945,7 +22215,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -22056,7 +22327,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -22167,7 +22439,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -22328,7 +22601,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -22433,7 +22707,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -22542,7 +22817,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -22651,7 +22927,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -22760,7 +23037,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -22869,7 +23147,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -22975,7 +23254,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -23082,7 +23362,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -23193,7 +23474,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -23304,7 +23586,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -23415,7 +23698,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -23526,7 +23810,8 @@ export default config
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -33526,7 +33811,7 @@ package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#51805773945a2ac8102d5483c4a5a97b)  
+[package.json](#5332d499c5ef5039202348038f4b82c8)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33764,7 +34049,7 @@ test('dependency injection into controller', async () => {
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#2639d7ba9f91c9453dd8e14fa108da4d)  
+[package.json](#ea8a1c6095b76bc457fc6bb9a72a6175)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -33854,7 +34139,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34027,7 +34312,7 @@ test('dependency injection into controller', async () => {
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34126,7 +34411,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34180,7 +34465,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34231,7 +34516,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34285,7 +34570,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34336,7 +34621,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#315466020020a07e87025e039ef1a5f7)  
+[package.json](#6eacf6dacc54a96f3c753473a3886c51)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34532,7 +34817,7 @@ test('dependency injection into controller', async () => {
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[package.json](#b829b7d9f6b87a5655fee0f57b2f5317)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34633,7 +34918,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#315466020020a07e87025e039ef1a5f7)  
+[package.json](#6eacf6dacc54a96f3c753473a3886c51)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34789,7 +35074,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[package.json](#b829b7d9f6b87a5655fee0f57b2f5317)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34890,7 +35175,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#51805773945a2ac8102d5483c4a5a97b)  
+[package.json](#5332d499c5ef5039202348038f4b82c8)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -34991,7 +35276,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#2639d7ba9f91c9453dd8e14fa108da4d)  
+[package.json](#ea8a1c6095b76bc457fc6bb9a72a6175)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35088,7 +35373,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35198,7 +35483,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35304,7 +35589,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35359,7 +35644,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35411,7 +35696,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#e89bfa6df8399ac33640aea3cb684ec4)  
+[package.json](#8260b65e097d059df7334b997b813a2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35466,7 +35751,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#27f0bc2cf15c89d7b62b7b8d1e513d6b)  
+[package.json](#904f40d976b1c2d8bb309ebe42953a72)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35518,7 +35803,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#315466020020a07e87025e039ef1a5f7)  
+[package.json](#6eacf6dacc54a96f3c753473a3886c51)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35630,7 +35915,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[package.json](#b829b7d9f6b87a5655fee0f57b2f5317)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35738,7 +36023,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#315466020020a07e87025e039ef1a5f7)  
+[package.json](#6eacf6dacc54a96f3c753473a3886c51)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35850,7 +36135,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ce1a6c4d1afdac0dae944599ea88376f)  
+[package.json](#b829b7d9f6b87a5655fee0f57b2f5317)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35958,7 +36243,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#74ee2efd901b09519e72c07faf14b388)  
+[package.json](#e1867129c1e0141400ea36c8d21d9cc3)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -35992,7 +36277,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -36008,7 +36293,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0206392600d5365083a46638d825f9f1)  
+[package.json](#50663dfd662e9bcd0b66ea5a2a680944)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36055,7 +36340,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36093,7 +36378,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -36109,7 +36394,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36160,7 +36445,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36198,7 +36483,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -36214,7 +36499,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36265,7 +36550,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36303,7 +36588,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -36319,7 +36604,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36370,7 +36655,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
+[package.json](#a6f58f3c2ad1541f1f467590da3ba6d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36408,7 +36693,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -36424,7 +36709,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#4b12f83e3d3305e4bd5107ef78e778b6)  
+[package.json](#2c03ddc5749d87f520a60371cc4303fd)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36475,7 +36760,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
+[package.json](#a6f58f3c2ad1541f1f467590da3ba6d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36513,7 +36798,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -36529,7 +36814,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#4b12f83e3d3305e4bd5107ef78e778b6)  
+[package.json](#2c03ddc5749d87f520a60371cc4303fd)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36580,7 +36865,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#74ee2efd901b09519e72c07faf14b388)  
+[package.json](#e1867129c1e0141400ea36c8d21d9cc3)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36615,7 +36900,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -36631,7 +36916,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0206392600d5365083a46638d825f9f1)  
+[package.json](#50663dfd662e9bcd0b66ea5a2a680944)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36679,7 +36964,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36718,7 +37003,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -36734,7 +37019,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36786,7 +37071,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36825,7 +37110,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -36841,7 +37126,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36893,7 +37178,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ccefcff2d2b0fff5714d6ec047cc625f)  
+[package.json](#8c2e12a2e530e002ea508be19ad0cb2c)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -36932,7 +37217,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -36948,7 +37233,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6bb0935fd9b956d407471bdf946ff662)  
+[package.json](#d0b964ef380cfbc23dec16a20eb93b5a)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37000,7 +37285,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
+[package.json](#a6f58f3c2ad1541f1f467590da3ba6d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37039,7 +37324,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -37055,7 +37340,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#4b12f83e3d3305e4bd5107ef78e778b6)  
+[package.json](#2c03ddc5749d87f520a60371cc4303fd)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37107,7 +37392,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#ceb3539f0b78609969ad9e8c5593a5c6)  
+[package.json](#a6f58f3c2ad1541f1f467590da3ba6d2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37146,7 +37431,7 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -37162,7 +37447,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#4b12f83e3d3305e4bd5107ef78e778b6)  
+[package.json](#2c03ddc5749d87f520a60371cc4303fd)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37214,7 +37499,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5c35b93bbcc410148d52d74e1ef4c1db)  
+[package.json](#30b0bb94927092c73f5a08d2c1047183)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37264,7 +37549,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#fc8e426b78da9e00e245e5ed496a2955)  
+[package.json](#e81ae331b3f7c367a71d7dc42d1c6d97)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37311,7 +37596,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37365,7 +37650,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37416,7 +37701,7 @@ server/package.json
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37470,7 +37755,7 @@ server/package.json
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37560,7 +37845,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37616,7 +37901,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37711,7 +37996,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37767,7 +38052,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37823,7 +38108,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37877,7 +38162,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37928,7 +38213,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#91703adfef1034e87d424d014fcd8703)  
+[package.json](#18eef610a0398eed11d2455b7c280bc2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -37982,7 +38267,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#afc5f8afeef16f2b9df7922d7ad119e8)  
+[package.json](#127e6bdcbb9894f1f911afd3cca9464d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38033,7 +38318,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#91703adfef1034e87d424d014fcd8703)  
+[package.json](#18eef610a0398eed11d2455b7c280bc2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38087,7 +38372,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#afc5f8afeef16f2b9df7922d7ad119e8)  
+[package.json](#127e6bdcbb9894f1f911afd3cca9464d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38138,7 +38423,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#5c35b93bbcc410148d52d74e1ef4c1db)  
+[package.json](#30b0bb94927092c73f5a08d2c1047183)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38189,7 +38474,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#fc8e426b78da9e00e245e5ed496a2955)  
+[package.json](#e81ae331b3f7c367a71d7dc42d1c6d97)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38237,7 +38522,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38292,7 +38577,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38344,7 +38629,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38399,7 +38684,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38451,7 +38736,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#86af185ffec990d9a113ebf5867e7c7f)  
+[package.json](#9730d72d14d8da146216c33efafd9663)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38506,7 +38791,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#0b5b834668eb2b4497643d1f24740581)  
+[package.json](#f196d45bc580ab7920be18c8efdc1903)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38558,7 +38843,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#91703adfef1034e87d424d014fcd8703)  
+[package.json](#18eef610a0398eed11d2455b7c280bc2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38613,7 +38898,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#afc5f8afeef16f2b9df7922d7ad119e8)  
+[package.json](#127e6bdcbb9894f1f911afd3cca9464d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38665,7 +38950,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#91703adfef1034e87d424d014fcd8703)  
+[package.json](#18eef610a0398eed11d2455b7c280bc2)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38720,7 +39005,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#afc5f8afeef16f2b9df7922d7ad119e8)  
+[package.json](#127e6bdcbb9894f1f911afd3cca9464d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38772,7 +39057,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6a73ee1c14cbc2d53733cca0587de19a)  
+[package.json](#8c59437aaa575794428a7a7e95033bcd)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38806,7 +39091,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -38822,7 +39107,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d82051c9e4d871596778311052135569)  
+[package.json](#ba84d66d30d61a60c5a965b9c7fd8dda)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38869,7 +39154,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38907,7 +39192,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -38923,7 +39208,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -38974,7 +39259,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39012,7 +39297,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -39028,7 +39313,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39079,7 +39364,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39117,7 +39402,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -39133,7 +39418,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39184,7 +39469,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
+[package.json](#703a0a80e1a439f739d45fe6f9d0142f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39222,7 +39507,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -39238,7 +39523,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b9956d3a59f5ec16284e04a5429da133)  
+[package.json](#840fee23a668192a9b308b3c832822b9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39289,7 +39574,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
+[package.json](#703a0a80e1a439f739d45fe6f9d0142f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39327,7 +39612,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -39343,7 +39628,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b9956d3a59f5ec16284e04a5429da133)  
+[package.json](#840fee23a668192a9b308b3c832822b9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39394,7 +39679,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#6a73ee1c14cbc2d53733cca0587de19a)  
+[package.json](#8c59437aaa575794428a7a7e95033bcd)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39429,7 +39714,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -39445,7 +39730,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#d82051c9e4d871596778311052135569)  
+[package.json](#ba84d66d30d61a60c5a965b9c7fd8dda)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39493,7 +39778,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39532,7 +39817,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -39548,7 +39833,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39600,7 +39885,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39639,7 +39924,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -39655,7 +39940,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39707,7 +39992,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#dcf10531c1dced97212a8361cb62c3f0)  
+[package.json](#59673bbc9def0b4b06318db73c98eb86)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39746,7 +40031,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#a11c339aa061935b9564d590323bd24d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -39762,7 +40047,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#eb923fdf9bd447dd7472025ddcd0a72c)  
+[package.json](#2fcfeae9e3b0b2ce40fbffe0796dec9d)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#579e6da67acbd36337abdf7faee7e2b3)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39814,7 +40099,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
+[package.json](#703a0a80e1a439f739d45fe6f9d0142f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39853,7 +40138,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -39869,7 +40154,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b9956d3a59f5ec16284e04a5429da133)  
+[package.json](#840fee23a668192a9b308b3c832822b9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39921,7 +40206,7 @@ jobs:
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [jest.config.ts](#169e6547e2c5dfb892b80e43c5398f9a)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#42f0f7ca3e24cea094ae324e6fe4edb1)  
+[package.json](#703a0a80e1a439f739d45fe6f9d0142f)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -39960,7 +40245,7 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
+[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
 [test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
 [tsconfig.json](#12af9d4fafed72fdd61e47ed6dda3499)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
@@ -39976,7 +40261,7 @@ jobs:
 [aspida.config.js](#0ad902fa1d2e9acac7d316ba7ee3eee0)  
 [components/UserBanner.tsx](#ad69f04f4549df2f4cc6d6d7db949d50)  
 [next-env.d.ts](#6a2e0bbc141689d904f8c7373b66cae4)  
-[package.json](#b9956d3a59f5ec16284e04a5429da133)  
+[package.json](#840fee23a668192a9b308b3c832822b9)  
 [pages/_app.tsx](#c4496c810feab73b91203dc76042d0b9)  
 [pages/index.tsx](#c75545c2ac38b02b421e76dea16f7316)  
 [public/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
@@ -40064,7 +40349,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -40169,7 +40455,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -40278,7 +40565,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -40387,7 +40675,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -40496,7 +40785,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -40605,7 +40895,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -40711,7 +41002,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -40818,7 +41110,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -40929,7 +41222,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -41040,7 +41334,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -41151,7 +41446,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -41262,7 +41558,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -41368,7 +41665,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -41473,7 +41771,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -41582,7 +41881,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -41691,7 +41991,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -41800,7 +42101,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -41909,7 +42211,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -42015,7 +42318,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -42122,7 +42426,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -42233,7 +42538,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -42344,7 +42650,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -42455,7 +42762,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -42566,7 +42874,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -42672,7 +42981,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -42777,7 +43087,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -42886,7 +43197,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -42995,7 +43307,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -43104,7 +43417,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -43213,7 +43527,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -43319,7 +43634,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -43426,7 +43742,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -43537,7 +43854,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -43648,7 +43966,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -43759,7 +44078,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -43870,7 +44190,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -43976,7 +44297,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -44081,7 +44403,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -44190,7 +44513,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -44299,7 +44623,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -44408,7 +44733,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -44517,7 +44843,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -44623,7 +44950,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -44730,7 +45058,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -44841,7 +45170,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -44952,7 +45282,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -45063,7 +45394,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -45174,7 +45506,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -45280,7 +45613,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -45385,7 +45719,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -45494,7 +45829,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -45603,7 +45939,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -45712,7 +46049,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -45821,7 +46159,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -45927,7 +46266,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -46034,7 +46374,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -46145,7 +46486,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -46256,7 +46598,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -46367,7 +46710,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -46478,7 +46822,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -46584,7 +46929,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -46689,7 +47035,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -46798,7 +47145,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -46907,7 +47255,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -47016,7 +47365,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -47125,7 +47475,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -47231,7 +47582,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -47338,7 +47690,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -47449,7 +47802,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -47560,7 +47914,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -47671,7 +48026,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -47782,7 +48138,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -47888,7 +48245,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -47993,7 +48351,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -48102,7 +48461,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -48211,7 +48571,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -48320,7 +48681,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -48429,7 +48791,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -48535,7 +48898,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -48642,7 +49006,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -48753,7 +49118,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -48864,7 +49230,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#d724dd591781fddd310be80b45f66e6c)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -48975,7 +49342,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -49086,7 +49454,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#6759578e049d2d1e2d016fa69a28f56d)  
 [tsconfig.json](#3bd2e311f3ebfe22720626946adeb939)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -49192,7 +49561,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -49297,7 +49667,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -49406,7 +49777,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -49515,7 +49887,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -49624,7 +49997,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -49733,7 +50107,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -49839,7 +50214,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -49946,7 +50322,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -50057,7 +50434,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -50168,7 +50546,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#f0a20ba5406100f62b8eff5c33400d33)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -50279,7 +50658,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
@@ -50390,7 +50770,8 @@ jobs:
 [static/favicon.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [store/README.md](#31f67980198177aa91b923d21f2f3f47)  
 [stylelint.config.js](#4b15d35059fe4ec17f7abd9a675ad712)  
-[test/Logo.spec.ts](#29c99f54af9b56a8555f1bee9df21c0f)  
+[test/__snapshots__/index.spec.ts.snap](#e51ca902022b615f1bd95eeec0366a25)  
+[test/index.spec.ts](#d23dee3491de4111d53ba705604bc00f)  
 [tsconfig.json](#8cee6353c83afbcb51a838cd237550e3)  
 [vue-components.d.ts](#0f61b786b34e108b0d82934d7a766f1c)  
 
