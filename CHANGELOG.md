@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.22.1](https://github.com/frouriojs/create-frourio-app/compare/v0.22.0...v0.22.1) (2020-12-19)
+
+
+### Bug Fixes
+
+* add env to nodejs.yml when nextjs ([63d4969](https://github.com/frouriojs/create-frourio-app/commit/63d4969b0047de0c93d8644f0f14cc951726c4e9))
+
 ## [0.22.0](https://github.com/frouriojs/create-frourio-app/compare/v0.21.5...v0.22.0) (2020-12-19)
 
 
