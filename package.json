@@ -64,7 +64,7 @@
     "portfinder": "^1.0.28",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "swr": "^0.3.9"
+    "swr": "^0.3.11"
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.2",
