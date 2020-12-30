@@ -100,7 +100,7 @@ jobs:
       - run: npm run build --prefix ../nuxtjs/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
 
-      - run: node bin/index.js --answers '{"dir":"../nextjs-typeorm","orm":"typeorm"}'
+      - run: node bin/index.js --answers '{"dir":"../nextjs-typeorm","aspida":"fetch","orm":"typeorm"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
       - run: npm run lint --prefix ../nextjs-typeorm
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
