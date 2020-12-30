@@ -1,6 +1,6 @@
+import type { Task } from '$/types'
 import fs from 'fs'<% if (testing !== 'none') { %>
 import { depend } from 'velona'<% } %>
-import { Task } from '$/types'
 
 type DB = {
   nextId: number
