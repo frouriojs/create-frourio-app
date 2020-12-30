@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts">
-import type { UserInfo } from '$/types'
 import Vue from 'vue'
+import type { UserInfo } from '$/types'
 
 export default Vue.extend({
   data() {

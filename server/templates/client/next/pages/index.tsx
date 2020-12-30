@@ -1,11 +1,11 @@
-import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
-import type { FormEvent, ChangeEvent } from 'react'
 import Head from 'next/head'
 import { useCallback, useState } from 'react'
 import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
 import UserBanner from '~/components/UserBanner'
+import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
+import type { FormEvent, ChangeEvent } from 'react'
 
 const Home = () => {
   const { data: tasks, error, revalidate } = useAspidaSWR(apiClient.tasks)

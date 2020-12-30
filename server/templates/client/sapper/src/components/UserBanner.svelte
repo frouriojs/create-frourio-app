@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { UserInfo } from '$/types'
 	import { apiClient } from '../utils/apiClient'
+	import type { UserInfo } from '$/types'
 
 	let isLoggedIn = false
   let userInfo = {} as UserInfo

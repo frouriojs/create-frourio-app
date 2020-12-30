@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 	import { apiClient } from '../utils/apiClient'
 	import UserBanner from '../components/UserBanner.svelte';
 	import successkid from 'images/successkid.jpg';
+	import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 
 	let tasks: Task[] = []
 	let newLabel = ''

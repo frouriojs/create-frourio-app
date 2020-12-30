@@ -33,8 +33,8 @@
 </template>
 
 <script lang="ts">
-import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 import Vue from 'vue'
+import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 
 export default Vue.extend({
   data() {
