@@ -5,7 +5,8 @@ import { compilerOptions } from './tsconfig.json'
 const config: { projects: Config.InitialOptions[] } = {
   projects: [
     {
-      testPathIgnorePatterns: ['<rootDir>/server'],
+      <% if (aspida === 'fetch') { %>setupFiles: ['<rootDir>/test/jest.setup.js'],
+      <% } %>testPathIgnorePatterns: ['<rootDir>/server'],
       moduleNameMapper: {
         ...pathsToModuleNameMapper(compilerOptions.paths, {
           prefix: '<rootDir>/'
