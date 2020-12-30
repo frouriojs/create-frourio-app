@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.23.0](https://github.com/frouriojs/create-frourio-app/compare/v0.22.1...v0.23.0) (2020-12-30)
+
+
+### Features
+
+* add type only imports ([f393d30](https://github.com/frouriojs/create-frourio-app/commit/f393d306ef3092bb4d2c7a3d4e220aed7cbfcb6e))
+
+
+### Bug Fixes
+
+* jest error with fetch client ([b053737](https://github.com/frouriojs/create-frourio-app/commit/b0537378b275eb13faaa21ce0b279142c8ba431a))
+
 ### [0.22.1](https://github.com/frouriojs/create-frourio-app/compare/v0.22.0...v0.22.1) (2020-12-19)
 
 

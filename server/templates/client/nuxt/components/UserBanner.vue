@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { UserInfo } from '$/types'
+import type { UserInfo } from '$/types'
 
 export default Vue.extend({
   data() {

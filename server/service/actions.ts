@@ -72,6 +72,14 @@ export const createActions = (
       files: '**',
       templateDir: `testing/${answers.client}`
     })
+
+    if (answers.aspida === 'fetch' && answers.client !== 'sapper') {
+      addedList.push({
+        type: 'add',
+        files: '**',
+        templateDir: 'testing/fetch'
+      })
+    }
   }
 
   if (answers.ci !== 'none') {

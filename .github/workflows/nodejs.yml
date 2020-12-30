@@ -31,7 +31,7 @@ jobs:
         id: yarn-cache
         with:
           path: "node_modules"
-          key: ${{ runner.os }}-node-v${{ matrix.node-version }}-yarn-${{ hashFiles('yarn.lock') }}-1
+          key: ${{ runner.os }}-node-v${{ matrix.node-version }}-yarn-${{ hashFiles('yarn.lock') }}-2
       - run: yarn --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - run: yarn lint
@@ -100,7 +100,7 @@ jobs:
       - run: npm run build --prefix ../nuxtjs/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
 
-      - run: node bin/index.js --answers '{"dir":"../nextjs-typeorm","orm":"typeorm"}'
+      - run: node bin/index.js --answers '{"dir":"../nextjs-typeorm","aspida":"fetch","orm":"typeorm"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
       - run: npm run lint --prefix ../nextjs-typeorm
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
