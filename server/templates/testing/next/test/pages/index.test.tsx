@@ -11,7 +11,7 @@ import { render, fireEvent, waitForDomChange } from '../testUtils'
 dotenv.config({ path: 'server/.env' })
 
 const apiClient = api(aspida(undefined, { baseURL: process.env.BASE_PATH }))
-const res = function <T extends (...args: unknown[]) => unknown>(
+const res = function <T extends () => any>(
   data: ReturnType<T> extends Promise<infer S> ? S : never
 ) {
   return data

@@ -1348,7 +1348,7 @@ exports[`Home page matches snapshot 1`] = `
 
 ```
 
-<a id="c39c444a87f0865b8ed02b2d32211ee1"></a>
+<a id="9fbf350786e680a29f526472a7877731"></a>
 test/pages/index.test.tsx
 
 ```
@@ -1365,7 +1365,7 @@ import { render, fireEvent, waitForDomChange } from '../testUtils'
 dotenv.config({ path: 'server/.env' })
 
 const apiClient = api(aspida(undefined, { baseURL: process.env.BASE_PATH }))
-const res = function <T extends (...args: unknown[]) => unknown>(
+const res = function <T extends () => any>(
   data: ReturnType<T> extends Promise<infer S> ? S : never
 ) {
   return data
@@ -1418,19 +1418,20 @@ describe('Home page', () => {
 
 ```
 
-<a id="cffba0dd73da14d4f275f87beb9120eb"></a>
+<a id="654bc020e76f1eaad8b28fefdb8da094"></a>
 test/testUtils.tsx
 
 ```
-import React, { ReactChild } from 'react'
+import React from 'react'
 import { render } from '@testing-library/react'
 import { SWRConfig } from 'swr'
 
-const Providers = ({ children }: { children: ReactChild }) => (
+// eslint-disable-next-line react/prop-types
+const Providers: React.FC = ({ children }) => (
   <SWRConfig value={{ dedupingInterval: 0 }}>{children}</SWRConfig>
 )
 
-const customRender = (ui, options = {}) =>
+const customRender = (ui: React.ReactElement, options = {}) =>
   render(ui, { wrapper: Providers, ...options })
 
 export * from '@testing-library/react'
@@ -2228,8 +2229,8 @@ export type AuthHeader = {
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 <a id="9a332b3c1282ea5045fa0f9d09e7d46d"></a>
 tsconfig.json
 
@@ -2566,8 +2567,8 @@ model Task {
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -2717,8 +2718,8 @@ model Task {
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -3254,8 +3255,8 @@ server/tsconfig.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -3666,8 +3667,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -3885,8 +3886,8 @@ server/pm2.config.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -4096,8 +4097,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -4259,8 +4260,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -4366,8 +4367,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -4532,8 +4533,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -4756,8 +4757,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -5026,7 +5027,7 @@ global.fetch = require('node-fetch').default
 ```
 
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-<a id="e9f38b4eab2973cc73f68a63cdf7c9de"></a>
+<a id="4aa8c70b2363e36fec4c0e31075d8938"></a>
 test/pages/index.test.tsx
 
 ```
@@ -5043,7 +5044,7 @@ import { render, fireEvent, waitForDomChange } from '../testUtils'
 dotenv.config({ path: 'server/.env' })
 
 const apiClient = api(aspida(undefined, { baseURL: process.env.BASE_PATH }))
-const res = function <T extends (...args: unknown[]) => unknown>(
+const res = function <T extends () => any>(
   data: ReturnType<T> extends Promise<infer S> ? S : never
 ) {
   return data
@@ -5096,7 +5097,7 @@ describe('Home page', () => {
 
 ```
 
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 <a id="1c2481f6bd2f1cdcd17e416faa47ed7d"></a>
 utils/apiClient.ts
@@ -5325,8 +5326,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5486,8 +5487,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5592,8 +5593,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5764,8 +5765,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -5925,8 +5926,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -6028,8 +6029,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -6132,8 +6133,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -6240,8 +6241,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -6348,8 +6349,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -6456,8 +6457,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -6564,8 +6565,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -6729,8 +6730,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -6949,8 +6950,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7110,8 +7111,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7215,8 +7216,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7386,8 +7387,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7547,8 +7548,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7649,8 +7650,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7752,8 +7753,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7859,8 +7860,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -7966,8 +7967,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -8073,8 +8074,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -8180,8 +8181,8 @@ package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -8346,8 +8347,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8566,8 +8567,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8727,8 +8728,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -8833,8 +8834,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -9005,8 +9006,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -9166,8 +9167,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -9269,8 +9270,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -9373,8 +9374,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -9481,8 +9482,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -9589,8 +9590,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -9697,8 +9698,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -9805,8 +9806,8 @@ package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -25502,7 +25503,7 @@ static/manifest.json
 
 ```
 
-<a id="80ff0c9fc489288667c77fa7a252ae2b"></a>
+<a id="334571a7ea3ca5e8a5e4ccbc4217e0c4"></a>
 tsconfig.json
 
 ```
@@ -25513,8 +25514,7 @@ tsconfig.json
 			"experimentalDecorators": true,
 			"emitDecoratorMetadata": true,
 			"importsNotUsedAsValues": "remove",
-			"strict": true,
-			"strictPropertyInitialization": false,
+			"strictNullChecks": true,
 			"resolveJsonModule": true,
 			"types": ["jest"],
 			"baseUrl": ".",
@@ -25687,7 +25687,7 @@ module.exports = {
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-<a id="467807a5ff9e653f1835e5247e84c6c8"></a>
+<a id="e429aec04384eb6aeb91f8d26ac87d98"></a>
 tsconfig.json
 
 ```
@@ -25698,8 +25698,7 @@ tsconfig.json
 			"experimentalDecorators": true,
 			"emitDecoratorMetadata": true,
 			"importsNotUsedAsValues": "remove",
-			"strict": true,
-			"strictPropertyInitialization": false,
+			"strictNullChecks": true,
 			"baseUrl": ".",
 			"paths": {
 				"~/*": ["./*"],
@@ -25996,7 +25995,7 @@ src/routes/index.svelte
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-<a id="6068f518fa529b63860dd52dd91ff200"></a>
+<a id="dac9c5c1588d43ce74cf74c71e172dbe"></a>
 tsconfig.json
 
 ```
@@ -26007,8 +26006,7 @@ tsconfig.json
 			"experimentalDecorators": true,
 			"emitDecoratorMetadata": true,
 			"importsNotUsedAsValues": "remove",
-			"strict": true,
-			"strictPropertyInitialization": false,
+			"strictNullChecks": true,
 			"resolveJsonModule": true,
 			"types": ["jest"],
 			"baseUrl": ".",
@@ -26160,7 +26158,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-<a id="ad4b3a0178a3c68f9f4552bf57f828d2"></a>
+<a id="4e646a7c1e85e2f7073b7cb035fd732f"></a>
 tsconfig.json
 
 ```
@@ -26171,8 +26169,7 @@ tsconfig.json
 			"experimentalDecorators": true,
 			"emitDecoratorMetadata": true,
 			"importsNotUsedAsValues": "remove",
-			"strict": true,
-			"strictPropertyInitialization": false,
+			"strictNullChecks": true,
 			"baseUrl": ".",
 			"paths": {
 				"~/*": ["./*"],
@@ -26249,7 +26246,7 @@ tsconfig.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-axios-none-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -26312,7 +26309,7 @@ tsconfig.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-axios-none-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -26377,7 +26374,7 @@ tsconfig.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-axios-none-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -26440,7 +26437,7 @@ tsconfig.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-axios-none-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -26586,7 +26583,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-axios-none-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -26724,7 +26721,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-axios-none-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -26789,7 +26786,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-axios-none-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -26852,7 +26849,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-axios-pm2-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -26914,7 +26911,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-axios-pm2-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -26974,7 +26971,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-axios-pm2-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27040,7 +27037,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-axios-pm2-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27104,7 +27101,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-axios-pm2-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27170,7 +27167,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-axios-pm2-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27234,7 +27231,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-axios-pm2-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27300,7 +27297,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-axios-pm2-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27364,7 +27361,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-axios-pm2-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27430,7 +27427,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-axios-pm2-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27494,7 +27491,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-axios-pm2-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27560,7 +27557,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-axios-pm2-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27624,7 +27621,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-none-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27774,7 +27771,7 @@ export const apiClient = api((process as { browser?: boolean }).browser ? aspida
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-none-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -27906,7 +27903,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-none-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28053,7 +28050,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-none-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28192,7 +28189,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-none-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28257,7 +28254,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-none-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28320,7 +28317,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-none-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28385,7 +28382,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-none-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28448,7 +28445,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-none-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28595,7 +28592,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-none-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28734,7 +28731,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-none-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28799,7 +28796,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-none-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28862,7 +28859,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-pm2-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -28924,7 +28921,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 <a id="8ab99aa50ae091b7c001f78560343661"></a>
 
 ## express-sapper-basic-fetch-pm2-none-none-npm-actions
@@ -29021,7 +29018,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-pm2-none-none-npm-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29081,7 +29078,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 <a id="5655a59b81eb6f89e7af3701f71975a6"></a>
 
 ## express-sapper-basic-fetch-pm2-none-none-yarn-actions
@@ -29178,7 +29175,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-pm2-none-none-yarn-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29238,7 +29235,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-pm2-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29298,7 +29295,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-pm2-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29364,7 +29361,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-pm2-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29428,7 +29425,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-pm2-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29494,7 +29491,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-pm2-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29558,7 +29555,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-pm2-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29624,7 +29621,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-basic-fetch-pm2-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29688,7 +29685,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29754,7 +29751,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29818,7 +29815,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29884,7 +29881,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-basic-fetch-pm2-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -29948,7 +29945,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-none-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -30088,7 +30085,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-none-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -30220,7 +30217,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-none-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -30367,7 +30364,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-none-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -30506,7 +30503,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-none-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -30571,7 +30568,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-none-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -30634,7 +30631,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-none-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -30699,7 +30696,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-none-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -30762,7 +30759,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-none-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -30909,7 +30906,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-none-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31048,7 +31045,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-none-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31113,7 +31110,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-none-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31176,7 +31173,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-pm2-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31238,7 +31235,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-pm2-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31298,7 +31295,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-pm2-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31364,7 +31361,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-pm2-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31428,7 +31425,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-pm2-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31494,7 +31491,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-pm2-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31558,7 +31555,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-pm2-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31624,7 +31621,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-axios-pm2-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31688,7 +31685,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-axios-pm2-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31754,7 +31751,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-pm2-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31818,7 +31815,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-axios-pm2-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31884,7 +31881,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-axios-pm2-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -31948,7 +31945,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-none-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -32089,7 +32086,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-none-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -32222,7 +32219,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-none-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -32370,7 +32367,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-none-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -32510,7 +32507,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-none-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -32575,7 +32572,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-none-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -32638,7 +32635,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-none-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -32703,7 +32700,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-none-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -32766,7 +32763,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-none-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -32914,7 +32911,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-none-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33054,7 +33051,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-none-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33119,7 +33116,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-none-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33182,7 +33179,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-pm2-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33244,7 +33241,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-pm2-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33304,7 +33301,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-pm2-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33370,7 +33367,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-pm2-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33434,7 +33431,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-pm2-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33500,7 +33497,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-pm2-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33564,7 +33561,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-pm2-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33630,7 +33627,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## express-sapper-static-fetch-pm2-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33694,7 +33691,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## express-sapper-static-fetch-pm2-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33760,7 +33757,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-pm2-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33824,7 +33821,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## express-sapper-static-fetch-pm2-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33890,7 +33887,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## express-sapper-static-fetch-pm2-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -33954,7 +33951,7 @@ package.json
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-next-basic-axios-none-none-jest
 [.babelrc](#41d9b5a079ab3c932912365e61ae781f)  
@@ -34190,8 +34187,8 @@ test('dependency injection into controller', async () => {
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -34452,8 +34449,8 @@ test('dependency injection into controller', async () => {
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -34605,8 +34602,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -34710,8 +34707,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -34956,8 +34953,8 @@ test('dependency injection into controller', async () => {
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -35213,8 +35210,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -35415,8 +35412,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -35622,8 +35619,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -35783,8 +35780,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -35890,8 +35887,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -36054,8 +36051,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -36274,8 +36271,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -36433,8 +36430,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36535,8 +36532,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36641,8 +36638,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36747,8 +36744,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36853,8 +36850,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -36959,8 +36956,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -37062,8 +37059,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -37166,8 +37163,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -37274,8 +37271,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -37382,8 +37379,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -37490,8 +37487,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -37598,8 +37595,8 @@ server/package.json
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -37700,8 +37697,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -37801,8 +37798,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -37906,8 +37903,8 @@ server/package.json
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38054,8 +38051,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38110,8 +38107,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38209,8 +38206,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38265,8 +38262,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38321,8 +38318,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38426,8 +38423,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38531,8 +38528,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38633,8 +38630,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38736,8 +38733,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38843,8 +38840,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -38950,8 +38947,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -39057,8 +39054,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -39164,8 +39161,8 @@ jobs:
 [styles/globals.css](#c3b18f0bcd6cd40c0acff2dc01054923)  
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#c39c444a87f0865b8ed02b2d32211ee1)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#9fbf350786e680a29f526472a7877731)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#2477b92469183e5c855d89030f1d1820)  
 
@@ -39267,8 +39264,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -39369,8 +39366,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -39475,8 +39472,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -39581,8 +39578,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -39687,8 +39684,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -39793,8 +39790,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -39896,8 +39893,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -40000,8 +39997,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -40108,8 +40105,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -40216,8 +40213,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#9a332b3c1282ea5045fa0f9d09e7d46d)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -40324,8 +40321,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -40432,8 +40429,8 @@ jobs:
 [test/__mocks__/fileMock.js](#48adf3e9ec3c7479654c990b0a7434e2)  
 [test/jest.setup.js](#f5e4c0b17600dcc2f10db70499169218)  
 [test/pages/__snapshots__/index.test.tsx.snap](#49f3cf2071cd4a6cc6c21f00e05c11e6)  
-[test/pages/index.test.tsx](#e9f38b4eab2973cc73f68a63cdf7c9de)  
-[test/testUtils.tsx](#cffba0dd73da14d4f275f87beb9120eb)  
+[test/pages/index.test.tsx](#4aa8c70b2363e36fec4c0e31075d8938)  
+[test/testUtils.tsx](#654bc020e76f1eaad8b28fefdb8da094)  
 [tsconfig.json](#0c33a7118790f7dcc4760c5503c4951e)  
 [utils/apiClient.ts](#1c2481f6bd2f1cdcd17e416faa47ed7d)  
 
@@ -51122,7 +51119,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-none-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51181,7 +51178,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-axios-none-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51246,7 +51243,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-none-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51309,7 +51306,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-none-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51374,7 +51371,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-none-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51437,7 +51434,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-none-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51502,7 +51499,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-none-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51565,7 +51562,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-none-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51630,7 +51627,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-none-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51693,7 +51690,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-axios-none-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51758,7 +51755,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-none-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51821,7 +51818,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-axios-pm2-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51883,7 +51880,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-pm2-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -51943,7 +51940,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52009,7 +52006,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52073,7 +52070,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52139,7 +52136,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52203,7 +52200,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52269,7 +52266,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-axios-pm2-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52333,7 +52330,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52399,7 +52396,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52463,7 +52460,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52529,7 +52526,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-axios-pm2-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52593,7 +52590,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-none-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52654,7 +52651,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-none-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52713,7 +52710,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-none-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52778,7 +52775,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-none-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52841,7 +52838,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-none-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52906,7 +52903,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-none-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -52969,7 +52966,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-none-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53034,7 +53031,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-none-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53097,7 +53094,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53162,7 +53159,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53225,7 +53222,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53290,7 +53287,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-none-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53353,7 +53350,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-pm2-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53415,7 +53412,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-pm2-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53475,7 +53472,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53541,7 +53538,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53605,7 +53602,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53671,7 +53668,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53735,7 +53732,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53801,7 +53798,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-basic-fetch-pm2-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53865,7 +53862,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53931,7 +53928,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -53995,7 +53992,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54061,7 +54058,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-basic-fetch-pm2-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54125,7 +54122,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-none-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54186,7 +54183,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-none-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54245,7 +54242,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-none-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54310,7 +54307,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-none-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54373,7 +54370,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-none-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54438,7 +54435,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-none-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54501,7 +54498,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-none-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54566,7 +54563,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-none-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54629,7 +54626,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-none-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54694,7 +54691,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-none-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54757,7 +54754,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-none-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54822,7 +54819,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-none-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54885,7 +54882,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-pm2-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -54947,7 +54944,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-pm2-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55007,7 +55004,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-pm2-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55073,7 +55070,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-pm2-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55137,7 +55134,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-pm2-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55203,7 +55200,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-pm2-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55267,7 +55264,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-pm2-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55333,7 +55330,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-axios-pm2-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55397,7 +55394,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55463,7 +55460,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55527,7 +55524,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55593,7 +55590,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-axios-pm2-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55657,7 +55654,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-none-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55718,7 +55715,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-none-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55777,7 +55774,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-none-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55842,7 +55839,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-none-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55905,7 +55902,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-none-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -55970,7 +55967,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-none-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56033,7 +56030,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-none-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56098,7 +56095,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-none-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56161,7 +56158,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-none-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56226,7 +56223,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-none-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56289,7 +56286,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-none-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56354,7 +56351,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-none-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56417,7 +56414,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-pm2-none-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56479,7 +56476,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-pm2-none-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56539,7 +56536,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56605,7 +56602,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56669,7 +56666,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-postgresql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56735,7 +56732,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-postgresql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56799,7 +56796,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-sqlite-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56865,7 +56862,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#6068f518fa529b63860dd52dd91ff200)  
+[tsconfig.json](#dac9c5c1588d43ce74cf74c71e172dbe)  
 
 ## fastify-sapper-static-fetch-pm2-prisma-sqlite-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56929,7 +56926,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#ad4b3a0178a3c68f9f4552bf57f828d2)  
+[tsconfig.json](#4e646a7c1e85e2f7073b7cb035fd732f)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-mysql-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -56995,7 +56992,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-mysql-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -57059,7 +57056,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-postgres-jest
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -57125,7 +57122,7 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#80ff0c9fc489288667c77fa7a252ae2b)  
+[tsconfig.json](#334571a7ea3ca5e8a5e4ccbc4217e0c4)  
 
 ## fastify-sapper-static-fetch-pm2-typeorm-postgres-none
 [.gitignore](#8851a290a21bca2c34c5a14ed677e817)  
@@ -57189,4 +57186,4 @@ jobs:
 [static/logo-192.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/logo-512.png](#6c22bbc9bc01151cbc00ee139c6979d0)  
 [static/manifest.json](#3a5b304357dc33d3658978e8152650ce)  
-[tsconfig.json](#467807a5ff9e653f1835e5247e84c6c8)  
+[tsconfig.json](#e429aec04384eb6aeb91f8d26ac87d98)  
