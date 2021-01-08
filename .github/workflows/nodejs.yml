@@ -66,7 +66,7 @@ jobs:
           path: ./server/__test__/forArtifact.md
       - run: npm run pm2:stop --prefix ../nextjs/server
 
-      - run: node bin/index.js --answers '{"dir":"../nextjs-fetch","building":"basic","aspida":"fetch","orm":"none","testing":"none"}'
+      - run: node bin/index.js --answers '{"dir":"../nextjs-fetch","building":"basic","aspida":"fetch","reactHooks":"none","orm":"none","testing":"none"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
       - run: npm run lint --prefix ../nextjs-fetch
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
@@ -100,7 +100,7 @@ jobs:
       - run: npm run build --prefix ../nuxtjs/server
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 10
 
-      - run: node bin/index.js --answers '{"dir":"../nextjs-typeorm","aspida":"fetch","orm":"typeorm"}'
+      - run: node bin/index.js --answers '{"dir":"../nextjs-typeorm","aspida":"fetch","reactHooks":"query","orm":"typeorm"}'
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
       - run: npm run lint --prefix ../nextjs-typeorm
         if: matrix.os == 'ubuntu-latest' && matrix.node-version == 12
