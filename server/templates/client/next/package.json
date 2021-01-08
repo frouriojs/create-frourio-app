@@ -28,13 +28,15 @@
     "<% if (aspida === 'axios') { %>@aspida/axios": "^1.2.1",
     "<% } else { %>@aspida/fetch": "^1.2.1<% if (testing === 'jest') { %>",
     "@aspida/node-fetch": "^1.2.1<% } %>",
-    "<% } %>@aspida/swr": "^1.2.1<% if (aspida === 'axios') { %>",
-    "axios": "^0.21.1<% } %>",
-    "class-validator": "^0.12.2",
+    "<% } %><% if (reactHooks === 'swr') { %>@aspida/swr": "^1.2.1",
+    "<% } else if (reactHooks === 'query') { %>@aspida/react-query": "^0.1.1",
+    "<% } %><% if (aspida === 'axios') { %>axios": "^0.21.1",
+    "<% } %>class-validator": "^0.12.2",
     "next": "^10.0.5",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "swr": "^0.4.0"
+    "react-dom": "^17.0.1<% if (reactHooks === 'swr') { %>",
+    "swr": "^0.4.0<% } else if (reactHooks === 'query') { %>",
+    "react-query": "^3.5.11<% } %>"
   },
   "devDependencies": {
     "<% if (orm === 'prisma') { %>@prisma/cli": "^2.14.0",

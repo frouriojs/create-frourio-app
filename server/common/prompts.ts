@@ -8,6 +8,7 @@ type PromptName =
   | 'mode'
   | 'target'
   | 'aspida'
+  | 'reactHooks'
   | 'pm'
   | 'daemon'
   | 'testing'
@@ -126,6 +127,18 @@ export const saoPrompts: ({
     ],
     type: 'list',
     default: 'axios'
+  },
+  {
+    name: 'reactHooks',
+    message: 'React Hooks for data fetching',
+    type: 'list',
+    choices: [
+      { name: 'SWR', value: 'swr' },
+      { name: 'React Query', value: 'query' },
+      { name: 'None', value: 'none' }
+    ],
+    default: 'swr',
+    when: (ans) => ans.client === 'next'
   },
   {
     name: 'daemon',

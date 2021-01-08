@@ -1,5 +1,6 @@
-import React from 'react'
-import { cache } from 'swr'
+import React from 'react'<% if (reactHooks === 'swr') { %>
+import { cache } from 'swr'<% } else if (reactHooks === 'query') { %>
+import { QueryClient, QueryClientProvider } from 'react-query'<% } %>
 import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
 import cors from 'fastify-cors'
@@ -33,21 +34,33 @@ beforeAll(() => {
 
   return fastify.listen(process.env.SERVER_PORT ?? 8080)
 })
-
-afterEach(() => cache.clear())
+<% if (reactHooks === 'swr') { %>
+afterEach(() => cache.clear())<% } %>
 afterAll(() => fastify.close())
 
 describe('Home page', () => {
-  it('matches snapshot', async () => {
-    const { container, asFragment } = render(<Home />, {})
+  it('matches snapshot', async () => {<% if (reactHooks === 'query') { %>
+    const queryClient = new QueryClient()<% } %>
+    const { container, asFragment } = render(<% if (reactHooks === 'query') { %>
+      <QueryClientProvider client={queryClient}>
+        <Home />
+      </QueryClientProvider>,
+      {}
+    )<% } else { %><Home />, {})<% } %>
 
     await waitForDomChange({ container: container as HTMLElement })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('clicking button triggers prompt', async () => {
-    const { container, getByText } = render(<Home />, {})
+  it('clicking button triggers prompt', async () => {<% if (reactHooks === 'query') { %>
+    const queryClient = new QueryClient()<% } %>
+    const { container, getByText } = render(<% if (reactHooks === 'query') { %>
+      <QueryClientProvider client={queryClient}>
+        <Home />
+      </QueryClientProvider>,
+      {}
+    )<% } else { %><Home />, {})<% } %>
 
     await waitForDomChange({ container: container as HTMLElement })
 
