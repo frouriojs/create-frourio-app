@@ -1,13 +1,13 @@
 import React from 'react'<% if (reactHooks === 'swr') { %>
-import { cache } from 'swr'<% } else if (reactHooks === 'query') { %>
-import { QueryClient, QueryClientProvider } from 'react-query'<% } %>
+import { cache } from 'swr'<% } else if (reactHooks === 'none') { %>
+import { render, fireEvent, waitForDomChange } from '@testing-library/react'<% } %>
 import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
 import cors from 'fastify-cors'
 import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
 import api from '~/server/api/$api'
-import Home from '~/pages/index'
-import { render, fireEvent, waitForDomChange } from '../testUtils'
+import Home from '~/pages/index'<% if (reactHooks !== 'none') { %>
+import { render, fireEvent, waitForDomChange } from '../testUtils'<% } %>
 
 dotenv.config({ path: 'server/.env' })
 
@@ -39,28 +39,16 @@ afterEach(() => cache.clear())<% } %>
 afterAll(() => fastify.close())
 
 describe('Home page', () => {
-  it('matches snapshot', async () => {<% if (reactHooks === 'query') { %>
-    const queryClient = new QueryClient()<% } %>
-    const { container, asFragment } = render(<% if (reactHooks === 'query') { %>
-      <QueryClientProvider client={queryClient}>
-        <Home />
-      </QueryClientProvider>,
-      {}
-    )<% } else { %><Home />, {})<% } %>
+  it('matches snapshot', async () => {
+    const { container, asFragment } = render(<Home />, {})
 
     await waitForDomChange({ container: container as HTMLElement })
 
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('clicking button triggers prompt', async () => {<% if (reactHooks === 'query') { %>
-    const queryClient = new QueryClient()<% } %>
-    const { container, getByText } = render(<% if (reactHooks === 'query') { %>
-      <QueryClientProvider client={queryClient}>
-        <Home />
-      </QueryClientProvider>,
-      {}
-    )<% } else { %><Home />, {})<% } %>
+  it('clicking button triggers prompt', async () => {
+    const { container, getByText } = render(<Home />, {})
 
     await waitForDomChange({ container: container as HTMLElement })
 

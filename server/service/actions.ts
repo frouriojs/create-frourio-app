@@ -8,6 +8,7 @@ export const createActions = (
   actions: (
     | { type: 'add'; files: string; templateDir: string }
     | { type: 'move'; patterns: Record<string, string> }
+    | { type: 'remove'; file: string }
   )[]
 } => {
   const newAnswers = { prismaDB: 'none', ...answers, dbModule: '', dbUrl: '' }
@@ -104,6 +105,16 @@ export const createActions = (
         templateDir: ''
       },
       ...addedList,
+      ...(answers.client === 'next' &&
+      answers.reactHooks === 'none' &&
+      answers.testing === 'jest'
+        ? [
+            {
+              type: 'remove' as const,
+              file: 'test/testUtils.tsx'
+            }
+          ]
+        : []),
       {
         type: 'move',
         patterns: { gitignore: '.gitignore' }
