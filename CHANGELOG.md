@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.24.0](https://github.com/frouriojs/create-frourio-app/compare/v0.23.0...v0.24.0) (2021-01-08)
+
+
+### Features
+
+* add reactHooks as a choice ([170191c](https://github.com/frouriojs/create-frourio-app/commit/170191c9abbba2958172d1d0da2fc55af86eff5d))
+
 ## [0.23.0](https://github.com/frouriojs/create-frourio-app/compare/v0.22.1...v0.23.0) (2020-12-30)
 
 

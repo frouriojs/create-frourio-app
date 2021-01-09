@@ -45,6 +45,8 @@ export const generate = async (
           await fs.promises.unlink(from)
         })
       )
+    } else if (action.type === 'remove') {
+      await fs.promises.unlink(path.join(dir, action.file))
     }
   }
 }

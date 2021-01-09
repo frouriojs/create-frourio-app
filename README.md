@@ -72,6 +72,10 @@ https://frourio.io/docs
 1. HTTP client of aspida:
    - [axios](https://github.com/axios/axios)
    - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+1. React Hooks for data fetching:
+   - [SWR](https://swr.vercel.app/)
+   - [React Query](https://react-query.tanstack.com/)
+   - None
 1. Daemon process manager:
    - None
    - [PM2](https://pm2.keymetrics.io/)

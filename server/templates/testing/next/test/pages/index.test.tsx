@@ -1,12 +1,13 @@
-import React from 'react'
-import { cache } from 'swr'
+import React from 'react'<% if (reactHooks === 'swr') { %>
+import { cache } from 'swr'<% } else if (reactHooks === 'none') { %>
+import { render, fireEvent, waitForDomChange } from '@testing-library/react'<% } %>
 import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
 import cors from 'fastify-cors'
 import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
 import api from '~/server/api/$api'
-import Home from '~/pages/index'
-import { render, fireEvent, waitForDomChange } from '../testUtils'
+import Home from '~/pages/index'<% if (reactHooks !== 'none') { %>
+import { render, fireEvent, waitForDomChange } from '../testUtils'<% } %>
 
 dotenv.config({ path: 'server/.env' })
 
@@ -33,8 +34,8 @@ beforeAll(() => {
 
   return fastify.listen(process.env.SERVER_PORT ?? 8080)
 })
-
-afterEach(() => cache.clear())
+<% if (reactHooks === 'swr') { %>
+afterEach(() => cache.clear())<% } %>
 afterAll(() => fastify.close())
 
 describe('Home page', () => {
