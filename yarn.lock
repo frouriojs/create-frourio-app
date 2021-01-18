@@ -1635,15 +1635,6 @@ asn1@~0.2.3:
   dependencies:
     safer-buffer "~2.1.0"
 
-aspida@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.1.1.tgz#ca30a66c082ce9d4a4832f94ca3550ef2b65fe6c"
-  integrity sha512-0pecur9w9hDXtBSrZVn37R4z1lXaRY4s5Xxo1XCBBvtwadORtpbjDhNd3UJLpBDjZx3LcDuAZqRgzGqKhWIPqA==
-  dependencies:
-    "@types/minimist" "^1.2.1"
-    chokidar "^3.4.3"
-    minimist "^1.2.5"
-
 aspida@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.2.1.tgz#e1e9f056508f7ccb091a0488dc23d258caee89be"
@@ -4163,12 +4154,12 @@ from2@^2.1.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
-frourio@^0.22.0:
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.22.0.tgz#885ce090feb07fb4c32b4c49fd0f18e1d17ed878"
-  integrity sha512-dCgGrM6gaNGOAMcaQrjMD/wTHsc+Hm/rAPwotdhsP25ChS6/TIkfPum7uxU5tlEXplHCO6zGKwKbK9IJEYfI3A==
+frourio@^0.22.1:
+  version "0.22.1"
+  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.22.1.tgz#075a9a01d00eb765a6b7c19dc37967602fd8ca04"
+  integrity sha512-ssOcmREP1H+FGPbHNNW/LxSFmyOtdcj48iAa1ih1ZPdMLaz6t7wSY6YR0D3yHkX08MMP3e8vFGabfXcOngzNqg==
   dependencies:
-    aspida "^1.1.1"
+    aspida "^1.2.1"
     velona "^0.7.0"
 
 fs-access@^1.0.1:
