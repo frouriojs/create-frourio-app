@@ -1,6 +1,6 @@
 import 'reflect-metadata'
-import path from 'path'
-import express from 'express'
+<% if (orm === 'none') { %>import path from 'path'
+<% } %>import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import { createConnection } from 'typeorm'
