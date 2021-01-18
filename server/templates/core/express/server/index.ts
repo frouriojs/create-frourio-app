@@ -1,5 +1,5 @@
-import path from 'path'
-import express from 'express'
+<% if (orm === 'none') { %>import path from 'path'
+<% } %>import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import server from './$server'<% if (orm === 'none') { %>

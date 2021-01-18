@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.24.1](https://github.com/frouriojs/create-frourio-app/compare/v0.24.0...v0.24.1) (2021-01-18)
+
+
+### Features
+
+* update modules ([ac75aa3](https://github.com/frouriojs/create-frourio-app/commit/ac75aa3e16dbb8481a17db843a63891bc09bca48))
+
+
+### Bug Fixes
+
+* add typeorm migration file of postgres ([8cf9abf](https://github.com/frouriojs/create-frourio-app/commit/8cf9abf7388a973e04096d9a7bc18075445d02f7))
+
 ## [0.24.0](https://github.com/frouriojs/create-frourio-app/compare/v0.23.0...v0.24.0) (2021-01-08)
 
 

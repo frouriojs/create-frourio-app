@@ -27,4 +27,4 @@ const options: ConnectionOptions = {
   }
 }
 
-export = options
+export default options
