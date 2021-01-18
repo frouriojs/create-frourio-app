@@ -97,7 +97,11 @@ jobs:
       - run: npm run build --prefix ../nuxtjs/server
         if: matrix.node-version == 10
 
-      - run: node bin/index.js --answers '{"dir":"../nextjs-typeorm","aspida":"fetch","reactHooks":"query","orm":"typeorm"}'
+      - run: node bin/index.js --answers '{"dir":"../nextjs-typeorm","aspida":"fetch","reactHooks":"query","orm":"typeorm","typeormDB":"postgres","dbUser":"postgres","dbPass":"postgres","dbName":"test"}'
+        if: matrix.node-version == 12
+      - run: npm run migration:generate --prefix ../nextjs-typeorm
+        if: matrix.node-version == 12
+      - run: npm run migration:run --prefix ../nextjs-typeorm
         if: matrix.node-version == 12
       - run: npm run lint --prefix ../nextjs-typeorm
         if: matrix.node-version == 12
