@@ -17,6 +17,14 @@ jobs:
         include:
           - os: windows-latest
             node-version: 14
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5<% } %><% if (client === 'next') { %>
     env:
       API_ORIGIN: http://localhost:8080
       BASE_PATH: /api
