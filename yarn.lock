@@ -3924,10 +3924,10 @@ fastify-plugin@^3.0.0:
   resolved "https://registry.yarnpkg.com/fastify-plugin/-/fastify-plugin-3.0.0.tgz#cf1b8c8098e3b5a7c8c30e6aeb06903370c054ca"
   integrity sha512-ZdCvKEEd92DNLps5n0v231Bha8bkz1DjnPP/aEz37rz/q42Z5JVLmgnqR4DYuNn3NXAO3IDCPyRvgvxtJ4Ym4w==
 
-fastify-static@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/fastify-static/-/fastify-static-3.3.1.tgz#e2e83849374dea1e0a037b6dcc1c50a2452bd51a"
-  integrity sha512-PpQ1ejqXgWNjzrj7i9xvveEm/j+beKt6AHJ2LB8223mfCKBCEhUuRvb+WkgyArLZBeiL+EjOzBqIBTSlYQ3J2A==
+fastify-static@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/fastify-static/-/fastify-static-3.4.0.tgz#812f7af416ef2e998c7d6c19ae3dd7afc8d7ca58"
+  integrity sha512-5y9xTNiPTj6/jDwzH6CqBIcI3/yZtocUiHoLud2NYPfHSOLlS6eW6DTheiU8b9WWlfmHfqOjwFFBdhiH1+nBhg==
   dependencies:
     fastify-plugin "^3.0.0"
     glob "^7.1.4"
