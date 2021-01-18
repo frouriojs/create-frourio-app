@@ -5,11 +5,11 @@ export class Task1591970905411 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      'CREATE TABLE `task` (`id` int NOT NULL AUTO_INCREMENT, `label` varchar(100) NOT NULL, `done` tinyint NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB'
+      <% if (typeormDB === 'mysql') { %>'CREATE TABLE `task` (`id` int NOT NULL AUTO_INCREMENT, `label` varchar(100) NOT NULL, `done` tinyint NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB'<% } else { %>`CREATE TABLE "task" ("id" SERIAL NOT NULL, "label" character varying(100) NOT NULL, "done" boolean NOT NULL DEFAULT false, CONSTRAINT "PK_fb213f79ee45060ba925ecd576e" PRIMARY KEY ("id"))`<% } %>
     )
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query('DROP TABLE `task`')
+    await queryRunner.query('DROP TABLE <% if (typeormDB === 'mysql') { %>`task`<% } else { %>"task"<% } %>')
   }
 }

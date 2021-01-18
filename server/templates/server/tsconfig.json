@@ -5,7 +5,7 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "lib": ["dom"],
-    "module": "esnext",
+    "module": "<%= orm === 'typeorm' ? 'commonjs' : 'esnext' %>",
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
@@ -16,6 +16,5 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "target": "es6"
-  }<% if (orm === 'typeorm') { %>,
-  "exclude": ["node_modules", "ormconfig.ts"]<% } %>
+  }
 }
