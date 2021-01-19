@@ -7,8 +7,25 @@ export default defineController(() => ({
   post: async ({ body }) => {
     const allAnswers = genAllAnswers(body)
 
-    if (allAnswers.orm === 'none' || allAnswers.prismaDB === 'sqlite') {
+    if (allAnswers.skipDbChecks) {
       return { status: 200, body: { enabled: true } }
+    }
+
+    if (allAnswers.orm === 'none' || allAnswers.db === 'sqlite') {
+      return { status: 200, body: { enabled: true } }
+    }
+
+    if (
+      allAnswers.dbHost !== '127.0.0.1' &&
+      allAnswers.dbHost !== 'localhost'
+    ) {
+      return {
+        status: 200,
+        body: {
+          enabled: false,
+          err: `To check db connection, "127.0.0.1" and "localhost" are only allowed for host name.`
+        }
+      }
     }
 
     try {
@@ -19,8 +36,11 @@ export default defineController(() => ({
         password: allAnswers.dbPass
       }
 
-      if ((allAnswers.prismaDB ?? allAnswers.typeormDB) === 'mysql') {
-        const conn = await mariadb.createConnection(config)
+      if (allAnswers.db === 'mysql') {
+        const conn = await mariadb.createConnection({
+          ...config,
+          allowPublicKeyRetrieval: true
+        })
 
         if (allAnswers.orm === 'typeorm') {
           await conn.query(`CREATE DATABASE IF NOT EXISTS ${allAnswers.dbName}`)
@@ -46,11 +66,7 @@ export default defineController(() => ({
     } catch (e) {
       return {
         status: 200,
-        body:
-          allAnswers.orm === 'prisma' &&
-          (e.message as string).includes('allowPublicKeyRetrieval')
-            ? { enabled: true }
-            : { enabled: false, err: e.message }
+        body: { enabled: false, err: e.message }
       }
     }
   }

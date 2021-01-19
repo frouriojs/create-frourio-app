@@ -40,9 +40,9 @@ export const createActions = (
 
   if (answers.orm === 'prisma') {
     newAnswers.dbUrl =
-      answers.prismaDB === 'sqlite'
+      answers.db === 'sqlite'
         ? `file:${answers.dbFile}`
-        : `${answers.prismaDB}://${answers.dbUser}:${answers.dbPass}@${answers.dbHost}:${answers.dbPort}/${answers.dbName}`
+        : `${answers.db}://${answers.dbUser}:${answers.dbPass}@${answers.dbHost}:${answers.dbPort}/${answers.dbName}`
 
     addedList.push({
       type: 'add',
@@ -51,8 +51,8 @@ export const createActions = (
     })
   } else if (answers.orm === 'typeorm') {
     newAnswers.dbModule = `",\n    "${
-      typeormDBs[answers.typeormDB as keyof typeof typeormDBs].name
-    }": "${typeormDBs[answers.typeormDB as keyof typeof typeormDBs].ver}`
+      typeormDBs[answers.db as keyof typeof typeormDBs].name
+    }": "${typeormDBs[answers.db as keyof typeof typeormDBs].ver}`
 
     addedList.push({
       type: 'add',

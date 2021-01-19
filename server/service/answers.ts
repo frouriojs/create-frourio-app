@@ -1,16 +1,16 @@
 import fs from 'fs'
-import { join, resolve } from 'path'
+import path from 'path'
 import { homedir } from 'os'
-import spawn from 'cross-spawn'
+import { spawn } from 'child_process'
 import { Answers, initPrompts } from '$/common/prompts'
 import { generate } from './generate'
-import { fastify, ports } from '../'
-import { getStatus, setStatus } from './status'
+import { setStatus } from './status'
 import { completed } from './completed'
-import { getServerPort } from './getServerPort'
+import { getClientPort, getServerPort } from './getServerPort'
+import stream from 'stream'
 
-const dirPath = join(homedir(), '.frourio')
-const dbPath = join(dirPath, 'create-frourio-app.json')
+const dirPath = path.join(homedir(), '.frourio')
+const dbPath = path.join(dirPath, 'create-frourio-app.json')
 
 type Schemas = [
   { ver: 1; answers: Omit<Answers, 'client'> & { front?: string } },
@@ -65,7 +65,7 @@ export const genAllAnswers = (answers: Answers) =>
     {} as Answers
   )
 
-const installApp = async (answers: Answers) => {
+const installApp = async (answers: Answers, s: stream.Writable) => {
   setStatus('installing')
   const allAnswers = genAllAnswers(answers)
   const dir = allAnswers.dir ?? ''
@@ -73,23 +73,58 @@ const installApp = async (answers: Answers) => {
   await generate(
     {
       ...allAnswers,
-      clientPort: ports.client,
+      clientPort: await getClientPort(),
       serverPort: await getServerPort()
     },
     __dirname
   )
 
-  await completed(allAnswers)
-  await fastify.close()
+  await completed(allAnswers, s)
 
-  spawn(
-    answers.pm ?? 'npm',
-    ['run', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],
-    {
-      cwd: resolve(dir),
-      stdio: 'inherit'
-    }
-  )
+  await new Promise((resolve, reject) => {
+    const proc = spawn(
+      answers.pm ?? 'npm',
+      ['run', '--color', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],
+      {
+        cwd: path.resolve(dir),
+        stdio: ['inherit', 'pipe', 'pipe'],
+        env: {
+          FORCE_COLOR: 'true',
+          /* eslint-disable camelcase */
+          npm_config_color: 'always',
+          npm_config_progress: 'true',
+          /* eslint-enable camelcase */
+          ...process.env
+        }
+      }
+    )
+    proc.stdio[1]?.on('data', s.write.bind(s))
+    proc.stdio[2]?.on('data', s.write.bind(s))
+    proc.once('close', resolve)
+    proc.once('error', reject)
+  })
+  await new Promise((resolve, reject) => {
+    const proc = spawn(
+      answers.pm ?? 'npm',
+      ['run', '--color', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],
+      {
+        cwd: path.resolve(dir),
+        stdio: ['inherit', 'pipe', 'pipe'],
+        env: {
+          FORCE_COLOR: 'true',
+          /* eslint-disable camelcase */
+          npm_config_color: 'always',
+          npm_config_progress: 'true',
+          /* eslint-enable camelcase */
+          ...process.env
+        }
+      }
+    )
+    proc.stdio[1]?.on('data', s.write.bind(s))
+    proc.stdio[2]?.on('data', s.write.bind(s))
+    proc.once('close', resolve)
+    proc.once('error', reject)
+  })
 
   delete db.answers.dir
   delete db.answers.dbName
@@ -98,14 +133,12 @@ const installApp = async (answers: Answers) => {
 
 export const getAnswers = () => ({ dir: process.argv[2], ...db.answers })
 
-export const updateAnswers = async (answers: Answers) => {
-  if (getStatus() !== 'waiting') return
-
+export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
   db = { ...db, answers }
 
   if (!fs.existsSync(dirPath)) await fs.promises.mkdir(dirPath)
 
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 
-  await installApp(answers)
+  return await installApp(answers, s)
 }

@@ -1,0 +1,45 @@
+name: Deploy client
+
+on:
+  push:
+    branches:
+      - <%= deployBranch %>
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: |
+          if test -n '${{ secrets.GH_PAGES_BASE_PATH }}'; then
+            CLIENT_BASE_PATH='${{ secrets.GH_PAGES_BASE_PATH }}'
+          else
+            CLIENT_BASE_PATH="/$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')"
+          fi
+          echo "CLIENT_BASE_PATH=$CLIENT_BASE_PATH" >> $GITHUB_ENV
+      - uses: actions/cache@v2
+        id: client-<%= pm %>-cache
+        with:
+          path: "node_modules"
+          key: client-<%= pm %>-${{ hashFiles('<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>') }}
+      - uses: actions/cache@v2
+        id: server-<%= pm %>-cache
+        with:
+          path: "server/node_modules"
+          key: server-<%= pm %>-${{ hashFiles('server/<%= pm === 'npm' ? 'package-lock.json' : 'yarn.lock' %>') }}
+      - run: <%= pm %> install
+        if: steps.client-<%= pm %>-cache.outputs.cache-hit != 'true'
+      - run: <%= pm === 'npm' ? 'npm install --prefix server' : 'yarn install --cwd server' %>
+        if: steps.server-<%= pm %>-cache.outputs.cache-hit != 'true'
+      - run: <%= pm %> run build:client
+        env:
+          API_ORIGIN: ${{ secrets.API_ORIGIN }}
+          API_BASE_PATH: ${{ secrets.API_BASE_PATH }}
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out

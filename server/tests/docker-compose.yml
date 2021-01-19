@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  postgresql-13:
+    image: postgres:13
+    container_name: cfa-test-postgresql-13
+    ports:
+      - "48250:5432"
+    environment:
+      POSTGRES_PASSWORD: pg-password
+  mysql-8:
+    image: mysql:8
+    container_name: cfa-test-mysql-8
+    ports:
+      - "48450:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql-password

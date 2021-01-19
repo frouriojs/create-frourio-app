@@ -1,0 +1,152 @@
+.card {
+  margin-top: 48px;
+}
+
+.message {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+  border-style: solid;
+  border-width: 0 0 2px 0;
+  border-color: transparent;
+}
+
+.message.error {
+  background: #fdf2f2;
+  border-color: #f95858;
+}
+
+.ctrls {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn {
+  position: relative;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-right: 16px;
+  margin-top: 16px;
+}
+
+.btn.disabled {
+  cursor: not-allowed;
+  background: #e4e4e4;
+  color: #222;
+}
+
+.btn:not(.disabled):hover {
+  background: #f8f8f8;
+}
+
+.btn > .radioIcon {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #0edbda;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.btn.active > .radioIcon {
+  background: #0edbda;
+}
+
+.btn.disabled > .radioIcon {
+  border: 2px solid #666666;
+}
+
+.btn.disabled.active > .radioIcon {
+  background: #666666;
+}
+
+.ctrls > input {
+  width: 280px;
+  border: none;
+  border-bottom: 2px solid #bbb;
+  background: #f8f8f8;
+  font-size: 16px;
+  padding: 8px;
+  margin-top: 16px;
+}
+
+.ctrls > input:focus {
+  outline: none;
+}
+
+.note {
+  margin: 20px 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.note.info {
+  white-space: pre-wrap;
+  background: #f2f2fd;
+  border-color: #5a5af9;
+}
+
+.note.warn {
+  background: #fdfbf2;
+  border-color: #f9d958;
+}
+
+.note.error {
+  background: #fdf2f2;
+  border-color: #f95858;
+}
+
+.hint {
+  white-space: nowrap;
+  position: absolute;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 2px;
+  background: #fdf2f2;
+  border-color: #f95858;
+  top: -94%;
+  padding: 4px 2px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s, transform 0.1s;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hint::before {
+  content: '';
+  border-style: solid;
+  border-width: 8px;
+  width: 0;
+  height: 0;
+  border-color: #f95858 transparent transparent transparent;
+  position: absolute;
+  top: 100%;
+}
+
+.hint::after {
+  content: '';
+  border-style: solid;
+  border-width: 6px;
+  width: 0;
+  height: 0;
+  border-color: #fdf2f2 transparent transparent transparent;
+  position: absolute;
+  top: 100%;
+}
+
+.btn:hover .hint {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: unset;
+}

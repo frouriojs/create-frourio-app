@@ -1,0 +1,37 @@
+name: Deploy server
+
+on:
+  push:
+    branches:
+      - <%= deployBranch %>
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.API_DEPLOY_SSH_KEY }}
+          name: id_rsa
+          # If known_hosts needs to be set, use this.
+          # known_hosts: ${{ secrets.API_DEPLOY_KNOWN_HOSTS }}
+      - run: |
+          npm install -g pm2@^4.5.1
+          npx pm2 deploy production setup || true
+          npx pm2 deploy production update
+        env:
+          API_DEPLOY_USER: ${{ secrets.API_DEPLOY_USER }}
+          API_DEPLOY_HOST: ${{ secrets.API_DEPLOY_HOST }}
+          API_DEPLOY_REPO: https://github.com/${{ github.repository }}.git
+          API_DATABASE_URL: ${{ secrets.API_DATABASE_URL }}
+          API_JWT_SECRET: ${{ secrets.API_JWT_SECRET }}
+          API_USER_ID: ${{ secrets.API_USER_ID }}
+          API_USER_PASS: ${{ secrets.API_USER_PASS }}
+          API_ORIGIN: ${{ secrets.API_ORIGIN }}
+          API_BASE_PATH: ${{ secrets.API_BASE_PATH }}
+          API_SERVER_PORT: ${{ secrets.API_SERVER_PORT }}

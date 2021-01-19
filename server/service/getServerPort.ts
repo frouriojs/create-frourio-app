@@ -1,8 +1,15 @@
 import { getPortPromise } from 'portfinder'
 
-let port: Promise<number>
+let serverPort: Promise<number>
 
 export const getServerPort = () => {
-  port = port ?? getPortPromise({ port: 8080 })
-  return port
+  serverPort = serverPort ?? getPortPromise({ port: 8080 })
+  return serverPort
+}
+
+let clientPort: Promise<number>
+
+export const getClientPort = () => {
+  clientPort = clientPort ?? getPortPromise({ port: 8000 })
+  return clientPort
 }

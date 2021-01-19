@@ -9,6 +9,7 @@ yarn add react-github-btn
 ```
 
 ## Usage
+
 ``` jsx
 import GitHubButton from 'react-github-btn'
 
