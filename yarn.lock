@@ -53,12 +53,12 @@
   dependencies:
     cross-fetch "3.0.6"
 
-"@aspida/axios@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@aspida/axios/-/axios-1.2.1.tgz#04405272f5cd8ba78463894e493a12294892749b"
-  integrity sha512-43ZFJYzUDZNEEzf0++mTaCF9SJ6shLpTn8E8J8O3/cNZnMESm4hOI5ox87VU7SYgx+SPij7jGtJ3GvbRzLNUUQ==
+"@aspida/axios@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@aspida/axios/-/axios-1.3.0.tgz#d7da2a418b592383a53494956581f25029aa88c9"
+  integrity sha512-6NGqJExk19qnRWx5iQJcEN6HLQI4G24uh9FewAGduVIz7vHz6bm3+7nq+CLMstytYLoL+WUReB0RQVFbcCI0TQ==
   dependencies:
-    aspida "^1.2.1"
+    aspida "^1.3.0"
 
 "@aspida/swr@^1.2.1":
   version "1.2.1"
@@ -1607,13 +1607,13 @@ asn1@~0.2.3:
   dependencies:
     safer-buffer "~2.1.0"
 
-aspida@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.2.1.tgz#e1e9f056508f7ccb091a0488dc23d258caee89be"
-  integrity sha512-9pQUe4lBGHg81HT5HBaUynUHBEhsvcMImfwctKG8i6mtz/H37EnkIstwte3AMm28JWk/nHYaV2jlEtm8lABu9A==
+aspida@^1.2.1, aspida@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.3.0.tgz#75687309c04a5f8eaa1a48807f247a156d936e5d"
+  integrity sha512-l2mRqGMISPqhtNeKasX7jKDu9EViyfVoASauM7K9rxCf8N8vmwoQWCJwCUXmWPTn6llsnRazoJHkla4VrtG6Bg==
   dependencies:
     "@types/minimist" "^1.2.1"
-    chokidar "^3.4.3"
+    chokidar "^3.5.1"
     minimist "^1.2.5"
 
 assert-plus@1.0.0, assert-plus@^1.0.0:
@@ -2224,7 +2224,7 @@ char-regex@^1.0.2:
   resolved "https://registry.yarnpkg.com/char-regex/-/char-regex-1.0.2.tgz#d744358226217f981ed58f479b1d6bcc29545dcf"
   integrity sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==
 
-chokidar@3.4.3, chokidar@^3.2.2, chokidar@^3.4.3:
+chokidar@3.4.3, chokidar@^3.2.2:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.4.3.tgz#c1df38231448e45ca4ac588e6c79573ba6a57d5b"
   integrity sha512-DtM3g7juCXQxFVSNPNByEC2+NImtBuxQQvWlHunpJIS5Ocr0lG306cC7FCi7cEA0fzmybPUIl4txBIobk1gGOQ==
@@ -2272,6 +2272,21 @@ chokidar@^3.4.1:
     readdirp "~3.4.0"
   optionalDependencies:
     fsevents "~2.1.2"
+
+chokidar@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
+  integrity sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==
+  dependencies:
+    anymatch "~3.1.1"
+    braces "~3.0.2"
+    glob-parent "~5.1.0"
+    is-binary-path "~2.1.0"
+    is-glob "~4.0.1"
+    normalize-path "~3.0.0"
+    readdirp "~3.5.0"
+  optionalDependencies:
+    fsevents "~2.3.1"
 
 chownr@^1.1.1:
   version "1.1.4"
@@ -4178,6 +4193,11 @@ fsevents@^2.1.2, fsevents@~2.1.2:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.1.3.tgz#fb738703ae8d2f9fe900c33836ddebee8b97f23e"
   integrity sha512-Auw9a4AxqWpa9GUfj370BMPzzyncfBABW8Mab7BGWBYDj4Isgq+cDKtx0i6u9jcX9pQDnswsaaOTgTmA5pEjuQ==
+
+fsevents@~2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.1.tgz#b209ab14c61012636c8863507edf7fb68cc54e9f"
+  integrity sha512-YR47Eg4hChJGAB1O3yEAOkGO+rlzutoICGqGo9EZ4lKWokzZRSyIW1QmTzqjtw8MJdj9srP869CuWw/hyzSiBw==
 
 function-bind@^1.1.1:
   version "1.1.1"
