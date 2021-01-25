@@ -51,7 +51,7 @@
     "fastify": "^3.10.1",
     "fastify-cors": "^5.1.0",
     "fastify-static": "^3.4.0",
-    "frourio": "^0.22.1",
+    "frourio": "^0.22.2",
     "github-buttons": "^2.14.1",
     "is-binary-path": "^2.1.0",
     "log-update": "^4.0.0",
