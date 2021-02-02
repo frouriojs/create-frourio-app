@@ -22,7 +22,7 @@ const execFileAsync = promisify(execFile)
 
 const randomNum = Number(process.env.TEST_CFA_RANDOM_NUM || '3')
 const dbCtx = createJestDbContext()
-jest.setTimeout(360000)
+jest.setTimeout(1000 * 60 * 20)
 
 const createShellRunner = (answers: Answers) =>
   `node ./bin/index --answers ${shellEscapeSingleInput(
@@ -190,7 +190,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
       try {
         await waitForExpect(() =>
-          expect(tcpPortUsed.check(serverPort, '127.0.0.1')).toBe(true)
+          expect(tcpPortUsed.check(serverPort, '127.0.0.1')).toBeTruthy()
         )
 
         // Appearance test

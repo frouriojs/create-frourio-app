@@ -78,7 +78,7 @@ jobs:
       - run: yarn typecheck
       - run: yarn test
         env:
-          TEST_CFA_RANDOM_NUM: 3
+          TEST_CFA_RANDOM_NUM: 5
           TEST_SQLITE_ONLY: "yes"
 
   release:
