@@ -10,6 +10,7 @@ export const createRandomAnswers = async (
 
   // Choice
   cfaPrompts.forEach((p) => {
+    ;(ans as any)[p.name] = p.default
     if (p.type === 'list') {
       ;(ans as any)[p.name] = randChoice(
         p.choices.map((choice) => choice.value)

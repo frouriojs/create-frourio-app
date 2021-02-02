@@ -26,7 +26,7 @@ server(app, { basePath: API_BASE_PATH })
 app.use(API_BASE_PATH, express.static('public'))
 
 createConnection({
-  type: '<%= db %>',
+  type: '<%= typeormDb %>',
   host: TYPEORM_HOST,
   username: TYPEORM_USERNAME,
   password: TYPEORM_PASSWORD,

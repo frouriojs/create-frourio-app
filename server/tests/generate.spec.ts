@@ -1,7 +1,10 @@
+import axios from 'axios'
 import { generate } from '$/service/generate'
 import { createJestDbContext } from '$/utils/database/jest-context'
-import { randSuffix } from '$/utils/random'
+import { randInt, randSuffix } from '$/utils/random'
 import { createRandomAnswers } from '$/utils/answers/random'
+import waitForExpect from 'wait-for-expect'
+import tcpPortUsed from 'tcp-port-used'
 import path from 'path'
 import fs from 'fs'
 import { getPortPromise } from 'portfinder'
@@ -12,7 +15,7 @@ import {
 import fg from 'fast-glob'
 import YAML from 'yaml'
 import assert from 'assert'
-import { execFile } from 'child_process'
+import { execFile, spawn } from 'child_process'
 import { promisify } from 'util'
 import { Answers } from '$/common/prompts'
 const execFileAsync = promisify(execFile)
@@ -49,7 +52,9 @@ const tempSandbox = async (
     )
     await fs.promises.writeFile(
       path.resolve(dir, '.test-error.txt'),
-      e instanceof Error ? e.message : String(e)
+      e instanceof Error
+        ? e.name + '\n\n' + e.message + '\n\nCall Stack\n' + e.stack
+        : String(e)
     )
     throw e
   }
@@ -57,7 +62,8 @@ const tempSandbox = async (
 
 test.each(Array.from({ length: randomNum }))('create', async () => {
   const answers = await createRandomAnswers(dbCtx)
-  const clientPort = await getPortPromise({ port: 10000 })
+  const randPort = 1024 + randInt(63000 - 1024)
+  const clientPort = await getPortPromise({ port: randPort })
   const serverPort = await getPortPromise({ port: clientPort + 1 })
   await tempSandbox(answers, async (dir: string) => {
     await generate(
@@ -163,13 +169,6 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       })
     }
 
-    // test
-    if (answers.testing !== 'none') {
-      await execFileAsync(answers.pm, ['test'], {
-        cwd: dir
-      })
-    }
-
     // build:client
     {
       await execFileAsync(answers.pm, ['run', 'build:client'], {
@@ -182,6 +181,56 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       await execFileAsync(answers.pm, ['run', 'build:server'], {
         cwd: dir
       })
+    }
+
+    {
+      const proc = spawn('node', [path.resolve(dir, 'server/index.js')], {
+        detached: true
+      })
+
+      try {
+        await waitForExpect(() =>
+          expect(tcpPortUsed.check(serverPort, '127.0.0.1')).toBe(true)
+        )
+
+        // Appearance test
+        const client = axios.create({
+          baseURL: `http://localhost:${serverPort}/api`
+        })
+
+        const res1 = await client.get('tasks')
+        expect(res1.data).toHaveLength(0)
+
+        await client.post('tasks', { label: 'test' })
+
+        const res2 = await client.get('tasks')
+        expect(res2.data).toHaveLength(1)
+        expect(res2.data[0].label).toEqual('test')
+
+        await expect(
+          client.get('user', { headers: { authorization: 'token' } })
+        ).rejects.toHaveProperty('response.status', 400)
+        await expect(
+          client.post('token', { id: 'hoge', pass: 'huga' })
+        ).rejects.toHaveProperty('response.status', 401)
+
+        const res3 = await client.post('token', { id: 'id', pass: 'pass' })
+        await expect(
+          client.get('user', {
+            headers: { authorization: `Bearer ${res3.data.token}` }
+          })
+        ).resolves.toHaveProperty('data.name', 'sample user')
+
+        // Project scope test
+        if (answers.testing !== 'none') {
+          await execFileAsync(answers.pm, ['test'], {
+            cwd: dir
+          })
+        }
+      } catch (e: unknown) {
+        proc.kill()
+        throw e
+      }
     }
   })
 })

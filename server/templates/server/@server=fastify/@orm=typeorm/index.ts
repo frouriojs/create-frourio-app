@@ -34,7 +34,7 @@ createDBFileIfNotExists(path.join(__dirname, 'database.json'))<% } %>
 server(fastify, { basePath: API_BASE_PATH })
 
 createConnection({
-  type: '<%= db %>',
+  type: '<%= typeormDb %>',
   host: TYPEORM_HOST,
   username: TYPEORM_USERNAME,
   password: TYPEORM_PASSWORD,

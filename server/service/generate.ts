@@ -86,4 +86,6 @@ export const generate = async (
 
   await walk(path.resolve(rootDir, 'templates'), dir)
   await rename('gitignore', '.gitignore')
+
+  return templateContext
 }
