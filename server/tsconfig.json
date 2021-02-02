@@ -2,6 +2,7 @@
   "compilerOptions": {
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "skipLibCheck": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
