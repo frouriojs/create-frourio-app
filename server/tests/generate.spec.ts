@@ -42,9 +42,11 @@ const tempSandbox = async (
     await fs.promises.rm(dir, { recursive: true })
     // await fs.promises.rmdir(dir)
   } catch (e: unknown) {
-    console.error(`Failed. ${dir}`)
-    console.error(createCmdRunner(answers))
-    console.error(createShellRunner(answers))
+    console.error(
+      `Failed. ${dir}\n${createCmdRunner(answers)}\n${createShellRunner(
+        answers
+      )}`
+    )
     await fs.promises.writeFile(
       path.resolve(dir, '.test-error.txt'),
       e instanceof Error ? e.message : String(e)
