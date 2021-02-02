@@ -3,7 +3,6 @@ import { generate } from '$/service/generate'
 import { createJestDbContext } from '$/utils/database/jest-context'
 import { randInt, randSuffix } from '$/utils/random'
 import { createRandomAnswers } from '$/utils/answers/random'
-import waitForExpect from 'wait-for-expect'
 import tcpPortUsed from 'tcp-port-used'
 import path from 'path'
 import fs from 'fs'
@@ -189,8 +188,11 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       })
 
       try {
-        await waitForExpect(() =>
-          expect(tcpPortUsed.check(serverPort, '127.0.0.1')).toBeTruthy()
+        await tcpPortUsed.waitUntilUsedOnHost(
+          serverPort,
+          '127.0.0.1',
+          500,
+          5000
         )
 
         // Appearance test
