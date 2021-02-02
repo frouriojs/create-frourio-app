@@ -139,23 +139,27 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useLocalNetwork }) => {
           )}
         </div>
         {process.env.NODE_ENV === 'development' && (
-          <div className={questionStyles.ctrls}>
-            <input
-              style={{ width: '100%' }}
-              type="text"
-              value={
-                answers &&
-                `${
-                  process.env.NODE_ENV === 'development'
-                    ? 'node ./bin/index.js'
-                    : answers.pm === 'yarn'
-                    ? 'yarn create frourio-app'
-                    : 'npm init frourio-app'
-                } --answers ${shellEscapeSingleInput(JSON.stringify(answers))}`
-              }
-              readOnly
-            />
-          </div>
+          <Flipped flipId="manual-install" stagger>
+            <div className={questionStyles.ctrls}>
+              <input
+                style={{ width: '100%' }}
+                type="text"
+                value={
+                  answers &&
+                  `${
+                    process.env.NODE_ENV === 'development'
+                      ? 'node ./bin/index.js'
+                      : answers.pm === 'yarn'
+                      ? 'yarn create frourio-app'
+                      : 'npm init frourio-app'
+                  } --answers ${shellEscapeSingleInput(
+                    JSON.stringify(answers)
+                  )}`
+                }
+                readOnly
+              />
+            </div>
+          </Flipped>
         )}
         {closedOverlay && serverStatus?.status === 'installing' && (
           <Flipped flipId="flip-console">
@@ -166,9 +170,19 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useLocalNetwork }) => {
         )}
 
         {serverStatus?.status === 'installing' && (
-          <div style={{ marginTop: '16px' }}>
-            <PrimaryButton>Open {devUrl}</PrimaryButton>
-          </div>
+          <Flipped flipId="open-button" stagger>
+            <div>
+              <div style={{ marginTop: '16px' }}>
+                <PrimaryButton
+                  onClick={() => {
+                    window.open(devUrl, '_blank')
+                  }}
+                >
+                  Open {devUrl}
+                </PrimaryButton>
+              </div>
+            </div>
+          </Flipped>
         )}
 
         {closedOverlay && serverStatus?.status === 'installing' && (
