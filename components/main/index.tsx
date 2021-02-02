@@ -95,7 +95,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useLocalNetwork }) => {
     await apiClient.answers.$patch({ body: answers })
     revalidate?.()
     setCreated(true)
-  }, [answers, canCreate])
+  }, [apiClient, answers, canCreate])
 
   if (!answers) setAnswers({ ...getAllDefaultAnswers() })
   if (serverStatus?.status === 'installing' && !created) {

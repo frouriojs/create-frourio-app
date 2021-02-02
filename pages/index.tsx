@@ -6,8 +6,7 @@ const Home = () => {
   const apiClient = createApiClient()
   const { data: serverStatus, revalidate } = useAspidaSWR(apiClient.status)
   return (
-    // <Main serverStatus={serverStatus} revalidate={revalidate} useLocalNetwork />
-    <Main />
+    <Main serverStatus={serverStatus} revalidate={revalidate} useLocalNetwork />
   )
 }
 

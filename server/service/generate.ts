@@ -9,6 +9,8 @@ type TemplateContext = Answers & {
   clientPort: number
   serverPort: number
   dbModule: string
+  // value for prisma DATABASE_URL
+  prismaDbUrl: string
   // used for typeorm.ConnectionOptions.type
   typeormDb: string | undefined
 }
@@ -28,7 +30,11 @@ export const generate = async (
             typeormDBs[answers.db as keyof typeof typeormDBs].name
           }": "${typeormDBs[answers.db as keyof typeof typeormDBs].ver}`
         : '',
-    typeormDb: answers.db === 'postgresql' ? 'postgres' : answers.db
+    typeormDb: answers.db === 'postgresql' ? 'postgres' : answers.db,
+    prismaDbUrl:
+      answers.db === 'sqlite'
+        ? `file:${answers.dbFile}`
+        : `${answers.db}://${answers.dbUser}:${answers.dbPass}@${answers.dbHost}:${answers.dbPort}/${answers.dbName}`
   }
 
   const rename = async (pattern: string, renameTo: string) => {
