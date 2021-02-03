@@ -1,0 +1,6 @@
+fastify
+fastify-cors
+fastify-helmet
+fastify-jwt
+fastify-multipart
+fastify-static

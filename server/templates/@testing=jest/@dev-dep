@@ -1,0 +1,5 @@
+@types/jest
+babel-jest
+jest
+ts-jest
+ts-node

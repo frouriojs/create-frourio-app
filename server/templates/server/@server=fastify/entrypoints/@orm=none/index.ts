@@ -3,8 +3,8 @@ import Fastify from 'fastify'
 import helmet from 'fastify-helmet'
 import cors from 'fastify-cors'
 import fastifyStatic from 'fastify-static'
-import fastifyJwt from 'fastify-jwt'<% if (orm === 'none') { %>
-import { createDBFileIfNotExists } from './service/tasks'<% } %>
+import fastifyJwt from 'fastify-jwt'
+import { createDBFileIfNotExists } from './service/tasks'
 import {
   API_JWT_SECRET,
   API_SERVER_PORT,
@@ -27,8 +27,7 @@ fastify.register(fastifyStatic, {
   decorateReply: false
 })
 fastify.register(fastifyJwt, { secret: API_JWT_SECRET })
-<% if (orm === 'none') { %>
-createDBFileIfNotExists(path.join(__dirname, 'database.json'))<% } %>
+createDBFileIfNotExists(path.join(__dirname, 'database.json'))
 server(fastify, { basePath: API_BASE_PATH })
 
 fastify.listen(API_SERVER_PORT)

@@ -1,0 +1,5 @@
+@types/cors
+@types/express-jwt
+@types/jsonwebtoken
+@types/multer
+frourio-express

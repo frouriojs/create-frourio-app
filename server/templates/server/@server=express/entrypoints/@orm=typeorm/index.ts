@@ -1,12 +1,10 @@
 import 'reflect-metadata'
-<% if (orm === 'none') { %>import path from 'path'
-<% } %>import express from 'express'
+import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import { createConnection } from 'typeorm'
 import server from './$server'
-import ormOptions from './$orm'<% if (orm === 'none') { %>
-import { createDBFileIfNotExists } from './service/tasks'<% } %>
+import ormOptions from './$orm'
 import {
   API_SERVER_PORT,
   API_BASE_PATH,
@@ -20,8 +18,6 @@ import {
 const app = express()
 app.use(helmet())
 app.use(cors())
-<% if (orm === 'none') { %>
-createDBFileIfNotExists(path.join(__dirname, 'database.json'))<% } %>
 server(app, { basePath: API_BASE_PATH })
 app.use(API_BASE_PATH, express.static('public'))
 

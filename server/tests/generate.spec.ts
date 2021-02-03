@@ -55,6 +55,10 @@ const tempSandbox = async (
         ? e.name + '\n\n' + e.message + '\n\nCall Stack\n' + e.stack
         : String(e)
     )
+    await fs.promises.rename(
+      dir,
+      path.resolve(path.dirname(dir), path.basename(dir) + '-failed')
+    )
     throw e
   }
 }
@@ -184,7 +188,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
     {
       const proc = spawn('node', [path.resolve(dir, 'server/index.js')], {
-        detached: true
+        detached: true,
+        stdio: ['ignore', 'inherit', 'inherit']
       })
 
       try {

@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import ejs from 'ejs'
 import isBinaryPath from 'is-binary-path'
-import { Answers } from '$/common/prompts'
+import { Answers, cfaPrompts } from '$/common/prompts'
 import { typeormDBs } from '$/common/dbInfo'
 
 type TemplateContext = Answers & {
@@ -36,6 +36,13 @@ export const generate = async (
         ? `file:${answers.dbFile}`
         : `${answers.db}://${answers.dbUser}:${answers.dbPass}@${answers.dbHost}:${answers.dbPort}/${answers.dbName}`
   }
+
+  cfaPrompts.forEach((p) => {
+    if (!(p.name in templateContext)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(templateContext as any)[p.name] = undefined
+    }
+  })
 
   const rename = async (pattern: string, renameTo: string) => {
     const from = path.join(dir, pattern)
