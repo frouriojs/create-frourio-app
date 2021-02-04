@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Answers, cfaPrompts } from '$/common/prompts'
+import { Answers, cfaPrompts, isAnswersValid } from '$/common/prompts'
 import { AllDbContext } from '$/utils/database/context'
 import { randChoice } from '$/utils/random'
 
 export const createRandomAnswers = async (
-  dbCtx: AllDbContext
+  dbCtx: AllDbContext,
+  num = 0
 ): Promise<Answers> => {
+  if (num === 1000) throw new Error('Infinite loop')
   const ans: Answers = {}
 
   // Choice
@@ -19,7 +21,7 @@ export const createRandomAnswers = async (
   })
 
   // Branch names
-  ans.deployBranch = randChoice(['master', 'main', 'trunc'])
+  ans.deployBranch = randChoice(['master', 'main', 'trunk'])
 
   // Deploy (Never used actually in test)
   ans.serverSourcePath = randChoice([
@@ -36,6 +38,8 @@ export const createRandomAnswers = async (
     if (ans.orm === 'typeorm') ans.orm = 'prisma'
     ans.db = 'sqlite'
   }
+  if (!isAnswersValid({ ...ans, skipDbChecks: 'true' }))
+    return await createRandomAnswers(dbCtx, num + 1)
   if (ans.orm !== 'none') {
     switch (ans.db) {
       case 'mysql': {

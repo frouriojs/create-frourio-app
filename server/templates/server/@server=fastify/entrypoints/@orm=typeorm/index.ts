@@ -1,3 +1,5 @@
+require('dotenv').config({ path: 'server/.env' })
+
 import 'reflect-metadata'
 import path from 'path'
 import Fastify from 'fastify'

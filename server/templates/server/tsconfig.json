@@ -13,6 +13,7 @@
       "$prisma/*": ["./node_modules/.prisma/*"]<% } %>
     },
     "rootDir": ".",
+    "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
     "target": "es6"

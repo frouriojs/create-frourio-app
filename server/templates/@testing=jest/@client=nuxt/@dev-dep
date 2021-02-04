@@ -1,2 +1,4 @@
 @vue/test-utils
+babel-core
+babel-jest
 vue-jest

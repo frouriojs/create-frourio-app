@@ -82,6 +82,24 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   await completed(allAnswers, s)
 
   await new Promise((resolve, reject) => {
+    const proc = spawn(answers.pm ?? 'npm', ['run', '--color', 'lint:fix'], {
+      cwd: path.resolve(dir),
+      stdio: ['inherit', 'pipe', 'pipe'],
+      env: {
+        FORCE_COLOR: 'true',
+        /* eslint-disable camelcase */
+        npm_config_color: 'always',
+        npm_config_progress: 'true',
+        /* eslint-enable camelcase */
+        ...process.env
+      }
+    })
+    proc.stdio[1]?.on('data', s.write.bind(s))
+    proc.stdio[2]?.on('data', s.write.bind(s))
+    proc.once('close', resolve)
+    proc.once('error', reject)
+  })
+  await new Promise((resolve, reject) => {
     const proc = spawn(
       answers.pm ?? 'npm',
       ['run', '--color', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],

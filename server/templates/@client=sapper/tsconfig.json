@@ -5,6 +5,7 @@
 			"experimentalDecorators": true,
 			"emitDecoratorMetadata": true,
 			"importsNotUsedAsValues": "remove",
+			"skipLibCheck": true,
 			"strictNullChecks": true<% if (testing === 'jest') { %>,
 			"resolveJsonModule": true,
 			"types": ["jest"]<% } %>,

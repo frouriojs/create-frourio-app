@@ -93,5 +93,7 @@ const basePath = '/api'
     subprocess.on('close', () => {
       console.log(`open http://localhost:${port} in the browser`)
     })
+  } else {
+    console.log(`open http://localhost:${port} in the browser`)
   }
 })()

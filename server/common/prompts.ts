@@ -268,7 +268,7 @@ export const cfaPrompts: Prompt[] = [
     message: 'server/prisma/.env DATABASE_FILE=',
     type: 'input',
     default: './dev.db',
-    when: (ans) => ans.db !== 'none' && ans.db === 'sqlite',
+    when: (ans) => ans.orm !== 'none' && ans.db === 'sqlite',
     valid: (ans) => {
       return ans.skipDbChecks === 'true' || (ans.dbFile ?? '') !== ''
     }
@@ -377,8 +377,14 @@ export const cfaPrompts: Prompt[] = [
         name: 'Serverless',
         value: 'serverless',
         disabled: (ans) => {
+          if (ans.server === 'express') {
+            return { en: 'Preparing to support Express' }
+          }
           if (ans.orm === 'typeorm') {
             return { en: 'Preparing to support TypeORM' }
+          }
+          if (ans.orm === 'none') {
+            return { en: 'Preparing to support no ORM' }
           }
           if (ans.ci !== 'actions') {
             return { en: 'Select **GitHub Actions** for CI' }
@@ -585,4 +591,47 @@ export const initPrompts = (answers: Answers): DeterminedPrompt[] => {
     ...answers
   })
   return prompts
+}
+
+export const removeUnnecessary = <T extends Answers>(answers: T): T => {
+  const res = { ...answers }
+  const usedKeys = Object.create(null)
+  const c: DeterminedPrompt[] = calculatePrompts(answers)
+  c.forEach((el) => (usedKeys[el.name] = true))
+
+  cfaPrompts.forEach((p) => {
+    if (!(p.name in usedKeys)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(res as any)[p.name] = undefined
+    }
+  })
+
+  return res
+}
+
+export const addAllUndefined = <T extends Answers>(answers: T): T => {
+  const res = { ...answers }
+
+  cfaPrompts.forEach((p) => {
+    if (!(p.name in res)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(res as any)[p.name] = undefined
+    }
+  })
+
+  return res
+}
+
+export const isAnswersValid = (answers: Answers) => {
+  const c: DeterminedPrompt[] = calculatePrompts(answers)
+  return c.every((el) => {
+    const a = answers[el.name]
+    return (
+      (el.valid ?? true) &&
+      (el.type !== 'list' ||
+        (a &&
+          (el.choices.filter((choice) => choice.value === a)[0]?.disabled ??
+            false) === false))
+    )
+  })
 }

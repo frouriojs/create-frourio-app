@@ -42,7 +42,7 @@ export const changeIcon = async (id: string, iconFile: MulterFile) => {
 
   await fs.promises.writeFile(
     path.resolve(iconsDir, iconName),
-    await iconFile.toBuffer()
+    iconFile.buffer
   )
 
   return {

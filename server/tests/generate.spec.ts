@@ -190,9 +190,18 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
     }
 
     {
+      // Project scope test
+      if (answers.testing !== 'none') {
+        await execFileAsync(answers.pm, ['test'], {
+          cwd: dir
+        })
+      }
+    }
+
+    {
       const proc = spawn('node', [path.resolve(dir, 'server/index.js')], {
-        detached: true,
-        stdio: ['ignore', 'inherit', 'inherit']
+        stdio: ['ignore', 'inherit', 'inherit'],
+        cwd: path.resolve(dir, 'server')
       })
 
       try {
@@ -219,7 +228,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
         await expect(
           client.get('user', { headers: { authorization: 'token' } })
-        ).rejects.toHaveProperty('response.status', 400)
+        ).rejects.toHaveProperty('response.status', 401)
         await expect(
           client.post('token', { id: 'hoge', pass: 'huga' })
         ).rejects.toHaveProperty('response.status', 401)
@@ -230,16 +239,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
             headers: { authorization: `Bearer ${res3.data.token}` }
           })
         ).resolves.toHaveProperty('data.name', 'sample user')
-
-        // Project scope test
-        if (answers.testing !== 'none') {
-          await execFileAsync(answers.pm, ['test'], {
-            cwd: dir
-          })
-        }
-      } catch (e: unknown) {
+      } finally {
         proc.kill()
-        throw e
       }
     }
   })

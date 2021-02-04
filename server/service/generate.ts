@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import ejs from 'ejs'
 import isBinaryPath from 'is-binary-path'
-import { Answers, cfaPrompts } from '$/common/prompts'
+import { addAllUndefined, Answers, removeUnnecessary } from '$/common/prompts'
 import { typeormDBs } from '$/common/dbInfo'
 import assert from 'assert'
 import {
@@ -35,7 +35,7 @@ export const generate = async (
   }
   const dir = outDir ?? answers.dir ?? ''
 
-  const templateContext: TemplateContext = {
+  const templateContext0: TemplateContext = {
     ...answers,
     dbModule:
       answers.orm === 'typeorm'
@@ -50,12 +50,9 @@ export const generate = async (
         : `${answers.db}://${answers.dbUser}:${answers.dbPass}@${answers.dbHost}:${answers.dbPort}/${answers.dbName}`
   }
 
-  cfaPrompts.forEach((p) => {
-    if (!(p.name in templateContext)) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(templateContext as any)[p.name] = undefined
-    }
-  })
+  const templateContext: TemplateContext = addAllUndefined(
+    removeUnnecessary(templateContext0)
+  )
 
   const rename = async (pattern: string, renameTo: string) => {
     const from = path.join(dir, pattern)
