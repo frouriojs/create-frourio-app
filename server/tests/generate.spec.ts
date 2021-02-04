@@ -95,8 +95,11 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       ])
       expect(jsonFiles.length).toBeGreaterThan(0)
       for (const f of jsonFiles) {
-        const content = await fs.promises.readFile(f)
-        expect(() => content.toJSON(), `JSON validation for ${f}`).not.toThrow()
+        const content = (await fs.promises.readFile(f)).toString()
+        expect(
+          () => JSON.parse(content),
+          `JSON validation for ${f}`
+        ).not.toThrow()
       }
     }
 

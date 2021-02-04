@@ -4,6 +4,13 @@ import ejs from 'ejs'
 import isBinaryPath from 'is-binary-path'
 import { Answers, cfaPrompts } from '$/common/prompts'
 import { typeormDBs } from '$/common/dbInfo'
+import assert from 'assert'
+import {
+  convertListToJson,
+  DepKeys,
+  getPackageVersions,
+  isDepKey
+} from './package-json'
 
 type TemplateContext = Answers & {
   clientPort: number
@@ -20,6 +27,12 @@ export const generate = async (
   rootDir: string,
   outDir?: string
 ) => {
+  const deps: { [k in DepKeys]: string[] } = {
+    '@dep': [],
+    '@dev-dep': [],
+    '@server-dev-dep': [],
+    '@server-dep': []
+  }
   const dir = outDir ?? answers.dir ?? ''
 
   const templateContext: TemplateContext = {
@@ -83,16 +96,67 @@ export const generate = async (
     await Promise.all(
       paths.map(async (p) => {
         if (!p.startsWith('@')) return
-        const [pname, pvalue] = p.slice(1).split('=')
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if ((templateContext as any)[pname] !== pvalue) return
-        await walk(path.resolve(now, p), nowOut)
+        const f = path.resolve(now, p)
+        if ((await fs.promises.stat(f)).isDirectory()) {
+          const [pname, pvalue] = p.slice(1).split('=')
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          if ((templateContext as any)[pname] !== pvalue) return
+          await walk(path.resolve(now, p), nowOut)
+        } else {
+          if (p.endsWith('dep')) {
+            const lines = (await fs.promises.readFile(f))
+              .toString()
+              .split(/[\n\r]+/)
+              .map((line) => line.trim())
+              .filter((line) => line && !line.startsWith('#'))
+            assert(isDepKey(p), `${p} is not expected dep key.`)
+            deps[p] = [...deps[p], ...lines]
+          } else {
+            throw new Error('Unreachable: Unknown special filename.')
+          }
+        }
       })
     )
   }
 
   await walk(path.resolve(rootDir, 'templates'), dir)
-  await rename('gitignore', '.gitignore')
+  const versions = getPackageVersions()
+
+  const setupPackageJson = async (
+    rel: string,
+    depKey: DepKeys,
+    devDepKey: DepKeys
+  ) => {
+    const packageJsonPath = path.resolve(dir, rel)
+    const packageJson = (await fs.promises.readFile(packageJsonPath)).toString()
+    const finish = '\n  }\n}\n'
+
+    assert(
+      packageJson.endsWith(finish),
+      'Template package.json ending unexpected.'
+    )
+    const replaced =
+      packageJson.slice(0, -finish.length) +
+      '\n  },\n' +
+      `  "dependencies": {\n${convertListToJson(
+        versions,
+        deps[depKey],
+        '    '
+      )}\n  },\n` +
+      `  "devDependencies": {\n${convertListToJson(
+        versions,
+        deps[devDepKey],
+        '    '
+      )}\n  }\n` +
+      '}\n'
+    await fs.promises.writeFile(packageJsonPath, replaced)
+  }
+
+  await Promise.all([
+    setupPackageJson('package.json', '@dep', '@dev-dep'),
+    setupPackageJson('server/package.json', '@server-dep', '@server-dev-dep'),
+    rename('gitignore', '.gitignore')
+  ])
 
   return templateContext
 }

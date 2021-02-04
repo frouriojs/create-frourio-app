@@ -50,6 +50,8 @@ jobs:
           TEST_PG_PORT: 5432
           TEST_PG_PASSWORD: postgres
           TEST_MYSQL_PORT: 3306
+          TEST_MYSQL_USER: root
+          TEST_MYSQL_PASS: root
 
   test-win:
     name: "Test on Node:${{ matrix.node-version }} OS:windows-latest"

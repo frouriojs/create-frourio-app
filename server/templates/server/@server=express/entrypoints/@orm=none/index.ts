@@ -2,9 +2,9 @@
 <% } %>import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
-import server from './$server'
-import { createDBFileIfNotExists } from './service/tasks'
-import { API_SERVER_PORT, API_BASE_PATH } from './service/envValues'
+import server from '$/$server'
+import { createDBFileIfNotExists } from '$/service/tasks'
+import { API_SERVER_PORT, API_BASE_PATH } from '$/service/envValues'
 
 const app = express()
 app.use(helmet())

@@ -6,8 +6,8 @@ import cors from 'fastify-cors'
 import fastifyStatic from 'fastify-static'
 import fastifyJwt from 'fastify-jwt'
 import { createConnection } from 'typeorm'
-import server from './$server'
-import ormOptions from './$orm'
+import server from '$/$server'
+import ormOptions from '$/$orm'
 import {
   API_JWT_SECRET,
   API_SERVER_PORT,
@@ -17,7 +17,7 @@ import {
   TYPEORM_PASSWORD,
   TYPEORM_DATABASE,
   TYPEORM_PORT
-} from './service/envValues'
+} from '$/service/envValues'
 
 const fastify = Fastify()
 

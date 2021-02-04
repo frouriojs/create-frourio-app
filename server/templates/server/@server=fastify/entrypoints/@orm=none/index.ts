@@ -4,14 +4,14 @@ import helmet from 'fastify-helmet'
 import cors from 'fastify-cors'
 import fastifyStatic from 'fastify-static'
 import fastifyJwt from 'fastify-jwt'
-import { createDBFileIfNotExists } from './service/tasks'
+import { createDBFileIfNotExists } from '$/service/tasks'
 import {
   API_JWT_SECRET,
   API_SERVER_PORT,
   API_BASE_PATH,
   API_DYNAMIC_DIR
-} from './service/envValues'
-import server from './$server'
+} from '$/service/envValues'
+import server from '$/$server'
 
 const fastify = Fastify()
 

@@ -62,7 +62,7 @@ export const createRandomAnswers = async (
         break
       }
       default:
-        throw new Error('Unreachable.')
+        throw new Error('Unreachable: Unknown answer orm.')
     }
   }
   return ans

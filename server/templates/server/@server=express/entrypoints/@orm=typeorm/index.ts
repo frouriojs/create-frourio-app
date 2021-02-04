@@ -3,8 +3,8 @@ import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import { createConnection } from 'typeorm'
-import server from './$server'
-import ormOptions from './$orm'
+import server from '$/$server'
+import ormOptions from '$/$orm'
 import {
   API_SERVER_PORT,
   API_BASE_PATH,
@@ -13,7 +13,7 @@ import {
   TYPEORM_PASSWORD,
   TYPEORM_DATABASE,
   TYPEORM_PORT
-} from './service/envValues'
+} from '$/service/envValues'
 
 const app = express()
 app.use(helmet())
