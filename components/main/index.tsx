@@ -40,27 +40,25 @@ const Credits = () => {
 export interface MainProps {
   serverStatus?: ServerStatus
   revalidate?: () => void
-  useLocalNetwork?: boolean
+  useServer?: boolean
 }
 
-const Main: FC<MainProps> = ({ serverStatus, revalidate, useLocalNetwork }) => {
+const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
   const [answers, setAnswers] = useState<Answers | undefined>()
   const [created, setCreated] = useState(false)
   const [log, setLog] = useState('')
   const [closedOverlay, setClosedOverlay] = useState(false)
 
   useEffect(() => {
-    if (useLocalNetwork ?? false) {
-      let log1 = ''
-      const ws = new WebSocket(`ws://${location.host}/ws/`)
-      ws.onmessage = async (ev) => {
-        const dat = await (ev.data as Blob).text()
-        log1 += dat
-        setLog(log1)
-      }
-      return () => ws.close()
+    let log1 = ''
+    const ws = new WebSocket(`ws://${location.host}/ws/`)
+    ws.onmessage = async (ev) => {
+      const dat = await (ev.data as Blob).text()
+      log1 += dat
+      setLog(log1)
     }
-  }, [useLocalNetwork])
+    return () => ws.close()
+  }, [])
 
   const questions = useMemo(() => answers && initPrompts(answers), [answers])
   const canCreate = useMemo(() => {
@@ -80,9 +78,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useLocalNetwork }) => {
     [answers]
   )
 
-  const apiClient = useMemo(() => useLocalNetwork && createApiClient(), [
-    useLocalNetwork
-  ])
+  const apiClient = useMemo(() => useServer && createApiClient(), [useServer])
 
   const create = useCallback(async () => {
     if (!apiClient) return
@@ -162,7 +158,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useLocalNetwork }) => {
           </Flipped>
         )}
         {closedOverlay && serverStatus?.status === 'installing' && (
-          <Flipped flipId="flip-console">
+          <Flipped flipId="flip-console" stagger>
             <div>
               <TerminalConsole log={log} rounded />
             </div>
@@ -186,7 +182,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useLocalNetwork }) => {
         )}
 
         {closedOverlay && serverStatus?.status === 'installing' && (
-          <Flipped flipId="credits">
+          <Flipped flipId="credits" stagger>
             <div>
               <Credits />
             </div>
@@ -194,7 +190,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useLocalNetwork }) => {
         )}
       </main>
 
-      {useLocalNetwork && serverStatus?.status === 'waiting' && (
+      {useServer && serverStatus?.status === 'waiting' && (
         <Flipped flipId="create-button" stagger>
           <div style={{ marginTop: '16px' }}>
             <PrimaryButton onClick={create} disabled={!canCreate}>
