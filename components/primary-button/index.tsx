@@ -13,13 +13,13 @@ const PrimaryButton: FC<PrimaryButtonProps> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <div
+      <button
         className={`${styles.btn}${disabled ? ` ${styles.disabled}` : ''}`}
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         onClick={disabled ? () => {} : onClick}
       >
         {children}
-      </div>
+      </button>
     </div>
   )
 }
