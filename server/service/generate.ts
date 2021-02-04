@@ -3,7 +3,6 @@ import path from 'path'
 import ejs from 'ejs'
 import isBinaryPath from 'is-binary-path'
 import { addAllUndefined, Answers, removeUnnecessary } from '$/common/prompts'
-import { typeormDBs } from '$/common/dbInfo'
 import assert from 'assert'
 import {
   convertListToJson,
@@ -15,7 +14,6 @@ import {
 type TemplateContext = Answers & {
   clientPort: number
   serverPort: number
-  dbModule: string
   // value for prisma DATABASE_URL
   prismaDbUrl: string
   // used for typeorm.ConnectionOptions.type
@@ -37,12 +35,6 @@ export const generate = async (
 
   const templateContext0: TemplateContext = {
     ...answers,
-    dbModule:
-      answers.orm === 'typeorm'
-        ? `",\n    "${
-            typeormDBs[answers.db as keyof typeof typeormDBs].name
-          }": "${typeormDBs[answers.db as keyof typeof typeormDBs].ver}`
-        : '',
     typeormDb: answers.db === 'postgresql' ? 'postgres' : answers.db,
     prismaDbUrl:
       answers.db === 'sqlite'
