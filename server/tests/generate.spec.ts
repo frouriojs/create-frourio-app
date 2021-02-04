@@ -228,7 +228,10 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
         await expect(
           client.get('user', { headers: { authorization: 'token' } })
-        ).rejects.toHaveProperty('response.status', answers.server === 'fastify' ? 400 : 401)
+        ).rejects.toHaveProperty(
+          'response.status',
+          answers.server === 'fastify' ? 400 : 401
+        )
         await expect(
           client.post('token', { id: 'hoge', pass: 'huga' })
         ).rejects.toHaveProperty('response.status', 401)
