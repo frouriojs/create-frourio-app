@@ -75,7 +75,7 @@ const Question: FC<QuestionProps> = ({ answers, question, onChoice }) => {
                   </div>
                   <div className={styles.ctrls}>
                     {question.choices.map((c, i) => (
-                      <div
+                      <button
                         key={i}
                         className={`${styles.btn}${
                           (answers[question.name] ?? question.default) ===
@@ -92,7 +92,7 @@ const Question: FC<QuestionProps> = ({ answers, question, onChoice }) => {
                         {c.disabled && (
                           <div className={styles.hint}>{show(c.disabled)}</div>
                         )}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -107,6 +107,7 @@ const Question: FC<QuestionProps> = ({ answers, question, onChoice }) => {
                   <div
                     className={`${styles.note} ${styles[note.severity]}`}
                     key={i}
+                    tabIndex={0}
                   >
                     {show(note.text)}
                   </div>
