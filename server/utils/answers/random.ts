@@ -34,9 +34,10 @@ export const createRandomAnswers = async (
   if (ans.orm === 'typeorm' && ans.db === 'sqlite') {
     ans.db = 'mysql'
   }
-  if (process.env.TEST_SQLITE_ONLY === 'yes') {
+  if (process.env.TEST_CFA_FIX_DB) ans.db = process.env.TEST_CFA_FIX_DB
+  if (process.env.TEST_CFA_FIX_ORM) ans.orm = process.env.TEST_CFA_FIX_ORM
+  if (ans.db === 'sqlite') {
     if (ans.orm === 'typeorm') ans.orm = 'prisma'
-    ans.db = 'sqlite'
   }
   if (!isAnswersValid({ ...ans, skipDbChecks: 'true' }))
     return await createRandomAnswers(dbCtx, num + 1)

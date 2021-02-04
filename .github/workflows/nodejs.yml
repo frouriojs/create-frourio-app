@@ -23,7 +23,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     env:
       API_ORIGIN: http://localhost:8080
-      BASE_PATH: /api
+      API_BASE_PATH: /api
       NODE_ENV: test
     steps:
       - uses: actions/checkout@v2
@@ -46,7 +46,27 @@ jobs:
           sudo systemctl start mysql.service
       - run: yarn test
         env:
-          TEST_CFA_RANDOM_NUM: 3
+          TEST_CFA_RANDOM_NUM: 1
+          TEST_CFA_FIX_DB: postgresql
+          TEST_CFA_FIX_ORM: prisma
+          TEST_PG_PORT: 5432
+          TEST_PG_PASSWORD: postgres
+      - run: yarn test
+        env:
+          TEST_CFA_RANDOM_NUM: 1
+          TEST_CFA_FIX_DB: mysql
+          TEST_CFA_FIX_ORM: typeorm
+          TEST_MYSQL_PORT: 3306
+          TEST_MYSQL_USER: root
+          TEST_MYSQL_PASS: root
+      - run: yarn test
+        env:
+          TEST_CFA_RANDOM_NUM: 1
+          TEST_CFA_FIX_DB: sqlite
+      - run: yarn test
+        if: github.event_name == 'schedule'
+        env:
+          TEST_CFA_RANDOM_NUM: 5
           TEST_PG_PORT: 5432
           TEST_PG_PASSWORD: postgres
           TEST_MYSQL_PORT: 3306
@@ -80,8 +100,13 @@ jobs:
       - run: yarn typecheck
       - run: yarn test
         env:
+          TEST_CFA_RANDOM_NUM: 1
+          TEST_CFA_FIX_DB: sqlite
+      - run: yarn test
+        if: github.event_name == 'schedule'
+        env:
           TEST_CFA_RANDOM_NUM: 5
-          TEST_SQLITE_ONLY: "yes"
+          TEST_CFA_FIX_DB: sqlite
 
   release:
     runs-on: ubuntu-latest
