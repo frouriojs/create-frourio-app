@@ -58,7 +58,7 @@ jobs:
           TEST_CFA_FIX_ORM: typeorm
           TEST_MYSQL_PORT: 3306
           TEST_MYSQL_USER: root
-          TEST_MYSQL_PASS: root
+          TEST_MYSQL_PASSWORD: root
       - run: yarn test
         env:
           TEST_CFA_RANDOM_NUM: 1
@@ -71,7 +71,7 @@ jobs:
           TEST_PG_PASSWORD: postgres
           TEST_MYSQL_PORT: 3306
           TEST_MYSQL_USER: root
-          TEST_MYSQL_PASS: root
+          TEST_MYSQL_PASSWORD: root
 
   test-win:
     name: "Test on Node:${{ matrix.node-version }} OS:windows-latest"

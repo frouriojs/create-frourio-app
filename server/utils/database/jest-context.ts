@@ -10,18 +10,19 @@ export const createJestDbContext = (): AllDbContext => {
   const keep = process.env.TEST_CFA_KEEP_DB === 'yes'
 
   const ctx: AllDbContext = {
-    mysql: createMysqlContext(),
+    pg: createPgContext(),
     sqlite: createSqliteContext(tmpDir),
-    pg: createPgContext()
+    mysql: createMysqlContext()
   }
 
-  beforeAll(async () => {
+  beforeAll(async (done) => {
     await ctx.pg.up()
     await ctx.sqlite.up()
     await ctx.mysql.up()
+    done()
   })
 
-  afterAll(async () => {
+  afterAll(async (done) => {
     if (!keep) {
       await ctx.pg.deleteAll(await ctx.pg.getAllNames())
       await ctx.sqlite.deleteAll(await ctx.sqlite.getAllNames())
@@ -30,6 +31,7 @@ export const createJestDbContext = (): AllDbContext => {
     await ctx.pg.down()
     await ctx.sqlite.down()
     await ctx.mysql.down()
+    done()
   })
 
   return ctx
