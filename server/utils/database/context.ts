@@ -51,8 +51,10 @@ export const createPgContext = (): PgContext => {
     ...config,
     database: 'postgres'
   })
+  let isUp = false
 
   const getAllNames = async () => {
+    if (!isUp) return []
     const res = await client.query(
       `SELECT datname FROM pg_database WHERE datname LIKE '${thisPrefix}%'`
     )
@@ -61,6 +63,7 @@ export const createPgContext = (): PgContext => {
   }
 
   const getAllTestNames = async () => {
+    if (!isUp) return []
     const res = await client.query(
       `SELECT datname FROM pg_database WHERE datname LIKE '${globalPrefix}%'`
     )
@@ -69,6 +72,7 @@ export const createPgContext = (): PgContext => {
   }
 
   const deleteAll = async (names: string[]) => {
+    if (!isUp) return
     await Promise.all(
       names.map(async (name) => {
         if (name.startsWith(globalPrefix)) {
@@ -82,6 +86,7 @@ export const createPgContext = (): PgContext => {
 
   return {
     async createNew() {
+      assert(isUp)
       const suffix = randSuffix()
       const database = `${thisPrefix}${suffix}`
       await client.query(`CREATE DATABASE ${database}`)
@@ -95,9 +100,13 @@ export const createPgContext = (): PgContext => {
     getAllTestNames,
     deleteAll,
     async up() {
+      if (isUp) return
+      isUp = true
       await client.connect()
     },
     async down() {
+      if (!isUp) return
+      isUp = false
       await client.end()
     }
   }
@@ -115,18 +124,19 @@ export const createMysqlContext = (): MysqlContext => {
   let conn: mariadb.Connection | null = null
 
   const getAllNames = async () => {
-    assert(conn)
+    if (!conn) return []
     const res = await conn.query(`SHOW DATABASES LIKE '${thisPrefix}%'`)
     return res.flatMap(Object.values)
   }
 
   const getAllTestNames = async () => {
-    assert(conn)
+    if (!conn) return []
     const res = await conn.query(`SHOW DATABASES LIKE '${globalPrefix}%'`)
     return res.flatMap(Object.values)
   }
 
   const deleteAll = async (names: string[]) => {
+    if (!conn) return
     await Promise.all(
       names.map(async (name) => {
         assert(conn)
@@ -155,14 +165,17 @@ export const createMysqlContext = (): MysqlContext => {
     getAllTestNames,
     deleteAll,
     async up() {
+      if (conn) return
       conn = await mariadb.createConnection({
         ...config,
         allowPublicKeyRetrieval: true
       })
     },
     async down() {
-      assert(conn)
-      await conn.end()
+      if (!conn) return
+      const conn0 = conn
+      conn = null
+      await conn0.end()
     }
   }
 }
@@ -170,8 +183,10 @@ export const createMysqlContext = (): MysqlContext => {
 export const createSqliteContext = (dirname: string): SqliteContext => {
   const globalPrefix = 'cfa_test_'
   const thisPrefix = `${globalPrefix}${randSuffix()}_`
+  let isUp = false
   return {
     async createNew() {
+      assert(isUp)
       const basename = `${thisPrefix}${randSuffix()}.db`
       const filename = path.resolve(dirname, basename)
       await fs.promises.writeFile(filename, '')
@@ -181,14 +196,17 @@ export const createSqliteContext = (dirname: string): SqliteContext => {
       }
     },
     async getAllNames() {
+      if (!isUp) return []
       const files = await fs.promises.readdir(dirname)
       return files.filter((filename) => filename.startsWith(thisPrefix))
     },
     async getAllTestNames() {
+      if (!isUp) return []
       const files = await fs.promises.readdir(dirname)
       return files.filter((filename) => filename.startsWith(globalPrefix))
     },
     async deleteAll(names: string[]) {
+      if (!isUp) return
       await Promise.all(
         names.map(async (name) => {
           if (name.startsWith(globalPrefix)) {
@@ -200,9 +218,12 @@ export const createSqliteContext = (dirname: string): SqliteContext => {
       )
     },
     async up() {
+      if (isUp) return
+      isUp = true
       await fs.promises.mkdir(dirname, { recursive: true })
     },
     async down() {
+      isUp = false
       // nothing to do
     }
   }

@@ -44,6 +44,7 @@ export const createRandomAnswers = async (
   if (ans.orm !== 'none') {
     switch (ans.db) {
       case 'mysql': {
+        await dbCtx.mysql.up()
         const info = await dbCtx.mysql.createNew()
         ans.dbHost = info.host
         ans.dbPort = info.port.toString()
@@ -53,6 +54,7 @@ export const createRandomAnswers = async (
         break
       }
       case 'postgresql': {
+        await dbCtx.pg.up()
         const info = await dbCtx.pg.createNew()
         ans.dbHost = info.host
         ans.dbPort = info.port.toString()
@@ -62,6 +64,7 @@ export const createRandomAnswers = async (
         break
       }
       case 'sqlite': {
+        await dbCtx.sqlite.up()
         const info = await dbCtx.sqlite.createNew()
         ans.dbFile = info.filename
         break
