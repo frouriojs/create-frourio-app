@@ -39,8 +39,7 @@
     "react-query": "^3.7.1<% } %>"
   },
   "devDependencies": {
-    "<% if (orm === 'prisma') { %>@prisma/cli": "^2.16.0",
-    "<% } %><% if (testing === 'jest') { %>@testing-library/react": "^11.2.5",
+    "<% if (testing === 'jest') { %>@testing-library/react": "^11.2.5",
     "@types/jest": "^26.0.20",
     "<% } %>@types/node": "^14.14.25",
     "@types/react": "^17.0.1",
@@ -58,7 +57,8 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3<% } %>",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.2.1<% if (testing === 'jest') { %>",
+    "prettier": "^2.2.1<% if (orm === 'prisma') { %>",
+    "prisma": "^2.16.0<% } %><% if (testing === 'jest') { %>",
     "ts-jest": "^26.5.0<% } %>",
     "ts-loader": "^8.0.15<% if (testing === 'jest') { %>",
     "ts-node": "^9.1.1<% } %>",

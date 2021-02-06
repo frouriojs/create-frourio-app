@@ -42,8 +42,7 @@
     "typeormer": "^0.1.2<% } %>"
   },
   "devDependencies": {
-    "<% if (orm === 'prisma') { %>@prisma/cli": "^2.16.0",
-    "<% } %><% if (server === 'fastify') { %>@types/busboy": "^0.2.3<% if (testing === 'jest') { %>",
+    "<% if (server === 'fastify') { %>@types/busboy": "^0.2.3<% if (testing === 'jest') { %>",
     "@types/jest": "^26.0.20<% } %>",
     "<% } else { %>@types/cors": "2.8.9",
     "@types/express-jwt": "6.0.0<% if (testing === 'jest') { %>",
@@ -53,7 +52,8 @@
     "<% } %>cross-env": "^7.0.3",
     "frourio<% if (server === 'express') { %>-express<% } %>": "^0.22.2",
     "nodemon-webpack-plugin": "^4.4.4",
-    "npm-run-all": "^4.1.5",
+    "npm-run-all": "^4.1.5<% if (orm === 'prisma') { %>",
+    "prisma": "^2.16.0<% } %>",
     "ts-loader": "^8.0.15",
     "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
