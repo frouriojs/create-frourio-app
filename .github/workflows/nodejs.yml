@@ -45,7 +45,7 @@ jobs:
 
       - run: |
           sudo systemctl start mysql.service
-          node bin/index.js --answers '{"dir":"../nextjs","daemon":"pm2","prismaDB":"mysql","dbUser":"root","dbPass":"root","dbName":"test"}'
+          node bin/index.js --answers '{"dir":"../nextjs","daemon":"pm2","prismaDB":"mysql","dbHost":"127.0.0.1","dbUser":"root","dbPass":"root","dbName":"test"}'
       - run: npm run lint --prefix ../nextjs
       - run: npm run typecheck --prefix ../nextjs
       - run: npm test --prefix ../nextjs
