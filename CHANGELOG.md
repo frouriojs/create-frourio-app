@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.25.0](https://github.com/frouriojs/create-frourio-app/compare/v0.24.1...v0.25.0) (2021-02-07)
+
+
+### Features
+
+* **template:** add throwHttpErrors option ([dcc19e8](https://github.com/frouriojs/create-frourio-app/commit/dcc19e853fd3718f206b28b84bede623e5a601f6))
+* **template:** rename @prisma/cli to prisma ([6392fa3](https://github.com/frouriojs/create-frourio-app/commit/6392fa336734dd895800610c4249bf8e04321ea5))
+
+
+### Bug Fixes
+
+* add dbHost due to a bug in prisma ([d21f78a](https://github.com/frouriojs/create-frourio-app/commit/d21f78aaddc109861a33c3cb954daf22a4e9155e))
+* **template:** update aspida@1.4.1 ([8160ad9](https://github.com/frouriojs/create-frourio-app/commit/8160ad981f21846756d5bb8bd23958fcf7f05ae4))
+
 ### [0.24.1](https://github.com/frouriojs/create-frourio-app/compare/v0.24.0...v0.24.1) (2021-01-18)
 
 
