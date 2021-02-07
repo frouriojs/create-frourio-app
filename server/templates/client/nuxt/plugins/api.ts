@@ -35,7 +35,9 @@ const plugin: Plugin = <% if (aspida === 'axios') { %>({ $axios }, inject) =>
   inject('api', api(aspida($axios)))<% } else { %>(_, inject) =>
   inject(
     'api',
-    process.client ? api(aspidaFetch(fetch)) : api(aspidaNodeFetch(nodeFetch))
+    process.client
+      ? api(aspidaFetch(fetch, { throwHttpErrors: true }))
+      : api(aspidaNodeFetch(nodeFetch, { throwHttpErrors: true }))
   )<% } %>
 
 export default plugin
