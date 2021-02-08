@@ -27,7 +27,6 @@ yarn-error.log*
 /.tmp/
 
 # local env files
-!.env
 /.env
 /.env.local
 /.env.development.local
@@ -37,5 +36,4 @@ yarn-error.log*
 # server
 server/**/$*.ts
 server/index.js
-server/__test__/forArtifact.md
-!server/templates/client/sapper/**/node_modules
+!server/templates/**/node_modules
