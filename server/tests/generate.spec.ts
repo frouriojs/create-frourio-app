@@ -114,7 +114,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       // Validate all yaml files
       {
         const yamlFiles = await fg([
-          path.posix.resolve(dir, '**/*.{yml,yaml}').replace(/\\/g, '/')
+          path.resolve(dir, '**/*.{yml,yaml}').replace(/\\/g, '/')
         ])
         for (const f of yamlFiles) {
           const content = (await fs.promises.readFile(f)).toString()
@@ -126,7 +126,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       }
 
       const envFiles = await fg([
-        path.posix.resolve(dir, '**/.env').replace(/\\/g, '/')
+        path.resolve(dir, '**/.env').replace(/\\/g, '/')
       ])
       const allEnv = envFiles
         .map((f) => fs.readFileSync(f).toString())
