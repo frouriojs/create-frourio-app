@@ -126,23 +126,13 @@ export const createMysqlContext = (): MysqlContext => {
   const getAllNames = async () => {
     if (!conn) return []
     const res = await conn.query(`SHOW DATABASES LIKE '${thisPrefix}%'`)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return res.map((el: any) => {
-      let v
-      for (const e of el) v = e
-      return v
-    })
+    return res.flatMap(Object.values)
   }
 
   const getAllTestNames = async () => {
     if (!conn) return []
     const res = await conn.query(`SHOW DATABASES LIKE '${globalPrefix}%'`)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return res.map((el: any) => {
-      let v
-      for (const e of el) v = e
-      return v
-    })
+    return res.flatMap(Object.values)
   }
 
   const deleteAll = async (names: string[]) => {
