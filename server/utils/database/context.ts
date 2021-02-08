@@ -220,7 +220,11 @@ export const createSqliteContext = (dirname: string): SqliteContext => {
     async up() {
       if (isUp) return
       isUp = true
-      await fs.promises.mkdir(dirname, { recursive: true })
+      try {
+        await fs.promises.mkdir(dirname, { recursive: true })
+      } catch (e: unknown) {
+        // ignore
+      }
     },
     async down() {
       isUp = false
