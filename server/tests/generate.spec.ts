@@ -55,16 +55,24 @@ const tempSandbox = async (
         answers
       )}`
     )
-    await fs.promises.writeFile(
-      path.resolve(dir, '.test-error.txt'),
-      e instanceof Error
-        ? e.name + '\n\n' + e.message + '\n\nCall Stack\n' + e.stack
-        : String(e)
-    )
-    await fs.promises.rename(
-      dir,
-      path.resolve(path.dirname(dir), path.basename(dir) + '-failed')
-    )
+    try {
+      await fs.promises.writeFile(
+        path.resolve(dir, '.test-error.txt'),
+        e instanceof Error
+          ? e.name + '\n\n' + e.message + '\n\nCall Stack\n' + e.stack
+          : String(e)
+      )
+    } catch (e2: unknown) {
+      // ignore
+    }
+    try {
+      await fs.promises.rename(
+        dir,
+        path.resolve(path.dirname(dir), path.basename(dir) + '-failed')
+      )
+    } catch (e2: unknown) {
+      // ignore
+    }
     throw e
   }
 }
