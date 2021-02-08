@@ -18,6 +18,7 @@ import { execFile, spawn } from 'child_process'
 import { promisify } from 'util'
 import { Answers } from '$/common/prompts'
 import rimraf from 'rimraf'
+import realExecutablePath from 'real-executable-path'
 const execFileAsync = promisify(execFile)
 const rimrafAsync = promisify(rimraf)
 
@@ -131,6 +132,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         .map((f) => fs.readFileSync(f).toString())
         .join('\n')
       assert(answers.pm)
+      const npmClientPath = await realExecutablePath(answers.pm)
 
       // SQLite name found
       if (
@@ -158,7 +160,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
       // npm/yarn install client
       {
-        await execFileAsync(answers.pm, ['install'], {
+        await execFileAsync(npmClientPath, ['install'], {
           cwd: dir
         })
       }
@@ -166,7 +168,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       // npm/yarn install server
       {
         await execFileAsync(
-          answers.pm,
+          npmClientPath,
           ['install', answers.pm === 'npm' ? '--prefix' : '--cwd', 'server'],
           {
             cwd: dir
@@ -176,28 +178,28 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
       // typecheck
       {
-        await execFileAsync(answers.pm, ['run', 'typecheck'], {
+        await execFileAsync(npmClientPath, ['run', 'typecheck'], {
           cwd: dir
         })
       }
 
       // eslint
       {
-        await execFileAsync(answers.pm, ['run', 'lint:fix'], {
+        await execFileAsync(npmClientPath, ['run', 'lint:fix'], {
           cwd: dir
         })
       }
 
       // build:client
       {
-        await execFileAsync(answers.pm, ['run', 'build:client'], {
+        await execFileAsync(npmClientPath, ['run', 'build:client'], {
           cwd: dir
         })
       }
 
       // build:server
       {
-        await execFileAsync(answers.pm, ['run', 'build:server'], {
+        await execFileAsync(npmClientPath, ['run', 'build:server'], {
           cwd: dir
         })
       }
@@ -205,14 +207,15 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       {
         // Project scope test
         if (answers.testing !== 'none') {
-          await execFileAsync(answers.pm, ['test'], {
+          await execFileAsync(npmClientPath, ['test'], {
             cwd: dir
           })
         }
       }
 
       {
-        const proc = spawn('node', [path.resolve(dir, 'server/index.js')], {
+        const nodePath = await realExecutablePath('node')
+        const proc = spawn(nodePath, [path.resolve(dir, 'server/index.js')], {
           stdio: ['ignore', 'inherit', 'inherit'],
           cwd: path.resolve(dir, 'server')
         })
