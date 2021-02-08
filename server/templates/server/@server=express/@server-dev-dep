@@ -2,4 +2,6 @@
 @types/express-jwt
 @types/jsonwebtoken
 @types/multer
+fastify
+fastify-cors
 frourio-express

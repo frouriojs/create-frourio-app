@@ -1,6 +1,4 @@
 cross-env
-fastify
-fastify-cors
 nodemon-webpack-plugin
 npm-run-all
 ts-loader
