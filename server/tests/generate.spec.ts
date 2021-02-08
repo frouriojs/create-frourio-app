@@ -45,7 +45,7 @@ const tempSandbox = async (
     await main(dir)
 
     // Clean up
-    await fs.promises.rm(dir, { recursive: true })
+    await fs.promises.unlink(dir)
     // await fs.promises.rmdir(dir)
   } catch (e: unknown) {
     console.error(
