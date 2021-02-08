@@ -45,8 +45,7 @@ const tempSandbox = async (
     await main(dir)
 
     // Clean up
-    await fs.promises.unlink(dir)
-    // await fs.promises.rmdir(dir)
+    await fs.promises.rmdir(dir, { recursive: true })
   } catch (e: unknown) {
     console.error(
       `Failed. ${dir}\n${createCmdRunner(answers)}\n${createShellRunner(
