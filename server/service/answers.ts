@@ -9,7 +9,6 @@ import { completed } from './completed'
 import { getClientPort, getServerPort } from './getServerPort'
 import stream from 'stream'
 import realExecutablePath from 'real-executable-path'
-import { assert } from 'console'
 
 const dirPath = path.join(homedir(), '.frourio')
 const dbPath = path.join(dirPath, 'create-frourio-app.json')
