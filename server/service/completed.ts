@@ -5,10 +5,16 @@ import chalk from 'chalk'
 import { Answers } from '$/common/prompts'
 import stream from 'stream'
 import fs from 'fs'
+import realExecutablePath from 'real-executable-path'
 
-const npmInstall = (outDir: string, npmClient: string, s: stream.Writable) =>
-  new Promise<void>((resolve, reject) => {
-    const proc = spawn(npmClient, ['install'], {
+const npmInstall = async (
+  outDir: string,
+  npmClient: string,
+  s: stream.Writable
+) => {
+  const npmClientPath = await realExecutablePath(npmClient)
+  await new Promise<void>((resolve, reject) => {
+    const proc = spawn(npmClientPath, ['install'], {
       stdio: ['inherit', 'pipe', 'pipe'],
       cwd: outDir,
       env: {
@@ -26,13 +32,15 @@ const npmInstall = (outDir: string, npmClient: string, s: stream.Writable) =>
     proc.once('exit', resolve)
     proc.once('error', reject)
   })
+}
 
 export const completed = async (answers: Answers, s: stream.Writable) => {
   const outDir = path.resolve(answers.dir ?? './new-frourio-app')
-  const pm = answers.pm ?? ''
+  const npmClientPath = await realExecutablePath(answers.pm ?? 'npm')
+  const gitCliPath = await realExecutablePath('git')
 
   await new Promise((resolve, reject) => {
-    const proc = spawn('git', ['init'], {
+    const proc = spawn(gitCliPath, ['init'], {
       stdio: ['inherit', 'pipe', 'pipe'],
       cwd: outDir
     })
@@ -47,11 +55,11 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
     `ref: refs/heads/${answers.deployBranch}`
   )
 
-  await npmInstall(outDir, pm, s)
-  await npmInstall(`${outDir}/server`, pm, s)
+  await npmInstall(outDir, npmClientPath, s)
+  await npmInstall(`${outDir}/server`, npmClientPath, s)
 
   await new Promise((resolve, reject) => {
-    const proc = spawn(pm, ['run', 'build:types'], {
+    const proc = spawn(npmClientPath, ['run', 'build:types'], {
       cwd: outDir,
       stdio: ['inherit', 'pipe', 'pipe'],
       env: {
@@ -72,7 +80,7 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
   const isNewFolder = outDir !== process.cwd()
   const relativeOutFolder = relative(process.cwd(), outDir)
   const cdMsg = isNewFolder ? chalk`\n\t{cyan cd ${relativeOutFolder}}\n` : ''
-  const pmRun = `${pm}${pm === 'npm' ? ' run' : ''}`
+  const pmRun = `${answers.pm}${answers.pm === 'npm' ? ' run' : ''}`
 
   s.write(chalk`\n🎉  {bold Successfully created project} {cyan ${outDir}}\n`)
 

@@ -8,6 +8,7 @@ import { setStatus } from './status'
 import { completed } from './completed'
 import { getClientPort, getServerPort } from './getServerPort'
 import stream from 'stream'
+import realExecutablePath from 'real-executable-path'
 
 const dirPath = path.join(homedir(), '.frourio')
 const dbPath = path.join(dirPath, 'create-frourio-app.json')
@@ -80,9 +81,10 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   )
 
   await completed(allAnswers, s)
+  const npmClientPath = await realExecutablePath(answers.pm ?? 'npm')
 
   await new Promise((resolve, reject) => {
-    const proc = spawn(answers.pm ?? 'npm', ['run', '--color', 'lint:fix'], {
+    const proc = spawn(npmClientPath, ['run', '--color', 'lint:fix'], {
       cwd: path.resolve(dir),
       stdio: ['inherit', 'pipe', 'pipe'],
       env: {
@@ -101,7 +103,7 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   })
   await new Promise((resolve, reject) => {
     const proc = spawn(
-      answers.pm ?? 'npm',
+      npmClientPath,
       ['run', '--color', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],
       {
         cwd: path.resolve(dir),
@@ -123,7 +125,7 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   })
   await new Promise((resolve, reject) => {
     const proc = spawn(
-      answers.pm ?? 'npm',
+      npmClientPath,
       ['run', '--color', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],
       {
         cwd: path.resolve(dir),
