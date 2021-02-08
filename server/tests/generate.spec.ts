@@ -95,8 +95,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       // Validate all json files
       {
         const jsonFiles = await fg([
-          path.posix.resolve(dir, '**/*.json'),
-          path.posix.resolve(dir, '**/.prettierrc')
+          path.resolve(dir, '**/*.json').replace(/\\/g, '/'),
+          path.resolve(dir, '**/.prettierrc').replace(/\\/g, '/')
         ])
         expect(jsonFiles.length).toBeGreaterThan(0)
         for (const f of jsonFiles) {
@@ -110,7 +110,9 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
       // Validate all yaml files
       {
-        const yamlFiles = await fg([path.posix.resolve(dir, '**/*.{yml,yaml}')])
+        const yamlFiles = await fg([
+          path.posix.resolve(dir, '**/*.{yml,yaml}').replace(/\\/g, '/')
+        ])
         for (const f of yamlFiles) {
           const content = (await fs.promises.readFile(f)).toString()
           expect(
@@ -120,7 +122,9 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         }
       }
 
-      const envFiles = await fg([path.posix.resolve(dir, '**/.env')])
+      const envFiles = await fg([
+        path.posix.resolve(dir, '**/.env').replace(/\\/g, '/')
+      ])
       const allEnv = envFiles
         .map((f) => fs.readFileSync(f).toString())
         .join('\n')
