@@ -17,7 +17,9 @@ import assert from 'assert'
 import { execFile, spawn } from 'child_process'
 import { promisify } from 'util'
 import { Answers } from '$/common/prompts'
+import rimraf from 'rimraf'
 const execFileAsync = promisify(execFile)
+const rimrafAsync = promisify(rimraf)
 
 const randomNum = Number(process.env.TEST_CFA_RANDOM_NUM || '3')
 jest.setTimeout(1000 * 60 * 20)
@@ -45,7 +47,7 @@ const tempSandbox = async (
     await main(dir)
 
     // Clean up
-    await fs.promises.rmdir(dir, { recursive: true })
+    await rimrafAsync(dir)
   } catch (e: unknown) {
     console.error(
       `Failed. ${dir}\n${createCmdRunner(answers)}\n${createShellRunner(

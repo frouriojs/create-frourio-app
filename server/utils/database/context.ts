@@ -210,9 +210,7 @@ export const createSqliteContext = (dirname: string): SqliteContext => {
       await Promise.all(
         names.map(async (name) => {
           if (name.startsWith(globalPrefix)) {
-            await fs.promises.rmdir(path.resolve(dirname, name), {
-              recursive: true
-            })
+            await fs.promises.unlink(path.resolve(dirname, name))
           } else {
             console.warn(`${name} skipped.`)
           }
