@@ -1,4 +1,2 @@
-declare module 'real-executable-path' {
-  const realExecutablePath: (cmd: string) => Promise<string>
-  export default realExecutablePath
-}
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../global.d.ts" />
