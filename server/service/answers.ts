@@ -9,6 +9,7 @@ import { completed } from './completed'
 import { getClientPort, getServerPort } from './getServerPort'
 import stream from 'stream'
 import realExecutablePath from 'real-executable-path'
+import { assert } from 'console'
 
 const dirPath = path.join(homedir(), '.frourio')
 const dbPath = path.join(dirPath, 'create-frourio-app.json')
@@ -53,7 +54,7 @@ try {
       : migration
           .slice(migration.findIndex((m) => m.ver === tmp.ver + 1))
           .reduce((prev, current) => current.handler(prev), tmp)
-} catch (e) {
+} catch (e: unknown) {
   db = { ver: 2, answers: {} }
 }
 

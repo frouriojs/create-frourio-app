@@ -1,5 +1,3 @@
-import fs from 'fs'
-import path from 'path'
 import assert from 'assert'
 
 export const depKeys = [
@@ -12,7 +10,7 @@ export type DepKeys = typeof depKeys[number]
 
 export const isDepKey = (s: string): s is DepKeys => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return depKeys.includes(s as any)
+  return depKeys.indexOf(s as any) > -1
 }
 
 export const getPackageVersions = (): { [packageName: string]: string } => {
