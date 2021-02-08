@@ -46,7 +46,7 @@ export const convertListToJson = (
   return strUniq(list)
     .sort()
     .map((dep) => {
-      assert(dep in deps, `${dep} is not pre-defened.`)
+      assert(dep in deps, `${dep} is not pre-defined.`)
       return `${indent}${JSON.stringify(dep)}: ${JSON.stringify(deps[dep])}`
     })
     .join(',\n')
