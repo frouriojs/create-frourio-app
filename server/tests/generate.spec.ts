@@ -176,32 +176,24 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       await npmInstall(serverDir, npmClientPath, process.stdout)
 
       // typecheck
-      {
-        await execFileAsync(npmClientPath, ['run', 'typecheck'], {
-          cwd: dir
-        })
-      }
+      await execFileAsync(npmClientPath, ['run', 'typecheck'], {
+        cwd: dir
+      })
 
       // eslint
-      {
-        await execFileAsync(npmClientPath, ['run', 'lint:fix'], {
-          cwd: dir
-        })
-      }
+      await execFileAsync(npmClientPath, ['run', 'lint:fix'], {
+        cwd: dir
+      })
 
       // build:client
-      {
-        await execFileAsync(npmClientPath, ['run', 'build:client'], {
-          cwd: dir
-        })
-      }
+      await execFileAsync(npmClientPath, ['run', 'build:client'], {
+        cwd: dir
+      })
 
       // build:server
-      {
-        await execFileAsync(npmClientPath, ['run', 'build:server'], {
-          cwd: dir
-        })
-      }
+      await execFileAsync(npmClientPath, ['run', 'build:server'], {
+        cwd: dir
+      })
 
       // migrations
       if (answers.orm === 'prisma') {
@@ -214,15 +206,14 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         })
       }
 
-      {
-        // Project scope test
-        if (answers.testing !== 'none') {
-          await execFileAsync(npmClientPath, ['test'], {
-            cwd: dir
-          })
-        }
+      // Project scope test
+      if (answers.testing !== 'none') {
+        await execFileAsync(npmClientPath, ['test'], {
+          cwd: dir
+        })
       }
 
+      // Integration test
       {
         const nodePath = await realExecutablePath('node')
         const proc = spawn(nodePath, [path.resolve(dir, 'server/index.js')], {
@@ -290,8 +281,13 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       await dbCtx.mysql.deleteAll(await dbCtx.mysql.getAllNames())
     }
   } finally {
-    await dbCtx.pg.down()
-    await dbCtx.sqlite.down()
-    await dbCtx.mysql.down()
+    try {
+      await dbCtx.pg.down()
+      await dbCtx.sqlite.down()
+      await dbCtx.mysql.down()
+    } catch (e: unknown) {
+      console.error('Failed to clean up databases.')
+      console.error(e)
+    }
   }
 })
