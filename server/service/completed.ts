@@ -7,8 +7,8 @@ import stream from 'stream'
 import fs from 'fs'
 import realExecutablePath from 'real-executable-path'
 
-const npmInstall = async (
-  outDir: string,
+export const npmInstall = async (
+  cwd: string,
   npmClient: string,
   s: stream.Writable
 ) => {
@@ -16,7 +16,7 @@ const npmInstall = async (
   await new Promise<void>((resolve, reject) => {
     const proc = spawn(npmClientPath, ['install'], {
       stdio: ['inherit', 'pipe', 'pipe'],
-      cwd: outDir,
+      cwd,
       env: {
         FORCE_COLOR: 'true',
         /* eslint-disable camelcase */
@@ -56,7 +56,7 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
   )
 
   await npmInstall(outDir, npmClientPath, s)
-  await npmInstall(`${outDir}/server`, npmClientPath, s)
+  await npmInstall(path.resolve(outDir, 'server'), npmClientPath, s)
 
   await new Promise((resolve, reject) => {
     const proc = spawn(npmClientPath, ['run', 'build:types'], {

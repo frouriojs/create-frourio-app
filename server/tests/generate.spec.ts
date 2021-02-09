@@ -18,6 +18,7 @@ import { execFile, spawn } from 'child_process'
 import { promisify } from 'util'
 import { Answers } from '$/common/prompts'
 import realExecutablePath from 'real-executable-path'
+import { npmInstall } from '$/service/completed'
 const execFileAsync = promisify(execFile)
 
 const randomNum = Number(process.env.TEST_CFA_RANDOM_NUM || '1')
@@ -169,23 +170,13 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         expect(allEnv).toContain(answers.dbUser)
       }
 
-      // npm/yarn install client
-      {
-        await execFileAsync(npmClientPath, ['install'], {
-          cwd: dir
-        })
-      }
-
-      // npm/yarn install server
-      {
-        await execFileAsync(
-          npmClientPath,
-          ['install', answers.pm === 'npm' ? '--prefix' : '--cwd', 'server'],
-          {
-            cwd: dir
-          }
-        )
-      }
+      // npm/yarn install
+      await npmInstall(dir, npmClientPath, process.stdout)
+      await npmInstall(
+        path.resolve(dir, 'server'),
+        npmClientPath,
+        process.stdout
+      )
 
       // typecheck
       {
