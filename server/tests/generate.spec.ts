@@ -276,9 +276,14 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
     })
     const keep = process.env.TEST_CFA_KEEP_DB === 'yes'
     if (!keep) {
-      await dbCtx.pg.deleteAll(await dbCtx.pg.getAllNames())
-      await dbCtx.sqlite.deleteAll(await dbCtx.sqlite.getAllNames())
-      await dbCtx.mysql.deleteAll(await dbCtx.mysql.getAllNames())
+      try {
+        await dbCtx.pg.deleteAll(await dbCtx.pg.getAllNames())
+        await dbCtx.sqlite.deleteAll(await dbCtx.sqlite.getAllNames())
+        await dbCtx.mysql.deleteAll(await dbCtx.mysql.getAllNames())
+      } catch (e: unknown) {
+        console.error('Failed to delete one database.')
+        console.error(e)
+      }
     }
   } finally {
     try {
