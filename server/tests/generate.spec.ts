@@ -169,14 +169,11 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         expect(allEnv).toContain(answers.dbName)
         expect(allEnv).toContain(answers.dbUser)
       }
+      const serverDir = path.resolve(dir, 'server')
 
       // npm/yarn install
       await npmInstall(dir, npmClientPath, process.stdout)
-      await npmInstall(
-        path.resolve(dir, 'server'),
-        npmClientPath,
-        process.stdout
-      )
+      await npmInstall(serverDir, npmClientPath, process.stdout)
 
       // typecheck
       {
@@ -203,6 +200,17 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       {
         await execFileAsync(npmClientPath, ['run', 'build:server'], {
           cwd: dir
+        })
+      }
+
+      // migrations
+      if (answers.orm === 'prisma') {
+        await execFileAsync(npmClientPath, ['run', 'migrate:dev'], {
+          cwd: serverDir
+        })
+      } else if (answers.orm === 'typeorm') {
+        await execFileAsync(npmClientPath, ['run', 'migration:run'], {
+          cwd: serverDir
         })
       }
 

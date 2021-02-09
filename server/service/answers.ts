@@ -83,78 +83,50 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   await completed(allAnswers, s)
   const npmClientPath = await realExecutablePath(answers.pm ?? 'npm')
 
-  await new Promise((resolve, reject) => {
-    const proc = spawn(npmClientPath, ['run', '--color', 'lint:fix'], {
-      cwd: path.resolve(dir),
-      stdio: ['inherit', 'pipe', 'pipe'],
-      env: {
-        FORCE_COLOR: 'true',
-        /* eslint-disable camelcase */
-        npm_config_color: 'always',
-        npm_config_progress: 'true',
-        /* eslint-enable camelcase */
-        ...process.env
-      }
+  const npmRun = (script: string) =>
+    new Promise((resolve, reject) => {
+      const proc = spawn(npmClientPath, ['run', '--color', script], {
+        cwd: path.resolve(dir),
+        stdio: ['inherit', 'pipe', 'pipe'],
+        env: {
+          FORCE_COLOR: 'true',
+          /* eslint-disable camelcase */
+          npm_config_color: 'always',
+          npm_config_progress: 'true',
+          /* eslint-enable camelcase */
+          ...process.env
+        }
+      })
+      proc.stdio[1]?.on('data', s.write.bind(s))
+      proc.stdio[2]?.on('data', s.write.bind(s))
+      proc.once('close', resolve)
+      proc.once('error', reject)
     })
-    proc.stdio[1]?.on('data', s.write.bind(s))
-    proc.stdio[2]?.on('data', s.write.bind(s))
-    proc.once('close', resolve)
-    proc.once('error', reject)
-  })
-  await new Promise((resolve, reject) => {
-    const proc = spawn(
-      npmClientPath,
-      ['run', '--color', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],
-      {
-        cwd: path.resolve(dir),
-        stdio: ['inherit', 'pipe', 'pipe'],
-        env: {
-          FORCE_COLOR: 'true',
-          /* eslint-disable camelcase */
-          npm_config_color: 'always',
-          npm_config_progress: 'true',
-          /* eslint-enable camelcase */
-          ...process.env
-        }
-      }
-    )
-    proc.stdio[1]?.on('data', s.write.bind(s))
-    proc.stdio[2]?.on('data', s.write.bind(s))
-    proc.once('close', resolve)
-    proc.once('error', reject)
-  })
-  await new Promise((resolve, reject) => {
-    const proc = spawn(
-      npmClientPath,
-      ['run', '--color', process.env.NODE_ENV === 'test' ? 'build' : 'dev'],
-      {
-        cwd: path.resolve(dir),
-        stdio: ['inherit', 'pipe', 'pipe'],
-        env: {
-          FORCE_COLOR: 'true',
-          /* eslint-disable camelcase */
-          npm_config_color: 'always',
-          npm_config_progress: 'true',
-          /* eslint-enable camelcase */
-          ...process.env
-        }
-      }
-    )
-    proc.stdio[1]?.on('data', s.write.bind(s))
-    proc.stdio[2]?.on('data', s.write.bind(s))
-    proc.once('close', resolve)
-    proc.once('error', reject)
-  })
+
+  await npmRun('lint:fix')
+  if (answers.skipDbChecks !== 'true') {
+    if (answers.orm === 'prisma') {
+      await npmRun('migrate:dev')
+    } else if (answers.orm === 'typeorm') {
+      await npmRun('migration:run')
+    }
+  }
+
+  npmRun('dev')
 
   delete db.answers.dir
   delete db.answers.dbName
+  delete db.answers.dbPass
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 }
 
-export const getAnswers = () => ({ dir: process.argv[2], ...db.answers })
+export const getAnswers = () => ({
+  dir: process.argv[2],
+  ...db.answers
+})
 
 export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
-  db = { ...db, answers }
+  db = { ...db, answers: { ...answers, dbPass: undefined } }
 
   if (!fs.existsSync(dirPath)) await fs.promises.mkdir(dirPath)
 
