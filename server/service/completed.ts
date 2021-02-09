@@ -58,25 +58,6 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
   await npmInstall(outDir, npmClientPath, s)
   await npmInstall(path.resolve(outDir, 'server'), npmClientPath, s)
 
-  await new Promise((resolve, reject) => {
-    const proc = spawn(npmClientPath, ['run', 'build:types'], {
-      cwd: outDir,
-      stdio: ['inherit', 'pipe', 'pipe'],
-      env: {
-        FORCE_COLOR: 'true',
-        /* eslint-disable camelcase */
-        npm_config_color: 'always',
-        npm_config_progress: 'true',
-        /* eslint-enable camelcase */
-        ...process.env
-      }
-    })
-    proc.stdio[1]?.on('data', s.write.bind(s))
-    proc.stdio[2]?.on('data', s.write.bind(s))
-    proc.once('exit', resolve)
-    proc.once('error', reject)
-  })
-
   const isNewFolder = outDir !== process.cwd()
   const relativeOutFolder = relative(process.cwd(), outDir)
   const cdMsg = isNewFolder ? chalk`\n\t{cyan cd ${relativeOutFolder}}\n` : ''

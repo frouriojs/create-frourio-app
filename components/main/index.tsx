@@ -83,7 +83,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
   if (useServer && apiClient) {
     apiClient.answers.get().then((prevAnswers) => {
       if (!answers) {
-        setAnswers({ ...getAllDefaultAnswers(), ...prevAnswers })
+        setAnswers({ ...getAllDefaultAnswers(), ...prevAnswers.body })
       }
     })
   }

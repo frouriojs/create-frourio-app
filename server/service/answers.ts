@@ -103,6 +103,7 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
       proc.once('error', reject)
     })
 
+  await npmRun('generate')
   await npmRun('lint:fix')
   if (answers.skipDbChecks !== 'true') {
     if (answers.orm === 'prisma') {
