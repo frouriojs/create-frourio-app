@@ -22,7 +22,7 @@ import realExecutablePath from 'real-executable-path'
 const execFileAsync = promisify(execFile)
 const rimrafAsync = promisify(rimraf)
 
-const randomNum = Number(process.env.TEST_CFA_RANDOM_NUM || '3')
+const randomNum = Number(process.env.TEST_CFA_RANDOM_NUM || '1')
 jest.setTimeout(1000 * 60 * 20)
 
 const createShellRunner = (answers: Answers) =>
