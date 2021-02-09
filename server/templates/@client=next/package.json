@@ -27,6 +27,6 @@
     "pretest": "npm run generate",
     "test": "jest<% } %>",
     "pretypecheck": "npm run generate",
-    "typecheck": "npm run validate && tsc --noEmit -p server"
+    "typecheck": "tsc --noEmit && tsc --noEmit -p server"
   }
 }
