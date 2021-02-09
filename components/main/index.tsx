@@ -9,7 +9,12 @@ import styles from '~/styles/Home.module.css'
 import questionStyles from '~/styles/Question.module.css'
 import { Flipped, Flipper } from 'react-flip-toolkit'
 import hash from 'object-hash'
-import { Answers, getAllDefaultAnswers, initPrompts } from '$/common/prompts'
+import {
+  Answers,
+  getAllDefaultAnswers,
+  initPrompts,
+  isAnswersValid
+} from '$/common/prompts'
 import { shellEscapeSingleInput } from '$/utils/shell/escape'
 import { ServerStatus } from '~/server/api/status'
 
@@ -61,17 +66,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
   }, [])
 
   const questions = useMemo(() => answers && initPrompts(answers), [answers])
-  const canCreate = useMemo(() => {
-    return questions?.every((q) => {
-      switch (q.type) {
-        case 'input':
-          return answers?.[q.name] ?? q.default
-        case 'list':
-          return !q.choices.filter((c) => c.value === answers?.[q.name])[0]
-            ?.disabled
-      }
-    })
-  }, [questions, answers])
+  const canCreate = useMemo(() => answers && isAnswersValid(answers), [answers])
   const choice = useCallback(
     (name: keyof Answers, val: string) =>
       setAnswers({ ...getAllDefaultAnswers(), ...answers, [name]: val }),
