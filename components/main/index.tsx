@@ -80,6 +80,14 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
 
   const apiClient = useMemo(() => useServer && createApiClient(), [useServer])
 
+  if (useServer && apiClient) {
+    apiClient.answers.get().then((prevAnswers) => {
+      if (!answers) {
+        setAnswers({ ...getAllDefaultAnswers(), ...prevAnswers })
+      }
+    })
+  }
+
   const create = useCallback(async () => {
     if (!apiClient) return
     if (!canCreate || !answers) return
