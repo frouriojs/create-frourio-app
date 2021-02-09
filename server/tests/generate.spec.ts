@@ -46,7 +46,12 @@ const tempSandbox = async (
     await main(dir)
 
     // Clean up
-    await fs.promises.rmdir(dir, { recursive: true })
+    try {
+      await fs.promises.rmdir(dir, { recursive: true })
+    } catch (e: unknown) {
+      // ignore
+      // NOTE: Sometimes failing on Windows
+    }
   } catch (e: unknown) {
     console.error(
       `Failed. ${dir}\n${createCmdRunner(answers)}\n${createShellRunner(
@@ -266,6 +271,16 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
           ).resolves.toHaveProperty('data.name', 'sample user')
         } finally {
           proc.kill()
+          try {
+            await tcpPortUsed.waitUntilFreeOnHost(
+              serverPort,
+              '127.0.0.1',
+              500,
+              5000
+            )
+          } catch (e: unknown) {
+            proc.kill('SIGKILL')
+          }
         }
       }
     })
