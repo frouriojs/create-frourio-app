@@ -7,9 +7,12 @@
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida<% if (orm === 'prisma') { %> && prisma generate --schema server/prisma/schema.prisma<% } %> && sapper <%= building === 'basic' ? 'build' : 'export' %> --legacy",
+    "prebuild:client": "npm run generate",
+    "build:client": "sapper <%= building === 'basic' ? 'build' : 'export' %> --legacy",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida && npm run build:frourio --prefix server",
+    "generate": "run-p generate:*",
+    "generate:aspida": "aspida",
+    "generate:server": "npm run generate --prefix server",
     "lint": "cd server && eslint --ext .ts,.js .",
     "lint:fix": "npm run lint -- --fix<% if (orm === 'prisma') { %>",
     "migrate:dev": "npm run migrate:dev --prefix server",
@@ -21,7 +24,9 @@
     "start:client": "<%= building === 'basic' ? 'node __sapper__/build' : 'serve __sapper__/export' %>",
     "start:server": "npm start --prefix server",
     "validate": "svelte-check --ignore src/node_modules/@sapper<% if (testing === 'jest') { %>",
-    "test": "npm run build:types && jest<% } %>",
-    "typecheck": "npm run build:types && npm run validate && tsc --noEmit -p server"
+    "pretest": "npm run generate",
+    "test": "jest<% } %>",
+    "pretypecheck": "npm run generate",
+    "typecheck": "npm run validate && tsc --noEmit -p server"
   }
 }

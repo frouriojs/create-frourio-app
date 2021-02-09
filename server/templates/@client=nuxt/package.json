@@ -8,9 +8,12 @@
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
     "build": "run-p build:client build:server",
-    "build:client": "aspida<% if (orm === 'prisma') { %> && prisma generate --schema server/prisma/schema.prisma<% } %> && nuxt-ts <%= target === 'static' ? 'generate' : 'build' %>",
+    "prebuild:client": "npm run generate",
+    "build:client": "nuxt-ts <%= target === 'static' ? 'generate' : 'build' %>",
     "build:server": "npm run build --prefix server",
-    "build:types": "aspida && npm run build:frourio --prefix server",
+    "generate": "run-p generate:*",
+    "generate:aspida": "aspida",
+    "generate:server": "npm run generate --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext .ts,.js,.vue .",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
@@ -23,8 +26,10 @@
     "start": "run-p start:*",
     "start:client": "nuxt-ts <%= target === 'static' ? 'serve' : 'start' %>",
     "start:server": "npm start --prefix server<% if (testing === 'jest') { %>",
-    "test": "npm run build:types && jest<% } %>",
-    "typecheck": "npm run build:types && tsc --noEmit && tsc --noEmit -p server"
+    "pretest": "npm run generate",
+    "test": "jest<% } %>",
+    "pretypecheck": "npm run generate",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p server"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint",
