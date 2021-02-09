@@ -211,7 +211,9 @@ export const cfaPrompts: Prompt[] = [
   {
     name: 'dbHost',
     message: (ans) =>
-      `server${ans.orm === 'prisma' ? '/prisma' : ''}/.env DATABASE_HOST=`,
+      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
+        ans.orm === 'typeorm' ? 'TYPEORM' : 'DATABASE'
+      }_HOST=`,
     default: 'localhost',
     type: 'input',
     when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite'
@@ -219,7 +221,9 @@ export const cfaPrompts: Prompt[] = [
   {
     name: 'dbPort',
     message: (ans) =>
-      `server${ans.orm === 'prisma' ? '/prisma' : ''}/.env DATABASE_PORT=`,
+      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
+        ans.orm === 'typeorm' ? 'TYPEORM' : 'DATABASE'
+      }_PORT=`,
     type: 'input',
     default: '3306',
     when: (ans) => ans.orm !== 'none' && ans.db === 'mysql'
@@ -227,7 +231,9 @@ export const cfaPrompts: Prompt[] = [
   {
     name: 'dbPort',
     message: (ans) =>
-      `server${ans.orm === 'prisma' ? '/prisma' : ''}/.env DATABASE_PORT=`,
+      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
+        ans.orm === 'typeorm' ? 'TYPEORM' : 'DATABASE'
+      }_PORT=`,
     type: 'input',
     default: '5432',
     when: (ans) => ans.orm !== 'none' && ans.db === 'postgresql'
@@ -235,7 +241,9 @@ export const cfaPrompts: Prompt[] = [
   {
     name: 'dbUser',
     message: (ans) =>
-      `server${ans.orm === 'prisma' ? '/prisma' : ''}/.env DATABASE_USER=`,
+      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
+        ans.orm === 'typeorm' ? 'TYPEORM' : 'DATABASE'
+      }_USER=`,
     type: 'input',
     when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite',
     valid: (ans) => {
@@ -245,7 +253,9 @@ export const cfaPrompts: Prompt[] = [
   {
     name: 'dbPass',
     message: (ans) =>
-      `server${ans.orm === 'prisma' ? '/prisma' : ''}/.env PASSWORD=`,
+      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
+        ans.orm === 'typeorm' ? 'TYPEORM' : 'DATABASE'
+      }_PASSWORD=`,
     type: 'input',
     when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite',
     valid: () => {
@@ -256,7 +266,9 @@ export const cfaPrompts: Prompt[] = [
   {
     name: 'dbName',
     message: (ans) =>
-      `server${ans.orm === 'prisma' ? '/prisma' : ''}/.env DATABASE=`,
+      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
+        ans.orm === 'typeorm' ? 'TYPEORM_DATABASE' : 'DATABASE'
+      }=`,
     type: 'input',
     when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite',
     valid: (ans) => {

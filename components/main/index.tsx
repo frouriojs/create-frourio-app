@@ -78,7 +78,8 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
     [answers]
   )
 
-  const apiClient = useMemo(() => useServer && createApiClient(), [useServer])
+  const isClientSide = typeof window !== 'undefined'
+  const apiClient = isClientSide && useServer && createApiClient()
 
   if (useServer && apiClient) {
     apiClient.answers.get().then((prevAnswers) => {
@@ -89,8 +90,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
   }
 
   const create = useCallback(async () => {
-    if (!apiClient) return
-    if (!canCreate || !answers) return
+    if (!apiClient || !canCreate || !answers) return
     const db = await apiClient.dbConnection.$post({ body: answers })
     if (!db.enabled) {
       return alert(`Failed to connect to database:\n\n${db.err}`)
