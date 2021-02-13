@@ -1,0 +1,117 @@
+name: Deploy sever to Lambda
+
+on:
+  push:
+    branches:
+      - <%= deployBranch %>
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        id: client-npm-cache
+        with:
+          path: "node_modules"
+          key: client-npm-${{ hashFiles('package-lock.json') }}
+      - uses: actions/cache@v2
+        id: server-npm-cache
+        with:
+          path: "server/node_modules"
+          key: server-npm-${{ hashFiles('server/package-lock.json') }}
+      - run: npm install
+        if: steps.client-npm-cache.outputs.cache-hit != 'true'
+      - run: npm install --prefix server
+        if: steps.server-npm-cache.outputs.cache-hit != 'true'
+      - run: npm run build:server
+      - uses: actions/upload-artifact@v2
+        with:
+          name: built-server
+          path: |
+            server/index.js
+            server/lambda.js
+            server/lambda_migration.js
+
+  deploy-and-migration:
+    needs: [build]
+    name: Deploy to AWS Lambda and run migration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: npm install --production --prefix server --ignore-scripts
+      - uses: actions/download-artifact@v2
+        with:
+          name: built-server
+          path: server
+      - run: npm run build:prisma --prefix server
+        env:
+          PRISMA_CLI_BINARY_TARGETS: 'rhel-openssl-1.0.x'
+      - run: du ./server/node_modules/ -h -d 0
+      - run: >
+          rm -rf
+          server/node_modules/**/*-debian-openssl-*
+          server/node_modules/**/*.md
+          server/node_modules/**/*.txt
+          server/node_modules/**/*LICENSE*
+          server/node_modules/**/.*ignore
+          server/node_modules/**/.*rc
+          server/node_modules/**/.editorconfig
+          server/node_modules/**/*.ts
+          server/node_modules/**/*.css
+          server/node_modules/**/*.map
+          server/node_modules/**/*.min.js
+          server/node_modules/**/*.flow
+          server/node_modules/**/*.yml
+          server/node_modules/**/*.yaml
+          server/node_modules/**/*.lock
+          server/node_modules/**/*.test.js
+          server/node_modules/**/*.spec.js
+          server/node_modules/**/.github/**/*
+          server/node_modules/**/doc/**/*
+          server/node_modules/**/docs/**/*
+          server/node_modules/**/test/**/*
+          server/node_modules/**/tests/**/*
+          server/node_modules/**/__test__/**/*
+          server/node_modules/**/__tests__/**/*
+          server/node_modules/**/exmaple/**/*
+          server/node_modules/**/exmaples/**/*
+      - run: du ./server/node_modules/ -h -d 0
+      - run: >
+          zip --symlinks -r "$HOME/deployment_server.zip"
+          ./package.json
+          ./server/lambda.js
+          ./server/lambda_migration.js
+          ./server/package.json
+          ./server/node_modules/
+          ./server/prisma/
+          ./server/static/
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - run: aws s3 cp "$HOME/deployment_server.zip" s3://${{ secrets.S3_BUCKET }}/${{ secrets.S3_PREFIX }}deployment_server.zip
+      - run: >
+          aws lambda update-function-code
+          --function-name ${{ secrets.AWS_LAMBDA_FUNCTION_NAME_SERVER }}
+          --s3-bucket ${{ secrets.S3_BUCKET }}
+          --s3-key ${{ secrets.S3_PREFIX }}deployment_server.zip
+          --publish
+      - run: >
+          aws lambda update-function-code
+          --function-name ${{ secrets.AWS_LAMBDA_FUNCTION_NAME_MIGRATION }}
+          --s3-bucket ${{ secrets.S3_BUCKET }}
+          --s3-key ${{ secrets.S3_PREFIX }}deployment_server.zip
+          --publish
+      - run: |
+          aws lambda invoke --function-name ${{ secrets.AWS_LAMBDA_FUNCTION_NAME_MIGRATION }} ~/output.json
+          cat ~/output.json
+          test "$(cat ~/output.json)" = '"migration_ok"'

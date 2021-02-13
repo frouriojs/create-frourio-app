@@ -5,7 +5,10 @@ import { compilerOptions } from './tsconfig.json'
 const config: Config.InitialOptions = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  testPathIgnorePatterns: ['/templates/'],
+  setupFiles: ['dotenv/config'],
+  setupFilesAfterEnv: ['jest-expect-message'],
+  testPathIgnorePatterns: ['/templates/', '/.tmp/'],
+  modulePathIgnorePatterns: ['/templates/', '/.tmp/'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/'
   })

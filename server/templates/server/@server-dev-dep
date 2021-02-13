@@ -1,0 +1,10 @@
+cross-env
+nodemon-webpack-plugin
+npm-run-all
+ts-loader
+ts-node
+tsconfig-paths-webpack-plugin
+typescript
+webpack
+webpack-cli
+webpack-node-externals

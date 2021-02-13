@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 160px;
+  background: #0d0e59;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px 8px 6px 8px;
+  border-radius: 4px;
+  font-size: 20px;
+  transform: translateX(-12px);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
