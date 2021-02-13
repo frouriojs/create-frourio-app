@@ -1,16 +1,29 @@
 import { Plugin } from '@nuxt/types'
-<% if (aspida === 'axios') { %>import axios from 'axios'
+<% if (aspida === 'axios') { %>import { NuxtAxiosInstance } from '@nuxtjs/axios'
 import aspida from '@aspida/axios'<% } else { -%>
 import nodeFetch from 'node-fetch'
 import aspidaFetch from '@aspida/fetch'
 import aspidaNodeFetch from '@aspida/node-fetch'<% } %>
 import api from '~/server/api/$api'
+<% if (aspida === 'axios') { %>
+const createInstance = (axios: NuxtAxiosInstance) =>
+  api(aspida(axios))
+<% } else { %>
+const createInstance = () =>
+    process.client
+      ? api(aspidaFetch(fetch, { throwHttpErrors: true }))
+      : api(aspidaNodeFetch(nodeFetch, { throwHttpErrors: true }))
+<% } %>
+type ApiInstance = ReturnType<typeof createInstance>
 
-const tmp = <% if (aspida === 'axios') { %>api(aspida(axios))<% } else { %>process.client
-  ? api(aspidaFetch(fetch))
-  : api(aspidaNodeFetch(nodeFetch))<% } %>
-
-type ApiInstance = typeof tmp
+declare module '@nuxt/types' {
+  interface Context {
+    $api: ApiInstance
+  }
+  interface NuxtAppOptions {
+    $api: ApiInstance
+  }
+}
 
 declare module 'vue/types/vue' {
   interface Vue {
@@ -30,14 +43,11 @@ declare module 'vuex/types/index' {
     $api: ApiInstance
   }
 }
-
-const plugin: Plugin = <% if (aspida === 'axios') { %>({ $axios }, inject) =>
-  inject('api', api(aspida($axios)))<% } else { %>(_, inject) =>
-  inject(
-    'api',
-    process.client
-      ? api(aspidaFetch(fetch, { throwHttpErrors: true }))
-      : api(aspidaNodeFetch(nodeFetch, { throwHttpErrors: true }))
-  )<% } %>
-
+<% if (aspida === 'axios') { %>
+const plugin: Plugin = ({ $axios }, inject) =>
+  inject('api', createInstance($axios))
+<% } else { %>
+const plugin: Plugin = (_, inject) =>
+  inject('api', createInstance())
+<% } %>
 export default plugin
