@@ -60,12 +60,12 @@
   dependencies:
     aspida "^1.4.1"
 
-"@aspida/swr@^1.2.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@aspida/swr/-/swr-1.4.1.tgz#aac6472e373448a57029ccd6b7bd28682191465d"
-  integrity sha512-8xgyg2fFkkacVwXe1XRhw+gntfbmC6ohJ7/zgiEbxfMexDvTc3Hpy9LyPqBhr0OiaBCqUn6YDA4THCdLAEKa3Q==
+"@aspida/swr@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@aspida/swr/-/swr-1.5.0.tgz#ddf6512a29c63dab56e623016bfe6f2297c6349d"
+  integrity sha512-nO6jm7IxdjOhrs+yRmKzELNLvfI0dwzD118Q2iIVgR35DNxtrIdUlphqbQ23RXz+qLwKBUtK0rmOg2tmKaGb4Q==
   dependencies:
-    aspida "^1.4.1"
+    aspida "^1.5.0"
 
 "@babel/code-frame@7.12.11":
   version "7.12.11"
@@ -1428,10 +1428,10 @@ asn1@~0.2.3:
   dependencies:
     safer-buffer "~2.1.0"
 
-aspida@^1.3.0, aspida@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.4.1.tgz#5b48c6427ddccf74eaefbc0e9534cd7fd7547295"
-  integrity sha512-/ZD4FE19asnCwET54Y6im9+me2FDkYZYh7Skj6Zn2t3vKDY/NaKvdCAsmeK1zdPRgZNdX9xxgha5oYmICNUGUQ==
+aspida@^1.3.0, aspida@^1.4.1, aspida@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.5.0.tgz#19155d0bd09caa0f31065c5e3def1b3ddfbf0dcc"
+  integrity sha512-oec37DtPzR++4v89nRgvoDtKbU6d0Z9hHRbwep6c/93Kul6YHrCfZmbtTSGoxwm8rAmDe1KJuNb7VRw4bzyolA==
   dependencies:
     "@types/minimist" "^1.2.1"
     chokidar "^3.5.1"

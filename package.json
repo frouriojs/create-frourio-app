@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "@aspida/axios": "^1.2.1",
-    "@aspida/swr": "^1.2.1",
+    "@aspida/swr": "^1.5.0",
     "ansi_up": "^5.0.0",
     "axios": "^0.21.1",
     "cross-spawn": "^7.0.3",
