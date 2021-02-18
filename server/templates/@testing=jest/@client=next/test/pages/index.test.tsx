@@ -1,13 +1,13 @@
 import React from 'react'<% if (reactHooks === 'swr') { %>
 import { cache } from 'swr'<% } else if (reactHooks === 'none') { %>
-import { render, fireEvent, waitFor } from '@testing-library/react'<% } %>
+import { render, fireEvent, waitFor, act } from '@testing-library/react'<% } %>
 import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
 import cors from 'fastify-cors'
 import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
 import api from '~/server/api/$api'
 import Home from '~/pages/index'<% if (reactHooks !== 'none') { %>
-import { render, fireEvent, waitFor } from '../testUtils'<% } %>
+import { render, fireEvent, waitFor, act } from '../testUtils'<% } %>
 
 dotenv.config({ path: 'server/.env' })
 
@@ -42,7 +42,8 @@ describe('Home page', () => {
   it('matches snapshot', async () => {
     const { asFragment } = render(<Home />, {})
 
-    await waitFor(() => {
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 50))
       expect(asFragment()).toMatchSnapshot()
     })
   })
