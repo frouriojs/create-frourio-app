@@ -1,13 +1,13 @@
 import React from 'react'<% if (reactHooks === 'swr') { %>
 import { cache } from 'swr'<% } else if (reactHooks === 'none') { %>
-import { render, fireEvent, waitForDomChange } from '@testing-library/react'<% } %>
+import { render, fireEvent, waitFor } from '@testing-library/react'<% } %>
 import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
 import cors from 'fastify-cors'
 import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
 import api from '~/server/api/$api'
 import Home from '~/pages/index'<% if (reactHooks !== 'none') { %>
-import { render, fireEvent, waitForDomChange } from '../testUtils'<% } %>
+import { render, fireEvent, waitFor } from '../testUtils'<% } %>
 
 dotenv.config({ path: 'server/.env' })
 
@@ -40,25 +40,25 @@ afterAll(() => fastify.close())
 
 describe('Home page', () => {
   it('matches snapshot', async () => {
-    const { container, asFragment } = render(<Home />, {})
+    const { asFragment } = render(<Home />, {})
 
-    await waitForDomChange({ container: container as HTMLElement })
-
-    expect(asFragment()).toMatchSnapshot()
+    await waitFor(() => {
+      expect(asFragment()).toMatchSnapshot()
+    })
   })
 
   it('clicking button triggers prompt', async () => {
-    const { container, getByText } = render(<Home />, {})
-
-    await waitForDomChange({ container: container as HTMLElement })
+    const { getByText } = render(<Home />, {})
 
     window.prompt = jest.fn()
     window.alert = jest.fn()
-    fireEvent.click(getByText('LOGIN') as any)
 
-    expect(window.prompt).toHaveBeenCalledWith(
-      'Enter the user id (See server/.env)'
-    )
-    expect(window.alert).toHaveBeenCalledWith('Login failed')
+    await waitFor(() => {
+      fireEvent.click(getByText('LOGIN'))
+      expect(window.prompt).toHaveBeenCalledWith(
+        'Enter the user id (See server/.env)'
+      )
+      expect(window.alert).toHaveBeenCalledWith('Login failed')
+    })
   })
 })
