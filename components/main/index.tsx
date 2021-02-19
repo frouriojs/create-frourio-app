@@ -140,8 +140,10 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
                   }
                   onTouch={() => {
                     if (touched !== true) {
-                      touched[question.name] = true
-                      setTouched({ ...touched })
+                      setTouched({
+                        ...touched,
+                        [question.name]: true
+                      })
                     }
                   }}
                 />
