@@ -23,7 +23,9 @@ const options: ConnectionOptions = {
   entities: ['entity/**/*.ts'],
   migrations: ['migration/**/*.ts'],
   cli: {
-    migrationsDir: 'migration'
+    migrationsDir: 'migration',
+    subscribersDir: 'subscriber',
+    entitiesDir: 'entity'
   }
 }
 
