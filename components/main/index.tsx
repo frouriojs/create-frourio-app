@@ -209,7 +209,10 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
       {useServer && serverStatus?.status === 'waiting' && (
         <Flipped flipId="create-button" stagger>
           <div style={{ marginTop: '16px' }}>
-            <PrimaryButton onClick={create} disabled={!canCreate}>
+            <PrimaryButton
+              onClick={create}
+              disabled={!canCreate && touched === true}
+            >
               Create
             </PrimaryButton>
           </div>

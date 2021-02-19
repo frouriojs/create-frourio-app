@@ -636,14 +636,23 @@ export const addAllUndefined = <T extends Answers>(answers: T): T => {
 
 export const isAnswersValid = (answers: Answers) => {
   const c: DeterminedPrompt[] = calculatePrompts(answers)
-  return c.every((el) => {
-    const a = answers[el.name]
-    return (
-      (el.valid ?? true) &&
-      (el.type !== 'list' ||
-        (a &&
-          (el.choices.filter((choice) => choice.value === a)[0]?.disabled ??
-            false) === false))
-    )
+  return c.every((el): boolean => {
+    const value = answers[el.name]
+
+    const { valid } = el
+    if (valid !== undefined) return valid
+
+    if (el.type === 'list') {
+      return (
+        (el.choices.filter((choice) => choice.value === value)[0]?.disabled ??
+          false) === false
+      )
+    }
+
+    if (el.type === 'input') {
+      return !!value
+    }
+
+    throw new Error('el.type is illegal')
   })
 }
