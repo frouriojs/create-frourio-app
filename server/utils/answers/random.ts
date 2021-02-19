@@ -17,6 +17,9 @@ export const createRandomAnswers = async (
       ;(ans as any)[p.name] = randChoice(
         p.choices.map((choice) => choice.value)
       )
+    } else {
+      // To pass the non-empty check
+      ;(ans as any)[p.name] = 'test-foo'
     }
   })
 
