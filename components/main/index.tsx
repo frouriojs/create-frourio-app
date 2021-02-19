@@ -49,6 +49,7 @@ export interface MainProps {
 }
 
 const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
+  const [touched, setTouched] = useState<true | { [key: string]: true }>({})
   const [answers, setAnswers] = useState<Answers | undefined>()
   const [created, setCreated] = useState(false)
   const [log, setLog] = useState('')
@@ -85,6 +86,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
   }
 
   const create = useCallback(async () => {
+    setTouched(true)
     if (!apiClient || !canCreate || !answers) return
     const db = await apiClient.dbConnection.$post({ body: answers })
     if (!db.enabled) {
@@ -133,6 +135,15 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
                   answers={answers}
                   question={question}
                   onChoice={choice}
+                  touched={
+                    touched === true || (touched[question.name] ?? false)
+                  }
+                  onTouch={() => {
+                    if (touched !== true) {
+                      touched[question.name] = true
+                      setTouched({ ...touched })
+                    }
+                  }}
                 />
               )
           )}
