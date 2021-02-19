@@ -19,9 +19,17 @@ export interface QuestionProps {
   answers: Answers
   question: DeterminedPrompt
   onChoice?: (name: keyof Answers, value: string) => void
+  onTouch?: () => void
+  touched: boolean
 }
 
-const Question: FC<QuestionProps> = ({ answers, question, onChoice }) => {
+const Question: FC<QuestionProps> = ({
+  answers,
+  question,
+  onChoice,
+  onTouch,
+  touched
+}) => {
   const show = (text: Text) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return <ReactMarkdown linkTarget="_brank">{text.en}</ReactMarkdown>
@@ -39,7 +47,10 @@ const Question: FC<QuestionProps> = ({ answers, question, onChoice }) => {
               <div>
                 <div
                   className={`${styles.message} ${
-                    question.valid ?? answers[question.name] ? '' : styles.error
+                    (question.valid ?? answers[question.name]) ||
+                    (question.type === 'input' && !touched)
+                      ? ''
+                      : styles.error
                   }`}
                 >
                   {question.message}
@@ -49,6 +60,8 @@ const Question: FC<QuestionProps> = ({ answers, question, onChoice }) => {
                     type="text"
                     value={answers[question.name] ?? ''}
                     onChange={(e) => onChoice?.(question.name, e.target.value)}
+                    onFocus={() => onTouch?.()}
+                    onInput={() => onTouch?.()}
                   />
                 </div>
               </div>
