@@ -213,6 +213,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
                       window.open(devUrl, '_blank')
                     }
                   }}
+                  disabled={!ready}
                 >
                   Open {devUrl}
                 </PrimaryButton>
