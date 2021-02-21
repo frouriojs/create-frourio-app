@@ -54,17 +54,41 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
   const [created, setCreated] = useState(false)
   const [log, setLog] = useState('')
   const [closedOverlay, setClosedOverlay] = useState(false)
+  const [ready, setReady] = useState(false)
+  const { clientPort } = serverStatus ?? {}
+  const devUrl = clientPort && `http://localhost:${clientPort}`
+
+  // NOTE: WebSocket effects depend nothing to prevent losting notification while re-creating.
 
   useEffect(() => {
     let log1 = ''
     const ws = new WebSocket(`ws://${location.host}/ws/`)
     ws.onmessage = async (ev) => {
-      const dat = await (ev.data as Blob).text()
+      const dat =
+        ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
       log1 += dat
       setLog(log1)
     }
     return () => ws.close()
   }, [])
+
+  useEffect(() => {
+    const ws = new WebSocket(`ws://${location.host}/ws/ready/`)
+    ws.onmessage = async (ev) => {
+      const dat =
+        ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
+      if (dat === 'ready') {
+        setReady(true)
+      }
+    }
+    return () => ws.close()
+  }, [])
+
+  useEffect(() => {
+    if (ready && devUrl) {
+      window.open(devUrl, '_blank')
+    }
+  }, [ready, devUrl])
 
   const questions = useMemo(() => answers && initPrompts(answers), [answers])
   const canCreate = useMemo(() => answers && isAnswersValid(answers), [answers])
@@ -102,8 +126,6 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
   if (serverStatus?.status === 'installing' && !created) {
     setCreated(true)
   }
-
-  const devUrl = `http://localhost:${serverStatus?.clientPort}`
 
   return (
     <Flipper
@@ -187,8 +209,11 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
               <div style={{ marginTop: '16px' }}>
                 <PrimaryButton
                   onClick={() => {
-                    window.open(devUrl, '_blank')
+                    if (devUrl) {
+                      window.open(devUrl, '_blank')
+                    }
                   }}
+                  disabled={!ready}
                 >
                   Open {devUrl}
                 </PrimaryButton>

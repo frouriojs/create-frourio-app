@@ -13,6 +13,7 @@ declare module 'fastify' {
   interface FastifyInstance {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     appendLogging: (data: any) => void
+    clientReady: () => void
   }
 }
 
@@ -48,11 +49,19 @@ const basePath = '/api'
       // nothing
     }
   })
+  const ready = new stream.Readable({
+    read() {
+      // nothing
+    }
+  })
 
   const fastify = Fastify()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fastify.decorate('appendLogging', (data: any) => {
     logging.push(data)
+  })
+  fastify.decorate('clientReady', () => {
+    ready.push('ready')
   })
   fastify.register(FastifyStatic, {
     root: path.join(__dirname, '../out')
@@ -70,7 +79,9 @@ const basePath = '/api'
       .after()
     fastify.next('/')
   }
+
   fastify.register(FastifyWebsocket)
+
   fastify.get('/ws/', { websocket: true }, (connection) => {
     const handler = (chunk: unknown) => {
       connection.socket.send(chunk)
@@ -79,6 +90,19 @@ const basePath = '/api'
 
     connection.socket.on('close', () => {
       logging.off('data', handler)
+    })
+  })
+
+  fastify.get('/ws/ready/', { websocket: true }, (connection) => {
+    const handler = (chunk: unknown) => {
+      if (String(chunk) === 'ready') {
+        connection.socket.send('ready')
+      }
+    }
+    ready.on('data', handler)
+
+    connection.socket.on('close', () => {
+      ready.off('data', handler)
     })
   })
 
