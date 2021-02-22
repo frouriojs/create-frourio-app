@@ -1,6 +1,5 @@
 import path from 'path'
 import Fastify from 'fastify'
-import FastifyNextjs from 'fastify-nextjs'
 import FastifyStatic from 'fastify-static'
 import open from 'open'
 import { getPortPromise } from 'portfinder'
@@ -68,7 +67,8 @@ const basePath = '/api'
   })
   if (process.env.NODE_ENV === 'development') {
     await fastify
-      .register(FastifyNextjs, {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      .register(require('fastify-nextjs'), {
         dev: true,
         conf: {
           env: {
@@ -77,6 +77,7 @@ const basePath = '/api'
         }
       })
       .after()
+    // @ts-expect-error fastify-nextjs has a .d.ts file
     fastify.next('/')
   }
 
