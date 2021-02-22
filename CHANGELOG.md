@@ -2,6 +2,84 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.26.0](https://github.com/frouriojs/create-frourio-app/compare/v0.25.0...v0.26.0) (2021-02-22)
+
+
+### Features
+
+* create only when target directory does not exist or empty ([#174](https://github.com/frouriojs/create-frourio-app/issues/174)) ([53a7385](https://github.com/frouriojs/create-frourio-app/commit/53a73854d8214b3b888e4cc897a500c3d6552e79))
+* open automatically dev client url after initialized ([#172](https://github.com/frouriojs/create-frourio-app/issues/172)) ([395d64c](https://github.com/frouriojs/create-frourio-app/commit/395d64c1f98ceba8ee6b5ca5387d662e63f1c5d0))
+* **react:** show error line only after the input was touched ([#168](https://github.com/frouriojs/create-frourio-app/issues/168)) ([b90ca17](https://github.com/frouriojs/create-frourio-app/commit/b90ca17c4d26148f6a5c13c16af9a4b365443da9))
+* **templates:** add fields to ormconfig ([#171](https://github.com/frouriojs/create-frourio-app/issues/171)) ([472dae1](https://github.com/frouriojs/create-frourio-app/commit/472dae1c29c9108c026955214d1d6229b0daa283))
+* add context interface to nuxt aspida plugin ([7d94e21](https://github.com/frouriojs/create-frourio-app/commit/7d94e21fc8278a3277d86986dfc0ea1ef0d09cc7))
+* **template-typeorm:** put together typeorm scripts. ([bfb1e20](https://github.com/frouriojs/create-frourio-app/commit/bfb1e207a6f6992b6f11ad1d508be622517afdc4))
+* add options to deployments and refactoring ([ebe4f95](https://github.com/frouriojs/create-frourio-app/commit/ebe4f952a08a55473ea4767e7e39476d6906f13a))
+* example.env and new env TEST_CFA_FIX_CLIENT ([fae57b4](https://github.com/frouriojs/create-frourio-app/commit/fae57b48f52cf303d57570f887fd9710ca65a292))
+* more flip ([24bd349](https://github.com/frouriojs/create-frourio-app/commit/24bd349fda4e78e4c2de17173f75e65c2abbdcad))
+* package-json generating from single source ([f043e54](https://github.com/frouriojs/create-frourio-app/commit/f043e54234e8fc09837359a9488b2c4d2ab9dec0))
+* split package.json dependencies out ([8218928](https://github.com/frouriojs/create-frourio-app/commit/8218928805fda455b8939cab5bd6b5b1511524b0))
+* use mysql2 instead of mysql. mysql does not support mysql8 fully ([601a173](https://github.com/frouriojs/create-frourio-app/commit/601a17301524ecc7e40e52e07502839808b97423))
+
+
+### Bug Fixes
+
+* .env value ([6df5bdf](https://github.com/frouriojs/create-frourio-app/commit/6df5bdfc938accab033e813866f74c04745ba986))
+* .env.example for typeorm ([f12f1d5](https://github.com/frouriojs/create-frourio-app/commit/f12f1d55642f04a321ce5db3f6d1fd9a408463ac))
+* button a11y ([8efd683](https://github.com/frouriojs/create-frourio-app/commit/8efd6835e17797959a6fec174f2b02cccd881df9))
+* canCreate validation ([1dd2ced](https://github.com/frouriojs/create-frourio-app/commit/1dd2ced1db2a04856288a83765f69bf19654b95d))
+* check whether the input is empty or not, and refactor ([#169](https://github.com/frouriojs/create-frourio-app/issues/169)) ([2ba0ae4](https://github.com/frouriojs/create-frourio-app/commit/2ba0ae4adc3fddc84b921bffd4f32ea350e0fa97))
+* env and gitignore ([835818b](https://github.com/frouriojs/create-frourio-app/commit/835818b2311d8448eae9993546c1e86e9482d1d0))
+* fastify, fastify-cors in dev-dep only when express ([e71cf8e](https://github.com/frouriojs/create-frourio-app/commit/e71cf8e4b8704b4a8f7bdcd854a6062507fee2cb))
+* fix tsconfig ([502ebb6](https://github.com/frouriojs/create-frourio-app/commit/502ebb670c7116695dc56c753b1be4ac047b0fb5))
+* flip animation fix and websocket for production ([a9c28e5](https://github.com/frouriojs/create-frourio-app/commit/a9c28e52ef69278a54febcef203e48890717cc55))
+* improve windows support using real-executable-path ([b37cbb1](https://github.com/frouriojs/create-frourio-app/commit/b37cbb1d52291efe15247dc1b66bf115dee66802))
+* nextjs typecheck ([665b946](https://github.com/frouriojs/create-frourio-app/commit/665b9466f95bad8ceda145543136f52f25df7414))
+* node.js 10 ([2152065](https://github.com/frouriojs/create-frourio-app/commit/21520657de93c6ede3c111241c378586a2bc3de5))
+* pretense package.json and lock ([9d8dc12](https://github.com/frouriojs/create-frourio-app/commit/9d8dc12f4be7c48d89609267c4ed577aea4f7369))
+* prsima should be installed in server dev dep ([8ea8c92](https://github.com/frouriojs/create-frourio-app/commit/8ea8c9244e3bf80fbf80334ca6f8b123094b076f))
+* remove dbModules remained ([f4a2818](https://github.com/frouriojs/create-frourio-app/commit/f4a2818a1ac77899d29c2b0b1df16e992517e9da))
+* remove unnecessary import ([c5e334b](https://github.com/frouriojs/create-frourio-app/commit/c5e334b29a6ac70cce5d2a83f3bbcfa1adbe077c))
+* revert loading prev answer ([484a9c0](https://github.com/frouriojs/create-frourio-app/commit/484a9c093163fad7aac1e568ae5e8bb1db539e5f))
+* run tests some times and fix them all ([579ff49](https://github.com/frouriojs/create-frourio-app/commit/579ff492b31b6ef712912c0ee399ae98b2f43761))
+* template ([f93d2f2](https://github.com/frouriojs/create-frourio-app/commit/f93d2f2c2aaa78bcb42677d4393215df84d75990))
+* typecheck (skipLibChecks) ([228f17b](https://github.com/frouriojs/create-frourio-app/commit/228f17b0cc1b76768bbad43e48320aa751f60ce0))
+* use `waitFor` because `waitForDomChange` is already deprecated. ([#167](https://github.com/frouriojs/create-frourio-app/issues/167)) ([016d62b](https://github.com/frouriojs/create-frourio-app/commit/016d62b58cc3e1c9e5c29bfda280d83f050847fe))
+* **template:** not use prisma cli in client side package.json ([e015a6e](https://github.com/frouriojs/create-frourio-app/commit/e015a6e6c08191db323fcedcb06ca7c87568de6d))
+* **test:** run migrations ([417062a](https://github.com/frouriojs/create-frourio-app/commit/417062aa0de7015b7e6576999b84405affab1247))
+* **test:** use cwd change instead of npm --prefix ([6d90632](https://github.com/frouriojs/create-frourio-app/commit/6d906325b46d992f24a496ffcd705ba2edc27f1d))
+* **windows:** .bin/typeorm is not js file on windows ([8eb4395](https://github.com/frouriojs/create-frourio-app/commit/8eb4395d6e48707ec9139760ccc9516b6e1f6c51))
+* revert test snapshots ([b14e993](https://github.com/frouriojs/create-frourio-app/commit/b14e99355670dfb0833b4e91dec35998ab86ec77))
+* run some more tests and fix them around typeorm ([246f946](https://github.com/frouriojs/create-frourio-app/commit/246f946b5ead03047d448dc8adbbbb96fcdc1a23))
+* support node.js using rimraf for recursive removing ([b353904](https://github.com/frouriojs/create-frourio-app/commit/b3539041794798cb354e76cbcb9ca5296c8a1326))
+* template ([4300c5c](https://github.com/frouriojs/create-frourio-app/commit/4300c5cd17fa0d3f68528cb46a84c565a488e0fa))
+* test ([230a067](https://github.com/frouriojs/create-frourio-app/commit/230a0675bdd587edc4f58e09b8a94f1c5b393023))
+* test ([edf9650](https://github.com/frouriojs/create-frourio-app/commit/edf96509eb98849f978c8d26a3ef80de174c99f8))
+* test ([435980a](https://github.com/frouriojs/create-frourio-app/commit/435980a913c7a8ecfea2a7da5697deea6be79b68))
+* tests; swapped typeorm deps, fastify and express rejects another reponse ([4f35949](https://github.com/frouriojs/create-frourio-app/commit/4f35949a7909a5733a248b5c58f92da0ea4e2367))
+* typeorm db deps ([b1280f0](https://github.com/frouriojs/create-frourio-app/commit/b1280f0f2f0d672ff9668e809fad13840b22d87a))
+* typeorm env settings ([74651a8](https://github.com/frouriojs/create-frourio-app/commit/74651a82c3906e0d3bf95764a1e598a9204d5ba3))
+* typeorm typing, move test ot generate all ([7190e1b](https://github.com/frouriojs/create-frourio-app/commit/7190e1bb0bdf62a67ef013ae02ce71000a5414ba))
+* typings ([f6d24d1](https://github.com/frouriojs/create-frourio-app/commit/f6d24d1e68d37f2aba4d4e9d891987c1008b0af6))
+* use rmdir recursive instead ([64e508d](https://github.com/frouriojs/create-frourio-app/commit/64e508dbd5dae5e62fdda32a6a94f33b5ff062bb))
+
+
+### Tests
+
+* stability on Windows ([c34626f](https://github.com/frouriojs/create-frourio-app/commit/c34626f5060884b819c8a4d6f0e204a7a51d72c0))
+* support on windows ([a26e7b6](https://github.com/frouriojs/create-frourio-app/commit/a26e7b6b639345f7f1230eaf0b03efea335d6468))
+* support on windows ([6ebb389](https://github.com/frouriojs/create-frourio-app/commit/6ebb3898d9d214f8cceb0020dd61e5e6a85b9ef2))
+* TEST_CFA_RANDOM_NUM default to 1 ([a62c460](https://github.com/frouriojs/create-frourio-app/commit/a62c460dd98037398a303a380676f3e6cd8d1083))
+* win ([ae54bb8](https://github.com/frouriojs/create-frourio-app/commit/ae54bb80eccee1a1adf281b7a5309595e68f165a))
+
+
+### Refactors
+
+* dev db info input message ([df7d91f](https://github.com/frouriojs/create-frourio-app/commit/df7d91f3fe6ac9f81232bcffeceb8982cbd15dd7))
+* **test:** skip if failing test clean up ([226c06c](https://github.com/frouriojs/create-frourio-app/commit/226c06cc2fd8edf90c6de92cba5fd730b96829ca))
+* console.error appearance ([82e9c2a](https://github.com/frouriojs/create-frourio-app/commit/82e9c2a365a2031f0c3f8ef475c1483df32acc86))
+* lint ([f64637c](https://github.com/frouriojs/create-frourio-app/commit/f64637c5ac48996a90e8772f4f070b16a3ab6af8))
+* test ([d525724](https://github.com/frouriojs/create-frourio-app/commit/d5257246d43303b71d1cc709f0c19956d1c40327))
+
 ## [0.25.0](https://github.com/frouriojs/create-frourio-app/compare/v0.24.1...v0.25.0) (2021-02-07)
 
 
