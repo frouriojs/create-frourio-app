@@ -316,20 +316,6 @@ export const cfaPrompts: Prompt[] = [
     type: 'list',
     default: 'actions'
   },
-  // {
-  //   name: 'deployBranch',
-  //   message: 'Deploy branch name',
-  //   type: 'input',
-  //   default: 'main',
-  //   when: (ans) => ans.ci !== 'none'
-  // },
-  // {
-  //   name: 'developBranch',
-  //   message: 'Develop branch name',
-  //   type: 'input',
-  //   default: 'develop',
-  //   when: (ans) => ans.ci !== 'none'
-  // },
   {
     name: 'deployServer',
     message: 'API server hosting',
