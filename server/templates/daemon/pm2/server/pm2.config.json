@@ -1,7 +1,0 @@
-{
-  "name": "frourio-app",
-  "script": "index.js",
-  "env_production": {
-    "NODE_ENV": "production"
-  }
-}

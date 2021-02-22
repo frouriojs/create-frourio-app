@@ -1,0 +1,32 @@
+{
+  "name": "frourio-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "<% if (orm === 'prisma') { %>npm run migrate:dev && <% } %>run-p dev:*",
+    "dev:client": "next dev -p <%= clientPort %>",
+    "dev:server": "npm run dev --prefix server",
+    "dev:aspida": "aspida --watch",
+    "build": "run-p build:client build:server",
+    "prebuild:client": "npm run generate",
+    "build:client": "next build<% if (building === 'static') { %> && next export<% } %>",
+    "build:server": "npm run build --prefix server",
+    "generate": "run-p generate:*",
+    "generate:aspida": "aspida",
+    "generate:server": "npm run generate --prefix server",
+    "lint": "eslint --ext .ts,.js,.tsx .",
+    "lint:fix": "npm run lint -- --fix<% if (orm === 'prisma') { %>",
+    "migrate:dev": "npm run migrate:dev --prefix server",
+    "migrate:reset": "npm run migrate:reset --prefix server<% } else if (orm === 'typeorm') { %>",
+    "migration:generate": "npm run migration:generate --prefix server",
+    "migration:run": "npm run migration:run --prefix server",
+    "migration:revert": "npm run migration:revert --prefix server<% } %>",
+    "start": "run-p start:*",
+    "start:client": "next start",
+    "start:server": "npm start --prefix server<% if (testing === 'jest') { %>",
+    "pretest": "npm run generate",
+    "test": "jest<% } %>",
+    "pretypecheck": "npm run generate",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p server"
+  }
+}

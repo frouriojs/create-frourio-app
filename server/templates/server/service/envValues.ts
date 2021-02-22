@@ -2,11 +2,20 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const JWT_SECRET = process.env.JWT_SECRET ?? ''
-const USER_ID = process.env.USER_ID ?? ''
-const USER_PASS = process.env.USER_PASS ?? ''
-const SERVER_PORT = +(process.env.SERVER_PORT ?? '8080')
-const BASE_PATH = process.env.BASE_PATH ?? ''
+const API_JWT_SECRET = process.env.API_JWT_SECRET ?? ''
+const API_USER_ID = process.env.API_USER_ID ?? ''
+const API_USER_PASS = process.env.API_USER_PASS ?? ''
+const API_SERVER_PORT = +(process.env.API_SERVER_PORT ?? '8080')
+const API_BASE_PATH = process.env.API_BASE_PATH ?? ''
 const API_ORIGIN = process.env.API_ORIGIN ?? ''
+const API_DYNAMIC_DIR = process.env.API_DYNAMIC_DIR ?? ''
 
-export { JWT_SECRET, USER_ID, USER_PASS, SERVER_PORT, BASE_PATH, API_ORIGIN }
+export {
+  API_JWT_SECRET,
+  API_USER_ID,
+  API_USER_PASS,
+  API_SERVER_PORT,
+  API_BASE_PATH,
+  API_ORIGIN,
+  API_DYNAMIC_DIR
+}

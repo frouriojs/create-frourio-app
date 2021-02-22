@@ -1,0 +1,22 @@
+.container {
+  text-align: left;
+  background: #000000;
+  color: #ffffff;
+  white-space: pre-wrap;
+  padding: 1em;
+  max-height: 240px;
+  overflow-y: auto;
+}
+.rounded {
+  border-radius: 4px;
+}
+
+.container::-webkit-scrollbar {
+  width: 8px;
+}
+.container::-webkit-scrollbar-track {
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 10px;
+}

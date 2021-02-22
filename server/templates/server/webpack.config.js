@@ -2,14 +2,23 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const nodeExternals = require('webpack-node-externals')
 const NodemonPlugin = require('nodemon-webpack-plugin')
 
+/** @type import("webpack").Configuration */
 module.exports = {
-  entry: './index.ts',
+  entry: {
+    index: './entrypoints/index.ts'<% if (serverless === 'lambda') { %>,
+    lambda: './entrypoints/lambda.ts',
+    lambda_migration: './entrypoints/lambda_migration.ts'<% } %>
+  },<% if (orm === 'typeorm') { %>
+  // Suprress mangling since TypeORM relies on that.
+  optimization: {
+    minimize: false
+  },<% } %>
   target: 'node',
   node: {
     __dirname: false
   },
   output: {
-    filename: 'index.js',
+    filename: '[name].js',
     path: __dirname
   },
   module: {

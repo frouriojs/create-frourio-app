@@ -1,0 +1,5 @@
+cors
+express
+express-jwt
+helmet
+multer
