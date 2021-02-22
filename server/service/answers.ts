@@ -9,6 +9,7 @@ import { completed } from './completed'
 import { getClientPort, getServerPort } from './getServerPort'
 import stream from 'stream'
 import realExecutablePath from 'real-executable-path'
+import { canContinueOnPath, getPathStatus } from './localPath'
 
 const dirPath = path.join(homedir(), '.frourio')
 const dbPath = path.join(dirPath, 'create-frourio-app.json')
@@ -128,6 +129,13 @@ export const getAnswers = () => ({
 
 export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
   db = { ...db, answers: { ...answers, dbPass: undefined } }
+
+  const canContinue = canContinueOnPath(
+    await getPathStatus(path.resolve(process.cwd(), answers.dir || ''))
+  )
+  if (canContinue !== null) {
+    throw new Error(canContinue)
+  }
 
   if (!fs.existsSync(dirPath)) await fs.promises.mkdir(dirPath)
 

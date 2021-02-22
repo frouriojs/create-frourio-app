@@ -17,6 +17,7 @@ import {
 } from '$/common/prompts'
 import { shellEscapeSingleInput } from '$/utils/shell/escape'
 import { ServerStatus } from '~/server/api/status'
+import { LocalPathInfo } from '~/server/api/localPath'
 
 const Credits = () => {
   return (
@@ -55,7 +56,13 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
   const [log, setLog] = useState('')
   const [closedOverlay, setClosedOverlay] = useState(false)
   const [ready, setReady] = useState(false)
+  const [localPathInfo, setLocalPathInfo] = useState<
+    LocalPathInfo | undefined
+  >()
+  const [localPathInfoFetching, setlocalPathInfoFetching] = useState(true)
+
   const { clientPort } = serverStatus ?? {}
+  const { dir } = answers ?? {}
   const devUrl = clientPort && `http://localhost:${clientPort}`
 
   // NOTE: WebSocket effects depend nothing to prevent losting notification while re-creating.
@@ -99,7 +106,10 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
   )
 
   const isClientSide = typeof window !== 'undefined'
-  const apiClient = isClientSide && useServer && createApiClient()
+  const apiClient = useMemo(
+    () => isClientSide && useServer && createApiClient(),
+    [isClientSide, useServer]
+  )
 
   if (useServer && apiClient) {
     apiClient.answers.get().then((prevAnswers) => {
@@ -111,7 +121,23 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
 
   const create = useCallback(async () => {
     setTouched(true)
-    if (!apiClient || !canCreate || !answers) return
+    if (!apiClient || !canCreate || !answers) {
+      alert(
+        'Cannot proceed because conditions are not met. Please review your configurations.'
+      )
+      return
+    }
+
+    const info = await apiClient.localPath.$post({ body: { path: dir || '' } })
+
+    setLocalPathInfo(info)
+    setlocalPathInfoFetching(false)
+
+    if (info.canContinue !== null) {
+      alert(info.canContinue)
+      return
+    }
+
     const db = await apiClient.dbConnection.$post({ body: answers })
     if (!db.enabled) {
       return alert(`Failed to connect to database:\n\n${db.err}`)
@@ -127,9 +153,29 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
     setCreated(true)
   }
 
+  useEffect(() => {
+    let canceled = false
+    setlocalPathInfoFetching(true)
+    if (typeof dir === 'string') {
+      if (isClientSide && apiClient) {
+        apiClient.localPath.$post({ body: { path: dir } }).then((info) => {
+          if (!canceled) {
+            setLocalPathInfo(info)
+            setlocalPathInfoFetching(false)
+          }
+        })
+      }
+    } else {
+      setLocalPathInfo(undefined)
+    }
+    return () => void (canceled = true)
+  }, [dir, isClientSide, apiClient])
+
   return (
     <Flipper
-      flipKey={`${closedOverlay ? 'closed:' : 'open:'}${hash(answers || {})}`}
+      flipKey={`${closedOverlay ? 'closed:' : 'open:'}${hash(
+        answers || {}
+      )}${hash(localPathInfo || {})}`}
     >
       <Head>
         <title>create-frourio-app</title>
@@ -160,6 +206,10 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
                   touched={
                     touched === true || (touched[question.name] ?? false)
                   }
+                  addError={
+                    question.name === 'dir' && localPathInfo?.canContinue
+                  }
+                  addInfo={question.name === 'dir' && localPathInfo?.absPath}
                   onTouch={() => {
                     if (touched !== true) {
                       setTouched({
@@ -236,7 +286,11 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
           <div style={{ marginTop: '16px' }}>
             <PrimaryButton
               onClick={create}
-              disabled={!canCreate && touched === true}
+              disabled={
+                (!canCreate && touched === true) ||
+                localPathInfoFetching ||
+                localPathInfo?.canContinue !== null
+              }
             >
               Create
             </PrimaryButton>
