@@ -64,6 +64,7 @@
     "react-dom": "^17.0.1",
     "react-flip-toolkit": "^7.0.13",
     "react-markdown": "^5.0.3",
+    "real-executable-path": "^3.0.0",
     "swr": "^0.4.2"
   },
   "devDependencies": {
@@ -95,7 +96,6 @@
     "nodemon-webpack-plugin": "^4.4.4",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
-    "real-executable-path": "^3.0.0",
     "standard-version": "^9.1.1",
     "tcp-port-used": "^1.0.2",
     "ts-jest": "^26.5.1",
