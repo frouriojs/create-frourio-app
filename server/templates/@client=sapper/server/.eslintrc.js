@@ -14,8 +14,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended<% if (testing === "jest") { %>',
     'plugin:jest/recommended<% } %>',
     'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
-    'prettier/standard'
+    'prettier'
   ],
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
