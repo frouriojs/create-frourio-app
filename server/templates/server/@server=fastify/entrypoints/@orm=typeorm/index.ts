@@ -35,6 +35,7 @@ if (API_UPLOAD_DIR) {
     decorateReply: false
   })
 }
+fastify.register(fastifyJwt, { secret: API_JWT_SECRET })
 server(fastify, { basePath: API_BASE_PATH })
 
 createConnection({
