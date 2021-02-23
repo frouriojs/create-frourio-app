@@ -92,8 +92,9 @@ sw.*
 # server
 server/**/$*.ts
 server/**/*.db
-server/index.js
+server/index.js<% if (serverless === 'lambda') { %>
 server/lambda.js
-server/lambda_migration.js
-server/database.json
+server/lambda_migration.js<% } %><% if (orm === 'none') { %>
+server/database.json<% } %><% if (server === 'express') { %>
+server/.upload<% } %>
 server/upload/
