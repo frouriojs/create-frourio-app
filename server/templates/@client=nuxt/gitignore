@@ -96,6 +96,4 @@ server/index.js
 server/lambda.js
 server/lambda_migration.js
 server/database.json
-server/.upload
-server/public/icons/*
-!server/public/icons/dummy.svg
+server/upload/
