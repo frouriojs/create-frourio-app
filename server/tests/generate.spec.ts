@@ -311,7 +311,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
           })
 
           {
-            const user = client.get('/api/user', {
+            const user = await client.get('/api/user', {
               headers
             })
             expect(user).toHaveProperty(
