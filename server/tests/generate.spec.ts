@@ -311,9 +311,12 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
             'image/svg+xml'
           )
           const form = new FormData()
-          form.append('icon', Red16x16PngBinary)
 
-          await client.post('/api/user', form, {
+          // NOTE: Multer has a bug if there is no filename
+          // https://github.com/expressjs/multer/issues/553
+          form.append('icon', Red16x16PngBinary, 'red16x16.png')
+
+          await client.post(`/api/user${slash}`, form, {
             headers: {
               ...headers,
               ...form.getHeaders()
