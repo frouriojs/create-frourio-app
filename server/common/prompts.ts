@@ -365,7 +365,9 @@ export const cfaPrompts: Prompt[] = [
                 '- **API_DEPLOY_SSH_KEY**: SSH private key that can connect to the above host. e.g.',
                 '  a. Run `ssh-keygen -t rsa -b 4096 -m PEM -f frourio-ci.key` on your local machine.',
                 '  b. Copy contents of `frourio-ci.key` and paste it to this secrets value.',
-                '  c. Send `frourio-ci.key.pub` to your host machine, and append it to `~/.ssh/known_hosts` on remote host.'
+                '  c. Send `frourio-ci.key.pub` to your host machine, and append it to `~/.ssh/known_hosts` on remote host.',
+                '- **API_UPLOAD_DIR**: The directory to upload user contets, for example icons. e.g. `/mnt/efs-1/upload`, `/srv/upload`',
+                '  - In default sample, it is used to save uploaded icons.'
               ].join('\n')
             }
           }
