@@ -91,6 +91,7 @@
     "eslint-plugin-react": "^7.22.0",
     "fast-glob": "^3.2.5",
     "fastify-nextjs": "^5.2.0",
+    "form-data": "^4.0.0",
     "jest": "^26.6.3",
     "jest-expect-message": "^1.0.2",
     "nodemon-webpack-plugin": "^4.4.4",
