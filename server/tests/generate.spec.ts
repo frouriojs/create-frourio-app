@@ -245,6 +245,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
             5000
           )
 
+          const slash = answers.server === 'fastify' ? '' : '/'
+
           // Appearance test
           const client = axios.create({
             baseURL: `http://localhost:${serverPort}`
@@ -252,23 +254,25 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
           // There is no tasks at first
           {
-            const res = await client.get('/api/tasks/')
+            const res = await client.get(`/api/tasks${slash}`)
             expect(res.data).toHaveLength(0)
           }
 
           // Add one task
-          await client.post('/api/tasks', { label: 'test' })
+          await client.post(`/api/tasks${slash}`, { label: 'test' })
 
           // Get added task
           {
-            const res = await client.get('/api/tasks/')
+            const res = await client.get(`/api/tasks${slash}`)
             expect(res.data).toHaveLength(1)
             expect(res.data[0].label).toEqual('test')
           }
 
           // Cannot login with illegal token
           await expect(
-            client.get('/api/user/', { headers: { authorization: 'token' } })
+            client.get(`/api/user${slash}`, {
+              headers: { authorization: 'token' }
+            })
           ).rejects.toHaveProperty(
             'response.status',
             answers.server === 'fastify' ? 400 : 401
@@ -276,13 +280,13 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
           // Cannot login with invalid password
           await expect(
-            client.post('/api/token', { id: 'hoge', pass: 'huga' })
+            client.post(`/api/token${slash}`, { id: 'hoge', pass: 'huga' })
           ).rejects.toHaveProperty('response.status', 401)
 
           // Create correct authorization using correct password
           const {
             data: { token }
-          } = await client.post('/api/token', {
+          } = await client.post(`/api/token${slash}`, {
             id: 'id',
             pass: 'pass'
           })
@@ -291,7 +295,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
           // Get user information with credential
           {
-            const user = await client.get('/api/user/', {
+            const user = await client.get(`/api/user${slash}`, {
               headers
             })
             expect(user).toHaveProperty('data.name', 'sample user')
@@ -317,7 +321,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
           })
 
           {
-            const user = await client.get('/api/user/', {
+            const user = await client.get(`/api/user${slash}`, {
               headers
             })
             expect(user).toHaveProperty(
@@ -326,7 +330,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
             )
           }
 
-          const resUploadIcon = await client.get('/upload/icons/user-icon/')
+          const resUploadIcon = await client.get(`/upload/icons/user-icon`)
           expect(resUploadIcon.headers).toHaveProperty(
             'content-type',
             'application/octet-stream'
