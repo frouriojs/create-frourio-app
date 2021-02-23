@@ -1,4 +1,5 @@
 import axios from 'axios'
+import FormData from 'form-data'
 import { generate } from '$/service/generate'
 import { createJestDbContext } from '$/utils/database/jest-context'
 import { randInt, randSuffix } from '$/utils/random'
@@ -23,6 +24,15 @@ const execFileAsync = promisify(execFile)
 
 const randomNum = Number(process.env.TEST_CFA_RANDOM_NUM || '1')
 jest.setTimeout(1000 * 60 * 20)
+
+// prettier-ignore
+const smallRed16x16PngBinary = Buffer.from([
+  0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0x00, 0x00, 0x00, 0x0d, 0x49, 0x48, 0x44, 0x52,
+  0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x08, 0x02, 0x00, 0x00, 0x00, 0x90, 0x91, 0x68,
+  0x36, 0x00, 0x00, 0x00, 0x17, 0x49, 0x44, 0x41, 0x54, 0x78, 0x9c, 0x63, 0xf8, 0xcf, 0xc0, 0x40,
+  0x12, 0x22, 0x4d, 0xf5, 0xa8, 0x86, 0x51, 0x0d, 0x43, 0x4a, 0x03, 0x00, 0x90, 0xf9, 0xff, 0x01,
+  0xf9, 0xe1, 0xfa, 0x78, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82,
+])
 
 const createShellRunner = (answers: Answers) =>
   `node ./bin/index --answers ${shellEscapeSingleInput(
@@ -231,34 +241,90 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
           // Appearance test
           const client = axios.create({
-            baseURL: `http://localhost:${serverPort}/api`
+            baseURL: `http://localhost:${serverPort}`
           })
 
-          const res1 = await client.get('tasks')
-          expect(res1.data).toHaveLength(0)
+          // There is no tasks at first
+          {
+            const res = await client.get('/api/tasks')
+            expect(res.data).toHaveLength(0)
+          }
 
-          await client.post('tasks', { label: 'test' })
+          // Add one task
+          await client.post('/api/tasks', { label: 'test' })
 
-          const res2 = await client.get('tasks')
-          expect(res2.data).toHaveLength(1)
-          expect(res2.data[0].label).toEqual('test')
+          // Get added task
+          {
+            const res = await client.get('/api/tasks')
+            expect(res.data).toHaveLength(1)
+            expect(res.data[0].label).toEqual('test')
+          }
 
+          // Cannot login with illegal token
           await expect(
-            client.get('user', { headers: { authorization: 'token' } })
+            client.get('/api/user', { headers: { authorization: 'token' } })
           ).rejects.toHaveProperty(
             'response.status',
             answers.server === 'fastify' ? 400 : 401
           )
+
+          // Cannot login with invalid password
           await expect(
-            client.post('token', { id: 'hoge', pass: 'huga' })
+            client.post('/api/token', { id: 'hoge', pass: 'huga' })
           ).rejects.toHaveProperty('response.status', 401)
 
-          const res3 = await client.post('token', { id: 'id', pass: 'pass' })
-          await expect(
-            client.get('user', {
-              headers: { authorization: `Bearer ${res3.data.token}` }
+          // Create correct authorization using correct password
+          const {
+            data: { token }
+          } = await client.post('/api/token', {
+            id: 'id',
+            pass: 'pass'
+          })
+
+          const headers = { authorization: `Bearer ${token}` }
+
+          // Get user information with credential
+          {
+            const user = await client.get('/api/user', {
+              headers
             })
-          ).resolves.toHaveProperty('data.name', 'sample user')
+            expect(user).toHaveProperty('data.name', 'sample user')
+            expect(user).toHaveProperty(
+              'data.icon',
+              expect.stringContaining('static/icons/dummy.svg')
+            )
+          }
+
+          const resStaticIcon = await client.get('/static/icons/dummy.svg')
+          expect(resStaticIcon.headers).toHaveProperty(
+            'content-type',
+            'image/svg+xml'
+          )
+          const form = new FormData()
+          form.append('icon', smallRed16x16PngBinary)
+
+          await client.post('/api/user', form, {
+            headers: {
+              ...headers,
+              ...form.getHeaders()
+            }
+          })
+
+          {
+            const user = client.get('/api/user', {
+              headers
+            })
+            expect(user).toHaveProperty(
+              'data.icon',
+              expect.stringContaining('upload/icons/user-icon')
+            )
+          }
+
+          const resUploadIcon = await client.get('/upload/icons/user-icon')
+          expect(resUploadIcon.headers).toHaveProperty(
+            'content-type',
+            'application/octet-stream'
+          )
         } finally {
           proc.kill()
           try {
