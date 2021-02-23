@@ -39,11 +39,7 @@ export const changeIcon = async (id: string, iconFile: MulterFile) => {
   }
 
   await fs.promises.mkdir(iconsDir, { recursive: true })
-
-  await fs.promises.writeFile(
-    path.resolve(iconsDir, iconName),
-    iconFile.buffer
-  )
+  await fs.promises.rename(iconFile.path, path.resolve(iconsDir, iconName))
 
   return {
     id,
