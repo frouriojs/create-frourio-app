@@ -73,7 +73,13 @@ const tempSandbox = async (
       await fs.promises.writeFile(
         path.resolve(dir, '.test-error.txt'),
         e instanceof Error
-          ? e.name + '\n\n' + e.message + '\n\nCall Stack\n' + e.stack
+          ? e.name +
+              '\n\n' +
+              e.message +
+              '\n\nCall Stack\n' +
+              e.stack +
+              '\n\n' +
+              JSON.stringify(e)
           : String(e)
       )
     } catch (e2: unknown) {
@@ -246,7 +252,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
           // There is no tasks at first
           {
-            const res = await client.get('/api/tasks')
+            const res = await client.get('/api/tasks/')
             expect(res.data).toHaveLength(0)
           }
 
@@ -255,14 +261,14 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
           // Get added task
           {
-            const res = await client.get('/api/tasks')
+            const res = await client.get('/api/tasks/')
             expect(res.data).toHaveLength(1)
             expect(res.data[0].label).toEqual('test')
           }
 
           // Cannot login with illegal token
           await expect(
-            client.get('/api/user', { headers: { authorization: 'token' } })
+            client.get('/api/user/', { headers: { authorization: 'token' } })
           ).rejects.toHaveProperty(
             'response.status',
             answers.server === 'fastify' ? 400 : 401
@@ -285,7 +291,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
           // Get user information with credential
           {
-            const user = await client.get('/api/user', {
+            const user = await client.get('/api/user/', {
               headers
             })
             expect(user).toHaveProperty('data.name', 'sample user')
@@ -311,7 +317,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
           })
 
           {
-            const user = await client.get('/api/user', {
+            const user = await client.get('/api/user/', {
               headers
             })
             expect(user).toHaveProperty(
@@ -320,7 +326,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
             )
           }
 
-          const resUploadIcon = await client.get('/upload/icons/user-icon')
+          const resUploadIcon = await client.get('/upload/icons/user-icon/')
           expect(resUploadIcon.headers).toHaveProperty(
             'content-type',
             'application/octet-stream'
