@@ -20,7 +20,7 @@ const app = express()
 app.use(helmet())
 app.use(cors())
 server(app, { basePath: API_BASE_PATH })
-app.use('static', express.static('static'))
+app.use('/static', express.static('static'))
 if (API_UPLOAD_DIR) app.use('/upload', express.static(API_UPLOAD_DIR))
 
 createConnection({
