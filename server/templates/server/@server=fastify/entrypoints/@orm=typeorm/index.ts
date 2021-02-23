@@ -24,10 +24,16 @@ const fastify = Fastify()
 fastify.register(helmet)
 fastify.register(cors)
 fastify.register(fastifyStatic, {
-  root: path.join(__dirname, 'public'),
-  prefix: API_BASE_PATH
+  root: path.join(__dirname, 'static'),
+  prefix: '/static'
 })
-fastify.register(fastifyJwt, { secret: API_JWT_SECRET })
+if (API_UPLOAD_DIR) {
+  fastify.register(fastifyStatic, {
+    root: path.resolve(__dirname, API_UPLOAD_DIR),
+    prefix: '/upload',
+    decorateReply: false
+  })
+}
 server(fastify, { basePath: API_BASE_PATH })
 
 createConnection({
