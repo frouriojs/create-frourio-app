@@ -8,7 +8,7 @@ const API_USER_PASS = process.env.API_USER_PASS ?? ''
 const API_SERVER_PORT = +(process.env.API_SERVER_PORT ?? '8080')
 const API_BASE_PATH = process.env.API_BASE_PATH ?? ''
 const API_ORIGIN = process.env.API_ORIGIN ?? ''
-const API_DYNAMIC_DIR = process.env.API_DYNAMIC_DIR ?? ''
+const API_UPLOAD_DIR = process.env.API_UPLOAD_DIR ?? ''
 const TYPEORM_HOST = process.env.TYPEORM_HOST ?? ''
 const TYPEORM_USERNAME = process.env.TYPEORM_USERNAME ?? ''
 const TYPEORM_PASSWORD = process.env.TYPEORM_PASSWORD ?? ''
@@ -22,7 +22,7 @@ export {
   API_SERVER_PORT,
   API_BASE_PATH,
   API_ORIGIN,
-  API_DYNAMIC_DIR,
+  API_UPLOAD_DIR,
   TYPEORM_HOST,
   TYPEORM_USERNAME,
   TYPEORM_PASSWORD,

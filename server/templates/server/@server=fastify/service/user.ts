@@ -5,10 +5,10 @@ import {
   API_ORIGIN,
   API_USER_ID,
   API_USER_PASS,
-  API_DYNAMIC_DIR
+  API_UPLOAD_DIR
 } from './envValues'
 
-const iconsDir = API_DYNAMIC_DIR && path.resolve(API_DYNAMIC_DIR, 'icons')
+const iconsDir = API_UPLOAD_DIR && path.resolve(API_UPLOAD_DIR, 'icons')
 const createIconURL = (dir: string, name: string) =>
   `${API_ORIGIN}/${dir}icons/${name}`
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -21,7 +21,7 @@ export const getUserInfo = (id: string) => {
     name: 'sample user',
     icon:
       iconsDir && fs.existsSync(path.resolve(iconsDir, iconName))
-        ? createIconURL('dynamic/', iconName)
+        ? createIconURL('upload/', iconName)
         : createIconURL('static/', `dummy.svg`)
   }
 }
@@ -35,7 +35,7 @@ export const changeIcon = async (id: string, iconFile: Multipart) => {
   const iconName = getUserIconName(id)
 
   if (!iconsDir) {
-    throw new Error('API_DYNAMIC_DIR is not configured.')
+    throw new Error('API_UPLOAD_DIR is not configured.')
   }
 
   await fs.promises.mkdir(iconsDir, { recursive: true })

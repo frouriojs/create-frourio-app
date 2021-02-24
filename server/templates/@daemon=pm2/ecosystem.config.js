@@ -19,7 +19,7 @@ module.exports = {
         API_ORIGIN: process.env.API_ORIGIN,
         API_BASE_PATH: process.env.API_BASE_PATH,
         API_SERVER_PORT: process.env.API_SERVER_PORT,
-        API_USER_STATIC_DIR: process.env.API_USER_STATIC_DIR
+        API_UPLOAD_DIR: process.env.API_UPLOAD_DIR
       }
     }
   ]<% if (deployServer === 'pm2') { %>,
@@ -50,7 +50,7 @@ module.exports = {
         API_ORIGIN: process.env.API_ORIGIN,
         API_BASE_PATH: process.env.API_BASE_PATH,
         API_SERVER_PORT: process.env.API_SERVER_PORT,
-        API_USER_STATIC_DIR: process.env.API_USER_STATIC_DIR
+        API_UPLOAD_DIR: process.env.API_UPLOAD_DIR
       }
     }
   }<% } %>

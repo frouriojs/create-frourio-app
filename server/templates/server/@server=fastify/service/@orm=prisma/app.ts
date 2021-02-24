@@ -4,7 +4,7 @@ import helmet from 'fastify-helmet'
 import cors from 'fastify-cors'
 import fastifyStatic from 'fastify-static'
 import fastifyJwt from 'fastify-jwt'
-import { API_JWT_SECRET, API_BASE_PATH, API_DYNAMIC_DIR } from '$/service/envValues'
+import { API_JWT_SECRET, API_BASE_PATH, API_UPLOAD_DIR } from '$/service/envValues'
 import server from '$/$server'
 
 export const init = (serverFactory?: FastifyServerFactory) => {
@@ -15,11 +15,11 @@ export const init = (serverFactory?: FastifyServerFactory) => {
     root: path.join(__dirname, 'static'),
     prefix: '/static/'
   })
-  if (API_DYNAMIC_DIR) {
+  if (API_UPLOAD_DIR) {
     app.after(() => {
       app.register(fastifyStatic, {
-        root: path.resolve(__dirname, API_DYNAMIC_DIR),
-        prefix: '/data/',
+        root: path.resolve(__dirname, API_UPLOAD_DIR),
+        prefix: '/upload/',
         decorateReply: false
       })
     })

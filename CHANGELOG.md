@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.3](https://github.com/frouriojs/create-frourio-app/compare/v0.26.2...v0.26.3) (2021-02-24)
+
+
+### Features
+
+* **template:** switching to use API_UPLOAD_DIR, /upload/ as endopoint, and use ./server/upload as default .env ([#186](https://github.com/frouriojs/create-frourio-app/issues/186)) ([963f19e](https://github.com/frouriojs/create-frourio-app/commit/963f19e66a154375a4445b5314024cee2d972d4d))
+
+
+### Bug Fixes
+
+* decode as utf-8 only text files ([#182](https://github.com/frouriojs/create-frourio-app/issues/182)) ([46b433f](https://github.com/frouriojs/create-frourio-app/commit/46b433f9218483e359150bbf025bea92f115575d))
+* sapper typecheck and fix error ([#184](https://github.com/frouriojs/create-frourio-app/issues/184)) ([c18314c](https://github.com/frouriojs/create-frourio-app/commit/c18314c9558f8cecb23e0d2982684f268f9c4d4d))
+
 ### [0.26.2](https://github.com/frouriojs/create-frourio-app/compare/v0.26.1...v0.26.2) (2021-02-22)
 
 

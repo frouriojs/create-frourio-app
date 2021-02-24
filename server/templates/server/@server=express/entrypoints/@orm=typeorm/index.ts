@@ -8,6 +8,7 @@ import ormOptions from '$/$orm'
 import {
   API_SERVER_PORT,
   API_BASE_PATH,
+  API_UPLOAD_DIR,
   TYPEORM_HOST,
   TYPEORM_USERNAME,
   TYPEORM_PASSWORD,
@@ -19,7 +20,8 @@ const app = express()
 app.use(helmet())
 app.use(cors())
 server(app, { basePath: API_BASE_PATH })
-app.use(API_BASE_PATH, express.static('public'))
+app.use('/static', express.static('static'))
+if (API_UPLOAD_DIR) app.use('/upload', express.static(API_UPLOAD_DIR))
 
 createConnection({
   type: '<%= typeormDb %>',

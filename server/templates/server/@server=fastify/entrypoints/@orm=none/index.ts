@@ -9,7 +9,7 @@ import {
   API_JWT_SECRET,
   API_SERVER_PORT,
   API_BASE_PATH,
-  API_DYNAMIC_DIR
+  API_UPLOAD_DIR
 } from '$/service/envValues'
 import server from '$/$server'
 
@@ -19,13 +19,15 @@ fastify.register(helmet)
 fastify.register(cors)
 fastify.register(fastifyStatic, {
   root: path.join(__dirname, 'static'),
-  prefix: '/static/'
+  prefix: '/static'
 })
-fastify.register(fastifyStatic, {
-  root: path.join(__dirname, API_DYNAMIC_DIR),
-  prefix: '/dynamic/',
-  decorateReply: false
-})
+if (API_UPLOAD_DIR) {
+  fastify.register(fastifyStatic, {
+    root: path.resolve(__dirname, API_UPLOAD_DIR),
+    prefix: '/upload',
+    decorateReply: false
+  })
+}
 fastify.register(fastifyJwt, { secret: API_JWT_SECRET })
 createDBFileIfNotExists(path.join(__dirname, 'database.json'))
 server(fastify, { basePath: API_BASE_PATH })
