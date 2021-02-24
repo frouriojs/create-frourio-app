@@ -66,13 +66,16 @@ export const generate = async (
         if ((await fs.promises.stat(from)).isDirectory()) {
           await walk(path.resolve(now, p), path.resolve(nowOut, p))
         } else {
-          const content = (await fs.promises.readFile(from)).toString('utf-8')
-          const noEjs = isBinaryPath(p) && !p.endsWith('.snap')
+          const content = await fs.promises.readFile(from)
+          const noEjs = isBinaryPath(p)
 
           try {
             const output = noEjs
               ? content
-              : ejs.render(content.replace(/\r/g, ''), templateContext)
+              : ejs.render(
+                  content.toString('utf-8').replace(/\r/g, ''),
+                  templateContext
+                )
             await fs.promises.writeFile(path.resolve(nowOut, p), output)
           } catch (e: unknown) {
             console.error(e)
