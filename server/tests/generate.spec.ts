@@ -191,11 +191,6 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       await npmInstall(dir, npmClientPath, process.stdout)
       await npmInstall(serverDir, npmClientPath, process.stdout)
 
-      // typecheck
-      await execFileAsync(npmClientPath, ['run', 'typecheck'], {
-        cwd: dir
-      })
-
       // eslint
       await execFileAsync(npmClientPath, ['run', 'lint:fix'], {
         cwd: dir
@@ -208,6 +203,12 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
       // build:server
       await execFileAsync(npmClientPath, ['run', 'build:server'], {
+        cwd: dir
+      })
+
+      // typecheck
+      // NOTE: With Sapper, typecheck should be after build:cilent.
+      await execFileAsync(npmClientPath, ['run', 'typecheck'], {
         cwd: dir
       })
 
