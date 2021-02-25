@@ -51,27 +51,27 @@ export const createRandomAnswers = async (
       case 'mysql': {
         await dbCtx.mysql.up()
         const info = await dbCtx.mysql.createNew()
-        ans.dbHost = info.host
-        ans.dbPort = info.port.toString()
-        ans.dbPass = info.password
-        ans.dbUser = info.user
-        ans.dbName = info.database
+        ans.mysqlDbHost = info.host
+        ans.mysqlDbPort = info.port.toString()
+        ans.mysqlDbPass = info.password
+        ans.mysqlDbUser = info.user
+        ans.mysqlDbName = info.database
         break
       }
       case 'postgresql': {
         await dbCtx.pg.up()
         const info = await dbCtx.pg.createNew()
-        ans.dbHost = info.host
-        ans.dbPort = info.port.toString()
-        ans.dbPass = info.password
-        ans.dbUser = info.user
-        ans.dbName = info.database
+        ans.postgresqlDbHost = info.host
+        ans.postgresqlDbPort = info.port.toString()
+        ans.postgresqlDbPass = info.password
+        ans.postgresqlDbUser = info.user
+        ans.postgresqlDbName = info.database
         break
       }
       case 'sqlite': {
         await dbCtx.sqlite.up()
         const info = await dbCtx.sqlite.createNew()
-        ans.dbFile = info.filename
+        ans.sqliteDbFile = info.filename
         break
       }
       default:

@@ -13,12 +13,17 @@ type PromptName =
   | 'orm'
   | 'db'
   | 'skipDbChecks'
-  | 'dbHost'
-  | 'dbPort'
-  | 'dbUser'
-  | 'dbPass'
-  | 'dbName'
-  | 'dbFile'
+  | 'postgresqlDbHost'
+  | 'postgresqlDbPort'
+  | 'postgresqlDbUser'
+  | 'postgresqlDbPass'
+  | 'postgresqlDbName'
+  | 'mysqlDbHost'
+  | 'mysqlDbPort'
+  | 'mysqlDbUser'
+  | 'mysqlDbPass'
+  | 'mysqlDbName'
+  | 'sqliteDbFile'
   | 'ci'
   | 'deployBranch'
   // | 'developBranch'
@@ -208,81 +213,47 @@ export const cfaPrompts: Prompt[] = [
     default: 'false',
     when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite'
   },
+  ...(['postgresql', 'mysql'] as const).flatMap((db) =>
+    ([
+      ['Host', 'HOST'],
+      ['Port', 'PORT'],
+      ['Name', 'DATABASE'],
+      ['User', 'USERNAME'],
+      ['Pass', 'PASSWORD']
+    ] as const).map(([what, typeormEnv]) => ({
+      name: `${db}Db${what}` as PromptName,
+      message: (ans: Answers) => {
+        if (ans.orm === 'prisma') {
+          return `dev DB ${typeormEnv}: server/prisma/.env API_DATABASE_URL (${getPrismaDbUrl(
+            {
+              ...ans,
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              [`${db}Db${what}`]: (ans as any)[`${db}Db${what}`] || 'HERE',
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              [`${db}DbPass`]: (ans as any)[`${db}DbPass`]
+                ? '***'
+                : what === 'Pass'
+                ? 'HERE'
+                : ''
+            }
+          )}) =`
+        } else {
+          return `dev DB: server/.env TYEPORM_${typeormEnv} =`
+        }
+      },
+      type: 'input' as const,
+      default: what === 'Port' ? (db === 'mysql' ? '3306' : '5432') : undefined,
+      when: (ans: Answers) => ans.orm !== 'none' && ans.db === db
+    }))
+  ),
   {
-    name: 'dbHost',
-    message: (ans) =>
-      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
-        ans.orm === 'typeorm' ? 'TYPEORM' : 'DATABASE'
-      }_HOST=`,
-    default: 'localhost',
-    type: 'input',
-    when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite'
-  },
-  {
-    name: 'dbPort',
-    message: (ans) =>
-      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
-        ans.orm === 'typeorm' ? 'TYPEORM' : 'DATABASE'
-      }_PORT=`,
-    type: 'input',
-    default: '3306',
-    when: (ans) => ans.orm !== 'none' && ans.db === 'mysql'
-  },
-  {
-    name: 'dbPort',
-    message: (ans) =>
-      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
-        ans.orm === 'typeorm' ? 'TYPEORM' : 'DATABASE'
-      }_PORT=`,
-    type: 'input',
-    default: '5432',
-    when: (ans) => ans.orm !== 'none' && ans.db === 'postgresql'
-  },
-  {
-    name: 'dbUser',
-    message: (ans) =>
-      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
-        ans.orm === 'typeorm' ? 'TYPEORM' : 'DATABASE'
-      }_USER=`,
-    type: 'input',
-    when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite',
-    valid: (ans) => {
-      return ans.skipDbChecks === 'true' || (ans.dbUser ?? '') !== ''
-    }
-  },
-  {
-    name: 'dbPass',
-    message: (ans) =>
-      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
-        ans.orm === 'typeorm' ? 'TYPEORM' : 'DATABASE'
-      }_PASSWORD=`,
-    type: 'input',
-    when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite',
-    valid: () => {
-      // Password can be empty.
-      return true
-    }
-  },
-  {
-    name: 'dbName',
-    message: (ans) =>
-      `dev DB: server${ans.orm === 'prisma' ? '/prisma' : ''}/.env ${
-        ans.orm === 'typeorm' ? 'TYPEORM_DATABASE' : 'DATABASE'
-      }=`,
-    type: 'input',
-    when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite',
-    valid: (ans) => {
-      return ans.skipDbChecks === 'true' || (ans.dbName ?? '') !== ''
-    }
-  },
-  {
-    name: 'dbFile',
+    name: 'sqliteDbFile',
     message: 'server/prisma/.env DATABASE_FILE=',
     type: 'input',
     default: './dev.db',
     when: (ans) => ans.orm !== 'none' && ans.db === 'sqlite',
     valid: (ans) => {
-      return ans.skipDbChecks === 'true' || (ans.dbFile ?? '') !== ''
+      return ans.skipDbChecks === 'true' || (ans.sqliteDbFile ?? '') !== ''
     }
   },
   {
@@ -366,7 +337,7 @@ export const cfaPrompts: Prompt[] = [
                 '  a. Run `ssh-keygen -t rsa -b 4096 -m PEM -f frourio-ci.key` on your local machine.',
                 '  b. Copy contents of `frourio-ci.key` and paste it to this secrets value.',
                 '  c. Send `frourio-ci.key.pub` to your host machine, and append it to `~/.ssh/known_hosts` on remote host.',
-                '- **API_UPLOAD_DIR**: The directory to upload user contets, for example icons. e.g. `/mnt/efs-1/upload`, `/srv/upload`',
+                '- **API_UPLOAD_DIR**: The directory to upload user contents, for example icons. e.g. `/mnt/efs-1/upload`, `/srv/upload`',
                 '  - In default sample, it is used to save uploaded icons.'
               ].join('\n')
             }
@@ -568,6 +539,7 @@ export const calculatePrompts = (
   if (typeof target === 'object') {
     const res: any = {}
     for (const key of Object.getOwnPropertyNames(target)) {
+      if (target[key] === undefined) continue
       res[key] = calculatePrompts(answers, target[key])
     }
     if (res.when === false) return undefined
@@ -643,4 +615,35 @@ export const isAnswersValid = (answers: Answers) => {
 
     throw new Error('el.type is illegal')
   })
+}
+
+export type CommonDbInfo = {
+  dbHost?: string
+  dbPort?: string
+  dbName?: string
+  dbUser?: string
+  dbPass?: string
+}
+
+export const getCommonDbInfo = (answers: Answers): CommonDbInfo => {
+  const info: CommonDbInfo = {}
+  if (answers.db && answers.db !== 'none' && answers.db !== 'sqlite') {
+    ;(['Host', 'Port', 'Name', 'User', 'Pass'] as const).forEach((what) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(info as any)[`db${what}`] =
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (answers as any)[`${answers.db}Db${what}`] || ''
+    })
+  }
+  return info
+}
+
+export const getPrismaDbUrl = (answers: Answers): string | undefined => {
+  const info = getCommonDbInfo(answers)
+  if (answers.db && answers.db !== 'none') {
+    return answers.db === 'sqlite'
+      ? `file:${answers.sqliteDbFile}`
+      : `${answers.db}://${info.dbUser}:${info.dbPass}@${info.dbHost}:${info.dbPort}/${info.dbName}`
+  }
+  return undefined
 }

@@ -117,8 +117,8 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   npmRun('dev')
 
   delete db.answers.dir
-  delete db.answers.dbName
-  delete db.answers.dbPass
+  delete db.answers.mysqlDbPass
+  delete db.answers.postgresqlDbPass
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 }
 
@@ -128,7 +128,15 @@ export const getAnswers = () => ({
 })
 
 export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
-  db = { ...db, answers: { ...answers, dbPass: undefined } }
+  db = {
+    ...db,
+    answers: {
+      ...answers,
+      dir: undefined,
+      mysqlDbPass: undefined,
+      postgresqlDbPass: undefined
+    }
+  }
 
   const canContinue = canContinueOnPath(
     await getPathStatus(path.resolve(process.cwd(), answers.dir || ''))
