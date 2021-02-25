@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { homedir } from 'os'
 import { spawn } from 'child_process'
-import { Answers, initPrompts } from '$/common/prompts'
+import { Answers, initPrompts, omitDefaults } from '$/common/prompts'
 import { generate } from './generate'
 import { setStatus } from './status'
 import { completed } from './completed'
@@ -131,7 +131,7 @@ export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
   db = {
     ...db,
     answers: {
-      ...answers,
+      ...omitDefaults(answers),
       dir: undefined,
       mysqlDbPass: undefined,
       postgresqlDbPass: undefined
