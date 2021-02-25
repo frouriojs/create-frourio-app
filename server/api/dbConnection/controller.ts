@@ -49,23 +49,17 @@ export default defineController(() => ({
           allowPublicKeyRetrieval: true
         })
 
-        if (answers.orm === 'typeorm') {
-          await conn.query(
-            `CREATE DATABASE IF NOT EXISTS ${templateCtx.dbName}`
-          )
-        }
+        await conn.query(`CREATE DATABASE IF NOT EXISTS ${templateCtx.dbName}`)
 
         await conn.end()
       } else {
         const client = new Client({ ...config, database: 'postgres' })
         await client.connect()
 
-        if (answers.orm === 'typeorm') {
-          const res = await client.query('SELECT datname FROM pg_database')
+        const res = await client.query('SELECT datname FROM pg_database')
 
-          if (res.rows.every((r) => r.datname !== templateCtx.dbName)) {
-            await client.query(`CREATE DATABASE ${templateCtx.dbName}`)
-          }
+        if (res.rows.every((r) => r.datname !== templateCtx.dbName)) {
+          await client.query(`CREATE DATABASE ${templateCtx.dbName}`)
         }
 
         await client.end()

@@ -260,7 +260,7 @@ export const cfaPrompts: Prompt[] = [
           case 'Pass':
             return true
           default:
-            return Boolean(ans)
+            return Boolean(val)
         }
       },
       when: (ans: Answers) => ans.orm !== 'none' && ans.db === db
