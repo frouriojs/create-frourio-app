@@ -7,7 +7,7 @@ export default defineController(() => ({
   post: async ({ body }) => {
     const allAnswers = genAllAnswers(body)
 
-    if (allAnswers.skipDbChecks) {
+    if (allAnswers.skipDbChecks === 'true') {
       return { status: 200, body: { enabled: true } }
     }
 

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.4](https://github.com/frouriojs/create-frourio-app/compare/v0.26.3...v0.26.4) (2021-02-24)
+
+
+### Bug Fixes
+
+* properly skip database connection checks ([#189](https://github.com/frouriojs/create-frourio-app/issues/189)) ([af5581c](https://github.com/frouriojs/create-frourio-app/commit/af5581c92c91a17145043686431ee6682b206cea))
+
 ### [0.26.3](https://github.com/frouriojs/create-frourio-app/compare/v0.26.2...v0.26.3) (2021-02-24)
 
 
