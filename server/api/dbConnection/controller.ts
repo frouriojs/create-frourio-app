@@ -2,22 +2,29 @@ import mariadb from 'mariadb'
 import { Client } from 'pg'
 import { genAllAnswers } from '$/service/answers'
 import { defineController } from './$relay'
+import { answersToTemplateContext } from '$/common/template-context'
 
 export default defineController(() => ({
   post: async ({ body }) => {
-    const allAnswers = genAllAnswers(body)
+    const answers = genAllAnswers(body)
 
-    if (allAnswers.skipDbChecks === 'true') {
+    if (answers.skipDbChecks === 'true') {
       return { status: 200, body: { enabled: true } }
     }
 
-    if (allAnswers.orm === 'none' || allAnswers.db === 'sqlite') {
+    if (answers.orm === 'none' || answers.db === 'sqlite') {
       return { status: 200, body: { enabled: true } }
     }
+
+    const templateCtx = answersToTemplateContext({
+      ...answers,
+      serverPort: 0,
+      clientPort: 0
+    })
 
     if (
-      allAnswers.dbHost !== '127.0.0.1' &&
-      allAnswers.dbHost !== 'localhost'
+      templateCtx.dbHost !== '127.0.0.1' &&
+      templateCtx.dbHost !== 'localhost'
     ) {
       return {
         status: 200,
@@ -30,33 +37,29 @@ export default defineController(() => ({
 
     try {
       const config = {
-        host: allAnswers.dbHost,
-        port: +`${allAnswers.dbPort}`,
-        user: allAnswers.dbUser,
-        password: allAnswers.dbPass
+        host: templateCtx.dbHost,
+        port: +`${templateCtx.dbPort}`,
+        user: templateCtx.dbUser,
+        password: templateCtx.dbPass
       }
 
-      if (allAnswers.db === 'mysql') {
+      if (answers.db === 'mysql') {
         const conn = await mariadb.createConnection({
           ...config,
           allowPublicKeyRetrieval: true
         })
 
-        if (allAnswers.orm === 'typeorm') {
-          await conn.query(`CREATE DATABASE IF NOT EXISTS ${allAnswers.dbName}`)
-        }
+        await conn.query(`CREATE DATABASE IF NOT EXISTS ${templateCtx.dbName}`)
 
         await conn.end()
       } else {
         const client = new Client({ ...config, database: 'postgres' })
         await client.connect()
 
-        if (allAnswers.orm === 'typeorm') {
-          const res = await client.query('SELECT datname FROM pg_database')
+        const res = await client.query('SELECT datname FROM pg_database')
 
-          if (res.rows.every((r) => r.datname !== allAnswers.dbName)) {
-            await client.query(`CREATE DATABASE ${allAnswers.dbName}`)
-          }
+        if (res.rows.every((r) => r.datname !== templateCtx.dbName)) {
+          await client.query(`CREATE DATABASE ${templateCtx.dbName}`)
         }
 
         await client.end()

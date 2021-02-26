@@ -36,7 +36,7 @@ const basePath = '/api'
     await updateAnswers(
       cliMigration.reduce((prev, current) => {
         if (!current.when(prev)) return prev
-        console.warn(current.warn)
+        console.warn(current.warn(prev))
         return current.handler(prev)
       }, JSON.parse(process.argv[argIndex + 1])),
       process.stdout
