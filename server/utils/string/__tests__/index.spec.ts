@@ -1,4 +1,4 @@
-import {capitailze} from ".."
+import { capitailze } from '..'
 
 describe('capitailze', () => {
   it('capitalize an alphabetical word', () => {
