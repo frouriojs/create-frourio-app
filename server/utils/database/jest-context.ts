@@ -7,7 +7,7 @@ import {
 import path from 'path'
 
 export const createJestDbContext = (): AllDbContext => {
-  const tmpDir = process.env.TEST_CFA_TMP_DIR || './.tmp'
+  const tmpDir = process.env.TEST_CFA_TMP_DIR || '/tmp/cfa-test'
   const sqliteTmpDir = path.resolve(tmpDir, 'sqlite')
 
   const ctx: AllDbContext = {

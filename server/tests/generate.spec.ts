@@ -46,7 +46,7 @@ const tempSandbox = async (
   answers: Answers,
   main: (dir: string) => Promise<void>
 ) => {
-  const tmpDir = process.env.TEST_CFA_TMP_DIR || './.tmp'
+  const tmpDir = process.env.TEST_CFA_TMP_DIR || '/tmp/cfa-test'
   try {
     await fs.promises.mkdir(tmpDir, { recursive: true })
   } catch (e: unknown) {
