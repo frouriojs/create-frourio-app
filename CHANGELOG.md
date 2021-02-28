@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.27.0](https://github.com/frouriojs/create-frourio-app/compare/v0.26.4...v0.27.0) (2021-02-28)
+
+
+### Features
+
+* separate database info to save ([#193](https://github.com/frouriojs/create-frourio-app/issues/193)) ([6848907](https://github.com/frouriojs/create-frourio-app/commit/684890790b56699c1b9a67badf65e6676e0ddbf6))
+
+
+### Bug Fixes
+
+* **template:** configure @rollup/plugin-json for sapper to build client successfully ([#200](https://github.com/frouriojs/create-frourio-app/issues/200)) ([9b27524](https://github.com/frouriojs/create-frourio-app/commit/9b2752447773c5233d76a39389f559b167f57bf7))
+* test is run under root repository, but node_modules/ on root will be used accidentally. ([#195](https://github.com/frouriojs/create-frourio-app/issues/195)) ([daa84c4](https://github.com/frouriojs/create-frourio-app/commit/daa84c4f5ce3d49f8404d9fcb697cbabde1a8a3b))
+* **template:** refactor next pages test ([#194](https://github.com/frouriojs/create-frourio-app/issues/194)) ([e5ae8d0](https://github.com/frouriojs/create-frourio-app/commit/e5ae8d08652aa52144fbcec1a43663547a53347e))
+
 ### [0.26.4](https://github.com/frouriojs/create-frourio-app/compare/v0.26.3...v0.26.4) (2021-02-24)
 
 
