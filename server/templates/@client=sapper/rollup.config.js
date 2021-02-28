@@ -8,6 +8,7 @@ import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import json from '@rollup/plugin-json';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 
@@ -46,6 +47,7 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
+			json(),
 			typescript({ sourceMap: dev }),
 
 			legacy && babel({
@@ -98,6 +100,7 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
+			json(),
 			typescript({ sourceMap: dev })
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
@@ -116,6 +119,7 @@ export default {
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
 			commonjs(),
+			json(),
 			typescript({ sourceMap: dev }),
 			!dev && terser()
 		],
