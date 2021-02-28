@@ -1,6 +1,7 @@
 import axios from 'axios'
 import FormData from 'form-data'
 import { generate } from '$/service/generate'
+import { answersToTemplateContext } from '$/common/template-context'
 import { createJestDbContext } from '$/utils/database/jest-context'
 import { randInt, randSuffix } from '$/utils/random'
 import { createRandomAnswers } from '$/utils/answers/random'
@@ -45,7 +46,7 @@ const tempSandbox = async (
   answers: Answers,
   main: (dir: string) => Promise<void>
 ) => {
-  const tmpDir = process.env.TEST_CFA_TMP_DIR || './.tmp'
+  const tmpDir = process.env.TEST_CFA_TMP_DIR || '/tmp/cfa-test'
   try {
     await fs.promises.mkdir(tmpDir, { recursive: true })
   } catch (e: unknown) {
@@ -153,6 +154,12 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         }
       }
 
+      const templateCtx = answersToTemplateContext({
+        ...answers,
+        serverPort: 0,
+        clientPort: 0
+      })
+
       const envFiles = await fg([
         path.resolve(dir, '**/.env').replace(/\\/g, '/')
       ])
@@ -168,22 +175,22 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         answers.orm !== 'typeorm' &&
         answers.db === 'sqlite'
       ) {
-        expect(answers.dbFile?.length).toBeGreaterThan(0)
-        expect(allEnv).toContain(answers.dbFile)
+        expect(answers.sqliteDbFile?.length).toBeGreaterThan(0)
+        expect(allEnv).toContain(answers.sqliteDbFile)
       }
 
       // DB info found
       if (answers.orm !== 'none' && answers.db !== 'sqlite') {
-        expect(answers.dbHost?.length).toBeGreaterThan(0)
-        expect(answers.dbPort?.length).toBeGreaterThan(0)
-        expect(answers.dbPass?.length).toBeGreaterThan(0)
-        expect(answers.dbName?.length).toBeGreaterThan(0)
-        expect(answers.dbUser?.length).toBeGreaterThan(0)
-        expect(allEnv).toContain(answers.dbHost)
-        expect(allEnv).toContain(answers.dbPort)
-        expect(allEnv).toContain(answers.dbPass)
-        expect(allEnv).toContain(answers.dbName)
-        expect(allEnv).toContain(answers.dbUser)
+        expect(templateCtx.dbHost?.length).toBeGreaterThan(0)
+        expect(templateCtx.dbPort?.length).toBeGreaterThan(0)
+        expect(templateCtx.dbPass?.length).toBeGreaterThan(0)
+        expect(templateCtx.dbName?.length).toBeGreaterThan(0)
+        expect(templateCtx.dbUser?.length).toBeGreaterThan(0)
+        expect(allEnv).toContain(templateCtx.dbHost)
+        expect(allEnv).toContain(templateCtx.dbPort)
+        expect(allEnv).toContain(templateCtx.dbPass)
+        expect(allEnv).toContain(templateCtx.dbName)
+        expect(allEnv).toContain(templateCtx.dbUser)
       }
       const serverDir = path.resolve(dir, 'server')
 

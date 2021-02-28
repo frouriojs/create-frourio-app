@@ -7,8 +7,8 @@ const config: Config.InitialOptions = {
   testEnvironment: 'node',
   setupFiles: ['dotenv/config'],
   setupFilesAfterEnv: ['jest-expect-message'],
-  testPathIgnorePatterns: ['/templates/', '/.tmp/'],
-  modulePathIgnorePatterns: ['/templates/', '/.tmp/'],
+  testPathIgnorePatterns: ['/templates/'],
+  modulePathIgnorePatterns: ['/templates/'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/'
   })

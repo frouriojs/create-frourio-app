@@ -10,15 +10,10 @@ import {
   getPackageVersions,
   isDepKey
 } from './package-json'
-
-type TemplateContext = Answers & {
-  clientPort: number
-  serverPort: number
-  // value for prisma DATABASE_URL
-  prismaDbUrl: string
-  // used for typeorm.ConnectionOptions.type
-  typeormDb: string | undefined
-}
+import {
+  TemplateContext,
+  answersToTemplateContext
+} from '$/common/template-context'
 
 export const generate = async (
   answers: Answers & { clientPort: number; serverPort: number },
@@ -33,17 +28,8 @@ export const generate = async (
   }
   const dir = outDir ?? answers.dir ?? ''
 
-  const templateContext0: TemplateContext = {
-    ...answers,
-    typeormDb: answers.db === 'postgresql' ? 'postgres' : answers.db,
-    prismaDbUrl:
-      answers.db === 'sqlite'
-        ? `file:${answers.dbFile}`
-        : `${answers.db}://${answers.dbUser}:${answers.dbPass}@${answers.dbHost}:${answers.dbPort}/${answers.dbName}`
-  }
-
   const templateContext: TemplateContext = addAllUndefined(
-    removeUnnecessary(templateContext0)
+    removeUnnecessary(answersToTemplateContext(answers))
   )
 
   const rename = async (pattern: string, renameTo: string) => {

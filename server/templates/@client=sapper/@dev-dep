@@ -5,6 +5,7 @@
 @babel/runtime
 @rollup/plugin-babel
 @rollup/plugin-commonjs
+@rollup/plugin-json
 @rollup/plugin-node-resolve
 @rollup/plugin-replace
 @rollup/plugin-typescript

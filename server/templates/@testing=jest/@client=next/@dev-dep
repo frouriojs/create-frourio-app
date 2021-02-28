@@ -1,2 +1,4 @@
 @testing-library/react
 identity-obj-proxy
+fastify
+fastify-cors

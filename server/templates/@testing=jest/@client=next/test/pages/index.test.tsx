@@ -1,13 +1,13 @@
 import React from 'react'<% if (reactHooks === 'swr') { %>
 import { cache } from 'swr'<% } else if (reactHooks === 'none') { %>
-import { render, fireEvent, waitFor, act } from '@testing-library/react'<% } %>
+import { render, fireEvent } from '@testing-library/react'<% } %>
 import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
 import cors from 'fastify-cors'
 import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
 import api from '~/server/api/$api'
 import Home from '~/pages/index'<% if (reactHooks !== 'none') { %>
-import { render, fireEvent, waitFor, act } from '../testUtils'<% } %>
+import { render, fireEvent } from '../testUtils'<% } %>
 
 dotenv.config({ path: 'server/.env' })
 
@@ -40,26 +40,22 @@ afterAll(() => fastify.close())
 
 describe('Home page', () => {
   it('matches snapshot', async () => {
-    const { asFragment } = render(<Home />, {})
+    const { asFragment, findByText } = render(<Home />, {})
 
-    await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 50))
-      expect(asFragment()).toMatchSnapshot()
-    })
+    await findByText('foo task')
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('clicking button triggers prompt', async () => {
-    const { getByText } = render(<Home />, {})
+    const { findByText } = render(<Home />, {})
 
     window.prompt = jest.fn()
     window.alert = jest.fn()
 
-    await waitFor(() => {
-      fireEvent.click(getByText('LOGIN'))
-      expect(window.prompt).toHaveBeenCalledWith(
-        'Enter the user id (See server/.env)'
-      )
-      expect(window.alert).toHaveBeenCalledWith('Login failed')
-    })
+    fireEvent.click(await findByText('LOGIN'))
+    expect(window.prompt).toHaveBeenCalledWith(
+      'Enter the user id (See server/.env)'
+    )
+    expect(window.alert).toHaveBeenCalledWith('Login failed')
   })
 })
