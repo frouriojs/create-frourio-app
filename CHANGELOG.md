@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.1](https://github.com/frouriojs/create-frourio-app/compare/v0.27.0...v0.27.1) (2021-03-03)
+
+
+### Bug Fixes
+
+* open from server-side ([#207](https://github.com/frouriojs/create-frourio-app/issues/207)) ([8864d39](https://github.com/frouriojs/create-frourio-app/commit/8864d39f318a96f0721c1f8654cdc3db9a16ee05))
+
 ## [0.27.0](https://github.com/frouriojs/create-frourio-app/compare/v0.26.4...v0.27.0) (2021-02-28)
 
 
