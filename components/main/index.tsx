@@ -81,21 +81,17 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
 
   useEffect(() => {
     const ws = new WebSocket(`ws://${location.host}/ws/ready/`)
+    let text = ''
     ws.onmessage = async (ev) => {
       const dat =
         ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
-      if (dat === 'ready') {
+      text += dat
+      if (dat && text.startsWith('ready')) {
         setReady(true)
       }
     }
     return () => ws.close()
   }, [])
-
-  useEffect(() => {
-    if (ready && devUrl) {
-      window.open(devUrl, '_blank')
-    }
-  }, [ready, devUrl])
 
   const questions = useMemo(() => answers && initPrompts(answers), [answers])
   const canCreate = useMemo(() => answers && isAnswersValid(answers), [answers])
