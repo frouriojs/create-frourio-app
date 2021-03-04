@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
 import cors from 'fastify-cors'
 import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
-import api from '~/server/api/$api'
+import api from '$/api/$api'
 import Home from '~/pages/index'<% if (reactHooks !== 'none') { %>
 import { render, fireEvent } from '../testUtils'<% } %>
 

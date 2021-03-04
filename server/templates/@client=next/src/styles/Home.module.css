@@ -1,0 +1,39 @@
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+  text-decoration: underline;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.title,
+.description {
+  text-align: center;
+}
+
+.description {
+  line-height: 1.5;
+  font-size: 1.5rem;
+}
+
+.tasks {
+  width: 300px;
+  padding: 0;
+  margin: 20px auto 0;
+  list-style-type: none;
+  text-align: left;
+}
+
+.tasks > li {
+  margin-top: 10px;
+  border-bottom: 1px solid #eee;
+}

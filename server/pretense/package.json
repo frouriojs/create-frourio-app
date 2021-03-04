@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "upgrade-frourio": "yarn add frourio frourio-express aspida @aspida/axios @aspida/fetch @aspida/node-fetch @aspida/react-query @aspida/swr"
+    "upgrade-frourio": "yarn add frourio frourio-express aspida @aspida/axios @aspida/fetch @aspida/node-fetch @aspida/react-query @aspida/swr pathpida"
   },
   "dependencies": {
     "@aspida/axios": "^1.6.1",
@@ -95,6 +95,7 @@
     "nodemon-webpack-plugin": "^4.4.4",
     "npm-run-all": "^4.1.5",
     "nuxt": "^2.15.1",
+    "pathpida": "^0.13.1",
     "pg": "^8.5.1",
     "pm2": "^4.5.4",
     "polka": "next",
