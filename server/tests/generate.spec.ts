@@ -196,15 +196,17 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
       // npm/yarn install
       await npmInstall(dir, npmClientPath, process.stdout)
+
+      // build:client
+      await execFileAsync(npmClientPath, ['run', 'build:client'], {
+        cwd: dir
+      })
+
+      // npm/yarn install in server/
       await npmInstall(serverDir, npmClientPath, process.stdout)
 
       // eslint
       await execFileAsync(npmClientPath, ['run', 'lint:fix'], {
-        cwd: dir
-      })
-
-      // build:client
-      await execFileAsync(npmClientPath, ['run', 'build:client'], {
         cwd: dir
       })
 
