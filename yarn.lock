@@ -3818,10 +3818,10 @@ gitconfiglocal@^1.0.0:
   dependencies:
     ini "^1.3.2"
 
-github-buttons@^2.14.2:
-  version "2.14.2"
-  resolved "https://registry.yarnpkg.com/github-buttons/-/github-buttons-2.14.2.tgz#cb745afdc8769f6246f49f75138bcefeb09fc14b"
-  integrity sha512-DMakrcFRdojVAndkKYVDTHF3Ym09OoWia//IQ7B/MVxC+iQ2DenYfD7IR69ZZ9awM8PNS/9wthr4IyDhkFJ4mg==
+github-buttons@^2.14.4:
+  version "2.14.4"
+  resolved "https://registry.yarnpkg.com/github-buttons/-/github-buttons-2.14.4.tgz#f4b335d1af235bfb4a4598162e8f2ca190635124"
+  integrity sha512-Fikb6lylJ2skQnoBaEv9m1yc6QwA8qbRFMRFWU08tMKXpbaql1LMKCghBAiuNpiWiGA25NiKuFO0oeD63030Kw==
 
 github-from-package@0.0.0:
   version "0.0.0"
