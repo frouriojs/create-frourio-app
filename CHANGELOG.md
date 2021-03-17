@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.2](https://github.com/frouriojs/create-frourio-app/compare/v0.27.1...v0.27.2) (2021-03-17)
+
+
+### Bug Fixes
+
+* get random port for server from 10000-59999 ([#215](https://github.com/frouriojs/create-frourio-app/issues/215)) ([b16ab8c](https://github.com/frouriojs/create-frourio-app/commit/b16ab8c1017c4f06bdd789df105d5e6474136359))
+* **template/nuxt:** add ts-loader to dev-dep and remove @nuxt/typescript-runtime ([#223](https://github.com/frouriojs/create-frourio-app/issues/223)) ([b6d472a](https://github.com/frouriojs/create-frourio-app/commit/b6d472a2e6998be1c7e70ec1843f79078ff57ec0))
+
 ### [0.27.1](https://github.com/frouriojs/create-frourio-app/compare/v0.27.0...v0.27.1) (2021-03-03)
 
 

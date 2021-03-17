@@ -20,3 +20,4 @@ prettier
 stylelint
 stylelint-config-prettier
 stylelint-config-standard
+ts-loader
