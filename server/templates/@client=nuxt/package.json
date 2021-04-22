@@ -15,7 +15,7 @@
     "generate:aspida": "aspida",
     "generate:server": "npm run generate --prefix server",
     "lint": "npm run lint:js && npm run lint:style",
-    "lint:js": "eslint --ext .ts,.js,.vue .",
+    "lint:js": "eslint --ext .ts,.js,.vue . && prettier --check \"./**/*.ts\"",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
     "lint:fix": "npm run lint:js -- --fix && npm run lint:style -- --fix<% if (orm === 'prisma') { %>",
     "migrate:dev": "npm run migrate:dev --prefix server",
