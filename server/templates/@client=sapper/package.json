@@ -14,7 +14,7 @@
     "generate:aspida": "aspida",
     "generate:server": "npm run generate --prefix server",
     "lint": "cd server && eslint --ext .ts,.js . && prettier --check \"./**/*.ts\"",
-    "lint:fix": "npm run lint -- --fix<% if (orm === 'prisma') { %>",
+    "lint:fix": "cd server && eslint --ext .ts,.js . --fix && prettier --write \"./**/*.ts\"<% if (orm === 'prisma') { %>",
     "migrate:dev": "npm run migrate:dev --prefix server",
     "migrate:reset": "npm run migrate:reset --prefix server<% } else if (orm === 'typeorm') { %>",
     "migration:generate": "npm run migration:generate --prefix server",
