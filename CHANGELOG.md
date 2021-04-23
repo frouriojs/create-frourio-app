@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.28.0](https://github.com/frouriojs/create-frourio-app/compare/v0.27.2...v0.28.0) (2021-04-23)
+
+
+### Features
+
+* remove eslint-plugin-prettier ([fa5d02f](https://github.com/frouriojs/create-frourio-app/commit/fa5d02ff70be97d95043ba47fd88f942b6dd3257))
+* update aspida and frourio ([a42f27c](https://github.com/frouriojs/create-frourio-app/commit/a42f27cbb40feaf7f62a4bd71373949170b6eff6))
+
 ### [0.27.2](https://github.com/frouriojs/create-frourio-app/compare/v0.27.1...v0.27.2) (2021-03-17)
 
 
