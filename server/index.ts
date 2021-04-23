@@ -76,9 +76,10 @@ const basePath = '/api'
           }
         }
       })
-      .after()
-    // @ts-expect-error fastify-nextjs has a .d.ts file
-    fastify.next('/')
+      .after(() =>
+        // @ts-expect-error fastify-nextjs has a .d.ts file
+        fastify.next('/')
+      )
   }
 
   fastify.register(FastifyWebsocket)

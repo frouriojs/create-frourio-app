@@ -13,7 +13,6 @@ module.exports = {
     'standard',
     'plugin:@typescript-eslint/recommended<% if (testing === "jest") { %>',
     'plugin:jest/recommended<% } %>',
-    'plugin:prettier/recommended',
     'prettier'
   ],
   rules: {

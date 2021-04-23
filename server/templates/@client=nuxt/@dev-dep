@@ -12,7 +12,6 @@ dotenv
 eslint
 eslint-config-prettier
 eslint-plugin-nuxt
-eslint-plugin-prettier
 husky
 lint-staged
 npm-run-all
