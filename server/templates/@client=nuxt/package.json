@@ -18,7 +18,7 @@
     "lint:js": "eslint --ext .ts,.js,.vue . && prettier --check \"./**/*.ts\"",
     "lint:style": "stylelint **/*.{vue,css} --ignore-path .gitignore",
     "lint:fix": "eslint --ext .ts,.js,.vue . --fix && prettier --write \"./**/*.ts\" && npm run lint:style -- --fix<% if (orm === 'prisma') { %>",
-    "migrate:dev": "npm run migrate:dev --prefix server",
+    "migrate:dev": "npm run migrate:dev --prefix server --",
     "migrate:reset": "npm run migrate:reset --prefix server<% } else if (orm === 'typeorm') { %>",
     "migration:generate": "npm run migration:generate --prefix server",
     "migration:run": "npm run migration:run --prefix server",
