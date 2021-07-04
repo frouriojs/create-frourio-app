@@ -194,9 +194,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       }
       const serverDir = path.resolve(dir, 'server')
 
-      // npm/yarn install
+      // npm/yarn install:client
       await npmInstall(dir, npmClientPath, process.stdout)
-      await npmInstall(serverDir, npmClientPath, process.stdout)
 
       // eslint
       await execFileAsync(npmClientPath, ['run', 'lint:fix'], {
@@ -207,6 +206,9 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       await execFileAsync(npmClientPath, ['run', 'build:client'], {
         cwd: dir
       })
+
+      // npm/yarn install:server
+      await npmInstall(serverDir, npmClientPath, process.stdout)
 
       // build:server
       await execFileAsync(npmClientPath, ['run', 'build:server'], {
