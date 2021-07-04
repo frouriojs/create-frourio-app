@@ -41,8 +41,8 @@
     "typescript"
   ],
   "dependencies": {
-    "@aspida/axios": "^1.7.0",
-    "@aspida/swr": "^1.7.0",
+    "@aspida/axios": "^1.7.1",
+    "@aspida/swr": "^1.7.1",
     "ansi_up": "^5.0.1",
     "axios": "^0.21.1",
     "cross-spawn": "^7.0.3",
