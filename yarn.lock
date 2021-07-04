@@ -1429,6 +1429,16 @@ aspida@^1.7.0:
     form-data "^4.0.0"
     minimist "^1.2.5"
 
+aspida@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.7.1.tgz#b021e1766991b3b9a7b85f297f5ac05af4b42b60"
+  integrity sha512-YIfSeLHPAtIkWnu8QFfKvlPB0/S6sRjD2WgmHuiTbhvTdINqK0KMPNK8WepUORXmUcraSaeHN1xO5MMKTREiTA==
+  dependencies:
+    "@types/minimist" "^1.2.1"
+    chokidar "^3.5.1"
+    form-data "^4.0.0"
+    minimist "^1.2.5"
+
 assert-plus@1.0.0, assert-plus@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/assert-plus/-/assert-plus-1.0.0.tgz#f12e0f3c5d77b0b1cdd9146942e4e96c1e4dd525"
@@ -3606,12 +3616,12 @@ fresh@0.5.2:
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
 
-frourio@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.25.0.tgz#1b383e36bf7b522fc0c1bb5d539f2b6239d86860"
-  integrity sha512-tCJAFdeJlSOh2o77bI9+H2fUkwOd17SkAktlnsvZAcBRFLJ9ZiEB21gsyC0EvEU84pofrgX/4IKkSXt9jBb5cw==
+frourio@^0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.25.1.tgz#e63cebc03b8c2be70426031acc61873dfff02c60"
+  integrity sha512-ycV09xK6/kssWVjXRBszMe+j69fR/bt3S4u/TKEv5mjyMlEteKkUypQHL/bUOL1IJL//alOXlbPNvAmqkCBHQA==
   dependencies:
-    aspida "^1.7.0"
+    aspida "^1.7.1"
     velona "^0.7.0"
 
 fs-access@^1.0.1:

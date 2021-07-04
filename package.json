@@ -51,7 +51,7 @@
     "fastify-cors": "^5.2.0",
     "fastify-static": "^4.0.1",
     "fastify-websocket": "^3.1.0",
-    "frourio": "^0.25.0",
+    "frourio": "^0.25.1",
     "github-buttons": "^2.17.0",
     "is-binary-path": "^2.1.0",
     "mariadb": "^2.5.3",
