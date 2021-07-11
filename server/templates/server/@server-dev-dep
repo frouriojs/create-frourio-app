@@ -8,3 +8,4 @@ typescript
 webpack
 webpack-cli
 webpack-node-externals
+@types/jest
