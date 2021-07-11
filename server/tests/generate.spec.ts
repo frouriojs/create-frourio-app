@@ -207,6 +207,12 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         cwd: dir
       })
 
+      const nodeModulesDir = dir + '/node_modules'
+      const nodeModulesIgnoreDir = dir + '/node_modules_ignore'
+
+      // rename node_modules → node_modules_ignore
+      await fs.promises.rename(nodeModulesDir, nodeModulesIgnoreDir)
+
       // npm/yarn install:server
       await npmInstall(serverDir, npmClientPath, process.stdout)
 
@@ -214,6 +220,9 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       await execFileAsync(npmClientPath, ['run', 'build:server'], {
         cwd: dir
       })
+
+      // rename node_modules_ignore → node_modules
+      await fs.promises.rename(nodeModulesIgnoreDir, nodeModulesDir)
 
       // typecheck
       // NOTE: With Sapper, typecheck should be after build:cilent.
