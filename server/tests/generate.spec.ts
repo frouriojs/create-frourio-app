@@ -193,6 +193,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         expect(allEnv).toContain(templateCtx.dbUser)
       }
       const serverDir = path.resolve(dir, 'server')
+      const nodeModulesDir = path.resolve(dir, 'node_modules')
+      const nodeModulesIgnoreDir = path.resolve(dir, 'node_modules_ignore')
 
       // npm/yarn install:client
       await npmInstall(dir, npmClientPath, process.stdout)
@@ -206,9 +208,6 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       await execFileAsync(npmClientPath, ['run', 'build:client'], {
         cwd: dir
       })
-
-      const nodeModulesDir = dir + '/node_modules'
-      const nodeModulesIgnoreDir = dir + '/node_modules_ignore'
 
       // rename node_modules → node_modules_ignore
       await fs.promises.rename(nodeModulesDir, nodeModulesIgnoreDir)
