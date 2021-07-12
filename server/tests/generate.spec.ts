@@ -193,10 +193,11 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         expect(allEnv).toContain(templateCtx.dbUser)
       }
       const serverDir = path.resolve(dir, 'server')
+      const nodeModulesDir = path.resolve(dir, 'node_modules')
+      const nodeModulesIgnoreDir = path.resolve(dir, 'node_modules_ignore')
 
-      // npm/yarn install
+      // npm/yarn install:client
       await npmInstall(dir, npmClientPath, process.stdout)
-      await npmInstall(serverDir, npmClientPath, process.stdout)
 
       // eslint
       await execFileAsync(npmClientPath, ['run', 'lint:fix'], {
@@ -208,10 +209,19 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         cwd: dir
       })
 
+      // rename node_modules → node_modules_ignore
+      await fs.promises.rename(nodeModulesDir, nodeModulesIgnoreDir)
+
+      // npm/yarn install:server
+      await npmInstall(serverDir, npmClientPath, process.stdout)
+
       // build:server
       await execFileAsync(npmClientPath, ['run', 'build:server'], {
         cwd: dir
       })
+
+      // rename node_modules_ignore → node_modules
+      await fs.promises.rename(nodeModulesIgnoreDir, nodeModulesDir)
 
       // typecheck
       // NOTE: With Sapper, typecheck should be after build:cilent.
