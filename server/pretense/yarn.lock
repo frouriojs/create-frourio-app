@@ -2,40 +2,40 @@
 # yarn lockfile v1
 
 
-"@aspida/axios@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@aspida/axios/-/axios-1.7.0.tgz#7460adf2d561c1e0c87e7d08d23853cec5fcf7f9"
-  integrity sha512-nXEYDGc+BcjlcXWJoy/GEayuXeCgQlJsirVJGxs2cqKbgfwdv/bUEaJsEazPsq7ZTDcjovrL4XQhbCQGqWEVZg==
+"@aspida/axios@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@aspida/axios/-/axios-1.7.1.tgz#e717ff358dc0cee736e2a31bace251ee0b78b3e2"
+  integrity sha512-2TNjvPAVhMAoe7YgfZawza0P0U4qMGLJdjW5H3BAIRv1B/TU929x2AO+ZrYroNZhI1wccDahVthuFHRgH8xTxw==
   dependencies:
-    aspida "^1.7.0"
+    aspida "^1.7.1"
 
-"@aspida/fetch@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@aspida/fetch/-/fetch-1.7.0.tgz#269855a1c9db5864269ee2695668447e7321c49f"
-  integrity sha512-2lkG1I6h1MZqVJl1T3H00DcOZtQAajebXnIY+MtEU4oMEuW/r0Y/NemcCQkxAKWjGPblo8cGo15kqk8KyVmq5g==
+"@aspida/fetch@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@aspida/fetch/-/fetch-1.7.1.tgz#3aad25367441b3256c7c9d88fd3310762a069810"
+  integrity sha512-IKz+JcCfkg9sbdHi3WDjw/fRHBk97WSABGJ0gKxIyPOpkQ1rCK3o5nk8RDHg/pszMmgSrMeZVxgmpdGqg8EMGw==
   dependencies:
-    aspida "^1.7.0"
+    aspida "^1.7.1"
 
-"@aspida/node-fetch@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@aspida/node-fetch/-/node-fetch-1.7.0.tgz#f77a5ce97f8627af50ec3bb67cb9fecea5cc5b73"
-  integrity sha512-NsC2sXbcJXrSZEpyXLqaWNGtbRC9y9atRkn1xmTfdTUbeLxQN3IkZds29FrowGkM6Coz6YXcBMWTj3bPlZfmRA==
+"@aspida/node-fetch@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@aspida/node-fetch/-/node-fetch-1.7.1.tgz#5dd5886935e9ac77ae26b453f98007a6802622eb"
+  integrity sha512-KxDmiMQ9zz8UV87k8dh8ED6a1qm2tt970OYiNJswub7TDKo9Bh0cX3bp2tN5aH/KKnxwG0fU2Tldl4XPvvP30g==
   dependencies:
-    aspida "^1.7.0"
+    aspida "^1.7.1"
 
-"@aspida/react-query@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@aspida/react-query/-/react-query-1.7.0.tgz#966b520528a6fcb37db970b5455a2a27fb972483"
-  integrity sha512-IQ1qZW9dTQt1MikcSGWYipnCr8gwCykaOhI5eTTEy9Ux26ML2FLimEh+d7jf1IcZRVeH1ZCwNKlIwIR9VZ4brg==
+"@aspida/react-query@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@aspida/react-query/-/react-query-1.7.1.tgz#62e5bfc124574176f3b582842fb3120d36bcc527"
+  integrity sha512-AfFQsKEczbEw1e4vZmRa7vJ30HdL0OYCC6knCofja7R6E+gSjayyxamy9oGG0VnO1dJx5jnZFC8cKP99MmCN+w==
   dependencies:
-    aspida "^1.7.0"
+    aspida "^1.7.1"
 
-"@aspida/swr@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@aspida/swr/-/swr-1.7.0.tgz#6407256e8367fec4ef50f84d31390c386fd1971b"
-  integrity sha512-G6FC77e++nIQ5eeVFJ1sHooJQYIw0GwCBoyyAAzIZba/riQNrKTbtjo6HXEAiCZT6R9mx3HtSQIaNsJaNaKnlA==
+"@aspida/swr@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@aspida/swr/-/swr-1.7.1.tgz#521efdd72ca239fb9cfa5fd0bd4645856774b66d"
+  integrity sha512-428RNW88CPr/qXxq5S8fhE5jx77eUwOIdWbeHdY5SWnPCdz3ijBZCNor9OhWnMb3E/IqJKfZCbEqyqTly3VBuw==
   dependencies:
-    aspida "^1.7.0"
+    aspida "^1.7.1"
 
 "@babel/code-frame@7.12.11":
   version "7.12.11"
@@ -3733,10 +3733,10 @@ asn1@~0.2.3:
   dependencies:
     safer-buffer "~2.1.0"
 
-aspida@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.7.0.tgz#41b5af2eba17a942b4f8b6612d735b6fd9f75e41"
-  integrity sha512-XTQjySisVUO+sYek7R72jumqTtBCam7ZjQv7C8//wLZr/f6yQ8C4J8Hma1kFteO8QqL3f+l5ArubtCG3aqnfwg==
+aspida@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.7.1.tgz#b021e1766991b3b9a7b85f297f5ac05af4b42b60"
+  integrity sha512-YIfSeLHPAtIkWnu8QFfKvlPB0/S6sRjD2WgmHuiTbhvTdINqK0KMPNK8WepUORXmUcraSaeHN1xO5MMKTREiTA==
   dependencies:
     "@types/minimist" "^1.2.1"
     chokidar "^3.5.1"
@@ -7160,10 +7160,20 @@ fast-json-stable-stringify@2.x, fast-json-stable-stringify@^2.0.0:
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
-fast-json-stringify@^2.5.2, fast-json-stringify@^2.6.0:
+fast-json-stringify@^2.5.2:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/fast-json-stringify/-/fast-json-stringify-2.6.0.tgz#3dcb4835b63d4e17dbd17411594aa63df8c0f95b"
   integrity sha512-xTZtZRopWp2Aun7sGX2EB2mFw4bMQ+xnR8BmD5Rn4K0hKXGkbcZAzTtxEX0P4KNaNx1RAwvf+FESfuM0+F4WZg==
+  dependencies:
+    ajv "^6.11.0"
+    deepmerge "^4.2.2"
+    rfdc "^1.2.0"
+    string-similarity "^4.0.1"
+
+fast-json-stringify@^2.7.7:
+  version "2.7.7"
+  resolved "https://registry.yarnpkg.com/fast-json-stringify/-/fast-json-stringify-2.7.7.tgz#9e1c0f238f566559c3d4b99ae17a8e545381c16e"
+  integrity sha512-2kiwC/hBlK7QiGALsvj0QxtYwaReLOmAwOWJIxt5WHBB9EwXsqbsu8LCel47yh8NV8CEcFmnZYcXh4BionJcwQ==
   dependencies:
     ajv "^6.11.0"
     deepmerge "^4.2.2"
@@ -7591,21 +7601,21 @@ from2@^2.1.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
-frourio-express@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/frourio-express/-/frourio-express-0.25.0.tgz#52a62e49414ffa80095926e13ec140d946b96c1d"
-  integrity sha512-P8oNHdcFXgSJ3OH3fTgkarxpZZGZgpGe6eHc4PeG6PufsMtBwP86WqX5wPldmfSYQBs9solYUqciJ+G5wAB6ew==
+frourio-express@^0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/frourio-express/-/frourio-express-0.25.1.tgz#ac94e3686723e549b43b55f99332d83ec6462c9d"
+  integrity sha512-ishJHeapGd920jcYX80BFReUSjsZUySCNdf0q5muF8JWiPCfmNmllUEIPncipeDLzzn+Nvq288v6w3uPI4XBDg==
   dependencies:
-    aspida "^1.7.0"
-    fast-json-stringify "^2.6.0"
+    aspida "^1.7.1"
+    fast-json-stringify "^2.7.7"
     velona "^0.7.0"
 
-frourio@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.25.0.tgz#1b383e36bf7b522fc0c1bb5d539f2b6239d86860"
-  integrity sha512-tCJAFdeJlSOh2o77bI9+H2fUkwOd17SkAktlnsvZAcBRFLJ9ZiEB21gsyC0EvEU84pofrgX/4IKkSXt9jBb5cw==
+frourio@^0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.25.1.tgz#e63cebc03b8c2be70426031acc61873dfff02c60"
+  integrity sha512-ycV09xK6/kssWVjXRBszMe+j69fR/bt3S4u/TKEv5mjyMlEteKkUypQHL/bUOL1IJL//alOXlbPNvAmqkCBHQA==
   dependencies:
-    aspida "^1.7.0"
+    aspida "^1.7.1"
     velona "^0.7.0"
 
 fs-extra@^8.1.0:
@@ -16189,8 +16199,10 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
+    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
