@@ -15,6 +15,7 @@
     "generate:prisma": "prisma generate<% } else if (orm === 'typeorm') { %>",
     "generate:typeormer": "typeormer<% } %><% if (orm === 'prisma') { %>",
     "migrate:dev": "prisma migrate dev",
+    "migrate:dev:createonly":"prisma migrate dev --create-only",
     "migrate:reset": "prisma migrate reset<% } else if (orm === 'typeorm') { %>",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "migration:generate": "npm run typeorm -- migration:generate -n generate",
