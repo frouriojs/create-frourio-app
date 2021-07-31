@@ -25,7 +25,9 @@
     "pm2:stop": "pm2 stop pm2.config.json",
     "pm2:delete": "pm2 delete pm2.config.json",
     "pm2:logs": "pm2 logs",
-    "pm2:monit": "pm2 monit<% } %>",
+    "pm2:monit": "pm2 monit<% } %><% if (orm === 'prisma'){ %>",
+    "seed":"prisma db seed --preview-feature",
+    "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"<% } %>",
     "start": "cross-env NODE_ENV=production node index.js"
   }
 }
