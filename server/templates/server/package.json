@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "<% if (orm === 'prisma') { %>npm run migrate:dev && <% } %>run-p dev:*",
-    "dev:server": "webpack --watch --mode=development",
+    "dev:server": "node ./scripts/build.dev.js & node-dev index.js",
     "dev:frourio": "frourio<% if (server === 'express') { %>-express<% } %> --watch<% if (orm === 'prisma') { %>",
     "dev:prisma": "prisma generate --watch<% } else if (orm === 'typeorm') { %>",
     "dev:typeormer": "typeormer --watch<% } %>",
     "prebuild": "npm run generate",
-    "build": "webpack --mode=production",
+    "build": "node ./scripts/build.prod.js",
     "generate": "run-p generate:*",
     "generate:frourio": "frourio<% if (server === 'express') { %>-express<% } %><% if (orm === 'prisma') { %>",
     "generate:prisma": "prisma generate<% } else if (orm === 'typeorm') { %>",
@@ -25,6 +25,6 @@
     "pm2:delete": "pm2 delete pm2.config.json",
     "pm2:logs": "pm2 logs",
     "pm2:monit": "pm2 monit<% } %>",
-    "start": "cross-env NODE_ENV=production node index.js"
+    "start": "node index.js"
   }
 }
