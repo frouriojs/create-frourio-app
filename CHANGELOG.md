@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.2](https://github.com/frouriojs/create-frourio-app/compare/v0.28.1...v0.28.2) (2021-07-24)
+
+
+### Bug Fixes
+
+* fix database url env ([6c2467a](https://github.com/frouriojs/create-frourio-app/commit/6c2467a30612491a31202a943888e9de165c6a7c))
+* add script migrate:dev:createonly ([64a93d2](https://github.com/frouriojs/create-frourio-app/commit/64a93d21943b9e9e87c063713e5a8ebd34595a37))
+
 ### [0.28.1](https://github.com/frouriojs/create-frourio-app/compare/v0.28.0...v0.28.1) (2021-07-12)
 
 
