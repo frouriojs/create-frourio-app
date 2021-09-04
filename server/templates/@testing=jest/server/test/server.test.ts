@@ -1,5 +1,12 @@
 import <%= server %> from '<%= server %>'
 import controller from '$/api/tasks/controller'
+import type {
+  HttpStatusOk,
+} from 'aspida'
+
+const HTTP_STATUS_OK_LIST: readonly HttpStatusOk[] = [
+  200, 201, 202, 203, 204, 205, 206
+] as const
 
 test('dependency injection into controller', async () => {
   let printedMessage = ''
@@ -49,8 +56,7 @@ test('dependency injection into controller', async () => {
     query: { limit, message }
   })
 
-  if (res.status !== 200) fail('Response must be successful')
-
+  expect(HTTP_STATUS_OK_LIST).toContain(res.status)
   expect(res.body).toHaveLength(limit)
   expect(printedMessage).toBe(message)
 })
