@@ -49,7 +49,8 @@ test('dependency injection into controller', async () => {
     query: { limit, message }
   })
 
-  expect(res.status).toBe(200)
+  if (res.status !== 200) fail('Response must be successful')
+  
   expect(res.body).toHaveLength(limit)
   expect(printedMessage).toBe(message)
 })
