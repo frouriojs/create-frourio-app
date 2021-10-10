@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = {
   entryPoints: [path.resolve(__dirname, '../entrypoints/index.ts')],
-  outfile: path.resolve(__dirname, '../index.js'),
+  outdir: path.resolve(__dirname, '../'),
   platform: 'node',
   bundle: true,
   plugins: [nodeExternalsPlugin()],
