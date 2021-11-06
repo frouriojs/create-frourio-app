@@ -1,12 +1,22 @@
 <template>
   <div class="user-banner">
-    <template v-if="isLoggedIn">
-      <img :src="userInfo.icon" class="user-icon" />
-      <span>{{ userInfo.name }}</span>
-      <input type="file" accept="image/*" @change="editIcon" />
-      <button @click="logout">LOGOUT</button>
-    </template>
-    <button v-else @click="login">LOGIN</button>
+    <div class="navs">
+      <NuxtLink :to="$pagesPath.$url()" class="nav">Home</NuxtLink>
+      <NuxtLink :to="$pagesPath.article.$url()" class="nav">Article</NuxtLink>
+      <form @submit="handleSubmit">
+        <input :value="search" @change="handleChangeSearch" />
+        <button type="submit">search</button>
+      </form>
+    </div>
+    <div>
+      <template v-if="isLoggedIn">
+        <img :src="userInfo.icon" class="user-icon" />
+        <span>{{ userInfo.name }}</span>
+        <input type="file" accept="image/*" @change="editIcon" />
+        <button @click="logout">LOGOUT</button>
+      </template>
+      <button v-else @click="login">LOGIN</button>
+    </div>
   </div>
 </template>
 
@@ -19,7 +29,8 @@ export default Vue.extend({
     return {
       isLoggedIn: false,
       userInfo: {} as UserInfo,
-      token: ''
+      token: '',
+      search: this.$route.query.search
     }
   },
   methods: {
@@ -49,26 +60,56 @@ export default Vue.extend({
       })
       this.isLoggedIn = true
     },
+
     logout() {
       this.token = ''
       this.isLoggedIn = false
+    },
+    handleChangeSearch(event: Event) {
+      this.search = (event.target as HTMLInputElement).value
+    },
+    handleSubmit(event: Event) {
+      event.preventDefault()
+      this.$router.push({
+        ...this.$pagesPath.article.$url(),
+        query: { search: this.search }
+      })
     }
   }
 })
 </script>
 
 <style scoped>
-.user-banner {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 20px;
-}
-
 .user-icon {
   width: 32px;
   height: 32px;
   background: #ddd;
   vertical-align: bottom;
+}
+
+.user-banner {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+  position: fixed;
+  align-items: center;
+}
+.navs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  padding: 8px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: black;
+}
+
+.nav:hover {
+  border-bottom: 3px solid #000;
 }
 </style>

@@ -1,32 +1,34 @@
 <template>
-  <div class="container">
+  <div>
     <user-banner />
-    <div>
-      <logo />
-      <h1 class="title">frourio-todo-app</h1>
-      <div v-if="!$fetchState.pending">
-        <form @submit.prevent="createTask">
-          <input v-model="newLabel" type="text" />
-          <input type="submit" value="ADD" />
-        </form>
-        <ul class="tasks">
-          <li v-for="task in tasks" :key="task.id">
-            <label>
+    <div class="container">
+      <div>
+        <logo />
+        <h1 class="title">frourio-todo-app</h1>
+        <div v-if="!$fetchState.pending">
+          <form @submit.prevent="createTask">
+            <input v-model="newLabel" type="text" />
+            <input type="submit" value="ADD" />
+          </form>
+          <ul class="tasks">
+            <li v-for="task in tasks" :key="task.id">
+              <label>
+                <input
+                  type="checkbox"
+                  :checked="task.done"
+                  @change="toggleDone(task)"
+                />
+                <span>{{ task.label }}</span>
+              </label>
               <input
-                type="checkbox"
-                :checked="task.done"
-                @change="toggleDone(task)"
+                type="button"
+                value="DELETE"
+                style="float: right"
+                @click="deleteTask(task)"
               />
-              <span>{{ task.label }}</span>
-            </label>
-            <input
-              type="button"
-              value="DELETE"
-              style="float: right"
-              @click="deleteTask(task)"
-            />
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -34,7 +36,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
+import type { Task } from '$prisma/client'
 
 export default Vue.extend({
   data() {
@@ -74,11 +76,11 @@ export default Vue.extend({
 <style scoped>
 .container {
   margin: 0 auto;
-  min-height: 100vh;
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
+  min-height: 100vh;
 }
 
 .title {
