@@ -22,6 +22,10 @@
 import Vue from 'vue'
 import { ArticleInfo } from '../../server/service/article'
 
+export type OptionalQuery = {
+  search?: string
+}
+
 export default Vue.extend({
   data() {
     return {

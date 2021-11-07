@@ -3,8 +3,8 @@
     <div class="navs">
       <NuxtLink :to="$pagesPath.$url()" class="nav">Home</NuxtLink>
       <NuxtLink :to="$pagesPath.article.$url()" class="nav">Article</NuxtLink>
-      <form @submit="handleSubmit">
-        <input :value="search" @change="handleChangeSearch" />
+      <form @submit="submit">
+        <input :value="search" @change="changeSearch" />
         <button type="submit">search</button>
       </form>
     </div>
@@ -30,7 +30,10 @@ export default Vue.extend({
       isLoggedIn: false,
       userInfo: {} as UserInfo,
       token: '',
-      search: this.$route.query.search
+      search:
+        typeof this.$route.query.search === 'string'
+          ? this.$route.query.search
+          : undefined
     }
   },
   methods: {
@@ -65,15 +68,16 @@ export default Vue.extend({
       this.token = ''
       this.isLoggedIn = false
     },
-    handleChangeSearch(event: Event) {
-      this.search = (event.target as HTMLInputElement).value
+    changeSearch(event: Event) {
+      if (event.target instanceof HTMLInputElement) {
+        this.search = event.target.value
+      }
     },
-    handleSubmit(event: Event) {
+    submit(event: Event) {
       event.preventDefault()
-      this.$router.push({
-        ...this.$pagesPath.article.$url(),
-        query: { search: this.search }
-      })
+      this.$router.push(
+        this.$pagesPath.article.$url({ query: { search: this.search } })
+      )
     }
   }
 })
