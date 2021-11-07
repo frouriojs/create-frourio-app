@@ -30,11 +30,14 @@ export default Vue.extend({
       isLoggedIn: false,
       userInfo: {} as UserInfo,
       token: '',
-      search:
-        typeof this.$route.query.search === 'string'
-          ? this.$route.query.search
-          : undefined
+      search: '',
     }
+  },
+  fetch() {
+    this.search =
+      typeof this.$route.query.search === 'string'
+        ? this.$route.query.search
+        : ''
   },
   methods: {
     async editIcon(e: { target: HTMLInputElement }) {
@@ -63,7 +66,6 @@ export default Vue.extend({
       })
       this.isLoggedIn = true
     },
-
     logout() {
       this.token = ''
       this.isLoggedIn = false
