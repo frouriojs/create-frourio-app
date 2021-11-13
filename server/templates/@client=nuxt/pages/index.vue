@@ -37,8 +37,14 @@
 <script lang="ts">
 import Vue from 'vue'
 import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
+import UserBanner from '~/components/UserBanner.vue'
+import Logo from '~/components/Logo.vue'
 
 export default Vue.extend({
+  components: {
+    UserBanner,
+    Logo
+  },
   data() {
     return {
       tasks: [] as Task[],

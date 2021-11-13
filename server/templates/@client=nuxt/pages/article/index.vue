@@ -21,12 +21,16 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ArticleInfo } from '../../server/service/article'
+import UserBanner from '~/components/UserBanner.vue'
 
 export type OptionalQuery = {
   search?: string
 }
 
 export default Vue.extend({
+  components: {
+    UserBanner
+  },
   data() {
     return {
       articles: [] as ArticleInfo[]

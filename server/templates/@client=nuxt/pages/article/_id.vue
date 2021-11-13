@@ -14,8 +14,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import UserBanner from '~/components/UserBanner.vue'
 
 export default Vue.extend({
+  components: {
+    UserBanner
+  },
   async asyncData({ app, params, error }) {
     const article = await app.$api.article
       ._articleId(Number.parseInt(params.id, 10))
