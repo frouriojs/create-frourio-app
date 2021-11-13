@@ -6,7 +6,7 @@ exports[`Home page matches snapshot 1`] = `
     <div class=\\"navs\\">
       <nuxtlink to=\\"/\\" class=\\"nav\\">Home</nuxtlink>
       <nuxtlink to=\\"/article\\" class=\\"nav\\">Article</nuxtlink>
-      <form><input> <button type=\\"submit\\">search</button></form>
+      <form><input> <button type=\\"submit\\">search</button></form> <img src=\\"/favicon.png\\" class=\\"logo\\">
     </div>
     <div><button>LOGIN</button></div>
   </div>

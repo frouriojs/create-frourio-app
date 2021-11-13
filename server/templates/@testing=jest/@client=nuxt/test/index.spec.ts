@@ -7,7 +7,8 @@ const apiClient = api(aspida())
 const options = {
   mocks: {
     $fetchState: { pending: false },
-    $pagesPath: { $url: () => '/', article: { $url: () => '/article' } }
+    $pagesPath: { $url: () => '/', article: { $url: () => '/article' } },
+    $staticPath: { favicon_png: '/favicon.png' }
   }
 }
 const res = <T extends (...args: any[]) => any>(

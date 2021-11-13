@@ -7,7 +7,7 @@
     "dev:client": "cross-env NUXT_PORT=<%= clientPort %> nuxt",
     "dev:server": "npm run dev --prefix server",
     "dev:aspida": "aspida --watch",
-    "dev:path": "pathpida --ignorePath .gitignore --watch",
+    "dev:path": "pathpida --enableStatic --ignorePath .gitignore --watch",
     "build": "run-p build:client build:server",
     "prebuild:client": "npm run generate",
     "build:client": "pathpida --ignorePath .gitignore && nuxt <%= target === 'static' ? 'generate' : 'build' %>",

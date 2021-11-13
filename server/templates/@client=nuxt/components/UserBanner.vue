@@ -7,6 +7,7 @@
         <input :value="search" @change="changeSearch" />
         <button type="submit">search</button>
       </form>
+      <img class="logo" :src="$staticPath.favicon_png" />
     </div>
     <div>
       <template v-if="isLoggedIn">
@@ -86,6 +87,12 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.logo {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+}
+
 .user-icon {
   width: 32px;
   height: 32px;
