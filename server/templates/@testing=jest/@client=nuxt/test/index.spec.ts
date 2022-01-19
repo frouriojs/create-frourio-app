@@ -1,14 +1,15 @@
 import { mount } from '@vue/test-utils'
 import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
 import Home from '@/pages/index.vue'
-import Logo from '@/components/Logo.vue'
-import UserBanner from '@/components/UserBanner.vue'
-import api from '~/server/api/$api'
+import api from '$/api/$api'
 
 const apiClient = api(aspida())
 const options = {
-  stubs: { UserBanner, Logo },
-  mocks: { $fetchState: { pending: false } }
+  mocks: {
+    $fetchState: { pending: false },
+    $pagesPath: { $url: () => '/', article: { $url: () => '/article' } },
+    $staticPath: { favicon_png: '/favicon.png' }
+  }
 }
 const res = <T extends (...args: any[]) => any>(
   data: ReturnType<T> extends Promise<infer S> ? S : never
@@ -34,7 +35,7 @@ describe('Home page', () => {
     window.prompt = jest.fn()
     window.alert = jest.fn()
 
-    await wrapper.find('button').trigger('click')
+    await wrapper.findAll('button').at(1).trigger('click')
 
     expect(window.prompt).toHaveBeenCalledWith(
       'Enter the user id (See server/.env)'

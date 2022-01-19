@@ -32,10 +32,7 @@ const config: NuxtConfig = {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/api'],
-
-  // Auto import components (https://go.nuxtjs.dev/config-components)
-  components: true,
+  plugins: ['~/plugins/api', '~/plugins/$path'],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
