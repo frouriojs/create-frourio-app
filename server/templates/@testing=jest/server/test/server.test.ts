@@ -1,5 +1,6 @@
 import <%= server %> from '<%= server %>'
 import controller from '$/api/tasks/controller'
+import { fail } from "assert"
 
 test('dependency injection into controller', async () => {
   let printedMessage = ''
@@ -49,6 +50,8 @@ test('dependency injection into controller', async () => {
     query: { limit, message }
   })
 
+  if (res.status !== 200) fail('Response must be successful')
+  
   expect(res.body).toHaveLength(limit)
   expect(printedMessage).toBe(message)
 })
