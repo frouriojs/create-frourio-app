@@ -1,12 +1,23 @@
 <template>
   <div class="user-banner">
-    <template v-if="isLoggedIn">
-      <img :src="userInfo.icon" class="user-icon" />
-      <span>{{ userInfo.name }}</span>
-      <input type="file" accept="image/*" @change="editIcon" />
-      <button @click="logout">LOGOUT</button>
-    </template>
-    <button v-else @click="login">LOGIN</button>
+    <div class="navs">
+      <NuxtLink :to="$pagesPath.$url()" class="nav">Home</NuxtLink>
+      <NuxtLink :to="$pagesPath.article.$url()" class="nav">Article</NuxtLink>
+      <form @submit="submit">
+        <input :value="search" @change="changeSearch" />
+        <button type="submit">search</button>
+      </form>
+      <img class="logo" :src="$staticPath.favicon_png" />
+    </div>
+    <div>
+      <template v-if="isLoggedIn">
+        <img :src="userInfo.icon" class="user-icon" />
+        <span>{{ userInfo.name }}</span>
+        <input type="file" accept="image/*" @change="editIcon" />
+        <button @click="logout">LOGOUT</button>
+      </template>
+      <button v-else @click="login">LOGIN</button>
+    </div>
   </div>
 </template>
 
@@ -19,8 +30,15 @@ export default Vue.extend({
     return {
       isLoggedIn: false,
       userInfo: {} as UserInfo,
-      token: ''
+      token: '',
+      search: '',
     }
+  },
+  fetch() {
+    this.search =
+      typeof this.$route.query.search === 'string'
+        ? this.$route.query.search
+        : ''
   },
   methods: {
     async editIcon(e: { target: HTMLInputElement }) {
@@ -52,17 +70,27 @@ export default Vue.extend({
     logout() {
       this.token = ''
       this.isLoggedIn = false
+    },
+    changeSearch(event: Event) {
+      if (event.target instanceof HTMLInputElement) {
+        this.search = event.target.value
+      }
+    },
+    submit(event: Event) {
+      event.preventDefault()
+      this.$router.push(
+        this.$pagesPath.article.$url({ query: { search: this.search } })
+      )
     }
   }
 })
 </script>
 
 <style scoped>
-.user-banner {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 20px;
+.logo {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
 }
 
 .user-icon {
@@ -70,5 +98,31 @@ export default Vue.extend({
   height: 32px;
   background: #ddd;
   vertical-align: bottom;
+}
+
+.user-banner {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+  position: fixed;
+  align-items: center;
+}
+.navs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  padding: 8px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: black;
+}
+
+.nav:hover {
+  border-bottom: 3px solid #000;
 }
 </style>

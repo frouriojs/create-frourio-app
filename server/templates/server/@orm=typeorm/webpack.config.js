@@ -5,14 +5,12 @@ const NodemonPlugin = require('nodemon-webpack-plugin')
 /** @type import("webpack").Configuration */
 module.exports = {
   entry: {
-    index: './entrypoints/index.ts'<% if (serverless === 'lambda') { %>,
-    lambda: './entrypoints/lambda.ts',
-    lambda_migration: './entrypoints/lambda_migration.ts'<% } %>
-  },<% if (orm === 'typeorm') { %>
+    index: './entrypoints/index.ts'
+  },
   // Suprress mangling since TypeORM relies on that.
   optimization: {
     minimize: false
-  },<% } %>
+  },
   target: 'node',
   node: {
     __dirname: false

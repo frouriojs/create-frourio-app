@@ -1,0 +1,5 @@
+webpack
+webpack-cli
+webpack-node-externals
+tsconfig-paths-webpack-plugin
+nodemon-webpack-plugin
