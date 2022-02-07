@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.29.0](https://github.com/frouriojs/create-frourio-app/compare/v0.28.2...v0.29.0) (2022-02-07)
+
+
+### Features
+
+* change default pm value ([66a3c2b](https://github.com/frouriojs/create-frourio-app/commit/66a3c2bc35d8085074c6899a0b2707d83b04933d))
+
+
+### Bug Fixes
+
+* fix my misstake ([5c5ed90](https://github.com/frouriojs/create-frourio-app/commit/5c5ed905e0ae02be08b67cd2e549caa3b454d3f5))
+
 ### [0.28.2](https://github.com/frouriojs/create-frourio-app/compare/v0.28.1...v0.28.2) (2021-07-24)
 
 
