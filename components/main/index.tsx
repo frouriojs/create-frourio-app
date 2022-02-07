@@ -45,11 +45,11 @@ const Credits = () => {
 
 export interface MainProps {
   serverStatus?: ServerStatus
-  revalidate?: () => void
+  mutate?: () => void
   useServer?: boolean
 }
 
-const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
+const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   const [touched, setTouched] = useState<true | { [key: string]: true }>({})
   const [answers, setAnswers] = useState<Answers | undefined>()
   const [created, setCreated] = useState(false)
@@ -140,7 +140,7 @@ const Main: FC<MainProps> = ({ serverStatus, revalidate, useServer }) => {
     }
 
     await apiClient.answers.$patch({ body: answers })
-    revalidate?.()
+    mutate?.()
     setCreated(true)
   }, [apiClient, answers, canCreate])
 

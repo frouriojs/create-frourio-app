@@ -3,6 +3,7 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "preserveValueImports": false,
     "esModuleInterop": true,
     "lib": ["dom"],
     "module": "<%= orm === 'typeorm' ? 'commonjs' : 'esnext' %>",

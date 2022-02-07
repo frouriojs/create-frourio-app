@@ -215,13 +215,15 @@ export const cfaPrompts: Prompt[] = [
   },
   /* eslint-disable @typescript-eslint/no-explicit-any */
   ...(['postgresql', 'mysql'] as const).flatMap((db) =>
-    ([
-      ['Host', 'HOST'],
-      ['Port', 'PORT'],
-      ['Name', 'DATABASE'],
-      ['User', 'USERNAME'],
-      ['Pass', 'PASSWORD']
-    ] as const).map(([what, typeormEnv]) => ({
+    (
+      [
+        ['Host', 'HOST'],
+        ['Port', 'PORT'],
+        ['Name', 'DATABASE'],
+        ['User', 'USERNAME'],
+        ['Pass', 'PASSWORD']
+      ] as const
+    ).map(([what, typeormEnv]) => ({
       name: `${db}Db${what}` as PromptName,
       message: (ans: Answers) => {
         if (ans.orm === 'prisma') {
@@ -342,15 +344,17 @@ export const cfaPrompts: Prompt[] = [
                 '',
                 '- **API_BASE_PATH**: Your API basepath. e.g. `/api`',
                 `- **API_DATABASE_URL**: ${
-                  ({
-                    sqlite:
-                      'Production URL for SQLite. e.g. `file:///mnt/efs-data/db.sqlite`',
-                    mysql:
-                      'Production URL for MySQL. e.g. `mysql://mysql-instance1.123456789012.us-east-1.rds.amazonaws.com:3306`',
-                    postgresql:
-                      'Production URL for Postgres. e.g. `postgres://myinstance.123456789012.us-east-1.rds.amazonaws.com:5432`'
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  } as any)[ans.db ?? '']
+                  (
+                    {
+                      sqlite:
+                        'Production URL for SQLite. e.g. `file:///mnt/efs-data/db.sqlite`',
+                      mysql:
+                        'Production URL for MySQL. e.g. `mysql://mysql-instance1.123456789012.us-east-1.rds.amazonaws.com:3306`',
+                      postgresql:
+                        'Production URL for Postgres. e.g. `postgres://myinstance.123456789012.us-east-1.rds.amazonaws.com:5432`'
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    } as any
+                  )[ans.db ?? '']
                 }.`,
                 '- **API_DEPLOY_HOST**: Dedicated server host. e.g. `ec2-public-ipv4-address.compute-1.amazonaws.com`',
                 '- **API_DEPLOY_USER**: SSH username. e.g. `ci`',
