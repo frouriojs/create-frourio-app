@@ -26,7 +26,7 @@ const config: { projects: Config.InitialOptions[] } = {
     },
     {
       preset: 'ts-jest',
-      testEnvironment: 'jsdom',
+      testEnvironment: 'next',
       testMatch: ['<rootDir>/server/test/**/*.ts'],
       moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
         prefix: '<rootDir>/'
