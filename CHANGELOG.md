@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.30.0](https://github.com/frouriojs/create-frourio-app/compare/v0.29.0...v0.30.0) (2022-02-09)
+
+
+### Features
+
+* add `-v`, `--version`, `--host` options and improve CLI experience https://github.com/frouriojs/create-frourio-app/pull/285
+* upgrade template dependencies
+  * TypeScript v4.5 for other than nuxt
+  * SWR v1.0
+  * stylelint v14 for nuxt
+  * eslint-plugin-nuxt v3
+
 ## [0.29.0](https://github.com/frouriojs/create-frourio-app/compare/v0.28.2...v0.29.0) (2022-02-07)
 
 
