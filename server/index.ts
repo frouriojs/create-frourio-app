@@ -7,6 +7,8 @@ import server from './$server'
 import { cliMigration, updateAnswers } from '$/service/answers'
 import FastifyWebsocket from 'fastify-websocket'
 import stream from 'stream'
+import metaInfo from '../package.json'
+import { Command } from 'commander'
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -16,29 +18,32 @@ declare module 'fastify' {
   }
 }
 
-let port: number | null = null
+const program = new Command()
+
+program.name(`${metaInfo.name}`)
+program.version(`v${metaInfo.version}`, '-v')
+program.option('-p, --port <char>', '', '3000')
+program.option('--host <char>', '', 'localhost')
+program.option('--answers <char>')
+
+program.parse()
+
+const options = program.opts()
+
+let port: number = options.port
+const host: string = options.host
+
 const basePath = '/api'
 ;(async () => {
-  const portIdx =
-    Math.max(
-      process.argv.lastIndexOf('--port'),
-      process.argv.lastIndexOf('-p')
-    ) + 1
-  if (portIdx > 0 && portIdx < process.argv.length) {
-    port = Number(process.argv[portIdx])
-  }
-  if (!port) {
-    port = await getPortPromise({ port: 3000 })
-  }
+  port = await getPortPromise({ port: port })
 
-  const argIndex = process.argv.indexOf('--answers')
-  if (argIndex !== -1) {
+  if (options.answers !== undefined) {
     await updateAnswers(
       cliMigration.reduce((prev, current) => {
         if (!current.when(prev)) return prev
         console.warn(current.warn(prev))
         return current.handler(prev)
-      }, JSON.parse(process.argv[argIndex + 1])),
+      }, JSON.parse(options.answers)),
       process.stdout
     )
     return
@@ -108,7 +113,7 @@ const basePath = '/api'
     })
   })
 
-  await server(fastify, { basePath }).listen(port)
+  await server(fastify, { basePath }).listen(port, host)
   if (process.env.NODE_ENV !== 'development') {
     if (process.env.NODE_ENV === 'test') return
 
