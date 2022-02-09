@@ -15,6 +15,7 @@
     "build:server": "npm run build:frourio && webpack --mode=production",
     "build:frourio": "cd server && frourio",
     "lint": "eslint --ext .ts,.js,.tsx . && prettier --check \"./**/*.ts\"",
+    "lint:fix": "eslint --ext .ts,.js,.tsx . --fix && prettier --check \"./**/*.ts\" --write",
     "release": "standard-version --skip.tag",
     "release:major": "npm run release -- --release-as major",
     "release:minor": "npm run release -- --release-as minor",

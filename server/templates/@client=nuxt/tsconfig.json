@@ -7,7 +7,6 @@
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
-    "preserveValueImports": false,
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,

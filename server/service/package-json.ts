@@ -24,8 +24,11 @@ export const getPackageVersions = (): { [packageName: string]: string } => {
 
 const strUniq = (list: string[]) => {
   const known = Object.create(null)
-  list.forEach((el) => (known[el] = 0))
-  return Object.keys(known)
+  list.forEach((el) => {
+    const g = el.match(/^(@?[^@]+)(?:@(.*))?$/)!
+    known[g[1]] = g[2] ? `@${g[2]}` : ''
+  })
+  return Object.entries(known).map(([key, value]) => `${key}${value}`)
 }
 
 /**
@@ -44,8 +47,17 @@ export const convertListToJson = (
   return strUniq(list)
     .sort()
     .map((dep) => {
-      assert(dep in deps, `${dep} is not pre-defined.`)
-      return `${indent}${JSON.stringify(dep)}: ${JSON.stringify(deps[dep])}`
+      let depName = dep
+      let depVersion = null
+      const g = dep.match(/^(@?[^@]+)@(.*)$/)
+      if (g) {
+        depName = g[1]
+        depVersion = g[2]
+      }
+      assert(depName in deps, `${depName} is not pre-defined.`)
+      return `${indent}${JSON.stringify(depName)}: ${JSON.stringify(
+        depVersion || deps[depName]
+      )}`
     })
     .join(',\n')
 }
