@@ -1,4 +1,6 @@
 class-validator
+reflect-metadata
+class-transformer
 compression
 polka
 sirv

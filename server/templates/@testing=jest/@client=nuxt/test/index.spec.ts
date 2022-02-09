@@ -1,10 +1,13 @@
-import { mount } from '@vue/test-utils'
+import { mount, RouterLinkStub } from '@vue/test-utils'
 import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
 import Home from '@/pages/index.vue'
 import api from '$/api/$api'
 
 const apiClient = api(aspida())
 const options = {
+  stubs: {
+    NuxtLink: RouterLinkStub
+  },
   mocks: {
     $fetchState: { pending: false },
     $pagesPath: { $url: () => '/', article: { $url: () => '/article' } },

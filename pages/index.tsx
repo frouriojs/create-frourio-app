@@ -4,8 +4,8 @@ import { createApiClient } from '~/utils/apiClient'
 
 const Home = () => {
   const apiClient = createApiClient()
-  const { data: serverStatus, revalidate } = useAspidaSWR(apiClient.status)
-  return <Main serverStatus={serverStatus} revalidate={revalidate} useServer />
+  const { data: serverStatus, mutate } = useAspidaSWR(apiClient.status)
+  return <Main serverStatus={serverStatus} mutate={mutate} useServer />
 }
 
 export default Home

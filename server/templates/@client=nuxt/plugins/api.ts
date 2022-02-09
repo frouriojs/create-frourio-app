@@ -1,12 +1,11 @@
 import { Plugin } from '@nuxt/types'
-<% if (aspida === 'axios') { %>import { NuxtAxiosInstance } from '@nuxtjs/axios'
-import aspida from '@aspida/axios'<% } else { -%>
+<% if (aspida === 'axios') { %>import aspida from '@aspida/axios'<% } else { -%>
 import nodeFetch from 'node-fetch'
 import aspidaFetch from '@aspida/fetch'
 import aspidaNodeFetch from '@aspida/node-fetch'<% } %>
 import api from '~/server/api/$api'
 <% if (aspida === 'axios') { %>
-const createInstance = (axios: NuxtAxiosInstance) =>
+const createInstance = (axios: any) =>
   api(aspida(axios))
 <% } else { %>
 const createInstance = () =>

@@ -2,7 +2,8 @@
   "compilerOptions": {
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "emitDecoratorMetadata": true,<% if (client !== 'nuxt') { %>
+    "preserveValueImports": false,<% } %>
     "esModuleInterop": true,
     "lib": ["dom"],
     "module": "<%= orm === 'typeorm' ? 'commonjs' : 'esnext' %>",

@@ -7,6 +7,7 @@ const config: { projects: Config.InitialOptions[] } = {
     {
       <% if (aspida === 'fetch') { %>setupFiles: ['<rootDir>/test/jest.setup.js'],
       <% } %>testPathIgnorePatterns: ['<rootDir>/server'],
+      testEnvironment: 'jsdom',
       transform: {
         '^.+\\.tsx$': 'babel-jest',
         '^.+\\.ts$': 'ts-jest'

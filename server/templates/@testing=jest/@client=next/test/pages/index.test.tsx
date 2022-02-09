@@ -1,5 +1,5 @@
 import React from 'react'<% if (reactHooks === 'swr') { %>
-import { cache } from 'swr'<% } else if (reactHooks === 'none') { %>
+import { SWRConfig } from 'swr'<% } else if (reactHooks === 'none') { %>
 import { render, fireEvent } from '@testing-library/react'<% } %>
 import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
@@ -34,20 +34,21 @@ beforeAll(() => {
 
   return fastify.listen(process.env.API_SERVER_PORT ?? 8080)
 })
-<% if (reactHooks === 'swr') { %>
-afterEach(() => cache.clear())<% } %>
+
 afterAll(() => fastify.close())
 
 describe('Home page', () => {
-  it('matches snapshot', async () => {
-    const { asFragment, findByText } = render(<Home />, {})
+  it('matches snapshot', async () => {<% if (reactHooks === 'swr') { %>
+    const { asFragment, findByText } = render(<SWRConfig value={{ provider: () => new Map() }}><Home /></SWRConfig>, {})<% } else { %>
+    const { asFragment, findByText } = render(<Home />, {})<% } %>
 
     await findByText('foo task')
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('clicking button triggers prompt', async () => {
-    const { findByText } = render(<Home />, {})
+  it('clicking button triggers prompt', async () => {<% if (reactHooks === 'swr') { %>
+    const { findByText } = render(<SWRConfig value={{ provider: () => new Map() }}><Home /></SWRConfig>, {})<% } else { %>
+    const { findByText } = render(<Home />, {})<% } %>
 
     window.prompt = jest.fn()
     window.alert = jest.fn()
