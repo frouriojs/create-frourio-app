@@ -18,6 +18,8 @@ declare module 'fastify' {
 
 const { program } = require('commander')
 
+program.name(`${require('../package.json').name}`)
+program.version(`v${require('../package.json').version}`, '-v')
 program.option('-p, --port <char>', '', 3000)
 program.option('--host <char>', '', 'localhost')
 program.option('--answers <char>')
@@ -27,7 +29,7 @@ program.parse()
 const options = program.opts()
 
 let port: number = options.port
-let host: string = options.host
+const host: string = options.host
 
 const basePath = '/api'
 ;(async () => {
