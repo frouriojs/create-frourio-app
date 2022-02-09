@@ -25,7 +25,6 @@ program.option('--answers <char>')
 program.parse()
 
 const options = program.opts()
-console.dir(options, { depth: null })
 
 let port: number = options.port
 let host: string = options.host
