@@ -1,6 +1,7 @@
 import { pathsToModuleNameMapper } from 'ts-jest/utils'
 import type { Config } from '@jest/types'
 import { compilerOptions } from './tsconfig.json'
+import { compilerOptions as serverCompilerOptions } from './server/tsconfig.json'
 
 const config: { projects: Config.InitialOptions[] } = {
   projects: [
@@ -14,6 +15,7 @@ const config: { projects: Config.InitialOptions[] } = {
         '^vue$': 'vue/dist/vue.common.js'
       },
       moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
+      testEnvironment: 'jsdom',
       transform: {
         '^.+\\.ts$': 'ts-jest',
         '^.+\\.js$': 'babel-jest',
@@ -28,8 +30,8 @@ const config: { projects: Config.InitialOptions[] } = {
       preset: 'ts-jest',
       testEnvironment: 'node',
       testMatch: ['<rootDir>/server/test/**/*.ts'],
-      moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-        prefix: '<rootDir>/'
+      moduleNameMapper: pathsToModuleNameMapper(serverCompilerOptions.paths, {
+        prefix: '<rootDir>/server/'
       })
     }
   ]
