@@ -1,5 +1,5 @@
 import React from 'react'<% if (reactHooks === 'swr') { %>
-import { cache } from 'swr'<% } else if (reactHooks === 'none') { %>
+import { SWRConfig } from 'swr'<% } else if (reactHooks === 'none') { %>
 import { render, fireEvent } from '@testing-library/react'<% } %>
 import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
