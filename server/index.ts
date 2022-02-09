@@ -8,6 +8,7 @@ import { cliMigration, updateAnswers } from '$/service/answers'
 import FastifyWebsocket from 'fastify-websocket'
 import stream from 'stream'
 import metaInfo from '../package.json'
+import { Command } from 'commander'
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -17,11 +18,11 @@ declare module 'fastify' {
   }
 }
 
-const { program } = require('commander')
+const program = new Command()
 
 program.name(`${metaInfo.name}`)
 program.version(`v${metaInfo.version}`, '-v')
-program.option('-p, --port <char>', '', 3000)
+program.option('-p, --port <char>', '', '3000')
 program.option('--host <char>', '', 'localhost')
 program.option('--answers <char>')
 
