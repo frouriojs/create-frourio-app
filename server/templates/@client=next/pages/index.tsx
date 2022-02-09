@@ -10,7 +10,7 @@ import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %
 import type { FormEvent, ChangeEvent } from 'react'
 
 const Home = () => {
-  <% if (reactHooks === 'swr') { %>const { data: tasks, error, revalidate } = useAspidaSWR(apiClient.tasks)<% } else if (reactHooks === 'query') { %>const queryClient = useQueryClient()
+  <% if (reactHooks === 'swr') { %>const { data: tasks, error, mutate } = useAspidaSWR(apiClient.tasks)<% } else if (reactHooks === 'query') { %>const queryClient = useQueryClient()
   const { data: tasks, error } = useAspidaQuery(apiClient.tasks)<% } else { %>const [tasks, setTasks] = useState<Task[] | undefined>(undefined)<% } %>
   const [label, setLabel] = useState('')
   const inputLabel = useCallback(
@@ -34,19 +34,19 @@ const Home = () => {
 
       await apiClient.tasks.post({ body: { label } })
       setLabel('')
-      <% if (reactHooks === 'swr') { %>revalidate<% } else if (reactHooks === 'query') { %>invalidateTasks<% } else { %>await fetchTasks<% } %>()
+      <% if (reactHooks === 'swr') { %>mutate<% } else if (reactHooks === 'query') { %>invalidateTasks<% } else { %>await fetchTasks<% } %>()
     },
     [label]
   )
 
   const toggleDone = useCallback(async (task: Task) => {
     await apiClient.tasks._taskId(task.id).patch({ body: { done: !task.done } })
-    <% if (reactHooks === 'swr') { %>revalidate<% } else if (reactHooks === 'query') { %>invalidateTasks<% } else { %>await fetchTasks<% } %>()
+    <% if (reactHooks === 'swr') { %>mutate<% } else if (reactHooks === 'query') { %>invalidateTasks<% } else { %>await fetchTasks<% } %>()
   }, [])
 
   const deleteTask = useCallback(async (task: Task) => {
     await apiClient.tasks._taskId(task.id).delete()
-    <% if (reactHooks === 'swr') { %>revalidate<% } else if (reactHooks === 'query') { %>invalidateTasks<% } else { %>await fetchTasks<% } %>()
+    <% if (reactHooks === 'swr') { %>mutate<% } else if (reactHooks === 'query') { %>invalidateTasks<% } else { %>await fetchTasks<% } %>()
   }, [])
 
   <% if (reactHooks === 'none') { %>useEffect(() => {

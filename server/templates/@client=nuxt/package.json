@@ -10,7 +10,7 @@
     "dev:path": "pathpida --enableStatic --ignorePath .gitignore --watch",
     "build": "run-p build:client build:server",
     "prebuild:client": "npm run generate",
-    "build:client": "pathpida --ignorePath .gitignore && nuxt <%= target === 'static' ? 'generate' : 'build' %>",
+    "build:client": "pathpida --enableStatic --ignorePath .gitignore && nuxt <%= target === 'static' ? 'generate' : 'build' %>",
     "build:server": "npm run build --prefix server",
     "generate": "run-p generate:*",
     "generate:aspida": "aspida",

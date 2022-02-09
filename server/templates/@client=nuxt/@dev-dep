@@ -19,4 +19,6 @@ prettier
 stylelint
 stylelint-config-prettier
 stylelint-config-standard
+postcss-html
 ts-loader
+typescript@~4.2
