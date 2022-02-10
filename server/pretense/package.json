@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "upgrade-frourio": "yarn add frourio frourio-express aspida @aspida/axios @aspida/fetch @aspida/node-fetch @aspida/react-query @aspida/swr pathpida"
+    "upgrade-frourio": "npx ncu frourio frourio-express aspida @aspida/axios @aspida/fetch @aspida/node-fetch @aspida/react-query @aspida/swr pathpida -u"
   },
   "dependencies": {
     "@aspida/axios": "^1.7.1",
