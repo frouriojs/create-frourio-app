@@ -5,9 +5,10 @@ import { useQueryClient } from 'react-query'
 import { useAspidaQuery } from '@aspida/react-query'<% } %>
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
-import UserBanner from '~/components/UserBanner'
 import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 import type { FormEvent, ChangeEvent } from 'react'
+import Layout from '~/components/Layout'
+import type { NextPage } from 'next'
 
 const Home = () => {
   <% if (reactHooks === 'swr') { %>const { data: tasks, error, mutate } = useAspidaSWR(apiClient.tasks)<% } else if (reactHooks === 'query') { %>const queryClient = useQueryClient()
@@ -56,60 +57,44 @@ const Home = () => {
   if (!tasks) return <div>loading...</div>
 
   return (
-    <div className={styles.container}>
+    <Layout>
       <Head>
         <title>frourio-todo-app</title>
-        <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <main className={styles.main}>
-        <UserBanner />
+      <h1 className={styles.title}>
+        Welcome to <a href="https://nextjs.org">Next.js!</a>
+      </h1>
 
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <p className={styles.description}>frourio-todo-app</p>
 
-        <p className={styles.description}>frourio-todo-app</p>
-
-        <div>
-          <form style={{ textAlign: 'center' }} onSubmit={createTask}>
-            <input value={label} type="text" onChange={inputLabel} />
-            <input type="submit" value="ADD" />
-          </form>
-          <ul className={styles.tasks}>
-            {tasks.map((task) => (
-              <li key={task.id}>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={task.done}
-                    onChange={() => toggleDone(task)}
-                  />
-                  <span>{task.label}</span>
-                </label>
+      <div>
+        <form style={{ textAlign: 'center' }} onSubmit={createTask}>
+          <input value={label} type="text" onChange={inputLabel} />
+          <input type="submit" value="ADD" />
+        </form>
+        <ul className={styles.tasks}>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              <label>
                 <input
-                  type="button"
-                  value="DELETE"
-                  style={{ float: 'right' }}
-                  onClick={() => deleteTask(task)}
+                  type="checkbox"
+                  checked={task.done}
+                  onChange={() => toggleDone(task)}
                 />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+                <span>{task.label}</span>
+              </label>
+              <input
+                type="button"
+                value="DELETE"
+                style={{ float: 'right' }}
+                onClick={() => deleteTask(task)}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Layout>
   )
 }
 

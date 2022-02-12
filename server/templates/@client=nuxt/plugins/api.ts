@@ -3,7 +3,7 @@ import { Plugin } from '@nuxt/types'
 import nodeFetch from 'node-fetch'
 import aspidaFetch from '@aspida/fetch'
 import aspidaNodeFetch from '@aspida/node-fetch'<% } %>
-import api from '~/server/api/$api'
+import api from '$/api/$api'
 <% if (aspida === 'axios') { %>
 const createInstance = (axios: any) =>
   api(aspida(axios))

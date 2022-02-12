@@ -1,6 +1,8 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
 import Home from '@/pages/index.vue'
+import Logo from '@/components/Logo.vue'
+import UserBanner from '@/components/UserBanner.vue'
 import api from '$/api/$api'
 
 const apiClient = api(aspida())
