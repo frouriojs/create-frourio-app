@@ -108,6 +108,7 @@ export default Vue.extend({
   position: fixed;
   align-items: center;
 }
+
 .navs {
   display: flex;
   justify-content: center;

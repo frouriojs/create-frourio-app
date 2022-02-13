@@ -80,6 +80,7 @@ export default Vue.extend({
 .article {
   margin-top: 10px;
 }
+
 .article > a {
   text-decoration: none;
   color: black;

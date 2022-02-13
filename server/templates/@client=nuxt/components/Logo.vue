@@ -40,6 +40,7 @@ export default Vue.extend()
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
