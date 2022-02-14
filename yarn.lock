@@ -3606,10 +3606,10 @@ fresh@0.5.2:
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
 
-frourio@^0.25.1:
-  version "0.25.1"
-  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.25.1.tgz#e63cebc03b8c2be70426031acc61873dfff02c60"
-  integrity sha512-ycV09xK6/kssWVjXRBszMe+j69fR/bt3S4u/TKEv5mjyMlEteKkUypQHL/bUOL1IJL//alOXlbPNvAmqkCBHQA==
+frourio@^0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.26.0.tgz#7acddd415897cb67c1e63ea07badd498b2c5f873"
+  integrity sha512-XV98byPHCXqznvnIQVd9KV2a6X0cYtToJl4gv4TPLC/NAwvsSaExWd0UTIGZ2e8zuT2gJ2OSpH/nvA6qXX3rJw==
   dependencies:
     aspida "^1.7.1"
     velona "^0.7.0"
