@@ -116,8 +116,9 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - run: yarn build
       - run: |
-          VERSION="$(node -e 'console.log(process.argv[1].match(/^refs\/tag\/v(\d+\.\d+\.\d+)$/)[1])' "${{ github.refs }}")"
-          node -e 'console.log(JSON.stringify({...require("./package.json"),version:process.argv[1]}, null, 2))' "$VERSION" > ./package.json
+          VERSION="$(node -e 'console.log(process.argv[1].match(/^refs\/tags\/v(\d+\.\d+\.\d+)$/)[1])' "${{ github.ref }}")"
+          node -e 'console.log(JSON.stringify({...require("./package.json"),version:process.argv[1]}, null, 2))' "$VERSION" | tee ./tmp-package.json
+          mv ./tmp-package.json ./package.json
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
