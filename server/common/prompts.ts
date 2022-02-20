@@ -373,8 +373,8 @@ export const cfaPrompts: Prompt[] = [
         name: 'Serverless',
         value: 'serverless',
         disabled: (ans) => {
-          if (ans.server === 'express') {
-            return { en: 'Preparing to support Express' }
+          if (ans.server === 'fastify') {
+            return { en: 'Fastify does not benefit for serverless environment' }
           }
           if (ans.orm === 'typeorm') {
             return { en: 'Preparing to support TypeORM' }

@@ -33,4 +33,5 @@ yarn-error.log*
 # server
 server/**/$*.ts
 server/index.js
+server/pretense/yarn.lock
 !server/templates/**/node_modules
