@@ -1,6 +1,5 @@
-import { useCallback, <% if (reactHooks === 'none') { %>useEffect, <% } %>useState } from 'react'<% if (reactHooks === 'swr') { %>
+<% if (reactHooks !== 'query') { %>import { useCallback, <% if (reactHooks === 'none') { %>useEffect, <% } %>useState } from 'react'<% } %><% if (reactHooks === 'swr') { %>
 import useAspidaSWR from '@aspida/swr'<% } else if (reactHooks === 'query') { %>
-import { useQueryClient } from 'react-query'
 import { useAspidaQuery } from '@aspida/react-query'<% } else if (reactHooks === 'none') { %>
 import type { ArticleInfo } from '$/service/article'<% } %>
 import { NextPage } from 'next'
@@ -21,7 +20,7 @@ const ArticleList: NextPage = () => {
   const search = query.search ? query.search.trim() : ''
   <% if (reactHooks === 'swr') { %>const { data: articleList } = useAspidaSWR(apiClient.article, {
     query: { search }
-  })<% } else if (reactHooks === 'query') { %>const queryClient = useQueryClient()
+  })<% } else if (reactHooks === 'query') { %>
   const { data: articleList } = useAspidaQuery(apiClient.article, {
     query: { search }
   })<% } if (reactHooks === 'none') { %>const [articleList, setArticleList] = useState<ArticleInfo[] | undefined>(undefined)
