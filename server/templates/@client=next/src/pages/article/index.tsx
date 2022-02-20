@@ -22,7 +22,7 @@ const ArticleList: NextPage = () => {
   <% if (reactHooks === 'swr') { %>const { data: articleList } = useAspidaSWR(apiClient.article, {
     query: { search }
   })<% } else if (reactHooks === 'query') { %>const queryClient = useQueryClient()
-  const { data: tasks } = useAspidaQuery(apiClient.article, {
+  const { data: articleList } = useAspidaQuery(apiClient.article, {
     query: { search }
   })<% } if (reactHooks === 'none') { %>const [articleList, setArticleList] = useState<ArticleInfo[] | undefined>(undefined)
 
@@ -31,7 +31,9 @@ const ArticleList: NextPage = () => {
     apiClient.article.$get({ query: { search } }).then((articleList) => {
       if (!canceled) setArticleList(articleList)
     })
-    return () => canceled = true
+    return () => {
+      canceled = true
+    }
   }, [search])
 <% } %>
   return (
