@@ -10,7 +10,7 @@ import type { FormEvent, ChangeEvent } from 'react'
 import Layout from '~/components/Layout'
 import type { NextPage } from 'next'
 
-const Home = () => {
+const Home: NextPage = () => {
   <% if (reactHooks === 'swr') { %>const { data: tasks, error, mutate } = useAspidaSWR(apiClient.tasks)<% } else if (reactHooks === 'query') { %>const queryClient = useQueryClient()
   const { data: tasks, error } = useAspidaQuery(apiClient.tasks)<% } else { %>const [tasks, setTasks] = useState<Task[] | undefined>(undefined)<% } %>
   const [label, setLabel] = useState('')
