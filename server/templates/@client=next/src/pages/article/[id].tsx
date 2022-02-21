@@ -1,6 +1,6 @@
 import { ArticleInfo } from '$/service/article'
 import { GetServerSideProps } from 'next'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import React from 'react'
 import Layout from '~/components/Layout'

@@ -5,7 +5,7 @@ import type { UserInfo } from '$/types'
 import type { ChangeEvent } from 'react'
 import Link from 'next/link'
 import { pagesPath } from '~/utils/$path'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 
 const UserBanner = () => {
   const router = useRouter()

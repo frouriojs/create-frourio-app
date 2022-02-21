@@ -3,7 +3,7 @@ import useAspidaSWR from '@aspida/swr'<% } else if (reactHooks === 'query') { %>
 import { useAspidaQuery } from '@aspida/react-query'<% } else if (reactHooks === 'none') { %>
 import type { ArticleInfo } from '$/service/article'<% } %>
 import { NextPage } from 'next'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '~/components/Layout'
