@@ -1,10 +1,14 @@
 import { ArticleInfo } from '$/service/article'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import React from 'react'
 import Layout from '~/components/Layout'
 import { apiClient } from '~/utils/apiClient'
+
+interface Prop {
+  article: ArticleInfo;
+}
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params || {}
@@ -14,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return { props: { article } }
 }
 
-const Article = ({ article }: { article: ArticleInfo }) => {
+const Article: NextPage<Prop> = ({ article }) => {
   const router = useRouter()
   if (router.isFallback) {
     return <div>Loading...</div>

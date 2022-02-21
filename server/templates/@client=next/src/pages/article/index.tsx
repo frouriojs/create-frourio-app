@@ -50,13 +50,24 @@ const ArticleList: NextPage = () => {
               </span>
             )}
             <ul>
-              {articleList.map((article) => (
+              <% if (building === 'basic') { %>{articleList.map((article) => (
                 <li key={article.id}>
                   <Link href={pagesPath.article._id(article.id).$url()}>
                     {article.title}
                   </Link>
                 </li>
-              ))}
+              ))}<% } else if (building === 'static') { %>
+              {articleList.map((article) => (
+                <li key={article.id}>
+                  <Link
+                    href={pagesPath.article.entry.$url({
+                      query: { id: article.id }
+                    })}
+                  >
+                    {article.title}
+                  </Link>
+                </li>
+              ))}<% } %>
             </ul>
           </>
         ) : (
