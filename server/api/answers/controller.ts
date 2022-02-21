@@ -7,7 +7,7 @@ import { getClientPort, getServerPort } from '$/service/getServerPort'
 import open from 'open'
 
 export default defineController(({ appendLogging, clientReady }) => ({
-  get: () => ({ status: 200, body: getAnswers() }),
+  get: ({ dir }) => ({ status: 200, body: getAnswers(dir) }),
   patch: ({ body }) => {
     if (getStatus() !== 'waiting') return { status: 204 }
     const s = new stream.Writable({
