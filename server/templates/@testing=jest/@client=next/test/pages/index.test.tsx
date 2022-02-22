@@ -1,13 +1,10 @@
-import React from 'react'<% if (reactHooks === 'swr') { %>
-import { SWRConfig } from 'swr'<% } else if (reactHooks === 'none') { %>
-import { render, fireEvent } from '@testing-library/react'<% } %>
 import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
 import cors from 'fastify-cors'
-import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
+import aspida from '@aspida/<%= aspida === "axios" ? "axios" : "node-fetch" %>'
 import api from '$/api/$api'
 import Home from '~/pages/index'
-import { render, fireEvent, waitFor } from '../testUtils'
+import { render, fireEvent, waitFor } from '<%= reactHooks === "none" ? "@testing-library/react" : "../testUtils" %>'
 
 dotenv.config({ path: 'server/.env' })
 
@@ -38,9 +35,8 @@ beforeAll(() => {
 afterAll(() => fastify.close())
 
 describe('Home page', () => {
-  it('shows tasks', async () => {<% if (reactHooks === 'swr') { %>
-    const { asFragment, findByText } = render(<SWRConfig value={{ provider: () => new Map() }}><Home /></SWRConfig>, {})<% } else { %>
-    const { asFragment, findByText } = render(<Home />, {})<% } %>
+  it('shows tasks', async () => {
+    const { findByText } = render(<Home />)
 
     await waitFor(
       async () => {
@@ -52,9 +48,8 @@ describe('Home page', () => {
     expect(await findByText('bar task')).toBeTruthy()
   })
 
-  it('clicking button triggers prompt', async () => {<% if (reactHooks === 'swr') { %>
-    const { findByText } = render(<SWRConfig value={{ provider: () => new Map() }}><Home /></SWRConfig>, {})<% } else { %>
-    const { findByText } = render(<Home />, {})<% } %>
+  it('clicking button triggers prompt', async () => {
+    const { findByText } = render(<Home />)
 
     window.prompt = jest.fn()
     window.alert = jest.fn()
