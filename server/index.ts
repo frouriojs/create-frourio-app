@@ -6,17 +6,14 @@ import { getPortPromise } from 'portfinder'
 import server from './$server'
 import { cliMigration, updateAnswers } from '$/service/answers'
 import FastifyWebsocket from 'fastify-websocket'
+import FastifyInject from './plugins/fastify-inject'
 import stream from 'stream'
 import metaInfo from '../package.json'
 import { Command } from 'commander'
 
-declare module 'fastify' {
-  interface FastifyInstance {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    appendLogging: (data: any) => void
-    clientReady: () => void
-  }
-}
+const dirDefault = 'my-frourio-app'
+
+declare module 'fastify' {}
 
 const program = new Command()
 
@@ -25,10 +22,13 @@ program.version(`v${metaInfo.version}`, '-v')
 program.option('-p, --port <char>', '', '3000')
 program.option('--host <char>', '', 'localhost')
 program.option('--answers <char>')
+program.argument('[dir]', 'project directory name', dirDefault)
+program.allowExcessArguments(false)
 
 program.parse()
 
 const options = program.opts()
+const dir = program.args[0] || dirDefault
 
 let port: number = options.port
 const host: string = options.host
@@ -61,17 +61,16 @@ const basePath = '/api'
 
   const fastify = Fastify()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fastify.decorate('appendLogging', (data: any) => {
-    logging.push(data)
-  })
-  fastify.decorate('clientReady', () => {
-    ready.push('ready')
-  })
   fastify.register(FastifyStatic, {
     root: path.join(__dirname, '../out')
   })
+  fastify.register(FastifyInject, {
+    dir,
+    logging,
+    ready
+  })
   if (process.env.NODE_ENV === 'development') {
-    await fastify
+    fastify
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       .register(require('fastify-nextjs'), {
         dev: true,

@@ -191,8 +191,8 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 }
 
-export const getAnswers = () => ({
-  dir: process.argv[2],
+export const getAnswers = (dir: string) => ({
+  dir,
   ...db.answers
 })
 
