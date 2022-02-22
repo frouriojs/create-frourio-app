@@ -76,7 +76,7 @@
     "@types/jest": "^27.4.0",
     "@types/jest-expect-message": "^1.0.3",
     "@types/mkdirp": "^1.0.2",
-    "@types/node": "^17.0.17",
+    "@types/node": "^17.0.19",
     "@types/object-hash": "^2.2.1",
     "@types/ora": "^3.2.0",
     "@types/pg": "^8.6.4",
