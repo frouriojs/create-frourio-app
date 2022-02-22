@@ -6,8 +6,8 @@ import Fastify, { FastifyInstance } from 'fastify'
 import cors from 'fastify-cors'
 import aspida from '@aspida/<%= aspida === 'axios' ? 'axios' : 'node-fetch' %>'
 import api from '$/api/$api'
-import Home from '~/pages/index'<% if (reactHooks !== 'none') { %>
-import { render, fireEvent } from '../testUtils'<% } %>
+import Home from '~/pages/index'
+import { render, fireEvent, waitFor } from '../testUtils'
 
 dotenv.config({ path: 'server/.env' })
 
@@ -38,10 +38,16 @@ beforeAll(() => {
 afterAll(() => fastify.close())
 
 describe('Home page', () => {
-  it('matches snapshot', async () => {<% if (reactHooks === 'swr') { %>
+  it('shows tasks', async () => {<% if (reactHooks === 'swr') { %>
     const { asFragment, findByText } = render(<SWRConfig value={{ provider: () => new Map() }}><Home /></SWRConfig>, {})<% } else { %>
     const { asFragment, findByText } = render(<Home />, {})<% } %>
 
+    await waitFor(
+      async () => {
+        await findByText('foo task')
+      },
+      { timeout: 5000 }
+    )
     expect(await findByText('foo task')).toBeTruthy()
     expect(await findByText('bar task')).toBeTruthy()
   })
@@ -53,6 +59,12 @@ describe('Home page', () => {
     window.prompt = jest.fn()
     window.alert = jest.fn()
 
+    await waitFor(
+      async () => {
+        await findByText('LOGIN')
+      },
+      { timeout: 5000 }
+    )
     fireEvent.click(await findByText('LOGIN'))
     expect(window.prompt).toHaveBeenCalledWith(
       'Enter the user id (See server/.env)'
