@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.32.0](https://github.com/frouriojs/create-frourio-app/compare/v0.31.0...v0.32.0) (2022-02-22)
+
+
+### Features
+
+* Add pathpida to nextjs template (https://github.com/frouriojs/create-frourio-app/pull/296)
+
+## [0.31.0](https://github.com/frouriojs/create-frourio-app/compare/v0.30.0...v0.31.0) (2022-02-15)
+
+
+### Features
+
+* feat: update aws-serverless-experss to @vendia/serverless-express and switching lambda support from fastify to express (https://github.com/frouriojs/create-frourio-app/pull/306)
+
 ## [0.30.0](https://github.com/frouriojs/create-frourio-app/compare/v0.29.0...v0.30.0) (2022-02-09)
 
 
