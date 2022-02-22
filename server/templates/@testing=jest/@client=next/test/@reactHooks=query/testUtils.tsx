@@ -2,7 +2,6 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-// eslint-disable-next-line react/prop-types
 const Providers: React.FC = ({ children }) => {
   const queryClient = new QueryClient()
   return (
