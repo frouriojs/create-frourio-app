@@ -42,8 +42,8 @@ describe('Home page', () => {
     const { asFragment, findByText } = render(<SWRConfig value={{ provider: () => new Map() }}><Home /></SWRConfig>, {})<% } else { %>
     const { asFragment, findByText } = render(<Home />, {})<% } %>
 
-    await findByText('foo task')
-    expect(asFragment()).toMatchSnapshot()
+    expect(await findByText('foo task')).toBeTruthy()
+    expect(await findByText('bar task')).toBeTruthy()
   })
 
   it('clicking button triggers prompt', async () => {<% if (reactHooks === 'swr') { %>
