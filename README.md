@@ -20,7 +20,7 @@
 <br />
 
 <div align="center">
-  <img src="https://frouriojs.github.io/create-frourio-app/assets/images/desktop.png" alt="frourio" />
+  <img src="https://github.com/frouriojs/create-frourio-app/raw/main/docs/assets/images/desktop.png" alt="frourio" />
 </div>
 <br />
 <br />
