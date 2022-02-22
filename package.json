@@ -68,7 +68,7 @@
     "react-markdown": "^8.0.0",
     "react-query": "^3.12.0",
     "real-executable-path": "^3.0.0",
-    "swr": "^1.2.1"
+    "swr": "^1.2.2"
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.2",
