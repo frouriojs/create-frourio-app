@@ -80,7 +80,9 @@ const basePath = '/api'
           }
         }
       })
-    ;(fastify as any).next('/')
+      .after(() => {
+        ;(fastify as any).next('/')
+      })
   }
 
   fastify.register(FastifyWebsocket)
