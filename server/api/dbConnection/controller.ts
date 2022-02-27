@@ -69,7 +69,7 @@ export default defineController(() => ({
     } catch (e) {
       return {
         status: 200,
-        body: { enabled: false, err: e.message }
+        body: { enabled: false, err: e instanceof Error ? e.message : '' }
       }
     }
   }
