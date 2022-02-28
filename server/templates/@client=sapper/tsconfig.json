@@ -4,7 +4,6 @@
 			"lib": ["DOM", "ES2017", "WebWorker"],
 			"experimentalDecorators": true,
 			"emitDecoratorMetadata": true,
-			"preserveValueImports": false,
 			"importsNotUsedAsValues": "remove",
 			"skipLibCheck": true,
 			"strictNullChecks": true<% if (testing === 'jest') { %>,

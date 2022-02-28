@@ -8,6 +8,8 @@ import { cliMigration, updateAnswers } from '$/service/answers'
 import FastifyWebsocket from 'fastify-websocket'
 import FastifyInject from './plugins/fastify-inject'
 import stream from 'stream'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import metaInfo from '../package.json'
 import { Command } from 'commander'
 
@@ -80,7 +82,9 @@ const basePath = '/api'
           }
         }
       })
-    ;(fastify as any).next('/')
+      .after(() => {
+        ;(fastify as any).next('/')
+      })
   }
 
   fastify.register(FastifyWebsocket)
