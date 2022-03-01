@@ -2847,10 +2847,10 @@ fastify-warning@^0.2.0:
   resolved "https://registry.yarnpkg.com/fastify-warning/-/fastify-warning-0.2.0.tgz#e717776026a4493dc9a2befa44db6d17f618008f"
   integrity sha512-s1EQguBw/9qtc1p/WTY4eq9WMRIACkj+HTcOIK1in4MV5aFaQC9ZCIt0dJ7pr5bIf4lPpHvAtP2ywpTNgs7hqw==
 
-fastify-websocket@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/fastify-websocket/-/fastify-websocket-4.0.0.tgz#7d22e0fbd15cf64628b3fb77010f65e4880942b5"
-  integrity sha512-XeeE2r4SkkLBp83NZ3BKCEdR6KFPEtiiIAUrvJhsvLJFRCV6BCnF5ZdchZ6ghPQ5rJ1VwcWlajuXHlQWwXX/YQ==
+fastify-websocket@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/fastify-websocket/-/fastify-websocket-4.1.0.tgz#a2a8e02bfcf495a0e7e6529297df907eb5b1d89d"
+  integrity sha512-bchhU0W8VeGH1QoE/6h27WqoTb5tjkrEP8n/6Mbt+JCLAjN4TqmzwEq+OoLQT0h7TtVXMD75Rkji4OnMXKG61Q==
   dependencies:
     fastify-plugin "^3.0.0"
     ws "^8.0.0"
