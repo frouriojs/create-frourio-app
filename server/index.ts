@@ -66,7 +66,7 @@ const basePath = '/api'
   fastify.register(FastifyStatic, {
     root: path.join(__dirname, '../out')
   })
-  fastify.register(FastifyInject, {
+  await fastify.register(FastifyInject, {
     dir,
     logging,
     ready
