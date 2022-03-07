@@ -82,6 +82,7 @@ jobs:
         with:
           path: "node_modules"
           key: ${{ runner.os }}-node-v${{ matrix.node-version }}-yarn-${{ hashFiles('yarn.lock') }}-3
+      - run: echo 'network-timeout 1000000' >> ~/.yarnrc
       - run: yarn --frozen-lockfile --network-timeout 1000000
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - run: yarn build
@@ -112,6 +113,7 @@ jobs:
         with:
           path: "node_modules"
           key: ${{ runner.os }}-node-v14-yarn-${{ hashFiles('yarn.lock') }}
+      - run: echo 'network-timeout 1000000' >> ~/.yarnrc
       - run: yarn --frozen-lockfile --network-timeout 1000000
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - run: yarn build
