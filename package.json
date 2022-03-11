@@ -66,7 +66,7 @@
     "react-dom": "^17.0.2",
     "react-flip-toolkit": "^7.0.13",
     "react-markdown": "^8.0.0",
-    "react-query": "^3.12.0",
+    "react-query": "^3.34.16",
     "real-executable-path": "^3.0.0",
     "swr": "^1.2.2"
   },
