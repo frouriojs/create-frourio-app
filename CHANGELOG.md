@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.32.3](https://github.com/frouriojs/create-frourio-app/compare/v0.32.2...v0.32.3) (2022-03-22)
+
+
+### Bug Fixes
+
+- upgrade frourio and others (https://github.com/frouriojs/create-frourio-app/pull/339)
+
+## [0.32.2](https://github.com/frouriojs/create-frourio-app/compare/v0.32.1...v0.32.2) (2022-03-07)
+
+
+### Bug Fixes
+
+- fix: add await FastifyInject (https://github.com/frouriojs/create-frourio-app/pull/333)
+
+## [0.32.1](https://github.com/frouriojs/create-frourio-app/compare/v0.32.0...v0.32.1) (2022-02-28)
+
+
+### Maintenance
+
+- upgrade frourio and others (https://github.com/frouriojs/create-frourio-app/pull/324)
+- upgrade typescript (https://github.com/frouriojs/create-frourio-app/pull/323)
+
 ## [0.32.0](https://github.com/frouriojs/create-frourio-app/compare/v0.31.0...v0.32.0) (2022-02-22)
 
 
