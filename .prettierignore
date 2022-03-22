@@ -1,2 +1,5 @@
 server/templates
+/build
+/lib
+/server/build
 $*.ts

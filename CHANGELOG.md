@@ -2,12 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [0.32.3](https://github.com/frouriojs/create-frourio-app/compare/v0.32.2...v0.32.3) (2022-03-22)
+## [0.32.3](https://github.com/frouriojs/create-frourio-app/compare/v0.32.2...v0.32.3) (2022-03-23)
 
 
 ### Bug Fixes
 
 - upgrade frourio and others (https://github.com/frouriojs/create-frourio-app/pull/339)
+
+### Maintenance
+
+- chore: replace builder with esbuild and output libs (https://github.com/frouriojs/create-frourio-app/pull/341)
+
 
 ## [0.32.2](https://github.com/frouriojs/create-frourio-app/compare/v0.32.1...v0.32.2) (2022-03-07)
 
