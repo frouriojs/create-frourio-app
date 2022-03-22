@@ -2,6 +2,7 @@ node_modules
 .next
 dist
 out
+$*.ts
 server/migration
 server/index.js
 server/lambda.js
