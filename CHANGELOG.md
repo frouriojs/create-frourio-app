@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.32.4](https://github.com/frouriojs/create-frourio-app/compare/v0.32.3...v0.32.4) (2022-03-23)
+
+
+### Bug Fixes
+
+- fix: template path (https://github.com/frouriojs/create-frourio-app/pull/339)
+
 ## [0.32.3](https://github.com/frouriojs/create-frourio-app/compare/v0.32.2...v0.32.3) (2022-03-23)
 
 
