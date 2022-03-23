@@ -37,7 +37,7 @@
     "bin",
     "lib",
     "out",
-    "server/index.js",
+    "server/build/index.js",
     "server/templates"
   ],
   "keywords": [
