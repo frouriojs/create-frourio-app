@@ -15,9 +15,13 @@ import {
   initPrompts,
   isAnswersValid
 } from '$/common/prompts'
-import { shellEscapeSingleInput } from '$/utils/shell/escape'
+import {
+  cmdEscapeSingleInput,
+  shellEscapeSingleInput
+} from '$/utils/shell/escape'
 import { ServerStatus } from '~/server/api/status'
 import { LocalPathInfo } from '~/server/api/localPath'
+import CommandInput from '~/components/command-input'
 
 const Credits = () => {
   return (
@@ -218,12 +222,11 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
               )
           )}
         </div>
-        {process.env.NODE_ENV === 'development' && (
+        {(!useServer || process.env.NODE_ENV === 'development') && (
           <Flipped flipId="manual-install" stagger>
             <div className={questionStyles.ctrls}>
-              <input
-                style={{ width: '100%' }}
-                type="text"
+              <h4>Shell</h4>
+              <CommandInput
                 value={
                   answers &&
                   `${
@@ -236,7 +239,19 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
                     JSON.stringify(answers)
                   )}`
                 }
-                readOnly
+              />
+              <h4>CMD</h4>
+              <CommandInput
+                value={
+                  answers &&
+                  `${
+                    process.env.NODE_ENV === 'development'
+                      ? 'node ./bin/index.js'
+                      : answers.pm === 'yarn'
+                      ? 'yarn create frourio-app'
+                      : 'npm init frourio-app'
+                  } --answers ${cmdEscapeSingleInput(JSON.stringify(answers))}`
+                }
               />
             </div>
           </Flipped>

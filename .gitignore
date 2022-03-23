@@ -14,6 +14,8 @@ node_modules
 
 # production
 /build
+/lib
+/server/build
 
 # misc
 .DS_Store
@@ -32,6 +34,5 @@ yarn-error.log*
 
 # server
 server/**/$*.ts
-server/index.js
 server/pretense/yarn.lock
 !server/templates/**/node_modules

@@ -1,11 +1,19 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "ES2019"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "ES2019"
+    ],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"],
-      "$/*": ["./server/*"]
+      "~/*": [
+        "./*"
+      ],
+      "$/*": [
+        "./server/*"
+      ]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,8 +28,16 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
-  "exclude": ["node_modules", "server"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": [
+    "node_modules",
+    "server"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
