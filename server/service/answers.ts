@@ -147,7 +147,7 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
       clientPort: await getClientPort(),
       serverPort: await getServerPort()
     },
-    __dirname
+    path.resolve(__dirname, '..')
   )
 
   await completed(allAnswers, s)
