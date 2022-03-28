@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+
+## [0.32.5](https://github.com/frouriojs/create-frourio-app/compare/v0.32.4...v0.32.5) (2022-03-28)
+
+### Bug Fixes
+
+
+fix: fix how getting the version to show for `-v` (https://github.com/frouriojs/create-frourio-app/pull/345)
+
 ## [0.32.4](https://github.com/frouriojs/create-frourio-app/compare/v0.32.3...v0.32.4) (2022-03-23)
 
 
