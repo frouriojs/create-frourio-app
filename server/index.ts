@@ -8,10 +8,8 @@ import { cliMigration, updateAnswers } from '$/service/answers'
 import FastifyWebsocket from 'fastify-websocket'
 import FastifyInject from './plugins/fastify-inject'
 import stream from 'stream'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import metaInfo from '../package.json'
 import { Command } from 'commander'
+const manifest = [require][0]('../../package.json')
 
 const dirDefault = 'my-frourio-app'
 
@@ -19,8 +17,8 @@ declare module 'fastify' {}
 
 const program = new Command()
 
-program.name(`${metaInfo.name}`)
-program.version(`v${metaInfo.version}`, '-v')
+program.name(`${manifest.name}`)
+program.version(`v${manifest.version}`, '-v')
 program.option('-p, --port <char>', '', '3000')
 program.option('--host <char>', '', 'localhost')
 program.option('--answers <char>')
