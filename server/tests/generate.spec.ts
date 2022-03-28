@@ -199,6 +199,9 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       // npm/yarn install:client
       await npmInstall(dir, npmClientPath, process.stdout)
 
+      // npm/yarn install:server
+      await npmInstall(serverDir, npmClientPath, process.stdout)
+
       // eslint
       await execFileAsync(npmClientPath, ['run', 'lint:fix'], {
         cwd: dir
@@ -211,9 +214,6 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
       // rename node_modules → node_modules_ignore
       await fs.promises.rename(nodeModulesDir, nodeModulesIgnoreDir)
-
-      // npm/yarn install:server
-      await npmInstall(serverDir, npmClientPath, process.stdout)
 
       // build:server
       await execFileAsync(npmClientPath, ['run', 'build:server'], {
