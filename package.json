@@ -46,7 +46,7 @@
   ],
   "dependencies": {
     "@aspida/axios": "^1.8.0",
-    "@aspida/swr": "^1.8.0",
+    "@aspida/swr": "^1.9.1",
     "ansi_up": "^5.1.0",
     "axios": "^0.26.0",
     "commander": "^9.0.0",
