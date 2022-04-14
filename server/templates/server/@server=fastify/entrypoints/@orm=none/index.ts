@@ -4,6 +4,7 @@ import helmet from 'fastify-helmet'
 import cors from 'fastify-cors'
 import fastifyStatic from 'fastify-static'
 import fastifyJwt from 'fastify-jwt'
+import qs from 'qs'
 import { createDBFileIfNotExists } from '$/service/tasks'
 import {
   API_JWT_SECRET,
@@ -13,7 +14,7 @@ import {
 } from '$/service/envValues'
 import server from '$/$server'
 
-const fastify = Fastify()
+const fastify = Fastify({ querystringParser: qs.parse })
 
 fastify.register(helmet)
 fastify.register(cors)
