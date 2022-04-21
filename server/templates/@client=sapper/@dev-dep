@@ -22,7 +22,7 @@ eslint-config-standard
 eslint-plugin-import
 eslint-plugin-node
 eslint-plugin-promise
-npm-run-all
+notios
 prettier
 rollup
 rollup-plugin-svelte

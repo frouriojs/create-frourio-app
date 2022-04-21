@@ -14,7 +14,7 @@ eslint-config-prettier
 eslint-plugin-nuxt
 husky
 lint-staged
-npm-run-all
+notios
 prettier
 stylelint
 stylelint-config-prettier

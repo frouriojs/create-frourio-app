@@ -1,5 +1,5 @@
 cross-env
-npm-run-all
+notios
 ts-loader
 ts-node
 typescript
