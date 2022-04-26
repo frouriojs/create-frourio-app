@@ -1,6 +1,7 @@
+import type { DefineMethods } from 'aspida'
 import { Answers } from '$/common/prompts'
 
-export type Methods = {
+export type Methods = DefineMethods<{
   get: {
     resBody: Answers
   }
@@ -9,4 +10,4 @@ export type Methods = {
     reqBody: Answers
     status: 204
   }
-}
+}>

@@ -1,6 +1,7 @@
+import type { DefineMethods } from "aspida";
 import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 
-export type Methods = {
+export type Methods = DefineMethods<{
   patch: {
     reqBody: Partial<Pick<Task, 'label' | 'done'>>
     status: 204
@@ -8,4 +9,4 @@ export type Methods = {
   delete: {
     status: 204
   }
-}
+}>
