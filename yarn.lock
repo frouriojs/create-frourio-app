@@ -9,17 +9,17 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@aspida/axios@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@aspida/axios/-/axios-1.8.0.tgz#89645a724d533a88a17a177aa7af380e2c3ee328"
-  integrity sha512-FHv6wqmRWLutj98tmJPw3wmOBQN4qP6euhhoCWLwoopAv0clk8L7ZQLcFi3abtI6dSzGArKQBgT4Y/us5Ibn4A==
+"@aspida/axios@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@aspida/axios/-/axios-1.10.0.tgz#6acaa452e81a0dc0de96a1cbdeaa5dacbeb15e79"
+  integrity sha512-ILKktboJrPz+MCOGjN/tQYxbVKiLqlPyxX/D9ivGjUNlXYvh2kiuW8trHv95JgrsZObNqwGNNQ0DUGQMK0UEQA==
   dependencies:
     aspida "^1.7.1"
 
-"@aspida/swr@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@aspida/swr/-/swr-1.8.0.tgz#74ef9cf4db12764e150f8207057de7c38b91eabc"
-  integrity sha512-JUjp6+TnWEcrjrZPTxLH1v/KRzH7ENIeqBDd5bqrF88lnTVhB3TE4w9AaPNv7Rfiu93JeJudmcKKE7MwNS/P0A==
+"@aspida/swr@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@aspida/swr/-/swr-1.10.0.tgz#ec658b67e8beabee160b6d192351d25b08003e98"
+  integrity sha512-w/PKj7P9nAod7IzEJk1+a75sOpcjvPCYe9Jvw8F4ap4pHos/CglqT6jttdNZtF6tdbpSS34kPk5AEy0GJ4UuWA==
   dependencies:
     aspida "^1.7.1"
 
@@ -1470,7 +1470,17 @@ arrify@^1.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
-aspida@^1.7.1, aspida@^1.8.0:
+aspida@^1.10.0, aspida@^1.9.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.10.0.tgz#b94a1af7290e4ad2f41a17417890fad82e7d3dee"
+  integrity sha512-kEbHYF7/fTK3jF/hJ+YeTg0/EV23Riel67/EvE405ITvISzEfd2Jg+7fWCl3O7E5OVaqftP1mIucgk8PdYQGZQ==
+  dependencies:
+    "@types/minimist" "^1.2.2"
+    chokidar "^3.5.1"
+    form-data "^4.0.0"
+    minimist "^1.2.5"
+
+aspida@^1.7.1:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.8.0.tgz#05a4419efd728c08b4fae1c80ae9688653c4b51a"
   integrity sha512-7LKdtVtsOnYxFdxRy/RKZ9ujVPSFo1XmpEm6kJhDm6Ea5aDuAwd3SZOXBOYFn/Giq61Xk/DxK5Z/CmoL/VUPvg==
@@ -3184,12 +3194,12 @@ fresh@0.5.2:
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
 
-frourio@^0.27.1:
-  version "0.27.1"
-  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.27.1.tgz#f1814289f39d8132fa31f733c59332708a64126c"
-  integrity sha512-3x7HGXBZuIW0ueg8c8+ja5rWNK7gMojqubDJVbOoI3VqU4YbMo5VvlyMSvqzystD6tosY7ryH2ZBe26hwa/gZg==
+frourio@^0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.28.0.tgz#8d1c34dda3fb36ea9ebc101c8be79357ae1e0b69"
+  integrity sha512-jXugG8QUDggSohYjzJ5dpTgTSoJSop0hqi/43YocE+zpcnLDX5SnwuNhd+5G2/rCnP0vLEjJoZJvfNFI6mEtHA==
   dependencies:
-    aspida "^1.8.0"
+    aspida "^1.9.0"
     velona "^0.7.0"
 
 fs-access@^1.0.1:

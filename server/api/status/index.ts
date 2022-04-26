@@ -1,3 +1,4 @@
+import type { DefineMethods } from 'aspida'
 import { STATUS } from '$/common/types'
 
 export type ServerStatus = {
@@ -6,8 +7,8 @@ export type ServerStatus = {
   clientPort: number
 }
 
-export type Methods = {
+export type Methods = DefineMethods<{
   get: {
     resBody: ServerStatus
   }
-}
+}>

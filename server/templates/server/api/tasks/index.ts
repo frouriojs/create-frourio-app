@@ -1,6 +1,7 @@
+import type { DefineMethods } from "aspida";
 import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
 
-export type Methods = {
+export type Methods = DefineMethods<{
   get: {
     query?: {
       limit?: number<% if (testing !== 'none') { %>
@@ -13,4 +14,4 @@ export type Methods = {
     reqBody: Pick<Task, 'label'>
     resBody: Task
   }
-}
+}>
