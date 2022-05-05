@@ -9,6 +9,7 @@ import {
 
 export const init = () => {
   const app = express()
+  app.set('query parser', 'single')
   app.use(helmet())
   app.use(cors())
   server(app, {basePath: API_BASE_PATH})
