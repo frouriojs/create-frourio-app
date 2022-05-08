@@ -1,9 +1,9 @@
 import path from 'path'
 import Fastify from 'fastify'
-import helmet from 'fastify-helmet'
-import cors from 'fastify-cors'
-import fastifyStatic from 'fastify-static'
-import fastifyJwt from 'fastify-jwt'
+import helmet from '@fastify/helmet'
+import cors from '@fastify/cors'
+import fastifyStatic from '@fastify/static'
+import fastifyJwt from '@fastify/jwt'
 import { createDBFileIfNotExists } from '$/service/tasks'
 import {
   API_JWT_SECRET,

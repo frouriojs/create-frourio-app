@@ -1,11 +1,11 @@
 import path from 'path'
 import Fastify from 'fastify'
-import FastifyStatic from 'fastify-static'
+import FastifyStatic from '@fastify/static'
 import open from 'open'
 import { getPortPromise } from 'portfinder'
 import server from './$server'
 import { cliMigration, updateAnswers } from '$/service/answers'
-import FastifyWebsocket from 'fastify-websocket'
+import FastifyWebsocket from '@fastify/websocket'
 import FastifyInject from './plugins/fastify-inject'
 import stream from 'stream'
 import { Command } from 'commander'
@@ -72,7 +72,7 @@ const basePath = '/api'
   if (process.env.NODE_ENV === 'development') {
     fastify
       // eslint-disable-next-line @typescript-eslint/no-var-requires
-      .register(require('fastify-nextjs'), {
+      .register(require('@fastify/nextjs'), {
         dev: true,
         conf: {
           env: {

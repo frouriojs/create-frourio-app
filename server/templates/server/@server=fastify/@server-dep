@@ -1,6 +1,6 @@
 fastify
-fastify-cors
-fastify-helmet
-fastify-jwt
-fastify-multipart
-fastify-static
+@fastify/cors
+@fastify/helmet
+@fastify/jwt
+@fastify/multipart
+@fastify/static

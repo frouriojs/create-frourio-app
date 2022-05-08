@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { Multipart } from 'fastify-multipart'
+import { Multipart } from '@fastify/multipart'
 import {
   API_ORIGIN,
   API_USER_ID,
