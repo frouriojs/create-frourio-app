@@ -3,5 +3,5 @@
 @types/jsonwebtoken
 @types/multer
 fastify
-fastify-cors
+@fastify/cors
 frourio-express
