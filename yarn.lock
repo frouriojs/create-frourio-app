@@ -1512,10 +1512,10 @@ arrify@^1.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
-aspida@^1.7.1, aspida@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.8.0.tgz#05a4419efd728c08b4fae1c80ae9688653c4b51a"
-  integrity sha512-7LKdtVtsOnYxFdxRy/RKZ9ujVPSFo1XmpEm6kJhDm6Ea5aDuAwd3SZOXBOYFn/Giq61Xk/DxK5Z/CmoL/VUPvg==
+aspida@^1.7.1, aspida@^1.9.0:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.10.1.tgz#fe536c53dae1a89311d88547fdb5fbd3b0ad1696"
+  integrity sha512-m7Q3SPCJWzL9TOgynqneaHNAJFT5apGySc1l2gq6N7E4QROe/B+tdFBMfNKm4Iles6XgXr61+rfym99j104Snw==
   dependencies:
     "@types/minimist" "^1.2.2"
     chokidar "^3.5.1"
@@ -3189,12 +3189,12 @@ fresh@0.5.2:
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
 
-frourio@^0.27.1:
-  version "0.27.1"
-  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.27.1.tgz#f1814289f39d8132fa31f733c59332708a64126c"
-  integrity sha512-3x7HGXBZuIW0ueg8c8+ja5rWNK7gMojqubDJVbOoI3VqU4YbMo5VvlyMSvqzystD6tosY7ryH2ZBe26hwa/gZg==
+frourio@^0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.29.0.tgz#0ce9ad3f1167f083dbd507ba93ee9f701f0b32d3"
+  integrity sha512-Ubq5JOWetC+TL/C4tecWUg5mOm7ZGJwO4sKdD+rrbK/GE/uunJJGKU/e8ZtEJuiCYmaTsJYDgBYnJOS7Bf4ljA==
   dependencies:
-    aspida "^1.8.0"
+    aspida "^1.9.0"
     velona "^0.7.0"
 
 fs-access@^1.0.1:

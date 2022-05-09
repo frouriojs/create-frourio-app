@@ -56,7 +56,7 @@
     "cross-spawn": "^7.0.3",
     "ejs": "^3.1.7",
     "fastify": "^3.27.1",
-    "frourio": "^0.27.1",
+    "frourio": "^0.29.0",
     "github-buttons": "^2.21.1",
     "is-binary-path": "^2.1.0",
     "mariadb": "^2.5.5",
