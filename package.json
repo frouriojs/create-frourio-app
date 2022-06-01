@@ -46,7 +46,7 @@
   ],
   "dependencies": {
     "@aspida/axios": "^1.8.0",
-    "@aspida/swr": "^1.10.1",
+    "@aspida/swr": "^1.10.2",
     "@fastify/cors": "^7.0.0",
     "@fastify/static": "^5.0.2",
     "@fastify/websocket": "^5.0.0",
