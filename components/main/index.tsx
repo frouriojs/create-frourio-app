@@ -224,36 +224,46 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
         </div>
         {(!useServer || process.env.NODE_ENV === 'development') && (
           <Flipped flipId="manual-install" stagger>
-            <div className={questionStyles.ctrls}>
-              <h4>Shell</h4>
-              <CommandInput
-                value={
-                  answers &&
-                  `${
-                    process.env.NODE_ENV === 'development'
-                      ? 'node ./bin/index.js'
-                      : answers.pm === 'yarn'
-                      ? 'yarn create frourio-app'
-                      : 'npm init frourio-app'
-                  } --answers ${shellEscapeSingleInput(
-                    JSON.stringify(answers)
-                  )}`
-                }
-              />
-              <h4>CMD</h4>
-              <CommandInput
-                value={
-                  answers &&
-                  `${
-                    process.env.NODE_ENV === 'development'
-                      ? 'node ./bin/index.js'
-                      : answers.pm === 'yarn'
-                      ? 'yarn create frourio-app'
-                      : 'npm init frourio-app'
-                  } --answers ${cmdEscapeSingleInput(JSON.stringify(answers))}`
-                }
-              />
-            </div>
+            <>
+              <div className={questionStyles.card}>
+                <h4 className={questionStyles.message}>Shell</h4>
+                <div className={questionStyles.ctrls}>
+                  <CommandInput
+                    value={
+                      answers &&
+                      `${
+                        process.env.NODE_ENV === 'development'
+                          ? 'node ./bin/index.js'
+                          : answers.pm === 'yarn'
+                          ? 'yarn create frourio-app'
+                          : 'npm init frourio-app'
+                      } --answers ${shellEscapeSingleInput(
+                        JSON.stringify(answers)
+                      )}`
+                    }
+                  />
+                </div>
+              </div>
+              <div className={questionStyles.card}>
+                <h4 className={questionStyles.message}>Command Prompt</h4>
+                <div className={questionStyles.ctrls}>
+                  <CommandInput
+                    value={
+                      answers &&
+                      `${
+                        process.env.NODE_ENV === 'development'
+                          ? 'node ./bin/index.js'
+                          : answers.pm === 'yarn'
+                          ? 'yarn create frourio-app'
+                          : 'npm init frourio-app'
+                      } --answers ${cmdEscapeSingleInput(
+                        JSON.stringify(answers)
+                      )}`
+                    }
+                  />
+                </div>
+              </div>
+            </>
           </Flipped>
         )}
         {closedOverlay && serverStatus?.status === 'installing' && (
@@ -309,22 +319,24 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
         </Flipped>
       )}
 
-      <div className={styles.contribution}>
-        <img src="/images/contribution.svg" alt="contribution" />
-        <div>
-          Can you align the center line shift?
-          <br />
-          Contribute to{' '}
-          <a
-            href="https://github.com/frouriojs/create-frourio-app"
-            target="_brank"
-            title="frouriojs/create-frourio-app"
-          >
-            GitHub
-          </a>{' '}
-          in React.js
+      {useServer && (
+        <div className={styles.contribution}>
+          <img src="/images/contribution.svg" alt="contribution" />
+          <div>
+            Can you align the center line shift?
+            <br />
+            Contribute to{' '}
+            <a
+              href="https://github.com/frouriojs/create-frourio-app"
+              target="_brank"
+              title="frouriojs/create-frourio-app"
+            >
+              GitHub
+            </a>{' '}
+            in React.js
+          </div>
         </div>
-      </div>
+      )}
 
       {!closedOverlay && serverStatus?.status === 'installing' && (
         <div className={styles.installing}>
