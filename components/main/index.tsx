@@ -232,9 +232,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
                     value={
                       answers &&
                       `${
-                        process.env.NODE_ENV === 'development'
-                          ? 'node ./bin/index.js'
-                          : answers.pm === 'yarn'
+                        answers.pm === 'yarn'
                           ? 'yarn create frourio-app'
                           : 'npm init frourio-app'
                       } --answers ${shellEscapeSingleInput(
@@ -251,9 +249,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
                     value={
                       answers &&
                       `${
-                        process.env.NODE_ENV === 'development'
-                          ? 'node ./bin/index.js'
-                          : answers.pm === 'yarn'
+                        answers.pm === 'yarn'
                           ? 'yarn create frourio-app'
                           : 'npm init frourio-app'
                       } --answers ${cmdEscapeSingleInput(
