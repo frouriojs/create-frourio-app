@@ -72,29 +72,33 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   // NOTE: WebSocket effects depend nothing to prevent losting notification while re-creating.
 
   useEffect(() => {
-    let log1 = ''
-    const ws = new WebSocket(`ws://${location.host}/ws/`)
-    ws.onmessage = async (ev) => {
-      const dat =
-        ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
-      log1 += dat
-      setLog(log1)
+    if (useServer) {
+      let log1 = ''
+      const ws = new WebSocket(`ws://${location.host}/ws/`)
+      ws.onmessage = async (ev) => {
+        const dat =
+          ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
+        log1 += dat
+        setLog(log1)
+      }
+      return () => ws.close()
     }
-    return () => ws.close()
   }, [])
 
   useEffect(() => {
-    const ws = new WebSocket(`ws://${location.host}/ws/ready/`)
-    let text = ''
-    ws.onmessage = async (ev) => {
-      const dat =
-        ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
-      text += dat
-      if (dat && text.startsWith('ready')) {
-        setReady(true)
+    if (useServer) {
+      const ws = new WebSocket(`ws://${location.host}/ws/ready/`)
+      let text = ''
+      ws.onmessage = async (ev) => {
+        const dat =
+          ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
+        text += dat
+        if (dat && text.startsWith('ready')) {
+          setReady(true)
+        }
       }
+      return () => ws.close()
     }
-    return () => ws.close()
   }, [])
 
   const questions = useMemo(() => answers && initPrompts(answers), [answers])
