@@ -4,6 +4,7 @@ import { FC, MouseEventHandler } from 'react'
 export interface PrimaryButtonProps {
   onClick?: MouseEventHandler
   disabled?: boolean
+  children: React.ReactNode
 }
 
 const PrimaryButton: FC<PrimaryButtonProps> = ({
