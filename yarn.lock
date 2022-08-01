@@ -917,10 +917,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest-expect-message@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@types/jest-expect-message/-/jest-expect-message-1.0.3.tgz#433ad89565c871acefafedeb957d0a8ec2a977a0"
-  integrity sha512-sp70Lc8POkOcXHEcLERpX/7B/BtQiqIYz3AvC9ZMNKSaiDttr8hKvz9DljIn7N6WJi3ioVoTtB1utDAX46oPlg==
+"@types/jest-expect-message@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@types/jest-expect-message/-/jest-expect-message-1.0.4.tgz#fe7b83ee6a0509729d53a1f4f301f4781ca00105"
+  integrity sha512-2jOgQ38y+YZ8envIA+P2XGyiuXA0fM3QQ8OI15hkzsVX+4oxSIeBhWhUKPEwWzzmc4AdFta9pDvrvJVZzC/9Sg==
   dependencies:
     "@types/jest" "*"
 
