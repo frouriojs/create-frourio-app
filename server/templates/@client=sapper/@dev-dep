@@ -20,7 +20,7 @@ eslint
 eslint-config-prettier
 eslint-config-standard
 eslint-plugin-import
-eslint-plugin-node
+eslint-plugin-n
 eslint-plugin-promise
 npm-run-all
 prettier

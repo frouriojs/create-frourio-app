@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "npm run generate && <% if (orm === 'prisma') { %>npm run migrate:dev && <% } %>run-p dev:*",
-    "dev:server": "<% if (orm === 'typeorm') { %>webpack --watch --mode=development<% } else { %>node ./scripts/build.dev.js && node-dev --respawn index.js<% } %>",
+    "dev:server": "<% if (orm === 'typeorm') { %>webpack --watch --mode=development<% } else { %>node-dev --respawn index.js",
+    "dev:build": "node ./scripts/build.dev.js<% } %>",
     "dev:frourio": "frourio<% if (server === 'express') { %>-express<% } %> --watch<% if (orm === 'prisma') { %>",
     "dev:prisma": "prisma generate --watch<% } else if (orm === 'typeorm') { %>",
     "dev:typeormer": "typeormer --watch<% } %>",
@@ -14,7 +15,7 @@
     "generate:prisma": "prisma generate<% } else if (orm === 'typeorm') { %>",
     "generate:typeormer": "typeormer<% } %><% if (orm === 'prisma') { %>",
     "migrate:dev": "prisma migrate dev",
-    "migrate:dev:createonly":"prisma migrate dev --create-only",
+    "migrate:dev:createonly": "prisma migrate dev --create-only",
     "migrate:reset": "prisma migrate reset<% } else if (orm === 'typeorm') { %>",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "migration:generate": "npm run typeorm -- migration:generate -n generate",
@@ -25,7 +26,7 @@
     "pm2:delete": "pm2 delete pm2.config.json",
     "pm2:logs": "pm2 logs",
     "pm2:monit": "pm2 monit<% } %><% if (orm === 'prisma'){ %>",
-    "seed":"prisma db seed --preview-feature",
+    "seed": "prisma db seed --preview-feature",
     "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"<% } %>",
     "start": "cross-env NODE_ENV=production node index.js"
   }

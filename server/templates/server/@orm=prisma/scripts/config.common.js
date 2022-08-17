@@ -7,7 +7,7 @@ module.exports = {
     path.resolve(__dirname, '../entrypoints/lambda_migration.ts')<% } %>],
   outdir: path.resolve(__dirname, '../'),
   platform: 'node',
-  target: 'node12',
+  target: 'node16',
   bundle: true,
   plugins: [nodeExternalsPlugin()],
   logLevel: 'info'
