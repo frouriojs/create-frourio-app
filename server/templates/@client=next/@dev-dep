@@ -8,7 +8,7 @@ dotenv
 eslint
 eslint-config-prettier
 eslint-plugin-react
-npm-run-all
+notios
 prettier
 ts-loader
 typescript
