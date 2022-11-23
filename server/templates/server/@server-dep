@@ -2,3 +2,4 @@ class-validator
 reflect-metadata
 class-transformer
 dotenv
+zod

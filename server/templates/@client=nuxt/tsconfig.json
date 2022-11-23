@@ -10,9 +10,7 @@
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "noEmit": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true<% if (testing === 'jest') { %>,
+    "noEmit": true<% if (testing === 'jest') { %>,
     "resolveJsonModule": true<% } %>,
     "baseUrl": ".",
     "paths": {
