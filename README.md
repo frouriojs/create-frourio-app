@@ -15,7 +15,7 @@
   </a>
 </div>
 
-<p align="center">Create a <a href="https://frourio.io">frourio</a> project in seconds</p>
+<p align="center">Create a <a href="https://frourio.com">frourio</a> project in seconds</p>
 <br />
 <br />
 
@@ -49,7 +49,7 @@ Open `http://localhost:3000`
 
 ## Documentation
 
-https://frourio.io/docs
+https://frourio.com/docs
 
 ## Features :tada:
 

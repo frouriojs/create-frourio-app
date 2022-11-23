@@ -1,5 +1,4 @@
 @types/cors
-@types/express-jwt
 @types/jsonwebtoken
 @types/multer
 fastify

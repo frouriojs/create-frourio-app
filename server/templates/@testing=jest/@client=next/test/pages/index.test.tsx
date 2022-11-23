@@ -7,9 +7,10 @@ import Home from '~/pages/index'
 import { render, fireEvent, waitFor } from '<%= reactHooks === "none" ? "@testing-library/react" : "../testUtils" %>'
 
 dotenv.config({ path: 'server/.env' })
+jest.mock('next/router', () => require('next-router-mock'))
 
 const apiClient = api(aspida(undefined, { baseURL: process.env.API_BASE_PATH }))
-const res = function <T extends () => any>(
+const res = function <T extends () => unknown>(
   data: ReturnType<T> extends Promise<infer S> ? S : never
 ) {
   return data
