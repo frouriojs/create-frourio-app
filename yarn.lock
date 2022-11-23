@@ -1571,7 +1571,17 @@ arrify@^1.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
-aspida@^1.7.1, aspida@^1.9.0:
+aspida@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.11.0.tgz#a01f75ed3c85929de592afc71802fa1c689a3b7d"
+  integrity sha512-TVQ4bKJQ5nLm6GCZRIzBA8fQe7AhilYkpsQWg0DeBNKm2u7kbulxyCD8xXOqs41Xkrt+jNG7/GGkkseDPgUSOQ==
+  dependencies:
+    "@types/minimist" "^1.2.2"
+    chokidar "^3.5.3"
+    form-data "^4.0.0"
+    minimist "^1.2.6"
+
+aspida@^1.7.1:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.10.1.tgz#fe536c53dae1a89311d88547fdb5fbd3b0ad1696"
   integrity sha512-m7Q3SPCJWzL9TOgynqneaHNAJFT5apGySc1l2gq6N7E4QROe/B+tdFBMfNKm4Iles6XgXr61+rfym99j104Snw==
@@ -1893,7 +1903,7 @@ character-entities@^2.0.0:
   resolved "https://registry.yarnpkg.com/character-entities/-/character-entities-2.0.1.tgz#98724833e1e27990dee0bd0f2b8a859c3476aac7"
   integrity sha512-OzmutCf2Kmc+6DrFrrPS8/tDh2+DpnrfzdICHWhcVC9eOd0N1PXmQEE1a8iM4IziIAG+8tmTq3K+oo0ubH6RRQ==
 
-chokidar@^3.3.1, chokidar@^3.5.1, chokidar@^3.5.2:
+chokidar@^3.3.1, chokidar@^3.5.1, chokidar@^3.5.2, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -3281,13 +3291,14 @@ fresh@0.5.2:
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
 
-frourio@^0.29.0:
-  version "0.29.0"
-  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.29.0.tgz#0ce9ad3f1167f083dbd507ba93ee9f701f0b32d3"
-  integrity sha512-Ubq5JOWetC+TL/C4tecWUg5mOm7ZGJwO4sKdD+rrbK/GE/uunJJGKU/e8ZtEJuiCYmaTsJYDgBYnJOS7Bf4ljA==
+frourio@^0.30.1:
+  version "0.30.1"
+  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.30.1.tgz#02740d4c8ecb5e3a6d96df8a5e1febe8bb3826b7"
+  integrity sha512-hTLmZ2bP0AYcrF1fD0nmlgbwL/58/vvyxh0+mcqxKaQGLeBiMnmuzfcmftW9x71jjEVMvamMYk4idjRXOv+8RA==
   dependencies:
-    aspida "^1.9.0"
+    aspida "^1.11.0"
     velona "^0.7.0"
+    zod "^3.19.1"
 
 fs-access@^1.0.1:
   version "1.0.1"
@@ -5150,6 +5161,11 @@ minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
+
+minimist@^1.2.6:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.7.tgz#daa1c4d91f507390437c6a8bc01078e7000c4d18"
+  integrity sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==
 
 mkdirp@^0.5.5:
   version "0.5.5"
@@ -7083,10 +7099,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.7.4:
-  version "4.7.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
-  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
+typescript@^4.9.3:
+  version "4.9.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.3.tgz#3aea307c1746b8c384435d8ac36b8a2e580d85db"
+  integrity sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==
 
 uglify-js@^3.1.4:
   version "3.15.1"
@@ -7602,3 +7618,8 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zod@^3.19.1:
+  version "3.19.1"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.19.1.tgz#112f074a97b50bfc4772d4ad1576814bd8ac4473"
+  integrity sha512-LYjZsEDhCdYET9ikFu6dVPGp2YH9DegXjdJToSzD9rO6fy4qiRYFoyEYwps88OseJlPyl2NOe2iJuhEhL7IpEA==
