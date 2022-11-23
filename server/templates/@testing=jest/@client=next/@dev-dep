@@ -2,3 +2,4 @@
 identity-obj-proxy
 fastify
 @fastify/cors
+next-router-mock
