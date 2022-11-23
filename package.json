@@ -25,7 +25,7 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p server",
     "test": "jest"
   },
-  "homepage": "https://frourio.io",
+  "homepage": "https://frourio.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/frouriojs/create-frourio-app.git"
