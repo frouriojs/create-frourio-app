@@ -64,6 +64,8 @@ jobs:
         if: github.event_name == 'schedule'
         env:
           TEST_CFA_RANDOM_NUM: 5
+      # - uses: mxschmitt/action-tmate@v3
+      #   if: ${{ failure() }}
 
   test-win:
     name: 'Test on Node:${{ matrix.node-version }} OS:windows-latest'
