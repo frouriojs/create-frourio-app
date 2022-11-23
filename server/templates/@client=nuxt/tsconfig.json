@@ -11,7 +11,9 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "noEmit": true<% if (testing === 'jest') { %>,
-    "resolveJsonModule": true<% } %>,
+    "resolveJsonModule": true<% if (orm === 'typeorm') { %>,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true<% } %><% } %>,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
