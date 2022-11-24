@@ -1,8 +1,0 @@
-node_modules
-__sapper__
-dist
-$*.ts
-server/migration
-server/index.js
-server/lambda.js
-server/lambda_migration.js

@@ -59,7 +59,6 @@ https://frourio.com/docs
 1. Client framework:
    - [Next.js (React)](https://nextjs.org/learn/excel/typescript)
    - [Nuxt.js (Vue)](https://typescript.nuxtjs.org/)
-   - [Sapper (Svelte)](https://sapper.svelte.dev/)
 1. Next.js building mode:
    - Basic (next build)
    - [Static (next export)](https://nextjs.org/docs/advanced-features/static-html-export)

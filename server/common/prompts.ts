@@ -95,8 +95,7 @@ export const cfaPrompts: Prompt[] = [
     message: 'Client framework',
     choices: [
       { name: 'Next.js (React)', value: 'next' },
-      { name: 'Nuxt.js (Vue)', value: 'nuxt' },
-      { name: 'Sapper (Svelte)', value: 'sapper' }
+      { name: 'Nuxt.js (Vue)', value: 'nuxt' }
     ],
     type: 'list',
     default: 'next'
@@ -110,7 +109,7 @@ export const cfaPrompts: Prompt[] = [
       { name: 'Basic (build)', value: 'basic' }
     ],
     default: 'static',
-    when: (ans) => ans.client === 'next' || ans.client === 'sapper'
+    when: (ans) => ans.client === 'next'
   },
   {
     name: 'mode',

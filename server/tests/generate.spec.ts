@@ -207,6 +207,11 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         cwd: dir
       })
 
+      // typecheck
+      await execFileAsync(npmClientPath, ['run', 'typecheck'], {
+        cwd: dir
+      })
+
       // build:client
       await execFileAsync(npmClientPath, ['run', 'build:client'], {
         cwd: dir
@@ -222,12 +227,6 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
       // rename node_modules_ignore → node_modules
       await fs.promises.rename(nodeModulesIgnoreDir, nodeModulesDir)
-
-      // typecheck
-      // NOTE: With Sapper, typecheck should be after build:cilent.
-      await execFileAsync(npmClientPath, ['run', 'typecheck'], {
-        cwd: dir
-      })
 
       // migrations
       if (answers.orm === 'prisma') {
