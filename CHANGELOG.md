@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.36.0](https://github.com/frouriojs/create-frourio-app/compare/v0.35.1...v0.36.0) (2022-11-25)
+
+### Features
+
+- update frourio@0.31.0 and fastify@4 (https://github.com/frouriojs/create-frourio-app/pull/400)
+- remove sapper (https://github.com/frouriojs/create-frourio-app/pull/399)
+
 ## [0.35.1](https://github.com/frouriojs/create-frourio-app/compare/v0.35.0...v0.35.1) (2022-11-24)
 
 ### Bug Fixes
