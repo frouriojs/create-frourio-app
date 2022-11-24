@@ -17,7 +17,9 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "resolveJsonModule": true<% if (testing === 'jest' && orm === 'typeorm') { %>,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true<% } %>,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true
