@@ -83,7 +83,7 @@
     "express": "^4.17.2",
     "express-jwt": "^7.7.7",
     "fastify": "^3.27.1",
-    "frourio": "^0.30.1",
+    "frourio": "^0.30.2",
     "frourio-express": "^0.30.0",
     "helmet": "^5.0.2",
     "husky": "^7.0.4",
