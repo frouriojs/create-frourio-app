@@ -15,6 +15,7 @@ import { capitailze } from '$/utils/string'
 const dirPath = path.join(homedir(), '.frourio')
 const dbPath = path.join(dirPath, 'create-frourio-app.json')
 
+type AnswersVer4 = AnswersVer3
 type AnswersVer3 = Answers
 type AnswersVer2 = Omit<
   AnswersVer3,
@@ -49,7 +50,8 @@ type AnswersVer1 = Omit<AnswersVer2, 'client'> & { front?: string }
 type Schemas = [
   { ver: 1; answers: AnswersVer1 },
   { ver: 2; answers: AnswersVer2 },
-  { ver: 3; answers: AnswersVer3 }
+  { ver: 3; answers: AnswersVer3 },
+  { ver: 4; answers: AnswersVer4 }
 ]
 
 let db: Schemas[2]
@@ -70,6 +72,13 @@ const migration = [
     }: Schemas[1]): Schemas[2] => ({
       ver: 3,
       answers: { ...others, sqliteDbFile: dbFile }
+    })
+  },
+  {
+    ver: 4,
+    handler: ({ answers: { client, ...others } }: Schemas[2]): Schemas[3] => ({
+      ver: 4,
+      answers: { ...others, client: client === 'sapper' ? undefined : client }
     })
   }
 ]
