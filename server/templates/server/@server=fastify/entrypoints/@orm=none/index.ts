@@ -15,7 +15,7 @@ import server from '$/$server'
 
 const fastify = Fastify()
 
-fastify.register(helmet)
+fastify.register(helmet, { crossOriginResourcePolicy: false })
 fastify.register(cors)
 fastify.register(fastifyStatic, {
   root: path.join(__dirname, 'static'),
@@ -32,4 +32,4 @@ fastify.register(fastifyJwt, { secret: API_JWT_SECRET })
 createDBFileIfNotExists(path.join(__dirname, 'database.json'))
 server(fastify, { basePath: API_BASE_PATH })
 
-fastify.listen(API_SERVER_PORT)
+fastify.listen({ port: API_SERVER_PORT })

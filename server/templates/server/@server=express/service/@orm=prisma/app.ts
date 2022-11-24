@@ -9,7 +9,7 @@ import {
 
 export const init = () => {
   const app = express()
-  app.use(helmet())
+  app.use(helmet({ crossOriginResourcePolicy: false }))
   app.use(cors())
   server(app, {basePath: API_BASE_PATH})
   app.use('/static', express.static('static'))

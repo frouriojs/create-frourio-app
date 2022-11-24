@@ -37,7 +37,7 @@ declare module '@nuxt/types' {
 }
 
 declare module 'vuex/types/index' {
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface Store<S> {
     $api: ApiInstance
   }

@@ -22,7 +22,7 @@ import {
 
 const fastify = Fastify()
 
-fastify.register(helmet)
+fastify.register(helmet, { crossOriginResourcePolicy: false })
 fastify.register(cors)
 fastify.register(fastifyStatic, {
   root: path.join(__dirname, 'static'),
@@ -49,4 +49,4 @@ createConnection({
   synchronize: false,
   logging: false,
   ...ormOptions
-}).then(() => fastify.listen(API_SERVER_PORT))
+}).then(() => fastify.listen({ port: API_SERVER_PORT }))
