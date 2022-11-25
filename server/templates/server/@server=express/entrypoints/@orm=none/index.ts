@@ -11,7 +11,7 @@ import {
 } from '$/service/envValues'
 
 const app = express()
-app.use(helmet())
+app.use(helmet({ crossOriginResourcePolicy: false }))
 app.use(cors())
 createDBFileIfNotExists(path.join(__dirname, 'database.json'))
 server(app, { basePath: API_BASE_PATH })

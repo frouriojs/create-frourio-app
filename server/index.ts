@@ -86,32 +86,33 @@ const basePath = '/api'
   }
 
   fastify.register(FastifyWebsocket)
-
-  fastify.get('/ws/', { websocket: true }, (connection) => {
-    const handler = (chunk: unknown) => {
-      connection.socket.send(chunk)
-    }
-    logging.on('data', handler)
-
-    connection.socket.on('close', () => {
-      logging.off('data', handler)
-    })
-  })
-
-  fastify.get('/ws/ready/', { websocket: true }, (connection) => {
-    const handler = (chunk: unknown) => {
-      if (String(chunk) === 'ready') {
-        connection.socket.send('ready')
+  fastify.register(async (fastify) => {
+    fastify.get('/ws/', { websocket: true }, (connection) => {
+      const handler = (chunk: unknown) => {
+        connection.socket.send(chunk)
       }
-    }
-    ready.on('data', handler)
+      logging.on('data', handler)
 
-    connection.socket.on('close', () => {
-      ready.off('data', handler)
+      connection.socket.on('close', () => {
+        logging.off('data', handler)
+      })
+    })
+
+    fastify.get('/ws/ready/', { websocket: true }, (connection) => {
+      const handler = (chunk: unknown) => {
+        if (String(chunk) === 'ready') {
+          connection.socket.send('ready')
+        }
+      }
+      ready.on('data', handler)
+
+      connection.socket.on('close', () => {
+        ready.off('data', handler)
+      })
     })
   })
 
-  await server(fastify, { basePath }).listen(port, host)
+  await server(fastify, { basePath }).listen({ port, host })
   if (process.env.NODE_ENV !== 'development') {
     if (process.env.NODE_ENV === 'test') return
 

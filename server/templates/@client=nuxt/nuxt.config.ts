@@ -1,4 +1,5 @@
-import { NuxtConfig } from '@nuxt/types'
+import { NuxtConfig } from '@nuxt/types'<% if (aspida === 'axios') { %>
+import aspidaConfig from './aspida.config'<% } %>
 
 const config: NuxtConfig = {
   <%_ if (mode === 'spa') { _%>
@@ -50,7 +51,7 @@ const config: NuxtConfig = {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: require('./aspida.config').baseURL
+    baseURL: aspidaConfig.baseURL
   }<% } else { %>[]<% } %>,
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

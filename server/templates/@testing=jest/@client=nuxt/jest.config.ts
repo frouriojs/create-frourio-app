@@ -15,7 +15,7 @@ const config: { projects: Config.InitialOptions[] } = {
         '^vue$': 'vue/dist/vue.common.js'
       },
       moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
-      testEnvironment: 'jsdom',
+      testEnvironment: 'jest-environment-jsdom',
       transform: {
         '^.+\\.ts$': 'ts-jest',
         '^.+\\.js$': 'babel-jest',

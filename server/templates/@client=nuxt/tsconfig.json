@@ -21,7 +21,7 @@
       "$/*": ["./server/*"]<% if (orm === 'prisma') { %>,
       "$prisma/*": ["./server/node_modules/.prisma/*"]<% } %>
     },<% var axiosType = aspida === 'axios' ? ', "@nuxtjs/axios"' : '' %>
-    "types": ["@types/node", "@nuxt/types"<%- axiosType %>]
+    "types": ["@types/node", <% if (testing === 'jest') { %>"@types/jest", <% } %>"@nuxt/types"<%- axiosType %>]
   },
   "exclude": ["node_modules", ".nuxt", "dist", "server"]
 }

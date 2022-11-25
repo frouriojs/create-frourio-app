@@ -12,5 +12,11 @@ module.exports = {
   // add your custom rules here
   rules: {
     'vue/multi-word-component-names': 'off'
-  }
+  },
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: { '@typescript-eslint/no-var-requires': ['off'] }
+    }
+  ]
 }

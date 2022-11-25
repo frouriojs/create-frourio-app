@@ -9,7 +9,7 @@ import server from '$/$server'
 
 export const init = (serverFactory?: FastifyServerFactory) => {
   const app = Fastify({ serverFactory })
-  app.register(helmet)
+  app.register(helmet, { crossOriginResourcePolicy: false })
   app.register(cors)
   app.register(fastifyStatic, {
     root: path.join(__dirname, 'static'),

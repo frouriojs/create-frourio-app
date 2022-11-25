@@ -1,38 +1,40 @@
 import fs from 'fs'
 import path from 'path'
+import type { MulterFile } from '$/$server'
 import {
   API_ORIGIN,
   API_USER_ID,
   API_USER_PASS,
   API_UPLOAD_DIR
 } from './envValues'
-import { MulterFile } from '$/$server'
 
 const iconsDir = API_UPLOAD_DIR && path.resolve(API_UPLOAD_DIR, 'icons')
+
 const createIconURL = (dir: string, name: string) =>
   `${API_ORIGIN}/${dir}icons/${name}`
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getUserIconName = (_id: string) => {
-  return `user-icon`
+
+const getUserIconName = () => {
+  return 'user-icon'
 }
-export const getUserInfo = (id: string) => {
-  const iconName = getUserIconName(id)
+
+const getUserInfo = () => {
+  const iconName = getUserIconName()
   return {
     name: 'sample user',
     icon:
       iconsDir && fs.existsSync(path.resolve(iconsDir, iconName))
         ? createIconURL('upload/', iconName)
-        : createIconURL('static/', `dummy.svg`)
+        : createIconURL('static/', 'dummy.svg')
   }
 }
 
 export const validateUser = (id: string, pass: string) =>
   id === API_USER_ID && pass === API_USER_PASS
 
-export const getUserInfoById = (id: string) => ({ id, ...getUserInfo(id) })
+export const getUserInfoById = (id: string) => ({ id, ...getUserInfo() })
 
 export const changeIcon = async (id: string, iconFile: MulterFile) => {
-  const iconName = getUserIconName(id)
+  const iconName = getUserIconName()
 
   if (!iconsDir) {
     throw new Error('API_UPLOAD_DIR is not configured.')
@@ -43,6 +45,6 @@ export const changeIcon = async (id: string, iconFile: MulterFile) => {
 
   return {
     id,
-    ...getUserInfo(id)
+    ...getUserInfo()
   }
 }
