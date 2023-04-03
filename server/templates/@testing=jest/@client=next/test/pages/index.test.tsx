@@ -45,8 +45,8 @@ describe('Home page', () => {
       },
       { timeout: 5000 }
     )
-    expect(await findByText('foo task')).toBeTruthy()
-    expect(await findByText('bar task')).toBeTruthy()
+    await expect(findByText('foo task')).resolves.toBeTruthy()
+    await expect(findByText('bar task')).resolves.toBeTruthy()
   })
 
   it('clicking button triggers prompt', async () => {
