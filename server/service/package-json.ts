@@ -6,7 +6,7 @@ export const depKeys = [
   '@server-dev-dep',
   '@server-dep'
 ] as const
-export type DepKeys = typeof depKeys[number]
+export type DepKeys = (typeof depKeys)[number]
 
 export const isDepKey = (s: string): s is DepKeys => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

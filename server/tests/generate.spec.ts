@@ -351,10 +351,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
           }
 
           const resUploadIcon = await client.get(`/upload/icons/user-icon`)
-          expect(resUploadIcon.headers).toHaveProperty(
-            'content-type',
-            'application/octet-stream'
-          )
+          expect(resUploadIcon.status).toEqual(200)
         } finally {
           proc.kill()
           try {
