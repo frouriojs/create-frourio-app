@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
       - uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.API_DEPLOY_SSH_KEY }}
