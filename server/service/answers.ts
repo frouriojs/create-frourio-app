@@ -40,12 +40,7 @@ type AnswersVer2 = Omit<
   | 'serverSourcePath'
   | 'designatedServer'
 > &
-  Partial<
-    Record<
-      'dbHost' | 'dbUser' | 'dbPass' | 'dbUser' | 'dbPort' | 'dbFile',
-      string
-    >
-  >
+  Partial<Record<'dbHost' | 'dbUser' | 'dbPass' | 'dbUser' | 'dbPort' | 'dbFile', string>>
 type AnswersVer1 = Omit<AnswersVer2, 'client'> & { front?: string }
 type Schemas = [
   { ver: 1; answers: AnswersVer1 },
@@ -88,10 +83,7 @@ export const cliMigration = [
   {
     when: (answers: Schemas[number]['answers']) => 'front' in answers,
     warn: () => 'Use "client" instead of "front".',
-    handler: ({
-      front,
-      ...others
-    }: Schemas[0]['answers']): Schemas[1]['answers'] => ({
+    handler: ({ front, ...others }: Schemas[0]['answers']): Schemas[1]['answers'] => ({
       ...others,
       client: front
     })
@@ -100,11 +92,7 @@ export const cliMigration = [
     when: (answers: Schemas[number]['answers']) => key in answers,
     warn: (answers: Schemas[number]['answers']) =>
       `Use "${answers.db}${capitailze(key)}" instead of "${key}".`,
-    handler: ({
-      [key]: val,
-      db,
-      ...others
-    }: Schemas[0]['answers']): Schemas[1]['answers'] => ({
+    handler: ({ [key]: val, db, ...others }: Schemas[0]['answers']): Schemas[1]['answers'] => ({
       ...others,
       db,
       [`${db}${capitailze(key)}`]: val
@@ -113,10 +101,7 @@ export const cliMigration = [
   {
     when: (answers: Schemas[number]['answers']) => 'dbFile' in answers,
     warn: () => `Use "sqliteDbFile" instead of "dbFile".`,
-    handler: ({
-      dbFile,
-      ...others
-    }: Schemas[1]['answers']): Schemas[2]['answers'] => ({
+    handler: ({ dbFile, ...others }: Schemas[1]['answers']): Schemas[2]['answers'] => ({
       ...others,
       sqliteDbFile: dbFile
     })
@@ -151,17 +136,12 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   const dir = allAnswers.dir ?? ''
 
   await generate(
-    {
-      ...allAnswers,
-      clientPort: await getClientPort(),
-      serverPort: await getServerPort()
-    },
+    { ...allAnswers, clientPort: await getClientPort(), serverPort: await getServerPort() },
     path.resolve(__dirname, '..')
   )
 
   await completed(allAnswers, s)
   const npmClientPath = await realExecutablePath(answers.pm ?? 'npm')
-
   const npmRun = (script: string) =>
     new Promise((resolve, reject) => {
       const proc = spawn(npmClientPath, ['run', '--color', script], {
@@ -200,10 +180,7 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 }
 
-export const getAnswers = (dir: string) => ({
-  dir,
-  ...db.answers
-})
+export const getAnswers = (dir: string) => ({ dir, ...db.answers })
 
 export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
   db = {
@@ -216,12 +193,11 @@ export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
     }
   }
 
-  const canContinue = canContinueOnPath(
-    await getPathStatus(path.resolve(process.cwd(), answers.dir || ''))
+  const canContinue = await getPathStatus(path.resolve(process.cwd(), answers.dir || '')).then(
+    canContinueOnPath
   )
-  if (canContinue !== null) {
-    throw new Error(canContinue)
-  }
+
+  if (canContinue !== null) throw new Error(canContinue)
 
   if (!fs.existsSync(dirPath)) await fs.promises.mkdir(dirPath)
 

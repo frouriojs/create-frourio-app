@@ -61,26 +61,17 @@ const basePath = '/api'
 
   const fastify = Fastify()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fastify.register(FastifyStatic, {
-    root: path.join(__dirname, '../../out')
-  })
-  await fastify.register(FastifyInject, {
-    dir,
-    logging,
-    ready
-  })
+  fastify.register(FastifyStatic, { root: path.join(__dirname, '../../out') })
+  await fastify.register(FastifyInject, { dir, logging, ready })
   if (process.env.NODE_ENV === 'development') {
     fastify
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       .register(require('@fastify/nextjs'), {
         dev: true,
-        conf: {
-          env: {
-            NEXT_PUBLIC_SERVER_PORT: port
-          }
-        }
+        conf: { env: { NEXT_PUBLIC_SERVER_PORT: port } }
       })
       .after(() => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ;(fastify as any).next('/')
       })
   }

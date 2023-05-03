@@ -41,6 +41,12 @@
     "frourio",
     "typescript"
   ],
+  "prettier": {
+    "printWidth": 100,
+    "semi": false,
+    "trailingComma": "none",
+    "singleQuote": true
+  },
   "dependencies": {
     "@aspida/axios": "^1.11.0",
     "@aspida/swr": "^1.11.0",

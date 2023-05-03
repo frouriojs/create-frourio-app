@@ -17,12 +17,7 @@ interface Params {
 const omitImportNodeNSPlugin: Plugin = {
   name: 'omit-import-node-ns',
   setup(build) {
-    build.onResolve({ filter: /^node:/ }, (args) => {
-      return {
-        path: args.path.slice(5),
-        external: true
-      }
-    })
+    build.onResolve({ filter: /^node:/ }, (args) => ({ path: args.path.slice(5), external: true }))
   }
 }
 
@@ -50,20 +45,13 @@ const main = async ({ from, to, watch, prod, target, server }: Params) => {
     minify: true,
     keepNames: true,
     jsx: server ? undefined : 'transform',
-    define: {
-      'process.env.NODE_ENV': prod ? '"production"' : '"development"'
-    },
+    define: { 'process.env.NODE_ENV': prod ? '"production"' : '"development"' },
     sourcemap: 'inline',
     bundle: true,
     outfile: toPath,
     entryPoints: [fromPath],
     watch: watchOptions,
-    plugins: [
-      omitImportNodeNSPlugin,
-      nodeExternalsPlugin({
-        allowList: []
-      })
-    ]
+    plugins: [omitImportNodeNSPlugin, nodeExternalsPlugin({ allowList: [] })]
   })
 }
 

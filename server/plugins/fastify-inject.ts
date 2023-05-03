@@ -20,12 +20,9 @@ export interface FastifyInjectOptions {
 }
 
 const fastifyInject: FastifyPluginCallback<FastifyInjectOptions> = fp(
-  (
-    fastify: FastifyInstance,
-    options: FastifyInjectOptions,
-    next: () => void
-  ) => {
+  (fastify: FastifyInstance, options: FastifyInjectOptions, next: () => void) => {
     fastify.decorateRequest('dir', { getter: () => options.dir })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fastify.decorate('appendLogging', (data: any) => {
       options.logging.push(data)
     })
@@ -34,10 +31,7 @@ const fastifyInject: FastifyPluginCallback<FastifyInjectOptions> = fp(
     })
     next()
   },
-  {
-    fastify: '>=3',
-    name: 'fastify-winston-logger'
-  }
+  { fastify: '>=3', name: 'fastify-winston-logger' }
 )
 
 export default fastifyInject
