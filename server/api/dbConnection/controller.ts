@@ -16,16 +16,9 @@ export default defineController(() => ({
       return { status: 200, body: { enabled: true } }
     }
 
-    const templateCtx = answersToTemplateContext({
-      ...answers,
-      serverPort: 0,
-      clientPort: 0
-    })
+    const templateCtx = answersToTemplateContext({ ...answers, serverPort: 0, clientPort: 0 })
 
-    if (
-      templateCtx.dbHost !== '127.0.0.1' &&
-      templateCtx.dbHost !== 'localhost'
-    ) {
+    if (templateCtx.dbHost !== '127.0.0.1' && templateCtx.dbHost !== 'localhost') {
       return {
         status: 200,
         body: {
@@ -44,10 +37,7 @@ export default defineController(() => ({
       }
 
       if (answers.db === 'mysql') {
-        const conn = await mariadb.createConnection({
-          ...config,
-          allowPublicKeyRetrieval: true
-        })
+        const conn = await mariadb.createConnection({ ...config, allowPublicKeyRetrieval: true })
 
         await conn.query(`CREATE DATABASE IF NOT EXISTS ${templateCtx.dbName}`)
 
@@ -67,10 +57,7 @@ export default defineController(() => ({
 
       return { status: 200, body: { enabled: true } }
     } catch (e) {
-      return {
-        status: 200,
-        body: { enabled: false, err: e instanceof Error ? e.message : '' }
-      }
+      return { status: 200, body: { enabled: false, err: e instanceof Error ? e.message : '' } }
     }
   }
 }))

@@ -226,17 +226,11 @@ export const cfaPrompts: Prompt[] = [
       name: `${db}Db${what}` as PromptName,
       message: (ans: Answers) => {
         if (ans.orm === 'prisma') {
-          return `dev DB ${typeormEnv}: server/prisma/.env API_DATABASE_URL (${getPrismaDbUrl(
-            {
-              ...ans,
-              [`${db}Db${what}`]: (ans as any)[`${db}Db${what}`] || 'HERE',
-              [`${db}DbPass`]: (ans as any)[`${db}DbPass`]
-                ? '***'
-                : what === 'Pass'
-                ? 'HERE'
-                : ''
-            }
-          )}) =`
+          return `dev DB ${typeormEnv}: server/prisma/.env API_DATABASE_URL (${getPrismaDbUrl({
+            ...ans,
+            [`${db}Db${what}`]: (ans as any)[`${db}Db${what}`] || 'HERE',
+            [`${db}DbPass`]: (ans as any)[`${db}DbPass`] ? '***' : what === 'Pass' ? 'HERE' : ''
+          })}) =`
         } else {
           return `dev DB: server/.env TYEPORM_${typeormEnv} =`
         }
@@ -345,8 +339,7 @@ export const cfaPrompts: Prompt[] = [
                 `- **API_DATABASE_URL**: ${
                   (
                     {
-                      sqlite:
-                        'Production URL for SQLite. e.g. `file:///mnt/efs-data/db.sqlite`',
+                      sqlite: 'Production URL for SQLite. e.g. `file:///mnt/efs-data/db.sqlite`',
                       mysql:
                         'Production URL for MySQL. e.g. `mysql://mysql-instance1.123456789012.us-east-1.rds.amazonaws.com:3306`',
                       postgresql:
@@ -456,9 +449,7 @@ export const cfaPrompts: Prompt[] = [
                 '### Deploy to Vercel',
                 '',
                 '1. Visit [vercel.com](https://vercel.com) and create new project.',
-                '2. Set **BUILD COMMAND** to `' +
-                  ans.pm +
-                  ' run build:client`.',
+                '2. Set **BUILD COMMAND** to `' + ans.pm + ' run build:client`.',
                 '3. Add environment variables **API_BASE_PATH** and **API_ORIGIN**.'
               ].join('\n')
             }
@@ -478,9 +469,7 @@ export const cfaPrompts: Prompt[] = [
                 '1. Visit [app.netlify.com](https://app.netlify.com) and create new project.',
                 '2. Go to **Site Settings** > **Build & Deploy**',
                 '  a. Set **Repository** to your remote repository',
-                '  b. Set **Build command** to `' +
-                  ans.pm +
-                  ' run build:client`',
+                '  b. Set **Build command** to `' + ans.pm + ' run build:client`',
                 '  c. Set **Publish directory** to `out/`',
                 '3. Go to **Site Settings** > **Build & Deploy** > **Environment**',
                 '  a. Add environment variables **API_ORIGIN** and **API_BASE_PATH**.'
@@ -550,15 +539,10 @@ export const cfaPrompts: Prompt[] = [
 ]
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const calculatePrompts = (
-  answers: Answers,
-  target: any = cfaPrompts
-): any => {
+export const calculatePrompts = (answers: Answers, target: any = cfaPrompts): any => {
   if (target === null) return target
   if (Array.isArray(target)) {
-    return target
-      .map((e: any) => calculatePrompts(answers, e))
-      .filter((e: any) => e !== undefined)
+    return target.map((e: any) => calculatePrompts(answers, e)).filter((e: any) => e !== undefined)
   }
   if (typeof target === 'object') {
     const res: any = {}
@@ -635,10 +619,7 @@ export const isAnswersValid = (answers: Answers) => {
     if (valid !== undefined) return valid
 
     if (el.type === 'list') {
-      return (
-        (el.choices.filter((choice) => choice.value === value)[0]?.disabled ??
-          false) === false
-      )
+      return (el.choices.filter((choice) => choice.value === value)[0]?.disabled ?? false) === false
     }
 
     if (el.type === 'input') {

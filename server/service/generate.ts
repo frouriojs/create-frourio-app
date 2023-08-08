@@ -4,16 +4,8 @@ import ejs from 'ejs'
 import isBinaryPath from 'is-binary-path'
 import { addAllUndefined, Answers, removeUnnecessary } from '$/common/prompts'
 import assert from 'assert'
-import {
-  convertListToJson,
-  DepKeys,
-  getPackageVersions,
-  isDepKey
-} from './package-json'
-import {
-  TemplateContext,
-  answersToTemplateContext
-} from '$/common/template-context'
+import { convertListToJson, DepKeys, getPackageVersions, isDepKey } from './package-json'
+import { TemplateContext, answersToTemplateContext } from '$/common/template-context'
 
 export const generate = async (
   answers: Answers & { clientPort: number; serverPort: number },
@@ -58,10 +50,7 @@ export const generate = async (
           try {
             const output = noEjs
               ? content
-              : ejs.render(
-                  content.toString('utf-8').replace(/\r/g, ''),
-                  templateContext
-                )
+              : ejs.render(content.toString('utf-8').replace(/\r/g, ''), templateContext)
             await fs.promises.writeFile(path.resolve(nowOut, p), output)
           } catch (e: unknown) {
             console.error(e)
@@ -100,32 +89,17 @@ export const generate = async (
   await walk(path.resolve(rootDir, 'templates'), dir)
   const versions = getPackageVersions()
 
-  const setupPackageJson = async (
-    rel: string,
-    depKey: DepKeys,
-    devDepKey: DepKeys
-  ) => {
+  const setupPackageJson = async (rel: string, depKey: DepKeys, devDepKey: DepKeys) => {
     const packageJsonPath = path.resolve(dir, rel)
     const packageJson = (await fs.promises.readFile(packageJsonPath)).toString()
     const finish = '\n  }\n}\n'
 
-    assert(
-      packageJson.endsWith(finish),
-      'Template package.json ending unexpected.'
-    )
+    assert(packageJson.endsWith(finish), 'Template package.json ending unexpected.')
     const replaced =
       packageJson.slice(0, -finish.length) +
       '\n  },\n' +
-      `  "dependencies": {\n${convertListToJson(
-        versions,
-        deps[depKey],
-        '    '
-      )}\n  },\n` +
-      `  "devDependencies": {\n${convertListToJson(
-        versions,
-        deps[devDepKey],
-        '    '
-      )}\n  }\n` +
+      `  "dependencies": {\n${convertListToJson(versions, deps[depKey], '    ')}\n  },\n` +
+      `  "devDependencies": {\n${convertListToJson(versions, deps[devDepKey], '    ')}\n  }\n` +
       '}\n'
     await fs.promises.writeFile(packageJsonPath, replaced)
   }

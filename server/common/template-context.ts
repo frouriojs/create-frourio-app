@@ -1,9 +1,4 @@
-import {
-  Answers,
-  CommonDbInfo,
-  getCommonDbInfo,
-  getPrismaDbUrl
-} from './prompts'
+import { Answers, CommonDbInfo, getCommonDbInfo, getPrismaDbUrl } from './prompts'
 
 // This is something like `computed value`.
 // Additional keys should not include the same key on Answers.

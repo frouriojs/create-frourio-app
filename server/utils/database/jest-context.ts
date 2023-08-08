@@ -1,9 +1,4 @@
-import {
-  AllDbContext,
-  createMysqlContext,
-  createPgContext,
-  createSqliteContext
-} from './context'
+import { AllDbContext, createMysqlContext, createPgContext, createSqliteContext } from './context'
 import path from 'path'
 
 export const createJestDbContext = (): AllDbContext => {

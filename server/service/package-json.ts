@@ -1,11 +1,6 @@
 import assert from 'assert'
 
-export const depKeys = [
-  '@dep',
-  '@dev-dep',
-  '@server-dev-dep',
-  '@server-dep'
-] as const
+export const depKeys = ['@dep', '@dev-dep', '@server-dev-dep', '@server-dep'] as const
 export type DepKeys = (typeof depKeys)[number]
 
 export const isDepKey = (s: string): s is DepKeys => {
@@ -25,6 +20,7 @@ export const getPackageVersions = (): { [packageName: string]: string } => {
 const strUniq = (list: string[]) => {
   const known = Object.create(null)
   list.forEach((el) => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const g = el.match(/^(@?[^@]+)(?:@(.*))?$/)!
     known[g[1]] = g[2] ? `@${g[2]}` : ''
   })
@@ -55,9 +51,7 @@ export const convertListToJson = (
         depVersion = g[2]
       }
       assert(depName in deps, `${depName} is not pre-defined.`)
-      return `${indent}${JSON.stringify(depName)}: ${JSON.stringify(
-        depVersion || deps[depName]
-      )}`
+      return `${indent}${JSON.stringify(depName)}: ${JSON.stringify(depVersion || deps[depName])}`
     })
     .join(',\n')
 }

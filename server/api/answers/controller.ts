@@ -22,9 +22,7 @@ export default defineController(({ appendLogging, clientReady }) => ({
       for (let i = 0; i < 600; i++) {
         await new Promise((resolve) => setTimeout(resolve, 1000))
         try {
-          const client = axios.create({
-            baseURL: `http://localhost:${serverPort}/api`
-          })
+          const client = axios.create({ baseURL: `http://localhost:${serverPort}/api` })
           const res = await client.get('tasks')
           if (res.status === 200) {
             clientReady()
