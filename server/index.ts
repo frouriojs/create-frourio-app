@@ -61,7 +61,7 @@ const basePath = '/api'
 
   const fastify = Fastify()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fastify.register(FastifyStatic, { root: path.join(__dirname, '../../out') })
+  fastify.register(FastifyStatic, { root: path.join(__dirname, '../../public') })
   await fastify.register(FastifyInject, { dir, logging, ready })
   if (process.env.NODE_ENV === 'development') {
     fastify
@@ -79,7 +79,7 @@ const basePath = '/api'
   fastify.register(FastifyWebsocket)
   fastify.register(async (fastify) => {
     fastify.get('/ws/', { websocket: true }, (connection) => {
-      const handler = (chunk: unknown) => {
+      const handler = (chunk: Buffer) => {
         connection.socket.send(chunk)
       }
       logging.on('data', handler)
