@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18, 20]
+        node-version: [20, 22]
     services:
       postgres:
         image: postgres
@@ -36,7 +36,7 @@ jobs:
       - uses: actions/cache@v2
         id: npm-cache
         with:
-          path: "node_modules"
+          path: 'node_modules'
           key: ${{ runner.os }}-node-v${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
       - run: npm install
         if: steps.npm-cache.outputs.cache-hit != 'true'
@@ -71,7 +71,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [22]
     steps:
       - uses: actions/checkout@v3
       - name: setup Node.js ${{ matrix.node-version }}
@@ -81,7 +81,7 @@ jobs:
       - uses: actions/cache@v2
         id: npm-cache
         with:
-          path: "node_modules"
+          path: 'node_modules'
           key: ${{ runner.os }}-node-v${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
       - run: echo 'fetch-timeout=1000000' >> ~/.npmrc
       - run: npm install
@@ -101,19 +101,22 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: [test, test-win]
+    permissions:
+      contents: read
+      id-token: write
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22
           registry-url: 'https://registry.npmjs.org'
       - uses: actions/cache@v2
         id: npm-cache
         with:
           path: 'node_modules'
-          key: ${{ runner.os }}-node-v18-npm-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.os }}-node-v22-npm-${{ hashFiles('package-lock.json') }}
       - run: echo 'fetch-timeout=1000000' >> ~/.npmrc
       - run: npm install
         if: steps.npm-cache.outputs.cache-hit != 'true'
@@ -122,6 +125,6 @@ jobs:
           VERSION="$(node -e 'console.log(process.argv[1].match(/^refs\/tags\/v(\d+\.\d+\.\d+)$/)[1])' "${{ github.ref }}")"
           node -e 'console.log(JSON.stringify({...require("./package.json"),version:process.argv[1]}, null, 2))' "$VERSION" | tee ./tmp-package.json
           mv ./tmp-package.json ./package.json
-      - run: npm publish
+      - run: npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
