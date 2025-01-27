@@ -1,7 +1,6 @@
 type PromptName =
   | 'dir'
   | 'server'
-  | 'client'
   | 'building'
   | 'mode'
   | 'target'
@@ -64,13 +63,7 @@ export type Prompt = {
   default?: string
   when?: Lazy<boolean>
   valid?: Lazy<boolean>
-} & (
-  | {
-      type: 'list'
-      choices: Choice[]
-    }
-  | { type: 'input'; notes?: Lazy<Note[]> }
-)
+} & ({ type: 'list'; choices: Choice[] } | { type: 'input'; notes?: Lazy<Note[]> })
 
 export type DeterminedPrompt = RemoveLazy<Prompt>
 
@@ -91,16 +84,6 @@ export const cfaPrompts: Prompt[] = [
     default: 'fastify'
   },
   {
-    name: 'client',
-    message: 'Client framework',
-    choices: [
-      { name: 'Next.js (React)', value: 'next' },
-      { name: 'Nuxt.js (Vue)', value: 'nuxt' }
-    ],
-    type: 'list',
-    default: 'next'
-  },
-  {
     name: 'building',
     message: 'Building mode',
     type: 'list',
@@ -108,30 +91,7 @@ export const cfaPrompts: Prompt[] = [
       { name: 'Static (export)', value: 'static' },
       { name: 'Basic (build)', value: 'basic' }
     ],
-    default: 'static',
-    when: (ans) => ans.client === 'next'
-  },
-  {
-    name: 'mode',
-    message: 'Rendering mode',
-    type: 'list',
-    choices: [
-      { name: 'Single Page App', value: 'spa' },
-      { name: 'Universal (SSR / SSG)', value: 'universal' }
-    ],
-    default: 'spa',
-    when: (ans) => ans.client === 'nuxt'
-  },
-  {
-    name: 'target',
-    message: 'Deployment target',
-    type: 'list',
-    choices: [
-      { name: 'Static (JAMStack hosting)', value: 'static' },
-      { name: 'Server (Node.js hosting)', value: 'server' }
-    ],
-    default: 'static',
-    when: (ans) => ans.client === 'nuxt'
+    default: 'static'
   },
   {
     name: 'aspida',
@@ -152,8 +112,7 @@ export const cfaPrompts: Prompt[] = [
       { name: 'React Query', value: 'query' },
       { name: 'None', value: 'none' }
     ],
-    default: 'swr',
-    when: (ans) => ans.client === 'next'
+    default: 'swr'
   },
   {
     name: 'daemon',

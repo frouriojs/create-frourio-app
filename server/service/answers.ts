@@ -15,8 +15,9 @@ import { capitailze } from '$/utils/string'
 const dirPath = path.join(homedir(), '.frourio')
 const dbPath = path.join(dirPath, 'create-frourio-app.json')
 
-type AnswersVer4 = AnswersVer3
-type AnswersVer3 = Answers
+type AnswersVer5 = Answers
+type AnswersVer4 = AnswersVer5 & { client?: string }
+type AnswersVer3 = AnswersVer4
 type AnswersVer2 = Omit<
   AnswersVer3,
   | 'skipDbChecks'
@@ -46,7 +47,8 @@ type Schemas = [
   { ver: 1; answers: AnswersVer1 },
   { ver: 2; answers: AnswersVer2 },
   { ver: 3; answers: AnswersVer3 },
-  { ver: 4; answers: AnswersVer4 }
+  { ver: 4; answers: AnswersVer4 },
+  { ver: 5; answers: AnswersVer5 }
 ]
 
 let db: Schemas[2]
@@ -75,19 +77,19 @@ const migration = [
       ver: 4,
       answers: { ...others, client: client === 'sapper' ? undefined : client }
     })
+  },
+  {
+    ver: 5,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    handler: ({ answers: { client, ...others } }: Schemas[3]): Schemas[4] => ({
+      ver: 5,
+      answers: others
+    })
   }
 ]
 
 const v2DbInfoKeys = ['dbHost', 'dbUser', 'dbPass', 'dbUser', 'dbPort'] as const
 export const cliMigration = [
-  {
-    when: (answers: Schemas[number]['answers']) => 'front' in answers,
-    warn: () => 'Use "client" instead of "front".',
-    handler: ({ front, ...others }: Schemas[0]['answers']): Schemas[1]['answers'] => ({
-      ...others,
-      client: front
-    })
-  },
   ...v2DbInfoKeys.map((key) => ({
     when: (answers: Schemas[number]['answers']) => key in answers,
     warn: (answers: Schemas[number]['answers']) =>

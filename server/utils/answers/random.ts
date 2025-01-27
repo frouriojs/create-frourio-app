@@ -30,7 +30,6 @@ export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise
 
   // Database
   if (ans.orm === 'typeorm' && ans.db === 'sqlite') ans.db = 'mysql'
-  if (process.env.TEST_CFA_FIX_CLIENT) ans.client = process.env.TEST_CFA_FIX_CLIENT
   if (process.env.TEST_CFA_FIX_DB) ans.db = process.env.TEST_CFA_FIX_DB
   if (process.env.TEST_CFA_FIX_ORM) ans.orm = process.env.TEST_CFA_FIX_ORM
   if (ans.db === 'sqlite') {

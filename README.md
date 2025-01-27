@@ -58,16 +58,9 @@ https://frourio.com/docs
    - [Express](https://expressjs.com/)
 1. Client framework:
    - [Next.js (React)](https://nextjs.org/learn/excel/typescript)
-   - [Nuxt.js (Vue)](https://typescript.nuxtjs.org/)
-1. Next.js building mode:
+1. Client building mode:
    - Basic (next build)
    - [Static (next export)](https://nextjs.org/docs/advanced-features/static-html-export)
-1. Nuxt.js rendering mode:
-   - [Universal (SSR / Static)](https://nuxtjs.org/guide/#server-rendered-universal-ssr-)
-   - [SPA](https://nuxtjs.org/guide/#single-page-applications-spa-)
-1. Nuxt.js deployment target:
-   - [Server (Node.js hosting)](https://nuxtjs.org/api/configuration-target)
-   - [Static (JAMStack hosting)](https://nuxtjs.org/api/configuration-target)
 1. HTTP client of aspida:
    - [axios](https://github.com/axios/axios)
    - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
