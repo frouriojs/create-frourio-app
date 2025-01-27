@@ -153,33 +153,54 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       await npmInstall(serverDir, npmClientPath, process.stdout)
 
       // eslint
-      await execFileAsync(npmClientPath, ['run', 'lint:fix'], { cwd: dir })
+      await execFileAsync(npmClientPath, ['run', 'lint:fix'], {
+        cwd: dir,
+        shell: process.platform === 'win32'
+      })
 
       // typecheck
-      await execFileAsync(npmClientPath, ['run', 'typecheck'], { cwd: dir })
+      await execFileAsync(npmClientPath, ['run', 'typecheck'], {
+        cwd: dir,
+        shell: process.platform === 'win32'
+      })
 
       // build:client
-      await execFileAsync(npmClientPath, ['run', 'build:client'], { cwd: dir })
+      await execFileAsync(npmClientPath, ['run', 'build:client'], {
+        cwd: dir,
+        shell: process.platform === 'win32'
+      })
 
       // rename node_modules → node_modules_ignore
       await fs.promises.rename(nodeModulesDir, nodeModulesIgnoreDir)
 
       // build:server
-      await execFileAsync(npmClientPath, ['run', 'build:server'], { cwd: dir })
+      await execFileAsync(npmClientPath, ['run', 'build:server'], {
+        cwd: dir,
+        shell: process.platform === 'win32'
+      })
 
       // rename node_modules_ignore → node_modules
       await fs.promises.rename(nodeModulesIgnoreDir, nodeModulesDir)
 
       // migrations
       if (answers.orm === 'prisma') {
-        await execFileAsync(npmClientPath, ['run', 'migrate:dev'], { cwd: serverDir })
+        await execFileAsync(npmClientPath, ['run', 'migrate:dev'], {
+          cwd: serverDir,
+          shell: process.platform === 'win32'
+        })
       } else if (answers.orm === 'typeorm') {
-        await execFileAsync(npmClientPath, ['run', 'migration:run'], { cwd: serverDir })
+        await execFileAsync(npmClientPath, ['run', 'migration:run'], {
+          cwd: serverDir,
+          shell: process.platform === 'win32'
+        })
       }
 
       // Project scope test
       if (answers.testing !== 'none') {
-        await execFileAsync(npmClientPath, ['test'], { cwd: dir })
+        await execFileAsync(npmClientPath, ['test'], {
+          cwd: dir,
+          shell: process.platform === 'win32'
+        })
       }
 
       // Integration test
@@ -187,7 +208,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         const nodePath = await realExecutablePath('node')
         const proc = spawn(nodePath, [path.resolve(dir, 'server/index.js')], {
           stdio: ['ignore', 'inherit', 'inherit'],
-          cwd: path.resolve(dir, 'server')
+          cwd: path.resolve(dir, 'server'),
+          shell: process.platform === 'win32'
         })
 
         try {

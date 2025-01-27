@@ -156,7 +156,8 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
           npm_config_progress: 'true',
           /* eslint-enable camelcase */
           ...process.env
-        }
+        },
+        shell: process.platform === 'win32'
       })
       proc.stdio[1]?.on('data', s.write.bind(s))
       proc.stdio[2]?.on('data', s.write.bind(s))
