@@ -7,10 +7,7 @@ export type PathStatus = {
 }
 export const getPathStatus = async (path: string): Promise<PathStatus> => {
   const [stat, isEmpty] = await Promise.all([
-    fs.promises.stat(path).catch(() => ({
-      isDirectory: () => false,
-      isFile: () => false
-    })),
+    fs.promises.stat(path).catch(() => ({ isDirectory: () => false, isFile: () => false })),
     fs.promises
       .readdir(path)
       .then((dir) => dir.length === 0)

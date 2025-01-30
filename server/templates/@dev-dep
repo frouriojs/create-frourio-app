@@ -1,2 +1,15 @@
-typescript
+@types/node
+@types/react
+@types/react-dom
+@typescript-eslint/eslint-plugin
+@typescript-eslint/parser
+cross-env
+dotenv
+eslint
+eslint-config-prettier
+eslint-plugin-react
+npm-run-all
 pathpida
+prettier
+ts-loader
+typescript

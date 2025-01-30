@@ -15,8 +15,9 @@ import { capitailze } from '$/utils/string'
 const dirPath = path.join(homedir(), '.frourio')
 const dbPath = path.join(dirPath, 'create-frourio-app.json')
 
-type AnswersVer4 = AnswersVer3
-type AnswersVer3 = Answers
+type AnswersVer5 = Answers
+type AnswersVer4 = AnswersVer5 & { client?: string }
+type AnswersVer3 = AnswersVer4
 type AnswersVer2 = Omit<
   AnswersVer3,
   | 'skipDbChecks'
@@ -40,18 +41,14 @@ type AnswersVer2 = Omit<
   | 'serverSourcePath'
   | 'designatedServer'
 > &
-  Partial<
-    Record<
-      'dbHost' | 'dbUser' | 'dbPass' | 'dbUser' | 'dbPort' | 'dbFile',
-      string
-    >
-  >
+  Partial<Record<'dbHost' | 'dbUser' | 'dbPass' | 'dbUser' | 'dbPort' | 'dbFile', string>>
 type AnswersVer1 = Omit<AnswersVer2, 'client'> & { front?: string }
 type Schemas = [
   { ver: 1; answers: AnswersVer1 },
   { ver: 2; answers: AnswersVer2 },
   { ver: 3; answers: AnswersVer3 },
-  { ver: 4; answers: AnswersVer4 }
+  { ver: 4; answers: AnswersVer4 },
+  { ver: 5; answers: AnswersVer5 }
 ]
 
 let db: Schemas[2]
@@ -80,31 +77,24 @@ const migration = [
       ver: 4,
       answers: { ...others, client: client === 'sapper' ? undefined : client }
     })
+  },
+  {
+    ver: 5,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    handler: ({ answers: { client, ...others } }: Schemas[3]): Schemas[4] => ({
+      ver: 5,
+      answers: others
+    })
   }
 ]
 
 const v2DbInfoKeys = ['dbHost', 'dbUser', 'dbPass', 'dbUser', 'dbPort'] as const
 export const cliMigration = [
-  {
-    when: (answers: Schemas[number]['answers']) => 'front' in answers,
-    warn: () => 'Use "client" instead of "front".',
-    handler: ({
-      front,
-      ...others
-    }: Schemas[0]['answers']): Schemas[1]['answers'] => ({
-      ...others,
-      client: front
-    })
-  },
   ...v2DbInfoKeys.map((key) => ({
     when: (answers: Schemas[number]['answers']) => key in answers,
     warn: (answers: Schemas[number]['answers']) =>
       `Use "${answers.db}${capitailze(key)}" instead of "${key}".`,
-    handler: ({
-      [key]: val,
-      db,
-      ...others
-    }: Schemas[0]['answers']): Schemas[1]['answers'] => ({
+    handler: ({ [key]: val, db, ...others }: Schemas[0]['answers']): Schemas[1]['answers'] => ({
       ...others,
       db,
       [`${db}${capitailze(key)}`]: val
@@ -113,10 +103,7 @@ export const cliMigration = [
   {
     when: (answers: Schemas[number]['answers']) => 'dbFile' in answers,
     warn: () => `Use "sqliteDbFile" instead of "dbFile".`,
-    handler: ({
-      dbFile,
-      ...others
-    }: Schemas[1]['answers']): Schemas[2]['answers'] => ({
+    handler: ({ dbFile, ...others }: Schemas[1]['answers']): Schemas[2]['answers'] => ({
       ...others,
       sqliteDbFile: dbFile
     })
@@ -151,17 +138,12 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   const dir = allAnswers.dir ?? ''
 
   await generate(
-    {
-      ...allAnswers,
-      clientPort: await getClientPort(),
-      serverPort: await getServerPort()
-    },
+    { ...allAnswers, clientPort: await getClientPort(), serverPort: await getServerPort() },
     path.resolve(__dirname, '..')
   )
 
   await completed(allAnswers, s)
   const npmClientPath = await realExecutablePath(answers.pm ?? 'npm')
-
   const npmRun = (script: string) =>
     new Promise((resolve, reject) => {
       const proc = spawn(npmClientPath, ['run', '--color', script], {
@@ -174,7 +156,8 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
           npm_config_progress: 'true',
           /* eslint-enable camelcase */
           ...process.env
-        }
+        },
+        shell: process.platform === 'win32'
       })
       proc.stdio[1]?.on('data', s.write.bind(s))
       proc.stdio[2]?.on('data', s.write.bind(s))
@@ -200,10 +183,7 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 }
 
-export const getAnswers = (dir: string) => ({
-  dir,
-  ...db.answers
-})
+export const getAnswers = (dir: string) => ({ dir, ...db.answers })
 
 export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
   db = {
@@ -216,12 +196,11 @@ export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
     }
   }
 
-  const canContinue = canContinueOnPath(
-    await getPathStatus(path.resolve(process.cwd(), answers.dir || ''))
+  const canContinue = await getPathStatus(path.resolve(process.cwd(), answers.dir || '')).then(
+    canContinueOnPath
   )
-  if (canContinue !== null) {
-    throw new Error(canContinue)
-  }
+
+  if (canContinue !== null) throw new Error(canContinue)
 
   if (!fs.existsSync(dirPath)) await fs.promises.mkdir(dirPath)
 

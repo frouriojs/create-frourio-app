@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import type { MulterFile } from '$/$server'
 import {
   API_ORIGIN,
   API_USER_ID,
@@ -33,7 +32,7 @@ export const validateUser = (id: string, pass: string) =>
 
 export const getUserInfoById = (id: string) => ({ id, ...getUserInfo() })
 
-export const changeIcon = async (id: string, iconFile: MulterFile) => {
+export const changeIcon = async (id: string, iconFile: Express.Multer.File) => {
   const iconName = getUserIconName()
 
   if (!iconsDir) {

@@ -1,6 +1,5 @@
 import path from 'path'
-<% if (client === 'nuxt') { %>// eslint-disable-next-line import/named
-<% } %>import Fastify, { FastifyServerFactory } from 'fastify'
+import Fastify, { FastifyServerFactory } from 'fastify'
 import helmet from '@fastify/helmet'
 import cors from '@fastify/cors'
 import fastifyStatic from '@fastify/static'

@@ -3,10 +3,7 @@ import { Answers, cfaPrompts, isAnswersValid } from '$/common/prompts'
 import { AllDbContext } from '$/utils/database/context'
 import { randChoice } from '$/utils/random'
 
-export const createRandomAnswers = async (
-  dbCtx: AllDbContext,
-  num = 0
-): Promise<Answers> => {
+export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise<Answers> => {
   if (num === 1000) throw new Error('Infinite loop')
   const ans: Answers = {}
 
@@ -14,9 +11,7 @@ export const createRandomAnswers = async (
   cfaPrompts.forEach((p) => {
     ;(ans as any)[p.name] = p.default
     if (p.type === 'list') {
-      ;(ans as any)[p.name] = randChoice(
-        p.choices.map((choice) => choice.value)
-      )
+      ;(ans as any)[p.name] = randChoice(p.choices.map((choice) => choice.value))
     } else {
       // To pass the non-empty check
       ;(ans as any)[p.name] = 'test-foo'
@@ -34,11 +29,7 @@ export const createRandomAnswers = async (
   ])
 
   // Database
-  if (ans.orm === 'typeorm' && ans.db === 'sqlite') {
-    ans.db = 'mysql'
-  }
-  if (process.env.TEST_CFA_FIX_CLIENT)
-    ans.client = process.env.TEST_CFA_FIX_CLIENT
+  if (ans.orm === 'typeorm' && ans.db === 'sqlite') ans.db = 'mysql'
   if (process.env.TEST_CFA_FIX_DB) ans.db = process.env.TEST_CFA_FIX_DB
   if (process.env.TEST_CFA_FIX_ORM) ans.orm = process.env.TEST_CFA_FIX_ORM
   if (ans.db === 'sqlite') {

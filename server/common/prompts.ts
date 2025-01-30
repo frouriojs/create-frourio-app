@@ -1,7 +1,6 @@
 type PromptName =
   | 'dir'
   | 'server'
-  | 'client'
   | 'building'
   | 'mode'
   | 'target'
@@ -64,13 +63,7 @@ export type Prompt = {
   default?: string
   when?: Lazy<boolean>
   valid?: Lazy<boolean>
-} & (
-  | {
-      type: 'list'
-      choices: Choice[]
-    }
-  | { type: 'input'; notes?: Lazy<Note[]> }
-)
+} & ({ type: 'list'; choices: Choice[] } | { type: 'input'; notes?: Lazy<Note[]> })
 
 export type DeterminedPrompt = RemoveLazy<Prompt>
 
@@ -91,16 +84,6 @@ export const cfaPrompts: Prompt[] = [
     default: 'fastify'
   },
   {
-    name: 'client',
-    message: 'Client framework',
-    choices: [
-      { name: 'Next.js (React)', value: 'next' },
-      { name: 'Nuxt.js (Vue)', value: 'nuxt' }
-    ],
-    type: 'list',
-    default: 'next'
-  },
-  {
     name: 'building',
     message: 'Building mode',
     type: 'list',
@@ -108,30 +91,7 @@ export const cfaPrompts: Prompt[] = [
       { name: 'Static (export)', value: 'static' },
       { name: 'Basic (build)', value: 'basic' }
     ],
-    default: 'static',
-    when: (ans) => ans.client === 'next'
-  },
-  {
-    name: 'mode',
-    message: 'Rendering mode',
-    type: 'list',
-    choices: [
-      { name: 'Single Page App', value: 'spa' },
-      { name: 'Universal (SSR / SSG)', value: 'universal' }
-    ],
-    default: 'spa',
-    when: (ans) => ans.client === 'nuxt'
-  },
-  {
-    name: 'target',
-    message: 'Deployment target',
-    type: 'list',
-    choices: [
-      { name: 'Static (JAMStack hosting)', value: 'static' },
-      { name: 'Server (Node.js hosting)', value: 'server' }
-    ],
-    default: 'static',
-    when: (ans) => ans.client === 'nuxt'
+    default: 'static'
   },
   {
     name: 'aspida',
@@ -152,8 +112,7 @@ export const cfaPrompts: Prompt[] = [
       { name: 'React Query', value: 'query' },
       { name: 'None', value: 'none' }
     ],
-    default: 'swr',
-    when: (ans) => ans.client === 'next'
+    default: 'swr'
   },
   {
     name: 'daemon',
@@ -226,17 +185,11 @@ export const cfaPrompts: Prompt[] = [
       name: `${db}Db${what}` as PromptName,
       message: (ans: Answers) => {
         if (ans.orm === 'prisma') {
-          return `dev DB ${typeormEnv}: server/prisma/.env API_DATABASE_URL (${getPrismaDbUrl(
-            {
-              ...ans,
-              [`${db}Db${what}`]: (ans as any)[`${db}Db${what}`] || 'HERE',
-              [`${db}DbPass`]: (ans as any)[`${db}DbPass`]
-                ? '***'
-                : what === 'Pass'
-                ? 'HERE'
-                : ''
-            }
-          )}) =`
+          return `dev DB ${typeormEnv}: server/prisma/.env API_DATABASE_URL (${getPrismaDbUrl({
+            ...ans,
+            [`${db}Db${what}`]: (ans as any)[`${db}Db${what}`] || 'HERE',
+            [`${db}DbPass`]: (ans as any)[`${db}DbPass`] ? '***' : what === 'Pass' ? 'HERE' : ''
+          })}) =`
         } else {
           return `dev DB: server/.env TYEPORM_${typeormEnv} =`
         }
@@ -345,8 +298,7 @@ export const cfaPrompts: Prompt[] = [
                 `- **API_DATABASE_URL**: ${
                   (
                     {
-                      sqlite:
-                        'Production URL for SQLite. e.g. `file:///mnt/efs-data/db.sqlite`',
+                      sqlite: 'Production URL for SQLite. e.g. `file:///mnt/efs-data/db.sqlite`',
                       mysql:
                         'Production URL for MySQL. e.g. `mysql://mysql-instance1.123456789012.us-east-1.rds.amazonaws.com:3306`',
                       postgresql:
@@ -456,9 +408,7 @@ export const cfaPrompts: Prompt[] = [
                 '### Deploy to Vercel',
                 '',
                 '1. Visit [vercel.com](https://vercel.com) and create new project.',
-                '2. Set **BUILD COMMAND** to `' +
-                  ans.pm +
-                  ' run build:client`.',
+                '2. Set **BUILD COMMAND** to `' + ans.pm + ' run build:client`.',
                 '3. Add environment variables **API_BASE_PATH** and **API_ORIGIN**.'
               ].join('\n')
             }
@@ -478,9 +428,7 @@ export const cfaPrompts: Prompt[] = [
                 '1. Visit [app.netlify.com](https://app.netlify.com) and create new project.',
                 '2. Go to **Site Settings** > **Build & Deploy**',
                 '  a. Set **Repository** to your remote repository',
-                '  b. Set **Build command** to `' +
-                  ans.pm +
-                  ' run build:client`',
+                '  b. Set **Build command** to `' + ans.pm + ' run build:client`',
                 '  c. Set **Publish directory** to `out/`',
                 '3. Go to **Site Settings** > **Build & Deploy** > **Environment**',
                 '  a. Add environment variables **API_ORIGIN** and **API_BASE_PATH**.'
@@ -550,15 +498,10 @@ export const cfaPrompts: Prompt[] = [
 ]
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const calculatePrompts = (
-  answers: Answers,
-  target: any = cfaPrompts
-): any => {
+export const calculatePrompts = (answers: Answers, target: any = cfaPrompts): any => {
   if (target === null) return target
   if (Array.isArray(target)) {
-    return target
-      .map((e: any) => calculatePrompts(answers, e))
-      .filter((e: any) => e !== undefined)
+    return target.map((e: any) => calculatePrompts(answers, e)).filter((e: any) => e !== undefined)
   }
   if (typeof target === 'object') {
     const res: any = {}
@@ -635,10 +578,7 @@ export const isAnswersValid = (answers: Answers) => {
     if (valid !== undefined) return valid
 
     if (el.type === 'list') {
-      return (
-        (el.choices.filter((choice) => choice.value === value)[0]?.disabled ??
-          false) === false
-      )
+      return (el.choices.filter((choice) => choice.value === value)[0]?.disabled ?? false) === false
     }
 
     if (el.type === 'input') {
@@ -661,8 +601,7 @@ export const getCommonDbInfo = (answers: Answers): CommonDbInfo => {
   const info: CommonDbInfo = {}
   if (answers.db && answers.db !== 'none' && answers.db !== 'sqlite') {
     ;(['Host', 'Port', 'Name', 'User', 'Pass'] as const).forEach((what) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(info as any)[`db${what}`] =
+      info[`db${what}`] =
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (answers as any)[`${answers.db}Db${what}`] || ''
     })

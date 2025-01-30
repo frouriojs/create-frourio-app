@@ -7,11 +7,7 @@ import stream from 'stream'
 import fs from 'fs'
 import realExecutablePath from 'real-executable-path'
 
-export const npmInstall = async (
-  cwd: string,
-  npmClient: string,
-  s: stream.Writable
-) => {
+export const npmInstall = async (cwd: string, npmClient: string, s: stream.Writable) => {
   const npmClientPath = await realExecutablePath(npmClient)
   await new Promise<void>((resolve, reject) => {
     const proc = spawn(npmClientPath, ['install'], {
@@ -24,7 +20,8 @@ export const npmInstall = async (
         npm_config_progress: 'true',
         /* eslint-enable camelcase */
         ...process.env
-      }
+      },
+      shell: process.platform === 'win32'
     })
 
     proc.stdio[1]?.on('data', s.write.bind(s))
@@ -42,7 +39,8 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
   await new Promise((resolve, reject) => {
     const proc = spawn(gitCliPath, ['init'], {
       stdio: ['inherit', 'pipe', 'pipe'],
-      cwd: outDir
+      cwd: outDir,
+      shell: process.platform === 'win32'
     })
     proc.stdio[1]?.on('data', s.write.bind(s))
     proc.stdio[2]?.on('data', s.write.bind(s))
