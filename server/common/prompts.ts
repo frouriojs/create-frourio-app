@@ -25,12 +25,9 @@ type PromptName =
   | 'sqliteDbFile'
   | 'ci'
   | 'deployBranch'
-  // | 'developBranch'
   | 'deployServer'
   | 'staticHosting'
-  | 'serverless'
   | 'serverSourcePath'
-  | 'designatedServer'
 
 export type Answers = Partial<Record<PromptName, string>>
 export type Text = { en: string }
@@ -320,25 +317,6 @@ export const cfaPrompts: Prompt[] = [
           }
         ]
       },
-      {
-        name: 'Serverless',
-        value: 'serverless',
-        disabled: (ans) => {
-          if (ans.server === 'fastify') {
-            return { en: 'Fastify does not benefit for serverless environment' }
-          }
-          if (ans.orm === 'typeorm') {
-            return { en: 'Preparing to support TypeORM' }
-          }
-          if (ans.orm === 'none') {
-            return { en: 'Preparing to support no ORM' }
-          }
-          if (ans.ci !== 'actions') {
-            return { en: 'Select **GitHub Actions** for CI' }
-          }
-          return null
-        }
-      },
       { name: 'None', value: 'none' }
     ],
     type: 'list',
@@ -441,59 +419,6 @@ export const cfaPrompts: Prompt[] = [
     ],
     type: 'list',
     default: 'pages'
-  },
-  {
-    name: 'serverless',
-    message: 'Serverless service',
-    when: (ans) => ans.deployServer === 'serverless',
-    choices: [
-      {
-        name: 'AWS Lambda',
-        value: 'lambda',
-        disabled: (ans) => {
-          if (ans.ci !== 'actions') {
-            return { en: 'Select **GitHub Actions** for CI' }
-          }
-          return null
-        },
-        notes: () => [
-          {
-            severity: 'warn',
-            text: {
-              en: [
-                'Little difficult option for beginners.',
-                'You can find more concrete example [here](https://github.com/LumaKernel/frourio-sample-1/tree/master/infra).',
-                '',
-                'To develop serverless applications, you should consider how huge are the modules and bundled files.',
-                'Please note that AWS Lambda has [the size limit](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html) **250MB**.'
-              ].join('\n')
-            }
-          },
-          {
-            severity: 'info',
-            text: {
-              en: [
-                '### Deploy to AWS Lambda',
-                '',
-                'At least, you should prepare following for deploying to AWS Lambda.',
-                '',
-                '- [Lambda function](https://aws.amazon.com/lambda/) to respond to user requests.',
-                "  - Set this Lambda's name to GitHub Actions Secrets **LAMBDA_FUNCTION_NAME_SERVER**",
-                '- [Lambda function](https://aws.amazon.com/lambda/) to run migrations.',
-                "  - Set this Lambda's name to GitHub Actions Secrets **LAMBDA_FUNCTION_NAME_MIGRATION**",
-                '  - NOTE: Recommended to set longer time limit.',
-                '- [Amazon S3](https://aws.amazon.com/s3/) to upload deployment artifacts like built bundle scripts and _node\\_modules_.',
-                "  - Set this S3's bucket name to GitHub Actions Secrets **S3_BUCKET**",
-                '  - _Optional_: To specify the S3 key prefix, also add **S3_PREFIX** to secrets. e.g. `deployments/`',
-                '  - To elaborate, the key `${S3_BUCKET}/${S3_PREFIX}deployment_server.zip` is used to store the data.'
-              ].join('\n')
-            }
-          }
-        ]
-      }
-    ],
-    type: 'list',
-    default: 'lambda'
   }
 ]
 

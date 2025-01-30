@@ -15,7 +15,8 @@ import { capitailze } from '$/utils/string'
 const dirPath = path.join(homedir(), '.frourio')
 const dbPath = path.join(dirPath, 'create-frourio-app.json')
 
-type AnswersVer5 = Answers
+type AnswersVer6 = Answers
+type AnswersVer5 = AnswersVer6 & { serverless?: string }
 type AnswersVer4 = AnswersVer5 & { client?: string }
 type AnswersVer3 = AnswersVer4
 type AnswersVer2 = Omit<
@@ -37,9 +38,7 @@ type AnswersVer2 = Omit<
   | 'staticHosting'
   | 'deployServer'
   | 'staticHosting'
-  | 'serverless'
   | 'serverSourcePath'
-  | 'designatedServer'
 > &
   Partial<Record<'dbHost' | 'dbUser' | 'dbPass' | 'dbUser' | 'dbPort' | 'dbFile', string>>
 type AnswersVer1 = Omit<AnswersVer2, 'client'> & { front?: string }
@@ -48,7 +47,8 @@ type Schemas = [
   { ver: 2; answers: AnswersVer2 },
   { ver: 3; answers: AnswersVer3 },
   { ver: 4; answers: AnswersVer4 },
-  { ver: 5; answers: AnswersVer5 }
+  { ver: 5; answers: AnswersVer5 },
+  { ver: 6; answers: AnswersVer6 }
 ]
 
 let db: Schemas[2]
@@ -83,6 +83,14 @@ const migration = [
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     handler: ({ answers: { client, ...others } }: Schemas[3]): Schemas[4] => ({
       ver: 5,
+      answers: others
+    })
+  },
+  {
+    ver: 6,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    handler: ({ answers: { serverless, ...others } }: Schemas[4]): Schemas[5] => ({
+      ver: 6,
       answers: others
     })
   }
