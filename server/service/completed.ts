@@ -26,7 +26,7 @@ export const npmInstall = async (cwd: string, npmClient: string, s: stream.Writa
 
     proc.stdio[1]?.on('data', s.write.bind(s))
     proc.stdio[2]?.on('data', s.write.bind(s))
-    proc.once('exit', resolve)
+    proc.once('close', resolve)
     proc.once('error', reject)
   })
 }
@@ -44,7 +44,7 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
     })
     proc.stdio[1]?.on('data', s.write.bind(s))
     proc.stdio[2]?.on('data', s.write.bind(s))
-    proc.once('exit', resolve)
+    proc.once('close', resolve)
     proc.once('error', reject)
   })
 

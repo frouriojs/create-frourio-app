@@ -286,8 +286,9 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
           const resUploadIcon = await client.get(`/upload/icons/user-icon`)
           expect(resUploadIcon.status).toEqual(200)
         } finally {
-          await new Promise<void>((resolve) => {
+          await new Promise<void>((resolve, reject) => {
             proc.on('close', resolve)
+            proc.once('error', reject)
             proc.kill()
           })
         }
