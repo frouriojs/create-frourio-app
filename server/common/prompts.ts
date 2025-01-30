@@ -26,7 +26,6 @@ type PromptName =
   | 'ci'
   | 'deployBranch'
   | 'deployServer'
-  | 'staticHosting'
   | 'serverSourcePath'
 
 export type Answers = Partial<Record<PromptName, string>>
@@ -342,83 +341,6 @@ export const cfaPrompts: Prompt[] = [
         }
       }
     ]
-  },
-  {
-    name: 'staticHosting',
-    message: 'Static hosting service',
-    choices: [
-      {
-        name: 'GitHub Pages',
-        value: 'pages',
-        disabled: (ans) => {
-          if (ans.ci !== 'actions') {
-            return { en: 'Select **GitHub Actions** for CI' }
-          }
-          return null
-        },
-        notes: [
-          {
-            severity: 'info',
-            text: {
-              en: [
-                '### GitHub Actions Secrets',
-                '',
-                'Add following secrets.',
-                '',
-                '- **API_ORIGIN**: API origin. e.g. `https://api.my-frourio-app.example`',
-                '- **API_BASE_PATH**: API basepath. e.g. `/api`',
-                '- _Optional_ **GH_PAGES_BASE_PATH**: Client hosting basepath.',
-                '  - If omitted, GitHub repository name will be used. This is because GitHub hosts Pages at _github-username_.github.io/_repository-name_ with default settings.',
-                '  - You can also use custom domain. When doing so, it is needed to use that basename. Set this `/` to host your client from root routing.'
-              ].join('\n')
-            }
-          }
-        ]
-      },
-      {
-        name: 'Vercel',
-        value: 'vercel',
-        notes: (ans) => [
-          {
-            severity: 'info',
-            text: {
-              en: [
-                '### Deploy to Vercel',
-                '',
-                '1. Visit [vercel.com](https://vercel.com) and create new project.',
-                '2. Set **BUILD COMMAND** to `' + ans.pm + ' run build:client`.',
-                '3. Add environment variables **API_BASE_PATH** and **API_ORIGIN**.'
-              ].join('\n')
-            }
-          }
-        ]
-      },
-      {
-        name: 'Netlify',
-        value: 'netlify',
-        notes: (ans) => [
-          {
-            severity: 'info',
-            text: {
-              en: [
-                '### Deploy to Netlify',
-                '',
-                '1. Visit [app.netlify.com](https://app.netlify.com) and create new project.',
-                '2. Go to **Site Settings** > **Build & Deploy**',
-                '  a. Set **Repository** to your remote repository',
-                '  b. Set **Build command** to `' + ans.pm + ' run build:client`',
-                '  c. Set **Publish directory** to `out/`',
-                '3. Go to **Site Settings** > **Build & Deploy** > **Environment**',
-                '  a. Add environment variables **API_ORIGIN** and **API_BASE_PATH**.'
-              ].join('\n')
-            }
-          }
-        ]
-      },
-      { name: 'None', value: 'none' }
-    ],
-    type: 'list',
-    default: 'pages'
   }
 ]
 
