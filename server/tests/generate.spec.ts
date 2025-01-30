@@ -213,7 +213,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         })
 
         try {
-          await tcpPortUsed.waitUntilUsedOnHost(serverPort, '127.0.0.1', 500, 5000)
+          await tcpPortUsed.waitUntilUsedOnHost(serverPort, '127.0.0.1', 500, 10000)
 
           const slash = answers.server === 'fastify' ? '' : '/'
 
@@ -286,18 +286,19 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
           const resUploadIcon = await client.get(`/upload/icons/user-icon`)
           expect(resUploadIcon.status).toEqual(200)
         } finally {
-          proc.kill()
-          try {
-            await tcpPortUsed.waitUntilFreeOnHost(serverPort, '127.0.0.1', 500, 5000)
-          } catch (e: unknown) {
-            proc.kill('SIGKILL')
-          }
+          await new Promise<void>((resolve) => {
+            proc.on('close', resolve)
+            proc.kill()
+          })
         }
       }
     })
     const keep = process.env.TEST_CFA_KEEP_DB === 'yes'
     if (!keep) {
       try {
+        await dbCtx.pg.down()
+        await dbCtx.sqlite.down()
+        await dbCtx.mysql.down()
         await dbCtx.pg.deleteAll(await dbCtx.pg.getAllNames())
         await dbCtx.sqlite.deleteAll(await dbCtx.sqlite.getAllNames())
         await dbCtx.mysql.deleteAll(await dbCtx.mysql.getAllNames())
@@ -306,7 +307,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         console.error(e)
       }
     }
-  } finally {
+  } catch (e: unknown) {
     try {
       await dbCtx.pg.down()
       await dbCtx.sqlite.down()

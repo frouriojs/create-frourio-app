@@ -601,8 +601,7 @@ export const getCommonDbInfo = (answers: Answers): CommonDbInfo => {
   const info: CommonDbInfo = {}
   if (answers.db && answers.db !== 'none' && answers.db !== 'sqlite') {
     ;(['Host', 'Port', 'Name', 'User', 'Pass'] as const).forEach((what) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(info as any)[`db${what}`] =
+      info[`db${what}`] =
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (answers as any)[`${answers.db}Db${what}`] || ''
     })
