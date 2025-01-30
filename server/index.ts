@@ -60,8 +60,7 @@ const basePath = '/api'
   })
 
   const fastify = Fastify()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fastify.register(FastifyStatic, { root: path.join(__dirname, '../../public') })
+  fastify.register(FastifyStatic, { root: path.join(__dirname, '../../out') })
   await fastify.register(FastifyInject, { dir, logging, ready })
   if (process.env.NODE_ENV === 'development') {
     fastify
