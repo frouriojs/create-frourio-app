@@ -20,12 +20,7 @@
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "migration:generate": "npm run typeorm -- migration:generate -n generate",
     "migration:run": "npm run typeorm -- migration:run",
-    "migration:revert": "npm run typeorm -- migration:revert<% } %><% if (daemon === 'pm2') { %>",
-    "pm2:start": "pm2 start pm2.config.json --env production",
-    "pm2:stop": "pm2 stop pm2.config.json",
-    "pm2:delete": "pm2 delete pm2.config.json",
-    "pm2:logs": "pm2 logs",
-    "pm2:monit": "pm2 monit<% } %><% if (orm === 'prisma'){ %>",
+    "migration:revert": "npm run typeorm -- migration:revert<% } %><% if (orm === 'prisma'){ %>",
     "seed": "prisma db seed --preview-feature",
     "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"<% } %>",
     "start": "cross-env NODE_ENV=production node index.js"

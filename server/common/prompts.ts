@@ -7,7 +7,6 @@ type PromptName =
   | 'aspida'
   | 'reactHooks'
   | 'pm'
-  | 'daemon'
   | 'testing'
   | 'orm'
   | 'db'
@@ -105,16 +104,6 @@ export const cfaPrompts: Prompt[] = [
       { name: 'None', value: 'none' }
     ],
     default: 'swr'
-  },
-  {
-    name: 'daemon',
-    message: 'Daemon process manager',
-    choices: [
-      { name: 'PM2', value: 'pm2' },
-      { name: 'None', value: 'none' }
-    ],
-    type: 'list',
-    default: 'pm2'
   },
   {
     name: 'orm',

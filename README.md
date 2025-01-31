@@ -68,9 +68,6 @@ https://frourio.com/docs
    - [SWR](https://swr.vercel.app/)
    - [React Query](https://react-query.tanstack.com/)
    - None
-1. Daemon process manager:
-   - None
-   - [PM2](https://pm2.keymetrics.io/)
 1. O/R mapping tool:
    - [Prisma (recommended)](https://www.prisma.io/)
    - [TypeORM](https://typeorm.io/)

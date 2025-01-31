@@ -18,6 +18,7 @@ const dbPath = path.join(dirPath, 'create-frourio-app.json')
 type AnswersVer6 = Answers
 type AnswersVer5 = AnswersVer6 & {
   ci?: string
+  daemon?: string
   deployBranch?: string
   deployServer?: string
   serverless?: string
@@ -93,6 +94,7 @@ const migration = [
       /* eslint-disable @typescript-eslint/no-unused-vars */
       answers: {
         ci,
+        daemon,
         deployBranch,
         deployServer,
         serverless,
