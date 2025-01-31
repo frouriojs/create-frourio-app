@@ -31,6 +31,7 @@ type AnswersVer5 = AnswersVer6 & {
   serverless?: string
   staticHosting?: string
   serverSourcePath?: string
+  sqliteDbFile?: string
   testing?: string
 }
 type AnswersVer4 = AnswersVer5 & { client?: string }
@@ -43,7 +44,6 @@ type AnswersVer2 = Omit<
   | 'postgresqlDbUser'
   | 'postgresqlDbPass'
   | 'postgresqlDbName'
-  | 'sqliteDbFile'
 > &
   Partial<Record<'dbHost' | 'dbUser' | 'dbPass' | 'dbUser' | 'dbPort' | 'dbFile', string>>
 type AnswersVer1 = Omit<AnswersVer2, 'client'> & { front?: string }
@@ -111,6 +111,7 @@ const migration = [
         serverless,
         staticHosting,
         serverSourcePath,
+        sqliteDbFile,
         testing,
         ...others
       } /* eslint-enable @typescript-eslint/no-unused-vars */
@@ -132,15 +133,7 @@ export const cliMigration = [
       db,
       [`${db}${capitailze(key)}`]: val
     })
-  })),
-  {
-    when: (answers: Schemas[number]['answers']) => 'dbFile' in answers,
-    warn: () => `Use "sqliteDbFile" instead of "dbFile".`,
-    handler: ({ dbFile, ...others }: Schemas[1]['answers']): Schemas[2]['answers'] => ({
-      ...others,
-      sqliteDbFile: dbFile
-    })
-  }
+  }))
 ]
 
 try {

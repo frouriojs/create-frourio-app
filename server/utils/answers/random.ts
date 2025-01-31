@@ -38,8 +38,7 @@ export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise
     }
     case 'sqlite': {
       await dbCtx.sqlite.up()
-      const info = await dbCtx.sqlite.createNew()
-      ans.sqliteDbFile = info.filename
+      await dbCtx.sqlite.createNew()
       break
     }
     default:

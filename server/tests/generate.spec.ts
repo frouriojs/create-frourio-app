@@ -122,10 +122,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
 
       const npmClientPath = await realExecutablePath('npm')
 
-      if (answers.db === 'sqlite') {
-        expect(answers.sqliteDbFile?.length).toBeGreaterThan(0)
-        expect(allEnv).toContain(answers.sqliteDbFile)
-      } else {
+      if (answers.db !== 'sqlite') {
         expect(templateCtx.dbHost?.length).toBeGreaterThan(0)
         expect(templateCtx.dbPort?.length).toBeGreaterThan(0)
         expect(templateCtx.dbPass?.length).toBeGreaterThan(0)
@@ -301,5 +298,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       console.error('Failed to clean up databases.')
       console.error(e)
     }
+
+    throw e
   }
 })

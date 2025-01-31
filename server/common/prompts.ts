@@ -13,7 +13,6 @@ type PromptName =
   | 'postgresqlDbUser'
   | 'postgresqlDbPass'
   | 'postgresqlDbName'
-  | 'sqliteDbFile'
 
 export type Answers = Partial<Record<PromptName, string>>
 export type Text = { en: string }
@@ -130,7 +129,7 @@ export const cfaPrompts: Prompt[] = [
     const db = 'postgresql'
 
     return {
-      name: `${db}Db${what}` as PromptName,
+      name: `${db}Db${what}` as const,
       message: (ans: Answers) =>
         `dev DB ${label}: server/prisma/.env API_DATABASE_URL (${getPrismaDbUrl({
           ...ans,
@@ -166,17 +165,7 @@ export const cfaPrompts: Prompt[] = [
       },
       when: (ans: Answers) => ans.db === db
     }
-  }),
-  {
-    name: 'sqliteDbFile',
-    message: 'server/prisma/.env DATABASE_FILE=',
-    type: 'input',
-    default: './dev.db',
-    when: (ans) => ans.db === 'sqlite',
-    valid: (ans) => {
-      return ans.skipDbChecks === 'true' || (ans.sqliteDbFile ?? '') !== ''
-    }
-  }
+  })
 ]
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -213,14 +202,8 @@ export const omitDefaults = (answers: Answers): Answers => {
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
-export const initPrompts = (answers: Answers): DeterminedPrompt[] => {
-  const allDefault = getAllDefaultAnswers()
-  const prompts: DeterminedPrompt[] = calculatePrompts({
-    ...allDefault,
-    ...answers
-  })
-  return prompts
-}
+export const initPrompts = (answers: Answers): DeterminedPrompt[] =>
+  calculatePrompts({ ...getAllDefaultAnswers(), ...answers })
 
 export const removeUnnecessary = <T extends Answers>(answers: T): T => {
   const res = { ...answers }
@@ -229,10 +212,7 @@ export const removeUnnecessary = <T extends Answers>(answers: T): T => {
   c.forEach((el) => (usedKeys[el.name] = true))
 
   cfaPrompts.forEach((p) => {
-    if (!(p.name in usedKeys)) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(res as any)[p.name] = undefined
-    }
+    if (!(p.name in usedKeys)) res[p.name] = undefined
   })
 
   return res
@@ -242,10 +222,7 @@ export const addAllUndefined = <T extends Answers>(answers: T): T => {
   const res = { ...answers }
 
   cfaPrompts.forEach((p) => {
-    if (!(p.name in res)) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(res as any)[p.name] = undefined
-    }
+    if (!(p.name in res)) res[p.name] = undefined
   })
 
   return res
@@ -281,22 +258,19 @@ export type CommonDbInfo = {
 
 export const getCommonDbInfo = (answers: Answers): CommonDbInfo => {
   const info: CommonDbInfo = {}
-  if (answers.db && answers.db !== 'none' && answers.db !== 'sqlite') {
+  if (answers.db !== 'sqlite') {
     ;(['Host', 'Port', 'Name', 'User', 'Pass'] as const).forEach((what) => {
-      info[`db${what}`] =
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (answers as any)[`${answers.db}Db${what}`] || ''
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      info[`db${what}`] = (answers as any)[`${answers.db}Db${what}`] || ''
     })
   }
   return info
 }
 
-export const getPrismaDbUrl = (answers: Answers): string | undefined => {
+export const getPrismaDbUrl = (answers: Answers): string => {
+  if (answers.db === 'sqlite') return 'file:./dev.db'
+
   const info = getCommonDbInfo(answers)
-  if (answers.db && answers.db !== 'none') {
-    return answers.db === 'sqlite'
-      ? `file:${answers.sqliteDbFile}`
-      : `${answers.db}://${info.dbUser}:${info.dbPass}@${info.dbHost}:${info.dbPort}/${info.dbName}`
-  }
-  return undefined
+
+  return `postgresql://${info.dbUser}:${info.dbPass}@${info.dbHost}:${info.dbPort}/${info.dbName}`
 }
