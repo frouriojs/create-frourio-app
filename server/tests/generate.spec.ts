@@ -12,7 +12,6 @@ import { getPortPromise } from 'portfinder'
 import { cmdEscapeSingleInput, shellEscapeSingleInput } from '$/utils/shell/escape'
 import fg from 'fast-glob'
 import YAML from 'yaml'
-import assert from 'assert'
 import { execFile, spawn } from 'child_process'
 import { promisify } from 'util'
 import { Answers } from '$/common/prompts'
@@ -120,8 +119,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       const templateCtx = answersToTemplateContext({ ...answers, serverPort: 0, clientPort: 0 })
       const envFiles = await fg([path.resolve(dir, '**/.env').replace(/\\/g, '/')])
       const allEnv = envFiles.map((f) => fs.readFileSync(f).toString()).join('\n')
-      assert(answers.pm)
-      const npmClientPath = await realExecutablePath(answers.pm)
+
+      const npmClientPath = await realExecutablePath('npm')
 
       if (answers.db === 'sqlite') {
         expect(answers.sqliteDbFile?.length).toBeGreaterThan(0)
@@ -143,10 +142,10 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       const nodeModulesDir = path.resolve(dir, 'node_modules')
       const nodeModulesIgnoreDir = path.resolve(dir, 'node_modules_ignore')
 
-      // npm/yarn install:client
+      // npm install:client
       await npmInstall(dir, npmClientPath, process.stdout)
 
-      // npm/yarn install:server
+      // npm install:server
       await npmInstall(serverDir, npmClientPath, process.stdout)
 
       // eslint

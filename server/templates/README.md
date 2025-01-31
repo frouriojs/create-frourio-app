@@ -6,8 +6,6 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:<%= clientPort %>](http://localhost:<%= clientPort %>) with your browser to see the result.

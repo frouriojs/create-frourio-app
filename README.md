@@ -39,12 +39,6 @@ Or starting with npm v6.1 you can do:
 npm init frourio-app
 ```
 
-Or with [yarn](https://yarnpkg.com/en/):
-
-```bash
-yarn create frourio-app
-```
-
 Open `http://localhost:3000`
 
 ## Documentation
@@ -76,9 +70,6 @@ https://frourio.com/docs
 1. Testing framework:
    - [Jest](https://jestjs.io/)
    - None
-1. Package manager:
-   - Yarn
-   - Npm
 
 ## License
 

@@ -33,5 +33,4 @@ npm-debug.log*
 
 # server
 server/**/$*.ts
-server/pretense/yarn.lock
 !server/templates/**/node_modules

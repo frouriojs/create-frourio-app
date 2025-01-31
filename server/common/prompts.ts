@@ -6,7 +6,6 @@ type PromptName =
   | 'target'
   | 'aspida'
   | 'reactHooks'
-  | 'pm'
   | 'testing'
   | 'db'
   | 'skipDbChecks'
@@ -188,16 +187,6 @@ export const cfaPrompts: Prompt[] = [
     ],
     type: 'list',
     default: 'jest'
-  },
-  {
-    name: 'pm',
-    message: 'Package manager',
-    choices: [
-      { name: 'Npm', value: 'npm' },
-      { name: 'Yarn', value: 'yarn' }
-    ],
-    type: 'list',
-    default: 'npm'
   }
 ]
 

@@ -33,7 +33,7 @@ export const npmInstall = async (cwd: string, npmClient: string, s: stream.Writa
 
 export const completed = async (answers: Answers, s: stream.Writable) => {
   const outDir = path.resolve(answers.dir ?? './new-frourio-app')
-  const npmClientPath = await realExecutablePath(answers.pm ?? 'npm')
+  const npmClientPath = await realExecutablePath('npm')
   const gitCliPath = await realExecutablePath('git')
 
   await new Promise((resolve, reject) => {
@@ -55,15 +55,14 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
   const isNewFolder = outDir !== process.cwd()
   const relativeOutFolder = relative(process.cwd(), outDir)
   const cdMsg = isNewFolder ? chalk`\n\t{cyan cd ${relativeOutFolder}}\n` : ''
-  const pmRun = `${answers.pm}${answers.pm === 'npm' ? ' run' : ''}`
 
   s.write(chalk`\n🎉  {bold Successfully created project} {cyan ${outDir}}\n`)
   s.write(chalk`  {bold To get started:}`)
 
   if (answers.db !== 'sqlite') s.write(chalk`\t{cyan (start ${answers.db} server yourself)}`)
 
-  s.write(chalk`${cdMsg}\t{cyan ${pmRun} dev}\n`)
+  s.write(chalk`${cdMsg}\t{cyan npm run dev}\n`)
   s.write(chalk`  {bold To build & start for production:}`)
-  s.write(chalk`${cdMsg}\t{cyan ${pmRun} build}`)
-  s.write(chalk`\t{cyan ${pmRun} start}\n`)
+  s.write(chalk`${cdMsg}\t{cyan npm run build}`)
+  s.write(chalk`\t{cyan npm start}\n`)
 }

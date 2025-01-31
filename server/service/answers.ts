@@ -27,6 +27,7 @@ type AnswersVer5 = AnswersVer6 & {
   mysqlDbPass?: string
   mysqlDbName?: string
   orm?: string
+  pm?: string
   serverless?: string
   staticHosting?: string
   serverSourcePath?: string
@@ -105,6 +106,7 @@ const migration = [
         mysqlDbPass,
         mysqlDbName,
         orm,
+        pm,
         serverless,
         staticHosting,
         serverSourcePath,
@@ -172,7 +174,7 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   )
 
   await completed(allAnswers, s)
-  const npmClientPath = await realExecutablePath(answers.pm ?? 'npm')
+  const npmClientPath = await realExecutablePath('npm')
   const npmRun = (script: string) =>
     new Promise((resolve, reject) => {
       const proc = spawn(npmClientPath, ['run', '--color', script], {
