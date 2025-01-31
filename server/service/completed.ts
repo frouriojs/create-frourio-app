@@ -48,11 +48,7 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
     proc.once('error', reject)
   })
 
-  await fs.promises.writeFile(
-    path.resolve(outDir, '.git/HEAD'),
-    `ref: refs/heads/${answers.deployBranch}`
-  )
-
+  await fs.promises.writeFile(path.resolve(outDir, '.git/HEAD'), 'ref: refs/heads/main')
   await npmInstall(outDir, npmClientPath, s)
   await npmInstall(path.resolve(outDir, 'server'), npmClientPath, s)
 

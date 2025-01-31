@@ -24,7 +24,6 @@ type PromptName =
   | 'mysqlDbName'
   | 'sqliteDbFile'
   | 'ci'
-  | 'deployBranch'
   | 'deployServer'
 
 export type Answers = Partial<Record<PromptName, string>>
@@ -319,12 +318,6 @@ export const cfaPrompts: Prompt[] = [
     ],
     type: 'list',
     default: 'none'
-  },
-  {
-    name: 'deployBranch',
-    message: 'Branch name to deploy',
-    type: 'input',
-    default: 'main'
   }
 ]
 

@@ -3,7 +3,7 @@ name: Deploy server
 on:
   push:
     branches:
-      - <%= deployBranch %>
+      - main
 
 jobs:
   deploy:

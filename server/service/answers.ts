@@ -17,6 +17,7 @@ const dbPath = path.join(dirPath, 'create-frourio-app.json')
 
 type AnswersVer6 = Answers
 type AnswersVer5 = AnswersVer6 & {
+  deployBranch?: string
   serverless?: string
   staticHosting?: string
   serverSourcePath?: string
@@ -37,7 +38,6 @@ type AnswersVer2 = Omit<
   | 'mysqlDbPass'
   | 'mysqlDbName'
   | 'sqliteDbFile'
-  | 'deployBranch'
   | 'deployServer'
 > &
   Partial<Record<'dbHost' | 'dbUser' | 'dbPass' | 'dbUser' | 'dbPort' | 'dbFile', string>>

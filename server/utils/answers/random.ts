@@ -18,9 +18,6 @@ export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise
     }
   })
 
-  // Branch names
-  ans.deployBranch = randChoice(['master', 'main', 'trunk'])
-
   // Database
   if (ans.orm === 'typeorm' && ans.db === 'sqlite') ans.db = 'mysql'
   if (process.env.TEST_CFA_FIX_DB) ans.db = process.env.TEST_CFA_FIX_DB
