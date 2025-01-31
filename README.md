@@ -88,9 +88,6 @@ https://frourio.com/docs
 1. Package manager:
    - Yarn
    - Npm
-1. CI config:
-   - [GitHub Actions](https://github.co.jp/features/actions)
-   - None
 
 ## License
 

@@ -23,7 +23,6 @@ type PromptName =
   | 'mysqlDbPass'
   | 'mysqlDbName'
   | 'sqliteDbFile'
-  | 'ci'
 
 export type Answers = Partial<Record<PromptName, string>>
 export type Text = { en: string }
@@ -243,17 +242,6 @@ export const cfaPrompts: Prompt[] = [
     ],
     type: 'list',
     default: 'npm'
-  },
-  {
-    name: 'ci',
-    message: 'CI config',
-    choices: [
-      { name: 'GitHub Actions', value: 'actions' },
-      // { name: 'CircleCI', value: 'circleci' },
-      { name: 'None', value: 'none' }
-    ],
-    type: 'list',
-    default: 'actions'
   }
 ]
 
