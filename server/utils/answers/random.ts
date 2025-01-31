@@ -19,14 +19,14 @@ export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise
   })
 
   // Database
-  if (ans.orm === 'typeorm' && ans.db === 'sqlite') ans.db = 'mysql'
   if (process.env.TEST_CFA_FIX_DB) ans.db = process.env.TEST_CFA_FIX_DB
+
   if (process.env.TEST_CFA_FIX_ORM) ans.orm = process.env.TEST_CFA_FIX_ORM
-  if (ans.db === 'sqlite') {
-    if (ans.orm === 'typeorm') ans.orm = 'prisma'
-  }
-  if (!isAnswersValid({ ...ans, skipDbChecks: 'true' }))
+
+  if (!isAnswersValid({ ...ans, skipDbChecks: 'true' })) {
     return await createRandomAnswers(dbCtx, num + 1)
+  }
+
   if (ans.orm !== 'none') {
     switch (ans.db) {
       case 'mysql': {

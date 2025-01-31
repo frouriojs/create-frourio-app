@@ -124,7 +124,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       const npmClientPath = await realExecutablePath(answers.pm)
 
       // SQLite name found
-      if (answers.orm !== 'none' && answers.orm !== 'typeorm' && answers.db === 'sqlite') {
+      if (answers.orm !== 'none' && answers.db === 'sqlite') {
         expect(answers.sqliteDbFile?.length).toBeGreaterThan(0)
         expect(allEnv).toContain(answers.sqliteDbFile)
       }
@@ -185,11 +185,6 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       // migrations
       if (answers.orm === 'prisma') {
         await execFileAsync(npmClientPath, ['run', 'migrate:dev'], {
-          cwd: serverDir,
-          shell: process.platform === 'win32'
-        })
-      } else if (answers.orm === 'typeorm') {
-        await execFileAsync(npmClientPath, ['run', 'migration:run'], {
           cwd: serverDir,
           shell: process.platform === 'win32'
         })

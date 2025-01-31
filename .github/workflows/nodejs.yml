@@ -54,11 +54,12 @@ jobs:
         env:
           TEST_CFA_RANDOM_NUM: 1
           TEST_CFA_FIX_DB: mysql
-          TEST_CFA_FIX_ORM: typeorm
+          TEST_CFA_FIX_ORM: prisma
       - run: npm test
         env:
           TEST_CFA_RANDOM_NUM: 1
           TEST_CFA_FIX_DB: sqlite
+          TEST_CFA_FIX_ORM: prisma
       - run: npm test
         if: github.event_name == 'schedule'
         env:

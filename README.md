@@ -70,15 +70,11 @@ https://frourio.com/docs
    - None
 1. O/R mapping tool:
    - [Prisma (recommended)](https://www.prisma.io/)
-   - [TypeORM](https://typeorm.io/)
    - None
 1. Database type of Prisma:
    - [MySQL](https://www.mysql.com/)
    - [PostgreSQL](https://www.postgresql.org/)
    - [SQLite](https://www.sqlite.org/)
-1. Database type of TypeORM:
-   - [MySQL](https://www.mysql.com/)
-   - [PostgreSQL](https://www.postgresql.org/)
 1. Testing framework:
    - [Jest](https://jestjs.io/)
    - None

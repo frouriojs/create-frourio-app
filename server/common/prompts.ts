@@ -110,7 +110,6 @@ export const cfaPrompts: Prompt[] = [
     message: 'O/R mapping tool',
     choices: [
       { name: 'Prisma (recommended)', value: 'prisma' },
-      { name: 'TypeORM', value: 'typeorm' },
       { name: 'None', value: 'none' }
     ],
     type: 'list',
@@ -118,22 +117,9 @@ export const cfaPrompts: Prompt[] = [
   },
   {
     name: 'db',
-    message: (ans) =>
-      `Database type of ${
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ({ prisma: 'Prisma', typeorm: 'TypeORM' } as any)[ans.orm ?? ''] ?? ''
-      }`,
+    message: 'Database type of Prisma',
     choices: [
-      {
-        name: 'SQLite',
-        value: 'sqlite',
-        disabled: (ans) => {
-          if (ans.orm === 'typeorm') {
-            return { en: 'Preparing SQLite support for TypeORM' }
-          }
-          return null
-        }
-      },
+      { name: 'SQLite', value: 'sqlite' },
       { name: 'MySQL', value: 'mysql' },
       { name: 'PostgreSQL', value: 'postgresql' }
     ],
@@ -162,19 +148,14 @@ export const cfaPrompts: Prompt[] = [
         ['User', 'USERNAME'],
         ['Pass', 'PASSWORD']
       ] as const
-    ).map(([what, typeormEnv]) => ({
+    ).map(([what, label]) => ({
       name: `${db}Db${what}` as PromptName,
-      message: (ans: Answers) => {
-        if (ans.orm === 'prisma') {
-          return `dev DB ${typeormEnv}: server/prisma/.env API_DATABASE_URL (${getPrismaDbUrl({
-            ...ans,
-            [`${db}Db${what}`]: (ans as any)[`${db}Db${what}`] || 'HERE',
-            [`${db}DbPass`]: (ans as any)[`${db}DbPass`] ? '***' : what === 'Pass' ? 'HERE' : ''
-          })}) =`
-        } else {
-          return `dev DB: server/.env TYEPORM_${typeormEnv} =`
-        }
-      },
+      message: (ans: Answers) =>
+        `dev DB ${label}: server/prisma/.env API_DATABASE_URL (${getPrismaDbUrl({
+          ...ans,
+          [`${db}Db${what}`]: (ans as any)[`${db}Db${what}`] || 'HERE',
+          [`${db}DbPass`]: (ans as any)[`${db}DbPass`] ? '***' : what === 'Pass' ? 'HERE' : ''
+        })}) =`,
       type: 'input' as const,
       default: (() => {
         switch (what) {

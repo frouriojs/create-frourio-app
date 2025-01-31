@@ -8,19 +8,14 @@ export type TemplateContext = Answers &
     serverPort: number
     // value for prisma DATABASE_URL
     prismaDbUrl?: string
-    // used for typeorm.ConnectionOptions.type
-    typeormDb: string | undefined
   }
 
 export const answersToTemplateContext = (
   answers: Answers & { clientPort: number; serverPort: number }
 ): TemplateContext => {
-  const templateContext: TemplateContext = {
+  return {
     ...answers,
-    typeormDb: answers.db === 'postgresql' ? 'postgres' : answers.db,
     ...getCommonDbInfo(answers),
     prismaDbUrl: getPrismaDbUrl(answers)
   }
-
-  return templateContext
 }

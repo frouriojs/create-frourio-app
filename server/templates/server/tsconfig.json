@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
-    "downlevelIteration": true<% if (orm === 'typeorm') { %>,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true<% } %>,
+    "downlevelIteration": true,
     "esModuleInterop": true,
     "lib": ["dom"],
-    "module": "<%= orm === 'typeorm' ? 'commonjs' : 'esnext' %>",
+    "module": "esnext",
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {

@@ -185,12 +185,9 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
 
   await npmRun('generate')
   await npmRun('lint:fix')
-  if (answers.skipDbChecks !== 'true') {
-    if (answers.orm === 'prisma') {
-      await npmRun('migrate:dev')
-    } else if (answers.orm === 'typeorm') {
-      await npmRun('migration:run')
-    }
+
+  if (answers.skipDbChecks !== 'true' && answers.orm === 'prisma') {
+    await npmRun('migrate:dev')
   }
 
   npmRun('dev')
