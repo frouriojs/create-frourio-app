@@ -3,8 +3,8 @@ import type { Task } from '$/types'
 export type Methods = {
   get: {
     query?: {
-      limit?: number<% if (testing !== 'none') { %>
-      message?: string<% } %>
+      limit?: number
+      message?: string
     }
 
     resBody: Task[]

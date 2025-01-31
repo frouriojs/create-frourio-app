@@ -31,6 +31,7 @@ type AnswersVer5 = AnswersVer6 & {
   serverless?: string
   staticHosting?: string
   serverSourcePath?: string
+  testing?: string
 }
 type AnswersVer4 = AnswersVer5 & { client?: string }
 type AnswersVer3 = AnswersVer4
@@ -110,6 +111,7 @@ const migration = [
         serverless,
         staticHosting,
         serverSourcePath,
+        testing,
         ...others
       } /* eslint-enable @typescript-eslint/no-unused-vars */
     }: Schemas[4]): Schemas[5] => ({

@@ -185,12 +185,10 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       })
 
       // Project scope test
-      if (answers.testing !== 'none') {
-        await execFileAsync(npmClientPath, ['test'], {
-          cwd: dir,
-          shell: process.platform === 'win32'
-        })
-      }
+      await execFileAsync(npmClientPath, ['test'], {
+        cwd: dir,
+        shell: process.platform === 'win32'
+      })
 
       // Integration test
       {

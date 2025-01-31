@@ -69,7 +69,6 @@ https://frourio.com/docs
    - [SQLite](https://www.sqlite.org/)
 1. Testing framework:
    - [Jest](https://jestjs.io/)
-   - None
 
 ## License
 

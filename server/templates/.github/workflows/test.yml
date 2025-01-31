@@ -41,9 +41,9 @@ jobs:
       - run: npm run lint<% if (db === 'sqlite') { %>
       - run: echo "API_DATABASE_URL=file:./dev.db" > server/prisma/.env<% } else if (db === 'postgresql') { %>
       - run: echo "API_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test" > server/prisma/.env<% } %>
-      - run: npm run typecheck<% if (testing !== 'none') { %>
+      - run: npm run typecheck
       - run: |
           npm run migrate:dev
           npm test
         env:
-          API_JWT_SECRET: test_secret<% } %>
+          API_JWT_SECRET: test_secret

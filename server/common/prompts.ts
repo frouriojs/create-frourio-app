@@ -6,7 +6,6 @@ type PromptName =
   | 'target'
   | 'aspida'
   | 'reactHooks'
-  | 'testing'
   | 'db'
   | 'skipDbChecks'
   | 'postgresqlDbHost'
@@ -177,16 +176,6 @@ export const cfaPrompts: Prompt[] = [
     valid: (ans) => {
       return ans.skipDbChecks === 'true' || (ans.sqliteDbFile ?? '') !== ''
     }
-  },
-  {
-    name: 'testing',
-    message: 'Testing framework',
-    choices: [
-      { name: 'Jest', value: 'jest' },
-      { name: 'None', value: 'none' }
-    ],
-    type: 'list',
-    default: 'jest'
   }
 ]
 
