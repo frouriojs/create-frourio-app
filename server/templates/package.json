@@ -10,7 +10,7 @@
     "dev:pathpida": "pathpida --enableStatic --ignorePath .gitignore --watch",
     "build": "run-p build:client build:server",
     "prebuild:client": "npm run generate",
-    "build:client": "next build<% if (building === 'static') { %> && next export<% } %>",
+    "build:client": "next build && next export",
     "build:server": "npm run build --prefix server",
     "generate": "run-p generate:*",
     "generate:aspida": "aspida",

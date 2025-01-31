@@ -16,6 +16,7 @@ const dbPath = path.join(dirPath, 'create-frourio-app.json')
 
 type AnswersVer6 = Answers
 type AnswersVer5 = AnswersVer6 & {
+  building?: string
   ci?: string
   daemon?: string
   db?: string
@@ -40,7 +41,7 @@ type AnswersVer5 = AnswersVer6 & {
   sqliteDbFile?: string
   testing?: string
 }
-type AnswersVer4 = AnswersVer5 & { client?: string }
+type AnswersVer4 = AnswersVer5 & { client?: string; mode?: string; target?: string }
 type AnswersVer3 = AnswersVer4
 type AnswersVer2 = Omit<
   AnswersVer3,
@@ -102,7 +103,7 @@ const migration = [
   {
     ver: 5,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    handler: ({ answers: { client, ...others } }: Schemas[3]): Schemas[4] => ({
+    handler: ({ answers: { client, mode, target, ...others } }: Schemas[3]): Schemas[4] => ({
       ver: 5,
       answers: others
     })
@@ -112,6 +113,7 @@ const migration = [
     handler: ({
       /* eslint-disable @typescript-eslint/no-unused-vars */
       answers: {
+        building,
         ci,
         daemon,
         db,

@@ -52,9 +52,6 @@ https://frourio.com/docs
    - [Express](https://expressjs.com/)
 1. Client framework:
    - [Next.js (React)](https://nextjs.org/learn/excel/typescript)
-1. Client building mode:
-   - Basic (next build)
-   - [Static (next export)](https://nextjs.org/docs/advanced-features/static-html-export)
 1. HTTP client of aspida:
    - [axios](https://github.com/axios/axios)
    - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)

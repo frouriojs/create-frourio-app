@@ -1,6 +1,6 @@
 import type { TemplateContext } from './template-context'
 
-type PromptName = 'dir' | 'server' | 'building' | 'mode' | 'target' | 'aspida' | 'reactHooks'
+type PromptName = 'dir' | 'server' | 'aspida' | 'reactHooks'
 
 export type Answers = Partial<Record<PromptName, string>>
 export type Text = { en: string }
@@ -54,24 +54,14 @@ export const cfaPrompts: Prompt[] = [
     default: 'fastify'
   },
   {
-    name: 'building',
-    message: 'Building mode',
-    type: 'list',
-    choices: [
-      { name: 'Static (export)', value: 'static' },
-      { name: 'Basic (build)', value: 'basic' }
-    ],
-    default: 'static'
-  },
-  {
     name: 'aspida',
     message: 'HTTP client of aspida',
     choices: [
-      { name: 'axios', value: 'axios' },
-      { name: 'fetch', value: 'fetch' }
+      { name: 'fetch', value: 'fetch' },
+      { name: 'axios', value: 'axios' }
     ],
     type: 'list',
-    default: 'axios'
+    default: 'fetch'
   },
   {
     name: 'reactHooks',
