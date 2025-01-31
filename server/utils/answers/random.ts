@@ -18,7 +18,8 @@ export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise
     }
   })
 
-  // Database
+  if (process.env.TEST_CFA_FIX_SERVER) ans.server = process.env.TEST_CFA_FIX_SERVER
+
   if (process.env.TEST_CFA_FIX_DB) ans.db = process.env.TEST_CFA_FIX_DB
 
   if (!isAnswersValid({ ...ans, skipDbChecks: 'true' })) {

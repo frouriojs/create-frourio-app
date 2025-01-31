@@ -43,10 +43,12 @@ jobs:
       - run: npm test
         env:
           TEST_CFA_RANDOM_NUM: 1
+          TEST_CFA_FIX_SERVER: fastify
           TEST_CFA_FIX_DB: postgresql
       - run: npm test
         env:
           TEST_CFA_RANDOM_NUM: 1
+          TEST_CFA_FIX_SERVER: express
           TEST_CFA_FIX_DB: sqlite
       - run: npm test
         if: github.event_name == 'schedule'
@@ -80,6 +82,12 @@ jobs:
       - run: npm test
         env:
           TEST_CFA_RANDOM_NUM: 1
+          TEST_CFA_FIX_SERVER: fastify
+          TEST_CFA_FIX_DB: sqlite
+      - run: npm test
+        env:
+          TEST_CFA_RANDOM_NUM: 1
+          TEST_CFA_FIX_SERVER: express
           TEST_CFA_FIX_DB: sqlite
       - run: npm test
         if: github.event_name == 'schedule'
