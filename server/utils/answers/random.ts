@@ -29,16 +29,6 @@ export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise
 
   if (ans.orm !== 'none') {
     switch (ans.db) {
-      case 'mysql': {
-        await dbCtx.mysql.up()
-        const info = await dbCtx.mysql.createNew()
-        ans.mysqlDbHost = info.host
-        ans.mysqlDbPort = info.port.toString()
-        ans.mysqlDbPass = info.password
-        ans.mysqlDbUser = info.user
-        ans.mysqlDbName = info.database
-        break
-      }
       case 'postgresql': {
         await dbCtx.pg.up()
         const info = await dbCtx.pg.createNew()

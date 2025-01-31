@@ -63,7 +63,6 @@
     "jest-environment-jsdom": "^29.3.1",
     "lint-staged": "^12.3.3",
     "multer": "^1.4.5-lts.1",
-    "mysql2": "^2.3.3",
     "next": "^13.2.4",
     "next-router-mock": "^0.8.0",
     "node-dev": "^7.1.0",

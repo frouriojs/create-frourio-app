@@ -294,10 +294,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       try {
         await dbCtx.pg.down()
         await dbCtx.sqlite.down()
-        await dbCtx.mysql.down()
         await dbCtx.pg.deleteAll(await dbCtx.pg.getAllNames())
         await dbCtx.sqlite.deleteAll(await dbCtx.sqlite.getAllNames())
-        await dbCtx.mysql.deleteAll(await dbCtx.mysql.getAllNames())
       } catch (e: unknown) {
         console.error('Failed to delete one database.')
         console.error(e)
@@ -307,7 +305,6 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
     try {
       await dbCtx.pg.down()
       await dbCtx.sqlite.down()
-      await dbCtx.mysql.down()
     } catch (e: unknown) {
       console.error('Failed to clean up databases.')
       console.error(e)

@@ -16,11 +16,6 @@ type PromptName =
   | 'postgresqlDbUser'
   | 'postgresqlDbPass'
   | 'postgresqlDbName'
-  | 'mysqlDbHost'
-  | 'mysqlDbPort'
-  | 'mysqlDbUser'
-  | 'mysqlDbPass'
-  | 'mysqlDbName'
   | 'sqliteDbFile'
 
 export type Answers = Partial<Record<PromptName, string>>
@@ -117,10 +112,9 @@ export const cfaPrompts: Prompt[] = [
   },
   {
     name: 'db',
-    message: 'Database type of Prisma',
+    message: 'Database kind',
     choices: [
       { name: 'SQLite', value: 'sqlite' },
-      { name: 'MySQL', value: 'mysql' },
       { name: 'PostgreSQL', value: 'postgresql' }
     ],
     type: 'list',
@@ -138,23 +132,24 @@ export const cfaPrompts: Prompt[] = [
     default: 'false',
     when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite'
   },
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  ...(['postgresql', 'mysql'] as const).flatMap((db) =>
-    (
-      [
-        ['Host', 'HOST'],
-        ['Port', 'PORT'],
-        ['Name', 'DATABASE'],
-        ['User', 'USERNAME'],
-        ['Pass', 'PASSWORD']
-      ] as const
-    ).map(([what, label]) => ({
+  ...(
+    [
+      ['Host', 'HOST'],
+      ['Port', 'PORT'],
+      ['Name', 'DATABASE'],
+      ['User', 'USERNAME'],
+      ['Pass', 'PASSWORD']
+    ] as const
+  ).map(([what, label]) => {
+    const db = 'postgresql'
+
+    return {
       name: `${db}Db${what}` as PromptName,
       message: (ans: Answers) =>
         `dev DB ${label}: server/prisma/.env API_DATABASE_URL (${getPrismaDbUrl({
           ...ans,
-          [`${db}Db${what}`]: (ans as any)[`${db}Db${what}`] || 'HERE',
-          [`${db}DbPass`]: (ans as any)[`${db}DbPass`] ? '***' : what === 'Pass' ? 'HERE' : ''
+          [`${db}Db${what}`]: ans[`${db}Db${what}`] || 'HERE',
+          [`${db}DbPass`]: ans[`${db}DbPass`] ? '***' : what === 'Pass' ? 'HERE' : ''
         })}) =`,
       type: 'input' as const,
       default: (() => {
@@ -162,14 +157,18 @@ export const cfaPrompts: Prompt[] = [
           case 'Host':
             return 'localhost'
           case 'Port':
-            return db === 'mysql' ? '3306' : '5432'
+            return '5432'
           default:
             return undefined
         }
       })(),
       valid: (ans: Answers) => {
         if (ans.skipDbChecks === 'true') return true
-        const val: string = (ans as any)[`${db}Db${what}`]
+
+        const val = ans[`${db}Db${what}`]
+
+        if (!val) return false
+
         switch (what) {
           case 'Port':
             return /[1-9]\d*/.test(val) && 1 <= +val && +val <= 65353
@@ -180,9 +179,8 @@ export const cfaPrompts: Prompt[] = [
         }
       },
       when: (ans: Answers) => ans.orm !== 'none' && ans.db === db
-    }))
-  ),
-  /* eslint-enable @typescript-eslint/no-explicit-any */
+    }
+  }),
   {
     name: 'sqliteDbFile',
     message: 'server/prisma/.env DATABASE_FILE=',

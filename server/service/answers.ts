@@ -21,6 +21,11 @@ type AnswersVer5 = AnswersVer6 & {
   daemon?: string
   deployBranch?: string
   deployServer?: string
+  mysqlDbHost?: string
+  mysqlDbPort?: string
+  mysqlDbUser?: string
+  mysqlDbPass?: string
+  mysqlDbName?: string
   serverless?: string
   staticHosting?: string
   serverSourcePath?: string
@@ -35,11 +40,6 @@ type AnswersVer2 = Omit<
   | 'postgresqlDbUser'
   | 'postgresqlDbPass'
   | 'postgresqlDbName'
-  | 'mysqlDbHost'
-  | 'mysqlDbPort'
-  | 'mysqlDbUser'
-  | 'mysqlDbPass'
-  | 'mysqlDbName'
   | 'sqliteDbFile'
 > &
   Partial<Record<'dbHost' | 'dbUser' | 'dbPass' | 'dbUser' | 'dbPort' | 'dbFile', string>>
@@ -95,14 +95,23 @@ const migration = [
       answers: {
         ci,
         daemon,
+        db,
         deployBranch,
         deployServer,
+        mysqlDbHost,
+        mysqlDbPort,
+        mysqlDbUser,
+        mysqlDbPass,
+        mysqlDbName,
         serverless,
         staticHosting,
         serverSourcePath,
         ...others
       } /* eslint-enable @typescript-eslint/no-unused-vars */
-    }: Schemas[4]): Schemas[5] => ({ ver: 6, answers: others })
+    }: Schemas[4]): Schemas[5] => ({
+      ver: 6,
+      answers: { ...others, db: db === 'mysql' ? 'sqlite' : db }
+    })
   }
 ]
 
@@ -193,7 +202,6 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   npmRun('dev')
 
   delete db.answers.dir
-  delete db.answers.mysqlDbPass
   delete db.answers.postgresqlDbPass
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 }
@@ -203,12 +211,7 @@ export const getAnswers = (dir: string) => ({ dir, ...db.answers })
 export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
   db = {
     ...db,
-    answers: {
-      ...omitDefaults(answers),
-      dir: undefined,
-      mysqlDbPass: undefined,
-      postgresqlDbPass: undefined
-    }
+    answers: { ...omitDefaults(answers), dir: undefined, postgresqlDbPass: undefined }
   }
 
   const canContinue = await getPathStatus(path.resolve(process.cwd(), answers.dir || '')).then(

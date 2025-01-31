@@ -1,4 +1,3 @@
-import mariadb from 'mariadb'
 import { Client } from 'pg'
 import { genAllAnswers } from '$/service/answers'
 import { defineController } from './$relay'
@@ -29,31 +28,23 @@ export default defineController(() => ({
     }
 
     try {
-      const config = {
+      const client = new Client({
         host: templateCtx.dbHost,
         port: +`${templateCtx.dbPort}`,
         user: templateCtx.dbUser,
-        password: templateCtx.dbPass
+        password: templateCtx.dbPass,
+        database: 'postgres'
+      })
+
+      await client.connect()
+
+      const res = await client.query('SELECT datname FROM pg_database')
+
+      if (res.rows.every((r) => r.datname !== templateCtx.dbName)) {
+        await client.query(`CREATE DATABASE ${templateCtx.dbName}`)
       }
 
-      if (answers.db === 'mysql') {
-        const conn = await mariadb.createConnection({ ...config, allowPublicKeyRetrieval: true })
-
-        await conn.query(`CREATE DATABASE IF NOT EXISTS ${templateCtx.dbName}`)
-
-        await conn.end()
-      } else {
-        const client = new Client({ ...config, database: 'postgres' })
-        await client.connect()
-
-        const res = await client.query('SELECT datname FROM pg_database')
-
-        if (res.rows.every((r) => r.datname !== templateCtx.dbName)) {
-          await client.query(`CREATE DATABASE ${templateCtx.dbName}`)
-        }
-
-        await client.end()
-      }
+      await client.end()
 
       return { status: 200, body: { enabled: true } }
     } catch (e) {

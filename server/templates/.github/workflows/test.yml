@@ -39,10 +39,7 @@ jobs:
       - run: <%= pm === 'npm' ? 'npm install --prefix server' : 'yarn install --cwd server' %>
         if: steps.server-<%= pm %>-cache.outputs.cache-hit != 'true'
       - run: <%= pm %> run lint<% if (orm === 'prisma' && db === 'sqlite') { %>
-      - run: echo "API_DATABASE_URL=file:./dev.db" > server/prisma/.env<% } else if (orm === 'prisma' && db === 'mysql') { %>
-      - run: |
-          sudo systemctl start mysql.service
-          echo "API_DATABASE_URL=mysql://root:root@localhost:3306/test" > server/prisma/.env<% } else if (orm === 'prisma' && db === 'postgresql') { %>
+      - run: echo "API_DATABASE_URL=file:./dev.db" > server/prisma/.env<% } else if (orm === 'prisma' && db === 'postgresql') { %>
       - run: echo "API_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test" > server/prisma/.env<% } %>
       - run: <%= pm %> run typecheck<% if (testing !== 'none') { %>
       - run: |

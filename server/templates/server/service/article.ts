@@ -24,7 +24,7 @@ const articleData: ArticleInfo[] = [
     id: 4,
     title: 'What databases are suported?',
     body:
-      '- SQLite (prisma only for now)\n- PostgreSQL\n- MySQL\nPlanning to support others... stay tuned!'
+      '- SQLite\n- PostgreSQL'
   }
 ]
 

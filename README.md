@@ -72,7 +72,6 @@ https://frourio.com/docs
    - [Prisma (recommended)](https://www.prisma.io/)
    - None
 1. Database type of Prisma:
-   - [MySQL](https://www.mysql.com/)
    - [PostgreSQL](https://www.postgresql.org/)
    - [SQLite](https://www.sqlite.org/)
 1. Testing framework:
