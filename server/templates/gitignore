@@ -34,7 +34,6 @@ yarn-error.log*
 # server
 server/**/$*.ts
 server/**/*.db
-server/index.js<% if (orm === 'none') { %>
-server/database.json<% } %><% if (server === 'express') { %>
+server/index.js<% if (server === 'express') { %>
 server/.upload<% } %>
 server/upload/

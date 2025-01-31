@@ -123,14 +123,10 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       assert(answers.pm)
       const npmClientPath = await realExecutablePath(answers.pm)
 
-      // SQLite name found
-      if (answers.orm !== 'none' && answers.db === 'sqlite') {
+      if (answers.db === 'sqlite') {
         expect(answers.sqliteDbFile?.length).toBeGreaterThan(0)
         expect(allEnv).toContain(answers.sqliteDbFile)
-      }
-
-      // DB info found
-      if (answers.orm !== 'none' && answers.db !== 'sqlite') {
+      } else {
         expect(templateCtx.dbHost?.length).toBeGreaterThan(0)
         expect(templateCtx.dbPort?.length).toBeGreaterThan(0)
         expect(templateCtx.dbPass?.length).toBeGreaterThan(0)
@@ -142,6 +138,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         expect(allEnv).toContain(templateCtx.dbName)
         expect(allEnv).toContain(templateCtx.dbUser)
       }
+
       const serverDir = path.resolve(dir, 'server')
       const nodeModulesDir = path.resolve(dir, 'node_modules')
       const nodeModulesIgnoreDir = path.resolve(dir, 'node_modules_ignore')
@@ -183,12 +180,10 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       await fs.promises.rename(nodeModulesIgnoreDir, nodeModulesDir)
 
       // migrations
-      if (answers.orm === 'prisma') {
-        await execFileAsync(npmClientPath, ['run', 'migrate:dev'], {
-          cwd: serverDir,
-          shell: process.platform === 'win32'
-        })
-      }
+      await execFileAsync(npmClientPath, ['run', 'migrate:dev'], {
+        cwd: serverDir,
+        shell: process.platform === 'win32'
+      })
 
       // Project scope test
       if (answers.testing !== 'none') {

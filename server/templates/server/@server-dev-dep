@@ -4,3 +4,7 @@ ts-loader
 ts-node
 typescript
 @types/jest
+prisma
+esbuild
+esbuild-node-externals
+node-dev

@@ -70,7 +70,6 @@ https://frourio.com/docs
    - None
 1. O/R mapping tool:
    - [Prisma (recommended)](https://www.prisma.io/)
-   - None
 1. Database type of Prisma:
    - [PostgreSQL](https://www.postgresql.org/)
    - [SQLite](https://www.sqlite.org/)

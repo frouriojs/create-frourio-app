@@ -7,7 +7,7 @@ test('dependency injection into controller', async () => {
 
   const injectedController = controller.inject((deps) => ({
     getTasks: deps.getTasks.inject({
-      <% if (orm === 'prisma') { %>prisma: {
+      prisma: {
         task: {
           findMany: () =>
             Promise.resolve([
@@ -18,17 +18,7 @@ test('dependency injection into controller', async () => {
               { id: 4, label: 'task5', done: false }
             ])
         }
-      }<% } else { %>readDB: () =>
-        Promise.resolve({
-          nextId: 5,
-          tasks: [
-            { id: 0, label: 'task1', done: false },
-            { id: 1, label: 'task2', done: false },
-            { id: 2, label: 'task3', done: true },
-            { id: 3, label: 'task4', done: true },
-            { id: 4, label: 'task5', done: false }
-          ]
-        })<% } %>
+      }
     }),
     print: (text: string) => {
       printedMessage = text

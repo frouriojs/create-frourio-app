@@ -58,17 +58,12 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
   const pmRun = `${answers.pm}${answers.pm === 'npm' ? ' run' : ''}`
 
   s.write(chalk`\n🎉  {bold Successfully created project} {cyan ${outDir}}\n`)
-
   s.write(chalk`  {bold To get started:}`)
-  if (answers.orm !== 'none' && answers.db !== 'sqlite') {
-    s.write(chalk`\t{cyan (start ${answers.db} server yourself)}`)
-  }
-  s.write(chalk`${cdMsg}\t{cyan ${pmRun} dev}\n`)
 
+  if (answers.db !== 'sqlite') s.write(chalk`\t{cyan (start ${answers.db} server yourself)}`)
+
+  s.write(chalk`${cdMsg}\t{cyan ${pmRun} dev}\n`)
   s.write(chalk`  {bold To build & start for production:}`)
-  if (answers.orm !== 'none' && answers.db) {
-    s.write(chalk`\t{cyan (start ${answers.db} server yourself)}`)
-  }
   s.write(chalk`${cdMsg}\t{cyan ${pmRun} build}`)
   s.write(chalk`\t{cyan ${pmRun} start}\n`)
 }

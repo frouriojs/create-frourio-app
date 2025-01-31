@@ -26,6 +26,7 @@ type AnswersVer5 = AnswersVer6 & {
   mysqlDbUser?: string
   mysqlDbPass?: string
   mysqlDbName?: string
+  orm?: string
   serverless?: string
   staticHosting?: string
   serverSourcePath?: string
@@ -103,6 +104,7 @@ const migration = [
         mysqlDbUser,
         mysqlDbPass,
         mysqlDbName,
+        orm,
         serverless,
         staticHosting,
         serverSourcePath,
@@ -110,7 +112,7 @@ const migration = [
       } /* eslint-enable @typescript-eslint/no-unused-vars */
     }: Schemas[4]): Schemas[5] => ({
       ver: 6,
-      answers: { ...others, db: db === 'mysql' ? 'sqlite' : db }
+      answers: { ...others, db: db === 'postgresql' ? 'postgresql' : 'sqlite' }
     })
   }
 ]
@@ -195,9 +197,7 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   await npmRun('generate')
   await npmRun('lint:fix')
 
-  if (answers.skipDbChecks !== 'true' && answers.orm === 'prisma') {
-    await npmRun('migrate:dev')
-  }
+  if (answers.skipDbChecks !== 'true') await npmRun('migrate:dev')
 
   npmRun('dev')
 

@@ -1,5 +1,7 @@
+@prisma/client
 aspida
-pathpida
 next
+pathpida
+prisma
 react
 react-dom

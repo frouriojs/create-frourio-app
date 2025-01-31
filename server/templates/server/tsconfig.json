@@ -7,8 +7,7 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "$/*": ["./*"]<% if (orm === 'prisma') { %>,
-      "$prisma/*": ["./node_modules/.prisma/*"]<% } %>
+      "$/*": ["./*"]
     },
     "rootDir": ".",
     "skipLibCheck": true,

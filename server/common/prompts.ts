@@ -8,7 +8,6 @@ type PromptName =
   | 'reactHooks'
   | 'pm'
   | 'testing'
-  | 'orm'
   | 'db'
   | 'skipDbChecks'
   | 'postgresqlDbHost'
@@ -101,16 +100,6 @@ export const cfaPrompts: Prompt[] = [
     default: 'swr'
   },
   {
-    name: 'orm',
-    message: 'O/R mapping tool',
-    choices: [
-      { name: 'Prisma (recommended)', value: 'prisma' },
-      { name: 'None', value: 'none' }
-    ],
-    type: 'list',
-    default: 'prisma'
-  },
-  {
     name: 'db',
     message: 'Database kind',
     choices: [
@@ -118,8 +107,7 @@ export const cfaPrompts: Prompt[] = [
       { name: 'PostgreSQL', value: 'postgresql' }
     ],
     type: 'list',
-    default: 'sqlite',
-    when: (ans) => ans.orm !== 'none'
+    default: 'sqlite'
   },
   {
     name: 'skipDbChecks',
@@ -130,7 +118,7 @@ export const cfaPrompts: Prompt[] = [
     ],
     type: 'list',
     default: 'false',
-    when: (ans) => ans.orm !== 'none' && ans.db !== 'sqlite'
+    when: (ans) => ans.db !== 'sqlite'
   },
   ...(
     [
@@ -178,7 +166,7 @@ export const cfaPrompts: Prompt[] = [
             return Boolean(val)
         }
       },
-      when: (ans: Answers) => ans.orm !== 'none' && ans.db === db
+      when: (ans: Answers) => ans.db === db
     }
   }),
   {
@@ -186,7 +174,7 @@ export const cfaPrompts: Prompt[] = [
     message: 'server/prisma/.env DATABASE_FILE=',
     type: 'input',
     default: './dev.db',
-    when: (ans) => ans.orm !== 'none' && ans.db === 'sqlite',
+    when: (ans) => ans.db === 'sqlite',
     valid: (ans) => {
       return ans.skipDbChecks === 'true' || (ans.sqliteDbFile ?? '') !== ''
     }

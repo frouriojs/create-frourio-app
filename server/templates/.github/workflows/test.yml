@@ -5,7 +5,7 @@ on: push
 jobs:
   test:
     name: Test
-    runs-on: ubuntu-latest<% if (orm === 'prisma' && db === 'postgresql') { %>
+    runs-on: ubuntu-latest<% if (db === 'postgresql') { %>
     services:
       postgres:
         image: postgres
@@ -38,8 +38,8 @@ jobs:
         if: steps.client-<%= pm %>-cache.outputs.cache-hit != 'true'
       - run: <%= pm === 'npm' ? 'npm install --prefix server' : 'yarn install --cwd server' %>
         if: steps.server-<%= pm %>-cache.outputs.cache-hit != 'true'
-      - run: <%= pm %> run lint<% if (orm === 'prisma' && db === 'sqlite') { %>
-      - run: echo "API_DATABASE_URL=file:./dev.db" > server/prisma/.env<% } else if (orm === 'prisma' && db === 'postgresql') { %>
+      - run: <%= pm %> run lint<% if (db === 'sqlite') { %>
+      - run: echo "API_DATABASE_URL=file:./dev.db" > server/prisma/.env<% } else if (db === 'postgresql') { %>
       - run: echo "API_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/test" > server/prisma/.env<% } %>
       - run: <%= pm %> run typecheck<% if (testing !== 'none') { %>
       - run: |

@@ -21,33 +21,30 @@ export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise
   // Database
   if (process.env.TEST_CFA_FIX_DB) ans.db = process.env.TEST_CFA_FIX_DB
 
-  if (process.env.TEST_CFA_FIX_ORM) ans.orm = process.env.TEST_CFA_FIX_ORM
-
   if (!isAnswersValid({ ...ans, skipDbChecks: 'true' })) {
     return await createRandomAnswers(dbCtx, num + 1)
   }
 
-  if (ans.orm !== 'none') {
-    switch (ans.db) {
-      case 'postgresql': {
-        await dbCtx.pg.up()
-        const info = await dbCtx.pg.createNew()
-        ans.postgresqlDbHost = info.host
-        ans.postgresqlDbPort = info.port.toString()
-        ans.postgresqlDbPass = info.password
-        ans.postgresqlDbUser = info.user
-        ans.postgresqlDbName = info.database
-        break
-      }
-      case 'sqlite': {
-        await dbCtx.sqlite.up()
-        const info = await dbCtx.sqlite.createNew()
-        ans.sqliteDbFile = info.filename
-        break
-      }
-      default:
-        throw new Error('Unreachable: Unknown answer orm.')
+  switch (ans.db) {
+    case 'postgresql': {
+      await dbCtx.pg.up()
+      const info = await dbCtx.pg.createNew()
+      ans.postgresqlDbHost = info.host
+      ans.postgresqlDbPort = info.port.toString()
+      ans.postgresqlDbPass = info.password
+      ans.postgresqlDbUser = info.user
+      ans.postgresqlDbName = info.database
+      break
     }
+    case 'sqlite': {
+      await dbCtx.sqlite.up()
+      const info = await dbCtx.sqlite.createNew()
+      ans.sqliteDbFile = info.filename
+      break
+    }
+    default:
+      throw new Error('Unreachable: Unknown answer db.')
   }
+
   return ans
 }
