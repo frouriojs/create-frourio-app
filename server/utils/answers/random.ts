@@ -21,13 +21,6 @@ export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise
   // Branch names
   ans.deployBranch = randChoice(['master', 'main', 'trunk'])
 
-  // Deploy (Never used actually in test)
-  ans.serverSourcePath = randChoice([
-    '/srv/api-servert-test',
-    '/home/testuser/foo',
-    'C:\\Server Data (test)'
-  ])
-
   // Database
   if (ans.orm === 'typeorm' && ans.db === 'sqlite') ans.db = 'mysql'
   if (process.env.TEST_CFA_FIX_DB) ans.db = process.env.TEST_CFA_FIX_DB

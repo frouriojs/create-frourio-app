@@ -26,7 +26,6 @@ type PromptName =
   | 'ci'
   | 'deployBranch'
   | 'deployServer'
-  | 'serverSourcePath'
 
 export type Answers = Partial<Record<PromptName, string>>
 export type Text = { en: string }
@@ -326,21 +325,6 @@ export const cfaPrompts: Prompt[] = [
     message: 'Branch name to deploy',
     type: 'input',
     default: 'main'
-  },
-  {
-    name: 'serverSourcePath',
-    message: 'Path to place server source',
-    type: 'input',
-    default: '/opt/apiserver',
-    when: (ans) => ans.deployServer === 'pm2',
-    notes: [
-      {
-        severity: 'info',
-        text: {
-          en: ['API_DEPLOY_USER'].join('\n')
-        }
-      }
-    ]
   }
 ]
 

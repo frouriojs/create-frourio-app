@@ -30,7 +30,7 @@ module.exports = {
       host: process.env.API_DEPLOY_HOST,
       repo: process.env.API_DEPLOY_REPO,
       ref: <%- JSON.stringify("origin/" + deployBranch) %>,
-      path: <%- JSON.stringify(serverSourcePath) %>,
+      path: '/opt/apiserver',
       ssh_options: ['StrictHostKeyChecking=no'],
       'pre-deploy-local': '',
       'post-deploy': [

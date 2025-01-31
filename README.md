@@ -91,15 +91,6 @@ https://frourio.com/docs
 1. CI config:
    - [GitHub Actions](https://github.co.jp/features/actions)
    - None
-1. API server hosting:
-   - Dedicated server
-   - Serverless (AWS Lambda)
-   - None
-1. Static hosting service:
-   - GitHub Pages
-   - [Vercel](https://vercel.com/)
-   - [Netlify](https://www.netlify.com/)
-   - None
 
 ## License
 
