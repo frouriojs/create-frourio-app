@@ -24,7 +24,6 @@ type PromptName =
   | 'mysqlDbName'
   | 'sqliteDbFile'
   | 'ci'
-  | 'deployServer'
 
 export type Answers = Partial<Record<PromptName, string>>
 export type Text = { en: string }
@@ -255,69 +254,6 @@ export const cfaPrompts: Prompt[] = [
     ],
     type: 'list',
     default: 'actions'
-  },
-  {
-    name: 'deployServer',
-    message: 'API server hosting',
-    choices: [
-      {
-        name: 'Dedicated server',
-        value: 'pm2',
-        disabled: (ans) => {
-          if (ans.orm === 'typeorm') {
-            return { en: 'Preparing to support TypeORM' }
-          }
-          if (ans.daemon !== 'pm2') {
-            return { en: 'Select **PM2** for process manager' }
-          }
-          if (ans.ci !== 'actions') {
-            return { en: 'Select **GitHub Actions** for CI' }
-          }
-          return null
-        },
-        notes: (ans) => [
-          {
-            severity: 'info',
-            text: {
-              en: [
-                'This uses [PM2](https://pm2.io) to deploy to your dedicated servers, cloud servers or VM instances.',
-                '',
-                'Ensure the server is installed `git` and `node`.',
-                '',
-                '### GitHub Actions Secrets',
-                '',
-                'Add following secrets.',
-                '',
-                '- **API_BASE_PATH**: Your API basepath. e.g. `/api`',
-                `- **API_DATABASE_URL**: ${
-                  (
-                    {
-                      sqlite: 'Production URL for SQLite. e.g. `file:///mnt/efs-data/db.sqlite`',
-                      mysql:
-                        'Production URL for MySQL. e.g. `mysql://mysql-instance1.123456789012.us-east-1.rds.amazonaws.com:3306`',
-                      postgresql:
-                        'Production URL for Postgres. e.g. `postgres://myinstance.123456789012.us-east-1.rds.amazonaws.com:5432`'
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    } as any
-                  )[ans.db ?? '']
-                }.`,
-                '- **API_DEPLOY_HOST**: Dedicated server host. e.g. `ec2-public-ipv4-address.compute-1.amazonaws.com`',
-                '- **API_DEPLOY_USER**: SSH username. e.g. `ci`',
-                '- **API_DEPLOY_SSH_KEY**: SSH private key that can connect to the above host. e.g.',
-                '  a. Run `ssh-keygen -t rsa -b 4096 -m PEM -f frourio-ci.key` on your local machine.',
-                '  b. Copy contents of `frourio-ci.key` and paste it to this secrets value.',
-                '  c. Send `frourio-ci.key.pub` to your host machine, and append it to `~/.ssh/known_hosts` on remote host.',
-                '- **API_UPLOAD_DIR**: The directory to upload user contents, for example icons. e.g. `/mnt/efs-1/upload`, `/srv/upload`',
-                '  - In default sample, it is used to save uploaded icons.'
-              ].join('\n')
-            }
-          }
-        ]
-      },
-      { name: 'None', value: 'none' }
-    ],
-    type: 'list',
-    default: 'none'
   }
 ]
 

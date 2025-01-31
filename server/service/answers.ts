@@ -18,6 +18,7 @@ const dbPath = path.join(dirPath, 'create-frourio-app.json')
 type AnswersVer6 = Answers
 type AnswersVer5 = AnswersVer6 & {
   deployBranch?: string
+  deployServer?: string
   serverless?: string
   staticHosting?: string
   serverSourcePath?: string
@@ -38,7 +39,6 @@ type AnswersVer2 = Omit<
   | 'mysqlDbPass'
   | 'mysqlDbName'
   | 'sqliteDbFile'
-  | 'deployServer'
 > &
   Partial<Record<'dbHost' | 'dbUser' | 'dbPass' | 'dbUser' | 'dbPort' | 'dbFile', string>>
 type AnswersVer1 = Omit<AnswersVer2, 'client'> & { front?: string }
@@ -89,8 +89,15 @@ const migration = [
   {
     ver: 6,
     handler: ({
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      answers: { serverless, staticHosting, serverSourcePath, ...others }
+      /* eslint-disable @typescript-eslint/no-unused-vars */
+      answers: {
+        deployBranch,
+        deployServer,
+        serverless,
+        staticHosting,
+        serverSourcePath,
+        ...others
+      } /* eslint-enable @typescript-eslint/no-unused-vars */
     }: Schemas[4]): Schemas[5] => ({ ver: 6, answers: others })
   }
 ]
