@@ -7,7 +7,6 @@ type PromptName =
   | 'aspida'
   | 'reactHooks'
   | 'db'
-  | 'skipDbChecks'
   | 'postgresqlDbHost'
   | 'postgresqlDbPort'
   | 'postgresqlDbUser'
@@ -106,17 +105,6 @@ export const cfaPrompts: Prompt[] = [
     type: 'list',
     default: 'sqlite'
   },
-  {
-    name: 'skipDbChecks',
-    message: 'Skip DB connection checks',
-    choices: [
-      { name: 'No', value: 'false' },
-      { name: 'Yes', value: 'true' }
-    ],
-    type: 'list',
-    default: 'false',
-    when: (ans) => ans.db !== 'sqlite'
-  },
   ...(
     [
       ['Host', 'HOST'],
@@ -148,8 +136,6 @@ export const cfaPrompts: Prompt[] = [
         }
       })(),
       valid: (ans: Answers) => {
-        if (ans.skipDbChecks === 'true') return true
-
         const val = ans[`${db}Db${what}`]
 
         if (!val) return false

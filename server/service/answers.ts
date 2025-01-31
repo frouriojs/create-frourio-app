@@ -29,6 +29,7 @@ type AnswersVer5 = AnswersVer6 & {
   orm?: string
   pm?: string
   serverless?: string
+  skipDbChecks?: string
   staticHosting?: string
   serverSourcePath?: string
   sqliteDbFile?: string
@@ -38,7 +39,6 @@ type AnswersVer4 = AnswersVer5 & { client?: string }
 type AnswersVer3 = AnswersVer4
 type AnswersVer2 = Omit<
   AnswersVer3,
-  | 'skipDbChecks'
   | 'postgresqlDbHost'
   | 'postgresqlDbPort'
   | 'postgresqlDbUser'
@@ -111,6 +111,7 @@ const migration = [
         serverless,
         staticHosting,
         serverSourcePath,
+        skipDbChecks,
         sqliteDbFile,
         testing,
         ...others
@@ -193,8 +194,7 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
 
   await npmRun('generate')
   await npmRun('lint:fix')
-
-  if (answers.skipDbChecks !== 'true') await npmRun('migrate:dev')
+  await npmRun('migrate:dev')
 
   npmRun('dev')
 

@@ -22,9 +22,7 @@ export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise
 
   if (process.env.TEST_CFA_FIX_DB) ans.db = process.env.TEST_CFA_FIX_DB
 
-  if (!isAnswersValid({ ...ans, skipDbChecks: 'true' })) {
-    return await createRandomAnswers(dbCtx, num + 1)
-  }
+  if (!isAnswersValid(ans)) return await createRandomAnswers(dbCtx, num + 1)
 
   switch (ans.db) {
     case 'postgresql': {

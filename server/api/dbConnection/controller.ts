@@ -7,10 +7,6 @@ export default defineController(() => ({
   post: async ({ body }) => {
     const answers = genAllAnswers(body)
 
-    if (answers.skipDbChecks === 'true') {
-      return { status: 200, body: { enabled: true } }
-    }
-
     if (answers.db === 'sqlite') return { status: 200, body: { enabled: true } }
 
     const templateCtx = answersToTemplateContext({ ...answers, serverPort: 0, clientPort: 0 })
