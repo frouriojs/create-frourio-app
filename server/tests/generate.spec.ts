@@ -1,7 +1,6 @@
 import axios from 'axios'
 import FormData from 'form-data'
 import { generate } from '$/service/generate'
-import { answersToTemplateContext } from '$/common/template-context'
 import { createJestDbContext } from '$/utils/database/jest-context'
 import { randInt, randSuffix } from '$/utils/random'
 import { createRandomAnswers } from '$/utils/answers/random'
@@ -116,25 +115,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         }
       }
 
-      const templateCtx = answersToTemplateContext({ ...answers, serverPort: 0, clientPort: 0 })
-      const envFiles = await fg([path.resolve(dir, '**/.env').replace(/\\/g, '/')])
-      const allEnv = envFiles.map((f) => fs.readFileSync(f).toString()).join('\n')
-
       const npmClientPath = await realExecutablePath('npm')
-
-      if (answers.db !== 'sqlite') {
-        expect(templateCtx.dbHost?.length).toBeGreaterThan(0)
-        expect(templateCtx.dbPort?.length).toBeGreaterThan(0)
-        expect(templateCtx.dbPass?.length).toBeGreaterThan(0)
-        expect(templateCtx.dbName?.length).toBeGreaterThan(0)
-        expect(templateCtx.dbUser?.length).toBeGreaterThan(0)
-        expect(allEnv).toContain(templateCtx.dbHost)
-        expect(allEnv).toContain(templateCtx.dbPort)
-        expect(allEnv).toContain(templateCtx.dbPass)
-        expect(allEnv).toContain(templateCtx.dbName)
-        expect(allEnv).toContain(templateCtx.dbUser)
-      }
-
       const serverDir = path.resolve(dir, 'server')
       const nodeModulesDir = path.resolve(dir, 'node_modules')
       const nodeModulesIgnoreDir = path.resolve(dir, 'node_modules_ignore')
@@ -281,10 +262,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
     const keep = process.env.TEST_CFA_KEEP_DB === 'yes'
     if (!keep) {
       try {
-        await dbCtx.pg.down()
-        await dbCtx.sqlite.down()
-        await dbCtx.pg.deleteAll(await dbCtx.pg.getAllNames())
-        await dbCtx.sqlite.deleteAll(await dbCtx.sqlite.getAllNames())
+        await dbCtx.down()
+        await dbCtx.deleteAll(await dbCtx.getAllNames())
       } catch (e: unknown) {
         console.error('Failed to delete one database.')
         console.error(e)
@@ -292,8 +271,7 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
     }
   } catch (e: unknown) {
     try {
-      await dbCtx.pg.down()
-      await dbCtx.sqlite.down()
+      await dbCtx.down()
     } catch (e: unknown) {
       console.error('Failed to clean up databases.')
       console.error(e)

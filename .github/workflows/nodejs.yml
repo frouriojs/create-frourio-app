@@ -13,17 +13,6 @@ jobs:
     strategy:
       matrix:
         node-version: [20, 22]
-    services:
-      postgres:
-        image: postgres
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-    env:
-      TEST_PG_PORT: 5432
-      TEST_PG_PASSWORD: postgres
     steps:
       - uses: actions/checkout@v3
       - name: setup Node.js ${{ matrix.node-version }}
@@ -44,12 +33,10 @@ jobs:
         env:
           TEST_CFA_RANDOM_NUM: 1
           TEST_CFA_FIX_SERVER: fastify
-          TEST_CFA_FIX_DB: postgresql
       - run: npm test
         env:
           TEST_CFA_RANDOM_NUM: 1
           TEST_CFA_FIX_SERVER: express
-          TEST_CFA_FIX_DB: sqlite
       - run: npm test
         if: github.event_name == 'schedule'
         env:
@@ -83,17 +70,14 @@ jobs:
         env:
           TEST_CFA_RANDOM_NUM: 1
           TEST_CFA_FIX_SERVER: fastify
-          TEST_CFA_FIX_DB: sqlite
       - run: npm test
         env:
           TEST_CFA_RANDOM_NUM: 1
           TEST_CFA_FIX_SERVER: express
-          TEST_CFA_FIX_DB: sqlite
       - run: npm test
         if: github.event_name == 'schedule'
         env:
           TEST_CFA_RANDOM_NUM: 5
-          TEST_CFA_FIX_DB: sqlite
 
   release:
     runs-on: ubuntu-latest

@@ -65,7 +65,6 @@ https://frourio.com/docs
 1. O/R mapping tool:
    - [Prisma (recommended)](https://www.prisma.io/)
 1. Database type of Prisma:
-   - [PostgreSQL](https://www.postgresql.org/)
    - [SQLite](https://www.sqlite.org/)
 1. Testing framework:
    - [Jest](https://jestjs.io/)

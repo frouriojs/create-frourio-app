@@ -10,7 +10,6 @@ import { getClientPort, getServerPort } from './getServerPort'
 import stream from 'stream'
 import realExecutablePath from 'real-executable-path'
 import { canContinueOnPath, getPathStatus } from './localPath'
-import { capitailze } from '$/utils/string'
 
 const dirPath = path.join(homedir(), '.frourio')
 const dbPath = path.join(dirPath, 'create-frourio-app.json')
@@ -28,6 +27,11 @@ type AnswersVer5 = AnswersVer6 & {
   mysqlDbName?: string
   orm?: string
   pm?: string
+  postgresqlDbHost?: string
+  postgresqlDbPort?: string
+  postgresqlDbUser?: string
+  postgresqlDbPass?: string
+  postgresqlDbName?: string
   serverless?: string
   skipDbChecks?: string
   staticHosting?: string
@@ -39,11 +43,22 @@ type AnswersVer4 = AnswersVer5 & { client?: string }
 type AnswersVer3 = AnswersVer4
 type AnswersVer2 = Omit<
   AnswersVer3,
+  | 'deployBranch'
+  | 'deployServer'
+  | 'mysqlDbHost'
+  | 'mysqlDbPort'
+  | 'mysqlDbUser'
+  | 'mysqlDbPass'
+  | 'mysqlDbName'
   | 'postgresqlDbHost'
   | 'postgresqlDbPort'
   | 'postgresqlDbUser'
   | 'postgresqlDbPass'
   | 'postgresqlDbName'
+  | 'serverless'
+  | 'staticHosting'
+  | 'serverSourcePath'
+  | 'sqliteDbFile'
 > &
   Partial<Record<'dbHost' | 'dbUser' | 'dbPass' | 'dbUser' | 'dbPort' | 'dbFile', string>>
 type AnswersVer1 = Omit<AnswersVer2, 'client'> & { front?: string }
@@ -108,6 +123,11 @@ const migration = [
         mysqlDbName,
         orm,
         pm,
+        postgresqlDbHost,
+        postgresqlDbPort,
+        postgresqlDbUser,
+        postgresqlDbPass,
+        postgresqlDbName,
         serverless,
         staticHosting,
         serverSourcePath,
@@ -116,26 +136,15 @@ const migration = [
         testing,
         ...others
       } /* eslint-enable @typescript-eslint/no-unused-vars */
-    }: Schemas[4]): Schemas[5] => ({
-      ver: 6,
-      answers: { ...others, db: db === 'postgresql' ? 'postgresql' : 'sqlite' }
-    })
+    }: Schemas[4]): Schemas[5] => ({ ver: 6, answers: { ...others, db: 'sqlite' } })
   }
 ]
 
-const v2DbInfoKeys = ['dbHost', 'dbUser', 'dbPass', 'dbUser', 'dbPort'] as const
-export const cliMigration = [
-  ...v2DbInfoKeys.map((key) => ({
-    when: (answers: Schemas[number]['answers']) => key in answers,
-    warn: (answers: Schemas[number]['answers']) =>
-      `Use "${answers.db}${capitailze(key)}" instead of "${key}".`,
-    handler: ({ [key]: val, db, ...others }: Schemas[0]['answers']): Schemas[1]['answers'] => ({
-      ...others,
-      db,
-      [`${db}${capitailze(key)}`]: val
-    })
-  }))
-]
+export const cliMigration: {
+  when: (answers: Schemas[number]['answers']) => boolean
+  warn: (answers: Schemas[number]['answers']) => string
+  handler: (answers: Schemas[number]['answers']) => Schemas[number]['answers']
+}[] = []
 
 try {
   const tmp = JSON.parse(fs.readFileSync(dbPath, 'utf8'))
@@ -199,17 +208,14 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   npmRun('dev')
 
   delete db.answers.dir
-  delete db.answers.postgresqlDbPass
+
   await fs.promises.writeFile(dbPath, JSON.stringify(db), 'utf8')
 }
 
 export const getAnswers = (dir: string) => ({ dir, ...db.answers })
 
 export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
-  db = {
-    ...db,
-    answers: { ...omitDefaults(answers), dir: undefined, postgresqlDbPass: undefined }
-  }
+  db = { ...db, answers: { ...omitDefaults(answers), dir: undefined } }
 
   const canContinue = await getPathStatus(path.resolve(process.cwd(), answers.dir || '')).then(
     canContinueOnPath

@@ -1,17 +1,6 @@
-type PromptName =
-  | 'dir'
-  | 'server'
-  | 'building'
-  | 'mode'
-  | 'target'
-  | 'aspida'
-  | 'reactHooks'
-  | 'db'
-  | 'postgresqlDbHost'
-  | 'postgresqlDbPort'
-  | 'postgresqlDbUser'
-  | 'postgresqlDbPass'
-  | 'postgresqlDbName'
+import type { TemplateContext } from './template-context'
+
+type PromptName = 'dir' | 'server' | 'building' | 'mode' | 'target' | 'aspida' | 'reactHooks' | 'db'
 
 export type Answers = Partial<Record<PromptName, string>>
 export type Text = { en: string }
@@ -98,60 +87,10 @@ export const cfaPrompts: Prompt[] = [
   {
     name: 'db',
     message: 'Database kind',
-    choices: [
-      { name: 'SQLite', value: 'sqlite' },
-      { name: 'PostgreSQL', value: 'postgresql' }
-    ],
+    choices: [{ name: 'SQLite', value: 'sqlite' }],
     type: 'list',
     default: 'sqlite'
-  },
-  ...(
-    [
-      ['Host', 'HOST'],
-      ['Port', 'PORT'],
-      ['Name', 'DATABASE'],
-      ['User', 'USERNAME'],
-      ['Pass', 'PASSWORD']
-    ] as const
-  ).map(([what, label]) => {
-    const db = 'postgresql'
-
-    return {
-      name: `${db}Db${what}` as const,
-      message: (ans: Answers) =>
-        `dev DB ${label}: server/prisma/.env API_DATABASE_URL (${getPrismaDbUrl({
-          ...ans,
-          [`${db}Db${what}`]: ans[`${db}Db${what}`] || 'HERE',
-          [`${db}DbPass`]: ans[`${db}DbPass`] ? '***' : what === 'Pass' ? 'HERE' : ''
-        })}) =`,
-      type: 'input' as const,
-      default: (() => {
-        switch (what) {
-          case 'Host':
-            return 'localhost'
-          case 'Port':
-            return '5432'
-          default:
-            return undefined
-        }
-      })(),
-      valid: (ans: Answers) => {
-        const val = ans[`${db}Db${what}`]
-
-        if (!val) return false
-
-        switch (what) {
-          case 'Port':
-            return /[1-9]\d*/.test(val) && 1 <= +val && +val <= 65353
-          case 'Pass':
-            return true
-          default:
-            return Boolean(val)
-        }
-      },
-      when: (ans: Answers) => ans.db === db
-    }
-  })
+  }
 ]
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -191,7 +130,7 @@ export const omitDefaults = (answers: Answers): Answers => {
 export const initPrompts = (answers: Answers): DeterminedPrompt[] =>
   calculatePrompts({ ...getAllDefaultAnswers(), ...answers })
 
-export const removeUnnecessary = <T extends Answers>(answers: T): T => {
+export const removeUnnecessary = (answers: TemplateContext): TemplateContext => {
   const res = { ...answers }
   const usedKeys = Object.create(null)
   const c: DeterminedPrompt[] = calculatePrompts(answers)
@@ -204,7 +143,7 @@ export const removeUnnecessary = <T extends Answers>(answers: T): T => {
   return res
 }
 
-export const addAllUndefined = <T extends Answers>(answers: T): T => {
+export const addAllUndefined = (answers: TemplateContext): TemplateContext => {
   const res = { ...answers }
 
   cfaPrompts.forEach((p) => {
@@ -232,31 +171,4 @@ export const isAnswersValid = (answers: Answers) => {
 
     throw new Error('el.type is illegal')
   })
-}
-
-export type CommonDbInfo = {
-  dbHost?: string
-  dbPort?: string
-  dbName?: string
-  dbUser?: string
-  dbPass?: string
-}
-
-export const getCommonDbInfo = (answers: Answers): CommonDbInfo => {
-  const info: CommonDbInfo = {}
-  if (answers.db !== 'sqlite') {
-    ;(['Host', 'Port', 'Name', 'User', 'Pass'] as const).forEach((what) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      info[`db${what}`] = (answers as any)[`${answers.db}Db${what}`] || ''
-    })
-  }
-  return info
-}
-
-export const getPrismaDbUrl = (answers: Answers): string => {
-  if (answers.db === 'sqlite') return 'file:./dev.db'
-
-  const info = getCommonDbInfo(answers)
-
-  return `postgresql://${info.dbUser}:${info.dbPass}@${info.dbHost}:${info.dbPort}/${info.dbName}`
 }

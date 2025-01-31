@@ -128,11 +128,6 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
       return
     }
 
-    const db = await apiClient.dbConnection.$post({ body: answers })
-    if (!db.enabled) {
-      return alert(`Failed to connect to database:\n\n${db.err}`)
-    }
-
     await apiClient.answers.$patch({ body: answers })
     mutate?.()
     setCreated(true)

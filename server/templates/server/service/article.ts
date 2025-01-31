@@ -19,12 +19,6 @@ const articleData: ArticleInfo[] = [
     id: 3,
     title: 'TypeScript full stack framework',
     body: 'All you need is TypeScript'
-  },
-  {
-    id: 4,
-    title: 'What databases are suported?',
-    body:
-      '- SQLite\n- PostgreSQL'
   }
 ]
 
