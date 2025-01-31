@@ -58,9 +58,6 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
 
   s.write(chalk`\n🎉  {bold Successfully created project} {cyan ${outDir}}\n`)
   s.write(chalk`  {bold To get started:}`)
-
-  if (answers.db !== 'sqlite') s.write(chalk`\t{cyan (start ${answers.db} server yourself)}`)
-
   s.write(chalk`${cdMsg}\t{cyan npm run dev}\n`)
   s.write(chalk`  {bold To build & start for production:}`)
   s.write(chalk`${cdMsg}\t{cyan npm run build}`)

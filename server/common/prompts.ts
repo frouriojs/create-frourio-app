@@ -1,6 +1,6 @@
 import type { TemplateContext } from './template-context'
 
-type PromptName = 'dir' | 'server' | 'building' | 'mode' | 'target' | 'aspida' | 'reactHooks' | 'db'
+type PromptName = 'dir' | 'server' | 'building' | 'mode' | 'target' | 'aspida' | 'reactHooks'
 
 export type Answers = Partial<Record<PromptName, string>>
 export type Text = { en: string }
@@ -83,13 +83,6 @@ export const cfaPrompts: Prompt[] = [
       { name: 'None', value: 'none' }
     ],
     default: 'swr'
-  },
-  {
-    name: 'db',
-    message: 'Database kind',
-    choices: [{ name: 'SQLite', value: 'sqlite' }],
-    type: 'list',
-    default: 'sqlite'
   }
 ]
 

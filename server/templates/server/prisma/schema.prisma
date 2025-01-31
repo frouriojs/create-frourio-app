@@ -1,5 +1,5 @@
 datasource db {
-  provider = "<%= db %>"
+  provider = "sqlite"
   url      = env("API_DATABASE_URL")
 }
 

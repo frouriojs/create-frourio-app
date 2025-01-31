@@ -18,6 +18,7 @@ type AnswersVer6 = Answers
 type AnswersVer5 = AnswersVer6 & {
   ci?: string
   daemon?: string
+  db?: string
   deployBranch?: string
   deployServer?: string
   mysqlDbHost?: string
@@ -136,7 +137,7 @@ const migration = [
         testing,
         ...others
       } /* eslint-enable @typescript-eslint/no-unused-vars */
-    }: Schemas[4]): Schemas[5] => ({ ver: 6, answers: { ...others, db: 'sqlite' } })
+    }: Schemas[4]): Schemas[5] => ({ ver: 6, answers: others })
   }
 ]
 
