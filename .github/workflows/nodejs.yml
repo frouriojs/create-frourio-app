@@ -13,20 +13,6 @@ jobs:
     strategy:
       matrix:
         node-version: [20, 22]
-    services:
-      postgres:
-        image: postgres
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-    env:
-      TEST_PG_PORT: 5432
-      TEST_PG_PASSWORD: postgres
-      TEST_MYSQL_PORT: 3306
-      TEST_MYSQL_USER: root
-      TEST_MYSQL_PASSWORD: root
     steps:
       - uses: actions/checkout@v3
       - name: setup Node.js ${{ matrix.node-version }}
@@ -43,22 +29,14 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run typecheck
-
-      - run: sudo systemctl start mysql.service
       - run: npm test
         env:
           TEST_CFA_RANDOM_NUM: 1
-          TEST_CFA_FIX_DB: postgresql
-          TEST_CFA_FIX_ORM: prisma
+          TEST_CFA_FIX_SERVER: fastify
       - run: npm test
         env:
           TEST_CFA_RANDOM_NUM: 1
-          TEST_CFA_FIX_DB: mysql
-          TEST_CFA_FIX_ORM: typeorm
-      - run: npm test
-        env:
-          TEST_CFA_RANDOM_NUM: 1
-          TEST_CFA_FIX_DB: sqlite
+          TEST_CFA_FIX_SERVER: express
       - run: npm test
         if: github.event_name == 'schedule'
         env:
@@ -91,12 +69,15 @@ jobs:
       - run: npm test
         env:
           TEST_CFA_RANDOM_NUM: 1
-          TEST_CFA_FIX_DB: sqlite
+          TEST_CFA_FIX_SERVER: fastify
+      - run: npm test
+        env:
+          TEST_CFA_RANDOM_NUM: 1
+          TEST_CFA_FIX_SERVER: express
       - run: npm test
         if: github.event_name == 'schedule'
         env:
           TEST_CFA_RANDOM_NUM: 5
-          TEST_CFA_FIX_DB: sqlite
 
   release:
     runs-on: ubuntu-latest

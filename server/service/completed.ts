@@ -4,7 +4,6 @@ import { spawn } from 'child_process'
 import chalk from 'chalk'
 import { Answers } from '$/common/prompts'
 import stream from 'stream'
-import fs from 'fs'
 import realExecutablePath from 'real-executable-path'
 
 export const npmInstall = async (cwd: string, npmClient: string, s: stream.Writable) => {
@@ -26,32 +25,14 @@ export const npmInstall = async (cwd: string, npmClient: string, s: stream.Writa
 
     proc.stdio[1]?.on('data', s.write.bind(s))
     proc.stdio[2]?.on('data', s.write.bind(s))
-    proc.once('exit', resolve)
+    proc.once('close', resolve)
     proc.once('error', reject)
   })
 }
 
 export const completed = async (answers: Answers, s: stream.Writable) => {
   const outDir = path.resolve(answers.dir ?? './new-frourio-app')
-  const npmClientPath = await realExecutablePath(answers.pm ?? 'npm')
-  const gitCliPath = await realExecutablePath('git')
-
-  await new Promise((resolve, reject) => {
-    const proc = spawn(gitCliPath, ['init'], {
-      stdio: ['inherit', 'pipe', 'pipe'],
-      cwd: outDir,
-      shell: process.platform === 'win32'
-    })
-    proc.stdio[1]?.on('data', s.write.bind(s))
-    proc.stdio[2]?.on('data', s.write.bind(s))
-    proc.once('exit', resolve)
-    proc.once('error', reject)
-  })
-
-  await fs.promises.writeFile(
-    path.resolve(outDir, '.git/HEAD'),
-    `ref: refs/heads/${answers.deployBranch}`
-  )
+  const npmClientPath = await realExecutablePath('npm')
 
   await npmInstall(outDir, npmClientPath, s)
   await npmInstall(path.resolve(outDir, 'server'), npmClientPath, s)
@@ -59,20 +40,11 @@ export const completed = async (answers: Answers, s: stream.Writable) => {
   const isNewFolder = outDir !== process.cwd()
   const relativeOutFolder = relative(process.cwd(), outDir)
   const cdMsg = isNewFolder ? chalk`\n\t{cyan cd ${relativeOutFolder}}\n` : ''
-  const pmRun = `${answers.pm}${answers.pm === 'npm' ? ' run' : ''}`
 
   s.write(chalk`\n🎉  {bold Successfully created project} {cyan ${outDir}}\n`)
-
   s.write(chalk`  {bold To get started:}`)
-  if (answers.orm !== 'none' && answers.db !== 'sqlite') {
-    s.write(chalk`\t{cyan (start ${answers.db} server yourself)}`)
-  }
-  s.write(chalk`${cdMsg}\t{cyan ${pmRun} dev}\n`)
-
+  s.write(chalk`${cdMsg}\t{cyan npm run dev}\n`)
   s.write(chalk`  {bold To build & start for production:}`)
-  if (answers.orm !== 'none' && answers.db) {
-    s.write(chalk`\t{cyan (start ${answers.db} server yourself)}`)
-  }
-  s.write(chalk`${cdMsg}\t{cyan ${pmRun} build}`)
-  s.write(chalk`\t{cyan ${pmRun} start}\n`)
+  s.write(chalk`${cdMsg}\t{cyan npm run build}`)
+  s.write(chalk`\t{cyan npm start}\n`)
 }

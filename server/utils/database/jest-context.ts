@@ -1,15 +1,9 @@
-import { AllDbContext, createMysqlContext, createPgContext, createSqliteContext } from './context'
+import { createDbContext, DbContext } from './context'
 import path from 'path'
 
-export const createJestDbContext = (): AllDbContext => {
+export const createJestDbContext = (): DbContext => {
   const tmpDir = process.env.TEST_CFA_TMP_DIR || '/tmp/cfa-test'
   const sqliteTmpDir = path.resolve(tmpDir, 'sqlite')
 
-  const ctx: AllDbContext = {
-    pg: createPgContext(),
-    sqlite: createSqliteContext(sqliteTmpDir),
-    mysql: createMysqlContext()
-  }
-
-  return ctx
+  return createDbContext(sqliteTmpDir)
 }

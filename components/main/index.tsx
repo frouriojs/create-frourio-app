@@ -9,16 +9,8 @@ import styles from '~/styles/Home.module.css'
 import questionStyles from '~/styles/Question.module.css'
 import { Flipped, Flipper } from 'react-flip-toolkit'
 import hash from 'object-hash'
-import {
-  Answers,
-  getAllDefaultAnswers,
-  initPrompts,
-  isAnswersValid
-} from '$/common/prompts'
-import {
-  cmdEscapeSingleInput,
-  shellEscapeSingleInput
-} from '$/utils/shell/escape'
+import { Answers, getAllDefaultAnswers, initPrompts, isAnswersValid } from '$/common/prompts'
+import { cmdEscapeSingleInput, shellEscapeSingleInput } from '$/utils/shell/escape'
 import { ServerStatus } from '~/server/api/status'
 import { LocalPathInfo } from '~/server/api/localPath'
 import CommandInput from '~/components/command-input'
@@ -60,9 +52,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   const [log, setLog] = useState('')
   const [closedOverlay, setClosedOverlay] = useState(false)
   const [ready, setReady] = useState(false)
-  const [localPathInfo, setLocalPathInfo] = useState<
-    LocalPathInfo | undefined
-  >()
+  const [localPathInfo, setLocalPathInfo] = useState<LocalPathInfo | undefined>()
   const [localPathInfoFetching, setlocalPathInfoFetching] = useState(true)
 
   const { clientPort } = serverStatus ?? {}
@@ -76,8 +66,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
       let log1 = ''
       const ws = new WebSocket(`ws://${location.host}/ws/`)
       ws.onmessage = async (ev) => {
-        const dat =
-          ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
+        const dat = ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
         log1 += dat
         setLog(log1)
       }
@@ -90,8 +79,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
       const ws = new WebSocket(`ws://${location.host}/ws/ready/`)
       let text = ''
       ws.onmessage = async (ev) => {
-        const dat =
-          ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
+        const dat = ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
         text += dat
         if (dat && text.startsWith('ready')) {
           setReady(true)
@@ -126,9 +114,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   const create = useCallback(async () => {
     setTouched(true)
     if (!apiClient || !canCreate || !answers) {
-      alert(
-        'Cannot proceed because conditions are not met. Please review your configurations.'
-      )
+      alert('Cannot proceed because conditions are not met. Please review your configurations.')
       return
     }
 
@@ -140,11 +126,6 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
     if (info.canContinue !== null) {
       alert(info.canContinue)
       return
-    }
-
-    const db = await apiClient.dbConnection.$post({ body: answers })
-    if (!db.enabled) {
-      return alert(`Failed to connect to database:\n\n${db.err}`)
     }
 
     await apiClient.answers.$patch({ body: answers })
@@ -177,9 +158,9 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
 
   return (
     <Flipper
-      flipKey={`${closedOverlay ? 'closed:' : 'open:'}${hash(
-        answers || {}
-      )}${hash(localPathInfo || {})}`}
+      flipKey={`${closedOverlay ? 'closed:' : 'open:'}${hash(answers || {})}${hash(
+        localPathInfo || {}
+      )}`}
     >
       <Head>
         <title>create-frourio-app</title>
@@ -207,12 +188,8 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
                   answers={answers}
                   question={question}
                   onChoice={choice}
-                  touched={
-                    touched === true || (touched[question.name] ?? false)
-                  }
-                  addError={
-                    question.name === 'dir' && localPathInfo?.canContinue
-                  }
+                  touched={touched === true || (touched[question.name] ?? false)}
+                  addError={question.name === 'dir' && localPathInfo?.canContinue}
                   addInfo={question.name === 'dir' && localPathInfo?.absPath}
                   onTouch={() => {
                     if (touched !== true) {
@@ -235,11 +212,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
                   <CommandInput
                     value={
                       answers &&
-                      `${
-                        answers.pm === 'yarn'
-                          ? 'yarn create frourio-app'
-                          : 'npm init frourio-app'
-                      } --answers ${shellEscapeSingleInput(
+                      `npm init frourio-app --answers ${shellEscapeSingleInput(
                         JSON.stringify(answers)
                       )}`
                     }
@@ -252,11 +225,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
                   <CommandInput
                     value={
                       answers &&
-                      `${
-                        answers.pm === 'yarn'
-                          ? 'yarn create frourio-app'
-                          : 'npm init frourio-app'
-                      } --answers ${cmdEscapeSingleInput(
+                      `npm init frourio-app --answers ${cmdEscapeSingleInput(
                         JSON.stringify(answers)
                       )}`
                     }
@@ -349,9 +318,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
                 <TerminalConsole log={log} />
               </div>
             </Flipped>
-            <PrimaryButton onClick={() => setClosedOverlay(true)}>
-              Close
-            </PrimaryButton>
+            <PrimaryButton onClick={() => setClosedOverlay(true)}>Close</PrimaryButton>
             <Flipped flipId="credits">
               <div>
                 <Credits />

@@ -39,12 +39,6 @@ Or starting with npm v6.1 you can do:
 npm init frourio-app
 ```
 
-Or with [yarn](https://yarnpkg.com/en/):
-
-```bash
-yarn create frourio-app
-```
-
 Open `http://localhost:3000`
 
 ## Documentation
@@ -58,9 +52,6 @@ https://frourio.com/docs
    - [Express](https://expressjs.com/)
 1. Client framework:
    - [Next.js (React)](https://nextjs.org/learn/excel/typescript)
-1. Client building mode:
-   - Basic (next build)
-   - [Static (next export)](https://nextjs.org/docs/advanced-features/static-html-export)
 1. HTTP client of aspida:
    - [axios](https://github.com/axios/axios)
    - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
@@ -68,38 +59,12 @@ https://frourio.com/docs
    - [SWR](https://swr.vercel.app/)
    - [React Query](https://react-query.tanstack.com/)
    - None
-1. Daemon process manager:
-   - None
-   - [PM2](https://pm2.keymetrics.io/)
 1. O/R mapping tool:
    - [Prisma (recommended)](https://www.prisma.io/)
-   - [TypeORM](https://typeorm.io/)
-   - None
 1. Database type of Prisma:
-   - [MySQL](https://www.mysql.com/)
-   - [PostgreSQL](https://www.postgresql.org/)
    - [SQLite](https://www.sqlite.org/)
-1. Database type of TypeORM:
-   - [MySQL](https://www.mysql.com/)
-   - [PostgreSQL](https://www.postgresql.org/)
 1. Testing framework:
    - [Jest](https://jestjs.io/)
-   - None
-1. Package manager:
-   - Yarn
-   - Npm
-1. CI config:
-   - [GitHub Actions](https://github.co.jp/features/actions)
-   - None
-1. API server hosting:
-   - Dedicated server
-   - Serverless (AWS Lambda)
-   - None
-1. Static hosting service:
-   - GitHub Pages
-   - [Vercel](https://vercel.com/)
-   - [Netlify](https://www.netlify.com/)
-   - None
 
 ## License
 

@@ -1,7 +1,6 @@
 import axios from 'axios'
 import FormData from 'form-data'
 import { generate } from '$/service/generate'
-import { answersToTemplateContext } from '$/common/template-context'
 import { createJestDbContext } from '$/utils/database/jest-context'
 import { randInt, randSuffix } from '$/utils/random'
 import { createRandomAnswers } from '$/utils/answers/random'
@@ -12,7 +11,6 @@ import { getPortPromise } from 'portfinder'
 import { cmdEscapeSingleInput, shellEscapeSingleInput } from '$/utils/shell/escape'
 import fg from 'fast-glob'
 import YAML from 'yaml'
-import assert from 'assert'
 import { execFile, spawn } from 'child_process'
 import { promisify } from 'util'
 import { Answers } from '$/common/prompts'
@@ -117,39 +115,15 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
         }
       }
 
-      const templateCtx = answersToTemplateContext({ ...answers, serverPort: 0, clientPort: 0 })
-      const envFiles = await fg([path.resolve(dir, '**/.env').replace(/\\/g, '/')])
-      const allEnv = envFiles.map((f) => fs.readFileSync(f).toString()).join('\n')
-      assert(answers.pm)
-      const npmClientPath = await realExecutablePath(answers.pm)
-
-      // SQLite name found
-      if (answers.orm !== 'none' && answers.orm !== 'typeorm' && answers.db === 'sqlite') {
-        expect(answers.sqliteDbFile?.length).toBeGreaterThan(0)
-        expect(allEnv).toContain(answers.sqliteDbFile)
-      }
-
-      // DB info found
-      if (answers.orm !== 'none' && answers.db !== 'sqlite') {
-        expect(templateCtx.dbHost?.length).toBeGreaterThan(0)
-        expect(templateCtx.dbPort?.length).toBeGreaterThan(0)
-        expect(templateCtx.dbPass?.length).toBeGreaterThan(0)
-        expect(templateCtx.dbName?.length).toBeGreaterThan(0)
-        expect(templateCtx.dbUser?.length).toBeGreaterThan(0)
-        expect(allEnv).toContain(templateCtx.dbHost)
-        expect(allEnv).toContain(templateCtx.dbPort)
-        expect(allEnv).toContain(templateCtx.dbPass)
-        expect(allEnv).toContain(templateCtx.dbName)
-        expect(allEnv).toContain(templateCtx.dbUser)
-      }
+      const npmClientPath = await realExecutablePath('npm')
       const serverDir = path.resolve(dir, 'server')
       const nodeModulesDir = path.resolve(dir, 'node_modules')
       const nodeModulesIgnoreDir = path.resolve(dir, 'node_modules_ignore')
 
-      // npm/yarn install:client
+      // npm install:client
       await npmInstall(dir, npmClientPath, process.stdout)
 
-      // npm/yarn install:server
+      // npm install:server
       await npmInstall(serverDir, npmClientPath, process.stdout)
 
       // eslint
@@ -183,25 +157,16 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
       await fs.promises.rename(nodeModulesIgnoreDir, nodeModulesDir)
 
       // migrations
-      if (answers.orm === 'prisma') {
-        await execFileAsync(npmClientPath, ['run', 'migrate:dev'], {
-          cwd: serverDir,
-          shell: process.platform === 'win32'
-        })
-      } else if (answers.orm === 'typeorm') {
-        await execFileAsync(npmClientPath, ['run', 'migration:run'], {
-          cwd: serverDir,
-          shell: process.platform === 'win32'
-        })
-      }
+      await execFileAsync(npmClientPath, ['run', 'migrate:dev'], {
+        cwd: serverDir,
+        shell: process.platform === 'win32'
+      })
 
       // Project scope test
-      if (answers.testing !== 'none') {
-        await execFileAsync(npmClientPath, ['test'], {
-          cwd: dir,
-          shell: process.platform === 'win32'
-        })
-      }
+      await execFileAsync(npmClientPath, ['test'], {
+        cwd: dir,
+        shell: process.platform === 'win32'
+      })
 
       // Integration test
       {
@@ -286,8 +251,9 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
           const resUploadIcon = await client.get(`/upload/icons/user-icon`)
           expect(resUploadIcon.status).toEqual(200)
         } finally {
-          await new Promise<void>((resolve) => {
+          await new Promise<void>((resolve, reject) => {
             proc.on('close', resolve)
+            proc.once('error', reject)
             proc.kill()
           })
         }
@@ -296,12 +262,8 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
     const keep = process.env.TEST_CFA_KEEP_DB === 'yes'
     if (!keep) {
       try {
-        await dbCtx.pg.down()
-        await dbCtx.sqlite.down()
-        await dbCtx.mysql.down()
-        await dbCtx.pg.deleteAll(await dbCtx.pg.getAllNames())
-        await dbCtx.sqlite.deleteAll(await dbCtx.sqlite.getAllNames())
-        await dbCtx.mysql.deleteAll(await dbCtx.mysql.getAllNames())
+        await dbCtx.down()
+        await dbCtx.deleteAll(await dbCtx.getAllNames())
       } catch (e: unknown) {
         console.error('Failed to delete one database.')
         console.error(e)
@@ -309,12 +271,12 @@ test.each(Array.from({ length: randomNum }))('create', async () => {
     }
   } catch (e: unknown) {
     try {
-      await dbCtx.pg.down()
-      await dbCtx.sqlite.down()
-      await dbCtx.mysql.down()
+      await dbCtx.down()
     } catch (e: unknown) {
       console.error('Failed to clean up databases.')
       console.error(e)
     }
+
+    throw e
   }
 })

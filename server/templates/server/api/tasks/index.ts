@@ -1,10 +1,10 @@
-import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
+import type { Task } from '$/types'
 
 export type Methods = {
   get: {
     query?: {
-      limit?: number<% if (testing !== 'none') { %>
-      message?: string<% } %>
+      limit?: number
+      message?: string
     }
 
     resBody: Task[]

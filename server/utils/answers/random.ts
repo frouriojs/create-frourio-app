@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Answers, cfaPrompts, isAnswersValid } from '$/common/prompts'
-import { AllDbContext } from '$/utils/database/context'
+import { DbContext } from '$/utils/database/context'
 import { randChoice } from '$/utils/random'
 
-export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise<Answers> => {
+export const createRandomAnswers = async (dbCtx: DbContext, num = 0): Promise<Answers> => {
   if (num === 1000) throw new Error('Infinite loop')
   const ans: Answers = {}
 
@@ -18,56 +18,12 @@ export const createRandomAnswers = async (dbCtx: AllDbContext, num = 0): Promise
     }
   })
 
-  // Branch names
-  ans.deployBranch = randChoice(['master', 'main', 'trunk'])
+  if (process.env.TEST_CFA_FIX_SERVER) ans.server = process.env.TEST_CFA_FIX_SERVER
 
-  // Deploy (Never used actually in test)
-  ans.serverSourcePath = randChoice([
-    '/srv/api-servert-test',
-    '/home/testuser/foo',
-    'C:\\Server Data (test)'
-  ])
+  if (!isAnswersValid(ans)) return await createRandomAnswers(dbCtx, num + 1)
 
-  // Database
-  if (ans.orm === 'typeorm' && ans.db === 'sqlite') ans.db = 'mysql'
-  if (process.env.TEST_CFA_FIX_DB) ans.db = process.env.TEST_CFA_FIX_DB
-  if (process.env.TEST_CFA_FIX_ORM) ans.orm = process.env.TEST_CFA_FIX_ORM
-  if (ans.db === 'sqlite') {
-    if (ans.orm === 'typeorm') ans.orm = 'prisma'
-  }
-  if (!isAnswersValid({ ...ans, skipDbChecks: 'true' }))
-    return await createRandomAnswers(dbCtx, num + 1)
-  if (ans.orm !== 'none') {
-    switch (ans.db) {
-      case 'mysql': {
-        await dbCtx.mysql.up()
-        const info = await dbCtx.mysql.createNew()
-        ans.mysqlDbHost = info.host
-        ans.mysqlDbPort = info.port.toString()
-        ans.mysqlDbPass = info.password
-        ans.mysqlDbUser = info.user
-        ans.mysqlDbName = info.database
-        break
-      }
-      case 'postgresql': {
-        await dbCtx.pg.up()
-        const info = await dbCtx.pg.createNew()
-        ans.postgresqlDbHost = info.host
-        ans.postgresqlDbPort = info.port.toString()
-        ans.postgresqlDbPass = info.password
-        ans.postgresqlDbUser = info.user
-        ans.postgresqlDbName = info.database
-        break
-      }
-      case 'sqlite': {
-        await dbCtx.sqlite.up()
-        const info = await dbCtx.sqlite.createNew()
-        ans.sqliteDbFile = info.filename
-        break
-      }
-      default:
-        throw new Error('Unreachable: Unknown answer orm.')
-    }
-  }
+  await dbCtx.up()
+  await dbCtx.createNew()
+
   return ans
 }

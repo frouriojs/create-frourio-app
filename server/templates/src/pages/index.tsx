@@ -5,7 +5,7 @@ import { useQueryClient } from 'react-query'
 import { useAspidaQuery } from '@aspida/react-query'<% } %>
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
-import type { Task } from '<%= orm === "prisma" ? "$prisma/client" : "$/types" %>'
+import type { Task } from '$/types'
 import type { FormEvent, ChangeEvent } from 'react'
 import Layout from '~/components/Layout'
 import type { NextPage } from 'next'

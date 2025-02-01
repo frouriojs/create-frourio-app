@@ -13,3 +13,14 @@ pathpida
 prettier
 ts-loader
 typescript
+@types/jest
+babel-jest
+jest
+jest-environment-jsdom
+ts-jest
+ts-node
+@testing-library/react
+identity-obj-proxy
+fastify
+@fastify/cors
+next-router-mock
