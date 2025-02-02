@@ -6,7 +6,7 @@
     "dev:aspida": "aspida --watch",
     "dev:frourio": "frourio --watch",
     "build": "frourio && ts-node -T ./scripts/build-file.ts --from=./index.ts --to=./build/index.js --target=es2019 --server --prod",
-    "test": "jest",
+    "test": "vitest run",
     "typecheck": "tsc --pretty --noEmit"
   }
 }

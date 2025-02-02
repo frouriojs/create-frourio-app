@@ -1,4 +1,5 @@
 import { convertListToJson } from '../package-json'
+import { describe, it, expect } from 'vitest'
 
 describe('convertListToJson', () => {
   const deps = { frourio: 'v1.0.0', aspida: 'v1.0.0', '@types/node': 'v1.0.0' }
