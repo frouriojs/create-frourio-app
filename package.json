@@ -30,7 +30,7 @@
     "bin",
     "client/lib",
     "client/out",
-    "server/build/index.js",
+    "server/index.js",
     "server/templates"
   ],
   "keywords": [

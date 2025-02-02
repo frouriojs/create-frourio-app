@@ -12,7 +12,7 @@ import { Command } from 'commander'
 import fastifyNext from '@fastify/nextjs'
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const manifest = [require][0]!('../../package.json')
+const manifest = [require][0]!('../package.json')
 
 const dirDefault = 'my-frourio-app'
 
@@ -63,7 +63,7 @@ const basePath = '/api'
   })
 
   const fastify = Fastify()
-  const rootDir = path.join(__dirname, '../../client')
+  const rootDir = path.join(__dirname, '../client')
 
   fastify.register(FastifyStatic, { root: path.join(rootDir, 'out') })
 

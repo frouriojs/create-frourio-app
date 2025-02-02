@@ -30,4 +30,4 @@ npm-debug.log*
 
 # server
 server/**/$*.ts
-!server/templates/**/node_modules
+server/index.js
