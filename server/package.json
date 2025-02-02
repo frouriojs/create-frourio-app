@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "frourio && run-p dev:*",
-    "dev:server": "onchange -i -k ./server/build/index.dev.js -- node ./server/build/index.dev.js --host=0.0.0.0",
+    "dev:server": "onchange -i -k ./build/index.dev.js -- node ./build/index.dev.js --host=0.0.0.0",
     "dev:build-server-dev": "ts-node -T ./scripts/build-file.ts --from=./index.ts --to=./build/index.dev.js --target=es2019 --server --watch",
     "dev:aspida": "aspida --watch",
     "dev:frourio": "frourio --watch",

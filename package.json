@@ -8,9 +8,9 @@
   "scripts": {
     "notios": "notios dev",
     "dev": "npm run dev --prefix server",
-    "build": "run-p build:client build:lib",
-    "build:client": "aspida && next build && next export",
-    "build:lib": "webpack --config webpack.config.lib.js",
+    "build": "run-p build:*",
+    "build:client": "npm run build --prefix client",
+    "build:server": "npm run build --prefix server",
     "lint": "eslint --ext .ts,.js,.tsx . && prettier --check \"./**/*.ts\"",
     "lint:fix": "eslint --ext .ts,.js,.tsx . --fix && prettier --check \"./**/*.ts\" --write",
     "test": "npm run test --prefix server",

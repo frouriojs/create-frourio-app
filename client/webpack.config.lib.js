@@ -1,5 +1,5 @@
-const path = require('path');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const path = require('path')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -7,9 +7,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'lib'),
     filename: 'components/main/index.js',
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'commonjs2'
   },
   resolve: {
+    symlinks: false,
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.lib.json' })]
   },
@@ -22,10 +23,10 @@ module.exports = {
           {
             loader: 'ts-loader',
             options: {
-              configFile: path.resolve(__dirname, 'tsconfig.lib.json'),
-            },  
+              configFile: path.resolve(__dirname, 'tsconfig.lib.json')
+            }
           }
-        ],
+        ]
       },
       {
         test: /\.css$/,
@@ -33,14 +34,11 @@ module.exports = {
           'style-loader',
           {
             loader: 'css-loader',
-            options: { url: false },
+            options: { url: false }
           }
         ]
-      },
-    ],
+      }
+    ]
   },
-  externals: [
-    'react',
-    'react-dom'
-  ]
-};
+  externals: ['react', 'react-dom']
+}

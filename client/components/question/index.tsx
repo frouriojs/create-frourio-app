@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import { Answers, DeterminedPrompt, Text } from '~/server/common/prompts'
+import { Answers, DeterminedPrompt, Text } from 'common/prompts'
 import { Flipped, spring } from 'react-flip-toolkit'
-import styles from '~/styles/Question.module.css'
+import styles from 'styles/Question.module.css'
 import ReactMarkdown from 'react-markdown'
 import hash from 'object-hash'
 
@@ -43,17 +43,11 @@ const QuestinoInput: FC<QuestinoInputProps> = ({
   onTouch
 }) => {
   return (
-    <Flipped
-      flipId={`question-${question.name}`}
-      onAppear={onElementAppear}
-      stagger
-    >
+    <Flipped flipId={`question-${question.name}`} onAppear={onElementAppear} stagger>
       <div>
         <div
           className={`${styles.message} ${
-            (!(question.valid ?? answers[question.name]) ||
-              typeof addError === 'string') &&
-            touched
+            (!(question.valid ?? answers[question.name]) || typeof addError === 'string') && touched
               ? styles.error
               : ''
           }`}
@@ -85,22 +79,15 @@ const QuestinoList: FC<QuestinoListProps> = ({
   addError,
   onChoice
 }) => {
-  const chosen = question.choices.filter(
-    (c) => c.value === answers[question.name]
-  )[0]
+  const chosen = question.choices.find((c) => c.value === answers[question.name])
+
   return (
     <>
-      <Flipped
-        flipId={`question-${question.name}`}
-        onAppear={onElementAppear}
-        stagger
-      >
+      <Flipped flipId={`question-${question.name}`} onAppear={onElementAppear} stagger>
         <div>
           <div
             className={`${styles.message} ${
-              (chosen.disabled || typeof addError === 'string') && touched
-                ? styles.error
-                : ''
+              (chosen?.disabled || typeof addError === 'string') && touched ? styles.error : ''
             }`}
           >
             {question.message}
@@ -118,26 +105,15 @@ const QuestinoList: FC<QuestinoListProps> = ({
               >
                 <div className={styles.radioIcon} />
                 <div>{c.name}</div>
-                {c.disabled && (
-                  <div className={styles.hint}>{show(c.disabled)}</div>
-                )}
+                {c.disabled && <div className={styles.hint}>{show(c.disabled)}</div>}
               </button>
             ))}
           </div>
         </div>
       </Flipped>
       {chosen?.notes?.map((note, i) => (
-        <Flipped
-          key={i}
-          flipId={`note-${hash(note)}`}
-          onAppear={onElementAppear}
-          stagger
-        >
-          <div
-            className={`${styles.note} ${styles[note.severity]}`}
-            key={i}
-            tabIndex={0}
-          >
+        <Flipped key={i} flipId={`note-${hash(note)}`} onAppear={onElementAppear} stagger>
+          <div className={`${styles.note} ${styles[note.severity]}`} key={i} tabIndex={0}>
             {show(note.text)}
           </div>
         </Flipped>
@@ -155,10 +131,12 @@ const Question: FC<QuestionProps> = (props) => {
       ) : (
         <QuestinoList {...props} question={question} />
       )}
-      {([
-        [addInfo, 'info'],
-        [addError, 'error']
-      ] as const).map(
+      {(
+        [
+          [addInfo, 'info'],
+          [addError, 'error']
+        ] as const
+      ).map(
         ([add, severity]) =>
           typeof add === 'string' && (
             <Flipped
@@ -167,10 +145,7 @@ const Question: FC<QuestionProps> = (props) => {
               onAppear={onElementAppear}
               stagger
             >
-              <div
-                className={`${styles.note} ${styles[severity]}`}
-                tabIndex={0}
-              >
+              <div className={`${styles.note} ${styles[severity]}`} tabIndex={0}>
                 {add}
               </div>
             </Flipped>

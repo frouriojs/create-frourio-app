@@ -1,4 +1,4 @@
-import styles from '~/styles/TerminalConsole.module.css'
+import styles from 'styles/TerminalConsole.module.css'
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { default as AnsiUp } from 'ansi_up'
 const ansi_up = new AnsiUp()
@@ -22,8 +22,7 @@ const TerminalConsole: FC<TerminalConsoleProps> = ({ log: log0, rounded }) => {
   if (log !== log0) {
     if (ref.current) {
       setAutoscroll(
-        ref.current.offsetHeight + ref.current.scrollTop >
-          ref.current.scrollHeight - 20
+        ref.current.offsetHeight + ref.current.scrollTop > ref.current.scrollHeight - 20
       )
     }
     setLog(log0 ?? '')

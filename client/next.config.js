@@ -1,3 +1,10 @@
 module.exports = {
-  env: { ENV: process.env.NODE_ENV }
+  output: 'export',
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+  webpack: (config) => {
+    config.resolve.symlinks = false
+
+    return config
+  }
 }

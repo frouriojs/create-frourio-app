@@ -1,6 +1,6 @@
 import useAspidaSWR from '@aspida/swr'
-import Main from '~/components/main'
-import { createApiClient } from '~/utils/apiClient'
+import Main from 'components/main'
+import { createApiClient } from 'utils/apiClient'
 
 const Home = () => {
   const apiClient = createApiClient()

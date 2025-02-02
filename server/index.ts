@@ -9,6 +9,7 @@ import FastifyWebsocket from '@fastify/websocket'
 import FastifyInject from './plugins/fastify-inject'
 import stream from 'stream'
 import { Command } from 'commander'
+import fastifyNext from '@fastify/nextjs'
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const manifest = [require][0]!('../../package.json')
@@ -62,18 +63,27 @@ const basePath = '/api'
   })
 
   const fastify = Fastify()
-  fastify.register(FastifyStatic, { root: path.join(__dirname, '../../out') })
+  const rootDir = path.join(__dirname, '../../client')
+
+  fastify.register(FastifyStatic, { root: path.join(rootDir, 'out') })
+
   await fastify.register(FastifyInject, { dir, logging, ready })
+
   if (process.env.NODE_ENV === 'development') {
     fastify
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      .register(require('@fastify/nextjs'), {
+      .register(fastifyNext, {
         dev: true,
-        conf: { env: { NEXT_PUBLIC_SERVER_PORT: port } }
+        dir: rootDir,
+        conf: {
+          webpack: (config) => {
+            config.resolve.symlinks = false
+
+            return config
+          }
+        }
       })
       .after(() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ;(fastify as any).next('/')
+        fastify.next('/')
       })
   }
 
@@ -105,6 +115,7 @@ const basePath = '/api'
   })
 
   await server(fastify, { basePath }).listen({ port, host })
+
   if (process.env.NODE_ENV !== 'development') {
     if (process.env.NODE_ENV === 'test') return
 
