@@ -3,7 +3,7 @@
     "downlevelIteration": true,
     "esModuleInterop": true,
     "lib": ["dom", "esnext"],
-    "module": "CommonJS",
+    "module": "esnext",
     "moduleResolution": "node",
     "isolatedModules": true,
     "baseUrl": ".",
