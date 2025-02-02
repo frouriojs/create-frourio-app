@@ -14,7 +14,6 @@ import YAML from 'yaml'
 import { execFile, spawn } from 'child_process'
 import { promisify } from 'util'
 import { Answers } from 'common/prompts'
-import realExecutablePath from 'real-executable-path'
 import { npmInstall } from 'service/completed'
 import { test, expect } from 'vitest'
 
@@ -118,31 +117,30 @@ test.each(Array.from({ length: randomNum }))(
           }
         }
 
-        const npmClientPath = await realExecutablePath('npm')
         const serverDir = path.resolve(dir, 'server')
         const nodeModulesDir = path.resolve(dir, 'node_modules')
         const nodeModulesIgnoreDir = path.resolve(dir, 'node_modules_ignore')
 
         // npm install:client
-        await npmInstall(dir, npmClientPath, process.stdout)
+        await npmInstall(dir, process.stdout)
 
         // npm install:server
-        await npmInstall(serverDir, npmClientPath, process.stdout)
+        await npmInstall(serverDir, process.stdout)
 
         // eslint
-        await execFileAsync(npmClientPath, ['run', 'lint:fix'], {
+        await execFileAsync('npm', ['run', 'lint:fix'], {
           cwd: dir,
           shell: process.platform === 'win32'
         })
 
         // typecheck
-        await execFileAsync(npmClientPath, ['run', 'typecheck'], {
+        await execFileAsync('npm', ['run', 'typecheck'], {
           cwd: dir,
           shell: process.platform === 'win32'
         })
 
         // build:client
-        await execFileAsync(npmClientPath, ['run', 'build:client'], {
+        await execFileAsync('npm', ['run', 'build:client'], {
           cwd: dir,
           shell: process.platform === 'win32'
         })
@@ -151,7 +149,7 @@ test.each(Array.from({ length: randomNum }))(
         await fs.promises.rename(nodeModulesDir, nodeModulesIgnoreDir)
 
         // build:server
-        await execFileAsync(npmClientPath, ['run', 'build:server'], {
+        await execFileAsync('npm', ['run', 'build:server'], {
           cwd: dir,
           shell: process.platform === 'win32'
         })
@@ -160,21 +158,20 @@ test.each(Array.from({ length: randomNum }))(
         await fs.promises.rename(nodeModulesIgnoreDir, nodeModulesDir)
 
         // migrations
-        await execFileAsync(npmClientPath, ['run', 'migrate:dev'], {
+        await execFileAsync('npm', ['run', 'migrate:dev'], {
           cwd: serverDir,
           shell: process.platform === 'win32'
         })
 
         // Project scope test
-        await execFileAsync(npmClientPath, ['test'], {
+        await execFileAsync('npm', ['test'], {
           cwd: dir,
           shell: process.platform === 'win32'
         })
 
         // Integration test
         {
-          const nodePath = await realExecutablePath('node')
-          const proc = spawn(nodePath, [path.resolve(dir, 'server/index.js')], {
+          const proc = spawn('node', [path.resolve(dir, 'server/index.js')], {
             stdio: ['ignore', 'inherit', 'inherit'],
             cwd: path.resolve(dir, 'server'),
             shell: process.platform === 'win32'

@@ -67,7 +67,6 @@
     "react-flip-toolkit": "^7.0.13",
     "react-markdown": "^8.0.0",
     "react-query": "^3.34.16",
-    "real-executable-path": "^3.0.0",
     "swr": "^2.2.0"
   },
   "devDependencies": {

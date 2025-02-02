@@ -4,12 +4,10 @@ import { spawn } from 'child_process'
 import chalk from 'chalk'
 import { Answers } from 'common/prompts'
 import stream from 'stream'
-import realExecutablePath from 'real-executable-path'
 
-export const npmInstall = async (cwd: string, npmClient: string, s: stream.Writable) => {
-  const npmClientPath = await realExecutablePath(npmClient)
+export const npmInstall = async (cwd: string, s: stream.Writable) => {
   await new Promise<void>((resolve, reject) => {
-    const proc = spawn(npmClientPath, ['install'], {
+    const proc = spawn('npm', ['install'], {
       stdio: ['inherit', 'pipe', 'pipe'],
       cwd,
       env: {
@@ -32,10 +30,9 @@ export const npmInstall = async (cwd: string, npmClient: string, s: stream.Writa
 
 export const completed = async (answers: Answers, s: stream.Writable) => {
   const outDir = path.resolve(answers.dir ?? './new-frourio-app')
-  const npmClientPath = await realExecutablePath('npm')
 
-  await npmInstall(outDir, npmClientPath, s)
-  await npmInstall(path.resolve(outDir, 'server'), npmClientPath, s)
+  await npmInstall(outDir, s)
+  await npmInstall(path.resolve(outDir, 'server'), s)
 
   const isNewFolder = outDir !== process.cwd()
   const relativeOutFolder = relative(process.cwd(), outDir)

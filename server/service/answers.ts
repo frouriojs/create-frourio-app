@@ -8,7 +8,6 @@ import { setStatus } from './status'
 import { completed } from './completed'
 import { getClientPort, getServerPort } from './getServerPort'
 import stream from 'stream'
-import realExecutablePath from 'real-executable-path'
 import { canContinueOnPath, getPathStatus } from './localPath'
 
 const dirPath = path.join(homedir(), '.frourio')
@@ -182,10 +181,10 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   )
 
   await completed(allAnswers, s)
-  const npmClientPath = await realExecutablePath('npm')
+
   const npmRun = (script: string) =>
     new Promise((resolve, reject) => {
-      const proc = spawn(npmClientPath, ['run', '--color', script], {
+      const proc = spawn('npm', ['run', '--color', script], {
         cwd: path.resolve(dir),
         stdio: ['inherit', 'pipe', 'pipe'],
         env: {
