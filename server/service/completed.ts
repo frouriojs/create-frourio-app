@@ -2,7 +2,7 @@ import path from 'path'
 import { relative } from 'path'
 import { spawn } from 'child_process'
 import chalk from 'chalk'
-import { Answers } from '$/common/prompts'
+import { Answers } from 'common/prompts'
 import stream from 'stream'
 import realExecutablePath from 'real-executable-path'
 

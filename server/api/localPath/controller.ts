@@ -1,5 +1,5 @@
 import { defineController } from './$relay'
-import { getPathStatus, canContinueOnPath } from '$/service/localPath'
+import { getPathStatus, canContinueOnPath } from 'service/localPath'
 import path from 'path'
 
 export default defineController(() => ({

@@ -1,6 +1,4 @@
-import { pathsToModuleNameMapper } from 'ts-jest'
 import type { Config } from '@jest/types'
-import { compilerOptions } from './tsconfig.json'
 
 const config: Config.InitialOptions = {
   detectOpenHandles: true,
@@ -11,9 +9,7 @@ const config: Config.InitialOptions = {
   setupFilesAfterEnv: ['jest-expect-message'],
   testPathIgnorePatterns: ['/templates/'],
   modulePathIgnorePatterns: ['/templates/'],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>/'
-  })
+  moduleDirectories: ['node_modules', '<rootDir>']
 }
 
 export default config

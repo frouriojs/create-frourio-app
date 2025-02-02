@@ -22,7 +22,8 @@ const strUniq = (list: string[]) => {
   list.forEach((el) => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const g = el.match(/^(@?[^@]+)(?:@(.*))?$/)!
-    known[g[1]] = g[2] ? `@${g[2]}` : ''
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    known[g[1]!] = g[2] ? `@${g[2]}` : ''
   })
   return Object.entries(known).map(([key, value]) => `${key}${value}`)
 }
@@ -47,7 +48,8 @@ export const convertListToJson = (
       let depVersion = null
       const g = dep.match(/^(@?[^@]+)@(.*)$/)
       if (g) {
-        depName = g[1]
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        depName = g[1]!
         depVersion = g[2]
       }
       assert(depName in deps, `${depName} is not pre-defined.`)

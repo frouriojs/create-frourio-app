@@ -1,4 +1,4 @@
-import { randSuffix } from '$/utils/random'
+import { randSuffix } from 'utils/random'
 import assert from 'assert'
 import fs from 'fs'
 import path from 'path'

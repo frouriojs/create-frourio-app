@@ -1,9 +1,9 @@
 import { defineController } from './$relay'
-import { getAnswers, updateAnswers } from '$/service/answers'
-import { getStatus } from '$/service/status'
+import { getAnswers, updateAnswers } from 'service/answers'
+import { getStatus } from 'service/status'
 import stream from 'stream'
 import axios from 'axios'
-import { getClientPort, getServerPort } from '$/service/getServerPort'
+import { getClientPort, getServerPort } from 'service/getServerPort'
 import open from 'open'
 
 export default defineController(({ appendLogging, clientReady }) => ({

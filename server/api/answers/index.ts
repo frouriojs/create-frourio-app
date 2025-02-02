@@ -1,4 +1,4 @@
-import { Answers } from '$/common/prompts'
+import { Answers } from 'common/prompts'
 
 export type Methods = {
   get: {

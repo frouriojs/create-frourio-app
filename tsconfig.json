@@ -1,17 +1,13 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "ES2019"],
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./*"],
-      "$/*": ["./server/*"]
-    },
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "CommonJS",
@@ -20,7 +16,5 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true
-  },
-  "exclude": ["node_modules", "server"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  }
 }

@@ -7,9 +7,6 @@
   <a href="https://www.npmjs.com/package/create-frourio-app">
     <img src="https://img.shields.io/npm/dm/create-frourio-app" alt="npm download" />
   </a>
-  <a href="https://github.com/frouriojs/create-frourio-app/actions?query=branch%3Amaster++">
-    <img src="https://github.com/frouriojs/create-frourio-app/workflows/Node.js%20CI/badge.svg?branch=master" alt="Node.js CI" />
-  </a>
   <a href="https://github.com/frouriojs/create-frourio-app/blob/master/LICENSE">
     <img src="https://img.shields.io/npm/l/create-frourio-app" alt="License" />
   </a>
@@ -31,12 +28,6 @@ Make sure you have [npx](https://www.npmjs.com/package/npx) installed (`npx` is 
 
 ```bash
 npx create-frourio-app
-```
-
-Or starting with npm v6.1 you can do:
-
-```bash
-npm init frourio-app
 ```
 
 Open `http://localhost:3000`

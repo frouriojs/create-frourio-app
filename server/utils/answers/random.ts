@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Answers, cfaPrompts, isAnswersValid } from '$/common/prompts'
-import { DbContext } from '$/utils/database/context'
-import { randChoice } from '$/utils/random'
+import { Answers, cfaPrompts, isAnswersValid } from 'common/prompts'
+import { DbContext } from 'utils/database/context'
+import { randChoice } from 'utils/random'
 
 export const createRandomAnswers = async (dbCtx: DbContext, num = 0): Promise<Answers> => {
   if (num === 1000) throw new Error('Infinite loop')

@@ -2,10 +2,10 @@ import fs from 'fs'
 import path from 'path'
 import ejs from 'ejs'
 import isBinaryPath from 'is-binary-path'
-import { addAllUndefined, removeUnnecessary } from '$/common/prompts'
+import { addAllUndefined, removeUnnecessary } from 'common/prompts'
 import assert from 'assert'
 import { convertListToJson, DepKeys, getPackageVersions, isDepKey } from './package-json'
-import type { TemplateContext } from '$/common/template-context'
+import type { TemplateContext } from 'common/template-context'
 
 export const generate = async (answers: TemplateContext, rootDir: string, outDir?: string) => {
   const deps: { [k in DepKeys]: string[] } = {
@@ -35,16 +35,16 @@ export const generate = async (answers: TemplateContext, rootDir: string, outDir
       paths.map(async (p) => {
         const from = path.resolve(now, p)
         if (p.startsWith('@')) return
+
         if ((await fs.promises.stat(from)).isDirectory()) {
           await walk(path.resolve(now, p), path.resolve(nowOut, p))
+        } else if (isBinaryPath(p)) {
+          await fs.promises.copyFile(from, path.resolve(nowOut, p))
         } else {
-          const content = await fs.promises.readFile(from)
-          const noEjs = isBinaryPath(p)
+          const content = await fs.promises.readFile(from, 'utf8')
 
           try {
-            const output = noEjs
-              ? content
-              : ejs.render(content.toString('utf-8').replace(/\r/g, ''), templateContext)
+            const output = ejs.render(content.replace(/\r/g, ''), templateContext)
             await fs.promises.writeFile(path.resolve(nowOut, p), output)
           } catch (e: unknown) {
             console.error(e)
@@ -60,8 +60,8 @@ export const generate = async (answers: TemplateContext, rootDir: string, outDir
         const f = path.resolve(now, p)
         if ((await fs.promises.stat(f)).isDirectory()) {
           const [pname, pvalue] = p.slice(1).split('=')
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          if ((templateContext as any)[pname] !== pvalue) return
+
+          if (templateContext[pname as keyof TemplateContext] !== pvalue) return
           await walk(path.resolve(now, p), nowOut)
         } else {
           if (p.endsWith('dep')) {

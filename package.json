@@ -7,20 +7,16 @@
   "bin": "bin/index.js",
   "scripts": {
     "notios": "notios dev",
-    "dev": "run-p dev:*",
-    "dev:server": "onchange -i -k ./server/build/index.dev.js -- node ./server/build/index.dev.js --host=0.0.0.0",
-    "dev:build-server-dev": "ts-node -T ./scripts/build-file.ts --from=./server/index.ts --to=./server/build/index.dev.js --target=es2019 --server --watch",
-    "dev:aspida": "aspida --watch",
-    "dev:frourio": "cd server && frourio --watch",
-    "build": "npm run build:frourio && run-p build:client build:server build:lib",
+    "dev": "npm run dev --prefix server",
+    "build": "run-p build:client build:lib",
     "build:client": "aspida && next build && next export",
     "build:lib": "webpack --config webpack.config.lib.js",
-    "build:server": "ts-node -T ./scripts/build-file.ts --from=./server/index.ts --to=./server/build/index.js --target=es2019 --server --prod",
-    "build:frourio": "cd server && frourio",
     "lint": "eslint --ext .ts,.js,.tsx . && prettier --check \"./**/*.ts\"",
     "lint:fix": "eslint --ext .ts,.js,.tsx . --fix && prettier --check \"./**/*.ts\" --write",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p server",
-    "test": "jest"
+    "test": "npm run test --prefix server",
+    "typecheck": "run-p typecheck:*",
+    "typecheck:client": "npm run typecheck --prefix client",
+    "typecheck:server": "npm run typecheck --prefix server"
   },
   "homepage": "https://frourio.com",
   "repository": {
@@ -32,8 +28,8 @@
   },
   "files": [
     "bin",
-    "lib",
-    "out",
+    "client/lib",
+    "client/out",
     "server/build/index.js",
     "server/templates"
   ],

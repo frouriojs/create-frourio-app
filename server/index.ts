@@ -4,12 +4,14 @@ import FastifyStatic from '@fastify/static'
 import open from 'open'
 import { getPortPromise } from 'portfinder'
 import server from './$server'
-import { cliMigration, updateAnswers } from '$/service/answers'
+import { cliMigration, updateAnswers } from 'service/answers'
 import FastifyWebsocket from '@fastify/websocket'
 import FastifyInject from './plugins/fastify-inject'
 import stream from 'stream'
 import { Command } from 'commander'
-const manifest = [require][0]('../../package.json')
+
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const manifest = [require][0]!('../../package.json')
 
 const dirDefault = 'my-frourio-app'
 
