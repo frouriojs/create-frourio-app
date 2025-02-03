@@ -48,7 +48,6 @@ https://frourio.com/docs
    - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 1. React Hooks for data fetching:
    - [SWR](https://swr.vercel.app/)
-   - [React Query](https://react-query.tanstack.com/)
    - None
 1. O/R mapping tool:
    - [Prisma (recommended)](https://www.prisma.io/)

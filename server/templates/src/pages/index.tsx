@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import { useCallback, <% if (reactHooks === 'none') { %>useEffect, <% } %>useState } from 'react'<% if (reactHooks === 'swr') { %>
-import useAspidaSWR from '@aspida/swr'<% } else if (reactHooks === 'query') { %>
-import { useQueryClient } from 'react-query'
-import { useAspidaQuery } from '@aspida/react-query'<% } %>
+import useAspidaSWR from '@aspida/swr'<% } %>
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
 import type { Task } from '$/types'
@@ -11,18 +9,12 @@ import Layout from '~/components/Layout'
 import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
-  <% if (reactHooks === 'swr') { %>const { data: tasks, error, mutate } = useAspidaSWR(apiClient.tasks)<% } else if (reactHooks === 'query') { %>const queryClient = useQueryClient()
-  const { data: tasks, error } = useAspidaQuery(apiClient.tasks)<% } else { %>const [tasks, setTasks] = useState<Task[] | undefined>(undefined)<% } %>
+  <% if (reactHooks === 'swr') { %>const { data: tasks, error, mutate } = useAspidaSWR(apiClient.tasks)<% } else { %>const [tasks, setTasks] = useState<Task[] | undefined>(undefined)<% } %>
   const [label, setLabel] = useState('')
   const inputLabel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
     []
-  )<% if (reactHooks === 'query') { %>
-
-  const invalidateTasks = useCallback(
-    () => queryClient.invalidateQueries(apiClient.tasks.$path()),
-    [queryClient]
-  )<% } else if (reactHooks === 'none') { %>
+  )<% if (reactHooks === 'none') { %>
 
   const fetchTasks = useCallback(async () => {
     setTasks(await apiClient.tasks.$get())
@@ -35,19 +27,19 @@ const Home: NextPage = () => {
 
       await apiClient.tasks.post({ body: { label } })
       setLabel('')
-      <% if (reactHooks === 'swr') { %>mutate<% } else if (reactHooks === 'query') { %>invalidateTasks<% } else { %>await fetchTasks<% } %>()
+      <% if (reactHooks === 'swr') { %>mutate<% } else { %>await fetchTasks<% } %>()
     },
     [label]
   )
 
   const toggleDone = useCallback(async (task: Task) => {
     await apiClient.tasks._taskId(task.id).patch({ body: { done: !task.done } })
-    <% if (reactHooks === 'swr') { %>mutate<% } else if (reactHooks === 'query') { %>invalidateTasks<% } else { %>await fetchTasks<% } %>()
+    <% if (reactHooks === 'swr') { %>mutate<% } else { %>await fetchTasks<% } %>()
   }, [])
 
   const deleteTask = useCallback(async (task: Task) => {
     await apiClient.tasks._taskId(task.id).delete()
-    <% if (reactHooks === 'swr') { %>mutate<% } else if (reactHooks === 'query') { %>invalidateTasks<% } else { %>await fetchTasks<% } %>()
+    <% if (reactHooks === 'swr') { %>mutate<% } else { %>await fetchTasks<% } %>()
   }, [])
 
   <% if (reactHooks === 'none') { %>useEffect(() => {

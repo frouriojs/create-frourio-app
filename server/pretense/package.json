@@ -3,13 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "upgrade-frourio": "npx npm-check-updates frourio frourio-express aspida @aspida/axios @aspida/fetch @aspida/node-fetch @aspida/react-query @aspida/swr pathpida -u"
+    "upgrade-frourio": "npx npm-check-updates frourio frourio-express aspida @aspida/axios @aspida/fetch @aspida/node-fetch @aspida/swr pathpida -u"
   },
   "dependencies": {
     "@aspida/axios": "^1.14.0",
     "@aspida/fetch": "^1.14.0",
     "@aspida/node-fetch": "^1.14.0",
-    "@aspida/react-query": "^1.14.0",
     "@aspida/swr": "^1.14.0",
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
@@ -76,7 +75,6 @@
     "prisma": "^4.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-query": "^3.34.14",
     "reflect-metadata": "^0.1.13",
     "stylelint": "^14.3.0",
     "stylelint-config-prettier": "^9.0.3",

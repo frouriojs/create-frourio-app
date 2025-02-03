@@ -41,7 +41,6 @@ export const cfaPrompts: Prompt[] = [
     type: 'list',
     choices: [
       { name: 'SWR', value: 'swr' },
-      { name: 'React Query', value: 'query' },
       { name: 'None', value: 'none' }
     ],
     default: 'swr'

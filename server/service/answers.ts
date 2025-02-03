@@ -130,6 +130,7 @@ const migration = [
         postgresqlDbUser,
         postgresqlDbPass,
         postgresqlDbName,
+        reactHooks,
         serverless,
         staticHosting,
         serverSourcePath,
@@ -138,7 +139,10 @@ const migration = [
         testing,
         ...others
       } /* eslint-enable @typescript-eslint/no-unused-vars */
-    }: Schemas[4]): Schemas[5] => ({ ver: 6, answers: others })
+    }: Schemas[4]): Schemas[5] => ({
+      ver: 6,
+      answers: { ...others, reactHooks: reactHooks === 'query' ? undefined : reactHooks }
+    })
   }
 ]
 
