@@ -33,6 +33,7 @@ type AnswersVer5 = AnswersVer6 & {
   postgresqlDbUser?: string
   postgresqlDbPass?: string
   postgresqlDbName?: string
+  reactHooks?: string
   serverless?: string
   skipDbChecks?: string
   staticHosting?: string
@@ -139,10 +140,7 @@ const migration = [
         testing,
         ...others
       } /* eslint-enable @typescript-eslint/no-unused-vars */
-    }: Schemas[4]): Schemas[5] => ({
-      ver: 6,
-      answers: { ...others, reactHooks: reactHooks === 'query' ? undefined : reactHooks }
-    })
+    }: Schemas[4]): Schemas[5] => ({ ver: 6, answers: others })
   }
 ]
 

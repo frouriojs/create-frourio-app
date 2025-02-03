@@ -46,9 +46,6 @@ https://frourio.com/docs
 1. HTTP client of aspida:
    - [axios](https://github.com/axios/axios)
    - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-1. React Hooks for data fetching:
-   - [SWR](https://swr.vercel.app/)
-   - None
 1. O/R mapping tool:
    - [Prisma (recommended)](https://www.prisma.io/)
 1. Database type of Prisma:

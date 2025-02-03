@@ -1,6 +1,6 @@
 import type { TemplateContext } from './template-context'
 
-type PromptName = 'dir' | 'server' | 'aspida' | 'reactHooks'
+type PromptName = 'dir' | 'server' | 'aspida'
 
 export type Answers = Partial<Record<PromptName, string>>
 
@@ -34,16 +34,6 @@ export const cfaPrompts: Prompt[] = [
     ],
     type: 'list',
     default: 'fetch'
-  },
-  {
-    name: 'reactHooks',
-    message: 'React Hooks for data fetching',
-    type: 'list',
-    choices: [
-      { name: 'SWR', value: 'swr' },
-      { name: 'None', value: 'none' }
-    ],
-    default: 'swr'
   }
 ]
 

@@ -4,7 +4,7 @@ import cors from '@fastify/cors'
 import aspida from '@aspida/<%= aspida === "axios" ? "axios" : "node-fetch" %>'
 import api from '$/api/$api'
 import Home from '~/pages/index'
-import { render, fireEvent, waitFor } from '<%= reactHooks === "none" ? "@testing-library/react" : "../testUtils" %>'
+import { render, fireEvent, waitFor } from '../testUtils'
 
 dotenv.config({ path: 'server/.env' })
 jest.mock('next/router', () => require('next-router-mock'))
