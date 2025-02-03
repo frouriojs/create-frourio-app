@@ -6,8 +6,6 @@ import TerminalConsole from 'components/terminal-console'
 import Question from 'components/question'
 import styles from 'styles/Home.module.css'
 import questionStyles from 'styles/Question.module.css'
-import { Flipped, Flipper } from 'react-flip-toolkit'
-import hash from 'object-hash'
 import { Answers, cfaPrompts, getAllDefaultAnswers, isAnswersValid } from 'common/prompts'
 import { cmdEscapeSingleInput, shellEscapeSingleInput } from 'common/escape'
 import { ServerStatus } from 'api/status'
@@ -25,7 +23,6 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   const [answers, setAnswers] = useState<Answers | undefined>()
   const [created, setCreated] = useState(false)
   const [log, setLog] = useState('')
-  const [closedOverlay, setClosedOverlay] = useState(false)
   const [ready, setReady] = useState(false)
   const [localPathInfo, setLocalPathInfo] = useState<LocalPathInfo | undefined>()
   const [localPathInfoFetching, setlocalPathInfoFetching] = useState(true)
@@ -131,11 +128,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   }, [dir, isClientSide, apiClient])
 
   return (
-    <Flipper
-      flipKey={`${closedOverlay ? 'closed:' : 'open:'}${hash(answers || {})}${hash(
-        localPathInfo || {}
-      )}`}
-    >
+    <>
       <Head>
         <title>create-frourio-app</title>
         <link rel="icon" href="/favicon.png" />
@@ -178,98 +171,72 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
           )}
         </div>
         {(!useServer || process.env.NODE_ENV === 'development') && (
-          <Flipped flipId="manual-install" stagger>
-            <>
-              <div className={questionStyles.card}>
-                <h4 className={questionStyles.message}>Shell</h4>
-                <div className={questionStyles.ctrls}>
-                  <CommandInput
-                    value={
-                      answers &&
-                      `npm init frourio-app --answers ${shellEscapeSingleInput(
-                        JSON.stringify(answers)
-                      )}`
-                    }
-                  />
-                </div>
+          <>
+            <div className={questionStyles.card}>
+              <h4 className={questionStyles.message}>Shell</h4>
+              <div className={questionStyles.ctrls}>
+                <CommandInput
+                  value={
+                    answers &&
+                    `npm init frourio-app --answers ${shellEscapeSingleInput(
+                      JSON.stringify(answers)
+                    )}`
+                  }
+                />
               </div>
-              <div className={questionStyles.card}>
-                <h4 className={questionStyles.message}>Command Prompt</h4>
-                <div className={questionStyles.ctrls}>
-                  <CommandInput
-                    value={
-                      answers &&
-                      `npm init frourio-app --answers ${cmdEscapeSingleInput(
-                        JSON.stringify(answers)
-                      )}`
-                    }
-                  />
-                </div>
-              </div>
-            </>
-          </Flipped>
-        )}
-        {closedOverlay && serverStatus?.status === 'installing' && (
-          <Flipped flipId="flip-console" stagger>
-            <div>
-              <TerminalConsole log={log} rounded />
             </div>
-          </Flipped>
+            <div className={questionStyles.card}>
+              <h4 className={questionStyles.message}>Command Prompt</h4>
+              <div className={questionStyles.ctrls}>
+                <CommandInput
+                  value={
+                    answers &&
+                    `npm init frourio-app --answers ${cmdEscapeSingleInput(
+                      JSON.stringify(answers)
+                    )}`
+                  }
+                />
+              </div>
+            </div>
+          </>
+        )}
+        {serverStatus?.status === 'installing' && (
+          <div>
+            <TerminalConsole log={log} rounded />
+          </div>
         )}
 
         {serverStatus?.status === 'installing' && (
-          <Flipped flipId="open-button" stagger>
-            <div>
-              <div style={{ marginTop: '16px' }}>
-                <PrimaryButton
-                  onClick={() => {
-                    if (devUrl) {
-                      window.open(devUrl, '_blank')
-                    }
-                  }}
-                  disabled={!ready}
-                >
-                  Open {devUrl}
-                </PrimaryButton>
-              </div>
-            </div>
-          </Flipped>
+          <div style={{ marginTop: '16px', paddingBottom: 32 }}>
+            <PrimaryButton
+              onClick={() => {
+                if (devUrl) {
+                  window.open(devUrl, '_blank')
+                }
+              }}
+              disabled={!ready}
+            >
+              Open {devUrl}
+            </PrimaryButton>
+          </div>
         )}
       </main>
 
       {useServer && serverStatus?.status === 'waiting' && (
-        <Flipped flipId="create-button" stagger>
-          <div style={{ marginTop: '16px', paddingBottom: 32 }}>
-            <PrimaryButton
-              onClick={create}
-              disabled={
-                (!canCreate && touched === true) ||
-                localPathInfoFetching ||
-                localPathInfo?.canContinue !== null
-              }
-            >
-              Create
-            </PrimaryButton>
-          </div>
-        </Flipped>
-      )}
-
-      {!closedOverlay && serverStatus?.status === 'installing' && (
-        <div className={styles.installing}>
-          <div>
-            <div className={styles.installingTitle}>
-              Installing and start project on terminal...
-            </div>
-            <Flipped flipId="flip-console">
-              <div>
-                <TerminalConsole log={log} />
-              </div>
-            </Flipped>
-            <PrimaryButton onClick={() => setClosedOverlay(true)}>Close</PrimaryButton>
-          </div>
+        <div style={{ marginTop: '16px', paddingBottom: 32 }}>
+          <PrimaryButton
+            onClick={create}
+            disabled={
+              (!canCreate && touched === true) ||
+              localPathInfoFetching ||
+              localPathInfo?.canContinue !== null
+            }
+          >
+            Create
+          </PrimaryButton>
         </div>
       )}
-    </Flipper>
+    </>
   )
 }
 
