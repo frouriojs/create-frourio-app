@@ -42,7 +42,7 @@ const installApp = async (answers: Answers) => {
 
   await generate(
     { ...allAnswers, clientPort: await getClientPort(), serverPort: await getServerPort() },
-    process.cwd()
+    __dirname
   )
 
   await completed(dir, s)
