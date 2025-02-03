@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { createApiClient } from 'utils/apiClient'
 import { FC, useCallback, useEffect, useMemo, useState } from 'react'
-import GitHubButton from 'components/react-github-btn'
 import PrimaryButton from 'components/primary-button'
 import TerminalConsole from 'components/terminal-console'
 import Question from 'components/question'
@@ -14,30 +13,6 @@ import { cmdEscapeSingleInput, shellEscapeSingleInput } from 'common/escape'
 import { ServerStatus } from 'api/status'
 import { LocalPathInfo } from 'api/localPath'
 import CommandInput from 'components/command-input'
-
-const Credits = () => {
-  return (
-    <div className={styles.star}>
-      <img src="/images/star.svg" alt="star" />
-      <div>
-        <div className={styles.starDesc}>
-          Do you like frourio?
-          <br />
-          I&apos;d love it if you starred!
-        </div>
-        <GitHubButton
-          href="https://github.com/frouriojs/frourio"
-          data-icon="octicon-star"
-          data-size="large"
-          data-show-count={true}
-          aria-label="Star frouriojs/frourio on GitHub"
-        >
-          Star
-        </GitHubButton>
-      </div>
-    </div>
-  )
-}
 
 export interface MainProps {
   serverStatus?: ServerStatus
@@ -260,14 +235,6 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
             </div>
           </Flipped>
         )}
-
-        {closedOverlay && serverStatus?.status === 'installing' && (
-          <Flipped flipId="credits" stagger>
-            <div>
-              <Credits />
-            </div>
-          </Flipped>
-        )}
       </main>
 
       {useServer && serverStatus?.status === 'waiting' && (
@@ -299,11 +266,6 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
               </div>
             </Flipped>
             <PrimaryButton onClick={() => setClosedOverlay(true)}>Close</PrimaryButton>
-            <Flipped flipId="credits">
-              <div>
-                <Credits />
-              </div>
-            </Flipped>
           </div>
         </div>
       )}

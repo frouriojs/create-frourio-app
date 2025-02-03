@@ -56,7 +56,6 @@
     "ejs": "^3.1.7",
     "fastify": "^4.21.0",
     "frourio": "^0.34.1",
-    "github-buttons": "^2.21.1",
     "is-binary-path": "^2.1.0",
     "next": "^13.0.4",
     "object-hash": "^3.0.0",
