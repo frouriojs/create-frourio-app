@@ -4,7 +4,7 @@ import FastifyStatic from '@fastify/static'
 import open from 'open'
 import { getPortPromise } from 'portfinder'
 import server from './$server'
-import { cliMigration, updateAnswers } from 'service/answers'
+import { updateAnswers } from 'service/answers'
 import FastifyWebsocket from '@fastify/websocket'
 import FastifyInject from './plugins/fastify-inject'
 import stream from 'stream'
@@ -41,14 +41,7 @@ const basePath = '/api'
   port = await getPortPromise({ port: port })
 
   if (options.answers !== undefined) {
-    await updateAnswers(
-      cliMigration.reduce((prev, current) => {
-        if (!current.when(prev)) return prev
-        console.warn(current.warn(prev))
-        return current.handler(prev)
-      }, JSON.parse(options.answers)),
-      process.stdout
-    )
+    await updateAnswers(JSON.parse(options.answers), process.stdout)
     return
   }
   const logging = new stream.Readable({

@@ -37,22 +37,11 @@ export const cfaPrompts: Prompt[] = [
   }
 ]
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export const getAllDefaultAnswers = (): Answers => {
-  const def: any = {}
+  const def: Answers = {}
   cfaPrompts.forEach((prompt) => (def[prompt.name] = prompt.default))
   return def
 }
-
-export const omitDefaults = (answers: Answers): Answers => {
-  const res: any = { ...answers }
-  const defs: any = getAllDefaultAnswers()
-  for (const key in defs) {
-    if (res[key] === defs[key]) delete res[key]
-  }
-  return res
-}
-/* eslint-enable @typescript-eslint/no-explicit-any */
 
 export const addAllUndefined = (answers: TemplateContext): TemplateContext => {
   const res = { ...answers }

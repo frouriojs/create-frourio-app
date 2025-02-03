@@ -20,7 +20,7 @@ export interface MainProps {
 
 const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   const [touched, setTouched] = useState<true | { [key: string]: true }>({})
-  const [answers, setAnswers] = useState<Answers | undefined>()
+  const [answers, setAnswers] = useState(getAllDefaultAnswers())
   const [created, setCreated] = useState(false)
   const [log, setLog] = useState('')
   const [ready, setReady] = useState(false)
@@ -28,7 +28,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   const [localPathInfoFetching, setlocalPathInfoFetching] = useState(true)
 
   const { clientPort } = serverStatus ?? {}
-  const { dir } = answers ?? {}
+  const { dir } = answers
   const devUrl = clientPort && `http://localhost:${clientPort}`
 
   // NOTE: WebSocket effects depend nothing to prevent losting notification while re-creating.
@@ -61,7 +61,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
     }
   }, [])
 
-  const canCreate = useMemo(() => answers && isAnswersValid(answers), [answers])
+  const canCreate = isAnswersValid(answers)
   const choice = useCallback(
     (name: keyof Answers, val: string) =>
       setAnswers({ ...getAllDefaultAnswers(), ...answers, [name]: val }),
@@ -74,17 +74,9 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
     [isClientSide, useServer]
   )
 
-  if (useServer && apiClient) {
-    apiClient.answers.get().then((prevAnswers) => {
-      if (!answers) {
-        setAnswers({ ...getAllDefaultAnswers(), ...prevAnswers.body })
-      }
-    })
-  }
-
   const create = useCallback(async () => {
     setTouched(true)
-    if (!apiClient || !canCreate || !answers) {
+    if (!apiClient || !canCreate) {
       alert('Cannot proceed because conditions are not met. Please review your configurations.')
       return
     }
@@ -104,7 +96,6 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
     setCreated(true)
   }, [apiClient, answers, canCreate])
 
-  if (!answers) setAnswers({ ...getAllDefaultAnswers() })
   if (serverStatus?.status === 'installing' && !created) {
     setCreated(true)
   }
@@ -147,28 +138,25 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
         <p className={styles.description}>create-frourio-app</p>
 
         <div>
-          {cfaPrompts.map(
-            (question) =>
-              answers && (
-                <Question
-                  key={question.name}
-                  answers={answers}
-                  question={question}
-                  onChoice={choice}
-                  touched={touched === true || (touched[question.name] ?? false)}
-                  addError={question.name === 'dir' && localPathInfo?.canContinue}
-                  addInfo={question.name === 'dir' && localPathInfo?.absPath}
-                  onTouch={() => {
-                    if (touched !== true) {
-                      setTouched({
-                        ...touched,
-                        [question.name]: true
-                      })
-                    }
-                  }}
-                />
-              )
-          )}
+          {cfaPrompts.map((question) => (
+            <Question
+              key={question.name}
+              answers={answers}
+              question={question}
+              onChoice={choice}
+              touched={touched === true || (touched[question.name] ?? false)}
+              addError={question.name === 'dir' && localPathInfo?.canContinue}
+              addInfo={question.name === 'dir' && localPathInfo?.absPath}
+              onTouch={() => {
+                if (touched !== true) {
+                  setTouched({
+                    ...touched,
+                    [question.name]: true
+                  })
+                }
+              }}
+            />
+          ))}
         </div>
         {(!useServer || process.env.NODE_ENV === 'development') && (
           <>
@@ -176,12 +164,9 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
               <h4 className={questionStyles.message}>Shell</h4>
               <div className={questionStyles.ctrls}>
                 <CommandInput
-                  value={
-                    answers &&
-                    `npm init frourio-app --answers ${shellEscapeSingleInput(
-                      JSON.stringify(answers)
-                    )}`
-                  }
+                  value={`npm init frourio-app --answers ${shellEscapeSingleInput(
+                    JSON.stringify(answers)
+                  )}`}
                 />
               </div>
             </div>
@@ -189,12 +174,9 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
               <h4 className={questionStyles.message}>Command Prompt</h4>
               <div className={questionStyles.ctrls}>
                 <CommandInput
-                  value={
-                    answers &&
-                    `npm init frourio-app --answers ${cmdEscapeSingleInput(
-                      JSON.stringify(answers)
-                    )}`
-                  }
+                  value={`npm init frourio-app --answers ${cmdEscapeSingleInput(
+                    JSON.stringify(answers)
+                  )}`}
                 />
               </div>
             </div>

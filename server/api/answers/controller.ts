@@ -1,5 +1,5 @@
 import { defineController } from './$relay'
-import { getAnswers, updateAnswers } from 'service/answers'
+import { updateAnswers } from 'service/answers'
 import { getStatus } from 'service/status'
 import stream from 'stream'
 import axios from 'axios'
@@ -7,7 +7,6 @@ import { getClientPort, getServerPort } from 'service/getServerPort'
 import open from 'open'
 
 export default defineController(({ appendLogging, clientReady }) => ({
-  get: ({ dir }) => ({ status: 200, body: getAnswers(dir) }),
   patch: ({ body }) => {
     if (getStatus() !== 'waiting') return { status: 204 }
     const s = new stream.Writable({
