@@ -82,17 +82,6 @@ const basePath = '/api'
 
   fastify.register(FastifyWebsocket)
   fastify.register(async (fastify) => {
-    fastify.get('/ws/', { websocket: true }, (connection) => {
-      const handler = (chunk: Buffer) => {
-        connection.socket.send(chunk)
-      }
-      logging.on('data', handler)
-
-      connection.socket.on('close', () => {
-        logging.off('data', handler)
-      })
-    })
-
     fastify.get('/ws/ready/', { websocket: true }, (connection) => {
       const handler = (chunk: unknown) => {
         if (String(chunk) === 'ready') {

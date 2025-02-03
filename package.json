@@ -49,7 +49,6 @@
     "@fastify/cors": "^8.2.0",
     "@fastify/static": "^6.5.1",
     "@fastify/websocket": "^7.1.1",
-    "ansi_up": "^5.1.0",
     "aspida": "^1.13.3",
     "axios": "^0.27.2",
     "commander": "^9.0.0",

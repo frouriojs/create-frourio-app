@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { createApiClient } from 'utils/apiClient'
 import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import PrimaryButton from 'components/primary-button'
-import TerminalConsole from 'components/terminal-console'
 import Question from 'components/question'
 import styles from 'styles/Home.module.css'
 import questionStyles from 'styles/Question.module.css'
@@ -22,7 +21,6 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   const [touched, setTouched] = useState<true | { [key: string]: true }>({})
   const [answers, setAnswers] = useState(getAllDefaultAnswers())
   const [created, setCreated] = useState(false)
-  const [log, setLog] = useState('')
   const [ready, setReady] = useState(false)
   const [localPathInfo, setLocalPathInfo] = useState<LocalPathInfo | undefined>()
   const [localPathInfoFetching, setlocalPathInfoFetching] = useState(true)
@@ -32,19 +30,6 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   const devUrl = clientPort && `http://localhost:${clientPort}`
 
   // NOTE: WebSocket effects depend nothing to prevent losting notification while re-creating.
-
-  useEffect(() => {
-    if (useServer) {
-      let log1 = ''
-      const ws = new WebSocket(`ws://${location.host}/ws/`)
-      ws.onmessage = async (ev) => {
-        const dat = ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
-        log1 += dat
-        setLog(log1)
-      }
-      return () => ws.close()
-    }
-  }, [])
 
   useEffect(() => {
     if (useServer) {
@@ -182,25 +167,23 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
             </div>
           </>
         )}
-        {serverStatus?.status === 'installing' && (
-          <div>
-            <TerminalConsole log={log} rounded />
-          </div>
-        )}
 
         {serverStatus?.status === 'installing' && (
-          <div style={{ marginTop: '16px', paddingBottom: 32 }}>
-            <PrimaryButton
-              onClick={() => {
-                if (devUrl) {
-                  window.open(devUrl, '_blank')
-                }
-              }}
-              disabled={!ready}
-            >
-              Open {devUrl}
-            </PrimaryButton>
-          </div>
+          <>
+            <div>Installing on tarminal...</div>
+            <div style={{ marginTop: '16px', paddingBottom: 32 }}>
+              <PrimaryButton
+                onClick={() => {
+                  if (devUrl) {
+                    window.open(devUrl, '_blank')
+                  }
+                }}
+                disabled={!ready}
+              >
+                Open {devUrl}
+              </PrimaryButton>
+            </div>
+          </>
         )}
       </main>
 
