@@ -1,7 +1,9 @@
+@aspida/swr
 @prisma/client
 aspida
 next
 pathpida
 prisma
+swr
 react
 react-dom

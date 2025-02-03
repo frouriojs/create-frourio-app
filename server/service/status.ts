@@ -1,4 +1,4 @@
-import { STATUS } from '$/common/types'
+import { STATUS } from 'common/types'
 
 let status: STATUS = 'waiting'
 

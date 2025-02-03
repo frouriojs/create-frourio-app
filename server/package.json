@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "frourio && run-p dev:*",
+    "dev:server": "onchange -i -k ./index.js -- node ./index.js --host=0.0.0.0",
+    "dev:build-server-dev": "node ./scripts/build.dev.js",
+    "dev:aspida": "aspida --watch",
+    "dev:frourio": "frourio --watch",
+    "build": "frourio && node ./scripts/build.prod.js",
+    "test": "vitest run",
+    "typecheck": "tsc --pretty --noEmit"
+  }
+}

@@ -1,21 +1,18 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-node_modules
-/.pnp
-.pnp.js
+node_modules/
 
 # testing
 /coverage
 
 # next.js
-/.next/
-/out/
+client/.next/
+client/out/
 
 # production
-/build
-/lib
-/server/build
+client/lib
+server/build
 
 # misc
 .DS_Store
@@ -33,4 +30,4 @@ npm-debug.log*
 
 # server
 server/**/$*.ts
-!server/templates/**/node_modules
+server/index.js

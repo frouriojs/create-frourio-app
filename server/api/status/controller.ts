@@ -1,6 +1,6 @@
 import { defineController } from './$relay'
-import { getStatus } from '$/service/status'
-import { getClientPort, getServerPort } from '$/service/getServerPort'
+import { getStatus } from 'service/status'
+import { getClientPort, getServerPort } from 'service/getServerPort'
 
 export default defineController(() => ({
   get: async () => ({

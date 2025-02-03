@@ -1,7 +1,4 @@
-<% if (reactHooks !== 'query') { %>import { useCallback, <% if (reactHooks === 'none') { %>useEffect, <% } %>useState } from 'react'<% } %><% if (reactHooks === 'swr') { %>
-import useAspidaSWR from '@aspida/swr'<% } else if (reactHooks === 'query') { %>
-import { useAspidaQuery } from '@aspida/react-query'<% } else if (reactHooks === 'none') { %>
-import type { ArticleInfo } from '$/service/article'<% } %>
+import useAspidaSWR from '@aspida/swr'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -18,23 +15,10 @@ const ArticleList: NextPage = () => {
   const router = useRouter()
   const query = router.query as Partial<OptionalQuery>
   const search = query.search ? query.search.trim() : ''
-  <% if (reactHooks === 'swr') { %>const { data: articleList } = useAspidaSWR(apiClient.article, {
+  const { data: articleList } = useAspidaSWR(apiClient.article, {
     query: { search }
-  })<% } else if (reactHooks === 'query') { %>
-  const { data: articleList } = useAspidaQuery(apiClient.article, {
-    query: { search }
-  })<% } if (reactHooks === 'none') { %>const [articleList, setArticleList] = useState<ArticleInfo[] | undefined>(undefined)
+  })
 
-  useEffect(() => {
-    let canceled = false
-    apiClient.article.$get({ query: { search } }).then((articleList) => {
-      if (!canceled) setArticleList(articleList)
-    })
-    return () => {
-      canceled = true
-    }
-  }, [search])
-<% } %>
   return (
     <Layout>
       <Head>
