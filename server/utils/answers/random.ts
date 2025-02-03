@@ -20,6 +20,8 @@ export const createRandomAnswers = async (dbCtx: DbContext, num = 0): Promise<An
 
   if (process.env.TEST_CFA_FIX_SERVER) ans.server = process.env.TEST_CFA_FIX_SERVER
 
+  if (process.env.TEST_CFA_FIX_ASPIDA) ans.aspida = process.env.TEST_CFA_FIX_ASPIDA
+
   if (!isAnswersValid(ans)) return await createRandomAnswers(dbCtx, num + 1)
 
   await dbCtx.up()
