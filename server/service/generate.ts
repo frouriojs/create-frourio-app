@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import ejs from 'ejs'
 import isBinaryPath from 'is-binary-path'
-import { addAllUndefined, removeUnnecessary } from 'common/prompts'
+import { addAllUndefined } from 'common/prompts'
 import assert from 'assert'
 import { convertListToJson, DepKeys, getPackageVersions, isDepKey } from './package-json'
 import type { TemplateContext } from 'common/template-context'
@@ -16,7 +16,7 @@ export const generate = async (answers: TemplateContext, rootDir: string, outDir
   }
   const dir = outDir ?? answers.dir ?? ''
 
-  const templateContext: TemplateContext = addAllUndefined(removeUnnecessary(answers))
+  const templateContext: TemplateContext = addAllUndefined(answers)
 
   const rename = async (pattern: string, renameTo: string) => {
     const from = path.join(dir, pattern)

@@ -1,14 +1,7 @@
 import React, { FC } from 'react'
-import { Answers, DeterminedPrompt, Text } from 'common/prompts'
+import { Answers, Prompt } from 'common/prompts'
 import { Flipped, spring } from 'react-flip-toolkit'
 import styles from 'styles/Question.module.css'
-import ReactMarkdown from 'react-markdown'
-import hash from 'object-hash'
-
-const show = (text: Text) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return <ReactMarkdown linkTarget="_brank">{text.en}</ReactMarkdown>
-}
 
 const onElementAppear = (el: HTMLElement, index: number) =>
   spring({
@@ -22,7 +15,7 @@ const onElementAppear = (el: HTMLElement, index: number) =>
 
 export interface QuestionProps {
   answers: Answers
-  question: DeterminedPrompt
+  question: Prompt
   onChoice?: (name: keyof Answers, value: string) => void
   onTouch?: () => void
   touched: boolean
@@ -30,11 +23,11 @@ export interface QuestionProps {
   addError?: unknown
 }
 
-export interface QuestinoInputProps extends QuestionProps {
-  question: DeterminedPrompt & { type: 'input' }
+export interface QuestionInputProps extends QuestionProps {
+  question: Prompt & { type: 'input' }
 }
 
-const QuestinoInput: FC<QuestinoInputProps> = ({
+const QuestionInput: FC<QuestionInputProps> = ({
   answers,
   question,
   touched,
@@ -47,9 +40,7 @@ const QuestinoInput: FC<QuestinoInputProps> = ({
       <div>
         <div
           className={`${styles.message} ${
-            (!(question.valid ?? answers[question.name]) || typeof addError === 'string') && touched
-              ? styles.error
-              : ''
+            (!answers[question.name] || typeof addError === 'string') && touched ? styles.error : ''
           }`}
         >
           {question.message}
@@ -68,57 +59,43 @@ const QuestinoInput: FC<QuestinoInputProps> = ({
   )
 }
 
-export interface QuestinoListProps extends QuestionProps {
-  question: DeterminedPrompt & { type: 'list' }
+export interface QuestionListProps extends QuestionProps {
+  question: Prompt & { type: 'list' }
 }
 
-const QuestinoList: FC<QuestinoListProps> = ({
+const QuestionList: FC<QuestionListProps> = ({
   answers,
   question,
   touched,
   addError,
   onChoice
 }) => {
-  const chosen = question.choices.find((c) => c.value === answers[question.name])
-
   return (
-    <>
-      <Flipped flipId={`question-${question.name}`} onAppear={onElementAppear} stagger>
-        <div>
-          <div
-            className={`${styles.message} ${
-              (chosen?.disabled || typeof addError === 'string') && touched ? styles.error : ''
-            }`}
-          >
-            {question.message}
-          </div>
-          <div className={styles.ctrls}>
-            {question.choices.map((c, i) => (
-              <button
-                key={i}
-                className={`${styles.btn}${
-                  (answers[question.name] ?? question.default) === c.value
-                    ? ` ${styles.active}`
-                    : ''
-                }${c.disabled ? ` ${styles.disabled}` : ''}`}
-                onClick={() => c.disabled || onChoice?.(question.name, c.value)}
-              >
-                <div className={styles.radioIcon} />
-                <div>{c.name}</div>
-                {c.disabled && <div className={styles.hint}>{show(c.disabled)}</div>}
-              </button>
-            ))}
-          </div>
+    <Flipped flipId={`question-${question.name}`} onAppear={onElementAppear} stagger>
+      <div>
+        <div
+          className={`${styles.message} ${
+            typeof addError === 'string' && touched ? styles.error : ''
+          }`}
+        >
+          {question.message}
         </div>
-      </Flipped>
-      {chosen?.notes?.map((note, i) => (
-        <Flipped key={i} flipId={`note-${hash(note)}`} onAppear={onElementAppear} stagger>
-          <div className={`${styles.note} ${styles[note.severity]}`} key={i} tabIndex={0}>
-            {show(note.text)}
-          </div>
-        </Flipped>
-      ))}
-    </>
+        <div className={styles.ctrls}>
+          {question.choices.map((c, i) => (
+            <button
+              key={i}
+              className={`${styles.btn}${
+                (answers[question.name] ?? question.default) === c.value ? ` ${styles.active}` : ''
+              }`}
+              onClick={() => onChoice?.(question.name, c.value)}
+            >
+              <div className={styles.radioIcon} />
+              <div>{c.name}</div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </Flipped>
   )
 }
 
@@ -127,9 +104,9 @@ const Question: FC<QuestionProps> = (props) => {
   return (
     <div className={styles.card}>
       {question.type === 'input' ? (
-        <QuestinoInput {...props} question={question} />
+        <QuestionInput {...props} question={question} />
       ) : (
-        <QuestinoList {...props} question={question} />
+        <QuestionList {...props} question={question} />
       )}
       {(
         [

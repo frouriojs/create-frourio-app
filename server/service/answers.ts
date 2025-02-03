@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { homedir } from 'os'
 import { spawn } from 'child_process'
-import { Answers, initPrompts, omitDefaults } from 'common/prompts'
+import { Answers, cfaPrompts, omitDefaults } from 'common/prompts'
 import { generate } from './generate'
 import { setStatus } from './status'
 import { completed } from './completed'
@@ -162,7 +162,7 @@ try {
 }
 
 export const genAllAnswers = (answers: Answers) =>
-  initPrompts(answers).reduce(
+  cfaPrompts.reduce(
     (prev, current) => ({
       ...prev,
       [current.name]: answers[current.name] ?? current.default

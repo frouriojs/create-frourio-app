@@ -9,7 +9,7 @@ import styles from 'styles/Home.module.css'
 import questionStyles from 'styles/Question.module.css'
 import { Flipped, Flipper } from 'react-flip-toolkit'
 import hash from 'object-hash'
-import { Answers, getAllDefaultAnswers, initPrompts, isAnswersValid } from 'common/prompts'
+import { Answers, cfaPrompts, getAllDefaultAnswers, isAnswersValid } from 'common/prompts'
 import { cmdEscapeSingleInput, shellEscapeSingleInput } from 'common/escape'
 import { ServerStatus } from 'api/status'
 import { LocalPathInfo } from 'api/localPath'
@@ -89,7 +89,6 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
     }
   }, [])
 
-  const questions = useMemo(() => answers && initPrompts(answers), [answers])
   const canCreate = useMemo(() => answers && isAnswersValid(answers), [answers])
   const choice = useCallback(
     (name: keyof Answers, val: string) =>
@@ -180,7 +179,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
         <p className={styles.description}>create-frourio-app</p>
 
         <div>
-          {questions?.map(
+          {cfaPrompts.map(
             (question) =>
               answers && (
                 <Question
@@ -273,7 +272,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
 
       {useServer && serverStatus?.status === 'waiting' && (
         <Flipped flipId="create-button" stagger>
-          <div style={{ marginTop: '16px' }}>
+          <div style={{ marginTop: '16px', paddingBottom: 32 }}>
             <PrimaryButton
               onClick={create}
               disabled={
@@ -286,25 +285,6 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
             </PrimaryButton>
           </div>
         </Flipped>
-      )}
-
-      {useServer && (
-        <div className={styles.contribution}>
-          <img src="/images/contribution.svg" alt="contribution" />
-          <div>
-            Can you align the center line shift?
-            <br />
-            Contribute to{' '}
-            <a
-              href="https://github.com/frouriojs/create-frourio-app"
-              target="_brank"
-              title="frouriojs/create-frourio-app"
-            >
-              GitHub
-            </a>{' '}
-            in React.js
-          </div>
-        </div>
       )}
 
       {!closedOverlay && serverStatus?.status === 'installing' && (
