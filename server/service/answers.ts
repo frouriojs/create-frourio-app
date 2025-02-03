@@ -30,17 +30,22 @@ const genAllAnswers = (answers: Answers) =>
     {} as Answers
   )
 
-const installApp = async (answers: Answers, s: stream.Writable) => {
+const installApp = async (answers: Answers) => {
   setStatus('installing')
   const allAnswers = genAllAnswers(answers)
   const dir = allAnswers.dir ?? ''
+  const s = new stream.Writable({
+    write(chunk, _enc, cb) {
+      process.stdout.write(chunk, (err) => cb(err))
+    }
+  })
 
   await generate(
     { ...allAnswers, clientPort: await getClientPort(), serverPort: await getServerPort() },
     process.cwd()
   )
 
-  await completed(allAnswers, s)
+  await completed(dir, s)
 
   const npmRun = (script: string) =>
     new Promise((resolve, reject) => {
@@ -70,12 +75,12 @@ const installApp = async (answers: Answers, s: stream.Writable) => {
   npmRun('dev')
 }
 
-export const updateAnswers = async (answers: Answers, s: stream.Writable) => {
+export const updateAnswers = async (answers: Answers) => {
   const canContinue = await getPathStatus(path.resolve(process.cwd(), answers.dir || '')).then(
     canContinueOnPath
   )
 
   if (canContinue !== null) throw new Error(canContinue)
 
-  return await installApp(answers, s)
+  return await installApp(answers)
 }

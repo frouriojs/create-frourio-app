@@ -2,7 +2,6 @@ import path from 'path'
 import { relative } from 'path'
 import { spawn } from 'child_process'
 import chalk from 'chalk'
-import { Answers } from 'common/prompts'
 import stream from 'stream'
 
 export const npmInstall = async (cwd: string, s: stream.Writable) => {
@@ -28,8 +27,8 @@ export const npmInstall = async (cwd: string, s: stream.Writable) => {
   })
 }
 
-export const completed = async (answers: Answers, s: stream.Writable) => {
-  const outDir = path.resolve(answers.dir ?? './new-frourio-app')
+export const completed = async (dir: string, s: stream.Writable) => {
+  const outDir = path.resolve(dir)
 
   await npmInstall(outDir, s)
   await npmInstall(path.resolve(outDir, 'server'), s)

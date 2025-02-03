@@ -5,9 +5,7 @@ import open from 'open'
 import { getPortPromise } from 'portfinder'
 import server from './$server'
 import { updateAnswers } from 'service/answers'
-import FastifyWebsocket from '@fastify/websocket'
 import FastifyInject from './plugins/fastify-inject'
-import stream from 'stream'
 import { Command } from 'commander'
 import fastifyNext from '@fastify/nextjs'
 
@@ -41,26 +39,16 @@ const basePath = '/api'
   port = await getPortPromise({ port: port })
 
   if (options.answers !== undefined) {
-    await updateAnswers(JSON.parse(options.answers), process.stdout)
+    await updateAnswers(JSON.parse(options.answers))
     return
   }
-  const logging = new stream.Readable({
-    read() {
-      // nothing
-    }
-  })
-  const ready = new stream.Readable({
-    read() {
-      // nothing
-    }
-  })
 
   const fastify = Fastify()
   const rootDir = path.join(__dirname, '../client')
 
   fastify.register(FastifyStatic, { root: path.join(rootDir, 'out') })
 
-  await fastify.register(FastifyInject, { dir, logging, ready })
+  await fastify.register(FastifyInject, { dir })
 
   if (process.env.NODE_ENV === 'development') {
     fastify
@@ -79,22 +67,6 @@ const basePath = '/api'
         fastify.next('/')
       })
   }
-
-  fastify.register(FastifyWebsocket)
-  fastify.register(async (fastify) => {
-    fastify.get('/ws/ready/', { websocket: true }, (connection) => {
-      const handler = (chunk: unknown) => {
-        if (String(chunk) === 'ready') {
-          connection.socket.send('ready')
-        }
-      }
-      ready.on('data', handler)
-
-      connection.socket.on('close', () => {
-        ready.off('data', handler)
-      })
-    })
-  })
 
   await server(fastify, { basePath }).listen({ port, host })
 

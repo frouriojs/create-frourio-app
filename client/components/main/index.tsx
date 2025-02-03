@@ -21,31 +21,9 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   const [touched, setTouched] = useState<true | { [key: string]: true }>({})
   const [answers, setAnswers] = useState(getAllDefaultAnswers())
   const [created, setCreated] = useState(false)
-  const [ready, setReady] = useState(false)
   const [localPathInfo, setLocalPathInfo] = useState<LocalPathInfo | undefined>()
   const [localPathInfoFetching, setlocalPathInfoFetching] = useState(true)
-
-  const { clientPort } = serverStatus ?? {}
   const { dir } = answers
-  const devUrl = clientPort && `http://localhost:${clientPort}`
-
-  // NOTE: WebSocket effects depend nothing to prevent losting notification while re-creating.
-
-  useEffect(() => {
-    if (useServer) {
-      const ws = new WebSocket(`ws://${location.host}/ws/ready/`)
-      let text = ''
-      ws.onmessage = async (ev) => {
-        const dat = ev.data instanceof Blob ? await ev.data.text() : String(ev.data)
-        text += dat
-        if (dat && text.startsWith('ready')) {
-          setReady(true)
-        }
-      }
-      return () => ws.close()
-    }
-  }, [])
-
   const canCreate = isAnswersValid(answers)
   const choice = useCallback(
     (name: keyof Answers, val: string) =>
@@ -169,21 +147,9 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
         )}
 
         {serverStatus?.status === 'installing' && (
-          <>
-            <div>Installing on tarminal...</div>
-            <div style={{ marginTop: '16px', paddingBottom: 32 }}>
-              <PrimaryButton
-                onClick={() => {
-                  if (devUrl) {
-                    window.open(devUrl, '_blank')
-                  }
-                }}
-                disabled={!ready}
-              >
-                Open {devUrl}
-              </PrimaryButton>
-            </div>
-          </>
+          <div style={{ marginTop: '16px', paddingBottom: 32, fontSize: 20 }}>
+            Installing on terminal...
+          </div>
         )}
       </main>
 
