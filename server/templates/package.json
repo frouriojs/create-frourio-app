@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "notios": "notios dev",
     "dev": "npm run migrate:dev && run-p dev:*",
     "dev:client": "next dev -p <%= clientPort %>",
     "dev:server": "npm run dev --prefix server",
