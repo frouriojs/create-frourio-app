@@ -16,7 +16,6 @@
     "migrate:dev:createonly": "prisma migrate dev --create-only",
     "migrate:reset": "prisma migrate reset",
     "seed": "prisma db seed --preview-feature",
-    "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"",
     "start": "cross-env NODE_ENV=production node index.js"
   }
 }

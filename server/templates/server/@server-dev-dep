@@ -1,7 +1,5 @@
 cross-env
 npm-run-all
-ts-loader
-ts-node
 typescript
 @types/jest
 prisma

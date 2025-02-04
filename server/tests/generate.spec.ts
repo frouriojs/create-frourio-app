@@ -134,6 +134,10 @@ test.each(Array.from({ length: randomNum }))(
         })
 
         // typecheck
+        await execFileAsync('npm', ['run', 'generate'], {
+          cwd: dir,
+          shell: process.platform === 'win32'
+        })
         await execFileAsync('npm', ['run', 'typecheck'], {
           cwd: dir,
           shell: process.platform === 'win32'
@@ -204,7 +208,7 @@ test.each(Array.from({ length: randomNum }))(
             // Cannot login with illegal token
             await expect(
               client.get(`/api/user${slash}`, { headers: { authorization: 'token' } })
-            ).rejects.toHaveProperty('response.status', answers.server === 'fastify' ? 400 : 401)
+            ).rejects.toHaveProperty('response.status', 401)
 
             // Cannot login with invalid password
             await expect(

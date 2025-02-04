@@ -8,10 +8,8 @@ dotenv
 eslint
 eslint-config-prettier
 eslint-plugin-react
-npm-run-all
 pathpida
 prettier
-ts-loader
 typescript
 @types/jest
 babel-jest
