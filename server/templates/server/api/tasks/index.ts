@@ -1,6 +1,7 @@
 import type { Task } from '$/types'
+import { DefineMethods } from 'aspida'
 
-export type Methods = {
+export type Methods = DefineMethods<{
   get: {
     query?: {
       limit?: number
@@ -13,4 +14,4 @@ export type Methods = {
     reqBody: Pick<Task, 'label'>
     resBody: Task
   }
-}
+}>

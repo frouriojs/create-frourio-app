@@ -1,7 +1,8 @@
 import type { AuthHeader, UserInfo } from '$/types'
+import { DefineMethods } from 'aspida'
 import type { ReadStream } from 'fs'
 
-export type Methods = {
+export type Methods = DefineMethods<{
   get: {
     reqHeaders: AuthHeader
     resBody: UserInfo
@@ -13,4 +14,4 @@ export type Methods = {
     reqBody: { icon: File | ReadStream }
     resBody: UserInfo
   }
-}
+}>
