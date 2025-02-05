@@ -2,11 +2,13 @@ import dotenv from 'dotenv'
 import Fastify, { FastifyInstance } from 'fastify'
 import cors from '@fastify/cors'
 import aspida from '@aspida/<%= aspida === "axios" ? "axios" : "node-fetch" %>'
-import api from '$/api/$api'
-import Home from '~/pages/index'
+import api from 'api/$api'
+import Home from 'pages/index'
 import { render, fireEvent, waitFor } from '../testUtils'
+import { expect, beforeAll, afterAll, describe, it, jest } from '@jest/globals'
+import { z } from 'zod'
 
-dotenv.config({ path: 'server/.env' })
+dotenv.config({ path: '../server/.env' })
 jest.mock('next/router', () => require('next-router-mock'))
 
 const apiClient = api(aspida(undefined, { baseURL: process.env.API_BASE_PATH }))
@@ -18,7 +20,7 @@ const res = function <T extends () => unknown>(
 
 let fastify: FastifyInstance
 
-beforeAll(() => {
+beforeAll(async () => {
   fastify = Fastify({ forceCloseConnections: true })
   fastify.register(cors)
   fastify.get(apiClient.tasks.$path(), (_, reply) => {
@@ -30,7 +32,7 @@ beforeAll(() => {
     )
   })
 
-  return fastify.listen({ port: +(process.env.API_SERVER_PORT ?? '8080') })
+  await fastify.listen({ port: +z.string().parse(process.env.API_SERVER_PORT) })
 })
 
 afterAll(() => fastify.close())
@@ -39,32 +41,25 @@ describe('Home page', () => {
   it('shows tasks', async () => {
     const { findByText } = render(<Home />)
 
-    await waitFor(
-      async () => {
-        await findByText('foo task')
-      },
-      { timeout: 5000 }
-    )
-    await expect(findByText('foo task')).resolves.toBeTruthy()
-    await expect(findByText('bar task')).resolves.toBeTruthy()
+    await waitFor(async () => {
+      await expect(findByText('foo task')).resolves.toBeTruthy()
+      await expect(findByText('bar task')).resolves.toBeTruthy()
+    })
   })
 
   it('clicking button triggers prompt', async () => {
     const { findByText } = render(<Home />)
 
-    window.prompt = jest.fn()
+    window.prompt = jest.fn(() => null)
     window.alert = jest.fn()
 
-    await waitFor(
-      async () => {
-        await findByText('LOGIN')
-      },
-      { timeout: 5000 }
-    )
-    fireEvent.click(await findByText('LOGIN'))
-    expect(window.prompt).toHaveBeenCalledWith(
-      'Enter the user id (See server/.env)'
-    )
-    expect(window.alert).toHaveBeenCalledWith('Login failed')
+    await waitFor(async () => {
+      await findByText('LOGIN').then(fireEvent.click)
+
+      expect(window.prompt).toHaveBeenCalledWith(
+        'Enter the user id (See server/.env)'
+      )
+      expect(window.alert).toHaveBeenCalledWith('Login failed')
+    })
   })
 })

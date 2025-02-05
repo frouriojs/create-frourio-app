@@ -6,3 +6,5 @@ pathpida
 swr
 react
 react-dom
+dotenv
+zod

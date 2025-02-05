@@ -1,7 +1,4 @@
 {
-  "name": "frourio-app-server",
-  "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "npm run generate && npm run migrate:dev && run-p dev:*",
     "dev:server": "node-dev --notify=false --respawn index.js",
@@ -12,10 +9,15 @@
     "generate": "run-p generate:*",
     "generate:frourio": "frourio<% if (server === 'express') { %>-express<% } %>",
     "generate:prisma": "prisma generate",
-    "migrate:dev": "prisma migrate dev",
+    "migrate:dev": "prisma migrate dev && prisma db seed",
     "migrate:dev:createonly": "prisma migrate dev --create-only",
+    "migrate:deploy": "prisma migrate deploy && prisma db seed",
     "migrate:reset": "prisma migrate reset",
-    "seed": "prisma db seed --preview-feature",
-    "start": "cross-env NODE_ENV=production node index.js"
+    "start": "node index.js",
+    "test": "jest",
+    "typecheck": "tsc --pretty --noEmit"
+  },
+  "prisma": {
+    "seed": "node -r esbuild-register --enable-source-maps prisma/seed.ts"
   }
 }

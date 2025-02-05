@@ -1,4 +1,4 @@
-import type { AuthHeader, UserInfo } from '$/types'
+import type { AuthHeader, UserInfo } from 'common/types'
 import { DefineMethods } from 'aspida'
 import type { ReadStream } from 'fs'
 

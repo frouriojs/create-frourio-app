@@ -31,7 +31,6 @@ export const completed = async (dir: string, s: stream.Writable) => {
   const outDir = path.resolve(dir)
 
   await npmInstall(outDir, s)
-  await npmInstall(path.resolve(outDir, 'server'), s)
 
   const isNewFolder = outDir !== process.cwd()
   const relativeOutFolder = relative(process.cwd(), outDir)

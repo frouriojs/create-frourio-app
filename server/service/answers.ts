@@ -70,7 +70,6 @@ const installApp = async (answers: Answers) => {
 
   await npmRun('generate')
   await npmRun('lint:fix')
-  await npmRun('migrate:dev')
 
   npmRun('dev')
 }

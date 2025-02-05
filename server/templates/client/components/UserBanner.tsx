@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react'
-import styles from '~/styles/UserBanner.module.css'
-import { apiClient } from '~/utils/apiClient'
-import type { UserInfo } from '$/types'
+import styles from 'styles/UserBanner.module.css'
+import { apiClient } from 'utils/apiClient'
+import type { UserInfo } from 'common/types'
 import type { ChangeEvent } from 'react'
 import Link from 'next/link'
-import { pagesPath } from '~/utils/$path'
+import { pagesPath } from 'utils/$path'
 import { useRouter } from 'next/router'
 
 const UserBanner = () => {
@@ -16,14 +16,14 @@ const UserBanner = () => {
 
   const editIcon = useCallback(
     async (e: ChangeEvent<HTMLInputElement>) => {
-      if (!e.target.files?.length) return
+      if (!e.target.files?.[0]) return
 
-      setUserInfo(
-        await apiClient.user.$post({
+      await apiClient.user
+        .$post({
           headers: { authorization: token },
           body: { icon: e.target.files[0] }
         })
-      )
+        .then(setUserInfo)
     },
     [token]
   )
@@ -33,21 +33,20 @@ const UserBanner = () => {
     const pass = prompt('Enter the user pass (See server/.env)')
     if (!id || !pass) return alert('Login failed')
 
-    let newToken = ''
-
     try {
-      newToken = `Bearer ${
-        (await apiClient.token.$post({ body: { id, pass } })).token
-      }`
-      setToken(newToken)
-    } catch (e) {
-      return alert('Login failed')
-    }
+      const { token } = await apiClient.token.$post({ body: { id, pass } })
+      const newToken = `Bearer ${token}`
 
-    setUserInfo(
-      await apiClient.user.$get({ headers: { authorization: newToken } })
-    )
-    setIsLoggedIn(true)
+      setToken(newToken)
+
+      await apiClient.user
+        .$get({ headers: { authorization: newToken } })
+        .then(setUserInfo)
+
+      setIsLoggedIn(true)
+    } catch (e) {
+      alert('Login failed')
+    }
   }, [])
 
   const logout = useCallback(() => {

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { defineController } from './$relay'
-import { validateUser } from '$/service/user'
-import { API_JWT_SECRET } from '$/service/envValues'
+import { validateUser } from 'service/user'
+import { API_JWT_SECRET } from 'service/envValues'
 import { z } from 'zod'
 
 export default defineController(() => ({

@@ -3,9 +3,9 @@ import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout from '~/components/Layout'
-import { pagesPath } from '~/utils/$path'
-import { apiClient } from '~/utils/apiClient'
+import Layout from 'components/Layout'
+import { pagesPath } from 'utils/$path'
+import { apiClient } from 'utils/apiClient'
 
 export type OptionalQuery = {
   search: string

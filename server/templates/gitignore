@@ -2,22 +2,15 @@
 
 # dependencies
 node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
 
 # next.js
-/.next/
-/out/
-
-# production
-/build
+client/.next/
+client/out/
 
 # misc
 .DS_Store
 tsconfig.tsbuildinfo
+**/$*.ts
 
 # debug
 npm-debug.log*
@@ -30,8 +23,6 @@ npm-debug.log*
 .env.production.local
 
 # server
-server/**/$*.ts
 server/**/*.db
-server/index.js<% if (server === 'express') { %>
-server/.upload<% } %>
+server/index.js
 server/upload/

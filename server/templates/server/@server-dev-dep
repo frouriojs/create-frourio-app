@@ -1,8 +1,0 @@
-cross-env
-npm-run-all
-typescript
-@types/jest
-prisma
-esbuild
-esbuild-node-externals
-node-dev

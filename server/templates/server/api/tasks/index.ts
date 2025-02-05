@@ -1,4 +1,4 @@
-import type { Task } from '$/types'
+import type { Task } from 'common/types'
 import { DefineMethods } from 'aspida'
 
 export type Methods = DefineMethods<{

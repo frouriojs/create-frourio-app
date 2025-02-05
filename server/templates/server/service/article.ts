@@ -1,8 +1,4 @@
-export type ArticleInfo = {
-  id: number
-  title: string
-  body: string
-}
+import { ArticleInfo } from 'common/types'
 
 const articleData: ArticleInfo[] = [
   {

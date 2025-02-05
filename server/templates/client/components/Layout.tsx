@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react'
-import styles from '~/styles/Layout.module.css'
-import { staticPath } from '~/utils/$path'
+import styles from 'styles/Layout.module.css'
+import { staticPath } from 'utils/$path'
 import UserBanner from './UserBanner'
 
 type LayoutProps = {
