@@ -1,7 +1,8 @@
-const { nodeExternalsPlugin } = require('esbuild-node-externals');
-const path = require('path');
+import type { BuildOptions } from 'esbuild';
+import { nodeExternalsPlugin } from 'esbuild-node-externals';
+import path from 'path';
 
-module.exports = {
+export const esbuildConfig: BuildOptions = {
   entryPoints: [path.resolve(__dirname, '../index.ts')],
   outdir: path.resolve(__dirname, '../'),
   platform: 'node',

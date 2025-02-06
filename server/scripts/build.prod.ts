@@ -1,8 +1,8 @@
-const { build } = require('esbuild');
-const config = require('./config.common');
+import { build } from 'esbuild';
+import { esbuildConfig } from './config.common';
 
 build({
-  ...config,
+  ...esbuildConfig,
   minify: true,
   define: { 'process.env.NODE_ENV': `"production"` },
 }).catch(() => process.exit(1));
