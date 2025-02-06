@@ -1,10 +1,10 @@
-import styles from 'styles/PrimaryButton.module.css'
-import { FC, MouseEventHandler } from 'react'
+import type { FC, MouseEventHandler } from 'react';
+import styles from 'styles/PrimaryButton.module.css';
 
 export interface PrimaryButtonProps {
-  onClick?: MouseEventHandler
-  disabled?: boolean
-  children: React.ReactNode
+  onClick?: MouseEventHandler;
+  disabled?: boolean;
+  children: React.ReactNode;
 }
 
 const PrimaryButton: FC<PrimaryButtonProps> = ({ disabled, onClick, children }) => {
@@ -12,13 +12,12 @@ const PrimaryButton: FC<PrimaryButtonProps> = ({ disabled, onClick, children }) 
     <div className={styles.container}>
       <button
         className={`${styles.btn}${disabled ? ` ${styles.disabled}` : ''}`}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
         onClick={disabled ? () => {} : onClick}
       >
         {children}
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default PrimaryButton
+export default PrimaryButton;

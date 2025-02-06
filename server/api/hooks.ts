@@ -1,6 +1,6 @@
-import { FastifyRequest } from 'fastify'
-import { defineHooks } from './$relay'
+import type { FastifyRequest } from 'fastify';
+import { defineHooks } from './$relay';
 
-export type AdditionalRequest = Pick<FastifyRequest, 'dir'>
+export type AdditionalRequest = Pick<FastifyRequest, 'dir'>;
 
-export default defineHooks(() => ({}))
+export default defineHooks(() => ({}));

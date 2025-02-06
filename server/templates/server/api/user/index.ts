@@ -1,5 +1,5 @@
 import type { AuthHeader, UserInfo } from 'common/types'
-import { DefineMethods } from 'aspida'
+import type { DefineMethods } from 'aspida'
 import type { ReadStream } from 'fs'
 
 export type Methods = DefineMethods<{

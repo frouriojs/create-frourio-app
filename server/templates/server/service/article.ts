@@ -1,4 +1,4 @@
-import { ArticleInfo } from 'common/types'
+import type { ArticleInfo } from 'common/types'
 
 const articleData: ArticleInfo[] = [
   {

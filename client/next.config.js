@@ -2,8 +2,8 @@ module.exports = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
   webpack: (config) => {
-    config.resolve.symlinks = false
+    config.resolve.symlinks = false;
 
-    return config
-  }
-}
+    return config;
+  },
+};

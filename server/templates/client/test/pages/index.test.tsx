@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
-import Fastify, { FastifyInstance } from 'fastify'
+import type { FastifyInstance } from 'fastify';
+import Fastify from 'fastify'
 import cors from '@fastify/cors'
 import aspida from '@aspida/<%= aspida === "axios" ? "axios" : "node-fetch" %>'
 import api from 'api/$api'

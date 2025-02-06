@@ -1,32 +1,31 @@
-import assert from 'assert'
+import assert from 'assert';
+import packageJson from '../pretense/package.json';
 
-export const depKeys = ['@dep', '@dev-dep'] as const
-export type DepKeys = (typeof depKeys)[number]
+export const depKeys = ['@dep', '@dev-dep'] as const;
+export type DepKeys = (typeof depKeys)[number];
 
 export const isDepKey = (s: string): s is DepKeys => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return depKeys.indexOf(s as any) > -1
-}
+  return depKeys.indexOf(s as any) > -1;
+};
 
 export const getPackageVersions = (): { [packageName: string]: string } => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const packageJson = require('../pretense/package.json')
-  assert(!('devDependencies' in packageJson))
-  assert(!('peerDependencies' in packageJson))
-  const dep = packageJson['dependencies']
-  return dep
-}
+  assert(!('devDependencies' in packageJson));
+  assert(!('peerDependencies' in packageJson));
+  const dep = packageJson['dependencies'];
+  return dep;
+};
 
 const strUniq = (list: string[]) => {
-  const known = Object.create(null)
+  const known = Object.create(null);
   list.forEach((el) => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const g = el.match(/^(@?[^@]+)(?:@(.*))?$/)!
+    const g = el.match(/^(@?[^@]+)(?:@(.*))?$/)!;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    known[g[1]!] = g[2] ? `@${g[2]}` : ''
-  })
-  return Object.entries(known).map(([key, value]) => `${key}${value}`)
-}
+    known[g[1]!] = g[2] ? `@${g[2]}` : '';
+  });
+  return Object.entries(known).map(([key, value]) => `${key}${value}`);
+};
 
 /**
  * Examples:
@@ -39,21 +38,21 @@ const strUniq = (list: string[]) => {
 export const convertListToJson = (
   deps: { [packageName: string]: string },
   list: string[],
-  indent: string
+  indent: string,
 ) => {
   return strUniq(list)
     .sort()
     .map((dep) => {
-      let depName = dep
-      let depVersion = null
-      const g = dep.match(/^(@?[^@]+)@(.*)$/)
+      let depName = dep;
+      let depVersion = null;
+      const g = dep.match(/^(@?[^@]+)@(.*)$/);
       if (g) {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        depName = g[1]!
-        depVersion = g[2]
+        depName = g[1]!;
+        depVersion = g[2];
       }
-      assert(depName in deps, `${depName} is not pre-defined.`)
-      return `${indent}${JSON.stringify(depName)}: ${JSON.stringify(depVersion || deps[depName])}`
+      assert(depName in deps, `${depName} is not pre-defined.`);
+      return `${indent}${JSON.stringify(depName)}: ${JSON.stringify(depVersion || deps[depName])}`;
     })
-    .join(',\n')
-}
+    .join(',\n');
+};

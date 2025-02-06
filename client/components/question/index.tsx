@@ -1,19 +1,19 @@
-import React, { FC } from 'react'
-import { Answers, Prompt } from 'common/prompts'
-import styles from 'styles/Question.module.css'
+import type { Answers, Prompt } from 'common/prompts';
+import type { FC } from 'react';
+import styles from 'styles/Question.module.css';
 
 export interface QuestionProps {
-  answers: Answers
-  question: Prompt
-  onChoice?: (name: keyof Answers, value: string) => void
-  onTouch?: () => void
-  touched: boolean
-  addInfo?: unknown
-  addError?: unknown
+  answers: Answers;
+  question: Prompt;
+  onChoice?: (name: keyof Answers, value: string) => void;
+  onTouch?: () => void;
+  touched: boolean;
+  addInfo?: unknown;
+  addError?: unknown;
 }
 
 export interface QuestionInputProps extends QuestionProps {
-  question: Prompt & { type: 'input' }
+  question: Prompt & { type: 'input' };
 }
 
 const QuestionInput: FC<QuestionInputProps> = ({
@@ -22,7 +22,7 @@ const QuestionInput: FC<QuestionInputProps> = ({
   touched,
   onChoice,
   addError,
-  onTouch
+  onTouch,
 }) => {
   return (
     <div>
@@ -43,11 +43,11 @@ const QuestionInput: FC<QuestionInputProps> = ({
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export interface QuestionListProps extends QuestionProps {
-  question: Prompt & { type: 'list' }
+  question: Prompt & { type: 'list' };
 }
 
 const QuestionList: FC<QuestionListProps> = ({
@@ -55,7 +55,7 @@ const QuestionList: FC<QuestionListProps> = ({
   question,
   touched,
   addError,
-  onChoice
+  onChoice,
 }) => {
   return (
     <div>
@@ -81,11 +81,11 @@ const QuestionList: FC<QuestionListProps> = ({
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Question: FC<QuestionProps> = (props) => {
-  const { question, addInfo, addError } = props
+  const { question, addInfo, addError } = props;
   return (
     <div className={styles.card}>
       {question.type === 'input' ? (
@@ -96,7 +96,7 @@ const Question: FC<QuestionProps> = (props) => {
       {(
         [
           [addInfo, 'info'],
-          [addError, 'error']
+          [addError, 'error'],
         ] as const
       ).map(
         ([add, severity]) =>
@@ -104,10 +104,10 @@ const Question: FC<QuestionProps> = (props) => {
             <div key={severity} className={`${styles.note} ${styles[severity]}`} tabIndex={0}>
               {add}
             </div>
-          )
+          ),
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Question
+export default Question;

@@ -1,4 +1,5 @@
-import React, { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react';
+import React from 'react'
 import styles from 'styles/Layout.module.css'
 import { staticPath } from 'utils/$path'
 import UserBanner from './UserBanner'

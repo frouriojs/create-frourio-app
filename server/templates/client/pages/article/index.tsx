@@ -1,5 +1,5 @@
 import useAspidaSWR from '@aspida/swr'
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'

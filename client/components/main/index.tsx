@@ -1,85 +1,87 @@
-import Head from 'next/head'
-import { createApiClient } from 'utils/apiClient'
-import { FC, useCallback, useEffect, useMemo, useState } from 'react'
-import PrimaryButton from 'components/primary-button'
-import Question from 'components/question'
-import styles from 'styles/Home.module.css'
-import questionStyles from 'styles/Question.module.css'
-import { Answers, cfaPrompts, getAllDefaultAnswers, isAnswersValid } from 'common/prompts'
-import { cmdEscapeSingleInput, shellEscapeSingleInput } from 'common/escape'
-import { ServerStatus } from 'api/status'
-import { LocalPathInfo } from 'api/localPath'
-import CommandInput from 'components/command-input'
+import type { LocalPathInfo } from 'api/localPath';
+import type { ServerStatus } from 'api/status';
+import { cmdEscapeSingleInput, shellEscapeSingleInput } from 'common/escape';
+import type { Answers } from 'common/prompts';
+import { cfaPrompts, getAllDefaultAnswers, isAnswersValid } from 'common/prompts';
+import CommandInput from 'components/command-input';
+import PrimaryButton from 'components/primary-button';
+import Question from 'components/question';
+import Head from 'next/head';
+import type { FC } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import styles from 'styles/Home.module.css';
+import questionStyles from 'styles/Question.module.css';
+import { createApiClient } from 'utils/apiClient';
 
 export interface MainProps {
-  serverStatus?: ServerStatus
-  mutate?: () => void
-  useServer?: boolean
+  serverStatus?: ServerStatus;
+  mutate?: () => void;
+  useServer?: boolean;
 }
 
 const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
-  const [touched, setTouched] = useState<true | { [key: string]: true }>({})
-  const [answers, setAnswers] = useState(getAllDefaultAnswers())
-  const [created, setCreated] = useState(false)
-  const [localPathInfo, setLocalPathInfo] = useState<LocalPathInfo | undefined>()
-  const [localPathInfoFetching, setlocalPathInfoFetching] = useState(true)
-  const { dir } = answers
-  const canCreate = isAnswersValid(answers)
+  const [touched, setTouched] = useState<true | { [key: string]: true }>({});
+  const [answers, setAnswers] = useState(getAllDefaultAnswers());
+  const [created, setCreated] = useState(false);
+  const [localPathInfo, setLocalPathInfo] = useState<LocalPathInfo | undefined>();
+  const [localPathInfoFetching, setlocalPathInfoFetching] = useState(true);
+  const { dir } = answers;
+  const canCreate = isAnswersValid(answers);
   const choice = useCallback(
     (name: keyof Answers, val: string) =>
       setAnswers({ ...getAllDefaultAnswers(), ...answers, [name]: val }),
-    [answers]
-  )
+    [answers],
+  );
 
-  const isClientSide = typeof window !== 'undefined'
+  const isClientSide = typeof window !== 'undefined';
   const apiClient = useMemo(
     () => isClientSide && useServer && createApiClient(),
-    [isClientSide, useServer]
-  )
+    [isClientSide, useServer],
+  );
 
   const create = useCallback(async () => {
-    setTouched(true)
+    setTouched(true);
     if (!apiClient || !canCreate) {
-      alert('Cannot proceed because conditions are not met. Please review your configurations.')
-      return
+      alert('Cannot proceed because conditions are not met. Please review your configurations.');
+      return;
     }
 
-    const info = await apiClient.localPath.$post({ body: { path: dir || '' } })
+    const info = await apiClient.localPath.$post({ body: { path: dir || '' } });
 
-    setLocalPathInfo(info)
-    setlocalPathInfoFetching(false)
+    setLocalPathInfo(info);
+    setlocalPathInfoFetching(false);
 
     if (info.canContinue !== null) {
-      alert(info.canContinue)
-      return
+      alert(info.canContinue);
+      return;
     }
 
-    await apiClient.answers.$patch({ body: answers })
-    mutate?.()
-    setCreated(true)
-  }, [apiClient, answers, canCreate])
+    await apiClient.answers.$patch({ body: answers });
+    mutate?.();
+    setCreated(true);
+  }, [apiClient, answers, canCreate, dir, mutate]);
 
   if (serverStatus?.status === 'installing' && !created) {
-    setCreated(true)
+    setCreated(true);
   }
 
   useEffect(() => {
-    let canceled = false
-    setlocalPathInfoFetching(true)
+    let canceled = false;
+    setlocalPathInfoFetching(true);
     if (typeof dir === 'string') {
       if (isClientSide && apiClient) {
         apiClient.localPath.$post({ body: { path: dir } }).then((info) => {
           if (!canceled) {
-            setLocalPathInfo(info)
-            setlocalPathInfoFetching(false)
+            setLocalPathInfo(info);
+            setlocalPathInfoFetching(false);
           }
-        })
+        });
       }
     } else {
-      setLocalPathInfo(undefined)
+      setLocalPathInfo(undefined);
     }
-    return () => void (canceled = true)
-  }, [dir, isClientSide, apiClient])
+    return () => void (canceled = true);
+  }, [dir, isClientSide, apiClient]);
 
   return (
     <>
@@ -114,8 +116,8 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
                 if (touched !== true) {
                   setTouched({
                     ...touched,
-                    [question.name]: true
-                  })
+                    [question.name]: true,
+                  });
                 }
               }}
             />
@@ -128,7 +130,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
               <div className={questionStyles.ctrls}>
                 <CommandInput
                   value={`npm init frourio-app --answers ${shellEscapeSingleInput(
-                    JSON.stringify(answers)
+                    JSON.stringify(answers),
                   )}`}
                 />
               </div>
@@ -138,7 +140,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
               <div className={questionStyles.ctrls}>
                 <CommandInput
                   value={`npm init frourio-app --answers ${cmdEscapeSingleInput(
-                    JSON.stringify(answers)
+                    JSON.stringify(answers),
                   )}`}
                 />
               </div>
@@ -168,7 +170,7 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;

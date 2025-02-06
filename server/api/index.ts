@@ -1,3 +1,4 @@
-import { DefineMethods } from 'aspida'
+import type { DefineMethods } from 'aspida';
 
-export type Methods = DefineMethods<{}>
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export type Methods = DefineMethods<{}>;

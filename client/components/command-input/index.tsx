@@ -1,15 +1,16 @@
-import { FC, useRef } from 'react'
+import type { FC } from 'react';
+import { useRef } from 'react';
 
 export interface Props {
-  value?: string
+  value?: string;
 }
 
 const CommandInput: FC<Props> = ({ value }) => {
-  const ref = useRef<HTMLInputElement>(null)
+  const ref = useRef<HTMLInputElement>(null);
   const clickHandler = () => {
-    if (!ref.current) return
-    ref.current.select()
-  }
+    if (!ref.current) return;
+    ref.current.select();
+  };
   return (
     <input
       ref={ref}
@@ -19,7 +20,7 @@ const CommandInput: FC<Props> = ({ value }) => {
       value={value}
       readOnly
     />
-  )
-}
+  );
+};
 
-export default CommandInput
+export default CommandInput;

@@ -1,5 +1,5 @@
 import type { Task } from 'common/types'
-import { DefineMethods } from 'aspida'
+import type { DefineMethods } from 'aspida'
 
 export type Methods = DefineMethods<{
   patch: {

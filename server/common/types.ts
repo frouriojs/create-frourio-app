@@ -1,1 +1,1 @@
-export type STATUS = 'waiting' | 'installing'
+export type STATUS = 'waiting' | 'installing';
