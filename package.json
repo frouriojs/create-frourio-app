@@ -55,7 +55,7 @@
     "fastify": "^4.21.0",
     "frourio": "^0.34.1",
     "is-binary-path": "^2.1.0",
-    "next": "^13.0.4",
+    "next": "^14.2.21",
     "open": "^8.4.0",
     "portfinder": "^1.0.28",
     "react": "^18.2.0",
