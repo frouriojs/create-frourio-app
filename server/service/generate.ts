@@ -31,16 +31,10 @@ export const generate = async (answers: TemplateContext, rootDir: string, outDir
         const from = path.resolve(now, p)
         if (p.startsWith('@')) return
 
-        const stats = await fs.promises.lstat(from)
         const dest = path.resolve(nowOut, p)
+        const stats = await fs.promises.stat(from)
 
-        if (stats.isSymbolicLink()) {
-          await fs.promises.symlink(
-            await fs.promises.readlink(from),
-            dest,
-            process.platform === 'win32' ? 'junction' : undefined
-          )
-        } else if (stats.isDirectory()) {
+        if (stats.isDirectory()) {
           await walk(path.resolve(now, p), dest)
         } else if (isBinaryPath(p)) {
           await fs.promises.copyFile(from, dest)
@@ -61,24 +55,31 @@ export const generate = async (answers: TemplateContext, rootDir: string, outDir
     await Promise.all(
       paths.map(async (p) => {
         if (!p.startsWith('@')) return
+
+        const symlinkKey = '@symlink'
         const f = path.resolve(now, p)
+
         if ((await fs.promises.stat(f)).isDirectory()) {
           const [pname, pvalue] = p.slice(1).split('=')
 
           if (templateContext[pname as keyof TemplateContext] !== pvalue) return
-          await walk(path.resolve(now, p), nowOut)
+
+          await walk(f, nowOut)
+        } else if (p.startsWith(symlinkKey)) {
+          await fs.promises.symlink(
+            await fs.promises.readFile(f, 'utf8').then((t) => t.trim()),
+            path.resolve(nowOut, p.replace(`${symlinkKey}=`, '')),
+            process.platform === 'win32' ? 'junction' : undefined
+          )
+        } else if (isDepKey(p)) {
+          const lines = (await fs.promises.readFile(f, 'utf8'))
+            .split(/[\n\r]+/)
+            .map((line) => line.trim())
+            .filter((line) => line && !line.startsWith('#'))
+
+          deps[p] = [...deps[p], ...lines]
         } else {
-          if (p.endsWith('dep')) {
-            const lines = (await fs.promises.readFile(f))
-              .toString()
-              .split(/[\n\r]+/)
-              .map((line) => line.trim())
-              .filter((line) => line && !line.startsWith('#'))
-            assert(isDepKey(p), `${p} is not expected dep key.`)
-            deps[p] = [...deps[p], ...lines]
-          } else {
-            throw new Error('Unreachable: Unknown special filename.')
-          }
+          throw new Error('Unreachable: Unknown special filename.')
         }
       })
     )
