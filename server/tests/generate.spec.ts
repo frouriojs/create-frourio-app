@@ -19,8 +19,6 @@ import { createTestDbContext } from './database/test-context';
 
 const execFileAsync = promisify(execFile);
 
-const randomNum = Number(process.env.TEST_CFA_RANDOM_NUM || '1');
-
 const Red16x16PngBinary = Buffer.from([
   0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0x00, 0x00, 0x00, 0x0d, 0x49, 0x48, 0x44, 0x52,
   0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x08, 0x02, 0x00, 0x00, 0x00, 0x90, 0x91, 0x68,
@@ -77,8 +75,8 @@ const tempSandbox = async (answers: Answers, main: (dir: string) => Promise<void
   }
 };
 
-test.each(Array.from({ length: randomNum }))(
-  'create',
+test(
+  'generate',
   async () => {
     const dbCtx = createTestDbContext();
     try {

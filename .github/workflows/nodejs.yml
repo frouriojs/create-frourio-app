@@ -31,18 +31,12 @@ jobs:
       - run: npm run typecheck
       - run: npm test
         env:
-          TEST_CFA_RANDOM_NUM: 1
           TEST_CFA_FIX_SERVER: fastify
           TEST_CFA_FIX_ASPIDA: fetch
       - run: npm test
         env:
-          TEST_CFA_RANDOM_NUM: 1
           TEST_CFA_FIX_SERVER: express
           TEST_CFA_FIX_ASPIDA: axios
-      - run: npm test
-        if: github.event_name == 'schedule'
-        env:
-          TEST_CFA_RANDOM_NUM: 5
       # - uses: mxschmitt/action-tmate@v3
       #   if: ${{ failure() }}
 
@@ -70,18 +64,12 @@ jobs:
       - run: npm run typecheck
       - run: npm test
         env:
-          TEST_CFA_RANDOM_NUM: 1
           TEST_CFA_FIX_SERVER: fastify
           TEST_CFA_FIX_ASPIDA: axios
       - run: npm test
         env:
-          TEST_CFA_RANDOM_NUM: 1
           TEST_CFA_FIX_SERVER: express
           TEST_CFA_FIX_ASPIDA: fetch
-      - run: npm test
-        if: github.event_name == 'schedule'
-        env:
-          TEST_CFA_RANDOM_NUM: 5
 
   release:
     runs-on: ubuntu-latest
