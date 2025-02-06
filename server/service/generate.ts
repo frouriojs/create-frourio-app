@@ -66,18 +66,17 @@ export const generate = async (answers: TemplateContext, rootDir: string, outDir
 
           await walk(f, nowOut)
         } else if (p.startsWith(symlinkKey)) {
+          const text = await fs.promises.readFile(f, 'utf8')
+
           await fs.promises.symlink(
-            await fs.promises.readFile(f, 'utf8').then((t) => t.trim()),
+            text.trim(),
             path.resolve(nowOut, p.replace(`${symlinkKey}=`, '')),
             process.platform === 'win32' ? 'junction' : undefined
           )
         } else if (isDepKey(p)) {
-          const lines = (await fs.promises.readFile(f, 'utf8'))
-            .split(/[\n\r]+/)
-            .map((line) => line.trim())
-            .filter((line) => line && !line.startsWith('#'))
+          const text = await fs.promises.readFile(f, 'utf8')
 
-          deps[p] = [...deps[p], ...lines]
+          deps[p] = [...deps[p], ...text.trim().split(/[\n\r]+/)]
         } else {
           throw new Error('Unreachable: Unknown special filename.')
         }
