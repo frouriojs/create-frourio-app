@@ -1,7 +1,7 @@
 import <%= server %> from '<%= server %>'
 import controller from 'api/tasks/controller'
 import { fail } from "assert"
-import { beforeEach, expect, test } from '@jest/globals'
+import { beforeEach, expect, test } from 'vitest'
 import { promisify } from 'util'
 import { exec } from 'child_process'
 

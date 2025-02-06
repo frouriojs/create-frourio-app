@@ -13,6 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "noUncheckedIndexedAccess": true,
     "target": "es6",
+    "types": ["vitest/importMeta"],
     "incremental": true
   }
 }

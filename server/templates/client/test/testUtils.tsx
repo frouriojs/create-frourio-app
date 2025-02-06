@@ -3,7 +3,9 @@ import { render } from '@testing-library/react'
 import { SWRConfig } from 'swr'
 
 const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <SWRConfig value={{ dedupingInterval: 0 }}>{children}</SWRConfig>
+  <SWRConfig value={{ dedupingInterval: 0, provider: () => new Map() }}>
+    {children}
+  </SWRConfig>
 )
 
 const customRender = (ui: React.ReactElement, options = {}) =>

@@ -20,17 +20,17 @@ export const cfaPrompts: Prompt[] = [
     message: 'Server engine',
     type: 'list',
     choices: [
-      { name: 'Fastify (5x faster)', value: 'fastify' },
+      { name: 'Fastify', value: 'fastify' },
       { name: 'Express', value: 'express' }
     ],
     default: 'fastify'
   },
   {
     name: 'aspida',
-    message: 'HTTP client of aspida',
+    message: 'HTTP client',
     choices: [
-      { name: 'fetch', value: 'fetch' },
-      { name: 'axios', value: 'axios' }
+      { name: 'Fetch API', value: 'fetch' },
+      { name: 'Axios', value: 'axios' }
     ],
     type: 'list',
     default: 'fetch'

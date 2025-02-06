@@ -4,12 +4,12 @@ import cors from '@fastify/cors'
 import aspida from '@aspida/<%= aspida === "axios" ? "axios" : "node-fetch" %>'
 import api from 'api/$api'
 import Home from 'pages/index'
-import { render, fireEvent, waitFor } from '../testUtils'
-import { expect, beforeAll, afterAll, describe, it, jest } from '@jest/globals'
+import { render, fireEvent, waitFor } from 'test/testUtils'
+import { expect, beforeAll, afterAll, describe, test, vi } from 'vitest'
 import { z } from 'zod'
 
 dotenv.config({ path: '../server/.env' })
-jest.mock('next/router', () => require('next-router-mock'))
+vi.mock('next/router', () => require('next-router-mock'))
 
 const apiClient = api(aspida(undefined, { baseURL: process.env.API_BASE_PATH }))
 const res = function <T extends () => unknown>(
@@ -38,7 +38,7 @@ beforeAll(async () => {
 afterAll(() => fastify.close())
 
 describe('Home page', () => {
-  it('shows tasks', async () => {
+  test('showing tasks', async () => {
     const { findByText } = render(<Home />)
 
     await waitFor(async () => {
@@ -47,11 +47,11 @@ describe('Home page', () => {
     })
   })
 
-  it('clicking button triggers prompt', async () => {
+  test('clicking button triggers prompt', async () => {
     const { findByText } = render(<Home />)
 
-    window.prompt = jest.fn(() => null)
-    window.alert = jest.fn()
+    window.prompt = vi.fn(() => null)
+    window.alert = vi.fn()
 
     await waitFor(async () => {
       await findByText('LOGIN').then(fireEvent.click)

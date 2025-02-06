@@ -9,7 +9,7 @@
     "generate:aspida": "aspida",
     "generate:pathpida": "pathpida --enableStatic --ignorePath ../.gitignore",
     "start": "next start",
-    "test": "jest",
+    "test": "vitest run",
     "typecheck": "tsc --pretty --noEmit"
   }
 }

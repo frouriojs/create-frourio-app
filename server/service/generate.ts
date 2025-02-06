@@ -35,8 +35,11 @@ export const generate = async (answers: TemplateContext, rootDir: string, outDir
         const dest = path.resolve(nowOut, p)
 
         if (stats.isSymbolicLink()) {
-          const path = await fs.promises.readlink(from)
-          await fs.promises.symlink(path, dest)
+          await fs.promises.symlink(
+            await fs.promises.readlink(from),
+            dest,
+            process.platform === 'win32' ? 'junction' : undefined
+          )
         } else if (stats.isDirectory()) {
           await walk(path.resolve(now, p), dest)
         } else if (isBinaryPath(p)) {

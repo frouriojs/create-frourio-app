@@ -14,7 +14,7 @@
     "migrate:deploy": "prisma migrate deploy && prisma db seed",
     "migrate:reset": "prisma migrate reset",
     "start": "node index.js",
-    "test": "jest",
+    "test": "vitest run",
     "typecheck": "tsc --pretty --noEmit"
   },
   "prisma": {

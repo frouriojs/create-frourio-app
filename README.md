@@ -39,19 +39,19 @@ https://frourio.com/docs
 ## Features :tada:
 
 1. Server engine:
-   - [Fastify (5x faster)](https://www.fastify.io/)
+   - [Fastify](https://www.fastify.io/)
    - [Express](https://expressjs.com/)
 1. Client framework:
-   - [Next.js (React)](https://nextjs.org/learn/excel/typescript)
-1. HTTP client of aspida:
-   - [axios](https://github.com/axios/axios)
-   - [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-1. O/R mapping tool:
-   - [Prisma (recommended)](https://www.prisma.io/)
-1. Database type of Prisma:
+   - [Next.js](https://nextjs.org/)
+1. HTTP client:
+   - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+   - [Axios](https://axios-http.com/)
+1. O/R Mapper:
+   - [Prisma](https://www.prisma.io/)
+1. Database:
    - [SQLite](https://www.sqlite.org/)
 1. Testing framework:
-   - [Jest](https://jestjs.io/)
+   - [Vitest](https://vitest.dev/)
 
 ## License
 
