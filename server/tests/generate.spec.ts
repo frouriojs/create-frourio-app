@@ -251,15 +251,13 @@ test(
           }
         }
       });
-      const keep = process.env.TEST_CFA_KEEP_DB === 'yes';
-      if (!keep) {
-        try {
-          await dbCtx.down();
-          await dbCtx.deleteAll(await dbCtx.getAllNames());
-        } catch (e: unknown) {
-          console.error('Failed to delete one database.');
-          console.error(e);
-        }
+
+      try {
+        await dbCtx.down();
+        await dbCtx.getAllNames().then(dbCtx.deleteAll);
+      } catch (e: unknown) {
+        console.error('Failed to delete one database.');
+        console.error(e);
       }
     } catch (e: unknown) {
       try {
