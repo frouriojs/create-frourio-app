@@ -1,16 +1,16 @@
-import <%= server %> from '<%= server %>'
-import controller from 'api/tasks/controller'
-import { fail } from "assert"
-import { beforeEach, expect, test } from 'vitest'
-import { promisify } from 'util'
-import { exec } from 'child_process'
+import controller from 'api/tasks/controller';
+import { fail } from 'assert';
+import { exec } from 'child_process';
+import <%= server %> from '<%= server %>';
+import { promisify } from 'util';
+import { beforeEach, expect, test } from 'vitest';
 
 beforeEach(async () => {
-  await promisify(exec)('npx prisma migrate reset --force')
-})
+  await promisify(exec)('npx prisma migrate reset --force');
+});
 
 test('dependency injection into controller', async () => {
-  let printedMessage = ''
+  let printedMessage = '';
 
   const injectedController = controller.inject((deps) => ({
     getTasks: deps.getTasks.inject({
@@ -22,24 +22,22 @@ test('dependency injection into controller', async () => {
               { id: 1, label: 'task2', done: false },
               { id: 2, label: 'task3', done: true },
               { id: 3, label: 'task4', done: true },
-              { id: 4, label: 'task5', done: false }
-            ])
-        }
-      }
+              { id: 4, label: 'task5', done: false },
+            ]),
+        },
+      },
     }),
     print: (text: string) => {
-      printedMessage = text
-    }
-  }))(<%= server %>())
+      printedMessage = text;
+    },
+  }))(<%= server %>());
 
-  const limit = 3
-  const message = 'test message'
-  const res = await injectedController.get({
-    query: { limit, message }
-  })
+  const limit = 3;
+  const message = 'test message';
+  const res = await injectedController.get({ query: { limit, message } });
 
-  if (res.status !== 200) fail('Response must be successful')
+  if (res.status !== 200) fail('Response must be successful');
 
-  expect(res.body).toHaveLength(limit)
-  expect(printedMessage).toBe(message)
-})
+  expect(res.body).toHaveLength(limit);
+  expect(printedMessage).toBe(message);
+});

@@ -1,58 +1,53 @@
-import { useState, useCallback } from 'react'
-import styles from 'styles/UserBanner.module.css'
-import { apiClient } from 'utils/apiClient'
-import type { UserInfo } from 'common/types'
-import type { ChangeEvent } from 'react'
-import Link from 'next/link'
-import { pagesPath } from 'utils/$path'
-import { useRouter } from 'next/router'
+import type { UserInfo } from 'common/types';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import type { ChangeEvent } from 'react';
+import { useCallback, useState } from 'react';
+import styles from 'styles/UserBanner.module.css';
+import { pagesPath } from 'utils/$path';
+import { apiClient } from 'utils/apiClient';
 
 const UserBanner = () => {
-  const router = useRouter()
-  const [search, setSearch] = useState('')
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [token, setToken] = useState('')
-  const [userInfo, setUserInfo] = useState({} as UserInfo)
+  const router = useRouter();
+  const [search, setSearch] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState('');
+  const [userInfo, setUserInfo] = useState({} as UserInfo);
 
   const editIcon = useCallback(
     async (e: ChangeEvent<HTMLInputElement>) => {
-      if (!e.target.files?.[0]) return
+      if (!e.target.files?.[0]) return;
 
       await apiClient.user
-        .$post({
-          headers: { authorization: token },
-          body: { icon: e.target.files[0] }
-        })
-        .then(setUserInfo)
+        .$post({ headers: { authorization: token }, body: { icon: e.target.files[0] } })
+        .then(setUserInfo);
     },
-    [token]
-  )
+    [token],
+  );
 
   const login = useCallback(async () => {
-    const id = prompt('Enter the user id (See server/.env)')
-    const pass = prompt('Enter the user pass (See server/.env)')
-    if (!id || !pass) return alert('Login failed')
+    const id = prompt('Enter the user id (See server/.env)');
+    const pass = prompt('Enter the user pass (See server/.env)');
+    if (!id || !pass) return alert('Login failed');
 
     try {
-      const { token } = await apiClient.token.$post({ body: { id, pass } })
-      const newToken = `Bearer ${token}`
+      const { token } = await apiClient.token.$post({ body: { id, pass } });
+      const newToken = `Bearer ${token}`;
 
-      setToken(newToken)
+      setToken(newToken);
 
-      await apiClient.user
-        .$get({ headers: { authorization: newToken } })
-        .then(setUserInfo)
+      await apiClient.user.$get({ headers: { authorization: newToken } }).then(setUserInfo);
 
-      setIsLoggedIn(true)
-    } catch (e) {
-      alert('Login failed')
+      setIsLoggedIn(true);
+    } catch (_) {
+      alert('Login failed');
     }
-  }, [])
+  }, []);
 
   const logout = useCallback(() => {
-    setToken('')
-    setIsLoggedIn(false)
-  }, [])
+    setToken('');
+    setIsLoggedIn(false);
+  }, []);
 
   return (
     <div>
@@ -67,22 +62,14 @@ const UserBanner = () => {
         </div>
         <form
           onSubmit={(e) => {
-            e.preventDefault()
-            router.push(
-              pagesPath.article.$url({
-                query: {
-                  search
-                }
-              })
-            )
+            e.preventDefault();
+            router.push(pagesPath.article.$url({ query: { search } }));
           }}
         >
           <input
             type="text"
             name="query"
-            onInput={(e) =>
-              e.target instanceof HTMLInputElement && setSearch(e.target.value)
-            }
+            onInput={(e) => e.target instanceof HTMLInputElement && setSearch(e.target.value)}
           />
           <button type="submit">search</button>
         </form>
@@ -102,7 +89,7 @@ const UserBanner = () => {
       </div>
       <div className={styles.padding} />
     </div>
-  )
-}
+  );
+};
 
-export default UserBanner
+export default UserBanner;

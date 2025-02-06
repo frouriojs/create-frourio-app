@@ -70,7 +70,7 @@ const installApp = async (answers: Answers) => {
     });
 
   await npmRun('generate');
-  await npmRun('lint:fix');
+  await npmRun('fix:lint');
 
   npmRun('dev');
 };

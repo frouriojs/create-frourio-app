@@ -124,7 +124,7 @@ test.each(Array.from({ length: randomNum }))(
         await npmInstall(dir, process.stdout);
 
         // eslint
-        await execFileAsync('npm', ['run', 'lint:fix'], {
+        await execFileAsync('npm', ['run', 'fix:lint'], {
           cwd: dir,
           shell: process.platform === 'win32',
         });

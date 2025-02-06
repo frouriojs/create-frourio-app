@@ -1,5 +1,5 @@
-const { nodeExternalsPlugin } = require('esbuild-node-externals')
-const path = require('path')
+const { nodeExternalsPlugin } = require('esbuild-node-externals');
+const path = require('path');
 
 module.exports = {
   entryPoints: [path.resolve(__dirname, '../entrypoints/index.ts')],
@@ -8,5 +8,5 @@ module.exports = {
   target: 'node20',
   bundle: true,
   plugins: [nodeExternalsPlugin()],
-  logLevel: 'info'
-}
+  logLevel: 'info',
+};
