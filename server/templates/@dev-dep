@@ -25,5 +25,8 @@ esbuild-register
 node-dev
 @vitejs/plugin-react
 jsdom
+stylelint
+stylelint-config-recess-order
+stylelint-config-standard
 vite-tsconfig-paths
 vitest
