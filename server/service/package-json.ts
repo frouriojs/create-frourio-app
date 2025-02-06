@@ -1,6 +1,6 @@
 import assert from 'assert'
 
-export const depKeys = ['@dep', '@dev-dep', '@server-dev-dep', '@server-dep'] as const
+export const depKeys = ['@dep', '@dev-dep'] as const
 export type DepKeys = (typeof depKeys)[number]
 
 export const isDepKey = (s: string): s is DepKeys => {

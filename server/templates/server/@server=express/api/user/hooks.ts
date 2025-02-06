@@ -1,6 +1,6 @@
 import { expressjwt } from 'express-jwt'
 import { defineHooks } from './$relay'
-import { API_JWT_SECRET } from '$/service/envValues'
+import { API_JWT_SECRET } from 'service/envValues'
 
 export type AdditionalRequest = {
   auth: {

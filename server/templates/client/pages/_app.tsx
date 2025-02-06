@@ -1,7 +1,7 @@
-import '~/styles/globals.css'
+import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { staticPath } from '~/utils/$path'
+import { staticPath } from 'utils/$path'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

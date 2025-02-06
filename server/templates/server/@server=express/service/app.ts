@@ -1,11 +1,11 @@
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
-import server from '$/$server'
+import server from '$server'
 import {
   API_BASE_PATH,
   API_UPLOAD_DIR
-} from '$/service/envValues'
+} from 'service/envValues'
 
 export const init = () => {
   const app = express()

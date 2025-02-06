@@ -8,12 +8,7 @@ import { convertListToJson, DepKeys, getPackageVersions, isDepKey } from './pack
 import type { TemplateContext } from 'common/template-context'
 
 export const generate = async (answers: TemplateContext, rootDir: string, outDir?: string) => {
-  const deps: { [k in DepKeys]: string[] } = {
-    '@dep': [],
-    '@dev-dep': [],
-    '@server-dev-dep': [],
-    '@server-dep': []
-  }
+  const deps: { [k in DepKeys]: string[] } = { '@dep': [], '@dev-dep': [] }
   const dir = outDir ?? answers.dir ?? ''
 
   const templateContext: TemplateContext = addAllUndefined(answers)
@@ -36,16 +31,25 @@ export const generate = async (answers: TemplateContext, rootDir: string, outDir
         const from = path.resolve(now, p)
         if (p.startsWith('@')) return
 
-        if ((await fs.promises.stat(from)).isDirectory()) {
-          await walk(path.resolve(now, p), path.resolve(nowOut, p))
+        const stats = await fs.promises.lstat(from)
+        const dest = path.resolve(nowOut, p)
+
+        if (stats.isSymbolicLink()) {
+          await fs.promises.symlink(
+            await fs.promises.readlink(from),
+            dest,
+            process.platform === 'win32' ? 'junction' : undefined
+          )
+        } else if (stats.isDirectory()) {
+          await walk(path.resolve(now, p), dest)
         } else if (isBinaryPath(p)) {
-          await fs.promises.copyFile(from, path.resolve(nowOut, p))
+          await fs.promises.copyFile(from, dest)
         } else {
           const content = await fs.promises.readFile(from, 'utf8')
 
           try {
             const output = ejs.render(content.replace(/\r/g, ''), templateContext)
-            await fs.promises.writeFile(path.resolve(nowOut, p), output)
+            await fs.promises.writeFile(dest, output)
           } catch (e: unknown) {
             console.error(e)
             console.error(`Error occured while processing ${from}`)
@@ -100,7 +104,6 @@ export const generate = async (answers: TemplateContext, rootDir: string, outDir
 
   await Promise.all([
     setupPackageJson('package.json', '@dep', '@dev-dep'),
-    setupPackageJson('server/package.json', '@server-dep', '@server-dev-dep'),
     rename('gitignore', '.gitignore')
   ])
 

@@ -2,7 +2,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, copy env files:
+
+```bash
+cp client/.env.example client/.env
+cp server/.env.example server/.env
+```
+
+Next, run the development server:
 
 ```bash
 npm run dev

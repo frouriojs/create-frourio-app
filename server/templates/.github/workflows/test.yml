@@ -6,35 +6,22 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    env:
-      API_SERVER_PORT: 8080
-      API_ORIGIN: http://localhost:8080
-      API_BASE_PATH: /api
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - uses: actions/cache@v2
-        id: client-npm-cache
+          node-version: 22
+      - uses: actions/cache@v4
+        id: npm-cache
         with:
-          path: "node_modules"
-          key: client-npm-${{ hashFiles('package-lock.json') }}
-      - uses: actions/cache@v2
-        id: server-npm-cache
-        with:
-          path: "server/node_modules"
-          key: server-npm-${{ hashFiles('server/package-lock.json') }}
+          path: 'node_modules'
+          key: npm-${{ hashFiles('package-lock.json') }}
       - run: npm install
-        if: steps.client-npm-cache.outputs.cache-hit != 'true'
-      - run: npm install --prefix server
-        if: steps.server-npm-cache.outputs.cache-hit != 'true'
+        if: steps.npm-cache.outputs.cache-hit != 'true'
       - run: npm run lint
-      - run: echo "API_DATABASE_URL=file:./dev.db" > server/prisma/.env
+      - run: cp client/.env.example client/.env
+      - run: cp server/.env.example server/.env
+      - run: npm run generate
       - run: npm run typecheck
-      - run: |
-          npm run migrate:dev
-          npm test
-        env:
-          API_JWT_SECRET: test_secret
+      - run: npm test

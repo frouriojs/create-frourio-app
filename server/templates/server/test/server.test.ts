@@ -1,6 +1,13 @@
 import <%= server %> from '<%= server %>'
-import controller from '$/api/tasks/controller'
+import controller from 'api/tasks/controller'
 import { fail } from "assert"
+import { beforeEach, expect, test } from 'vitest'
+import { promisify } from 'util'
+import { exec } from 'child_process'
+
+beforeEach(async () => {
+  await promisify(exec)('npx prisma migrate reset --force')
+})
 
 test('dependency injection into controller', async () => {
   let printedMessage = ''
@@ -32,7 +39,7 @@ test('dependency injection into controller', async () => {
   })
 
   if (res.status !== 200) fail('Response must be successful')
-  
+
   expect(res.body).toHaveLength(limit)
   expect(printedMessage).toBe(message)
 })

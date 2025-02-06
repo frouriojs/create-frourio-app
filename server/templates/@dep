@@ -3,7 +3,8 @@
 aspida
 next
 pathpida
-prisma
 swr
 react
 react-dom
+dotenv
+zod

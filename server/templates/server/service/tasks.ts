@@ -4,9 +4,13 @@ import { PrismaClient, Prisma, Task } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export const getTasks = depend(
-  { prisma: prisma as { task: { findMany(): Promise<Task[]> } } },
+  {
+    prisma: prisma as {
+      task: { findMany(args?: Prisma.TaskFindManyArgs): Promise<Task[]> }
+    }
+  },
   async ({ prisma }, limit?: number) =>
-    (await prisma.task.findMany()).slice(0, limit)
+    (await prisma.task.findMany({ orderBy: { id: 'asc' } })).slice(0, limit)
 )
 
 export const createTask = (label: Task['label']) =>

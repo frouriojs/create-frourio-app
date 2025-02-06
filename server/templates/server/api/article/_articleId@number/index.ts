@@ -1,7 +1,8 @@
-import type { ArticleInfo } from '$/service/article'
+import { DefineMethods } from 'aspida'
+import { ArticleInfo } from 'common/types'
 
-export type Methods = {
+export type Methods = DefineMethods<{
   get: {
     resBody: ArticleInfo
   }
-}
+}>

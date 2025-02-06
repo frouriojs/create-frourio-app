@@ -1,5 +1,5 @@
 import { defineController } from './$relay'
-import { validateUser } from '$/service/user'
+import { validateUser } from 'service/user'
 import { z } from 'zod'
 
 export default defineController((fastify) => ({

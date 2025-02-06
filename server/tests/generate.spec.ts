@@ -118,14 +118,9 @@ test.each(Array.from({ length: randomNum }))(
         }
 
         const serverDir = path.resolve(dir, 'server')
-        const nodeModulesDir = path.resolve(dir, 'node_modules')
-        const nodeModulesIgnoreDir = path.resolve(dir, 'node_modules_ignore')
 
-        // npm install:client
+        // npm install
         await npmInstall(dir, process.stdout)
-
-        // npm install:server
-        await npmInstall(serverDir, process.stdout)
 
         // eslint
         await execFileAsync('npm', ['run', 'lint:fix'], {
@@ -134,6 +129,10 @@ test.each(Array.from({ length: randomNum }))(
         })
 
         // typecheck
+        await execFileAsync('npm', ['run', 'generate'], {
+          cwd: dir,
+          shell: process.platform === 'win32'
+        })
         await execFileAsync('npm', ['run', 'typecheck'], {
           cwd: dir,
           shell: process.platform === 'win32'
@@ -145,17 +144,11 @@ test.each(Array.from({ length: randomNum }))(
           shell: process.platform === 'win32'
         })
 
-        // rename node_modules → node_modules_ignore
-        await fs.promises.rename(nodeModulesDir, nodeModulesIgnoreDir)
-
         // build:server
         await execFileAsync('npm', ['run', 'build:server'], {
           cwd: dir,
           shell: process.platform === 'win32'
         })
-
-        // rename node_modules_ignore → node_modules
-        await fs.promises.rename(nodeModulesIgnoreDir, nodeModulesDir)
 
         // migrations
         await execFileAsync('npm', ['run', 'migrate:dev'], {
@@ -171,9 +164,9 @@ test.each(Array.from({ length: randomNum }))(
 
         // Integration test
         {
-          const proc = spawn('node', [path.resolve(dir, 'server/index.js')], {
+          const proc = spawn('node', [path.resolve(serverDir, 'index.js')], {
             stdio: ['ignore', 'inherit', 'inherit'],
-            cwd: path.resolve(dir, 'server'),
+            cwd: serverDir,
             shell: process.platform === 'win32'
           })
 
@@ -185,10 +178,10 @@ test.each(Array.from({ length: randomNum }))(
             // Appearance test
             const client = axios.create({ baseURL: `http://localhost:${serverPort}` })
 
-            // There is no tasks at first
+            // There are seeder tasks at first
             {
               const res = await client.get(`/api/tasks${slash}`)
-              expect(res.data).toHaveLength(0)
+              expect(res.data).toHaveLength(2)
             }
 
             // Add one task
@@ -197,14 +190,14 @@ test.each(Array.from({ length: randomNum }))(
             // Get added task
             {
               const res = await client.get(`/api/tasks${slash}`)
-              expect(res.data).toHaveLength(1)
-              expect(res.data[0].label).toEqual('test')
+              expect(res.data).toHaveLength(3)
+              expect(res.data[2].label).toEqual('test')
             }
 
             // Cannot login with illegal token
             await expect(
               client.get(`/api/user${slash}`, { headers: { authorization: 'token' } })
-            ).rejects.toHaveProperty('response.status', answers.server === 'fastify' ? 400 : 401)
+            ).rejects.toHaveProperty('response.status', 401)
 
             // Cannot login with invalid password
             await expect(

@@ -1,4 +1,4 @@
-const { build } = require('esbuild')
+const { context } = require('esbuild')
 const config = require('./config.dev.js')
 
-build(config)
+context(config).then((ctx) => ctx.watch())

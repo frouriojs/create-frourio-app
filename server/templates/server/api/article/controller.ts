@@ -1,4 +1,4 @@
-import { getArticles } from '$/service/article'
+import { getArticles } from 'service/article'
 import { defineController } from './$relay'
 
 export default defineController(() => ({
