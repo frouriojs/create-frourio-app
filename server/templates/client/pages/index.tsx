@@ -5,8 +5,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useCallback, useState } from 'react';
-import styles from 'styles/Home.module.css';
 import { apiClient } from 'utils/apiClient';
+import styles from './Home.module.css';
 
 const Home: NextPage = () => {
   const { data: tasks, error, mutate } = useAspidaSWR(apiClient.tasks);

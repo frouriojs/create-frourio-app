@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react';
-import styles from 'styles/Layout.module.css';
 import { staticPath } from 'utils/$path';
+import styles from './Layout.module.css';
 import UserBanner from './UserBanner';
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {

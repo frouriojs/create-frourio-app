@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { ChangeEvent } from 'react';
 import { useCallback, useState } from 'react';
-import styles from 'styles/UserBanner.module.css';
 import { pagesPath } from 'utils/$path';
 import { apiClient } from 'utils/apiClient';
+import styles from './UserBanner.module.css';
 
 const UserBanner = () => {
   const router = useRouter();

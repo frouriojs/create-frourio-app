@@ -13,6 +13,7 @@ typescript-eslint
 pathpida
 prettier
 prettier-plugin-organize-imports
+happy-css-modules
 typescript
 @testing-library/react
 next-router-mock
