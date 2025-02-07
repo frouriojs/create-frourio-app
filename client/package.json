@@ -1,8 +1,6 @@
 {
   "scripts": {
-    "build": "run-p build:next build:lib",
-    "build:next": "aspida && next build && next export",
-    "build:lib": "webpack --config webpack.config.lib.js",
+    "build": "aspida && next build && next export",
     "typecheck": "tsc --pretty --noEmit"
   }
 }

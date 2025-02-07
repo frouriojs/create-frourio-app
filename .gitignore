@@ -6,7 +6,6 @@ node_modules/
 # next.js
 client/.next/
 client/out/
-client/lib/
 
 # misc
 .DS_Store

@@ -7,7 +7,7 @@ export interface PrimaryButtonProps {
   children: React.ReactNode;
 }
 
-const PrimaryButton: FC<PrimaryButtonProps> = ({ disabled, onClick, children }) => {
+export const PrimaryButton: FC<PrimaryButtonProps> = ({ disabled, onClick, children }) => {
   return (
     <div className={styles.container}>
       <button
@@ -19,5 +19,3 @@ const PrimaryButton: FC<PrimaryButtonProps> = ({ disabled, onClick, children }) 
     </div>
   );
 };
-
-export default PrimaryButton;

@@ -3,9 +3,9 @@ import type { ServerStatus } from 'api/status';
 import { cmdEscapeSingleInput, shellEscapeSingleInput } from 'common/escape';
 import type { Answers } from 'common/prompts';
 import { cfaPrompts, getAllDefaultAnswers, isAnswersValid } from 'common/prompts';
-import CommandInput from 'components/command-input';
-import PrimaryButton from 'components/primary-button';
-import Question from 'components/question';
+import { CommandInput } from 'components/CommandInput';
+import { PrimaryButton } from 'components/PrimaryButton';
+import { Question } from 'components/Question';
 import Head from 'next/head';
 import type { FC } from 'react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -19,7 +19,7 @@ export interface MainProps {
   useServer?: boolean;
 }
 
-const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
+export const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
   const [touched, setTouched] = useState<true | { [key: string]: true }>({});
   const [answers, setAnswers] = useState(getAllDefaultAnswers());
   const [created, setCreated] = useState(false);
@@ -172,5 +172,3 @@ const Main: FC<MainProps> = ({ serverStatus, mutate, useServer }) => {
     </>
   );
 };
-
-export default Main;

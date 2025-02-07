@@ -5,7 +5,7 @@ export interface Props {
   value?: string;
 }
 
-const CommandInput: FC<Props> = ({ value }) => {
+export const CommandInput: FC<Props> = ({ value }) => {
   const ref = useRef<HTMLInputElement>(null);
   const clickHandler = () => {
     if (!ref.current) return;
@@ -22,5 +22,3 @@ const CommandInput: FC<Props> = ({ value }) => {
     />
   );
 };
-
-export default CommandInput;

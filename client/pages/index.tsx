@@ -1,5 +1,5 @@
 import useAspidaSWR from '@aspida/swr';
-import Main from 'components/main';
+import { Main } from 'components/Main';
 import { createApiClient } from 'utils/apiClient';
 
 const Home = () => {

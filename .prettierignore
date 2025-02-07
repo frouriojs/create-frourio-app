@@ -1,7 +1,6 @@
 node_modules
 client/.next
 client/out
-client/lib
 client/api
 client/common
 server/templates

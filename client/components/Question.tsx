@@ -84,7 +84,7 @@ const QuestionList: FC<QuestionListProps> = ({
   );
 };
 
-const Question: FC<QuestionProps> = (props) => {
+export const Question: FC<QuestionProps> = (props) => {
   const { question, addInfo, addError } = props;
   return (
     <div className={styles.card}>
@@ -109,5 +109,3 @@ const Question: FC<QuestionProps> = (props) => {
     </div>
   );
 };
-
-export default Question;
