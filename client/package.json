@@ -1,6 +1,9 @@
 {
   "scripts": {
-    "build": "aspida && next build && next export",
+    "dev": "run-p dev:*",
+    "dev:client": "next dev -p 3000",
+    "dev:aspida": "aspida -w",
+    "build": "aspida && next build",
     "typecheck": "tsc --pretty --noEmit"
   }
 }

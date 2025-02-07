@@ -1,4 +1,3 @@
-import fastifyNext from '@fastify/nextjs';
 import FastifyStatic from '@fastify/static';
 import { Command } from 'commander';
 import Fastify from 'fastify';
@@ -28,15 +27,8 @@ program.allowExcessArguments(false);
 
 program.parse();
 
-const options = program.opts();
-const dir = program.args[0] || dirDefault;
-
-let port: number = options.port;
-const host: string = options.host;
-
-const basePath = '/api';
 (async () => {
-  port = await getPortPromise({ port });
+  const options = program.opts();
 
   if (options.answers !== undefined) {
     await updateAnswers(JSON.parse(options.answers));
@@ -44,43 +36,27 @@ const basePath = '/api';
   }
 
   const fastify = Fastify();
-  const rootDir = path.join(__dirname, '../client');
+  const port =
+    process.env.NODE_ENV === 'development' ? 31577 : await getPortPromise({ port: options.port });
 
-  fastify.register(FastifyStatic, { root: path.join(rootDir, 'out') });
+  fastify.register(FastifyStatic, { root: path.join(__dirname, '../client/out') });
 
-  await fastify.register(FastifyInject, { dir });
+  await fastify.register(FastifyInject, { dir: program.args[0] || dirDefault });
+
+  await server(fastify, { basePath: '/api' }).listen({ port, host: options.host });
+
+  if (process.env.NODE_ENV === 'test') return;
 
   if (process.env.NODE_ENV === 'development') {
-    fastify
-      .register(fastifyNext, {
-        dev: true,
-        dir: rootDir,
-        conf: {
-          webpack: (config) => {
-            config.resolve.symlinks = false;
-
-            return config;
-          },
-        },
-      })
-      .after(() => {
-        fastify.next('/');
-      });
-  }
-
-  await server(fastify, { basePath }).listen({ port, host });
-
-  if (process.env.NODE_ENV !== 'development') {
-    if (process.env.NODE_ENV === 'test') return;
-
+    console.log(`open http://localhost:3000 in the browser`);
+  } else {
     const subprocess = await open(`http://localhost:${port}`);
+
     subprocess.on('error', () => {
       console.log(`open http://localhost:${port} in the browser`);
     });
     subprocess.on('close', () => {
       console.log(`open http://localhost:${port} in the browser`);
     });
-  } else {
-    console.log(`open http://localhost:${port} in the browser`);
   }
 })();

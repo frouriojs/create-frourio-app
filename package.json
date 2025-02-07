@@ -6,7 +6,9 @@
   "license": "MIT",
   "bin": "bin/index.js",
   "scripts": {
-    "dev": "npm run dev --prefix server",
+    "dev": "run-p dev:*",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
     "build": "run-p build:*",
     "build:client": "npm run build --prefix client",
     "build:server": "npm run build --prefix server",
@@ -40,9 +42,7 @@
   "dependencies": {
     "@aspida/axios": "^1.13.3",
     "@aspida/swr": "^1.13.3",
-    "@fastify/cors": "^8.2.0",
     "@fastify/multipart": "^9.0.3",
-    "@fastify/nextjs": "^10.0.1",
     "@fastify/static": "^6.5.1",
     "aspida": "^1.13.3",
     "axios": "^0.27.2",
@@ -50,12 +50,12 @@
     "ejs": "^3.1.7",
     "fastify": "^4.21.0",
     "is-binary-path": "^2.1.0",
-    "next": "^13.0.4",
+    "next": "^15.1.6",
     "open": "^8.4.0",
     "portfinder": "^1.0.28",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "swr": "^2.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "swr": "^2.3.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {
