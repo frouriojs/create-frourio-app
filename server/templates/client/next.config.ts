@@ -1,4 +1,4 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export',
@@ -6,10 +6,10 @@ const nextConfig: NextConfig = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
   webpack: (config) => {
-    config.resolve.symlinks = false
+    config.resolve.symlinks = false;
 
-    return config
-  }
-}
+    return config;
+  },
+};
 
-export default nextConfig
+export default nextConfig;

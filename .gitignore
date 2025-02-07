@@ -3,16 +3,9 @@
 # dependencies
 node_modules/
 
-# testing
-/coverage
-
 # next.js
 client/.next/
 client/out/
-
-# production
-client/lib
-server/build
 
 # misc
 .DS_Store

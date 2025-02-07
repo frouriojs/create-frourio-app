@@ -1,112 +1,111 @@
-import fs from 'fs'
-import path from 'path'
-import ejs from 'ejs'
-import isBinaryPath from 'is-binary-path'
-import { addAllUndefined } from 'common/prompts'
-import assert from 'assert'
-import { convertListToJson, DepKeys, getPackageVersions, isDepKey } from './package-json'
-import type { TemplateContext } from 'common/template-context'
+import assert from 'assert';
+import { addAllUndefined } from 'common/prompts';
+import type { TemplateContext } from 'common/template-context';
+import ejs from 'ejs';
+import fs from 'fs';
+import isBinaryPath from 'is-binary-path';
+import path from 'path';
+import type { DepKeys } from './package-json';
+import { convertListToJson, getPackageVersions, isDepKey } from './package-json';
 
 export const generate = async (answers: TemplateContext, rootDir: string, outDir?: string) => {
-  const deps: { [k in DepKeys]: string[] } = { '@dep': [], '@dev-dep': [] }
-  const dir = outDir ?? answers.dir ?? ''
+  const deps: { [k in DepKeys]: string[] } = { '@dep': [], '@dev-dep': [] };
+  const dir = outDir ?? answers.dir ?? '';
 
-  const templateContext: TemplateContext = addAllUndefined(answers)
+  const templateContext: TemplateContext = addAllUndefined(answers);
 
   const rename = async (pattern: string, renameTo: string) => {
-    const from = path.join(dir, pattern)
-    const to = path.join(dir, renameTo)
-    await fs.promises.rename(from, to)
-  }
+    const from = path.join(dir, pattern);
+    const to = path.join(dir, renameTo);
+    await fs.promises.rename(from, to);
+  };
 
   const walk = async (now: string, nowOut: string) => {
-    const paths = await fs.promises.readdir(now)
+    const paths = await fs.promises.readdir(now);
     try {
-      await fs.promises.mkdir(nowOut)
-    } catch (e: unknown) {
+      await fs.promises.mkdir(nowOut);
+    } catch (_: unknown) {
       // ignore
     }
     await Promise.all(
       paths.map(async (p) => {
-        const from = path.resolve(now, p)
-        if (p.startsWith('@')) return
+        const from = path.resolve(now, p);
+        if (p.startsWith('@')) return;
 
-        const dest = path.resolve(nowOut, p)
-        const stats = await fs.promises.stat(from)
+        const dest = path.resolve(nowOut, p);
+        const stats = await fs.promises.stat(from);
 
         if (stats.isDirectory()) {
-          await walk(path.resolve(now, p), dest)
+          await walk(path.resolve(now, p), dest);
         } else if (isBinaryPath(p)) {
-          await fs.promises.copyFile(from, dest)
+          await fs.promises.copyFile(from, dest);
         } else {
-          const content = await fs.promises.readFile(from, 'utf8')
+          const content = await fs.promises.readFile(from, 'utf8');
 
           try {
-            const output = ejs.render(content.replace(/\r/g, ''), templateContext)
-            await fs.promises.writeFile(dest, output)
+            const output = ejs.render(content.replace(/\r/g, ''), templateContext);
+            await fs.promises.writeFile(dest, output);
           } catch (e: unknown) {
-            console.error(e)
-            console.error(`Error occured while processing ${from}`)
-            throw e
+            console.error(e);
+            console.error(`Error occured while processing ${from}`);
+            throw e;
           }
         }
-      })
-    )
+      }),
+    );
     await Promise.all(
       paths.map(async (p) => {
-        if (!p.startsWith('@')) return
+        if (!p.startsWith('@')) return;
 
-        const symlinkKey = '@symlink'
-        const f = path.resolve(now, p)
+        const symlinkKey = '@symlink';
+        const f = path.resolve(now, p);
 
         if ((await fs.promises.stat(f)).isDirectory()) {
-          const [pname, pvalue] = p.slice(1).split('=')
+          const [pname, pvalue] = p.slice(1).split('=');
 
-          if (templateContext[pname as keyof TemplateContext] !== pvalue) return
+          if (templateContext[pname as keyof TemplateContext] !== pvalue) return;
 
-          await walk(f, nowOut)
+          await walk(f, nowOut);
         } else if (p.startsWith(symlinkKey)) {
+          const text = await fs.promises.readFile(f, 'utf8');
+
           await fs.promises.symlink(
-            await fs.promises.readFile(f, 'utf8').then((t) => t.trim()),
+            text.trim(),
             path.resolve(nowOut, p.replace(`${symlinkKey}=`, '')),
-            process.platform === 'win32' ? 'junction' : undefined
-          )
+            process.platform === 'win32' ? 'junction' : undefined,
+          );
         } else if (isDepKey(p)) {
-          const lines = (await fs.promises.readFile(f, 'utf8'))
-            .split(/[\n\r]+/)
-            .map((line) => line.trim())
-            .filter((line) => line && !line.startsWith('#'))
+          const text = await fs.promises.readFile(f, 'utf8');
 
-          deps[p] = [...deps[p], ...lines]
+          deps[p] = [...deps[p], ...text.trim().split(/[\n\r]+/)];
         } else {
-          throw new Error('Unreachable: Unknown special filename.')
+          throw new Error('Unreachable: Unknown special filename.');
         }
-      })
-    )
-  }
+      }),
+    );
+  };
 
-  await walk(path.resolve(rootDir, 'templates'), dir)
-  const versions = getPackageVersions()
+  await walk(path.resolve(rootDir, 'templates'), dir);
+  const versions = getPackageVersions();
 
   const setupPackageJson = async (rel: string, depKey: DepKeys, devDepKey: DepKeys) => {
-    const packageJsonPath = path.resolve(dir, rel)
-    const packageJson = (await fs.promises.readFile(packageJsonPath)).toString()
-    const finish = '\n  }\n}\n'
+    const packageJsonPath = path.resolve(dir, rel);
+    const packageJson = (await fs.promises.readFile(packageJsonPath)).toString();
+    const finish = '\n  }\n}\n';
 
-    assert(packageJson.endsWith(finish), 'Template package.json ending unexpected.')
+    assert(packageJson.endsWith(finish), 'Template package.json ending unexpected.');
     const replaced =
-      packageJson.slice(0, -finish.length) +
-      '\n  },\n' +
+      `${packageJson.slice(0, -finish.length)}\n  },\n` +
       `  "dependencies": {\n${convertListToJson(versions, deps[depKey], '    ')}\n  },\n` +
       `  "devDependencies": {\n${convertListToJson(versions, deps[devDepKey], '    ')}\n  }\n` +
-      '}\n'
-    await fs.promises.writeFile(packageJsonPath, replaced)
-  }
+      `}\n`;
+    await fs.promises.writeFile(packageJsonPath, replaced);
+  };
 
   await Promise.all([
     setupPackageJson('package.json', '@dep', '@dev-dep'),
-    rename('gitignore', '.gitignore')
-  ])
+    rename('gitignore', '.gitignore'),
+  ]);
 
-  return templateContext
-}
+  return templateContext;
+};

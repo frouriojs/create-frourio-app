@@ -1,8 +1,8 @@
-import { DefineMethods } from 'aspida'
-import { ArticleInfo } from 'common/types'
+import type { DefineMethods } from 'aspida';
+import type { ArticleInfo } from 'common/types';
 
 export type Methods = DefineMethods<{
   get: {
-    resBody: ArticleInfo
-  }
-}>
+    resBody: ArticleInfo;
+  };
+}>;

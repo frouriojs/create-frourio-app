@@ -1,10 +1,10 @@
-import fs from 'fs'
+import fs from 'fs';
 
 export type PathStatus = {
-  isFile: boolean
-  isDirectory: boolean
-  isEmpty: boolean
-}
+  isFile: boolean;
+  isDirectory: boolean;
+  isEmpty: boolean;
+};
 
 export const getPathStatus = async (path: string): Promise<PathStatus> => {
   const [stat, isEmpty] = await Promise.all([
@@ -12,18 +12,18 @@ export const getPathStatus = async (path: string): Promise<PathStatus> => {
     fs.promises
       .readdir(path)
       .then((dir) => dir.length === 0)
-      .catch(() => false)
-  ])
+      .catch(() => false),
+  ]);
 
-  return { isDirectory: stat.isDirectory(), isFile: stat.isFile(), isEmpty }
-}
+  return { isDirectory: stat.isDirectory(), isFile: stat.isFile(), isEmpty };
+};
 
 export const canContinueOnPath = (pathStatus: PathStatus): null | string => {
-  if (pathStatus.isFile) return 'The file you specified already exists.'
+  if (pathStatus.isFile) return 'The file you specified already exists.';
 
   if (pathStatus.isDirectory && !pathStatus.isEmpty) {
-    return 'The directoy you specified already exists and not empty.'
+    return 'The directoy you specified already exists and not empty.';
   }
 
-  return null
-}
+  return null;
+};

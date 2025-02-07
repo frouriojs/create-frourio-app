@@ -1,9 +1,0 @@
-node_modules
-.next
-out
-/build
-/lib
-/server/build
-$*.ts
-server/**/*.js
-server/templates

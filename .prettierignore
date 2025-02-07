@@ -1,5 +1,8 @@
+node_modules
+client/.next
+client/out
+client/api
+client/common
 server/templates
-/build
-/lib
-/server/build
-$*.ts
+server/**/$*.ts
+server/index.js

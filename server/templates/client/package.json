@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "next dev -p 8000",
+    "dev:hcm": "hcm '**/*.module.css' -w",
     "dev:aspida": "aspida --watch",
     "dev:pathpida": "pathpida --enableStatic --ignorePath ../.gitignore --watch",
     "build": "npm run generate && next build",
@@ -10,6 +11,6 @@
     "generate:pathpida": "pathpida --enableStatic --ignorePath ../.gitignore",
     "start": "next start",
     "test": "vitest run",
-    "typecheck": "tsc --pretty --noEmit"
+    "typecheck": "hcm '**/*.module.css' && tsc --pretty --noEmit"
   }
 }

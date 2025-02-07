@@ -1,46 +1,52 @@
-import Head from 'next/head'
-import { useCallback, useState } from 'react'
-import useAspidaSWR from '@aspida/swr'
-import styles from 'styles/Home.module.css'
-import { apiClient } from 'utils/apiClient'
-import type { Task } from 'common/types'
-import type { FormEvent, ChangeEvent } from 'react'
-import Layout from 'components/Layout'
-import type { NextPage } from 'next'
+import useAspidaSWR from '@aspida/swr';
+import type { Task } from 'common/types';
+import Layout from 'components/Layout';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import type { ChangeEvent, FormEvent } from 'react';
+import { useCallback, useState } from 'react';
+import { apiClient } from 'utils/apiClient';
+import styles from './Home.module.css';
 
 const Home: NextPage = () => {
-  const { data: tasks, error, mutate } = useAspidaSWR(apiClient.tasks)
-  const [label, setLabel] = useState('')
+  const { data: tasks, error, mutate } = useAspidaSWR(apiClient.tasks);
+  const [label, setLabel] = useState('');
   const inputLabel = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value),
-    []
-  )
+    [],
+  );
   const createTask = useCallback(
     async (e: FormEvent) => {
-      e.preventDefault()
-      if (!label) return
+      e.preventDefault();
+      if (!label) return;
 
-      await apiClient.tasks.post({ body: { label } })
+      await apiClient.tasks.post({ body: { label } });
 
-      setLabel('')
-      mutate()
+      setLabel('');
+      mutate();
     },
-    [label]
-  )
+    [label, mutate],
+  );
 
-  const toggleDone = useCallback(async (task: Task) => {
-    await apiClient.tasks._taskId(task.id).patch({ body: { done: !task.done } })
-    mutate()
-  }, [])
+  const toggleDone = useCallback(
+    async (task: Task) => {
+      await apiClient.tasks._taskId(task.id).patch({ body: { done: !task.done } });
+      mutate();
+    },
+    [mutate],
+  );
 
-  const deleteTask = useCallback(async (task: Task) => {
-    await apiClient.tasks._taskId(task.id).delete()
-    mutate()
-  }, [])
+  const deleteTask = useCallback(
+    async (task: Task) => {
+      await apiClient.tasks._taskId(task.id).delete();
+      mutate();
+    },
+    [mutate],
+  );
 
-  if (error) return <div>failed to load</div>
+  if (error) return <div>failed to load</div>;
 
-  if (!tasks) return <div>loading...</div>
+  if (!tasks) return <div>loading...</div>;
 
   return (
     <Layout>
@@ -63,11 +69,7 @@ const Home: NextPage = () => {
           {tasks.map((task) => (
             <li key={task.id}>
               <label>
-                <input
-                  type="checkbox"
-                  checked={task.done}
-                  onChange={() => toggleDone(task)}
-                />
+                <input type="checkbox" checked={task.done} onChange={() => toggleDone(task)} />
                 <span>{task.label}</span>
               </label>
               <input
@@ -81,7 +83,7 @@ const Home: NextPage = () => {
         </ul>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

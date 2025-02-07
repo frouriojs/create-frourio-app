@@ -3,7 +3,8 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
@@ -16,6 +17,7 @@
 
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
+    "*.module.css": "${capture}.module.css.d.ts, ${capture}.module.css.d.ts.map",
     "controller.ts": "$relay.ts",
     "tsconfig.json": "tsconfig.tsbuildinfo"
   }
