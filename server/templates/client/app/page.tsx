@@ -1,14 +1,13 @@
+'use client';
+
 import useAspidaSWR from '@aspida/swr';
 import type { Task } from 'common/types';
-import Layout from 'components/Layout';
-import type { NextPage } from 'next';
-import Head from 'next/head';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useCallback, useState } from 'react';
 import { apiClient } from 'utils/apiClient';
-import styles from './Home.module.css';
+import styles from './page.module.css';
 
-const Home: NextPage = () => {
+export default function Home() {
   const { data: tasks, error, mutate } = useAspidaSWR(apiClient.tasks);
   const [label, setLabel] = useState('');
   const inputLabel = useCallback(
@@ -49,11 +48,7 @@ const Home: NextPage = () => {
   if (!tasks) return <div>loading...</div>;
 
   return (
-    <Layout>
-      <Head>
-        <title>frourio-todo-app</title>
-      </Head>
-
+    <>
       <h1 className={styles.title}>
         Welcome to <a href="https://nextjs.org">Next.js!</a>
       </h1>
@@ -82,8 +77,6 @@ const Home: NextPage = () => {
           ))}
         </ul>
       </div>
-    </Layout>
+    </>
   );
-};
-
-export default Home;
+}

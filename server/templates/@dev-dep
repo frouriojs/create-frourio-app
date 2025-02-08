@@ -16,7 +16,6 @@ prettier-plugin-organize-imports
 happy-css-modules
 typescript
 @testing-library/react
-next-router-mock
 notios
 prisma
 esbuild

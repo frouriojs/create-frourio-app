@@ -1,3 +1,5 @@
+'use client';
+
 import useAspidaSWR from '@aspida/swr';
 import type { LocalPathInfo } from 'api/localPath';
 import { cmdEscapeSingleInput, shellEscapeSingleInput } from 'common/escape';
@@ -6,13 +8,12 @@ import { cfaPrompts, getAllDefaultAnswers, isAnswersValid } from 'common/prompts
 import { CommandInput } from 'components/CommandInput';
 import { PrimaryButton } from 'components/PrimaryButton';
 import { Question } from 'components/Question';
-import Head from 'next/head';
 import { useCallback, useEffect, useState } from 'react';
 import styles from 'styles/Home.module.css';
 import questionStyles from 'styles/Question.module.css';
 import { apiClient } from 'utils/apiClient';
 
-const Home = () => {
+export default function Home() {
   const { data: serverStatus, mutate } = useAspidaSWR(apiClient.status);
   const [touched, setTouched] = useState<true | { [key: string]: true }>({});
   const [answers, setAnswers] = useState(getAllDefaultAnswers());
@@ -45,7 +46,7 @@ const Home = () => {
 
     await apiClient.answers.$patch({ body: answers });
 
-    mutate?.();
+    mutate();
     setCreated(true);
   }, [answers, canCreate, dir, mutate]);
 
@@ -72,11 +73,6 @@ const Home = () => {
 
   return (
     <>
-      <Head>
-        <title>create-frourio-app</title>
-        <link rel="icon" href="/favicon.png" />
-      </Head>
-
       <img src="/images/logo.svg" alt="Frourio Logo" className={styles.logo} />
 
       <main className={styles.main}>
@@ -153,6 +149,4 @@ const Home = () => {
       )}
     </>
   );
-};
-
-export default Home;
+}

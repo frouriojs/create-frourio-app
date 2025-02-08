@@ -1,13 +1,15 @@
+'use client';
+
 import type { UserInfo } from 'common/types';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import type { ChangeEvent } from 'react';
-import { useCallback, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import type { ChangeEvent, ReactNode } from 'react';
+import { Suspense, useCallback, useState } from 'react';
 import { pagesPath } from 'utils/$path';
 import { apiClient } from 'utils/apiClient';
-import styles from './UserBanner.module.css';
+import styles from './template.module.css';
 
-const UserBanner = () => {
+export default function Template({ children }: { children: ReactNode }) {
   const router = useRouter();
   const [search, setSearch] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -50,7 +52,7 @@ const UserBanner = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <div className={styles.userBanner}>
         <div>
           <Link href={pagesPath.$url()} className={styles.nav}>
@@ -63,7 +65,7 @@ const UserBanner = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            router.push(pagesPath.article.$url({ query: { search } }));
+            router.push(pagesPath.article.$url(search ? { query: { search } } : undefined).path);
           }}
         >
           <input
@@ -88,8 +90,9 @@ const UserBanner = () => {
         </div>
       </div>
       <div className={styles.padding} />
-    </div>
+      <Suspense>
+        <main className={styles.main}>{children}</main>
+      </Suspense>
+    </>
   );
-};
-
-export default UserBanner;
+}

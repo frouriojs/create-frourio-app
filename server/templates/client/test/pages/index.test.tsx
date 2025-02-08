@@ -1,17 +1,27 @@
 import aspida from '@aspida/<%= aspida === "axios" ? "axios" : "node-fetch" %>';
 import cors from '@fastify/cors';
 import api from 'api/$api';
+import RootLayout from 'app/layout';
+import Home from 'app/page';
+import Template from 'app/template';
 import dotenv from 'dotenv';
 import type { FastifyInstance } from 'fastify';
 import Fastify from 'fastify';
-import Home from 'pages/index';
 import { fireEvent, render, waitFor } from 'test/testUtils';
 import { afterAll, beforeAll, describe, expect, test, vi } from 'vitest';
 import { z } from 'zod';
 
 dotenv.config({ path: '../server/.env' });
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-vi.mock('next/router', () => require('next-router-mock'));
+
+vi.mock('next/navigation', () => {
+  const actual = vi.importActual('next/navigation');
+  return {
+    ...actual,
+    useRouter: vi.fn(() => ({ push: vi.fn() })),
+    useSearchParams: vi.fn(() => ({ get: vi.fn() })),
+    usePathname: vi.fn(),
+  };
+});
 
 const apiClient = api(aspida(undefined, { baseURL: process.env.API_BASE_PATH }));
 const res = function <T extends () => unknown>(
@@ -50,7 +60,13 @@ describe('Home page', () => {
   });
 
   test('clicking button triggers prompt', async () => {
-    const { findByText } = render(<Home />);
+    const { findByText } = render(
+      <RootLayout>
+        <Template>
+          <Home />
+        </Template>
+      </RootLayout>,
+    );
 
     window.prompt = vi.fn(() => null);
     window.alert = vi.fn();
