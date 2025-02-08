@@ -4,11 +4,10 @@ import { cfaPrompts } from 'common/prompts';
 import fs from 'fs';
 import { homedir } from 'os';
 import path from 'path';
-import stream from 'stream';
-import { completed } from './completed';
 import { generate } from './generate';
 import { getClientPort, getServerPort } from './getServerPort';
 import { canContinueOnPath, getPathStatus } from './localPath';
+import { npmInstall } from './npmInstall';
 import { setStatus } from './status';
 
 {
@@ -35,41 +34,26 @@ const installApp = async (answers: Answers) => {
   setStatus('installing');
   const allAnswers = genAllAnswers(answers);
   const dir = allAnswers.dir ?? '';
-  const s = new stream.Writable({
-    write(chunk, _enc, cb) {
-      process.stdout.write(chunk, (err) => cb(err));
-    },
-  });
 
   await generate(
     { ...allAnswers, clientPort: await getClientPort(), serverPort: await getServerPort() },
     __dirname,
   );
 
-  await completed(dir, s);
+  await npmInstall(path.resolve(dir));
 
   const npmRun = (script: string) =>
     new Promise((resolve, reject) => {
-      const proc = spawn('npm', ['run', '--color', script], {
+      const proc = spawn('npm', ['run', script], {
         cwd: path.resolve(dir),
-        stdio: ['inherit', 'pipe', 'pipe'],
-        env: {
-          FORCE_COLOR: 'true',
-
-          npm_config_color: 'always',
-          npm_config_progress: 'true',
-
-          ...process.env,
-        },
+        stdio: 'inherit',
         shell: process.platform === 'win32',
       });
-      proc.stdio[1]?.on('data', s.write.bind(s));
-      proc.stdio[2]?.on('data', s.write.bind(s));
+
       proc.once('close', resolve);
       proc.once('error', reject);
     });
 
-  await npmRun('generate');
   await npmRun('fix:lint');
 
   npmRun('dev');

@@ -7,8 +7,8 @@ import FormData from 'form-data';
 import fs from 'fs';
 import path from 'path';
 import { getPortPromise } from 'portfinder';
-import { npmInstall } from 'service/completed';
 import { generate } from 'service/generate';
+import { npmInstall } from 'service/npmInstall';
 import tcpPortUsed from 'tcp-port-used';
 import { randInt, randSuffix } from 'tests/random';
 import { promisify } from 'util';
@@ -119,7 +119,7 @@ test(
         const serverDir = path.resolve(dir, 'server');
 
         // npm install
-        await npmInstall(dir, process.stdout);
+        await npmInstall(dir);
 
         // eslint
         await execFileAsync('npm', ['run', 'fix:lint'], {
