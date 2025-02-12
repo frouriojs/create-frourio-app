@@ -68,7 +68,7 @@
     "@types/tcp-port-used": "^1.0.4",
     "@types/yaml": "^1.9.7",
     "dotenv": "^16.4.7",
-    "esbuild": "^0.24.2",
+    "esbuild": "^0.25.0",
     "esbuild-node-externals": "^1.16.0",
     "esbuild-register": "^3.6.0",
     "eslint": "^9.19.0",
